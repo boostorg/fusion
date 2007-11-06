@@ -89,21 +89,21 @@
       fusion algorithms are functional in nature such that algorithms are non mutating
       (no side effects). However, due to the high cost of returning full sequences
       such as vectors and lists, <span class="emphasis"><em>Views</em></span> are returned from Fusion
-      algorithms instead. For example, the <a href="algorithms/transformation/functions/transform.html" title="transform"><tt class="computeroutput"><span class="identifier">transform</span></tt></a> algorithm does not actually
-      return a transformed version of the original sequence. <a href="algorithms/transformation/functions/transform.html" title="transform"><tt class="computeroutput"><span class="identifier">transform</span></tt></a> returns a <a href="sequences/views/transform_view.html" title="transform_view"><tt class="computeroutput"><span class="identifier">transform_view</span></tt></a>. This view holds a
+      algorithms instead. For example, the <a href="algorithm/transformation/functions/transform.html" title="transform"><tt class="computeroutput"><span class="identifier">transform</span></tt></a> algorithm does not actually
+      return a transformed version of the original sequence. <a href="algorithm/transformation/functions/transform.html" title="transform"><tt class="computeroutput"><span class="identifier">transform</span></tt></a> returns a <a href="view/transform_view.html" title="transform_view"><tt class="computeroutput"><span class="identifier">transform_view</span></tt></a>. This view holds a
       reference to the original sequence plus the transform function. Iteration over
-      the <a href="sequences/views/transform_view.html" title="transform_view"><tt class="computeroutput"><span class="identifier">transform_view</span></tt></a>
+      the <a href="view/transform_view.html" title="transform_view"><tt class="computeroutput"><span class="identifier">transform_view</span></tt></a>
       will apply the transform function over the sequence elements on demand. This
       <span class="emphasis"><em>lazy</em></span> evaluation scheme allows us to chain as many algorithms
       as we want without incurring a high runtime penalty.
     </p>
 <p>
       The <span class="emphasis"><em>lazy</em></span> evaluation scheme where algorithms return views
-      allows operations such as <a href="algorithms/transformation/functions/push_back.html" title="push_back"><tt class="computeroutput"><span class="identifier">push_back</span></tt></a> to be totally generic. In
-      Fusion, <a href="algorithms/transformation/functions/push_back.html" title="push_back"><tt class="computeroutput"><span class="identifier">push_back</span></tt></a> is actually a generic algorithm
+      allows operations such as <a href="algorithm/transformation/functions/push_back.html" title="push_back"><tt class="computeroutput"><span class="identifier">push_back</span></tt></a> to be totally generic. In
+      Fusion, <a href="algorithm/transformation/functions/push_back.html" title="push_back"><tt class="computeroutput"><span class="identifier">push_back</span></tt></a> is actually a generic algorithm
       that works on all sequences. Given an input sequence <tt class="computeroutput"><span class="identifier">s</span></tt>
-      and a value <tt class="computeroutput"><span class="identifier">x</span></tt>, Fusion's <a href="algorithms/transformation/functions/push_back.html" title="push_back"><tt class="computeroutput"><span class="identifier">push_back</span></tt></a> algorithm simply returns
-      a <a href="sequences/views/joint_view.html" title="joint_view"><tt class="computeroutput"><span class="identifier">joint_view</span></tt></a>:
+      and a value <tt class="computeroutput"><span class="identifier">x</span></tt>, Fusion's <a href="algorithm/transformation/functions/push_back.html" title="push_back"><tt class="computeroutput"><span class="identifier">push_back</span></tt></a> algorithm simply returns
+      a <a href="view/joint_view.html" title="joint_view"><tt class="computeroutput"><span class="identifier">joint_view</span></tt></a>:
       a view that holds a reference to the original sequence <tt class="computeroutput"><span class="identifier">s</span></tt>
       and the value <tt class="computeroutput"><span class="identifier">x</span></tt>. Functions
       that were once sequence specific and need to be implemented N times over N

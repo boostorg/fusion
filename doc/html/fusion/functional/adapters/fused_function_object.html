@@ -26,7 +26,7 @@
 <div class="titlepage"><div><div><h4 class="title">
 <a name="fusion.functional.adapters.fused_function_object"></a><a href="fused_function_object.html" title="fused_function_object">fused_function_object</a></h4></div></div></div>
 <a name="fusion.functional.adapters.fused_function_object.description"></a><h5>
-<a name="id651278"></a>
+<a name="id661713"></a>
           <a href="fused_function_object.html#fusion.functional.adapters.fused_function_object.description">Description</a>
         </h5>
 <p>
@@ -34,7 +34,7 @@
         Object">Polymorphic Function
           Object</a> adapter template for a <a href="../concepts/poly.html" title=" Polymorphic Function
         Object">Polymorphic
-          Function Object</a> target function. It takes a <a href="../../sequences/concepts/forward_sequence.html" title="Forward
+          Function Object</a> target function. It takes a <a href="../../sequence/concepts/forward_sequence.html" title="Forward
         Sequence">Forward
           Sequence</a> that contains the arguments for the target function.
         </p>
@@ -45,15 +45,11 @@
           for an target function object that is const or, if the target function
           object is held by value, the adapter is const).
         </p>
-<a name="fusion.functional.adapters.fused_function_object.header"></a><h5>
-<a name="id651355"></a>
-          <a href="fused_function_object.html#fusion.functional.adapters.fused_function_object.header">Header</a>
-        </h5>
-<pre class="programlisting">
-<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">functional</span><span class="special">/</span><span class="identifier">adapter</span><span class="special">/</span><span class="identifier">fused_function_object</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
-</pre>
+<p>
+          /functional/adapter/fused_function_object.hpp&gt;
+        </p>
 <a name="fusion.functional.adapters.fused_function_object.synopsis"></a><h5>
-<a name="id651462"></a>
+<a name="id661794"></a>
           <a href="fused_function_object.html#fusion.functional.adapters.fused_function_object.synopsis">Synopsis</a>
         </h5>
 <pre class="programlisting">
@@ -61,7 +57,7 @@
 <span class="keyword">class</span> <span class="identifier">fused_function_object</span><span class="special">;</span>
 </pre>
 <a name="fusion.functional.adapters.fused_function_object.template_parameters"></a><h5>
-<a name="id651545"></a>
+<a name="id661877"></a>
           <a href="fused_function_object.html#fusion.functional.adapters.fused_function_object.template_parameters">Template
           parameters</a>
         </h5>
@@ -108,7 +104,7 @@
 </tr></tbody>
 </table></div>
 <a name="fusion.functional.adapters.fused_function_object.model_of"></a><h5>
-<a name="id651661"></a>
+<a name="id661994"></a>
           <a href="fused_function_object.html#fusion.functional.adapters.fused_function_object.model_of">Model
           of</a>
         </h5>
@@ -135,7 +131,7 @@
             </p></dd>
 <dt><span class="term"><tt class="computeroutput"><span class="identifier">s</span></tt></span></dt>
 <dd><p>
-              A <a href="../../sequences.html" title="Sequences">Sequence</a> of arguments that
+              A <a href="../../sequence.html" title="Sequence">Sequence</a> of arguments that
               are accepted by <tt class="computeroutput"><span class="identifier">r</span></tt>
             </p></dd>
 <dt><span class="term"><tt class="computeroutput"><span class="identifier">f</span></tt></span></dt>
@@ -145,7 +141,7 @@
 </dl>
 </div>
 <a name="fusion.functional.adapters.fused_function_object.expression_semantics"></a><h5>
-<a name="id651881"></a>
+<a name="id662215"></a>
           <a href="fused_function_object.html#fusion.functional.adapters.fused_function_object.expression_semantics">Expression
           Semantics</a>
         </h5>
@@ -209,16 +205,16 @@
 </tbody>
 </table></div>
 <a name="fusion.functional.adapters.fused_function_object.example"></a><h5>
-<a name="id652139"></a>
+<a name="id662471"></a>
           <a href="fused_function_object.html#fusion.functional.adapters.fused_function_object.example">Example</a>
         </h5>
 <pre class="programlisting">
 <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">SeqOfSeqs</span><span class="special">,</span> <span class="keyword">class</span> <span class="identifier">Func</span><span class="special">&gt;</span>
-<span class="keyword">typename</span> <a href="../../algorithms/transformation/metafunctions/transform.html" title="transform"><tt class="computeroutput"><span class="identifier">result_of</span><span class="special">::</span><span class="identifier">transform</span></tt></a><span class="special">&lt;</span> <span class="identifier">zip_view</span><span class="special">&lt;</span><span class="identifier">SeqOfSeqs</span><span class="special">&gt;</span> <span class="keyword">const</span><span class="special">,</span>
+<span class="keyword">typename</span> <a href="../../algorithm/transformation/metafunctions/transform.html" title="transform"><tt class="computeroutput"><span class="identifier">result_of</span><span class="special">::</span><span class="identifier">transform</span></tt></a><span class="special">&lt;</span> <span class="identifier">zip_view</span><span class="special">&lt;</span><span class="identifier">SeqOfSeqs</span><span class="special">&gt;</span> <span class="keyword">const</span><span class="special">,</span>
     <span class="identifier">fused_function_object</span><span class="special">&lt;</span><span class="identifier">Func</span> <span class="keyword">const</span> <span class="special">&amp;&gt;</span> <span class="special">&gt;::</span><span class="identifier">type</span>
 <span class="identifier">n_ary_transform</span><span class="special">(</span><span class="identifier">SeqOfSeqs</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span> <span class="identifier">Func</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="identifier">f</span><span class="special">)</span>
 <span class="special">{</span>
-    <span class="keyword">return</span> <a href="../../algorithms/transformation/functions/transform.html" title="transform"><tt class="computeroutput"><span class="identifier">transform</span></tt></a><span class="special">(</span><span class="identifier">zip_view</span><span class="special">&lt;</span><span class="identifier">SeqOfSeqs</span><span class="special">&gt;(</span><span class="identifier">s</span><span class="special">),</span> 
+    <span class="keyword">return</span> <a href="../../algorithm/transformation/functions/transform.html" title="transform"><tt class="computeroutput"><span class="identifier">transform</span></tt></a><span class="special">(</span><span class="identifier">zip_view</span><span class="special">&lt;</span><span class="identifier">SeqOfSeqs</span><span class="special">&gt;(</span><span class="identifier">s</span><span class="special">),</span> 
         <span class="identifier">fused_function_object</span><span class="special">&lt;</span><span class="identifier">Func</span> <span class="keyword">const</span> <span class="special">&amp;&gt;(</span><span class="identifier">f</span><span class="special">));</span>
 <span class="special">}</span> 
 
@@ -240,14 +236,14 @@
 
 <span class="keyword">void</span> <span class="identifier">try_it</span><span class="special">()</span>
 <span class="special">{</span>
-    <a href="../../sequences/containers/vector.html" title="vector"><tt class="computeroutput"><span class="identifier">vector</span></tt></a><span class="special">&lt;</span><span class="keyword">int</span><span class="special">,</span><span class="keyword">float</span><span class="special">&gt;</span> <span class="identifier">a</span><span class="special">(</span><span class="number">2</span><span class="special">,</span><span class="number">2.0f</span><span class="special">);</span>
-    <a href="../../sequences/containers/vector.html" title="vector"><tt class="computeroutput"><span class="identifier">vector</span></tt></a><span class="special">&lt;</span><span class="keyword">int</span><span class="special">,</span><span class="keyword">float</span><span class="special">&gt;</span> <span class="identifier">b</span><span class="special">(</span><span class="number">1</span><span class="special">,</span><span class="number">1.5f</span><span class="special">);</span>
-    <a href="../../sequences/containers/vector.html" title="vector"><tt class="computeroutput"><span class="identifier">vector</span></tt></a><span class="special">&lt;</span><span class="keyword">int</span><span class="special">,</span><span class="keyword">float</span><span class="special">&gt;</span> <span class="identifier">c</span><span class="special">(</span><span class="number">1</span><span class="special">,</span><span class="number">0.5f</span><span class="special">);</span>
-    <span class="identifier">assert</span><span class="special">(</span><span class="identifier">c</span> <span class="special">==</span> <span class="identifier">n_ary_transform</span><span class="special">(</span><a href="../../sequences/generation/functions/vector_tie.html" title="vector_tie"><tt class="computeroutput"><span class="identifier">vector_tie</span></tt></a><span class="special">(</span><span class="identifier">a</span><span class="special">,</span><span class="identifier">b</span><span class="special">),</span> <span class="identifier">sub</span><span class="special">()));</span>
+    <a href="../../container/vector.html" title="vector"><tt class="computeroutput"><span class="identifier">vector</span></tt></a><span class="special">&lt;</span><span class="keyword">int</span><span class="special">,</span><span class="keyword">float</span><span class="special">&gt;</span> <span class="identifier">a</span><span class="special">(</span><span class="number">2</span><span class="special">,</span><span class="number">2.0f</span><span class="special">);</span>
+    <a href="../../container/vector.html" title="vector"><tt class="computeroutput"><span class="identifier">vector</span></tt></a><span class="special">&lt;</span><span class="keyword">int</span><span class="special">,</span><span class="keyword">float</span><span class="special">&gt;</span> <span class="identifier">b</span><span class="special">(</span><span class="number">1</span><span class="special">,</span><span class="number">1.5f</span><span class="special">);</span>
+    <a href="../../container/vector.html" title="vector"><tt class="computeroutput"><span class="identifier">vector</span></tt></a><span class="special">&lt;</span><span class="keyword">int</span><span class="special">,</span><span class="keyword">float</span><span class="special">&gt;</span> <span class="identifier">c</span><span class="special">(</span><span class="number">1</span><span class="special">,</span><span class="number">0.5f</span><span class="special">);</span>
+    <span class="identifier">assert</span><span class="special">(</span><span class="identifier">c</span> <span class="special">==</span> <span class="identifier">n_ary_transform</span><span class="special">(</span><a href="../../container/generation/functions/vector_tie.html" title="vector_tie"><tt class="computeroutput"><span class="identifier">vector_tie</span></tt></a><span class="special">(</span><span class="identifier">a</span><span class="special">,</span><span class="identifier">b</span><span class="special">),</span> <span class="identifier">sub</span><span class="special">()));</span>
 <span class="special">}</span>
 </pre>
 <a name="fusion.functional.adapters.fused_function_object.see_also"></a><h5>
-<a name="id653198"></a>
+<a name="id663529"></a>
           <a href="fused_function_object.html#fusion.functional.adapters.fused_function_object.see_also">See
           also</a>
         </h5>

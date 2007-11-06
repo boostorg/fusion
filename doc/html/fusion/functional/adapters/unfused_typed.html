@@ -26,7 +26,7 @@
 <div class="titlepage"><div><div><h4 class="title">
 <a name="fusion.functional.adapters.unfused_typed"></a><a href="unfused_typed.html" title="unfused_typed">unfused_typed</a></h4></div></div></div>
 <a name="fusion.functional.adapters.unfused_typed.description"></a><h5>
-<a name="id658883"></a>
+<a name="id668906"></a>
           <a href="unfused_typed.html#fusion.functional.adapters.unfused_typed.description">Description</a>
         </h5>
 <p>
@@ -35,13 +35,13 @@
           Object</a> adapter template for an unary <a href="../concepts/poly.html" title=" Polymorphic Function
         Object">Polymorphic
           Function Object</a> target function. When called, its arguments are
-          bundled to a <a href="../../sequences/concepts/random_access_sequence.html" title="Random
+          bundled to a <a href="../../sequence/concepts/random_access_sequence.html" title="Random
         Access Sequence">Random
           Access Sequence</a> that is passed to the target function object.
         </p>
 <p>
           The call operators of esulting function objects are strictly typed (in
-          other words, non-templatized) with the types from a <a href="../../sequences.html" title="Sequences">Sequence</a>.
+          other words, non-templatized) with the types from a <a href="../../sequence.html" title="Sequence">Sequence</a>.
         </p>
 <p>
           The type of the target function is allowed to be const qualified or a reference.
@@ -61,15 +61,11 @@
           non-reference elements, the element is copied only once - the call operator's
           signature is optimized automatically to avoid by-value parameters.
         </p></div>
-<a name="fusion.functional.adapters.unfused_typed.header"></a><h5>
-<a name="id659034"></a>
-          <a href="unfused_typed.html#fusion.functional.adapters.unfused_typed.header">Header</a>
-        </h5>
-<pre class="programlisting">
-<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">functional</span><span class="special">/</span><span class="identifier">adapter</span><span class="special">/</span><span class="identifier">unfused_typed</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
-</pre>
+<p>
+          /functional/adapter/unfused_typed.hpp&gt;
+        </p>
 <a name="fusion.functional.adapters.unfused_typed.synopsis"></a><h5>
-<a name="id659140"></a>
+<a name="id669062"></a>
           <a href="unfused_typed.html#fusion.functional.adapters.unfused_typed.synopsis">Synopsis</a>
         </h5>
 <pre class="programlisting">
@@ -77,7 +73,7 @@
 <span class="keyword">class</span> <span class="identifier">unfused_typed</span><span class="special">;</span>
 </pre>
 <a name="fusion.functional.adapters.unfused_typed.template_parameters"></a><h5>
-<a name="id659239"></a>
+<a name="id669161"></a>
           <a href="unfused_typed.html#fusion.functional.adapters.unfused_typed.template_parameters">Template
           parameters</a>
         </h5>
@@ -131,7 +127,7 @@
                 </td>
 <td>
                 <p>
-                  A <a href="../../sequences.html" title="Sequences">Sequence</a>
+                  A <a href="../../sequence.html" title="Sequence">Sequence</a>
                 </p>
                 </td>
 <td>
@@ -142,7 +138,7 @@
 </tbody>
 </table></div>
 <a name="fusion.functional.adapters.unfused_typed.model_of"></a><h5>
-<a name="id659397"></a>
+<a name="id669318"></a>
           <a href="unfused_typed.html#fusion.functional.adapters.unfused_typed.model_of">Model
           of</a>
         </h5>
@@ -169,7 +165,7 @@
             </p></dd>
 <dt><span class="term"><tt class="computeroutput"><span class="identifier">S</span></tt></span></dt>
 <dd><p>
-              A <a href="../../sequences.html" title="Sequences">Sequence</a> of parameter types
+              A <a href="../../sequence.html" title="Sequence">Sequence</a> of parameter types
             </p></dd>
 <dt><span class="term"><tt class="computeroutput"><span class="identifier">UT</span></tt></span></dt>
 <dd><p>
@@ -188,7 +184,7 @@
 </dl>
 </div>
 <a name="fusion.functional.adapters.unfused_typed.expression_semantics"></a><h5>
-<a name="id659720"></a>
+<a name="id669642"></a>
           <a href="unfused_typed.html#fusion.functional.adapters.unfused_typed.expression_semantics">Expression
           Semantics</a>
         </h5>
@@ -254,7 +250,7 @@
 </tbody>
 </table></div>
 <a name="fusion.functional.adapters.unfused_typed.example"></a><h5>
-<a name="id660003"></a>
+<a name="id669926"></a>
           <a href="unfused_typed.html#fusion.functional.adapters.unfused_typed.example">Example</a>
         </h5>
 <pre class="programlisting">
@@ -323,7 +319,7 @@
 <span class="special">}</span>
 </pre>
 <a name="fusion.functional.adapters.unfused_typed.see_also"></a><h5>
-<a name="id661493"></a>
+<a name="id671416"></a>
           <a href="unfused_typed.html#fusion.functional.adapters.unfused_typed.see_also">See also</a>
         </h5>
 <div class="itemizedlist"><ul type="disc">

@@ -7,7 +7,7 @@
 <link rel="start" href="../../index.html" title="Chapter 1. Fusion 2.0">
 <link rel="up" href="../support.html" title="Support">
 <link rel="prev" href="deduce_sequence.html" title="deduce_sequence">
-<link rel="next" href="../iterators.html" title="Iterators">
+<link rel="next" href="../iterator.html" title="Iterator">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr>
@@ -20,24 +20,24 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="deduce_sequence.html"><img src="../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../support.html"><img src="../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="../iterators.html"><img src="../../../../../../doc/html/images/next.png" alt="Next"></a>
+<a accesskey="p" href="deduce_sequence.html"><img src="../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../support.html"><img src="../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="../iterator.html"><img src="../../../../../../doc/html/images/next.png" alt="Next"></a>
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h3 class="title">
 <a name="fusion.support.pair"></a><a href="pair.html" title="pair">pair</a></h3></div></div></div>
 <a name="fusion.support.pair.description"></a><h4>
-<a name="id465407"></a>
+<a name="id466014"></a>
         <a href="pair.html#fusion.support.pair.description">Description</a>
       </h4>
 <p>
         Fusion <tt class="computeroutput"><span class="identifier">pair</span></tt> type is a half
-        runtime pair. A half runtime pair is similar to a <a href="../sequences/adapted/std__pair.html" title="std::pair"><tt class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span></tt></a>,
-        but, unlike <a href="../sequences/adapted/std__pair.html" title="std::pair"><tt class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span></tt></a>,
+        runtime pair. A half runtime pair is similar to a <a href="../adapted/std__pair.html" title="std::pair"><tt class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span></tt></a>,
+        but, unlike <a href="../adapted/std__pair.html" title="std::pair"><tt class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span></tt></a>,
         the first type does not have data. It is used as elements in <span class="underline">_map</span>_s,
         for example.
       </p>
 <a name="fusion.support.pair.synopsis"></a><h4>
-<a name="id465512"></a>
+<a name="id466118"></a>
         <a href="pair.html#fusion.support.pair.synopsis">Synopsis</a>
       </h4>
 <pre class="programlisting">
@@ -61,7 +61,7 @@
 <span class="identifier">make_pair</span><span class="special">(</span><span class="identifier">Second</span> <span class="keyword">const</span> <span class="special">&amp;);</span>
 </pre>
 <a name="fusion.support.pair.template_parameters"></a><h4>
-<a name="id465954"></a>
+<a name="id466561"></a>
         <a href="pair.html#fusion.support.pair.template_parameters">Template parameters</a>
       </h4>
 <div class="informaltable"><table class="table">
@@ -140,7 +140,7 @@
 </dl>
 </div>
 <a name="fusion.support.pair.expression_semantics"></a><h4>
-<a name="id466235"></a>
+<a name="id466841"></a>
         <a href="pair.html#fusion.support.pair.expression_semantics">Expression Semantics</a>
       </h4>
 <div class="informaltable"><table class="table">
@@ -307,14 +307,15 @@
 </tbody>
 </table></div>
 <a name="fusion.support.pair.header"></a><h4>
-<a name="id466948"></a>
+<a name="id467556"></a>
         <a href="pair.html#fusion.support.pair.header">Header</a>
       </h4>
 <pre class="programlisting">
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">support</span><span class="special">/</span><span class="identifier">pair</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">include</span><span class="special">/</span><span class="identifier">pair</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
 </pre>
 <a name="fusion.support.pair.example"></a><h4>
-<a name="id467042"></a>
+<a name="id467712"></a>
         <a href="pair.html#fusion.support.pair.example">Example</a>
       </h4>
 <pre class="programlisting">
@@ -331,7 +332,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="deduce_sequence.html"><img src="../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../support.html"><img src="../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="../iterators.html"><img src="../../../../../../doc/html/images/next.png" alt="Next"></a>
+<a accesskey="p" href="deduce_sequence.html"><img src="../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../support.html"><img src="../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="../iterator.html"><img src="../../../../../../doc/html/images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

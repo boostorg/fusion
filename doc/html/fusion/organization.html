@@ -34,7 +34,7 @@
       The library is organized in three layers:
     </p>
 <a name="fusion.organization.layers"></a><h3>
-<a name="id458808"></a>
+<a name="id458976"></a>
       <a href="organization.html#fusion.organization.layers">Layers</a>
     </h3>
 <div class="blockquote"><blockquote class="blockquote">
@@ -52,11 +52,19 @@
       the same directory with the actual module-directory. For example, there exists
       "boost/fusion/support.hpp" in the same directory as "boost/fusion/support".
       Everything, except those found inside "detail" directories, is public.
+    </p>
+<p>
+      There is also a "boost/fusion<span class="emphasis"><em>include</em></span>" directory
+      that contains all the headers to all the components and modules. If you are
+      unsure where to find a specific component or module, or don't want to fuss
+      with hierarchy and nesting, use this.
+    </p>
+<p>
       The library is header-only. There is no need to build object files to link
       against.
     </p>
 <a name="fusion.organization.directory"></a><h3>
-<a name="id458866"></a>
+<a name="id459042"></a>
       <a href="organization.html#fusion.organization.directory">Directory</a>
     </h3>
 <div class="itemizedlist"><ul type="disc">
@@ -78,47 +86,88 @@
 </ul></div>
 </li>
 <li>
-        sequence
+        adapted
         <div class="itemizedlist"><ul type="circle">
 <li>
-            adapted
-            <div class="itemizedlist"><ul type="disc">
-<li>
-                array
-              </li>
-<li>
-                mpl
-              </li>
-<li>
-                std_pair
-              </li>
-</ul></div>
-</li>
-<li>
-            comparison
+            array
           </li>
 <li>
-            container
-            <div class="itemizedlist"><ul type="disc">
+            mpl
+          </li>
 <li>
-                list
-              </li>
+            boost::tuple
+          </li>
 <li>
-                map
-              </li>
+            std_pair
+          </li>
 <li>
-                set
-              </li>
+            struct
+          </li>
 <li>
-                vector
-              </li>
+            variant
+          </li>
 </ul></div>
 </li>
 <li>
-            conversion
+        view
+        <div class="itemizedlist"><ul type="circle">
+<li>
+            filter_view
+          </li>
+<li>
+            iterator_range
+          </li>
+<li>
+            joint_view
+          </li>
+<li>
+            reverse_view
+          </li>
+<li>
+            single_view
+          </li>
+<li>
+            transform_view
+          </li>
+<li>
+            zip_view
+          </li>
+</ul></div>
+</li>
+<li>
+        container
+        <div class="itemizedlist"><ul type="circle">
+<li>
+            deque
+          </li>
+<li>
+            list
+          </li>
+<li>
+            map
+          </li>
+<li>
+            set
+          </li>
+<li>
+            vector
           </li>
 <li>
             generation
+          </li>
+</ul></div>
+</li>
+<li>
+        mpl
+      </li>
+<li>
+        functional
+      </li>
+<li>
+        sequence
+        <div class="itemizedlist"><ul type="circle">
+<li>
+            comparison
           </li>
 <li>
             intrinsic
@@ -126,35 +175,6 @@
 <li>
             io
           </li>
-<li>
-            utility
-          </li>
-<li>
-            view
-            <div class="itemizedlist"><ul type="disc">
-<li>
-                filter_view
-              </li>
-<li>
-                iterator_range
-              </li>
-<li>
-                joint_view
-              </li>
-<li>
-                reverse_view
-              </li>
-<li>
-                single_view
-              </li>
-<li>
-                transform_view
-              </li>
-<li>
-                zip_view
-              </li>
-</ul></div>
-</li>
 </ul></div>
 </li>
 <li>
@@ -165,7 +185,7 @@
       </li>
 </ul></div>
 <a name="fusion.organization.example"></a><h3>
-<a name="id459037"></a>
+<a name="id459222"></a>
       <a href="organization.html#fusion.organization.example">Example</a>
     </h3>
 <p>
@@ -174,19 +194,19 @@
       of
     </p>
 <pre class="programlisting">
-<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">sequence</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
-<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">sequence</span><span class="special">/</span><span class="identifier">container</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
-<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">sequence</span><span class="special">/</span><span class="identifier">container</span><span class="special">/</span><span class="identifier">list</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">container</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">include</span><span class="special">/</span><span class="identifier">container</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">container</span><span class="special">/</span><span class="identifier">list</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">include</span><span class="special">/</span><span class="identifier">list</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
 </pre>
 <p>
-      The first includes all sequences. The second includes all of sequence containers.
-      The third includes only <tt class="computeroutput"><span class="identifier">list</span></tt>
-      <sup>[<a name="id459280" href="#ftn.id459280">3</a>]</sup>
+      The first includes all containers The second includes only <tt class="computeroutput"><span class="identifier">list</span></tt>
+      <sup>[<a name="id459518" href="#ftn.id459518">3</a>]</sup>
       .
     </p>
 <div class="footnotes">
 <br><hr width="100" align="left">
-<div class="footnote"><p><sup>[<a name="ftn.id459280" href="#id459280">3</a>] </sup>
+<div class="footnote"><p><sup>[<a name="ftn.id459518" href="#id459518">3</a>] </sup>
           Modules may contain smaller components. Header file information for each
           component will be provided as part of the component's documentation.
         </p></div>

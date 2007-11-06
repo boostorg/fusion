@@ -26,17 +26,17 @@
 <div class="titlepage"><div><div><h3 class="title">
 <a name="fusion.support.category_of"></a><a href="category_of.html" title="category_of">category_of</a></h3></div></div></div>
 <a name="fusion.support.category_of.description"></a><h4>
-<a name="id462410"></a>
+<a name="id462833"></a>
         <a href="category_of.html#fusion.support.category_of.description">Description</a>
       </h4>
 <p>
         A metafunction that establishes the conceptual classification of a particular
-        <a href="../sequences.html" title="Sequences">Sequence</a> or <a href="../iterators.html" title="Iterators">Iterator</a>
-        (see <a href="../iterators/concepts.html" title="Concepts">Iterator Concepts</a> and
-        <a href="../sequences/concepts.html" title="Concepts">Sequence Concepts</a>).
+        <a href="../sequence.html" title="Sequence">Sequence</a> or <a href="../iterator.html" title="Iterator">Iterator</a>
+        (see <a href="../iterator/concepts.html" title="Concepts">Iterator Concepts</a> and
+        <a href="../sequence/concepts.html" title="Concepts">Sequence Concepts</a>).
       </p>
 <a name="fusion.support.category_of.synopsis"></a><h4>
-<a name="id462480"></a>
+<a name="id462901"></a>
         <a href="category_of.html#fusion.support.category_of.synopsis">Synopsis</a>
       </h4>
 <pre class="programlisting">
@@ -50,7 +50,7 @@
 <span class="special">}</span>
 </pre>
 <a name="fusion.support.category_of.parameters"></a><h4>
-<a name="id462610"></a>
+<a name="id463031"></a>
         <a href="category_of.html#fusion.support.category_of.parameters">Parameters</a>
       </h4>
 <div class="informaltable"><table class="table">
@@ -95,7 +95,7 @@
 </tr></tbody>
 </table></div>
 <a name="fusion.support.category_of.expression_semantics"></a><h4>
-<a name="id462716"></a>
+<a name="id463137"></a>
         <a href="category_of.html#fusion.support.category_of.expression_semantics">Expression
         Semantics</a>
       </h4>
@@ -158,23 +158,24 @@
 </pre>
 <p>
         <span class="bold"><b>Semantics</b></span>: Establishes the conceptual classification
-        of a particular <a href="../sequences.html" title="Sequences">Sequence</a> or <a href="../iterators.html" title="Iterators">Iterator</a>.
+        of a particular <a href="../sequence.html" title="Sequence">Sequence</a> or <a href="../iterator.html" title="Iterator">Iterator</a>.
       </p>
 <a name="fusion.support.category_of.header"></a><h4>
-<a name="id463320"></a>
+<a name="id463741"></a>
         <a href="category_of.html#fusion.support.category_of.header">Header</a>
       </h4>
 <pre class="programlisting">
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">support</span><span class="special">/</span><span class="identifier">category_of</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">include</span><span class="special">/</span><span class="identifier">category_of</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
 </pre>
 <a name="fusion.support.category_of.example"></a><h4>
-<a name="id463415"></a>
+<a name="id463898"></a>
         <a href="category_of.html#fusion.support.category_of.example">Example</a>
       </h4>
 <pre class="programlisting">
 <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">is_base_of</span><span class="special">;</span>
-<span class="keyword">typedef</span> <span class="identifier">traits</span><span class="special">::</span><span class="identifier">category_of</span><span class="special">&lt;</span><a href="../sequences/containers/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a><span class="special">&lt;&gt;</span> <span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">list_category</span><span class="special">;</span>
-<span class="keyword">typedef</span> <span class="identifier">traits</span><span class="special">::</span><span class="identifier">category_of</span><span class="special">&lt;</span><a href="../sequences/containers/vector.html" title="vector"><tt class="computeroutput"><span class="identifier">vector</span></tt></a><span class="special">&lt;&gt;</span> <span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">vector_category</span><span class="special">;</span>
+<span class="keyword">typedef</span> <span class="identifier">traits</span><span class="special">::</span><span class="identifier">category_of</span><span class="special">&lt;</span><a href="../container/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a><span class="special">&lt;&gt;</span> <span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">list_category</span><span class="special">;</span>
+<span class="keyword">typedef</span> <span class="identifier">traits</span><span class="special">::</span><span class="identifier">category_of</span><span class="special">&lt;</span><a href="../container/vector.html" title="vector"><tt class="computeroutput"><span class="identifier">vector</span></tt></a><span class="special">&lt;&gt;</span> <span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">vector_category</span><span class="special">;</span>
 <span class="identifier">BOOST_MPL_ASSERT</span><span class="special">((</span> <span class="identifier">is_base_of</span><span class="special">&lt;</span><span class="identifier">forward_traversal_tag</span><span class="special">,</span> <span class="identifier">list_category</span><span class="special">&gt;</span> <span class="special">));</span>
 <span class="identifier">BOOST_MPL_ASSERT</span><span class="special">((</span> <span class="identifier">is_base_of</span><span class="special">&lt;</span><span class="identifier">random_access_traversal_tag</span><span class="special">,</span> <span class="identifier">vector_category</span><span class="special">&gt;</span> <span class="special">));</span>
 </pre>

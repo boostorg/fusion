@@ -27,20 +27,21 @@
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
 <a name="fusion.notes"></a><a href="notes.html" title="Notes">Notes</a></h2></div></div></div>
 <a name="fusion.notes.recursive_inlined_functions"></a><h3>
-<a name="id671364"></a>
+<a name="id682036"></a>
       <a href="notes.html#fusion.notes.recursive_inlined_functions">Recursive Inlined
       Functions</a>
     </h3>
 <p>
-      An interesting peculiarity of functions like <a href="sequences/intrinsics/functions/at.html" title="at"><tt class="computeroutput"><span class="identifier">at</span></tt></a> when applied to a <a href="sequences/concepts/forward_sequence.html" title="Forward
+      An interesting peculiarity of functions like <a href="sequence/intrinsic/functions/at.html" title="at"><tt class="computeroutput"><span class="identifier">at</span></tt></a> when applied to a <a href="sequence/concepts/forward_sequence.html" title="Forward
         Sequence">Forward
-      Sequence</a> like <a href="sequences/containers/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a> is that what could have been
-      linear runtime complexity effectively becomes constant O(1) due to compiler
-      optimization of C++ inlined functions, however deeply recursive (up to a certain
-      compiler limit of course). Compile time complexity remains linear.
+      Sequence</a> like <a href="container/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a>
+      is that what could have been linear runtime complexity effectively becomes
+      constant O(1) due to compiler optimization of C++ inlined functions, however
+      deeply recursive (up to a certain compiler limit of course). Compile time complexity
+      remains linear.
     </p>
 <a name="fusion.notes.overloaded_functions"></a><h3>
-<a name="id671439"></a>
+<a name="id682111"></a>
       <a href="notes.html#fusion.notes.overloaded_functions">Overloaded Functions</a>
     </h3>
 <p>
@@ -50,7 +51,7 @@
       given a key, <tt class="computeroutput"><span class="identifier">k</span></tt>.
     </p>
 <a name="fusion.notes.tag_dispatching"></a><h3>
-<a name="id671522"></a>
+<a name="id682195"></a>
       <a href="notes.html#fusion.notes.tag_dispatching">Tag Dispatching</a>
     </h3>
 <p>
@@ -102,7 +103,7 @@
       </li>
 </ol></div>
 <a name="fusion.notes.extensibility"></a><h3>
-<a name="id671907"></a>
+<a name="id682579"></a>
       <a href="notes.html#fusion.notes.extensibility">Extensibility</a>
     </h3>
 <p>
@@ -112,9 +113,9 @@
       extensible. It is just that the manner of sequence extension in Fusion is diferent
       from both <a href="http://en.wikipedia.org/wiki/Standard_Template_Library" target="_top">STL</a>
       and <a href="http://www.boost.org/libs/mpl/index.html" target="_top">MPL</a> on account
-      of the lazy nature of fusion <a href="algorithms.html" title="Algorithms">Algorithms</a>.
+      of the lazy nature of fusion <a href="algorithm.html" title="Algorithm">Algorithms</a>.
       <a href="http://en.wikipedia.org/wiki/Standard_Template_Library" target="_top">STL</a>
-      containers extend themselves in place though member functions such as <a href="algorithms/transformation/functions/push_back.html" title="push_back"><tt class="computeroutput"><span class="identifier">push_back</span></tt></a> and <a href="algorithms/transformation/functions/insert.html" title="insert"><tt class="computeroutput"><span class="identifier">insert</span></tt></a>. <a href="http://www.boost.org/libs/mpl/index.html" target="_top">MPL</a>
+      containers extend themselves in place though member functions such as <a href="algorithm/transformation/functions/push_back.html" title="push_back"><tt class="computeroutput"><span class="identifier">push_back</span></tt></a> and <a href="algorithm/transformation/functions/insert.html" title="insert"><tt class="computeroutput"><span class="identifier">insert</span></tt></a>. <a href="http://www.boost.org/libs/mpl/index.html" target="_top">MPL</a>
       sequences, on the other hand, are extended through "intrinsic" functions
       that actually return whole sequences. <a href="http://www.boost.org/libs/mpl/index.html" target="_top">MPL</a>
       is purely functional and can not have side effects. For example, <a href="http://www.boost.org/libs/mpl/index.html" target="_top">MPL</a>'s
@@ -126,30 +127,30 @@
       Like <a href="http://www.boost.org/libs/mpl/index.html" target="_top">MPL</a>, Fusion
       too is purely functional and can not have side effects. With runtime efficiency
       in mind, Fusion sequences are extended through generic functions that return
-      <a href="sequences/views.html" title="Views">Views</a>. <a href="sequences/views.html" title="Views">Views</a>
+      <a href="view.html" title="View">Views</a>. <a href="view.html" title="View">Views</a>
       are sequences that do not actually contain data, but instead impart an alternative
-      presentation over the data from one or more underlying sequences. <a href="sequences/views.html" title="Views">Views</a>
+      presentation over the data from one or more underlying sequences. <a href="view.html" title="View">Views</a>
       are proxies. They provide an efficient yet purely functional way to work on
-      potentially expensive sequence operations. For example, given a <a href="sequences/containers/vector.html" title="vector"><tt class="computeroutput"><span class="identifier">vector</span></tt></a>, Fusion's <a href="algorithms/transformation/functions/push_back.html" title="push_back"><tt class="computeroutput"><span class="identifier">push_back</span></tt></a> returns a <a href="sequences/views/joint_view.html" title="joint_view"><tt class="computeroutput"><span class="identifier">joint_view</span></tt></a>, instead of an actual extended
-      <a href="sequences/containers/vector.html" title="vector"><tt class="computeroutput"><span class="identifier">vector</span></tt></a>.
-      A <a href="sequences/views/joint_view.html" title="joint_view"><tt class="computeroutput"><span class="identifier">joint_view</span></tt></a>
+      potentially expensive sequence operations. For example, given a <a href="container/vector.html" title="vector"><tt class="computeroutput"><span class="identifier">vector</span></tt></a>, Fusion's <a href="algorithm/transformation/functions/push_back.html" title="push_back"><tt class="computeroutput"><span class="identifier">push_back</span></tt></a> returns a <a href="view/joint_view.html" title="joint_view"><tt class="computeroutput"><span class="identifier">joint_view</span></tt></a>, instead of an actual extended
+      <a href="container/vector.html" title="vector"><tt class="computeroutput"><span class="identifier">vector</span></tt></a>.
+      A <a href="view/joint_view.html" title="joint_view"><tt class="computeroutput"><span class="identifier">joint_view</span></tt></a>
       holds a reference to the original sequence plus the appended data --making
       it very cheap to pass around.
     </p>
 <a name="fusion.notes.element_conversion"></a><h3>
-<a name="id672229"></a>
+<a name="id682898"></a>
       <a href="notes.html#fusion.notes.element_conversion">Element Conversion</a>
     </h3>
 <p>
-      Functions that take in elemental values to form sequences (e.g. <a href="sequences/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a>) convert their arguments
+      Functions that take in elemental values to form sequences (e.g. <a href="container/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a>) convert their arguments
       to something suitable to be stored as a sequence element. In general, the element
       types are stored as plain values. Example:
     </p>
 <pre class="programlisting">
-<a href="sequences/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="number">1</span><span class="special">,</span> <span class="char">'x'</span><span class="special">)</span>
+<a href="container/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="number">1</span><span class="special">,</span> <span class="char">'x'</span><span class="special">)</span>
 </pre>
 <p>
-      returns a <a href="sequences/containers/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a><tt class="computeroutput"><span class="special">&lt;</span><span class="keyword">int</span><span class="special">,</span>
+      returns a <a href="container/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a><tt class="computeroutput"><span class="special">&lt;</span><span class="keyword">int</span><span class="special">,</span>
       <span class="keyword">char</span><span class="special">&gt;</span></tt>.
     </p>
 <p>
@@ -160,18 +161,18 @@
     </p>
 <p>
       Array arguments are deduced to reference to const types. For example
-      <sup>[<a name="id672389" href="#ftn.id672389">14</a>]</sup>
+      <sup>[<a name="id683057" href="#ftn.id683057">14</a>]</sup>
       :
     </p>
 <pre class="programlisting">
-<a href="sequences/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="string">"Donald"</span><span class="special">,</span> <span class="string">"Daisy"</span><span class="special">)</span>
+<a href="container/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="string">"Donald"</span><span class="special">,</span> <span class="string">"Daisy"</span><span class="special">)</span>
 </pre>
 <p>
-      creates a <a href="sequences/containers/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a>
+      creates a <a href="container/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a>
       of type
     </p>
 <pre class="programlisting">
-<a href="sequences/containers/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a><span class="special">&lt;</span><span class="keyword">const</span> <span class="keyword">char</span> <span class="special">(&amp;)[</span><span class="number">7</span><span class="special">],</span> <span class="keyword">const</span> <span class="keyword">char</span> <span class="special">(&amp;)[</span><span class="number">6</span><span class="special">]&gt;</span>
+<a href="container/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a><span class="special">&lt;</span><span class="keyword">const</span> <span class="keyword">char</span> <span class="special">(&amp;)[</span><span class="number">7</span><span class="special">],</span> <span class="keyword">const</span> <span class="keyword">char</span> <span class="special">(&amp;)[</span><span class="number">6</span><span class="special">]&gt;</span>
 </pre>
 <p>
       <span class="bold"><b>Function pointers:</b></span>
@@ -183,34 +184,34 @@
 <pre class="programlisting">
 <span class="keyword">void</span> <span class="identifier">f</span><span class="special">(</span><span class="keyword">int</span> <span class="identifier">i</span><span class="special">);</span>
   <span class="special">...</span>
-<a href="sequences/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(&amp;</span><span class="identifier">f</span><span class="special">);</span>
+<a href="container/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(&amp;</span><span class="identifier">f</span><span class="special">);</span>
 </pre>
 <p>
-      creates a <a href="sequences/containers/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a>
+      creates a <a href="container/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a>
       of type
     </p>
 <pre class="programlisting">
-<a href="sequences/containers/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a><span class="special">&lt;</span><span class="keyword">void</span> <span class="special">(*)(</span><span class="keyword">int</span><span class="special">)&gt;</span>
+<a href="container/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a><span class="special">&lt;</span><span class="keyword">void</span> <span class="special">(*)(</span><span class="keyword">int</span><span class="special">)&gt;</span>
 </pre>
 <a name="fusion.notes.boost__ref"></a><h3>
-<a name="id672826"></a>
+<a name="id683492"></a>
       <a href="notes.html#fusion.notes.boost__ref">boost::ref</a>
     </h3>
 <p>
-      Fusion's generation functions (e.g. <a href="sequences/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a>) by default stores the element
+      Fusion's generation functions (e.g. <a href="container/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a>) by default stores the element
       types as plain non-reference types. Example:
     </p>
 <pre class="programlisting">
 <span class="keyword">void</span> <span class="identifier">foo</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">A</span><span class="special">&amp;</span> <span class="identifier">a</span><span class="special">,</span> <span class="identifier">B</span><span class="special">&amp;</span> <span class="identifier">b</span><span class="special">)</span> <span class="special">{</span>
     <span class="special">...</span>
-    <a href="sequences/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="identifier">a</span><span class="special">,</span> <span class="identifier">b</span><span class="special">)</span>
+    <a href="container/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="identifier">a</span><span class="special">,</span> <span class="identifier">b</span><span class="special">)</span>
 </pre>
 <p>
-      creates a <a href="sequences/containers/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a>
+      creates a <a href="container/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a>
       of type
     </p>
 <pre class="programlisting">
-<a href="sequences/containers/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a><span class="special">&lt;</span><span class="identifier">A</span><span class="special">,</span> <span class="identifier">B</span><span class="special">&gt;</span>
+<a href="container/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a><span class="special">&lt;</span><span class="identifier">A</span><span class="special">,</span> <span class="identifier">B</span><span class="special">&gt;</span>
 </pre>
 <p>
       Sometimes the plain non-reference type is not desired. You can use <tt class="computeroutput"><span class="identifier">boost</span><span class="special">::</span><span class="identifier">ref</span></tt>
@@ -224,11 +225,11 @@
     </p>
 <pre class="programlisting">
 <span class="identifier">A</span> <span class="identifier">a</span><span class="special">;</span> <span class="identifier">B</span> <span class="identifier">b</span><span class="special">;</span> <span class="keyword">const</span> <span class="identifier">A</span> <span class="identifier">ca</span> <span class="special">=</span> <span class="identifier">a</span><span class="special">;</span>
-<a href="sequences/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="identifier">cref</span><span class="special">(</span><span class="identifier">a</span><span class="special">),</span> <span class="identifier">b</span><span class="special">);</span>          <span class="comment">// creates list&lt;const A&amp;, B&gt;
-</span><a href="sequences/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="identifier">ref</span><span class="special">(</span><span class="identifier">a</span><span class="special">),</span> <span class="identifier">b</span><span class="special">);</span>           <span class="comment">// creates list&lt;A&amp;, B&gt;
-</span><a href="sequences/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="identifier">ref</span><span class="special">(</span><span class="identifier">a</span><span class="special">),</span> <span class="identifier">cref</span><span class="special">(</span><span class="identifier">b</span><span class="special">));</span>     <span class="comment">// creates list&lt;A&amp;, const B&amp;&gt;
-</span><a href="sequences/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="identifier">cref</span><span class="special">(</span><span class="identifier">ca</span><span class="special">));</span>            <span class="comment">// creates list&lt;const A&amp;&gt;
-</span><a href="sequences/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="identifier">ref</span><span class="special">(</span><span class="identifier">ca</span><span class="special">));</span>             <span class="comment">// creates list&lt;const A&amp;&gt;
+<a href="container/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="identifier">cref</span><span class="special">(</span><span class="identifier">a</span><span class="special">),</span> <span class="identifier">b</span><span class="special">);</span>          <span class="comment">// creates list&lt;const A&amp;, B&gt;
+</span><a href="container/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="identifier">ref</span><span class="special">(</span><span class="identifier">a</span><span class="special">),</span> <span class="identifier">b</span><span class="special">);</span>           <span class="comment">// creates list&lt;A&amp;, B&gt;
+</span><a href="container/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="identifier">ref</span><span class="special">(</span><span class="identifier">a</span><span class="special">),</span> <span class="identifier">cref</span><span class="special">(</span><span class="identifier">b</span><span class="special">));</span>     <span class="comment">// creates list&lt;A&amp;, const B&amp;&gt;
+</span><a href="container/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="identifier">cref</span><span class="special">(</span><span class="identifier">ca</span><span class="special">));</span>            <span class="comment">// creates list&lt;const A&amp;&gt;
+</span><a href="container/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="identifier">ref</span><span class="special">(</span><span class="identifier">ca</span><span class="special">));</span>             <span class="comment">// creates list&lt;const A&amp;&gt;
 </span></pre>
 <p>
       See <a href="http://www.boost.org/doc/html/ref.html" target="_top">Boost.Ref</a> for
@@ -236,9 +237,9 @@
     </p>
 <div class="footnotes">
 <br><hr width="100" align="left">
-<div class="footnote"><p><sup>[<a name="ftn.id672389" href="#id672389">14</a>] </sup>
+<div class="footnote"><p><sup>[<a name="ftn.id683057" href="#id683057">14</a>] </sup>
           Note that the type of a string literal is an array of const characters,
-          not <tt class="computeroutput"><span class="keyword">const</span> <span class="keyword">char</span><span class="special">*</span></tt>. To get <a href="sequences/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a> to create a <a href="sequences/containers/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a> with an element of a non-const
+          not <tt class="computeroutput"><span class="keyword">const</span> <span class="keyword">char</span><span class="special">*</span></tt>. To get <a href="container/generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a> to create a <a href="container/list.html" title="list"><tt class="computeroutput"><span class="identifier">list</span></tt></a> with an element of a non-const
           array type one must use the <tt class="computeroutput"><span class="identifier">ref</span></tt>
           wrapper (see <a href="notes.html#fusion.notes.boost__ref"><tt class="computeroutput"><span class="identifier">boost</span><span class="special">::</span><span class="identifier">ref</span></tt></a>).
         </p></div>

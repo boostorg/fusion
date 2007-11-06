@@ -31,7 +31,7 @@
           make_unfused_lvalue_args">
           make_unfused_lvalue_args</a></h5></div></div></div>
 <a name="fusion.functional.generation.functions.mk_unfused_lvargs.description"></a><h6>
-<a name="id666885"></a>
+<a name="id677056"></a>
             <a href="mk_unfused_lvargs.html#fusion.functional.generation.functions.mk_unfused_lvargs.description">Description</a>
           </h6>
 <p>
@@ -42,7 +42,7 @@
             conversion</em></span></a> is applied to the target function.
           </p>
 <a name="fusion.functional.generation.functions.mk_unfused_lvargs.synopsis"></a><h6>
-<a name="id666956"></a>
+<a name="id677126"></a>
             <a href="mk_unfused_lvargs.html#fusion.functional.generation.functions.mk_unfused_lvargs.synopsis">Synopsis</a>
           </h6>
 <pre class="programlisting">
@@ -52,7 +52,7 @@
 <span class="identifier">make_unfused_lvalue_args</span><span class="special">(</span><span class="identifier">F</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="identifier">f</span><span class="special">);</span>
 </pre>
 <a name="fusion.functional.generation.functions.mk_unfused_lvargs.parameters"></a><h6>
-<a name="id667113"></a>
+<a name="id677283"></a>
             <a href="mk_unfused_lvargs.html#fusion.functional.generation.functions.mk_unfused_lvargs.parameters">Parameters</a>
           </h6>
 <div class="informaltable"><table class="table">
@@ -99,7 +99,7 @@
 </tr></tbody>
 </table></div>
 <a name="fusion.functional.generation.functions.mk_unfused_lvargs.expression_semantics"></a><h6>
-<a name="id667230"></a>
+<a name="id677399"></a>
             <a href="mk_unfused_lvargs.html#fusion.functional.generation.functions.mk_unfused_lvargs.expression_semantics">Expression
             Semantics</a>
           </h6>
@@ -114,14 +114,15 @@
             for <tt class="computeroutput"><span class="identifier">f</span></tt>.
           </p>
 <a name="fusion.functional.generation.functions.mk_unfused_lvargs.header"></a><h6>
-<a name="id667355"></a>
+<a name="id677525"></a>
             <a href="mk_unfused_lvargs.html#fusion.functional.generation.functions.mk_unfused_lvargs.header">Header</a>
           </h6>
 <pre class="programlisting">
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">functional</span><span class="special">/</span><span class="identifier">generation</span><span class="special">/</span><span class="identifier">make_unfused_lvalue_args</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">include</span><span class="special">/</span><span class="identifier">make_unfused_lvalue_args</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
 </pre>
 <a name="fusion.functional.generation.functions.mk_unfused_lvargs.example"></a><h6>
-<a name="id667464"></a>
+<a name="id677698"></a>
             <a href="mk_unfused_lvargs.html#fusion.functional.generation.functions.mk_unfused_lvargs.example">Example</a>
           </h6>
 <pre class="programlisting">
@@ -136,7 +137,7 @@
     <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">Seq</span><span class="special">&gt;</span>
     <span class="keyword">void</span> <span class="keyword">operator</span><span class="special">()(</span><span class="identifier">Seq</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">)</span> <span class="keyword">const</span>
     <span class="special">{</span>
-        <a href="../../../algorithms/iteration/functions/for_each.html" title="for_each"><tt class="computeroutput"><span class="identifier">for_each</span></tt></a><span class="special">(</span><span class="identifier">s</span><span class="special">,++</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">lambda</span><span class="special">::</span><span class="identifier">_1</span><span class="special">);</span>
+        <a href="../../../algorithm/iteration/functions/for_each.html" title="for_each"><tt class="computeroutput"><span class="identifier">for_each</span></tt></a><span class="special">(</span><span class="identifier">s</span><span class="special">,++</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">lambda</span><span class="special">::</span><span class="identifier">_1</span><span class="special">);</span>
     <span class="special">}</span>
 <span class="special">};</span>
 
@@ -148,7 +149,7 @@
 <span class="special">}</span>
 </pre>
 <a name="fusion.functional.generation.functions.mk_unfused_lvargs.see_also"></a><h6>
-<a name="id667941"></a>
+<a name="id678176"></a>
             <a href="mk_unfused_lvargs.html#fusion.functional.generation.functions.mk_unfused_lvargs.see_also">See
             also</a>
           </h6>

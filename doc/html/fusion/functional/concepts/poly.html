@@ -30,7 +30,7 @@
         Object"> Polymorphic Function
         Object</a></h4></div></div></div>
 <a name="fusion.functional.concepts.poly.description"></a><h5>
-<a name="id642800"></a>
+<a name="id653507"></a>
           <a href="poly.html#fusion.functional.concepts.poly.description">Description</a>
         </h5>
 <p>
@@ -39,7 +39,7 @@
           Callable Object</a> type.
         </p>
 <a name="fusion.functional.concepts.poly.refinement_of"></a><h5>
-<a name="id642839"></a>
+<a name="id653546"></a>
           <a href="poly.html#fusion.functional.concepts.poly.refinement_of">Refinement
           of</a>
         </h5>
@@ -83,7 +83,7 @@
 </dl>
 </div>
 <a name="fusion.functional.concepts.poly.expression_requirements"></a><h5>
-<a name="id643131"></a>
+<a name="id653837"></a>
           <a href="poly.html#fusion.functional.concepts.poly.expression_requirements">Expression
           requirements</a>
         </h5>
@@ -132,7 +132,7 @@
 </tr></tbody>
 </table></div>
 <a name="fusion.functional.concepts.poly.models"></a><h5>
-<a name="id643329"></a>
+<a name="id654035"></a>
           <a href="poly.html#fusion.functional.concepts.poly.models">Models</a>
         </h5>
 <div class="itemizedlist"><ul type="disc">
@@ -146,6 +146,20 @@
             all Fusion <a href="../adapters.html" title=" Adapters">functional adapters</a>
 </li>
 </ul></div>
+<a name="fusion.functional.concepts.poly.examples"></a><h5>
+<a name="id654089"></a>
+          <a href="poly.html#fusion.functional.concepts.poly.examples">Examples</a>
+        </h5>
+<pre class="programlisting">
+<span class="special">&amp;</span> <span class="identifier">a_free_function</span>
+<span class="special">&amp;</span> <span class="identifier">a_class</span><span class="special">::</span><span class="identifier">a_static_member_function</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">less</span><span class="special">&lt;</span><span class="keyword">int</span><span class="special">&gt;()</span>
+<span class="comment">// using namespace boost;
+</span><span class="identifier">bind</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">less</span><span class="special">&lt;</span><span class="keyword">int</span><span class="special">&gt;(),</span> <span class="identifier">_1</span><span class="special">,</span> <span class="number">5</span><span class="special">)</span>
+<span class="comment">// Note: Boost.Lambda expressions don't work with __boost_result_of__
+</span><span class="identifier">fusion</span><span class="special">::</span><a href="../generation/functions/mk_fused_fobj.html" title="
+          make_fused_function_object"><tt class="computeroutput"><span class="identifier">make_fused_function_object</span></tt></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">less</span><span class="special">&lt;</span><span class="keyword">int</span><span class="special">&gt;())</span>
+</pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
