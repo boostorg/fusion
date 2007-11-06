@@ -7,7 +7,7 @@
 #if !defined(FUSION_TRANSFORM_07052005_1057)
 #define FUSION_TRANSFORM_07052005_1057
 
-#include <boost/fusion/sequence/view/transform_view/transform_view.hpp>
+#include <boost/fusion/view/transform_view/transform_view.hpp>
 
 namespace boost { namespace fusion
 {
@@ -22,7 +22,11 @@ namespace boost { namespace fusion
         };
 
         template <typename Sequence, typename F>
+#if defined(BOOST_PARTIAL_SPECIALIZATION_EXPLICT_ARGS)
+        struct transform<Sequence, F, void_>
+#else
         struct transform<Sequence, F>
+#endif
         {
             typedef transform_view<Sequence, F> type;
         };
