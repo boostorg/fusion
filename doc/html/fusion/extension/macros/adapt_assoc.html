@@ -1,12 +1,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title> BOOST_FUSION_ADAPT_ASSOC_STRUCT</title>
+<title>BOOST_FUSION_ADAPT_ASSOC_STRUCT</title>
 <link rel="stylesheet" href="../../../../../../../doc/html/boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.66.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
 <link rel="start" href="../../../index.html" title="Chapter 1. Fusion 2.0">
 <link rel="up" href="../macros.html" title="Macros">
-<link rel="prev" href="adapt_struct.html" title=" BOOST_FUSION_ADAPT_STRUCT">
+<link rel="prev" href="adapt_struct.html" title="BOOST_FUSION_ADAPT_STRUCT">
 <link rel="next" href="../../functional.html" title="Functional">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -14,8 +14,8 @@
 <td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td>
 <td align="center"><a href="../../../../../../../index.htm">Home</a></td>
 <td align="center"><a href="../../../../../../libraries.htm">Libraries</a></td>
-<td align="center"><a href="../../../../../../../people/people.htm">People</a></td>
-<td align="center"><a href="../../../../../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="http://beta.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://beta.boost.org/users/faq.html">FAQ</a></td>
 <td align="center"><a href="../../../../../../../more/index.htm">More</a></td>
 </tr></table>
 <hr>
@@ -24,24 +24,23 @@
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h4 class="title">
-<a name="fusion.extension.macros.adapt_assoc"></a><a href="adapt_assoc.html" title=" BOOST_FUSION_ADAPT_ASSOC_STRUCT"> BOOST_FUSION_ADAPT_ASSOC_STRUCT</a></h4></div></div></div>
-<a name="fusion.extension.macros.adapt_assoc.description"></a><h5>
-<a name="id650642"></a>
+<a name="fusion.extension.macros.adapt_assoc"></a><a href="adapt_assoc.html" title="BOOST_FUSION_ADAPT_ASSOC_STRUCT"> BOOST_FUSION_ADAPT_ASSOC_STRUCT</a>
+</h4></div></div></div>
+<a name="fusion.extension.macros.adapt_assoc.description"></a><h6>
+<a name="id2788172"></a>
           <a href="adapt_assoc.html#fusion.extension.macros.adapt_assoc.description">Description</a>
-        </h5>
+        </h6>
 <p>
           BOOST_FUSION_ADAPT_ASSOC_STRUCT is a macro that can be used to generate
           all the necessary boilerplate to make an arbitrary struct into a model
-          of <a href="../../sequence/concepts/random_access_sequence.html" title="Random
-        Access Sequence">Random
-          Access Sequence</a> and <a href="../../sequence/concepts/associative_sequence.html" title="Associative
-        Sequence">Associative
+          of <a href="../../sequence/concepts/random_access_sequence.html" title="Random Access Sequence">Random
+          Access Sequence</a> and <a href="../../sequence/concepts/associative_sequence.html" title="Associative Sequence">Associative
           Sequence</a>.
         </p>
-<a name="fusion.extension.macros.adapt_assoc.synopsis"></a><h5>
-<a name="id650692"></a>
+<a name="fusion.extension.macros.adapt_assoc.synopsis"></a><h6>
+<a name="id2788216"></a>
           <a href="adapt_assoc.html#fusion.extension.macros.adapt_assoc.synopsis">Synopsis</a>
-        </h5>
+        </h6>
 <pre class="programlisting">
 <span class="identifier">BOOST_FUSION_ADAPT_ASSOC_STRUCT</span><span class="special">(</span>
     <span class="identifier">struct_name</span>
@@ -50,10 +49,10 @@
     <span class="special">...</span>
     <span class="special">)</span>
 </pre>
-<a name="fusion.extension.macros.adapt_assoc.semantics"></a><h5>
-<a name="id650834"></a>
+<a name="fusion.extension.macros.adapt_assoc.semantics"></a><h6>
+<a name="id2788343"></a>
           <a href="adapt_assoc.html#fusion.extension.macros.adapt_assoc.semantics">Semantics</a>
-        </h5>
+        </h6>
 <pre class="programlisting">
 <span class="identifier">BOOST_FUSION_ADAPT_ASSOC_STRUCT</span><span class="special">(</span>
     <span class="identifier">struct_name</span>
@@ -63,28 +62,26 @@
     <span class="special">)</span>
 </pre>
 <p>
-          The above macro generates the necessary code to adapt <tt class="computeroutput"><span class="identifier">struct_name</span></tt>
-          as a model of <a href="../../sequence/concepts/random_access_sequence.html" title="Random
-        Access Sequence">Random
-          Access Sequence</a> and <a href="../../sequence/concepts/associative_sequence.html" title="Associative
-        Sequence">Associative
-          Sequence</a>. The sequence of <tt class="computeroutput"><span class="special">(</span><span class="identifier">member_typeN</span><span class="special">,</span>
+          The above macro generates the necessary code to adapt <code class="computeroutput"><span class="identifier">struct_name</span></code>
+          as a model of <a href="../../sequence/concepts/random_access_sequence.html" title="Random Access Sequence">Random
+          Access Sequence</a> and <a href="../../sequence/concepts/associative_sequence.html" title="Associative Sequence">Associative
+          Sequence</a>. The sequence of <code class="computeroutput"><span class="special">(</span><span class="identifier">member_typeN</span><span class="special">,</span>
           <span class="identifier">member_nameN</span><span class="special">,</span>
-          <span class="identifier">key_typeN</span><span class="special">)</span></tt>
+          <span class="identifier">key_typeN</span><span class="special">)</span></code>
           triples declare the type, name and key type of each of the struct members
           that will be part of the sequence.
         </p>
 <p>
-          The macro should be used at global scope, and <tt class="computeroutput"><span class="identifier">struct_name</span></tt>
+          The macro should be used at global scope, and <code class="computeroutput"><span class="identifier">struct_name</span></code>
           should be the fully namespace qualified name of the struct to be converted.
         </p>
 <p>
           /adapted/struct/adapt_assoc_struct.hpp&gt;
         </p>
-<a name="fusion.extension.macros.adapt_assoc.example"></a><h5>
-<a name="id651081"></a>
+<a name="fusion.extension.macros.adapt_assoc.example"></a><h6>
+<a name="id2788565"></a>
           <a href="adapt_assoc.html#fusion.extension.macros.adapt_assoc.example">Example</a>
-        </h5>
+        </h6>
 <pre class="programlisting">
 <span class="keyword">namespace</span> <span class="identifier">demo</span>
 <span class="special">{</span>

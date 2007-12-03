@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>as_vector</title>
 <link rel="stylesheet" href="../../../../../../../../doc/html/boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.66.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
 <link rel="start" href="../../../../index.html" title="Chapter 1. Fusion 2.0">
 <link rel="up" href="../functions.html" title="Functions">
 <link rel="prev" href="as_list.html" title="as_list">
@@ -14,8 +14,8 @@
 <td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../../boost.png"></td>
 <td align="center"><a href="../../../../../../../../index.htm">Home</a></td>
 <td align="center"><a href="../../../../../../../libraries.htm">Libraries</a></td>
-<td align="center"><a href="../../../../../../../../people/people.htm">People</a></td>
-<td align="center"><a href="../../../../../../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="http://beta.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://beta.boost.org/users/faq.html">FAQ</a></td>
 <td align="center"><a href="../../../../../../../../more/index.htm">More</a></td>
 </tr></table>
 <hr>
@@ -24,16 +24,17 @@
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h5 class="title">
-<a name="fusion.container.conversion.functions.as_vector"></a><a href="as_vector.html" title="as_vector">as_vector</a></h5></div></div></div>
+<a name="fusion.container.conversion.functions.as_vector"></a><a href="as_vector.html" title="as_vector">as_vector</a>
+</h5></div></div></div>
 <a name="fusion.container.conversion.functions.as_vector.description"></a><h6>
-<a name="id554533"></a>
+<a name="id2702060"></a>
             <a href="as_vector.html#fusion.container.conversion.functions.as_vector.description">Description</a>
           </h6>
 <p>
-            Convert a fusion sequence to a <a href="../../vector.html" title="vector"><tt class="computeroutput"><span class="identifier">vector</span></tt></a>.
+            Convert a fusion sequence to a <a href="../../vector.html" title="vector"><code class="computeroutput"><span class="identifier">vector</span></code></a>.
           </p>
 <a name="fusion.container.conversion.functions.as_vector.synopsis"></a><h6>
-<a name="id554581"></a>
+<a name="id2702103"></a>
             <a href="as_vector.html#fusion.container.conversion.functions.as_vector.synopsis">Synopsis</a>
           </h6>
 <pre class="programlisting">
@@ -46,7 +47,7 @@
 <span class="identifier">as_vector</span><span class="special">(</span><span class="identifier">Sequence</span> <span class="keyword">const</span><span class="special">&amp;</span> <span class="identifier">seq</span><span class="special">);</span>
 </pre>
 <a name="fusion.container.conversion.functions.as_vector.parameters"></a><h6>
-<a name="id554840"></a>
+<a name="id2702334"></a>
             <a href="as_vector.html#fusion.container.conversion.functions.as_vector.parameters">Parameters</a>
           </h6>
 <div class="informaltable"><table class="table">
@@ -75,7 +76,7 @@
 <tbody><tr>
 <td>
                   <p>
-                    <tt class="computeroutput"><span class="identifier">seq</span></tt>
+                    <code class="computeroutput"><span class="identifier">seq</span></code>
                   </p>
                   </td>
 <td>
@@ -91,7 +92,7 @@
 </tr></tbody>
 </table></div>
 <a name="fusion.container.conversion.functions.as_vector.expression_semantics"></a><h6>
-<a name="id554948"></a>
+<a name="id2702430"></a>
             <a href="as_vector.html#fusion.container.conversion.functions.as_vector.expression_semantics">Expression
             Semantics</a>
           </h6>
@@ -99,14 +100,14 @@
 <span class="identifier">as_vector</span><span class="special">(</span><span class="identifier">seq</span><span class="special">);</span>
 </pre>
 <p>
-            <span class="bold"><b>Return type</b></span>: <a href="../metafunctions/as_vector.html" title="as_vector"><tt class="computeroutput"><span class="identifier">result_of</span><span class="special">::</span><span class="identifier">as_vector</span></tt></a><tt class="computeroutput"><span class="special">&lt;</span><span class="identifier">Sequence</span><span class="special">&gt;::</span><span class="identifier">type</span></tt>
+            <span class="bold"><strong>Return type</strong></span>: <a href="../metafunctions/as_vector.html" title="as_vector"><code class="computeroutput"><span class="identifier">result_of</span><span class="special">::</span><span class="identifier">as_vector</span></code></a><code class="computeroutput"><span class="special">&lt;</span><span class="identifier">Sequence</span><span class="special">&gt;::</span><span class="identifier">type</span></code>
           </p>
 <p>
-            <span class="bold"><b>Semantics</b></span>: Convert a fusion sequence,
-            <tt class="computeroutput"><span class="identifier">seq</span></tt>, to a <a href="../../vector.html" title="vector"><tt class="computeroutput"><span class="identifier">vector</span></tt></a>.
+            <span class="bold"><strong>Semantics</strong></span>: Convert a fusion sequence,
+            <code class="computeroutput"><span class="identifier">seq</span></code>, to a <a href="../../vector.html" title="vector"><code class="computeroutput"><span class="identifier">vector</span></code></a>.
           </p>
 <a name="fusion.container.conversion.functions.as_vector.header"></a><h6>
-<a name="id555111"></a>
+<a name="id2702574"></a>
             <a href="as_vector.html#fusion.container.conversion.functions.as_vector.header">Header</a>
           </h6>
 <pre class="programlisting">
@@ -114,11 +115,11 @@
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">include</span><span class="special">/</span><span class="identifier">as_vector</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
 </pre>
 <a name="fusion.container.conversion.functions.as_vector.example"></a><h6>
-<a name="id555280"></a>
+<a name="id2702726"></a>
             <a href="as_vector.html#fusion.container.conversion.functions.as_vector.example">Example</a>
           </h6>
 <pre class="programlisting">
-<span class="identifier">as_vector</span><span class="special">(</span><a href="../../generation/functions/make_list.html" title="make_list"><tt class="computeroutput"><span class="identifier">make_list</span></tt></a><span class="special">(</span><span class="char">'x'</span><span class="special">,</span> <span class="number">123</span><span class="special">,</span> <span class="string">"hello"</span><span class="special">))</span>
+<span class="identifier">as_vector</span><span class="special">(</span><a href="../../generation/functions/make_list.html" title="make_list"><code class="computeroutput"><span class="identifier">make_list</span></code></a><span class="special">(</span><span class="char">'x'</span><span class="special">,</span> <span class="number">123</span><span class="special">,</span> <span class="string">"hello"</span><span class="special">))</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>

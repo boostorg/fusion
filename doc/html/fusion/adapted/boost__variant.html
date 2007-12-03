@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>boost::variant</title>
 <link rel="stylesheet" href="../../../../../../doc/html/boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.66.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
 <link rel="start" href="../../index.html" title="Chapter 1. Fusion 2.0">
 <link rel="up" href="../adapted.html" title="Adapted">
 <link rel="prev" href="boost__tuple.html" title="boost::tuple">
@@ -14,8 +14,8 @@
 <td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../boost.png"></td>
 <td align="center"><a href="../../../../../../index.htm">Home</a></td>
 <td align="center"><a href="../../../../../libraries.htm">Libraries</a></td>
-<td align="center"><a href="../../../../../../people/people.htm">People</a></td>
-<td align="center"><a href="../../../../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="http://beta.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://beta.boost.org/users/faq.html">FAQ</a></td>
 <td align="center"><a href="../../../../../../more/index.htm">More</a></td>
 </tr></table>
 <hr>
@@ -24,45 +24,44 @@
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="fusion.adapted.boost__variant"></a><a href="boost__variant.html" title="boost::variant">boost::variant</a></h3></div></div></div>
+<a name="fusion.adapted.boost__variant"></a><a href="boost__variant.html" title="boost::variant">boost::variant</a>
+</h3></div></div></div>
 <p>
-        This module provides adapters for <tt class="computeroutput"><span class="identifier">boost</span><span class="special">::</span><span class="identifier">variant</span></tt>.
-        Including the module header makes <tt class="computeroutput"><span class="identifier">boost</span><span class="special">::</span><span class="identifier">variant</span></tt>
-        a fully conforming <a href="../sequence/concepts/forward_sequence.html" title="Forward
-        Sequence">Forward
+        This module provides adapters for <code class="computeroutput"><span class="identifier">boost</span><span class="special">::</span><span class="identifier">variant</span></code>.
+        Including the module header makes <code class="computeroutput"><span class="identifier">boost</span><span class="special">::</span><span class="identifier">variant</span></code>
+        a fully conforming <a href="../sequence/concepts/forward_sequence.html" title="Forward Sequence">Forward
         Sequence</a>. The variant acts as a sequence of the types that can be
         contained in the variant. Accessing types not currently stored int the variant
         will lead to the variant being populated with a default constructed value
         of that type.
       </p>
-<a name="fusion.adapted.boost__variant.header"></a><h4>
-<a name="id574242"></a>
+<a name="fusion.adapted.boost__variant.header"></a><h5>
+<a name="id2719728"></a>
         <a href="boost__variant.html#fusion.adapted.boost__variant.header">Header</a>
-      </h4>
+      </h5>
 <pre class="programlisting">
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">adapted</span><span class="special">/</span><span class="identifier">variant</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">include</span><span class="special">/</span><span class="identifier">variant</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
 </pre>
-<a name="fusion.adapted.boost__variant.model_of"></a><h4>
-<a name="id574400"></a>
+<a name="fusion.adapted.boost__variant.model_of"></a><h5>
+<a name="id2719870"></a>
         <a href="boost__variant.html#fusion.adapted.boost__variant.model_of">Model of</a>
-      </h4>
-<div class="itemizedlist"><ul type="disc"><li><a href="../sequence/concepts/forward_sequence.html" title="Forward
-        Sequence">Forward Sequence</a></li></ul></div>
-<a name="fusion.adapted.boost__variant.example"></a><h4>
-<a name="id574441"></a>
+      </h5>
+<div class="itemizedlist"><ul type="disc"><li><a href="../sequence/concepts/forward_sequence.html" title="Forward Sequence">Forward Sequence</a></li></ul></div>
+<a name="fusion.adapted.boost__variant.example"></a><h5>
+<a name="id2719906"></a>
         <a href="boost__variant.html#fusion.adapted.boost__variant.example">Example</a>
-      </h4>
+      </h5>
 <pre class="programlisting">
 <span class="identifier">boost</span><span class="special">::</span><span class="identifier">variant</span><span class="special">&lt;</span><span class="keyword">int</span><span class="special">,</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span><span class="special">&gt;</span> <span class="identifier">example_variant</span> <span class="special">=</span> <span class="number">101</span><span class="special">;</span>
 <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">example_variant</span> <span class="special">&lt;&lt;</span> <span class="char">'\n'</span><span class="special">;</span>
 <span class="special">*</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">fusion</span><span class="special">::</span><span class="identifier">find</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span><span class="special">&gt;(</span><span class="identifier">example_variant</span><span class="special">)</span> <span class="special">=</span> <span class="string">"hello"</span><span class="special">;</span>
 <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">example_variant</span> <span class="special">&lt;&lt;</span> <span class="char">'\n'</span><span class="special">;</span>
 </pre>
-<a name="fusion.adapted.boost__variant.see_also"></a><h4>
-<a name="id574724"></a>
+<a name="fusion.adapted.boost__variant.see_also"></a><h5>
+<a name="id2720162"></a>
         <a href="boost__variant.html#fusion.adapted.boost__variant.see_also">See also</a>
-      </h4>
+      </h5>
 <p>
         <a href="http://www.boost.org/doc/html/variant.html" target="_top">Boost.Variant Library</a>
       </p>
