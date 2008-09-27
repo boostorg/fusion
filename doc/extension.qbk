@@ -1,7 +1,16 @@
+[/==============================================================================
+    Copyright (C) 2001-2007 Joel de Guzman, Dan Marsden, Tobias Schwinger
+
+    Use, modification and distribution is subject to the Boost Software
+    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    http://www.boost.org/LICENSE_1_0.txt)
+===============================================================================/]
 [section Extension]
 
+[section:ext_full The Full Extension Mechanism]
+
 The Fusion library is designed to be extensible, new sequences types can easily
-be added. In fact, the library support for `std::pair`, `boost::array` and __mpl__ 
+be added. In fact, the library support for `std::pair`, `boost::array` and __mpl__
 sequences is entirely provided using the extension mechanism.
 
 The process for adding a new sequence type to Fusion is:
@@ -28,7 +37,7 @@ are going to use the type:
             {}
         };
     }
-    
+
 We are going to pretend that this type has been provided by a 3rd party
 library, and therefore cannot be modified. We shall work through all the
 necessary steps to enable `example_struct` to serve as an __associative_sequence__
@@ -50,8 +59,9 @@ tag type for operations involving our sequence. This is done by specializing
 `traits::tag_of` for our sequence type.
 
     #include <boost/fusion/support/tag_of_fwd.hpp>
+    #include <boost/fusion/include/tag_of_fwd.hpp>
 
-    namespace boost { namespace fusion { namespace traits {        
+    namespace boost { namespace fusion { namespace traits {
         template<>
         struct tag_of<example_struct>
         {
@@ -59,12 +69,13 @@ tag type for operations involving our sequence. This is done by specializing
         };
     }}}
 
-`traits::tag_of` also has a second template argument, 
-that can be used in conjuction with `boost::enable_if` to provide tag 
+`traits::tag_of` also has a second template argument,
+that can be used in conjuction with `boost::enable_if` to provide tag
 support for groups of related types. This feature is not necessary
 for our sequence, but for an example see the code in:
 
-    #include <boost/fusion/sequence/adapted/mpl/tag_of.hpp>
+    #include <boost/fusion/adapted/array/tag_of.hpp>
+    #include <boost/fusion/include/tag_of.hpp>
 
 [heading Designing a suitable iterator]
 
@@ -96,7 +107,7 @@ A quick summary of the details of our iterator:
 # The iterator is parameterized by the type it is iterating over, and the index of the current element.
 # The typedefs `struct_type` and `index` provide convenient access to information we will need later in
   the implementation.
-# The typedef `category` allows the `traits::__category_of__` metafunction to establish 
+# The typedef `category` allows the `traits::__category_of__` metafunction to establish
   the traversal category of the iterator.
 # The constructor stores a reference to the `example_struct` being iterated over.
 
@@ -109,7 +120,7 @@ add features to our implementation.
 [heading A first couple of instructive features]
 
 To start with, we will get the __result_of_value_of__ metafunction working. To
-do this, we provide a specialization of the `boost::fusion::extension::value_of_impl` template for 
+do this, we provide a specialization of the `boost::fusion::extension::value_of_impl` template for
 our iterator's tag type.
 
     template<>
@@ -184,7 +195,7 @@ specialization of `deref_impl`.
     }
 
 The use of `deref_impl` is very similar to that of `value_of_impl`, but it also
-provides some runtime functionality this time via the `call` static member function. 
+provides some runtime functionality this time via the `call` static member function.
 To see how `deref_impl` is used, lets have a look at the implementation of __deref__:
 
     namespace result_of
@@ -209,7 +220,7 @@ same way as the __value_of__ implementation. The runtime functionality used
 by __deref__ is provided by the `call` static function of the selected
 __mpl_metafunction_class__.
 
-The actual implementation of `deref_impl` is slightly more complex than that of  `value_of_impl`. 
+The actual implementation of `deref_impl` is slightly more complex than that of  `value_of_impl`.
 We also need to implement the `call` function, which returns a reference
 to the appropriate member of the underlying sequence. We also require a little
 bit of metaprogramming to return `const` references if the underlying sequence
@@ -257,7 +268,7 @@ __random_access_iterator__ `distance_impl` and `advance_impl` also need to be pr
 in order to satisfy the necessary complexity guarantees. As our iterator is
 a __random_access_iterator__ we will have to implement all of these functions.
 
-Full implementations of `prior_impl`, `advance_impl`, `distance_impl` and `equal_to_impl` are 
+Full implementations of `prior_impl`, `advance_impl`, `distance_impl` and `equal_to_impl` are
 provided in the example code.
 
 [heading Implementing the intrinsic functions of the sequence]
@@ -275,7 +286,7 @@ an `impl` type specialized for our sequence tag:
 
 We've some similar formalities to complete, providing `category_of_impl` so Fusion
 can correctly identify our sequence type, and `is_view_impl` so Fusion can correctly
-identify our sequence as not being a __view__ type. Implementations are 
+identify our sequence as not being a __view__ type. Implementations are
 provide in the example code.
 
 Now we've completed some formalities, on to more interesting features. Lets get
@@ -300,7 +311,7 @@ our sequence.
 
 The implementation uses the same ideas we have applied throughout, in this case
 we are just creating one of the iterators we developed earlier, pointing to the
-first element in the sequence. The implementation of __end__ is very similar, and 
+first element in the sequence. The implementation of __end__ is very similar, and
 is provided in the example code.
 
 For our __random_access_sequence__ we will also need to implement `size_impl`,
@@ -308,10 +319,10 @@ For our __random_access_sequence__ we will also need to implement `size_impl`,
 
 [heading Enabling our type as an associative container]
 
-In order for `example_struct` to serve as an associative container, 
+In order for `example_struct` to serve as an associative container,
 we need to enable 3 lookup features, __at_key__, __value_at_key__ and __has_key__.
 We also need to provide an implementation of the `is_associative` trait
-so that our sequence can be correctly identified as an associative container. 
+so that our sequence can be correctly identified as an associative container.
 
 To implement `at_key_impl` we need to associate the `fields::age` and `fields::age`
 types described in the __quick_start__ guide with the appropriate members of `example_struct`.
@@ -372,6 +383,101 @@ a simple repeating pattern.
 The support for `std::pair`, __mpl__ sequences, and `boost::array` all
 use the same approach, and provide additional examples of the approach
 for a variety of types.
+
+[endsect]
+
+[section Sequence Facade]
+
+[heading Description]
+The __sequence_facade__ template provides an intrusive mechanism for
+producing a conforming Fusion iterator.
+
+[heading Synopsis]
+    template<typename Derived, typename TravesalTag, typename IsView = mpl::false_>
+    struct sequence_facade;
+
+[heading Usage]
+The user of __sequence_facade__ derives his sequence type from a specialization of __sequence_facade__ and passes the derived sequence type as the first template parameter. The second template parameter should be the traversal category of the sequence being implemented. The 3rd parameter should be set to `mpl::true_` if the sequence is a view.
+
+The user must the implement the key expressions required by their sequence type.
+
+[table Parameters
+[[Name][Description]]
+[[`sequence`, `Seq`][A type derived from __sequence_facade__]]
+[[`N`][An __mpl_integral_constant__]]
+]
+
+[table Key Expressions
+[[Expression][Result]]
+[[`sequence::template begin<Seq>::type`][The type of an iterator to the beginning of a sequence of type `Seq`]]
+[[`sequence::template begin<Seq>::call(seq)`][An iterator to the beginning of sequence `seq`]]
+[[`sequence::template end<Seq>::type`][The type of an iterator to the end of a sequence of type `Seq`]]
+[[`sequence::template end<Seq>::call(seq)`][An iterator to the end of sequence `seq`]]
+[[`sequence::template size<Seq>::type`][The size of a sequence of type `Seq` as an __mpl_integral_constant__]]
+[[`sequence::template size<Seq>::call(seq)`][The size of sequence `seq`]]
+[[`sequence::template at<Seq, N>::type`][The type of element `N` in a sequence of type `Seq`]]
+[[`sequence::template at<Seq, N>::call(seq)`][Element `N` in sequence `seq`]]
+[[`sequence::template value_at<Sequence, N>::type`][The type of the `N`th element in a sequence of type `Seq`]]
+]
+
+[heading Include]
+
+    #include <boost/fusion/sequence/sequence_facade.hpp>
+    #include <boost/fusion/include/sequence_facade.hpp>
+
+[heading Example]
+A full working example using __sequence_facade__ is provided in triple.cpp in the extension examples.
+
+[endsect]
+
+[section Iterator Facade]
+
+[heading Description]
+The __iterator_facade__ template provides an intrusive mechanism for
+producing a conforming Fusion iterator.
+
+[heading Synopsis]
+
+    template<typename Derived, typename TravesalTag>
+    struct iterator_facade;
+
+[heading Usage]
+The user of iterator_facade derives his iterator type from a specialization of iterator_facade and passes the derived iterator type as the first template parameter. The second template parameter should be the traversal category of the iterator being implemented.
+
+The user must the implement the key expressions required by their iterator type.
+
+[table Parameters
+[[Name][Description]]
+[[`iterator`, `It`, `It1`, `It2`][A type derived from __iterator_facade__]]
+[[`N`][An __mpl_integral_constant__]]
+]
+
+[table Key Expressions
+[[Expression][Result][Default]]
+[[`iterator::template value_of<It>::type`][The element stored at iterator position `It`][None]]
+[[`iterator::template deref<It>::type`][The type returned when dereferencing an iterator of type `It`][None]]
+[[`iterator::template deref<It>::call(it)`][Dereferences iterator `it`][None]]
+[[`iterator::template next<It>::type`][The type of the next element from `It`][None]]
+[[`iterator::template next<It>::call(it)`][The next iterator after `it`][None]]
+[[`iterator::template prior<It>::type`][The type of the next element from `It`][None]]
+[[`iterator::template prior<It>::call(it)`][The next iterator after `it`][None]]
+[[`iterator::template advance<It, N>::type`][The type of an iterator advanced `N` elements from `It`][Implemented in terms of `next` and `prior`]]
+[[`iterator::template advance<It, N>::call(it)`][An iterator advanced `N` elements from `it`][Implemented in terms of `next` and `prior`]]
+[[`iterator::template distance<It1, It2>::type`][The distance between iterators of type `It1` and `It2` as an __mpl_integral_constant__][None]]
+[[`iterator::template distance<It1, It2>::call(it1, it2)`][The distance between iterator `it1` and `it2`][None]]
+[[`iterator::template equal_to<It1, It2>::type`][The distance between iterators of type `It1` and `It2`][`boost::same_type<It1, It2>::type`]]
+[[`iterator::template equal_to<It1, It2>::call(it1, it2)`][The distance between iterators `it1` and `it2`][`boost::same_type<It1, It2>::type()`]]
+]
+
+[heading Header]
+
+    #include <boost/fusion/iterator/iterator_facade.hpp>
+    #include <boost/fusion/include/iterator_facade.hpp>
+
+[heading Example]
+A full working example using __iterator_facade__ is provided in triple.cpp in the extension examples.
+
+[endsect]
 
 [endsect]
 

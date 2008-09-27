@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 1999-2003 Jaakko Järvi
+    Copyright (c) 1999-2003 Jaakko Jarvi
     Copyright (c) 2001-2006 Joel de Guzman
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying 
@@ -7,7 +7,7 @@
 ==============================================================================*/
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/fusion/sequence/intrinsic/at.hpp>
-#include <boost/fusion/sequence/intrinsic/mpl.hpp>
+#include <boost/fusion/mpl.hpp>
 #include <boost/preprocessor/cat.hpp>
 #include <boost/mpl/insert_range.hpp>
 #include <boost/mpl/vector.hpp>

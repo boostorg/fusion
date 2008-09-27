@@ -14,10 +14,10 @@
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/fusion/algorithm/query/find_if.hpp>
-#include <boost/fusion/sequence/container/list/cons.hpp>
+#include <boost/fusion/container/list/cons.hpp>
 #include <boost/fusion/sequence/intrinsic/ext_/segments.hpp>
-#include <boost/fusion/sequence/view/ext_/segmented_iterator.hpp>
-#include <boost/fusion/sequence/view/ext_/segmented_iterator_range.hpp>
+#include <boost/fusion/view/ext_/segmented_iterator.hpp>
+#include <boost/fusion/view/ext_/segmented_iterator_range.hpp>
 #include <boost/fusion/support/ext_/is_segmented.hpp>
 
 // fwd declarations
@@ -117,7 +117,7 @@ namespace boost { namespace fusion { namespace detail
     private:
         static type call_(SegmentedRange const &range, mpl::true_)
         {
-            return found::call(range, where::call(*range.where));
+            return found::call(range, where::call(*range.where_));
         }
 
         static type call_(SegmentedRange const &range, mpl::false_)

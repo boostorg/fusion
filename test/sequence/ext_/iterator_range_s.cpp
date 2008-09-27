@@ -7,11 +7,11 @@
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/fusion/algorithm/iteration/ext_/for_each_s.hpp>
 #include <boost/fusion/algorithm/query/ext_/find_if_s.hpp>
-#include <boost/fusion/sequence/container/vector/vector.hpp>
-#include <boost/fusion/sequence/container/ext_/tree.hpp>
-#include <boost/fusion/sequence/generation/make_vector.hpp>
-#include <boost/fusion/sequence/view/iterator_range/iterator_range.hpp>
-#include <boost/fusion/sequence/view/ext_/segmented_iterator_range.hpp>
+#include <boost/fusion/container/vector/vector.hpp>
+#include <boost/fusion/container/ext_/tree.hpp>
+#include <boost/fusion/container/generation/make_vector.hpp>
+#include <boost/fusion/view/iterator_range/iterator_range.hpp>
+#include <boost/fusion/view/ext_/segmented_iterator_range.hpp>
 #include <boost/fusion/sequence/comparison/equal_to.hpp>
 #include <boost/fusion/sequence/io/out.hpp>
 #include <boost/fusion/sequence/intrinsic/size.hpp>
@@ -43,8 +43,8 @@ process_tree(Tree const &tree)
     using namespace fusion;
     using mpl::_;
 
-    typedef typename result_of::find_if_s<Tree const, is_same<_,short> >::type short_iter;
-    typedef typename result_of::find_if_s<Tree const, is_same<_,float> >::type float_iter;
+    typedef typename fusion::result_of::find_if_s<Tree const, is_same<_,short> >::type short_iter;
+    typedef typename fusion::result_of::find_if_s<Tree const, is_same<_,float> >::type float_iter;
 
     typedef iterator_range<short_iter, float_iter> slice_t;
     BOOST_STATIC_ASSERT(traits::is_segmented<slice_t>::value);

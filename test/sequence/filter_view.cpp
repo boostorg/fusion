@@ -5,13 +5,13 @@
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #include <boost/detail/lightweight_test.hpp>
-#include <boost/fusion/sequence/container/vector/vector.hpp>
-#include <boost/fusion/sequence/adapted/mpl.hpp>
-#include <boost/fusion/sequence/container/vector/vector_iterator.hpp>
+#include <boost/fusion/container/vector/vector.hpp>
+#include <boost/fusion/adapted/mpl.hpp>
+#include <boost/fusion/container/vector/vector_iterator.hpp>
 #include <boost/fusion/sequence/io/out.hpp>
 #include <boost/fusion/sequence/comparison/equal_to.hpp>
-#include <boost/fusion/sequence/view/filter_view/filter_view.hpp>
-#include <boost/fusion/sequence/generation/make_vector.hpp>
+#include <boost/fusion/view/filter_view/filter_view.hpp>
+#include <boost/fusion/container/generation/make_vector.hpp>
 #include <boost/fusion/sequence/intrinsic/size.hpp>
 #include <boost/type_traits/is_class.hpp>
 #include <boost/type_traits/is_same.hpp>
@@ -95,6 +95,7 @@ main()
         // (e.g. comeau 4.3.3, intel) have problems with this.
         // vc7.1 and g++ are ok. The errors from comeau are useless.
         
+#ifndef __EDG_VERSION__
         typedef vector_c<int, 5, 1, 2, 3, 6, 0, -1> vector_type;
         typedef filter_view<vector_type const, less<_, int_<3> > > filter_view_type;
         vector_type v;
@@ -102,6 +103,7 @@ main()
         std::cout << view << std::endl;
         BOOST_TEST((view == make_vector(1, 2, 0, -1)));
         BOOST_STATIC_ASSERT(result_of::size<filter_view_type>::value == 4);
+#endif
     }
 
     {

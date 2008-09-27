@@ -12,8 +12,8 @@
 #include <boost/noncopyable.hpp>
 #include <boost/blank.hpp>
 
-#include <boost/fusion/sequence/generation/make_vector.hpp>
-#include <boost/fusion/sequence/container/vector.hpp>
+#include <boost/fusion/container/generation/make_vector.hpp>
+#include <boost/fusion/container/vector.hpp>
 
 namespace fusion = boost::fusion;
 using boost::noncopyable;

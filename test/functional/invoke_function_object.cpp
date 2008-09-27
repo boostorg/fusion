@@ -1,8 +1,8 @@
 /*=============================================================================
-    Copyright (c) 2005-2006 João Abecasis
+    Copyright (c) 2005-2006 Joao Abecasis
     Copyright (c) 2006-2007 Tobias Schwinger
-  
-    Use modification and distribution are subject to the Boost Software 
+
+    Use modification and distribution are subject to the Boost Software
     License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
     http://www.boost.org/LICENSE_1_0.txt).
 ==============================================================================*/
@@ -17,12 +17,12 @@
 
 #include <boost/mpl/int.hpp>
 
-#include <boost/fusion/sequence/container/vector.hpp>
-#include <boost/fusion/sequence/container/list.hpp>
+#include <boost/fusion/container/vector.hpp>
+#include <boost/fusion/container/list.hpp>
 #include <boost/fusion/sequence/intrinsic/size.hpp>
 #include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/view/single_view.hpp>
-#include <boost/fusion/sequence/view/iterator_range.hpp>
+#include <boost/fusion/view/single_view.hpp>
+#include <boost/fusion/view/iterator_range.hpp>
 #include <boost/fusion/iterator/advance.hpp>
 #include <boost/fusion/algorithm/transformation/join.hpp>
 
@@ -41,7 +41,7 @@ struct object_nc : boost::noncopyable {};
 struct fobj
 {
     // Handle nullary separately to exercise result_of support
-    template <typename Sig> 
+    template <typename Sig>
     struct result;
 
     template <class Self, typename T0>
@@ -97,7 +97,7 @@ struct fobj_nc
     {
         typedef int type;
     };
-    
+
     int operator()(int i)       { return 14 + i; }
     int operator()(int i) const { return 15 + i; }
 };

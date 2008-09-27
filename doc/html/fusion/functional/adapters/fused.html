@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>fused</title>
-<link rel="stylesheet" href="../../../boostbook.css" type="text/css">
+<link rel="stylesheet" href="../../../../../../../doc/html/boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.66.1">
 <link rel="start" href="../../../index.html" title="Chapter 1. Fusion 2.0">
 <link rel="up" href="../adapters.html" title=" Adapters">
@@ -12,10 +12,10 @@
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr>
 <td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td>
-<td align="center"><a href="../../../../../../../index.htm">Home</a></td>
+<td align="center"><a href="../../../../../../../index.html">Home</a></td>
 <td align="center"><a href="../../../../../../libraries.htm">Libraries</a></td>
-<td align="center"><a href="../../../../../../../people/people.htm">People</a></td>
-<td align="center"><a href="../../../../../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
 <td align="center"><a href="../../../../../../../more/index.htm">More</a></td>
 </tr></table>
 <hr>
@@ -26,7 +26,7 @@
 <div class="titlepage"><div><div><h4 class="title">
 <a name="fusion.functional.adapters.fused"></a><a href="fused.html" title="fused">fused</a></h4></div></div></div>
 <a name="fusion.functional.adapters.fused.description"></a><h5>
-<a name="id648400"></a>
+<a name="id661860"></a>
           <a href="fused.html#fusion.functional.adapters.fused.description">Description</a>
         </h5>
 <p>
@@ -34,7 +34,7 @@
         Object">Polymorphic Function
           Object</a> adapter template for <a href="../concepts/def_callable.html" title=" Deferred
         Callable Object">Deferred
-          Callable Object</a> target functions. It takes a <a href="../../sequences/concepts/forward_sequence.html" title="Forward
+          Callable Object</a> target functions. It takes a <a href="../../sequence/concepts/forward_sequence.html" title="Forward
         Sequence">Forward
           Sequence</a> that contains the arguments for the target function.
         </p>
@@ -55,15 +55,11 @@
           be defined (Boost provides this function for <tt class="literal">std::auto_ptr</tt>
           and <a href="http://www.boost.org/libs/smart_ptr/shared_ptr.htm" target="_top"><tt class="computeroutput"><span class="identifier">boost</span><span class="special">::</span><span class="identifier">shared_ptr</span></tt></a>).
         </p>
-<a name="fusion.functional.adapters.fused.header"></a><h5>
-<a name="id648530"></a>
-          <a href="fused.html#fusion.functional.adapters.fused.header">Header</a>
-        </h5>
-<pre class="programlisting">
-<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">fusion</span><span class="special">/</span><span class="identifier">functional</span><span class="special">/</span><span class="identifier">adapter</span><span class="special">/</span><span class="identifier">fused</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
-</pre>
+<p>
+          /functional/adapter/fused.hpp&gt;
+        </p>
 <a name="fusion.functional.adapters.fused.synopsis"></a><h5>
-<a name="id648636"></a>
+<a name="id661996"></a>
           <a href="fused.html#fusion.functional.adapters.fused.synopsis">Synopsis</a>
         </h5>
 <pre class="programlisting">
@@ -71,7 +67,7 @@
 <span class="keyword">class</span> <span class="identifier">fused</span><span class="special">;</span>
 </pre>
 <a name="fusion.functional.adapters.fused.template_parameters"></a><h5>
-<a name="id648716"></a>
+<a name="id662075"></a>
           <a href="fused.html#fusion.functional.adapters.fused.template_parameters">Template
           parameters</a>
         </h5>
@@ -118,7 +114,7 @@
 </tr></tbody>
 </table></div>
 <a name="fusion.functional.adapters.fused.model_of"></a><h5>
-<a name="id648832"></a>
+<a name="id662190"></a>
           <a href="fused.html#fusion.functional.adapters.fused.model_of">Model of</a>
         </h5>
 <div class="itemizedlist"><ul type="disc">
@@ -144,7 +140,7 @@
             </p></dd>
 <dt><span class="term"><tt class="computeroutput"><span class="identifier">s</span></tt></span></dt>
 <dd><p>
-              A <a href="../../sequences.html" title="Sequences">Sequence</a> of arguments that
+              A <a href="../../sequence.html" title="Sequence">Sequence</a> of arguments that
               are accepted by <tt class="computeroutput"><span class="identifier">r</span></tt>
             </p></dd>
 <dt><span class="term"><tt class="computeroutput"><span class="identifier">f</span></tt></span></dt>
@@ -154,7 +150,7 @@
 </dl>
 </div>
 <a name="fusion.functional.adapters.fused.expression_semantics"></a><h5>
-<a name="id649052"></a>
+<a name="id662410"></a>
           <a href="fused.html#fusion.functional.adapters.fused.expression_semantics">Expression
           Semantics</a>
         </h5>
@@ -218,15 +214,15 @@
 </tbody>
 </table></div>
 <a name="fusion.functional.adapters.fused.example"></a><h5>
-<a name="id649306"></a>
+<a name="id662665"></a>
           <a href="fused.html#fusion.functional.adapters.fused.example">Example</a>
         </h5>
 <pre class="programlisting">
 <span class="identifier">fused</span><span class="special">&lt;</span> <a href="http://www.sgi.com/tech/stl/plus.html" target="_top"><tt class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">plus</span></tt></a><span class="special">&lt;</span><span class="keyword">long</span><span class="special">&gt;</span> <span class="special">&gt;</span> <span class="identifier">f</span><span class="special">;</span>
-<span class="identifier">assert</span><span class="special">(</span><span class="identifier">f</span><span class="special">(</span><a href="../../sequences/generation/functions/make_vector.html" title="make_vector"><tt class="computeroutput"><span class="identifier">make_vector</span></tt></a><span class="special">(</span><span class="number">1</span><span class="special">,</span><span class="number">2l</span><span class="special">))</span> <span class="special">==</span> <span class="number">3l</span><span class="special">);</span>
+<span class="identifier">assert</span><span class="special">(</span><span class="identifier">f</span><span class="special">(</span><a href="../../container/generation/functions/make_vector.html" title="make_vector"><tt class="computeroutput"><span class="identifier">make_vector</span></tt></a><span class="special">(</span><span class="number">1</span><span class="special">,</span><span class="number">2l</span><span class="special">))</span> <span class="special">==</span> <span class="number">3l</span><span class="special">);</span>
 </pre>
 <a name="fusion.functional.adapters.fused.see_also"></a><h5>
-<a name="id649484"></a>
+<a name="id662842"></a>
           <a href="fused.html#fusion.functional.adapters.fused.see_also">See also</a>
         </h5>
 <div class="itemizedlist"><ul type="disc">
@@ -238,8 +234,12 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><small>Copyright © 2001-2007 Joel de Guzman, Dan Marsden, Tobias
-      Schwinger</small></td>
+<td align="right"><div class="copyright-footer">Copyright © 2001-2007 Joel de Guzman, Dan Marsden, Tobias
+      Schwinger<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
 </tr></table>
 <hr>
 <div class="spirit-nav">

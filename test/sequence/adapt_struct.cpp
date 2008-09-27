@@ -5,17 +5,17 @@
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #include <boost/detail/lightweight_test.hpp>
-#include <boost/fusion/sequence/adapted/struct/adapt_struct.hpp>
+#include <boost/fusion/adapted/struct/adapt_struct.hpp>
 #include <boost/fusion/sequence/intrinsic/at.hpp>
 #include <boost/fusion/sequence/intrinsic/size.hpp>
 #include <boost/fusion/sequence/intrinsic/empty.hpp>
 #include <boost/fusion/sequence/intrinsic/front.hpp>
 #include <boost/fusion/sequence/intrinsic/back.hpp>
 #include <boost/fusion/sequence/io/out.hpp>
-#include <boost/fusion/sequence/container/vector/vector.hpp>
-#include <boost/fusion/sequence/container/list/list.hpp>
-#include <boost/fusion/sequence/generation/make_vector.hpp>
-#include <boost/fusion/sequence/conversion/as_vector.hpp>
+#include <boost/fusion/container/vector/vector.hpp>
+#include <boost/fusion/container/list/list.hpp>
+#include <boost/fusion/container/generation/make_vector.hpp>
+#include <boost/fusion/container/vector/convert.hpp>
 #include <boost/fusion/sequence/comparison/equal_to.hpp>
 #include <boost/fusion/sequence/comparison/not_equal_to.hpp>
 #include <boost/fusion/sequence/comparison/less.hpp>
@@ -41,6 +41,9 @@ BOOST_FUSION_ADAPT_STRUCT(
     (int, x)
     (int, y)
 )
+
+struct s { int m; };
+BOOST_FUSION_ADAPT_STRUCT(s, (int, m))
 
 int
 main()
@@ -99,6 +102,16 @@ main()
         ns::point p = {5, 3};
         fusion::list<int, short> l(p);
         l = p;
+    }
+
+    { // begin/end
+        using namespace boost::fusion;
+        using boost::is_same;
+
+        typedef result_of::begin<s>::type b;
+        typedef result_of::end<s>::type e;
+        // this fails
+        BOOST_MPL_ASSERT((is_same<result_of::next<b>::type, e>));
     }
 
     return boost::report_errors();

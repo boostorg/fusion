@@ -1,13 +1,13 @@
 /*=============================================================================
-    Copyright (c) 1999-2003 Jaakko Järvi
+    Copyright (c) 1999-2003 Jaakko Jarvi
     Copyright (c) 2001-2006 Joel de Guzman
 
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
+    Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/fusion/sequence/intrinsic/at.hpp>
-#include <boost/fusion/sequence/container/list/cons.hpp>
+#include <boost/fusion/container/list/cons.hpp>
 
 #if !defined(FUSION_AT)
 #define FUSION_AT at_c
@@ -57,7 +57,9 @@ test()
 
     FUSION_SEQUENCE<> empty0;
 
+#ifndef TR1_TUPLE_TEST
     FUSION_SEQUENCE<> empty1(empty);
+#endif
 
     FUSION_SEQUENCE<int> t1;
     BOOST_TEST(FUSION_AT<0>(t1) == int());
