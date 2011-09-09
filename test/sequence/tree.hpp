@@ -18,27 +18,15 @@
 #include <boost/fusion/container/list/cons.hpp> // for nil
 #include <boost/fusion/container/vector/vector10.hpp>
 #include <boost/fusion/support/sequence_base.hpp>
-#include <boost/fusion/sequence/intrinsic/ext_/segments.hpp>
-#include <boost/fusion/support/ext_/is_segmented.hpp>
-#include <boost/fusion/view/ext_/segmented_iterator.hpp>
+#include <boost/fusion/support/category_of.hpp>
+#include <boost/fusion/support/is_segmented.hpp>
+#include <boost/fusion/sequence/intrinsic/segments.hpp>
 
 namespace boost { namespace fusion
 {
    struct tree_tag;
 
-   namespace detail
-   {
-       template<typename T, bool IsConst>
-       struct reference : add_reference<T> {};
-
-       template<typename T>
-       struct reference<T, true> : reference<typename add_const<T>::type, false> {};
-
-       template<typename T>
-       struct reference<T &, true> : reference<T, false> {};
-   }
-
-   template<typename Data, typename Left = nil, typename Right = nil>
+   template <typename Data, typename Left = nil, typename Right = nil>
    struct tree
      : sequence_base<tree<Data, Left, Right> >
    {
@@ -67,13 +55,13 @@ namespace boost { namespace fusion
        segments_type segments;
    };
 
-   template<typename Data>
+   template <typename Data>
    tree<Data> make_tree(Data const &data)
    {
        return tree<Data>(data);
    }
 
-   template<typename Data, typename Left, typename Right>
+   template <typename Data, typename Left, typename Right>
    tree<Data, Left, Right> make_tree(Data const &data, Left const &left, Right const &right)
    {
        return tree<Data, Left, Right>(data, left, right);
@@ -81,17 +69,17 @@ namespace boost { namespace fusion
 
    namespace extension
    {
-       template<>
+       template <>
        struct is_segmented_impl<tree_tag>
        {
-           template<typename Sequence>
+           template <typename Sequence>
            struct apply : mpl::true_ {};
        };
 
-       template<>
+       template <>
        struct segments_impl<tree_tag>
        {
-           template<typename Sequence>
+           template <typename Sequence>
            struct apply
            {
                typedef typename mpl::if_<
@@ -105,24 +93,6 @@ namespace boost { namespace fusion
                    return seq.segments;
                }
            };
-       };
-
-       template<>
-       struct begin_impl<tree_tag>
-       {
-           template<typename Sequence>
-           struct apply
-             : segmented_begin<Sequence>
-           {};
-       };
-
-       template<>
-       struct end_impl<tree_tag>
-       {
-           template<typename Sequence>
-           struct apply
-             : segmented_end<Sequence>
-           {};
        };
    }
 }}
