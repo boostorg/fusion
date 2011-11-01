@@ -1,5 +1,6 @@
 [/==============================================================================
-    Copyright (C) 2001-2007 Joel de Guzman, Dan Marsden, Tobias Schwinger
+    Copyright (C) 2001-2011 Joel de Guzman
+    Copyright (C) 2006 Dan Marsden
 
     Use, modification and distribution is subject to the Boost Software
     License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
@@ -188,7 +189,9 @@ are not defined in __forward_sequence__.
 * __std_pair__
 * __boost_array__
 * __vector__
+* __map__
 * __reverse_view__
+* __single_view__
 * __iterator_range__ (where adapted sequence is a Bidirectional Sequence)
 * __transform_view__ (where adapted sequence is a Bidirectional Sequence)
 * __zip_view__       (where adapted sequences are models of Bidirectional Sequence)
@@ -263,7 +266,9 @@ are not defined in __bidirectional_sequence__.
 * __std_pair__
 * __boost_array__
 * __vector__
+* __map__
 * __reverse_view__
+* __single_view__
 * __iterator_range__ (where adapted sequence is a Random Access Sequence)
 * __transform_view__ (where adapted sequence is a Random Access Sequence)
 * __zip_view__       (where adapted sequences are models of Random Access Sequence)
@@ -1423,12 +1428,19 @@ operators for free.
 
 [section I/O]
 
-The I/O operators: `<<` and `>>` work generically on all Fusion sequences.
-The global `operator<<` has been overloaded for generic output streams such
-that __sequence__(s) are output by recursively calling `operator<<` for each
-element. Analogously, the global `operator>>` has been overloaded to
-extract __sequence__(s) from generic input streams by recursively calling
-`operator>>` for each element.
+The I/O operators: `<<` and `>>` work generically on all Fusion
+sequences. The I/O operators are overloaded in namespace `boost::fusion`
+[footnote __sequences__ and __views__ residing in different namespaces
+will have to either provide their own I/O operators (possibly forwarding
+to fusion's I/O operators) or hoist fusion's I/O operators (using
+declaration), in their own namespaces for proper argument dependent
+lookup.]
+
+The `operator<<` has been overloaded for generic output streams such
+that __sequence__(s) are output by recursively calling `operator<<` for
+each element. Analogously, the global `operator>>` has been overloaded
+to extract __sequence__(s) from generic input streams by recursively
+calling `operator>>` for each element.
 
 The default delimiter between the elements is space, and the __sequence__
 is enclosed in parenthesis. For Example:

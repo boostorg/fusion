@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2001-2006 Joel de Guzman
+    Copyright (c) 2001-2011 Joel de Guzman
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying 
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -40,7 +40,7 @@ main()
     }
 
     {
-        result_of::as_set<list<int, double, std::string> >::type set(1, 1.23, "harru");
+        boost::fusion::result_of::as_set<list<int, double, std::string> >::type set(1, 1.23, "harru");
         std::cout << at_key<int>(set) << std::endl;
         BOOST_TEST(at_key<int>(set) == 1);
     }

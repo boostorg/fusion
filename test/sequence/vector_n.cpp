@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2001-2006 Joel de Guzman
+    Copyright (c) 2001-2011 Joel de Guzman
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying 
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -30,22 +30,21 @@ main()
 {
     using namespace boost::fusion;
     using namespace boost;
-    using namespace std;
 
     {
         vector0<> vec;
         (void) vec;
-        cout << "(): " << sizeof(vec) << endl;
-        cout << (boost::is_empty<vector0<> >::value ? "is empty" : "is not empty") << endl;
+        std::cout << "(): " << sizeof(vec) << std::endl;
+        std::cout << (boost::is_empty<vector0<> >::value ? "is empty" : "is not empty") << std::endl;
     }
 
     {
         typedef vector1<int> type;
         type vec;
-        BOOST_STATIC_ASSERT(result_of::size<type>::value == 1);
+        BOOST_STATIC_ASSERT(boost::fusion::result_of::size<type>::value == 1);
 
         BOOST_TEST(at_c<0>(vec) == 0);
-        BOOST_STATIC_ASSERT((boost::is_same<int, result_of::value_at_c<type, 0>::type>::value));
+        BOOST_STATIC_ASSERT((boost::is_same<int, boost::fusion::result_of::value_at_c<type, 0>::type>::value));
 
         // prove that it is mutable
         at_c<0>(vec) = 987;
@@ -56,7 +55,7 @@ main()
         typedef vector1<int> type;
         type vec(123);
         BOOST_TEST(at_c<0>(vec) == 123);
-        cout << "(int): " << sizeof(vec) << endl;
+        std::cout << "(int): " << sizeof(vec) << std::endl;
     }
 
     { // testing const vector
@@ -77,13 +76,13 @@ main()
     {
         typedef vector2<int, char> type;
         type vec;
-        BOOST_STATIC_ASSERT(result_of::size<type>::value == 2);
+        BOOST_STATIC_ASSERT(boost::fusion::result_of::size<type>::value == 2);
 
         BOOST_TEST(at_c<0>(vec) == 0);
         BOOST_TEST(at_c<1>(vec) == char());
 
-        BOOST_STATIC_ASSERT((boost::is_same<int, result_of::value_at_c<type, 0>::type>::value));
-        BOOST_STATIC_ASSERT((boost::is_same<char, result_of::value_at_c<type, 1>::type>::value));
+        BOOST_STATIC_ASSERT((boost::is_same<int, boost::fusion::result_of::value_at_c<type, 0>::type>::value));
+        BOOST_STATIC_ASSERT((boost::is_same<char, boost::fusion::result_of::value_at_c<type, 1>::type>::value));
     }
 
     {
@@ -91,7 +90,7 @@ main()
         type vec(123, 'x');
         BOOST_TEST(at_c<0>(vec) == 123);
         BOOST_TEST(at_c<1>(vec) == 'x');
-        cout << "(int, char): " << sizeof(vec) << endl;
+        std::cout << "(int, char): " << sizeof(vec) << std::endl;
     }
 
     {
@@ -103,15 +102,15 @@ main()
     {
         typedef vector3<int, char, double> type;
         type vec;
-        BOOST_STATIC_ASSERT(result_of::size<type>::value == 3);
+        BOOST_STATIC_ASSERT(boost::fusion::result_of::size<type>::value == 3);
 
         BOOST_TEST(at_c<0>(vec) == 0);
         BOOST_TEST(at_c<1>(vec) == char());
         BOOST_TEST(at_c<2>(vec) == double());
 
-        BOOST_STATIC_ASSERT((boost::is_same<int, result_of::value_at_c<type, 0>::type>::value));
-        BOOST_STATIC_ASSERT((boost::is_same<char, result_of::value_at_c<type, 1>::type>::value));
-        BOOST_STATIC_ASSERT((boost::is_same<double, result_of::value_at_c<type, 2>::type>::value));
+        BOOST_STATIC_ASSERT((boost::is_same<int, boost::fusion::result_of::value_at_c<type, 0>::type>::value));
+        BOOST_STATIC_ASSERT((boost::is_same<char, boost::fusion::result_of::value_at_c<type, 1>::type>::value));
+        BOOST_STATIC_ASSERT((boost::is_same<double, boost::fusion::result_of::value_at_c<type, 2>::type>::value));
     }
 
     {
@@ -120,19 +119,19 @@ main()
         BOOST_TEST(at_c<0>(vec) == 123);
         BOOST_TEST(at_c<1>(vec) == 'x');
         BOOST_TEST(at_c<2>(vec) >= 123.455 && at_c<2>(vec) <= 123.457);
-        cout << "(int, char, double): " << sizeof(vec) << endl;
+        std::cout << "(int, char, double): " << sizeof(vec) << std::endl;
     }
 
     {
         typedef vector4<int, char, double, bool> type;
         type vec(123, 'x', 123.456, true);
-        cout << "(int, char, double, bool): " << sizeof(vec) << endl;
+        std::cout << "(int, char, double, bool): " << sizeof(vec) << std::endl;
     }
 
     {
         typedef vector4<int, char, bool, double> type;
         type vec(123, 'x', true, 123.456);
-        cout << "(int, char, bool, double): " << sizeof(vec) << endl;
+        std::cout << "(int, char, bool, double): " << sizeof(vec) << std::endl;
     }
 
     {
@@ -147,20 +146,20 @@ main()
         BOOST_TEST(at_c<5>(vec) >= 5.9 && at_c<5>(vec) <= 6.1);
         BOOST_TEST(at_c<6>(vec) >= 6.9 && at_c<6>(vec) <= 7.1);
 
-        BOOST_STATIC_ASSERT((boost::is_same<bool, result_of::value_at_c<type, 0>::type>::value));
-        BOOST_STATIC_ASSERT((boost::is_same<char, result_of::value_at_c<type, 1>::type>::value));
-        BOOST_STATIC_ASSERT((boost::is_same<short, result_of::value_at_c<type, 2>::type>::value));
-        BOOST_STATIC_ASSERT((boost::is_same<int, result_of::value_at_c<type, 3>::type>::value));
-        BOOST_STATIC_ASSERT((boost::is_same<long, result_of::value_at_c<type, 4>::type>::value));
-        BOOST_STATIC_ASSERT((boost::is_same<float, result_of::value_at_c<type, 5>::type>::value));
-        BOOST_STATIC_ASSERT((boost::is_same<double, result_of::value_at_c<type, 6>::type>::value));
-        cout << "(bool, char, short, int, long, float, double): " << sizeof(vec) << endl;
+        BOOST_STATIC_ASSERT((boost::is_same<bool, boost::fusion::result_of::value_at_c<type, 0>::type>::value));
+        BOOST_STATIC_ASSERT((boost::is_same<char, boost::fusion::result_of::value_at_c<type, 1>::type>::value));
+        BOOST_STATIC_ASSERT((boost::is_same<short, boost::fusion::result_of::value_at_c<type, 2>::type>::value));
+        BOOST_STATIC_ASSERT((boost::is_same<int, boost::fusion::result_of::value_at_c<type, 3>::type>::value));
+        BOOST_STATIC_ASSERT((boost::is_same<long, boost::fusion::result_of::value_at_c<type, 4>::type>::value));
+        BOOST_STATIC_ASSERT((boost::is_same<float, boost::fusion::result_of::value_at_c<type, 5>::type>::value));
+        BOOST_STATIC_ASSERT((boost::is_same<double, boost::fusion::result_of::value_at_c<type, 6>::type>::value));
+        std::cout << "(bool, char, short, int, long, float, double): " << sizeof(vec) << std::endl;
     }
 
     {
         typedef vector10<int, int, int, int, int, int, int, int, int, int> type;
         type vec; // compile check only
-        cout << "vector10 of int: " << sizeof(vec) << endl;
+        std::cout << "vector10 of int: " << sizeof(vec) << std::endl;
     }
 
     {
@@ -169,7 +168,7 @@ main()
           , int, int, int, int, int, int, int, int, int, int> type;
 
         type vec; // compile check only
-        cout << "vector20 of int: " << sizeof(vec) << endl;
+        std::cout << "vector20 of int: " << sizeof(vec) << std::endl;
     }
 
     {
@@ -179,7 +178,7 @@ main()
           , int, int, int, int, int, int, int, int, int, int> type;
 
         type vec; // compile check only
-        cout << "vector30 of int: " << sizeof(vec) << endl;
+        std::cout << "vector30 of int: " << sizeof(vec) << std::endl;
     }
 
     {
@@ -190,7 +189,7 @@ main()
           , int, int, int, int, int, int, int, int, int, int> type;
 
         type vec; // compile check only
-        cout << "vector40 of int: " << sizeof(vec) << endl;
+        std::cout << "vector40 of int: " << sizeof(vec) << std::endl;
     }
 
     {
@@ -202,7 +201,7 @@ main()
           , int, int, int, int, int, int, int, int, int, int> type;
 
         type vec; // compile check only
-        cout << "vector50 of int: " << sizeof(vec) << endl;
+        std::cout << "vector50 of int: " << sizeof(vec) << std::endl;
     }
     
     {

@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2001-2006 Joel de Guzman
+    Copyright (c) 2001-2011 Joel de Guzman
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying 
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -36,7 +36,7 @@ main()
     {
         typedef pair<int, char> p1;
         typedef pair<double, std::string> p2;
-        result_of::as_map<list<p1, p2> >::type map(make_pair<int>('X'), make_pair<double>("Men"));
+        boost::fusion::result_of::as_map<list<p1, p2> >::type map(make_pair<int>('X'), make_pair<double>("Men"));
         std::cout << at_key<int>(map) << std::endl;
         std::cout << at_key<double>(map) << std::endl;
         BOOST_TEST(at_key<int>(map) == 'X');

@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2001-2006 Joel de Guzman
+    Copyright (c) 2001-2011 Joel de Guzman
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying 
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -37,7 +37,6 @@ main()
 {
     using namespace boost::fusion;
     using namespace boost;
-    using namespace std;
 
     std::cout << tuple_open('[');
     std::cout << tuple_close(']');
@@ -57,8 +56,8 @@ main()
         at_c<1>(t) = "mama mia";
         BOOST_TEST(t == make_vector(6, "mama mia"));
 
-        BOOST_STATIC_ASSERT(result_of::size<tuple_type>::value == 2);
-        BOOST_STATIC_ASSERT(!result_of::empty<tuple_type>::value);
+        BOOST_STATIC_ASSERT(boost::fusion::result_of::size<tuple_type>::value == 2);
+        BOOST_STATIC_ASSERT(!boost::fusion::result_of::empty<tuple_type>::value);
 
         BOOST_TEST(front(t) == 6);
     }

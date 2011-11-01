@@ -1,5 +1,6 @@
 [/==============================================================================
-    Copyright (C) 2001-2007 Joel de Guzman, Dan Marsden, Tobias Schwinger
+    Copyright (C) 2001-2011 Joel de Guzman
+    Copyright (C) 2006 Dan Marsden
 
     Use, modification and distribution is subject to the Boost Software
     License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
@@ -419,7 +420,7 @@ including any Fusion header to change the default. Example:
 [heading Model of]
 
 * __associative_sequence__
-* __forward_sequence__
+* __random_access_sequence__
 
 [variablelist Notation
     [[`M`]              [A `map` type]]
@@ -431,7 +432,7 @@ including any Fusion header to change the default. Example:
 [heading Expression Semantics]
 
 Semantics of an expression is defined only where it differs from, or is not
-defined in __random_access_sequence__ and __associative_sequence__.
+defined in __forward_sequence__ and __associative_sequence__.
 
 [table
     [[Expression]           [Semantics]]
@@ -681,7 +682,7 @@ Create a __map__ from one or more key/data pairs.
       , typename T0, typename T1,... typename TN>
     typename __result_of_make_map__<K0, K0,... KN, T0, T1,... TN>::type
     make_map(T0 const& x0, T1 const& x1... TN const& xN);
-    
+
 The variadic function accepts `0` to `FUSION_MAX_MAP_SIZE` elements,
 where `FUSION_MAX_MAP_SIZE` is a user definable predefined maximum that
 defaults to `10`. You may define the preprocessor constant

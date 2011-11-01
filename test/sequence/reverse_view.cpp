@@ -1,11 +1,12 @@
 /*=============================================================================
-    Copyright (c) 2001-2006 Joel de Guzman
+    Copyright (c) 2001-2011 Joel de Guzman
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying 
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/fusion/container/vector/vector.hpp>
+#include <boost/fusion/container/map/map.hpp>
 #include <boost/fusion/adapted/mpl.hpp>
 #include <boost/fusion/sequence/io/out.hpp>
 #include <boost/fusion/container/generation/make_vector.hpp>
@@ -54,9 +55,9 @@ main()
         std::cout << rev << std::endl;
         BOOST_TEST((rev == make_vector(s, 123456789, 'x', 123)));
 
-        typedef result_of::begin<view_type>::type first_type;
+        typedef boost::fusion::result_of::begin<view_type>::type first_type;
         first_type first_it(begin(rev));
-        typedef result_of::next<first_type>::type second_type;
+        typedef boost::fusion::result_of::next<first_type>::type second_type;
         second_type second_it(next(first_it));
         BOOST_TEST((*second_it == 123456789));
         BOOST_TEST((*prior(second_it) == s));
@@ -69,17 +70,38 @@ main()
         BOOST_TEST((at_c<3>(rev)==123));
 
         BOOST_MPL_ASSERT((
-            boost::is_same<result_of::value_at_c<view_type,0>::type,char const*>
+            boost::is_same<boost::fusion::result_of::value_at_c<view_type,0>::type,char const*>
         ));
         BOOST_MPL_ASSERT((
-            boost::is_same<result_of::value_at_c<view_type,1>::type,long>
+            boost::is_same<boost::fusion::result_of::value_at_c<view_type,1>::type,long>
         ));
         BOOST_MPL_ASSERT((
-            boost::is_same<result_of::value_at_c<view_type,2>::type,char>
+            boost::is_same<boost::fusion::result_of::value_at_c<view_type,2>::type,char>
         ));
         BOOST_MPL_ASSERT((
-            boost::is_same<result_of::value_at_c<view_type,3>::type,int>
+            boost::is_same<boost::fusion::result_of::value_at_c<view_type,3>::type,int>
         ));
+    }
+
+    //! Map
+    {
+        typedef pair<boost::mpl::int_<0>, std::string> pair0;
+        typedef pair<boost::mpl::int_<1>, std::string> pair1;
+        typedef pair<boost::mpl::int_<2>, std::string> pair2;
+        typedef pair<boost::mpl::int_<3>, std::string> pair3;
+        typedef pair<boost::mpl::int_<4>, std::string> pair4;
+
+        typedef map< pair0, pair1, pair2, pair3, pair4 > map_type;
+        map_type m( pair0("zero"), pair1("one"), pair2("two"), pair3("three"), pair4("four") );
+        typedef reverse_view<map_type> view_type;
+        view_type rev(m);
+        std::cout << rev << std::endl;
+        BOOST_TEST((rev == make_vector( pair4("four"), pair3("three"), pair2("two"), pair1("one"), pair0("zero"))));
+        BOOST_TEST((at_c<0>(rev) == pair4("four")));
+        BOOST_TEST((at_c<1>(rev) == pair3("three")));
+        BOOST_TEST((at_c<2>(rev) == pair2("two")));
+        BOOST_TEST((at_c<3>(rev) == pair1("one")));
+        BOOST_TEST((at_c<4>(rev) == pair0("zero")));
     }
 
     return boost::report_errors();
