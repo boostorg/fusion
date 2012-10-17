@@ -19,5 +19,6 @@
 #include <boost/fusion/adapted/std_tuple/detail/convert_impl.hpp>
 #include <boost/fusion/adapted/std_tuple/std_tuple_iterator.hpp>
 #include <boost/fusion/adapted/std_tuple/tag_of.hpp>
+#include <boost/fusion/adapted/std_tuple/mpl/clear.hpp>
 
 #endif
