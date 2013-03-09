@@ -1949,7 +1949,7 @@ Convert a fusion sequence to a __map__.
 
 [*Semantics]: Convert a fusion sequence, `seq`, to a __map__.
 
-[*Precondition]: The elements of the sequence are assumed to be
+[*Precondition]: For non-associative sequence, the elements are assumed to be
 __fusion_pair__s. There may be no duplicate __fusion_pair__ key types.
 
 [heading Header]
@@ -1959,9 +1959,25 @@ __fusion_pair__s. There may be no duplicate __fusion_pair__ key types.
 
 [heading Example]
 
+    // from sequence of __fusion_pair__
     as_map(__make_vector__(
         __fusion_make_pair__<int>('X')
       , __fusion_make_pair__<double>("Men")))
+    
+    // from associative sequence
+    namespace ns
+    {
+        struct x_member;
+        struct y_member;
+    }
+    BOOST_FUSION_DEFINE_ASSOC_STRUCT(
+        (ns),
+        point,
+        (int, x, ns::x_member)
+        (int, y, ns::y_member)
+    )
+    ...
+    as_map(ns::point(123, 456))
 
 [endsect]
 
@@ -2150,7 +2166,7 @@ Returns the result type of __as_map__.
 
 [*Semantics]: Convert a fusion sequence, `Sequence`, to a __map__.
 
-[*Precondition]: The elements of the sequence are assumed to be
+[*Precondition]: For non-associative sequence, the elements are assumed to be
 __fusion_pair__s. There may be no duplicate __fusion_pair__ key types.
 
 [heading Header]
@@ -2160,9 +2176,25 @@ __fusion_pair__s. There may be no duplicate __fusion_pair__ key types.
 
 [heading Example]
 
+    // from sequence of __fusion_pair__
     result_of::as_map<__vector__<
         __fusion_pair__<int, char>
       , __fusion_pair__<double, std::string> > >::type
+    
+    // from associative sequence
+    namespace ns
+    {
+        struct x_member;
+        struct y_member;
+    }
+    BOOST_FUSION_DEFINE_ASSOC_STRUCT(
+        (ns),
+        point,
+        (int, x, ns::x_member)
+        (int, y, ns::y_member)
+    )
+    ...
+    result_of::as_map<ns::point>::type // __map__<__fusion_pair__<ns::x_member, int>, __fusion_pair__<ns::y_member, int> >
 
 [endsect]
 
