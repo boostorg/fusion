@@ -17,6 +17,7 @@
 #include <boost/mpl/minus.hpp>
 #include <boost/type_traits/is_const.hpp>
 #include <boost/fusion/iterator/iterator_facade.hpp>
+#include <boost/fusion/adapted/std_array/detail/array_size.hpp>
 
 namespace boost { namespace fusion
 {
