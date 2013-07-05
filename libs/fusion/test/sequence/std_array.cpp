@@ -23,7 +23,7 @@
 int main()
 {
     // See README.md for explanation on qualified names below
-    // C++11 range access interferes with Boost.Fusion:
+    // C++0x/11 range access interferes with Boost.Fusion interface:
     //      error: call to 'begin' is ambiguous
 
     using namespace boost::fusion;
