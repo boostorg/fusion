@@ -5,7 +5,9 @@
 // (See accompanying file LICENSE_1_0.txt or copy 
 // at http://www.boost.org/LICENSE_1_0.txt)
 //
+#ifdef BOOST_MSVC
 #pragma warning(disable:4180)
+#endif
 #include <boost/detail/lightweight_test.hpp>
 
 #include <boost/fusion/adapted/std_array.hpp>
