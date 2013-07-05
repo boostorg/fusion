@@ -25,3 +25,5 @@ project boost_fusion_std_array
         <toolset>msvc:<cxxflags>/wd4996
         <use>/boost//headers
     ;
+
+build-project libs/fusion/test ;
