@@ -22,6 +22,10 @@
 
 int main()
 {
+    // See README.md for explanation on qualified names below
+    // C++11 range access interferes with Boost.Fusion:
+    //      error: call to 'begin' is ambiguous
+
     using namespace boost::fusion;
     typedef std::array<int,3> array_type;
 
