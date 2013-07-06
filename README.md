@@ -6,7 +6,7 @@ An attempt to adapt ```std::array``` for Boost.Fusion.
 The implementation is functional and passes the same test as adapted Boost.Array.
 
 Proposal thread on the Boost mailing list: 
-[Adapter for std::array](http://lists.boost.org/Archives/boost/2013/07/205045.php).
+[[fusion] Adapter for std::array](http://lists.boost.org/Archives/boost/2013/07/205045.php).
 
 However, there is a problem with ADL and range-based access to the sequence
 which is a well-known issue:
