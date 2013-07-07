@@ -20,3 +20,8 @@ See also:
 * N3257=11-0027 Jonathan Wakely and Bjarne Stroustrup: 
 [Range-based for statements and ADL](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2011/n3257.pdf). 
 Option 5 was chosen for C++11.
+
+* [Jonathan Wakely's review](http://lists.boost.org/Archives/boost/2013/07/205064.php) of the issue regarding the Boost.Fusion adaptor for ```std::string```:
+  > The standard was changed to *not* use unqualified begin/end when the type has begin/end members, because 
+when there are multiple "greedy" overloads that can be found by ADL there is no simple way to prevent ambiguity. So I agree that your 
+best option might be to avoid those unqualified calls. 
