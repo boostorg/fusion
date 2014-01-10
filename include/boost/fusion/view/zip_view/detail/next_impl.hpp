@@ -8,6 +8,7 @@
 #if !defined(FUSION_NEXT_IMPL_20060124_2006)
 #define FUSION_NEXT_IMPL_20060124_2006
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/view/zip_view/zip_view_iterator_fwd.hpp>
 #include <boost/fusion/iterator/next.hpp>
 #include <boost/fusion/algorithm/transformation/transform.hpp>
@@ -41,6 +42,7 @@ namespace boost { namespace fusion {
             };
 
             template<typename It>
+            BOOST_FUSION_GPU_ENABLED
             typename result<poly_next(It)>::type
             operator()(const It& it) const
             {
@@ -69,6 +71,7 @@ namespace boost { namespace fusion {
                     typename result_of::transform<typename Iterator::iterators, detail::poly_next>::type,
                     typename Iterator::category> type;
 
+                BOOST_FUSION_GPU_ENABLED
                 static type
                 call(Iterator const& it)
                 {

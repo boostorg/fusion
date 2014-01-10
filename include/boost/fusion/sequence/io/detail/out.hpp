@@ -9,6 +9,7 @@
 #if !defined(FUSION_OUT_05052005_0121)
 #define FUSION_OUT_05052005_0121
 
+#include <boost/fusion/support/config.hpp>
 #include <ostream>
 #include <boost/fusion/sequence/io/detail/manip.hpp>
 
@@ -26,6 +27,7 @@ namespace boost { namespace fusion { namespace detail
     {
         // print a delimiter
         template <typename OS>
+        BOOST_FUSION_GPU_ENABLED
         static void
         print(OS& os, char const* delim, mpl::false_ = mpl::false_())
         {
@@ -34,6 +36,7 @@ namespace boost { namespace fusion { namespace detail
         }
 
         template <typename OS>
+        BOOST_FUSION_GPU_ENABLED
         static void
         print(OS&, char const*, mpl::true_)
         {
@@ -43,12 +46,14 @@ namespace boost { namespace fusion { namespace detail
     struct print_sequence_loop
     {
         template <typename OS, typename First, typename Last>
+        BOOST_FUSION_GPU_ENABLED
         static void
         call(OS&, First const&, Last const&, mpl::true_)
         {
         }
 
         template <typename OS, typename First, typename Last>
+        BOOST_FUSION_GPU_ENABLED
         static void
         call(OS& os, First const& first, Last const& last, mpl::false_)
         {
@@ -64,6 +69,7 @@ namespace boost { namespace fusion { namespace detail
         }
 
         template <typename OS, typename First, typename Last>
+        BOOST_FUSION_GPU_ENABLED
         static void
         call(OS& os, First const& first, Last const& last)
         {
@@ -73,6 +79,7 @@ namespace boost { namespace fusion { namespace detail
     };
 
     template <typename OS, typename Sequence>
+    BOOST_FUSION_GPU_ENABLED
     inline void
     print_sequence(OS& os, Sequence const& seq)
     {

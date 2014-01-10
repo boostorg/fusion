@@ -57,7 +57,7 @@ namespace boost { namespace fusion
         };
     }
 
-    inline deque<>
+    BOOST_FUSION_GPU_ENABLED inline deque<>
     make_deque()
     {
         return deque<>();
@@ -105,6 +105,7 @@ namespace boost { namespace fusion
     }
 
     template <BOOST_PP_ENUM_PARAMS(N, typename T)>
+    BOOST_FUSION_GPU_ENABLED
     inline deque<BOOST_PP_ENUM(N, BOOST_FUSION_AS_FUSION_ELEMENT, _)>
     make_deque(BOOST_PP_ENUM_BINARY_PARAMS(N, T, const& _))
     {

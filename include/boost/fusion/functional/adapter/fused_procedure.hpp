@@ -9,6 +9,7 @@
 #if !defined(BOOST_FUSION_FUNCTIONAL_ADAPTER_FUSED_PROCEDURE_HPP_INCLUDED)
 #define BOOST_FUSION_FUNCTIONAL_ADAPTER_FUSED_PROCEDURE_HPP_INCLUDED
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/type_traits/add_reference.hpp>
 #include <boost/config.hpp>
 
@@ -41,6 +42,7 @@ namespace boost { namespace fusion
         { }
 
         template <class Seq> 
+        BOOST_FUSION_GPU_ENABLED
         inline void operator()(Seq const & s) const
         {
             fusion::invoke_procedure<
@@ -48,6 +50,7 @@ namespace boost { namespace fusion
         }
 
         template <class Seq> 
+        BOOST_FUSION_GPU_ENABLED
         inline void operator()(Seq const & s) 
         {
             fusion::invoke_procedure<
@@ -55,6 +58,7 @@ namespace boost { namespace fusion
         }
 
         template <class Seq> 
+        BOOST_FUSION_GPU_ENABLED
         inline void operator()(Seq & s) const
         {
             fusion::invoke_procedure<
@@ -62,6 +66,7 @@ namespace boost { namespace fusion
         }
 
         template <class Seq> 
+        BOOST_FUSION_GPU_ENABLED
         inline void operator()(Seq & s) 
         {
             return fusion::invoke_procedure<

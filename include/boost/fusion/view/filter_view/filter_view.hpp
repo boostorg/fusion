@@ -7,6 +7,7 @@
 #if !defined(FUSION_SEQUENCE_FILTER_VIEW_HPP)
 #define FUSION_SEQUENCE_FILTER_VIEW_HPP
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/support/detail/access.hpp>
 #include <boost/fusion/support/sequence_base.hpp>
 #include <boost/fusion/support/is_view.hpp>

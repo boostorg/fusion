@@ -141,7 +141,7 @@ namespace boost
                 return static_cast<Derived const *>(this)->fnc_transformed(arg);
             }
 
-            inline typename boost::result_of<
+            BOOST_FUSION_GPU_ENABLED inline typename boost::result_of<
                 function(arg_vector_t &) >::type 
             operator()(BOOST_PP_ENUM(N,M,arg_vector_t)) 
             {

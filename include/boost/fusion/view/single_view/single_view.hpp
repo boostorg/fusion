@@ -8,6 +8,7 @@
 #if !defined(BOOST_FUSION_SINGLE_VIEW_05052005_0335)
 #define BOOST_FUSION_SINGLE_VIEW_05052005_0335
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/support/detail/access.hpp>
 #include <boost/fusion/support/detail/as_fusion_element.hpp>
 #include <boost/fusion/support/sequence_base.hpp>
@@ -45,13 +46,14 @@ namespace boost { namespace fusion
         single_view()
             : val() {}
 
-        explicit single_view(typename detail::call_param<T>::type in_val)
+        BOOST_FUSION_GPU_ENABLED explicit single_view(typename detail::call_param<T>::type in_val)
             : val(in_val) {}
 
         value_type val;
     };
     
     template <typename T>
+    BOOST_FUSION_GPU_ENABLED
     inline single_view<typename detail::as_fusion_element<T>::type>
     make_single_view(T const& v)
     {

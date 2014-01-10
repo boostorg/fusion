@@ -7,6 +7,7 @@
 #if !defined(FUSION_FILTER_VIEW_ITERATOR_05062005_0849)
 #define FUSION_FILTER_VIEW_ITERATOR_05062005_0849
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/iterator/mpl/convert_iterator.hpp>
 #include <boost/fusion/adapted/mpl/mpl_iterator.hpp>
 #include <boost/fusion/iterator/value_of.hpp>

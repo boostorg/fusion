@@ -7,6 +7,7 @@
 #if !defined(FUSION_REVERSE_VIEW_07202005_0836)
 #define FUSION_REVERSE_VIEW_07202005_0836
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/support/detail/access.hpp>
 #include <boost/fusion/support/is_view.hpp>
 #include <boost/fusion/support/category_of.hpp>

@@ -7,6 +7,7 @@
 #if !defined(BOOST_FUSION_SEQUENCE_EMPTY_IMPL_HPP_INCLUDED)
 #define BOOST_FUSION_SEQUENCE_EMPTY_IMPL_HPP_INCLUDED
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 
 namespace boost { namespace fusion

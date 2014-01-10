@@ -7,6 +7,7 @@
 #if !defined(FUSION_SEQUENCE_VIEW_10022005_0620)
 #define FUSION_SEQUENCE_VIEW_10022005_0620
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/view/filter_view.hpp>
 #include <boost/fusion/view/iterator_range.hpp>
 #include <boost/fusion/view/joint_view.hpp>

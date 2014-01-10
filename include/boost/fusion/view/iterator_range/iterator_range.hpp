@@ -7,6 +7,7 @@
 #if !defined(FUSION_ITERATOR_RANGE_05062005_1224)
 #define FUSION_ITERATOR_RANGE_05062005_1224
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/support/detail/access.hpp>
 #include <boost/fusion/support/sequence_base.hpp>
 #include <boost/fusion/support/category_of.hpp>

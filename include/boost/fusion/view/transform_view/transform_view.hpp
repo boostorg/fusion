@@ -7,6 +7,7 @@
 #if !defined(FUSION_TRANSFORM_VIEW_07162005_1037)
 #define FUSION_TRANSFORM_VIEW_07162005_1037
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/fusion/support/detail/access.hpp>
 #include <boost/fusion/support/is_view.hpp>

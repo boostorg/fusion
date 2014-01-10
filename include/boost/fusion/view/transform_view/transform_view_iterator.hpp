@@ -7,6 +7,7 @@
 #if !defined(FUSION_TRANSFORM_VIEW_ITERATOR_07162005_1033)
 #define FUSION_TRANSFORM_VIEW_ITERATOR_07162005_1033
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/support/iterator_base.hpp>
 #include <boost/fusion/support/category_of.hpp>
 #include <boost/fusion/iterator/mpl/convert_iterator.hpp>

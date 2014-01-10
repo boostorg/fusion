@@ -9,6 +9,7 @@
 #if !defined(FUSION_IN_05052005_0121)
 #define FUSION_IN_05052005_0121
 
+#include <boost/fusion/support/config.hpp>
 #include <istream>
 #include <boost/fusion/sequence/io/detail/manip.hpp>
 
@@ -26,6 +27,7 @@ namespace boost { namespace fusion { namespace detail
     {
         // read a delimiter
         template <typename IS>
+        BOOST_FUSION_GPU_ENABLED
         static void
         read(IS& is, char const* delim, mpl::false_ = mpl::false_())
         {
@@ -34,6 +36,7 @@ namespace boost { namespace fusion { namespace detail
         }
 
         template <typename IS>
+        BOOST_FUSION_GPU_ENABLED
         static void
         read(IS&, char const*, mpl::true_)
         {
@@ -43,12 +46,14 @@ namespace boost { namespace fusion { namespace detail
     struct read_sequence_loop
     {
         template <typename IS, typename First, typename Last>
+        BOOST_FUSION_GPU_ENABLED
         static void
         call(IS&, First const&, Last const&, mpl::true_)
         {
         }
 
         template <typename IS, typename First, typename Last>
+        BOOST_FUSION_GPU_ENABLED
         static void
         call(IS& is, First const& first, Last const& last, mpl::false_)
         {
@@ -64,6 +69,7 @@ namespace boost { namespace fusion { namespace detail
         }
 
         template <typename IS, typename First, typename Last>
+        BOOST_FUSION_GPU_ENABLED
         static void
         call(IS& is, First const& first, Last const& last)
         {
@@ -73,6 +79,7 @@ namespace boost { namespace fusion { namespace detail
     };
 
     template <typename IS, typename Sequence>
+    BOOST_FUSION_GPU_ENABLED
     inline void
     read_sequence(IS& is, Sequence& seq)
     {

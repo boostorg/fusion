@@ -9,6 +9,7 @@
 #if !defined(BOOST_IN_05042005_0120)
 #define BOOST_IN_05042005_0120
 
+#include <boost/fusion/support/config.hpp>
 #include <istream>
 #include <boost/fusion/sequence/io/detail/in.hpp>
 #include <boost/fusion/support/is_sequence.hpp>
@@ -16,6 +17,7 @@
 namespace boost { namespace fusion
 {
     template <typename Sequence>
+    BOOST_FUSION_GPU_ENABLED
     inline std::istream&
     in(std::istream& is, Sequence& seq)
     {
@@ -26,6 +28,7 @@ namespace boost { namespace fusion
     namespace operators
     {
         template <typename Sequence>
+        BOOST_FUSION_GPU_ENABLED
         inline typename
             boost::enable_if<
                fusion::traits::is_sequence<Sequence>

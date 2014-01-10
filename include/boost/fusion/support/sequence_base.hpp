@@ -8,6 +8,7 @@
 #if !defined(FUSION_SEQUENCE_BASE_04182005_0737)
 #define FUSION_SEQUENCE_BASE_04182005_0737
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/mpl/begin_end_fwd.hpp>
 
 namespace boost { namespace fusion

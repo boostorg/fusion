@@ -9,6 +9,7 @@
 #if !defined(FUSION_MANIP_05052005_1200)
 #define FUSION_MANIP_05052005_1200
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/config.hpp>
 #include <string>
 #include <vector>
@@ -35,6 +36,7 @@ namespace boost { namespace fusion
     namespace detail
     {
         template <typename Tag>
+        BOOST_FUSION_GPU_ENABLED
         int get_xalloc_index(Tag* = 0)
         {
             // each Tag will have a unique index
@@ -47,6 +49,7 @@ namespace boost { namespace fusion
         {
             struct arena
             {
+                BOOST_FUSION_GPU_ENABLED
                 ~arena()
                 {
                     for (
@@ -61,6 +64,7 @@ namespace boost { namespace fusion
                 std::vector<T*> data;
             };
 
+            BOOST_FUSION_GPU_ENABLED
             static void attach(Stream& stream, T const& data)
             {
                 static arena ar; // our arena
@@ -68,6 +72,7 @@ namespace boost { namespace fusion
                 stream.pword(get_xalloc_index<Tag>()) = ar.data.back();
             }
 
+            BOOST_FUSION_GPU_ENABLED
             static T const* get(Stream& stream)
             {
                 return (T const*)stream.pword(get_xalloc_index<Tag>());
@@ -83,16 +88,19 @@ namespace boost { namespace fusion
 
             typedef stream_data<Stream, Tag, string_type> stream_data_t;
 
+            BOOST_FUSION_GPU_ENABLED
             string_ios_manip(Stream& str_)
                 : stream(str_)
             {}
 
+            BOOST_FUSION_GPU_ENABLED
             void
             set(string_type const& s)
             {
                 stream_data_t::attach(stream, s);
             }
 
+            BOOST_FUSION_GPU_ENABLED
             void
             print(char const* default_) const
             {
@@ -104,6 +112,7 @@ namespace boost { namespace fusion
                     stream << default_;
             }
 
+            BOOST_FUSION_GPU_ENABLED
             void
             read(char const* default_) const
             {
@@ -128,6 +137,7 @@ namespace boost { namespace fusion
         private:
 
             template <typename Char>
+            BOOST_FUSION_GPU_ENABLED
             void
             check_delim(Char c) const
             {
@@ -155,30 +165,35 @@ namespace boost { namespace fusion
 
 #define STD_TUPLE_DEFINE_MANIPULATOR_FUNCTIONS(name)                            \
     template <typename Char, typename Traits>                                   \
+    BOOST_FUSION_GPU_ENABLED                                                    \
     inline detail::name##_type<Char, Traits>                                    \
     name(const std::basic_string<Char, Traits>& s)                              \
     {                                                                           \
         return detail::name##_type<Char, Traits>(s);                            \
     }                                                                           \
                                                                                 \
+    BOOST_FUSION_GPU_ENABLED                                                    \
     inline detail::name##_type<char>                                            \
     name(char const* s)                                                         \
     {                                                                           \
         return detail::name##_type<char>(std::basic_string<char>(s));           \
     }                                                                           \
                                                                                 \
+    BOOST_FUSION_GPU_ENABLED                                                    \
     inline detail::name##_type<wchar_t>                                         \
     name(wchar_t const* s)                                                      \
     {                                                                           \
         return detail::name##_type<wchar_t>(std::basic_string<wchar_t>(s));     \
     }                                                                           \
                                                                                 \
+    BOOST_FUSION_GPU_ENABLED                                                    \
     inline detail::name##_type<char>                                            \
     name(char c)                                                                \
     {                                                                           \
         return detail::name##_type<char>(std::basic_string<char>(1, c));        \
     }                                                                           \
                                                                                 \
+    BOOST_FUSION_GPU_ENABLED                                                    \
     inline detail::name##_type<wchar_t>                                         \
     name(wchar_t c)                                                             \
     {                                                                           \
@@ -189,6 +204,7 @@ namespace boost { namespace fusion
 
 #define STD_TUPLE_DEFINE_MANIPULATOR_FUNCTIONS(name)                            \
     template <typename Char, typename Traits>                                   \
+    BOOST_FUSION_GPU_ENABLED                                                    \
     inline detail::name##_type<Char, Traits>                                    \
     name(const std::basic_string<Char, Traits>& s)                              \
     {                                                                           \
@@ -196,6 +212,7 @@ namespace boost { namespace fusion
     }                                                                           \
                                                                                 \
     template <typename Char>                                                    \
+    BOOST_FUSION_GPU_ENABLED                                                    \
     inline detail::name##_type<Char>                                            \
     name(Char s[])                                                              \
     {                                                                           \
@@ -203,6 +220,7 @@ namespace boost { namespace fusion
     }                                                                           \
                                                                                 \
     template <typename Char>                                                    \
+    BOOST_FUSION_GPU_ENABLED                                                    \
     inline detail::name##_type<Char>                                            \
     name(Char const s[])                                                        \
     {                                                                           \
@@ -210,6 +228,7 @@ namespace boost { namespace fusion
     }                                                                           \
                                                                                 \
     template <typename Char>                                                    \
+    BOOST_FUSION_GPU_ENABLED                                                    \
     inline detail::name##_type<Char>                                            \
     name(Char c)                                                                \
     {                                                                           \
@@ -228,10 +247,12 @@ namespace boost { namespace fusion
         {                                                                       \
             typedef std::basic_string<Char, Traits> string_type;                \
             string_type data;                                                   \
+            BOOST_FUSION_GPU_ENABLED                                            \
             name##_type(const string_type& d): data(d) {}                       \
         };                                                                      \
                                                                                 \
         template <typename Stream, typename Char, typename Traits>              \
+        BOOST_FUSION_GPU_ENABLED                                                \
         Stream& operator>>(Stream& s, const name##_type<Char,Traits>& m)        \
         {                                                                       \
             string_ios_manip<name##_tag, Stream>(s).set(m.data);                \
@@ -239,6 +260,7 @@ namespace boost { namespace fusion
         }                                                                       \
                                                                                 \
         template <typename Stream, typename Char, typename Traits>              \
+        BOOST_FUSION_GPU_ENABLED                                                \
         Stream& operator<<(Stream& s, const name##_type<Char,Traits>& m)        \
         {                                                                       \
             string_ios_manip<name##_tag, Stream>(s).set(m.data);                \

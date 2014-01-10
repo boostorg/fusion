@@ -7,6 +7,7 @@
 #if !defined(FUSION_REVERSE_VIEW_ITERATOR_07202005_0835)
 #define FUSION_REVERSE_VIEW_ITERATOR_07202005_0835
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/support/iterator_base.hpp>
 #include <boost/fusion/support/category_of.hpp>
 #include <boost/fusion/iterator/mpl/convert_iterator.hpp>

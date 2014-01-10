@@ -8,6 +8,7 @@
 #if !defined(FUSION_DEQUE_FORWARD_02092007_0749)
 #define FUSION_DEQUE_FORWARD_02092007_0749
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/config.hpp>
 
 #if (defined(BOOST_NO_CXX11_DECLTYPE)             \

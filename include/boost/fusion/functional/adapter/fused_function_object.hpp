@@ -9,6 +9,7 @@
 #if !defined(BOOST_FUSION_FUNCTIONAL_ADAPTER_FUSED_FUNCTION_OBJECT_HPP_INCLUDED)
 #define BOOST_FUSION_FUNCTIONAL_ADAPTER_FUSED_FUNCTION_OBJECT_HPP_INCLUDED
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/type_traits/add_reference.hpp>
 #include <boost/config.hpp>
 
@@ -41,6 +42,7 @@ namespace boost { namespace fusion
         { }
 
         template <class Seq> 
+        BOOST_FUSION_GPU_ENABLED
         inline typename result_of::invoke_function_object<func_const_fwd_t,
             Seq const>::type operator()(Seq const & s) const
         {
@@ -49,6 +51,7 @@ namespace boost { namespace fusion
         }
 
         template <class Seq> 
+        BOOST_FUSION_GPU_ENABLED
         inline typename result_of::invoke_function_object<func_fwd_t,
             Seq const>::type 
         operator()(Seq const & s) 
@@ -58,6 +61,7 @@ namespace boost { namespace fusion
         }
 
         template <class Seq> 
+        BOOST_FUSION_GPU_ENABLED
         inline typename result_of::invoke_function_object<func_const_fwd_t,
             Seq>::type
         operator()(Seq & s) const
@@ -67,6 +71,7 @@ namespace boost { namespace fusion
         }
 
         template <class Seq> 
+        BOOST_FUSION_GPU_ENABLED
         inline typename result_of::invoke_function_object<func_fwd_t,Seq>::type
         operator()(Seq & s) 
         {

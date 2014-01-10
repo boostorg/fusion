@@ -26,6 +26,7 @@
 
 #define M BOOST_PP_ITERATION()
 
+    BOOST_FUSION_GPU_ENABLED
 #if M == 1
     explicit
 #endif
@@ -39,6 +40,7 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) || \
     (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
     template <BOOST_PP_ENUM_PARAMS(M, typename U)>
+    BOOST_FUSION_GPU_ENABLED
 #if M == 1
     explicit
 #endif
