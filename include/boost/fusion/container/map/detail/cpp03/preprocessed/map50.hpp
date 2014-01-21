@@ -128,10 +128,14 @@ namespace boost { namespace fusion
     map(T0 const& _0 , T1 const& _1 , T2 const& _2 , T3 const& _3 , T4 const& _4 , T5 const& _5 , T6 const& _6 , T7 const& _7 , T8 const& _8 , T9 const& _9 , T10 const& _10 , T11 const& _11 , T12 const& _12 , T13 const& _13 , T14 const& _14 , T15 const& _15 , T16 const& _16 , T17 const& _17 , T18 const& _18 , T19 const& _19 , T20 const& _20 , T21 const& _21 , T22 const& _22 , T23 const& _23 , T24 const& _24 , T25 const& _25 , T26 const& _26 , T27 const& _27 , T28 const& _28 , T29 const& _29 , T30 const& _30 , T31 const& _31 , T32 const& _32 , T33 const& _33 , T34 const& _34 , T35 const& _35 , T36 const& _36 , T37 const& _37 , T38 const& _38 , T39 const& _39 , T40 const& _40 , T41 const& _41 , T42 const& _42 , T43 const& _43 , T44 const& _44 , T45 const& _45 , T46 const& _46 , T47 const& _47 , T48 const& _48 , T49 const& _49)
         : data(_0 , _1 , _2 , _3 , _4 , _5 , _6 , _7 , _8 , _9 , _10 , _11 , _12 , _13 , _14 , _15 , _16 , _17 , _18 , _19 , _20 , _21 , _22 , _23 , _24 , _25 , _26 , _27 , _28 , _29 , _30 , _31 , _32 , _33 , _34 , _35 , _36 , _37 , _38 , _39 , _40 , _41 , _42 , _43 , _44 , _45 , _46 , _47 , _48 , _49) {}
         template <typename T>
-        map&
-        operator=(T const& rhs)
+        map& operator=(T const& rhs)
         {
             data = rhs;
+            return *this;
+        }
+        map& operator=(map const& rhs)
+        {
+            data = rhs.data;
             return *this;
         }
         storage_type& get_data() { return data; }

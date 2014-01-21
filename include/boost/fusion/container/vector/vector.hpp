@@ -7,6 +7,9 @@
 #if !defined(FUSION_VECTOR_07072005_1244)
 #define FUSION_VECTOR_07072005_1244
 
+#include <boost/preprocessor/iterate.hpp>
+#include <boost/preprocessor/repetition/enum_params.hpp>
+#include <boost/preprocessor/repetition/enum_binary_params.hpp>
 #include <boost/fusion/container/vector/vector_fwd.hpp>
 #include <boost/fusion/container/vector/detail/vector_n_chooser.hpp>
 #include <boost/fusion/sequence/intrinsic/begin.hpp>
@@ -17,7 +20,7 @@
 #include <boost/type_traits/is_base_of.hpp>
 #include <boost/detail/workaround.hpp>
 
-#if !defined(__WAVE__)
+#define FUSION_HASH #
 
 #if BOOST_WORKAROUND(BOOST_MSVC, <= 1600)
 
@@ -46,8 +49,6 @@
 #define BOOST_FUSION_VECTOR_CTOR_HELPER()
 
 #endif
-
-#endif // !defined(__WAVE__)
 
 #if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
 #include <boost/fusion/container/vector/detail/preprocessed/vector.hpp>
@@ -106,11 +107,6 @@ namespace boost { namespace fusion
         vector(vector const& rhs)
             : vec(rhs.vec) {}
 
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        vector(vector&& rhs)
-            : vec(std::forward<vector_n>(rhs.vec)) {}
-#endif
-
         template <typename Sequence>
         vector(Sequence const& rhs)
             : vec(BOOST_FUSION_VECTOR_COPY_INIT()) {}
@@ -147,7 +143,13 @@ namespace boost { namespace fusion
             return *this;
         }
 
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
+FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#endif
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) || \
+    (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
+        vector(vector&& rhs)
+            : vec(std::forward<vector_n>(rhs.vec)) {}
         vector&
         operator=(vector&& rhs)
         {
@@ -162,6 +164,9 @@ namespace boost { namespace fusion
             vec = std::forward<T>(rhs);
             return *this;
         }
+#endif
+#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
+FUSION_HASH endif
 #endif
 
         template <int N>
@@ -217,4 +222,5 @@ namespace boost { namespace fusion
 
 #endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
 
+#undef FUSION_HASH
 #endif

@@ -28,7 +28,7 @@
 #include <boost/fusion/container/map/detail/cpp03/preprocessed/map.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/map" FUSION_MAX_MAP_SIZE_STR ".hpp")
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/map" FUSION_MAX_MAP_SIZE_STR ".hpp")
 #endif
 
 /*=============================================================================

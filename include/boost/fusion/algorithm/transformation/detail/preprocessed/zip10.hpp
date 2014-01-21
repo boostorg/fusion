@@ -18,7 +18,9 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template< typename T0 , typename T1 >
-        struct zip< T0 , T1 >
+        struct zip< T0 , T1
+                    , void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_
+        >
         {
             typedef mpl::vector< T0 , T1 > sequences;
             typedef typename mpl::transform<sequences, add_reference<mpl::_> >::type ref_params;
@@ -37,7 +39,9 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template< typename T0 , typename T1 , typename T2 >
-        struct zip< T0 , T1 , T2 >
+        struct zip< T0 , T1 , T2
+                    , void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_
+        >
         {
             typedef mpl::vector< T0 , T1 , T2 > sequences;
             typedef typename mpl::transform<sequences, add_reference<mpl::_> >::type ref_params;
@@ -56,7 +60,9 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template< typename T0 , typename T1 , typename T2 , typename T3 >
-        struct zip< T0 , T1 , T2 , T3 >
+        struct zip< T0 , T1 , T2 , T3
+                    , void_ , void_ , void_ , void_ , void_ , void_ , void_
+        >
         {
             typedef mpl::vector< T0 , T1 , T2 , T3 > sequences;
             typedef typename mpl::transform<sequences, add_reference<mpl::_> >::type ref_params;
@@ -75,7 +81,9 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template< typename T0 , typename T1 , typename T2 , typename T3 , typename T4 >
-        struct zip< T0 , T1 , T2 , T3 , T4 >
+        struct zip< T0 , T1 , T2 , T3 , T4
+                    , void_ , void_ , void_ , void_ , void_ , void_
+        >
         {
             typedef mpl::vector< T0 , T1 , T2 , T3 , T4 > sequences;
             typedef typename mpl::transform<sequences, add_reference<mpl::_> >::type ref_params;
@@ -94,7 +102,9 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template< typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 >
-        struct zip< T0 , T1 , T2 , T3 , T4 , T5 >
+        struct zip< T0 , T1 , T2 , T3 , T4 , T5
+                    , void_ , void_ , void_ , void_ , void_
+        >
         {
             typedef mpl::vector< T0 , T1 , T2 , T3 , T4 , T5 > sequences;
             typedef typename mpl::transform<sequences, add_reference<mpl::_> >::type ref_params;
@@ -113,7 +123,9 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template< typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 >
-        struct zip< T0 , T1 , T2 , T3 , T4 , T5 , T6 >
+        struct zip< T0 , T1 , T2 , T3 , T4 , T5 , T6
+                    , void_ , void_ , void_ , void_
+        >
         {
             typedef mpl::vector< T0 , T1 , T2 , T3 , T4 , T5 , T6 > sequences;
             typedef typename mpl::transform<sequences, add_reference<mpl::_> >::type ref_params;
@@ -132,7 +144,9 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template< typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 >
-        struct zip< T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 >
+        struct zip< T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7
+                    , void_ , void_ , void_
+        >
         {
             typedef mpl::vector< T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 > sequences;
             typedef typename mpl::transform<sequences, add_reference<mpl::_> >::type ref_params;
@@ -151,7 +165,9 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template< typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 >
-        struct zip< T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 >
+        struct zip< T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8
+                    , void_ , void_
+        >
         {
             typedef mpl::vector< T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 > sequences;
             typedef typename mpl::transform<sequences, add_reference<mpl::_> >::type ref_params;
@@ -170,7 +186,9 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template< typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 >
-        struct zip< T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 >
+        struct zip< T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9
+                    , void_
+        >
         {
             typedef mpl::vector< T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 > sequences;
             typedef typename mpl::transform<sequences, add_reference<mpl::_> >::type ref_params;

@@ -61,11 +61,12 @@ namespace boost { namespace fusion
     struct fusion_sequence_tag;
     struct random_access_traversal_tag;
 
+#define FUSION_HASH #
 // expand vector31 to vector40
 #define BOOST_PP_FILENAME_1 <boost/fusion/container/vector/detail/vector_n.hpp>
 #define BOOST_PP_ITERATION_LIMITS (31, 40)
 #include BOOST_PP_ITERATE()
-
+#undef FUSION_HASH
 }}
 
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)

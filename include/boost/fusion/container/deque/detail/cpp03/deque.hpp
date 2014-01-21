@@ -59,6 +59,8 @@
 #pragma wave option(preserve: 1)
 #endif
 
+#define FUSION_HASH #
+
 namespace boost { namespace fusion {
 
     struct deque_tag;
@@ -91,30 +93,10 @@ namespace boost { namespace fusion {
             : base(rhs)
             {}
 
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        template <typename T0_>
-        explicit deque(T0_&& t0
-          , typename enable_if<is_convertible<T0_, T0> >::type* /*dummy*/ = 0
-         )
-            : base(std::forward<T0_>(t0), detail::nil_keyed_element())
-            {}
-
-        explicit deque(deque&& rhs)
-            : base(std::forward<deque>(rhs))
-            {}
-#endif
-
         template<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, typename U)>
         deque(deque<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, U)> const& seq)
             : base(seq)
             {}
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        template<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, typename U)>
-        deque(deque<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, U)>&& seq)
-            : base(std::forward<deque<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, U)>>(seq))
-            {}
-#endif
 
         template<typename Sequence>
         deque(Sequence const& seq, typename disable_if<is_convertible<Sequence, T0> >::type* /*dummy*/ = 0)
@@ -137,7 +119,24 @@ namespace boost { namespace fusion {
             return *this;
         }
 
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
+FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#endif
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) || \
+    (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
+        template <typename T0_>
+        explicit deque(T0_&& t0
+          , typename enable_if<is_convertible<T0_, T0> >::type* /*dummy*/ = 0
+         )
+            : base(std::forward<T0_>(t0), detail::nil_keyed_element())
+            {}
+        explicit deque(deque&& rhs)
+            : base(std::forward<deque>(rhs))
+            {}
+        template<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, typename U)>
+        deque(deque<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, U)>&& seq)
+            : base(std::forward<deque<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, U)>>(seq))
+            {}
         template <typename T>
         deque&
         operator=(T&& rhs)
@@ -145,6 +144,9 @@ namespace boost { namespace fusion {
             base::operator=(std::forward<T>(rhs));
             return *this;
         }
+#endif
+#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
+FUSION_HASH endif
 #endif
 
     };
@@ -171,6 +173,8 @@ namespace boost { namespace fusion {
     };
 
 }}
+
+#undef FUSION_HASH
 
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
 #pragma wave option(output: null)
