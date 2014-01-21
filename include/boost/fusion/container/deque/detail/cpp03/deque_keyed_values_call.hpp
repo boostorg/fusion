@@ -18,6 +18,7 @@
 #include <boost/preprocessor/repetition/enum_shifted.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
 
+#define FUSION_HASH #
 #define FUSION_DEQUE_KEYED_VALUES_FORWARD(z, n, _)    \
    std::forward<BOOST_PP_CAT(T_, n)>(BOOST_PP_CAT(t, n))
 
@@ -27,6 +28,7 @@
 #include BOOST_PP_ITERATE()
 
 #undef FUSION_DEQUE_KEYED_VALUES_FORWARD
+#undef FUSION_HASH
 #endif
 #else
 
@@ -43,7 +45,11 @@
                         >::construct(BOOST_PP_ENUM_SHIFTED_PARAMS(N, t)));
         }
 
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
+FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#endif
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) || \
+    (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
         template <BOOST_PP_ENUM_PARAMS(N, typename T_)>
         static type forward_(BOOST_PP_ENUM_BINARY_PARAMS(N, T_, && t))
         {
@@ -55,6 +61,9 @@
         #endif
                         >::forward_(BOOST_PP_ENUM_SHIFTED(N, FUSION_DEQUE_KEYED_VALUES_FORWARD, _)));
         }
+#endif
+#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
+FUSION_HASH endif
 #endif
 
 #undef N

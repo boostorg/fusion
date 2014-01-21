@@ -8,11 +8,24 @@
 ==============================================================================*/
 namespace boost { namespace fusion
 {
+    struct vector_tag;
+    struct fusion_sequence_tag;
+    struct random_access_traversal_tag;
     template <typename T0>
     struct vector_data1
     {
         vector_data1()
             : m0() {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0>
+        vector_data1(U0 && _0
+          , typename boost::enable_if<is_convertible<U0, T0> >::type* = 0
+        )
+            : m0(std::forward<U0>(_0)) {}
+        vector_data1(
+            vector_data1&& other)
+            : m0(std::forward<T0>(other.m0)) {}
+# endif
         vector_data1(
             typename detail::call_param<T0 >::type _0)
             : m0(_0) {}
@@ -63,6 +76,30 @@ namespace boost { namespace fusion
         vector1(
             typename detail::call_param<T0 >::type _0)
             : base_type(_0) {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0>
+        explicit
+        vector1(U0&& _0
+          , typename boost::enable_if<is_convertible<U0, T0> >::type* = 0
+          )
+         : base_type(std::forward<U0>(_0)) {}
+        vector1(vector1&& rhs)
+            : base_type(std::forward<base_type>(rhs)) {}
+        vector1(vector1 const& rhs)
+            : base_type(rhs) {}
+        vector1&
+        operator=(vector1 const& vec)
+        {
+            base_type::operator=(vec);
+            return *this;
+        }
+        vector1&
+        operator=(vector1&& vec)
+        {
+            this->m0 = std::forward< T0>(vec.m0);
+            return *this;
+        }
+# endif
         template <typename U0>
         vector1(
             vector1<U0> const& vec)
@@ -115,6 +152,16 @@ namespace boost { namespace fusion
     {
         vector_data2()
             : m0() , m1() {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1>
+        vector_data2(U0 && _0 , U1 && _1
+          , typename boost::enable_if<is_convertible<U0, T0> >::type* = 0
+        )
+            : m0(std::forward<U0>(_0)) , m1(std::forward<U1>(_1)) {}
+        vector_data2(
+            vector_data2&& other)
+            : m0(std::forward<T0>(other.m0)) , m1(std::forward<T1>(other.m1)) {}
+# endif
         vector_data2(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1)
             : m0(_0) , m1(_1) {}
@@ -164,6 +211,27 @@ namespace boost { namespace fusion
         vector2(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1)
             : base_type(_0 , _1) {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1>
+        vector2(U0 && _0 , U1 && _1)
+            : base_type(std::forward<U0>(_0) , std::forward<U1>(_1)) {}
+        vector2(vector2&& rhs)
+            : base_type(std::forward<base_type>(rhs)) {}
+        vector2(vector2 const& rhs)
+            : base_type(rhs) {}
+        vector2&
+        operator=(vector2 const& vec)
+        {
+            base_type::operator=(vec);
+            return *this;
+        }
+        vector2&
+        operator=(vector2&& vec)
+        {
+            this->m0 = std::forward< T0>(vec.m0); this->m1 = std::forward< T1>(vec.m1);
+            return *this;
+        }
+# endif
         template <typename U0 , typename U1>
         vector2(
             vector2<U0 , U1> const& vec)
@@ -214,6 +282,16 @@ namespace boost { namespace fusion
     {
         vector_data3()
             : m0() , m1() , m2() {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2>
+        vector_data3(U0 && _0 , U1 && _1 , U2 && _2
+          , typename boost::enable_if<is_convertible<U0, T0> >::type* = 0
+        )
+            : m0(std::forward<U0>(_0)) , m1(std::forward<U1>(_1)) , m2(std::forward<U2>(_2)) {}
+        vector_data3(
+            vector_data3&& other)
+            : m0(std::forward<T0>(other.m0)) , m1(std::forward<T1>(other.m1)) , m2(std::forward<T2>(other.m2)) {}
+# endif
         vector_data3(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2)
             : m0(_0) , m1(_1) , m2(_2) {}
@@ -263,6 +341,27 @@ namespace boost { namespace fusion
         vector3(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2)
             : base_type(_0 , _1 , _2) {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2>
+        vector3(U0 && _0 , U1 && _1 , U2 && _2)
+            : base_type(std::forward<U0>(_0) , std::forward<U1>(_1) , std::forward<U2>(_2)) {}
+        vector3(vector3&& rhs)
+            : base_type(std::forward<base_type>(rhs)) {}
+        vector3(vector3 const& rhs)
+            : base_type(rhs) {}
+        vector3&
+        operator=(vector3 const& vec)
+        {
+            base_type::operator=(vec);
+            return *this;
+        }
+        vector3&
+        operator=(vector3&& vec)
+        {
+            this->m0 = std::forward< T0>(vec.m0); this->m1 = std::forward< T1>(vec.m1); this->m2 = std::forward< T2>(vec.m2);
+            return *this;
+        }
+# endif
         template <typename U0 , typename U1 , typename U2>
         vector3(
             vector3<U0 , U1 , U2> const& vec)
@@ -313,6 +412,16 @@ namespace boost { namespace fusion
     {
         vector_data4()
             : m0() , m1() , m2() , m3() {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2 , typename U3>
+        vector_data4(U0 && _0 , U1 && _1 , U2 && _2 , U3 && _3
+          , typename boost::enable_if<is_convertible<U0, T0> >::type* = 0
+        )
+            : m0(std::forward<U0>(_0)) , m1(std::forward<U1>(_1)) , m2(std::forward<U2>(_2)) , m3(std::forward<U3>(_3)) {}
+        vector_data4(
+            vector_data4&& other)
+            : m0(std::forward<T0>(other.m0)) , m1(std::forward<T1>(other.m1)) , m2(std::forward<T2>(other.m2)) , m3(std::forward<T3>(other.m3)) {}
+# endif
         vector_data4(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3)
             : m0(_0) , m1(_1) , m2(_2) , m3(_3) {}
@@ -362,6 +471,27 @@ namespace boost { namespace fusion
         vector4(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3)
             : base_type(_0 , _1 , _2 , _3) {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2 , typename U3>
+        vector4(U0 && _0 , U1 && _1 , U2 && _2 , U3 && _3)
+            : base_type(std::forward<U0>(_0) , std::forward<U1>(_1) , std::forward<U2>(_2) , std::forward<U3>(_3)) {}
+        vector4(vector4&& rhs)
+            : base_type(std::forward<base_type>(rhs)) {}
+        vector4(vector4 const& rhs)
+            : base_type(rhs) {}
+        vector4&
+        operator=(vector4 const& vec)
+        {
+            base_type::operator=(vec);
+            return *this;
+        }
+        vector4&
+        operator=(vector4&& vec)
+        {
+            this->m0 = std::forward< T0>(vec.m0); this->m1 = std::forward< T1>(vec.m1); this->m2 = std::forward< T2>(vec.m2); this->m3 = std::forward< T3>(vec.m3);
+            return *this;
+        }
+# endif
         template <typename U0 , typename U1 , typename U2 , typename U3>
         vector4(
             vector4<U0 , U1 , U2 , U3> const& vec)
@@ -412,6 +542,16 @@ namespace boost { namespace fusion
     {
         vector_data5()
             : m0() , m1() , m2() , m3() , m4() {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4>
+        vector_data5(U0 && _0 , U1 && _1 , U2 && _2 , U3 && _3 , U4 && _4
+          , typename boost::enable_if<is_convertible<U0, T0> >::type* = 0
+        )
+            : m0(std::forward<U0>(_0)) , m1(std::forward<U1>(_1)) , m2(std::forward<U2>(_2)) , m3(std::forward<U3>(_3)) , m4(std::forward<U4>(_4)) {}
+        vector_data5(
+            vector_data5&& other)
+            : m0(std::forward<T0>(other.m0)) , m1(std::forward<T1>(other.m1)) , m2(std::forward<T2>(other.m2)) , m3(std::forward<T3>(other.m3)) , m4(std::forward<T4>(other.m4)) {}
+# endif
         vector_data5(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4)
             : m0(_0) , m1(_1) , m2(_2) , m3(_3) , m4(_4) {}
@@ -461,6 +601,27 @@ namespace boost { namespace fusion
         vector5(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4)
             : base_type(_0 , _1 , _2 , _3 , _4) {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4>
+        vector5(U0 && _0 , U1 && _1 , U2 && _2 , U3 && _3 , U4 && _4)
+            : base_type(std::forward<U0>(_0) , std::forward<U1>(_1) , std::forward<U2>(_2) , std::forward<U3>(_3) , std::forward<U4>(_4)) {}
+        vector5(vector5&& rhs)
+            : base_type(std::forward<base_type>(rhs)) {}
+        vector5(vector5 const& rhs)
+            : base_type(rhs) {}
+        vector5&
+        operator=(vector5 const& vec)
+        {
+            base_type::operator=(vec);
+            return *this;
+        }
+        vector5&
+        operator=(vector5&& vec)
+        {
+            this->m0 = std::forward< T0>(vec.m0); this->m1 = std::forward< T1>(vec.m1); this->m2 = std::forward< T2>(vec.m2); this->m3 = std::forward< T3>(vec.m3); this->m4 = std::forward< T4>(vec.m4);
+            return *this;
+        }
+# endif
         template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4>
         vector5(
             vector5<U0 , U1 , U2 , U3 , U4> const& vec)
@@ -511,6 +672,16 @@ namespace boost { namespace fusion
     {
         vector_data6()
             : m0() , m1() , m2() , m3() , m4() , m5() {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5>
+        vector_data6(U0 && _0 , U1 && _1 , U2 && _2 , U3 && _3 , U4 && _4 , U5 && _5
+          , typename boost::enable_if<is_convertible<U0, T0> >::type* = 0
+        )
+            : m0(std::forward<U0>(_0)) , m1(std::forward<U1>(_1)) , m2(std::forward<U2>(_2)) , m3(std::forward<U3>(_3)) , m4(std::forward<U4>(_4)) , m5(std::forward<U5>(_5)) {}
+        vector_data6(
+            vector_data6&& other)
+            : m0(std::forward<T0>(other.m0)) , m1(std::forward<T1>(other.m1)) , m2(std::forward<T2>(other.m2)) , m3(std::forward<T3>(other.m3)) , m4(std::forward<T4>(other.m4)) , m5(std::forward<T5>(other.m5)) {}
+# endif
         vector_data6(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5)
             : m0(_0) , m1(_1) , m2(_2) , m3(_3) , m4(_4) , m5(_5) {}
@@ -560,6 +731,27 @@ namespace boost { namespace fusion
         vector6(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5)
             : base_type(_0 , _1 , _2 , _3 , _4 , _5) {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5>
+        vector6(U0 && _0 , U1 && _1 , U2 && _2 , U3 && _3 , U4 && _4 , U5 && _5)
+            : base_type(std::forward<U0>(_0) , std::forward<U1>(_1) , std::forward<U2>(_2) , std::forward<U3>(_3) , std::forward<U4>(_4) , std::forward<U5>(_5)) {}
+        vector6(vector6&& rhs)
+            : base_type(std::forward<base_type>(rhs)) {}
+        vector6(vector6 const& rhs)
+            : base_type(rhs) {}
+        vector6&
+        operator=(vector6 const& vec)
+        {
+            base_type::operator=(vec);
+            return *this;
+        }
+        vector6&
+        operator=(vector6&& vec)
+        {
+            this->m0 = std::forward< T0>(vec.m0); this->m1 = std::forward< T1>(vec.m1); this->m2 = std::forward< T2>(vec.m2); this->m3 = std::forward< T3>(vec.m3); this->m4 = std::forward< T4>(vec.m4); this->m5 = std::forward< T5>(vec.m5);
+            return *this;
+        }
+# endif
         template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5>
         vector6(
             vector6<U0 , U1 , U2 , U3 , U4 , U5> const& vec)
@@ -610,6 +802,16 @@ namespace boost { namespace fusion
     {
         vector_data7()
             : m0() , m1() , m2() , m3() , m4() , m5() , m6() {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6>
+        vector_data7(U0 && _0 , U1 && _1 , U2 && _2 , U3 && _3 , U4 && _4 , U5 && _5 , U6 && _6
+          , typename boost::enable_if<is_convertible<U0, T0> >::type* = 0
+        )
+            : m0(std::forward<U0>(_0)) , m1(std::forward<U1>(_1)) , m2(std::forward<U2>(_2)) , m3(std::forward<U3>(_3)) , m4(std::forward<U4>(_4)) , m5(std::forward<U5>(_5)) , m6(std::forward<U6>(_6)) {}
+        vector_data7(
+            vector_data7&& other)
+            : m0(std::forward<T0>(other.m0)) , m1(std::forward<T1>(other.m1)) , m2(std::forward<T2>(other.m2)) , m3(std::forward<T3>(other.m3)) , m4(std::forward<T4>(other.m4)) , m5(std::forward<T5>(other.m5)) , m6(std::forward<T6>(other.m6)) {}
+# endif
         vector_data7(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5 , typename detail::call_param<T6 >::type _6)
             : m0(_0) , m1(_1) , m2(_2) , m3(_3) , m4(_4) , m5(_5) , m6(_6) {}
@@ -659,6 +861,27 @@ namespace boost { namespace fusion
         vector7(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5 , typename detail::call_param<T6 >::type _6)
             : base_type(_0 , _1 , _2 , _3 , _4 , _5 , _6) {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6>
+        vector7(U0 && _0 , U1 && _1 , U2 && _2 , U3 && _3 , U4 && _4 , U5 && _5 , U6 && _6)
+            : base_type(std::forward<U0>(_0) , std::forward<U1>(_1) , std::forward<U2>(_2) , std::forward<U3>(_3) , std::forward<U4>(_4) , std::forward<U5>(_5) , std::forward<U6>(_6)) {}
+        vector7(vector7&& rhs)
+            : base_type(std::forward<base_type>(rhs)) {}
+        vector7(vector7 const& rhs)
+            : base_type(rhs) {}
+        vector7&
+        operator=(vector7 const& vec)
+        {
+            base_type::operator=(vec);
+            return *this;
+        }
+        vector7&
+        operator=(vector7&& vec)
+        {
+            this->m0 = std::forward< T0>(vec.m0); this->m1 = std::forward< T1>(vec.m1); this->m2 = std::forward< T2>(vec.m2); this->m3 = std::forward< T3>(vec.m3); this->m4 = std::forward< T4>(vec.m4); this->m5 = std::forward< T5>(vec.m5); this->m6 = std::forward< T6>(vec.m6);
+            return *this;
+        }
+# endif
         template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6>
         vector7(
             vector7<U0 , U1 , U2 , U3 , U4 , U5 , U6> const& vec)
@@ -709,6 +932,16 @@ namespace boost { namespace fusion
     {
         vector_data8()
             : m0() , m1() , m2() , m3() , m4() , m5() , m6() , m7() {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7>
+        vector_data8(U0 && _0 , U1 && _1 , U2 && _2 , U3 && _3 , U4 && _4 , U5 && _5 , U6 && _6 , U7 && _7
+          , typename boost::enable_if<is_convertible<U0, T0> >::type* = 0
+        )
+            : m0(std::forward<U0>(_0)) , m1(std::forward<U1>(_1)) , m2(std::forward<U2>(_2)) , m3(std::forward<U3>(_3)) , m4(std::forward<U4>(_4)) , m5(std::forward<U5>(_5)) , m6(std::forward<U6>(_6)) , m7(std::forward<U7>(_7)) {}
+        vector_data8(
+            vector_data8&& other)
+            : m0(std::forward<T0>(other.m0)) , m1(std::forward<T1>(other.m1)) , m2(std::forward<T2>(other.m2)) , m3(std::forward<T3>(other.m3)) , m4(std::forward<T4>(other.m4)) , m5(std::forward<T5>(other.m5)) , m6(std::forward<T6>(other.m6)) , m7(std::forward<T7>(other.m7)) {}
+# endif
         vector_data8(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5 , typename detail::call_param<T6 >::type _6 , typename detail::call_param<T7 >::type _7)
             : m0(_0) , m1(_1) , m2(_2) , m3(_3) , m4(_4) , m5(_5) , m6(_6) , m7(_7) {}
@@ -758,6 +991,27 @@ namespace boost { namespace fusion
         vector8(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5 , typename detail::call_param<T6 >::type _6 , typename detail::call_param<T7 >::type _7)
             : base_type(_0 , _1 , _2 , _3 , _4 , _5 , _6 , _7) {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7>
+        vector8(U0 && _0 , U1 && _1 , U2 && _2 , U3 && _3 , U4 && _4 , U5 && _5 , U6 && _6 , U7 && _7)
+            : base_type(std::forward<U0>(_0) , std::forward<U1>(_1) , std::forward<U2>(_2) , std::forward<U3>(_3) , std::forward<U4>(_4) , std::forward<U5>(_5) , std::forward<U6>(_6) , std::forward<U7>(_7)) {}
+        vector8(vector8&& rhs)
+            : base_type(std::forward<base_type>(rhs)) {}
+        vector8(vector8 const& rhs)
+            : base_type(rhs) {}
+        vector8&
+        operator=(vector8 const& vec)
+        {
+            base_type::operator=(vec);
+            return *this;
+        }
+        vector8&
+        operator=(vector8&& vec)
+        {
+            this->m0 = std::forward< T0>(vec.m0); this->m1 = std::forward< T1>(vec.m1); this->m2 = std::forward< T2>(vec.m2); this->m3 = std::forward< T3>(vec.m3); this->m4 = std::forward< T4>(vec.m4); this->m5 = std::forward< T5>(vec.m5); this->m6 = std::forward< T6>(vec.m6); this->m7 = std::forward< T7>(vec.m7);
+            return *this;
+        }
+# endif
         template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7>
         vector8(
             vector8<U0 , U1 , U2 , U3 , U4 , U5 , U6 , U7> const& vec)
@@ -808,6 +1062,16 @@ namespace boost { namespace fusion
     {
         vector_data9()
             : m0() , m1() , m2() , m3() , m4() , m5() , m6() , m7() , m8() {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7 , typename U8>
+        vector_data9(U0 && _0 , U1 && _1 , U2 && _2 , U3 && _3 , U4 && _4 , U5 && _5 , U6 && _6 , U7 && _7 , U8 && _8
+          , typename boost::enable_if<is_convertible<U0, T0> >::type* = 0
+        )
+            : m0(std::forward<U0>(_0)) , m1(std::forward<U1>(_1)) , m2(std::forward<U2>(_2)) , m3(std::forward<U3>(_3)) , m4(std::forward<U4>(_4)) , m5(std::forward<U5>(_5)) , m6(std::forward<U6>(_6)) , m7(std::forward<U7>(_7)) , m8(std::forward<U8>(_8)) {}
+        vector_data9(
+            vector_data9&& other)
+            : m0(std::forward<T0>(other.m0)) , m1(std::forward<T1>(other.m1)) , m2(std::forward<T2>(other.m2)) , m3(std::forward<T3>(other.m3)) , m4(std::forward<T4>(other.m4)) , m5(std::forward<T5>(other.m5)) , m6(std::forward<T6>(other.m6)) , m7(std::forward<T7>(other.m7)) , m8(std::forward<T8>(other.m8)) {}
+# endif
         vector_data9(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5 , typename detail::call_param<T6 >::type _6 , typename detail::call_param<T7 >::type _7 , typename detail::call_param<T8 >::type _8)
             : m0(_0) , m1(_1) , m2(_2) , m3(_3) , m4(_4) , m5(_5) , m6(_6) , m7(_7) , m8(_8) {}
@@ -857,6 +1121,27 @@ namespace boost { namespace fusion
         vector9(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5 , typename detail::call_param<T6 >::type _6 , typename detail::call_param<T7 >::type _7 , typename detail::call_param<T8 >::type _8)
             : base_type(_0 , _1 , _2 , _3 , _4 , _5 , _6 , _7 , _8) {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7 , typename U8>
+        vector9(U0 && _0 , U1 && _1 , U2 && _2 , U3 && _3 , U4 && _4 , U5 && _5 , U6 && _6 , U7 && _7 , U8 && _8)
+            : base_type(std::forward<U0>(_0) , std::forward<U1>(_1) , std::forward<U2>(_2) , std::forward<U3>(_3) , std::forward<U4>(_4) , std::forward<U5>(_5) , std::forward<U6>(_6) , std::forward<U7>(_7) , std::forward<U8>(_8)) {}
+        vector9(vector9&& rhs)
+            : base_type(std::forward<base_type>(rhs)) {}
+        vector9(vector9 const& rhs)
+            : base_type(rhs) {}
+        vector9&
+        operator=(vector9 const& vec)
+        {
+            base_type::operator=(vec);
+            return *this;
+        }
+        vector9&
+        operator=(vector9&& vec)
+        {
+            this->m0 = std::forward< T0>(vec.m0); this->m1 = std::forward< T1>(vec.m1); this->m2 = std::forward< T2>(vec.m2); this->m3 = std::forward< T3>(vec.m3); this->m4 = std::forward< T4>(vec.m4); this->m5 = std::forward< T5>(vec.m5); this->m6 = std::forward< T6>(vec.m6); this->m7 = std::forward< T7>(vec.m7); this->m8 = std::forward< T8>(vec.m8);
+            return *this;
+        }
+# endif
         template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7 , typename U8>
         vector9(
             vector9<U0 , U1 , U2 , U3 , U4 , U5 , U6 , U7 , U8> const& vec)
@@ -907,6 +1192,16 @@ namespace boost { namespace fusion
     {
         vector_data10()
             : m0() , m1() , m2() , m3() , m4() , m5() , m6() , m7() , m8() , m9() {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7 , typename U8 , typename U9>
+        vector_data10(U0 && _0 , U1 && _1 , U2 && _2 , U3 && _3 , U4 && _4 , U5 && _5 , U6 && _6 , U7 && _7 , U8 && _8 , U9 && _9
+          , typename boost::enable_if<is_convertible<U0, T0> >::type* = 0
+        )
+            : m0(std::forward<U0>(_0)) , m1(std::forward<U1>(_1)) , m2(std::forward<U2>(_2)) , m3(std::forward<U3>(_3)) , m4(std::forward<U4>(_4)) , m5(std::forward<U5>(_5)) , m6(std::forward<U6>(_6)) , m7(std::forward<U7>(_7)) , m8(std::forward<U8>(_8)) , m9(std::forward<U9>(_9)) {}
+        vector_data10(
+            vector_data10&& other)
+            : m0(std::forward<T0>(other.m0)) , m1(std::forward<T1>(other.m1)) , m2(std::forward<T2>(other.m2)) , m3(std::forward<T3>(other.m3)) , m4(std::forward<T4>(other.m4)) , m5(std::forward<T5>(other.m5)) , m6(std::forward<T6>(other.m6)) , m7(std::forward<T7>(other.m7)) , m8(std::forward<T8>(other.m8)) , m9(std::forward<T9>(other.m9)) {}
+# endif
         vector_data10(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5 , typename detail::call_param<T6 >::type _6 , typename detail::call_param<T7 >::type _7 , typename detail::call_param<T8 >::type _8 , typename detail::call_param<T9 >::type _9)
             : m0(_0) , m1(_1) , m2(_2) , m3(_3) , m4(_4) , m5(_5) , m6(_6) , m7(_7) , m8(_8) , m9(_9) {}
@@ -956,6 +1251,27 @@ namespace boost { namespace fusion
         vector10(
             typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5 , typename detail::call_param<T6 >::type _6 , typename detail::call_param<T7 >::type _7 , typename detail::call_param<T8 >::type _8 , typename detail::call_param<T9 >::type _9)
             : base_type(_0 , _1 , _2 , _3 , _4 , _5 , _6 , _7 , _8 , _9) {}
+# if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7 , typename U8 , typename U9>
+        vector10(U0 && _0 , U1 && _1 , U2 && _2 , U3 && _3 , U4 && _4 , U5 && _5 , U6 && _6 , U7 && _7 , U8 && _8 , U9 && _9)
+            : base_type(std::forward<U0>(_0) , std::forward<U1>(_1) , std::forward<U2>(_2) , std::forward<U3>(_3) , std::forward<U4>(_4) , std::forward<U5>(_5) , std::forward<U6>(_6) , std::forward<U7>(_7) , std::forward<U8>(_8) , std::forward<U9>(_9)) {}
+        vector10(vector10&& rhs)
+            : base_type(std::forward<base_type>(rhs)) {}
+        vector10(vector10 const& rhs)
+            : base_type(rhs) {}
+        vector10&
+        operator=(vector10 const& vec)
+        {
+            base_type::operator=(vec);
+            return *this;
+        }
+        vector10&
+        operator=(vector10&& vec)
+        {
+            this->m0 = std::forward< T0>(vec.m0); this->m1 = std::forward< T1>(vec.m1); this->m2 = std::forward< T2>(vec.m2); this->m3 = std::forward< T3>(vec.m3); this->m4 = std::forward< T4>(vec.m4); this->m5 = std::forward< T5>(vec.m5); this->m6 = std::forward< T6>(vec.m6); this->m7 = std::forward< T7>(vec.m7); this->m8 = std::forward< T8>(vec.m8); this->m9 = std::forward< T9>(vec.m9);
+            return *this;
+        }
+# endif
         template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7 , typename U8 , typename U9>
         vector10(
             vector10<U0 , U1 , U2 , U3 , U4 , U5 , U6 , U7 , U8 , U9> const& vec)

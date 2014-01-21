@@ -48,10 +48,14 @@ namespace boost { namespace fusion
     map(T0 const& _0 , T1 const& _1 , T2 const& _2 , T3 const& _3 , T4 const& _4 , T5 const& _5 , T6 const& _6 , T7 const& _7 , T8 const& _8 , T9 const& _9)
         : data(_0 , _1 , _2 , _3 , _4 , _5 , _6 , _7 , _8 , _9) {}
         template <typename T>
-        map&
-        operator=(T const& rhs)
+        map& operator=(T const& rhs)
         {
             data = rhs;
+            return *this;
+        }
+        map& operator=(map const& rhs)
+        {
+            data = rhs.data;
             return *this;
         }
         storage_type& get_data() { return data; }

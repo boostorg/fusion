@@ -9,17 +9,25 @@
 
 #include <boost/config.hpp>
 
-///////////////////////////////////////////////////////////////////////////////
-// With no decltype and variadics, we will use the C++03 version
-///////////////////////////////////////////////////////////////////////////////
 #if (defined(BOOST_NO_CXX11_DECLTYPE)             \
   || defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)   \
-  || defined(BOOST_NO_CXX11_RVALUE_REFERENCES))
-# include <boost/fusion/container/map/detail/cpp03/map_fwd.hpp>
+  || defined(BOOST_NO_CXX11_RVALUE_REFERENCES))   \
+  || (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
+# if defined(BOOST_FUSION_HAS_VARIADIC_MAP)
+#   undef BOOST_FUSION_HAS_VARIADIC_MAP
+# endif
 #else
 # if !defined(BOOST_FUSION_HAS_VARIADIC_MAP)
 #   define BOOST_FUSION_HAS_VARIADIC_MAP
 # endif
+#endif
+
+///////////////////////////////////////////////////////////////////////////////
+// With no decltype and variadics, we will use the C++03 version
+///////////////////////////////////////////////////////////////////////////////
+#if !defined(BOOST_FUSION_HAS_VARIADIC_MAP)
+# include <boost/fusion/container/map/detail/cpp03/map_fwd.hpp>
+#else
 
 #include <boost/fusion/container/map/detail/map_impl.hpp>
 

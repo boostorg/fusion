@@ -20,7 +20,7 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template <typename T0>
-        struct deque_tie<T0>
+        struct deque_tie< T0 , void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_ >
         {
             typedef deque<T0&> type;
         };
@@ -35,7 +35,7 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template <typename T0 , typename T1>
-        struct deque_tie<T0 , T1>
+        struct deque_tie< T0 , T1 , void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_ >
         {
             typedef deque<T0& , T1&> type;
         };
@@ -50,7 +50,7 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template <typename T0 , typename T1 , typename T2>
-        struct deque_tie<T0 , T1 , T2>
+        struct deque_tie< T0 , T1 , T2 , void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_ >
         {
             typedef deque<T0& , T1& , T2&> type;
         };
@@ -65,7 +65,7 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template <typename T0 , typename T1 , typename T2 , typename T3>
-        struct deque_tie<T0 , T1 , T2 , T3>
+        struct deque_tie< T0 , T1 , T2 , T3 , void_ , void_ , void_ , void_ , void_ , void_ , void_ >
         {
             typedef deque<T0& , T1& , T2& , T3&> type;
         };
@@ -80,7 +80,7 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4>
-        struct deque_tie<T0 , T1 , T2 , T3 , T4>
+        struct deque_tie< T0 , T1 , T2 , T3 , T4 , void_ , void_ , void_ , void_ , void_ , void_ >
         {
             typedef deque<T0& , T1& , T2& , T3& , T4&> type;
         };
@@ -95,7 +95,7 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5>
-        struct deque_tie<T0 , T1 , T2 , T3 , T4 , T5>
+        struct deque_tie< T0 , T1 , T2 , T3 , T4 , T5 , void_ , void_ , void_ , void_ , void_ >
         {
             typedef deque<T0& , T1& , T2& , T3& , T4& , T5&> type;
         };
@@ -110,7 +110,7 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6>
-        struct deque_tie<T0 , T1 , T2 , T3 , T4 , T5 , T6>
+        struct deque_tie< T0 , T1 , T2 , T3 , T4 , T5 , T6 , void_ , void_ , void_ , void_ >
         {
             typedef deque<T0& , T1& , T2& , T3& , T4& , T5& , T6&> type;
         };
@@ -125,7 +125,7 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7>
-        struct deque_tie<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7>
+        struct deque_tie< T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , void_ , void_ , void_ >
         {
             typedef deque<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7&> type;
         };
@@ -140,7 +140,7 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8>
-        struct deque_tie<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8>
+        struct deque_tie< T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , void_ , void_ >
         {
             typedef deque<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8&> type;
         };
@@ -155,7 +155,7 @@ namespace boost { namespace fusion
     namespace result_of
     {
         template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9>
-        struct deque_tie<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9>
+        struct deque_tie< T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , void_ >
         {
             typedef deque<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8& , T9&> type;
         };

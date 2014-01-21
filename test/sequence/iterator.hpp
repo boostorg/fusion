@@ -22,6 +22,7 @@
 
 void test()
 {
+    using boost::fusion::next;
     using namespace boost::fusion;
     using namespace boost;
 
