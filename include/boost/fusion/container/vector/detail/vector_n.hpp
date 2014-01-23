@@ -164,7 +164,7 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
             : base_type(std::forward<base_type>(rhs)) {}
 
         BOOST_PP_CAT(vector, N)(BOOST_PP_CAT(vector, N) const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
 
         BOOST_PP_CAT(vector, N)&
         operator=(BOOST_PP_CAT(vector, N) const& vec)

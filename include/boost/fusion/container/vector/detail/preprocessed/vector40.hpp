@@ -82,7 +82,7 @@ namespace boost { namespace fusion
         vector31(vector31&& rhs)
             : base_type(std::forward<base_type>(rhs)) {}
         vector31(vector31 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector31&
         operator=(vector31 const& vec)
         {
@@ -212,7 +212,7 @@ namespace boost { namespace fusion
         vector32(vector32&& rhs)
             : base_type(std::forward<base_type>(rhs)) {}
         vector32(vector32 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector32&
         operator=(vector32 const& vec)
         {
@@ -342,7 +342,7 @@ namespace boost { namespace fusion
         vector33(vector33&& rhs)
             : base_type(std::forward<base_type>(rhs)) {}
         vector33(vector33 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector33&
         operator=(vector33 const& vec)
         {
@@ -472,7 +472,7 @@ namespace boost { namespace fusion
         vector34(vector34&& rhs)
             : base_type(std::forward<base_type>(rhs)) {}
         vector34(vector34 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector34&
         operator=(vector34 const& vec)
         {
@@ -602,7 +602,7 @@ namespace boost { namespace fusion
         vector35(vector35&& rhs)
             : base_type(std::forward<base_type>(rhs)) {}
         vector35(vector35 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector35&
         operator=(vector35 const& vec)
         {
@@ -732,7 +732,7 @@ namespace boost { namespace fusion
         vector36(vector36&& rhs)
             : base_type(std::forward<base_type>(rhs)) {}
         vector36(vector36 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector36&
         operator=(vector36 const& vec)
         {
@@ -862,7 +862,7 @@ namespace boost { namespace fusion
         vector37(vector37&& rhs)
             : base_type(std::forward<base_type>(rhs)) {}
         vector37(vector37 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector37&
         operator=(vector37 const& vec)
         {
@@ -992,7 +992,7 @@ namespace boost { namespace fusion
         vector38(vector38&& rhs)
             : base_type(std::forward<base_type>(rhs)) {}
         vector38(vector38 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector38&
         operator=(vector38 const& vec)
         {
@@ -1122,7 +1122,7 @@ namespace boost { namespace fusion
         vector39(vector39&& rhs)
             : base_type(std::forward<base_type>(rhs)) {}
         vector39(vector39 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector39&
         operator=(vector39 const& vec)
         {
@@ -1252,7 +1252,7 @@ namespace boost { namespace fusion
         vector40(vector40&& rhs)
             : base_type(std::forward<base_type>(rhs)) {}
         vector40(vector40 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector40&
         operator=(vector40 const& vec)
         {
