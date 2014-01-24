@@ -95,12 +95,14 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         vector21(vector21 const& rhs)
             : base_type(static_cast<base_type const&>(rhs)) {}
+        BOOST_FUSION_GPU_ENABLED
         vector21&
         operator=(vector21 const& vec)
         {
             base_type::operator=(vec);
             return *this;
         }
+        BOOST_FUSION_GPU_ENABLED
         vector21&
         operator=(vector21&& vec)
         {
@@ -244,12 +246,14 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         vector22(vector22 const& rhs)
             : base_type(static_cast<base_type const&>(rhs)) {}
+        BOOST_FUSION_GPU_ENABLED
         vector22&
         operator=(vector22 const& vec)
         {
             base_type::operator=(vec);
             return *this;
         }
+        BOOST_FUSION_GPU_ENABLED
         vector22&
         operator=(vector22&& vec)
         {
@@ -393,12 +397,14 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         vector23(vector23 const& rhs)
             : base_type(static_cast<base_type const&>(rhs)) {}
+        BOOST_FUSION_GPU_ENABLED
         vector23&
         operator=(vector23 const& vec)
         {
             base_type::operator=(vec);
             return *this;
         }
+        BOOST_FUSION_GPU_ENABLED
         vector23&
         operator=(vector23&& vec)
         {
@@ -542,12 +548,14 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         vector24(vector24 const& rhs)
             : base_type(static_cast<base_type const&>(rhs)) {}
+        BOOST_FUSION_GPU_ENABLED
         vector24&
         operator=(vector24 const& vec)
         {
             base_type::operator=(vec);
             return *this;
         }
+        BOOST_FUSION_GPU_ENABLED
         vector24&
         operator=(vector24&& vec)
         {
@@ -691,12 +699,14 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         vector25(vector25 const& rhs)
             : base_type(static_cast<base_type const&>(rhs)) {}
+        BOOST_FUSION_GPU_ENABLED
         vector25&
         operator=(vector25 const& vec)
         {
             base_type::operator=(vec);
             return *this;
         }
+        BOOST_FUSION_GPU_ENABLED
         vector25&
         operator=(vector25&& vec)
         {
@@ -840,12 +850,14 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         vector26(vector26 const& rhs)
             : base_type(static_cast<base_type const&>(rhs)) {}
+        BOOST_FUSION_GPU_ENABLED
         vector26&
         operator=(vector26 const& vec)
         {
             base_type::operator=(vec);
             return *this;
         }
+        BOOST_FUSION_GPU_ENABLED
         vector26&
         operator=(vector26&& vec)
         {
@@ -989,12 +1001,14 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         vector27(vector27 const& rhs)
             : base_type(static_cast<base_type const&>(rhs)) {}
+        BOOST_FUSION_GPU_ENABLED
         vector27&
         operator=(vector27 const& vec)
         {
             base_type::operator=(vec);
             return *this;
         }
+        BOOST_FUSION_GPU_ENABLED
         vector27&
         operator=(vector27&& vec)
         {
@@ -1138,12 +1152,14 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         vector28(vector28 const& rhs)
             : base_type(static_cast<base_type const&>(rhs)) {}
+        BOOST_FUSION_GPU_ENABLED
         vector28&
         operator=(vector28 const& vec)
         {
             base_type::operator=(vec);
             return *this;
         }
+        BOOST_FUSION_GPU_ENABLED
         vector28&
         operator=(vector28&& vec)
         {
@@ -1287,12 +1303,14 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         vector29(vector29 const& rhs)
             : base_type(static_cast<base_type const&>(rhs)) {}
+        BOOST_FUSION_GPU_ENABLED
         vector29&
         operator=(vector29 const& vec)
         {
             base_type::operator=(vec);
             return *this;
         }
+        BOOST_FUSION_GPU_ENABLED
         vector29&
         operator=(vector29&& vec)
         {
@@ -1436,12 +1454,14 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         vector30(vector30 const& rhs)
             : base_type(static_cast<base_type const&>(rhs)) {}
+        BOOST_FUSION_GPU_ENABLED
         vector30&
         operator=(vector30 const& vec)
         {
             base_type::operator=(vec);
             return *this;
         }
+        BOOST_FUSION_GPU_ENABLED
         vector30&
         operator=(vector30&& vec)
         {

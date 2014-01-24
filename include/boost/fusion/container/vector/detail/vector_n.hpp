@@ -178,6 +178,7 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         BOOST_PP_CAT(vector, N)(BOOST_PP_CAT(vector, N) const& rhs)
             : base_type(static_cast<base_type const&>(rhs)) {}
 
+        BOOST_FUSION_GPU_ENABLED
         BOOST_PP_CAT(vector, N)&
         operator=(BOOST_PP_CAT(vector, N) const& vec)
         {
@@ -185,6 +186,7 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
             return *this;
         }
 
+        BOOST_FUSION_GPU_ENABLED
         BOOST_PP_CAT(vector, N)&
         operator=(BOOST_PP_CAT(vector, N)&& vec)
         {
