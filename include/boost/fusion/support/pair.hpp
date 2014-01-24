@@ -120,7 +120,6 @@ namespace boost { namespace fusion
     }
 
     template <typename First, typename Second>
-    BOOST_FUSION_GPU_ENABLED
     inline std::ostream&
     operator<<(std::ostream& os, pair<First, Second> const& p)
     {
@@ -129,7 +128,6 @@ namespace boost { namespace fusion
     }
 
     template <typename First, typename Second>
-    BOOST_FUSION_GPU_ENABLED
     inline std::istream&
     operator>>(std::istream& is, pair<First, Second>& p)
     {

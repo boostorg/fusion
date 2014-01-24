@@ -75,12 +75,12 @@ namespace boost { namespace fusion
         };
     }
 
-    BOOST_FUSION_GPU_ENABLED inline std::ostream& operator<<(std::ostream& out, detail::unused_only const&)
+    inline std::ostream& operator<<(std::ostream& out, detail::unused_only const&)
     {
         return out;
     }
 
-    BOOST_FUSION_GPU_ENABLED inline std::istream& operator>>(std::istream& in, unused_type&)
+    inline std::istream& operator>>(std::istream& in, unused_type&)
     {
         return in;
     }

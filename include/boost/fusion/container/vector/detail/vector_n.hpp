@@ -43,7 +43,7 @@
 #define FUSION_VECTOR_MEMBER_AT_IMPL(z, n, _)                                   \
     BOOST_FUSION_GPU_ENABLED typename add_reference<T##n>::type                 \
         at_impl(mpl::int_<n>) { return this->m##n; }                            \
-    typename add_reference<typename add_const<T##n>::type>::type                \
+    BOOST_FUSION_GPU_ENABLED typename add_reference<typename add_const<T##n>::type>::type \
         at_impl(mpl::int_<n>) const { return this->m##n; }
 
 #define FUSION_VECTOR_MEMBER_ITER_DECL_VAR(z, n, _)                             \

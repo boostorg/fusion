@@ -49,6 +49,7 @@ namespace boost { namespace fusion {
                 return fusion::next(it);
             }
 
+            BOOST_FUSION_GPU_ENABLED
             unused_type operator()(unused_type const&) const
             {
                 return unused_type();

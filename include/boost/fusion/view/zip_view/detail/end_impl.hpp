@@ -70,6 +70,7 @@ namespace boost { namespace fusion {
                 return fusion::advance<M>(fusion::begin(seq));
             }
 
+            BOOST_FUSION_GPU_ENABLED
             unused_type operator()(unused_type const&) const
             {
                 return unused_type();

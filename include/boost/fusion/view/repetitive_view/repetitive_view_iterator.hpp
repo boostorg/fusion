@@ -39,6 +39,7 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED explicit repetitive_view_iterator(Sequence& in_seq)
             : seq(in_seq), pos(begin(in_seq)) {}
 
+        BOOST_FUSION_GPU_ENABLED
         repetitive_view_iterator(Sequence& in_seq, pos_type const& in_pos)
             : seq(in_seq), pos(in_pos) {}
 

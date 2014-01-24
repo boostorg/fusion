@@ -17,7 +17,6 @@
 namespace boost { namespace fusion
 {
     template <typename Sequence>
-    BOOST_FUSION_GPU_ENABLED
     inline std::istream&
     in(std::istream& is, Sequence& seq)
     {
@@ -28,7 +27,6 @@ namespace boost { namespace fusion
     namespace operators
     {
         template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
         inline typename
             boost::enable_if<
                fusion::traits::is_sequence<Sequence>

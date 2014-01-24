@@ -42,6 +42,7 @@ namespace boost { namespace fusion
                 bidirectional_traversal_tag
               , category>::value));
 
+        BOOST_FUSION_GPU_ENABLED
         reverse_view_iterator(First const& in_first)
             : first(converter::call(in_first)) {}
 

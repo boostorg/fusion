@@ -43,6 +43,7 @@ namespace boost { namespace fusion
         typedef mpl::int_<1> size;
         typedef T value_type;
 
+        BOOST_FUSION_GPU_ENABLED
         single_view()
             : val() {}
 
