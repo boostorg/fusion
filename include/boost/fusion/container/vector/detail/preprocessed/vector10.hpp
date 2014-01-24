@@ -98,7 +98,7 @@ namespace boost { namespace fusion
             : base_type(std::forward<base_type>(rhs)) {}
         BOOST_FUSION_GPU_ENABLED
         vector1(vector1 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector1&
         operator=(vector1 const& vec)
         {
@@ -249,7 +249,7 @@ namespace boost { namespace fusion
             : base_type(std::forward<base_type>(rhs)) {}
         BOOST_FUSION_GPU_ENABLED
         vector2(vector2 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector2&
         operator=(vector2 const& vec)
         {
@@ -398,7 +398,7 @@ namespace boost { namespace fusion
             : base_type(std::forward<base_type>(rhs)) {}
         BOOST_FUSION_GPU_ENABLED
         vector3(vector3 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector3&
         operator=(vector3 const& vec)
         {
@@ -547,7 +547,7 @@ namespace boost { namespace fusion
             : base_type(std::forward<base_type>(rhs)) {}
         BOOST_FUSION_GPU_ENABLED
         vector4(vector4 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector4&
         operator=(vector4 const& vec)
         {
@@ -696,7 +696,7 @@ namespace boost { namespace fusion
             : base_type(std::forward<base_type>(rhs)) {}
         BOOST_FUSION_GPU_ENABLED
         vector5(vector5 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector5&
         operator=(vector5 const& vec)
         {
@@ -845,7 +845,7 @@ namespace boost { namespace fusion
             : base_type(std::forward<base_type>(rhs)) {}
         BOOST_FUSION_GPU_ENABLED
         vector6(vector6 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector6&
         operator=(vector6 const& vec)
         {
@@ -994,7 +994,7 @@ namespace boost { namespace fusion
             : base_type(std::forward<base_type>(rhs)) {}
         BOOST_FUSION_GPU_ENABLED
         vector7(vector7 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector7&
         operator=(vector7 const& vec)
         {
@@ -1143,7 +1143,7 @@ namespace boost { namespace fusion
             : base_type(std::forward<base_type>(rhs)) {}
         BOOST_FUSION_GPU_ENABLED
         vector8(vector8 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector8&
         operator=(vector8 const& vec)
         {
@@ -1292,7 +1292,7 @@ namespace boost { namespace fusion
             : base_type(std::forward<base_type>(rhs)) {}
         BOOST_FUSION_GPU_ENABLED
         vector9(vector9 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector9&
         operator=(vector9 const& vec)
         {
@@ -1441,7 +1441,7 @@ namespace boost { namespace fusion
             : base_type(std::forward<base_type>(rhs)) {}
         BOOST_FUSION_GPU_ENABLED
         vector10(vector10 const& rhs)
-            : base_type(rhs) {}
+            : base_type(static_cast<base_type const&>(rhs)) {}
         vector10&
         operator=(vector10 const& vec)
         {
