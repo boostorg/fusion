@@ -15,6 +15,14 @@
 #include <boost/fusion/adapted/struct/adapt_struct_named.hpp>
 #include <boost/fusion/adapted/struct/auto_adapt_struct.hpp>
 
+#define BOOST_FUSION_AUTO_ADAPT_STRUCT_NAMED_NS(                                \
+    WRAPPED_TYPE, NAMESPACE_SEQ, NAME, ATTRIBUTES)                              \
+                                                                                \
+    BOOST_FUSION_ADAPT_STRUCT_NAMED_NS(                                         \
+        WRAPPED_TYPE, NAMESPACE_SEQ, NAME,                                      \
+        BOOST_PP_SEQ_FOR_EACH(                                                  \
+            BOOST_FUSION_AUTO_ADAPT_STRUCT_FILLER, WRAPPED_TYPE, ATTRIBUTES))   \
+
 #define BOOST_FUSION_AUTO_ADAPT_STRUCT_NAMED(WRAPPED_TYPE, NAME, ATTRIBUTES)    \
     BOOST_FUSION_ADAPT_STRUCT_NAMED(                                            \
         WRAPPED_TYPE,NAME,                                                      \
