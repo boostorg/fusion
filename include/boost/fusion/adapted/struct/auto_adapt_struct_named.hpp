@@ -24,10 +24,7 @@
             BOOST_FUSION_AUTO_ADAPT_STRUCT_FILLER, WRAPPED_TYPE, ATTRIBUTES))   \
 
 #define BOOST_FUSION_AUTO_ADAPT_STRUCT_NAMED(WRAPPED_TYPE, NAME, ATTRIBUTES)    \
-    BOOST_FUSION_ADAPT_STRUCT_NAMED(                                            \
-        WRAPPED_TYPE,NAME,                                                      \
-        BOOST_PP_SEQ_FOR_EACH(                                                  \
-            BOOST_FUSION_AUTO_ADAPT_STRUCT_FILLER, WRAPPED_TYPE, ATTRIBUTES)    \
-        ) 
+    BOOST_FUSION_AUTO_ADAPT_STRUCT_NAMED_NS(                                    \
+        WRAPPED_TYPE,(boost)(fusion)(adapted),NAME,ATTRIBUTES)
 
 #endif
