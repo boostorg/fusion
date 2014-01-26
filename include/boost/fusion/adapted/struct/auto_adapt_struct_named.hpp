@@ -27,7 +27,7 @@
     BOOST_FUSION_ADAPT_STRUCT_NAMED(                                            \
         WRAPPED_TYPE,NAME,                                                      \
         BOOST_PP_SEQ_FOR_EACH(                                                  \
-          BOOST_FUSION_AUTO_ADAPT_STRUCT_FILLER, WRAPPED_TYPE, ATTRIBUTES)      \
+            BOOST_FUSION_AUTO_ADAPT_STRUCT_FILLER, WRAPPED_TYPE, ATTRIBUTES)    \
         ) 
 
 #endif
