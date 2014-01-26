@@ -49,7 +49,7 @@ BOOST_FUSION_AUTO_ADAPT_STRUCT_NAMED(
 
 // this creates a fusion view: ns1::s1
 struct s { int m; };
-BOOST_FUSION_ADAPT_STRUCT_NAMED_NS(s, (ns1), s1, (int, m))
+BOOST_FUSION_AUTO_ADAPT_STRUCT_NAMED_NS(s, (ns1), s1, (m))
 
 int
 main()
