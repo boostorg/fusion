@@ -16,8 +16,8 @@
 
 #include <boost/fusion/include/adapt_struct.hpp>
 
-#define BOOST_FUSION_AUTO_ADAPT_STRUCT_FILLER(r, data, elem)                    \
-    (BOOST_TYPEOF(data::elem), elem)                                            \
+#define BOOST_FUSION_AUTO_ADAPT_STRUCT_FILLER(r, NAME, ATTRIBUTE)               \
+     (BOOST_TYPEOF(NAME::ATTRIBUTE), ATTRIBUTE)                                 \
 
 #define BOOST_FUSION_AUTO_ADAPT_STRUCT(NAME, ATTRIBUTES)                        \
     BOOST_FUSION_ADAPT_STRUCT(NAME,                                             \
