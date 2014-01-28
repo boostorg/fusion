@@ -17,6 +17,7 @@ namespace boost { namespace fusion { namespace detail
     {
         typedef typename result_of::value_of<It>::type type;
 
+        BOOST_FUSION_GPU_ENABLED
         static inline type call(It const& it)
         {
             return *it;
@@ -30,6 +31,7 @@ namespace boost { namespace fusion { namespace detail
         typedef typename result_of::value_of_data<It>::type data_type;
         typedef typename fusion::pair<key_type, data_type> type;
 
+        BOOST_FUSION_GPU_ENABLED
         static inline type call(It const& it)
         {
             return type(deref_data(it));

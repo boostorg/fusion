@@ -22,18 +22,21 @@ namespace boost { namespace fusion
     template <typename Sequence>
     struct sequence_base
     {
+        BOOST_FUSION_GPU_ENABLED
         Sequence const&
         derived() const
         {
             return static_cast<Sequence const&>(*this);
         }
 
+        BOOST_FUSION_GPU_ENABLED
         Sequence&
         derived()
         {
             return static_cast<Sequence&>(*this);
         }
 
+        BOOST_FUSION_GPU_ENABLED
         operator detail::from_sequence_convertible_type()const
         {
             return detail::from_sequence_convertible_type();

@@ -37,6 +37,7 @@ namespace boost { namespace fusion
 
     public:
 
+        BOOST_FUSION_GPU_ENABLED
         inline explicit fused_function_object(func_const_fwd_t f = Function())
             : fnc_transformed(f)
         { }

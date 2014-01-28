@@ -79,6 +79,7 @@ namespace boost { namespace fusion
         typedef typename detail::call_param<Function>::type func_const_fwd_t;
       public:
 
+        BOOST_FUSION_GPU_ENABLED
         inline explicit unfused(func_const_fwd_t f = function())
             : fnc_transformed(f)
         { }

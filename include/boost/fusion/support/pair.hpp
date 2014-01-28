@@ -77,6 +77,7 @@ namespace boost { namespace fusion
         }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        BOOST_FUSION_GPU_ENABLED
         pair& operator=(pair&& rhs)
         {
             second = std::forward<Second>(rhs.second);

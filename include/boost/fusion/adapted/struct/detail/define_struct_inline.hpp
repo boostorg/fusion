@@ -445,12 +445,14 @@
             (NAME, ATTRIBUTES_SEQ)                                              \
                                                                                 \
     template <typename boost_fusion_detail_Seq>                                 \
+    BOOST_FUSION_GPU_ENABLED                                                    \
     NAME(const boost_fusion_detail_Seq& rhs)                                    \
     {                                                                           \
         boost::fusion::copy(rhs, *this);                                        \
     }                                                                           \
                                                                                 \
     template <typename boost_fusion_detail_Seq>                                 \
+    BOOST_FUSION_GPU_ENABLED                                                    \
     NAME& operator=(const boost_fusion_detail_Seq& rhs)                         \
     {                                                                           \
         boost::fusion::copy(rhs, *this);                                        \
