@@ -7,6 +7,7 @@
 #if !defined(FUSION_ALGORITHM_TRANSFORMATION_10022005_0551)
 #define FUSION_ALGORITHM_TRANSFORMATION_10022005_0551
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/algorithm/transformation/clear.hpp>
 #include <boost/fusion/algorithm/transformation/erase.hpp>
 #include <boost/fusion/algorithm/transformation/erase_key.hpp>

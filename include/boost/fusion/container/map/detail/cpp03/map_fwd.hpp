@@ -7,6 +7,7 @@
 #if !defined(FUSION_MAP_FORWARD_07212005_1105)
 #define FUSION_MAP_FORWARD_07212005_1105
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/container/map/detail/cpp03/limits.hpp>
 #include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
 

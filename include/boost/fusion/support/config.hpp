@@ -1,13 +1,16 @@
 /*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
+    Copyright (c) 2014 Eric Niebler
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying 
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
-#if !defined(FUSION_INCLUDE_TRANSFORM)
-#define FUSION_INCLUDE_TRANSFORM
+#if !defined(FUSION_SUPPORT_CONFIG_01092014_1718)
+#define FUSION_SUPPORT_CONFIG_01092014_1718
 
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/algorithm/transformation/transform.hpp>
+#include <boost/config.hpp>
+
+#ifndef BOOST_FUSION_GPU_ENABLED
+#define BOOST_FUSION_GPU_ENABLED BOOST_GPU_ENABLED
+#endif
 
 #endif

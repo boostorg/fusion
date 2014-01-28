@@ -8,6 +8,7 @@
 #if !defined(BOOST_FUSION_MAP_ITERATOR_02042013_0835)
 #define BOOST_FUSION_MAP_ITERATOR_02042013_0835
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/iterator/iterator_facade.hpp>
 #include <boost/mpl/minus.hpp>
 #include <boost/mpl/equal_to.hpp>
@@ -25,6 +26,7 @@ namespace boost { namespace fusion
         typedef Seq sequence;
         typedef mpl::int_<Pos> index;
 
+        BOOST_FUSION_GPU_ENABLED
         map_iterator(Seq& seq)
             : seq_(seq)
         {}
@@ -67,6 +69,7 @@ namespace boost { namespace fusion
                 decltype(std::declval<sequence>().get(index()))
             type;
 
+            BOOST_FUSION_GPU_ENABLED
             static type
             call(Iterator const& it)
             {
@@ -83,6 +86,7 @@ namespace boost { namespace fusion
                 decltype(std::declval<sequence>().get(index()).second)
             type;
 
+            BOOST_FUSION_GPU_ENABLED
             static type
             call(Iterator const& it)
             {
@@ -97,6 +101,7 @@ namespace boost { namespace fusion
             typedef typename Iterator::sequence sequence;
             typedef map_iterator<sequence, index::value + N::value> type;
 
+            BOOST_FUSION_GPU_ENABLED
             static type
             call(Iterator const& i)
             {
@@ -123,6 +128,7 @@ namespace boost { namespace fusion
                 >::type
             type;
 
+            BOOST_FUSION_GPU_ENABLED
             static type
             call(I1 const&, I2 const&)
             {

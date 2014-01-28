@@ -8,6 +8,7 @@
 #if !defined(FUSION_VECTOR20_05052005_0205)
 #define FUSION_VECTOR20_05052005_0205
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/container/vector/vector20_fwd.hpp>
 #include <boost/fusion/support/sequence_base.hpp>
 #include <boost/fusion/support/detail/access.hpp>

@@ -7,6 +7,7 @@
 #if !defined(FUSION_AT_IMPL_05042005_0741)
 #define FUSION_AT_IMPL_05042005_0741
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/support/detail/access.hpp>
 #include <boost/type_traits/is_const.hpp>
 #include <boost/mpl/at.hpp>
@@ -30,6 +31,7 @@ namespace boost { namespace fusion
                 typedef typename mpl::at<typename Sequence::types, N>::type element;
                 typedef typename detail::ref_result<element>::type type;
 
+                BOOST_FUSION_GPU_ENABLED
                 static type
                 call(Sequence& v)
                 {
@@ -44,6 +46,7 @@ namespace boost { namespace fusion
                 typedef typename mpl::at<typename Sequence::types, N>::type element;
                 typedef typename detail::cref_result<element>::type type;
 
+                BOOST_FUSION_GPU_ENABLED
                 static type
                 call(Sequence const& v)
                 {
