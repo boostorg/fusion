@@ -118,7 +118,7 @@ main()
     useThisIStringStream is("(100 200 300)");
 
     vector<int, int, int> ti;
-    BOOST_TEST((is >> ti) != 0);
+    BOOST_TEST(!!(is >> ti));
     BOOST_TEST(ti == make_vector(100, 200, 300));
 
     // Note that strings are problematic:
