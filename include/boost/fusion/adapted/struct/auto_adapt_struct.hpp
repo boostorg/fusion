@@ -14,7 +14,7 @@
 
 #include <boost/typeof/typeof.hpp> 
 
-#include <boost/fusion/include/adapt_struct.hpp>
+#include <boost/fusion/adapted/struct/adapt_struct.hpp>
 
 #define BOOST_FUSION_AUTO_ADAPT_STRUCT_FILLER(r, NAME, ATTRIBUTE)               \
      (BOOST_TYPEOF(NAME::ATTRIBUTE), ATTRIBUTE)                                 \
