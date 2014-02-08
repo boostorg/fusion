@@ -15,7 +15,7 @@
 namespace std 
 { 
     template<typename T, std::size_t N>
-    class array;
+    struct array;
 }
 
 namespace boost { namespace fusion 
