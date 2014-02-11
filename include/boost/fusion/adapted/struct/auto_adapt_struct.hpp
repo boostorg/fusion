@@ -17,12 +17,12 @@
 #include <boost/fusion/adapted/struct/adapt_struct.hpp>
 
 #define BOOST_FUSION_AUTO_ADAPT_STRUCT_FILLER(r, NAME, ATTRIBUTE)               \
-     (BOOST_TYPEOF(NAME::ATTRIBUTE), ATTRIBUTE)                                 \
+     (BOOST_TYPEOF(NAME::ATTRIBUTE), ATTRIBUTE)
 
 #define BOOST_FUSION_AUTO_ADAPT_STRUCT(NAME, ATTRIBUTES)                        \
     BOOST_FUSION_ADAPT_STRUCT(NAME,                                             \
         BOOST_PP_SEQ_FOR_EACH(                                                  \
-          BOOST_FUSION_AUTO_ADAPT_STRUCT_FILLER, NAME, ATTRIBUTES)              \
+            BOOST_FUSION_AUTO_ADAPT_STRUCT_FILLER, NAME, ATTRIBUTES)            \
         )
 
 #endif
