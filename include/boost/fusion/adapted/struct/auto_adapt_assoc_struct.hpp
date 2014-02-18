@@ -13,11 +13,11 @@
 
 #include <boost/preprocessor/seq/for_each.hpp> 
 #include <boost/preprocessor/tuple/elem.hpp>
+#include <boost/preprocessor/cat.hpp>
 
 #include <boost/typeof/typeof.hpp> 
 
 #include <boost/fusion/adapted/struct/adapt_assoc_struct.hpp>
-#include <boost/preprocessor/cat.hpp>
 
 #define BOOST_FUSION_AUTO_ADAPT_ASSOC_STRUCT_FILLER_0(A, B)                     \
     ((A, B)) BOOST_FUSION_AUTO_ADAPT_ASSOC_STRUCT_FILLER_1 
