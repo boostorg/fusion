@@ -135,6 +135,7 @@ project
     [ run sequence/adapt_assoc_adt_named.cpp : : : : ]
     [ run sequence/adapt_assoc_adt.cpp : : : : ]
     [ run sequence/adapt_assoc_struct_named.cpp : : : : ]
+    [ run sequence/auto_adapt_assoc_struct_named.cpp : : : : ]
     [ run sequence/adapt_assoc_struct.cpp : : : : ]
     [ run sequence/auto_adapt_assoc_struct.cpp : : : : ]
     [ run sequence/adapt_assoc_tpl_adt.cpp : : : : ]
