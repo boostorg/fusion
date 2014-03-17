@@ -89,6 +89,7 @@ namespace boost { namespace fusion
     }
 
     template <BOOST_PP_ENUM_PARAMS(N, typename T)>
+    BOOST_FUSION_GPU_ENABLED
     inline deque<BOOST_PP_ENUM(N, BOOST_FUSION_REF, _)>
     deque_tie(BOOST_PP_ENUM_BINARY_PARAMS(N, T, & _))
     {

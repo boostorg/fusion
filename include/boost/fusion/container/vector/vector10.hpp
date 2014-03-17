@@ -7,6 +7,7 @@
 #if !defined(FUSION_VECTOR10_05042005_0257)
 #define FUSION_VECTOR10_05042005_0257
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/container/vector/vector10_fwd.hpp>
 #include <boost/fusion/support/sequence_base.hpp>
 #include <boost/fusion/support/detail/access.hpp>
@@ -50,9 +51,11 @@ namespace boost { namespace fusion
         typedef random_access_traversal_tag category;
         typedef mpl::int_<0> size;
 
+        BOOST_FUSION_GPU_ENABLED
         vector0() {}
 
         template<typename Sequence>
+        BOOST_FUSION_GPU_ENABLED
         vector0(Sequence const& /*seq*/)
         {}
     };

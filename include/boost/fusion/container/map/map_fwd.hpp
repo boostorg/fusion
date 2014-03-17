@@ -7,6 +7,7 @@
 #if !defined(FUSION_MAP_FORWARD_MAIN_07212005_1105)
 #define FUSION_MAP_FORWARD_MAIN_07212005_1105
 
+#include <boost/fusion/support/config.hpp>
 #include <boost/config.hpp>
 
 #if (defined(BOOST_NO_CXX11_DECLTYPE)             \

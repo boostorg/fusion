@@ -62,7 +62,7 @@ namespace boost { namespace fusion
         };
     }
 
-    inline map<>
+    BOOST_FUSION_GPU_ENABLED inline map<>
     map_tie()
     {
         return map<>();
@@ -108,7 +108,6 @@ namespace boost { namespace fusion
           , BOOST_PP_ENUM_PARAMS(N, typename D)
         >
         #define TEXT(z, n, text) , text
-
         struct map_tie<BOOST_PP_ENUM_PARAMS(N, K), BOOST_PP_ENUM_PARAMS(N, D) BOOST_PP_REPEAT_FROM_TO(N, FUSION_MAX_MAP_SIZE, TEXT, void_) BOOST_PP_REPEAT_FROM_TO(BOOST_PP_DEC(N), FUSION_MAX_MAP_SIZE, TEXT, void_)>
         #undef TEXT
         {
@@ -120,6 +119,7 @@ namespace boost { namespace fusion
         BOOST_PP_ENUM_PARAMS(N, typename K)
       , BOOST_PP_ENUM_PARAMS(N, typename D)
     >
+    BOOST_FUSION_GPU_ENABLED
     inline map<BOOST_PP_ENUM(N, BOOST_FUSION_TIED_PAIR, _)>
     map_tie(BOOST_PP_ENUM_BINARY_PARAMS(N, D, & _))
     {

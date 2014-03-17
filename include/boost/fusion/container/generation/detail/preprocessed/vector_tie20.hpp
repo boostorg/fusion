@@ -26,6 +26,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0&>
     vector_tie(T0 & _0)
     {
@@ -41,6 +42,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1&>
     vector_tie(T0 & _0 , T1 & _1)
     {
@@ -56,6 +58,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2)
     {
@@ -71,6 +74,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3)
     {
@@ -86,6 +90,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4)
     {
@@ -101,6 +106,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5)
     {
@@ -116,6 +122,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5& , T6&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5 , T6 & _6)
     {
@@ -131,6 +138,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5 , T6 & _6 , T7 & _7)
     {
@@ -146,6 +154,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5 , T6 & _6 , T7 & _7 , T8 & _8)
     {
@@ -161,6 +170,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8& , T9&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5 , T6 & _6 , T7 & _7 , T8 & _8 , T9 & _9)
     {
@@ -176,6 +186,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8& , T9& , T10&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5 , T6 & _6 , T7 & _7 , T8 & _8 , T9 & _9 , T10 & _10)
     {
@@ -191,6 +202,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8& , T9& , T10& , T11&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5 , T6 & _6 , T7 & _7 , T8 & _8 , T9 & _9 , T10 & _10 , T11 & _11)
     {
@@ -206,6 +218,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8& , T9& , T10& , T11& , T12&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5 , T6 & _6 , T7 & _7 , T8 & _8 , T9 & _9 , T10 & _10 , T11 & _11 , T12 & _12)
     {
@@ -221,6 +234,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8& , T9& , T10& , T11& , T12& , T13&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5 , T6 & _6 , T7 & _7 , T8 & _8 , T9 & _9 , T10 & _10 , T11 & _11 , T12 & _12 , T13 & _13)
     {
@@ -236,6 +250,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8& , T9& , T10& , T11& , T12& , T13& , T14&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5 , T6 & _6 , T7 & _7 , T8 & _8 , T9 & _9 , T10 & _10 , T11 & _11 , T12 & _12 , T13 & _13 , T14 & _14)
     {
@@ -251,6 +266,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8& , T9& , T10& , T11& , T12& , T13& , T14& , T15&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5 , T6 & _6 , T7 & _7 , T8 & _8 , T9 & _9 , T10 & _10 , T11 & _11 , T12 & _12 , T13 & _13 , T14 & _14 , T15 & _15)
     {
@@ -266,6 +282,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8& , T9& , T10& , T11& , T12& , T13& , T14& , T15& , T16&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5 , T6 & _6 , T7 & _7 , T8 & _8 , T9 & _9 , T10 & _10 , T11 & _11 , T12 & _12 , T13 & _13 , T14 & _14 , T15 & _15 , T16 & _16)
     {
@@ -281,6 +298,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8& , T9& , T10& , T11& , T12& , T13& , T14& , T15& , T16& , T17&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5 , T6 & _6 , T7 & _7 , T8 & _8 , T9 & _9 , T10 & _10 , T11 & _11 , T12 & _12 , T13 & _13 , T14 & _14 , T15 & _15 , T16 & _16 , T17 & _17)
     {
@@ -296,6 +314,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8& , T9& , T10& , T11& , T12& , T13& , T14& , T15& , T16& , T17& , T18&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5 , T6 & _6 , T7 & _7 , T8 & _8 , T9 & _9 , T10 & _10 , T11 & _11 , T12 & _12 , T13 & _13 , T14 & _14 , T15 & _15 , T16 & _16 , T17 & _17 , T18 & _18)
     {
@@ -311,6 +330,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19>
+    BOOST_FUSION_GPU_ENABLED
     inline vector<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8& , T9& , T10& , T11& , T12& , T13& , T14& , T15& , T16& , T17& , T18& , T19&>
     vector_tie(T0 & _0 , T1 & _1 , T2 & _2 , T3 & _3 , T4 & _4 , T5 & _5 , T6 & _6 , T7 & _7 , T8 & _8 , T9 & _9 , T10 & _10 , T11 & _11 , T12 & _12 , T13 & _13 , T14 & _14 , T15 & _15 , T16 & _16 , T17 & _17 , T18 & _18 , T19 & _19)
     {
