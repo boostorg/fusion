@@ -83,7 +83,7 @@ namespace boost { namespace fusion { namespace detail
 
         BOOST_FUSION_GPU_ENABLED
         map_impl(map_impl&& rhs)
-          : rest_type(std::forward<rest_type>(*static_cast<rest_type*>(this)))
+          : rest_type(std::forward<rest_type>(*static_cast<rest_type*>(&rhs)))
           , element(std::forward<Pair>(rhs.element))
         {}
 
