@@ -57,10 +57,15 @@ namespace ns
 #endif
 }
 
-BOOST_FUSION_AUTO_ADAPT_STRUCT(
+/*BOOST_FUSION_AUTO_ADAPT_STRUCT(
     ns::point,
     (x)
     (y)
+)*/
+
+BOOST_FUSION_AUTO_ADAPT_STRUCT(
+    ns::point,
+    x, y
 )
 
 #if !BOOST_WORKAROUND(__GNUC__,<4)
