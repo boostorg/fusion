@@ -16,5 +16,6 @@
 #include <boost/fusion/view/reverse_view.hpp>
 #include <boost/fusion/view/transform_view.hpp>
 #include <boost/fusion/view/zip_view.hpp>
+#include <boost/fusion/view/flatten_view.hpp>
 
 #endif
