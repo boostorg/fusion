@@ -26,6 +26,7 @@
 #include <boost/fusion/algorithm/transformation/replace_if.hpp>
 #include <boost/fusion/algorithm/transformation/reverse.hpp>
 #include <boost/fusion/algorithm/transformation/transform.hpp>
-#include <boost/fusion/algorithm/transformation/zip.hpp> 
+#include <boost/fusion/algorithm/transformation/zip.hpp>
+#include <boost/fusion/algorithm/transformation/flatten.hpp>
 
 #endif
