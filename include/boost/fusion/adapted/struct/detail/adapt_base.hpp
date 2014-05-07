@@ -117,7 +117,7 @@
     >                                                                           \
     {                                                                           \
         typedef                                                                 \
-            BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)             \
+            BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)             \ //TODO: DAM Typeof can be added here
         attribute_type;                                                         \
         BOOST_FUSION_ADAPT_STRUCT_MSVC_REDEFINE_TEMPLATE_PARAMS(                \
             TEMPLATE_PARAMS_SEQ)                                                \
@@ -164,6 +164,24 @@
         }                                                                       \
     };
 
+/**
+ * \brief Creates a Random Access Sequence for the struct/class named NAME_SEQ
+ * \param TEMPLATE_PARAMS_SEQ
+ * \param NAME_SEQ Sequence of a boolean telling if the type is a template type
+ *                 or not, followed by the name of the type to be adapted.
+ *
+ *                 That is (0)(mystruct) means adaptation of mystruct a 
+ *                 non-template type. While (1)(my_tpl_struct) means adaptation
+ *                 of a template based struct.
+ * \param TAG The tag of the Random Access Sequence, this enables to select the
+ *            implementation of the sequence.
+ * \param IS_VIEW Whether if this creates a sequence of a view from a sequence
+ * \param ATTRIBUTES_SEQ Sequence of struct attributes to add to the list of 
+ *                       adapted elements
+ * \param ATTRIBUTES_CALLBACK Macro callback used to register the attributes into 
+ *                            the sequence. Usually a call to 
+ *                            BOOST_FUSION_ADAPT_STRUCT_C_BASE.
+ */
 #define BOOST_FUSION_ADAPT_STRUCT_BASE(                                         \
     TEMPLATE_PARAMS_SEQ,                                                        \
     NAME_SEQ,                                                                   \
