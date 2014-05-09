@@ -31,6 +31,9 @@
 #include <boost/mpl/identity.hpp>
 #include <boost/type_traits/add_const.hpp>
 
+#include <boost/typeof/typeof.hpp> 
+
+
 #define BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME_TEMPLATE_PARAMS(SEQ)              \
     BOOST_PP_SEQ_HEAD(SEQ)<BOOST_PP_SEQ_ENUM(BOOST_PP_SEQ_TAIL(SEQ))>           \
     BOOST_PP_EMPTY()
@@ -54,6 +57,13 @@
         BOOST_PP_SEQ_HEAD(SEQ),                                                 \
         BOOST_FUSION_ADAPT_STRUCT_UNPACK_TEMPLATE_PARAMS_IMPL,                  \
         BOOST_PP_TUPLE_EAT(1))(SEQ)
+
+#define BOOST_FUSION_ATTRIBUTE_TYPE_DEDUCE(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)\
+    BOOST_TYPEOF(BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)::BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE) \
+        )
+
+#define BOOST_FUSION_GET_GIVEN_TYPE(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)      \
+    BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)
 
 #ifdef BOOST_NO_PARTIAL_SPECIALIZATION_IMPLICIT_DEFAULT_ARGS
 #   define BOOST_FUSION_ADAPT_STRUCT_TAG_OF_SPECIALIZATION(                     \
@@ -118,7 +128,9 @@
     >                                                                           \
     {                                                                           \
         typedef                                                                 \
-            BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)             \ //TODO: DAM Typeof can be added here
+            BOOST_PP_IF(BOOST_PP_LESS(/*ATTRIBUTE_TUPEL_SIZE*/1,2),             \
+                BOOST_FUSION_ATTRIBUTE_TYPE_DEDUCE, BOOST_FUSION_GET_GIVEN_TYPE \
+                )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                    \
         attribute_type;                                                         \
         BOOST_FUSION_ADAPT_STRUCT_MSVC_REDEFINE_TEMPLATE_PARAMS(                \
             TEMPLATE_PARAMS_SEQ)                                                \
@@ -143,7 +155,9 @@
             call(Seq& seq)                                                      \
             {                                                                   \
                 return seq.PREFIX()                                             \
-                    BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 1, ATTRIBUTE);    \
+                    BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE,                   \
+                        BOOST_PP_IF(BOOST_PP_LESS(ATTRIBUTE_TUPEL_SIZE,2), 0, 1),\
+                          ATTRIBUTE);                                           \
             }                                                                   \
         };                                                                      \
     };                                                                          \
