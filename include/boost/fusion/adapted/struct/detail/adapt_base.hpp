@@ -174,7 +174,9 @@
         call()                                                                  \
         {                                                                       \
             return BOOST_PP_STRINGIZE(                                          \
-                BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE,1,ATTRIBUTE));         \
+               BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE,                        \
+                        BOOST_PP_IF(BOOST_PP_LESS(ATTRIBUTE_TUPEL_SIZE,2), 0, 1),\
+                          ATTRIBUTE));                                          \
         }                                                                       \
     };
 
