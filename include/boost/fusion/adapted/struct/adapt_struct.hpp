@@ -51,8 +51,8 @@
         NAME_SEQ,                                                                     \
         I,                                                                            \
         BOOST_PP_EMPTY,                                                               \
-        ATTRIBUTE,                                                                    \
-        1)
+        BOOST_PP_TUPLE_ELEM(1, ATTRIBUTE),                                                                    \
+        BOOST_PP_TUPLE_ELEM(0, ATTRIBUTE))
 
 #define BOOST_FUSION_ADAPT_TPL_STRUCT(TEMPLATE_PARAMS_SEQ,NAME_SEQ, ATTRIBUTES) \
     BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
@@ -79,9 +79,9 @@
 
 
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0(...)                                \
-    ((__VA_ARGS__)) BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__1
+    ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), (__VA_ARGS__))) BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__1
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__1(...)                                \
-    ((__VA_ARGS__)) BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0
+    ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), (__VA_ARGS__))) BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0_END
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__1_END
 

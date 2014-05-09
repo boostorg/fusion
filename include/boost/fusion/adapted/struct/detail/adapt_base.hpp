@@ -127,7 +127,7 @@
     >                                                                           \
     {                                                                           \
         typedef                                                                 \
-            BOOST_PP_IF(BOOST_PP_LESS(/*ATTRIBUTE_TUPEL_SIZE*/1,2),             \
+            BOOST_PP_IF(BOOST_PP_LESS(ATTRIBUTE_TUPEL_SIZE,2),                  \
                 BOOST_FUSION_ATTRIBUTE_TYPE_DEDUCE, BOOST_FUSION_GET_GIVEN_TYPE \
                 )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                    \
         attribute_type;                                                         \

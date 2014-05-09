@@ -59,7 +59,7 @@ namespace ns
 BOOST_FUSION_ADAPT_STRUCT_NEWAPI(
     ns::point,
     (x)
-    (y)
+    (int, y)
 )
 
 #if !BOOST_WORKAROUND(__GNUC__,<4)
