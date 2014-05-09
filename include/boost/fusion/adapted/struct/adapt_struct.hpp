@@ -6,11 +6,16 @@
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 
+#define BOOST_PP_VARIADICS 1
+
 #ifndef BOOST_FUSION_ADAPTED_STRUCT_ADAPT_STRUCT_HPP
 #define BOOST_FUSION_ADAPTED_STRUCT_ADAPT_STRUCT_HPP
 
+
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/empty.hpp>
+#include <boost/preprocessor/variadic/to_seq.hpp>
+#include <boost/preprocessor/variadic/size.hpp>
 #include <boost/type_traits/add_reference.hpp>
 #include <boost/type_traits/is_const.hpp>
 #include <boost/type_traits/add_const.hpp>
@@ -40,6 +45,15 @@
     BOOST_FUSION_ADAPT_STRUCT_C_BASE(                                           \
         TEMPLATE_PARAMS_SEQ,NAME_SEQ,I,BOOST_PP_EMPTY,ATTRIBUTE,2)
 
+#define BOOST_FUSION_ADAPT_STRUCT_C_AUTO(TEMPLATE_PARAMS_SEQ, NAME_SEQ, I, ATTRIBUTE) \
+    BOOST_FUSION_ADAPT_STRUCT_C_BASE(                                                 \
+        TEMPLATE_PARAMS_SEQ,                                                          \
+        NAME_SEQ,                                                                     \
+        I,                                                                            \
+        BOOST_PP_EMPTY,                                                               \
+        ATTRIBUTE,                                                                    \
+        1)
+
 #define BOOST_FUSION_ADAPT_TPL_STRUCT(TEMPLATE_PARAMS_SEQ,NAME_SEQ, ATTRIBUTES) \
     BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
         (1)TEMPLATE_PARAMS_SEQ,                                                 \
@@ -58,6 +72,34 @@
         0,                                                                      \
         BOOST_PP_CAT(BOOST_FUSION_ADAPT_STRUCT_FILLER_0(0,0)ATTRIBUTES,_END),   \
         BOOST_FUSION_ADAPT_STRUCT_C)
+
+
+
+
+
+
+#define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0(...)                                \
+    ((__VA_ARGS__)) BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__1
+#define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__1(...)                                \
+    ((__VA_ARGS__)) BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0
+#define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0_END
+#define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__1_END
+
+
+#define BOOST_FUSION_ADAPT_STRUCT_NEWAPI(NAME, ATTRIBUTES)                      \
+    BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
+        (0),                                                                    \
+        (0)(NAME),                                                              \
+        struct_tag,                                                             \
+        0,                                                                      \
+        BOOST_PP_CAT(BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0(0,0)ATTRIBUTES,_END),                                  \
+        BOOST_FUSION_ADAPT_STRUCT_C_AUTO)
+
+
+
+
+
+
 
 #define BOOST_FUSION_ADAPT_STRUCT_AS_VIEW(NAME, ATTRIBUTES)                     \
     BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \

@@ -56,22 +56,22 @@ namespace ns
 #endif
 }
 
-BOOST_FUSION_ADAPT_STRUCT(
+BOOST_FUSION_ADAPT_STRUCT_NEWAPI(
     ns::point,
-    (int, x)
-    (int, y)
+    (x)
+    (y)
 )
 
 #if !BOOST_WORKAROUND(__GNUC__,<4)
-BOOST_FUSION_ADAPT_STRUCT(
+BOOST_FUSION_ADAPT_STRUCT_NEWAPI(
     ns::point_with_private_attributes,
-    (int, x)
-    (int, y)
+    (x)
+    (y)
 )
 #endif
 
 struct s { int m; };
-BOOST_FUSION_ADAPT_STRUCT(s, (int, m))
+BOOST_FUSION_ADAPT_STRUCT_NEWAPI(s, (m))
 
 int
 main()
