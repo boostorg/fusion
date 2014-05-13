@@ -41,17 +41,21 @@
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_0_END
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_1_END
 
+//TODO: DAM remove need for variadic macros.
+#define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0(...)                                \
+    ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), (__VA_ARGS__))) BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__1
+#define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__1(...)                                \
+    ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), (__VA_ARGS__))) BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0
+#define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0_END
+#define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__1_END
+
 #define BOOST_FUSION_ADAPT_STRUCT_C(TEMPLATE_PARAMS_SEQ, NAME_SEQ, I, ATTRIBUTE)\
     BOOST_FUSION_ADAPT_STRUCT_C_BASE(                                           \
-        TEMPLATE_PARAMS_SEQ,NAME_SEQ,I,BOOST_PP_EMPTY,ATTRIBUTE,2)
-
-#define BOOST_FUSION_ADAPT_STRUCT_C_AUTO(TEMPLATE_PARAMS_SEQ, NAME_SEQ, I, ATTRIBUTE) \
-    BOOST_FUSION_ADAPT_STRUCT_C_BASE(                                                 \
-        TEMPLATE_PARAMS_SEQ,                                                          \
-        NAME_SEQ,                                                                     \
-        I,                                                                            \
-        BOOST_PP_EMPTY,                                                               \
-        BOOST_PP_TUPLE_ELEM(1, ATTRIBUTE),                                                                    \
+        TEMPLATE_PARAMS_SEQ,                                                    \
+        NAME_SEQ,                                                               \
+        I,                                                                      \
+        BOOST_PP_EMPTY,                                                         \
+        BOOST_PP_TUPLE_ELEM(1, ATTRIBUTE),                                      \
         BOOST_PP_TUPLE_ELEM(0, ATTRIBUTE))
 
 #define BOOST_FUSION_ADAPT_TPL_STRUCT(TEMPLATE_PARAMS_SEQ,NAME_SEQ, ATTRIBUTES) \
@@ -70,36 +74,8 @@
         (0)(NAME),                                                              \
         struct_tag,                                                             \
         0,                                                                      \
-        BOOST_PP_CAT(BOOST_FUSION_ADAPT_STRUCT_FILLER_0(0,0)ATTRIBUTES,_END),   \
-        BOOST_FUSION_ADAPT_STRUCT_C)
-
-
-
-
-
-
-#define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0(...)                                \
-    ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), (__VA_ARGS__))) BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__1
-#define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__1(...)                                \
-    ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), (__VA_ARGS__))) BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0
-#define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0_END
-#define BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__1_END
-
-
-#define BOOST_FUSION_ADAPT_STRUCT_NEWAPI(NAME, ATTRIBUTES)                      \
-    BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
-        (0),                                                                    \
-        (0)(NAME),                                                              \
-        struct_tag,                                                             \
-        0,                                                                      \
         BOOST_PP_CAT(BOOST_FUSION_ADAPT_STRUCT_FILLER_NEWAPI__0(0,0)ATTRIBUTES,_END),                                  \
-        BOOST_FUSION_ADAPT_STRUCT_C_AUTO)
-
-
-
-
-
-
+        BOOST_FUSION_ADAPT_STRUCT_C)
 
 #define BOOST_FUSION_ADAPT_STRUCT_AS_VIEW(NAME, ATTRIBUTES)                     \
     BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
