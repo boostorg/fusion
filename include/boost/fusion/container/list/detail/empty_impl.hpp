@@ -9,6 +9,7 @@
 
 #include <boost/fusion/support/config.hpp>
 #include <boost/type_traits/is_convertible.hpp>
+#include <boost/fusion/container/list/nil.hpp>
 
 namespace boost { namespace fusion
 {

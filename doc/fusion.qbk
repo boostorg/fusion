@@ -30,7 +30,7 @@
 [def __mpl__                    [@http://www.boost.org/libs/mpl/index.html MPL]]
 [def __stl__                    [@http://en.wikipedia.org/wiki/Standard_Template_Library STL]]
 [def __tuple__                  [@http://www.boost.org/libs/tuple/doc/tuple_users_guide.html Boost.Tuple]]
-[def __tr1__tuple__             [@http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2002/n1403.pdf TR1 Tuple]]
+[def __tr1__tuple__             [@http://std.dkuug.dk/jtc1/sc22/wg21/docs/papers/2002/n1403.pdf TR1 Tuple]]
 [def __boost_tools__            [@http://www.boost.org/tools/index.html Boost Tools]]
 [def __spirit_list__            [@https://lists.sourceforge.net/lists/listinfo/spirit-general Spirit Mailing List]]
 [def __spirit_general__         [@news://news.gmane.org/gmane.comp.spirit.general Spirit General NNTP news portal]]
@@ -131,6 +131,7 @@
 [def __transform_view__         [link fusion.view.transform_view `transform_view`]]
 [def __reverse_view__           [link fusion.view.reverse_view `reverse_view`]]
 [def __zip_view__               [link fusion.view.zip_view `zip_view`]]
+[def __flatten_view__           [link fusion.view.flatten_view `flatten_view`]]
 
 [def __array__                  [link fusion.adapted.array array]]
 [def __std_pair__               [link fusion.adapted.std__pair `std::pair`]]
@@ -288,6 +289,8 @@
 [def __result_of_push_back__    [link fusion.algorithm.transformation.metafunctions.push_back `result_of::push_back`]]
 [def __push_front__             [link fusion.algorithm.transformation.functions.push_front `push_front`]]
 [def __result_of_push_front__   [link fusion.algorithm.transformation.metafunctions.push_front `result_of::push_front`]]
+[def __flatten__                [link fusion.algorithm.transformation.functions.flatten `flatten`]]
+[def __result_of_flatten__      [link fusion.algorithm.transformation.metafunctions.flatten `result_of::flatten`]]
 
 [def __tr1_tuple_pair__         [link fusion.tuple.pairs `TR1 and std::pair`]]
 [def __tuple_get__              [link fusion.tuple.class_template_tuple.element_access `get`]]

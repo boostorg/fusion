@@ -15,6 +15,7 @@
 #include <boost/fusion/sequence/intrinsic/end.hpp>
 #include <boost/fusion/iterator/next.hpp>
 #include <boost/fusion/iterator/deref.hpp>
+#include <boost/fusion/container/list/nil.hpp>
 #include <boost/fusion/container/list/cons_iterator.hpp>
 #include <boost/fusion/container/list/detail/begin_impl.hpp>
 #include <boost/fusion/container/list/detail/end_impl.hpp>
@@ -34,31 +35,6 @@ namespace boost { namespace fusion
     struct cons_tag;
     struct forward_traversal_tag;
     struct fusion_sequence_tag;
-
-    struct nil_ : sequence_base<nil_>
-    {
-        typedef mpl::int_<0> size;
-        typedef cons_tag fusion_tag;
-        typedef fusion_sequence_tag tag; // this gets picked up by MPL
-        typedef mpl::false_ is_view;
-        typedef forward_traversal_tag category;
-        typedef void_ car_type;
-        typedef void_ cdr_type;
-
-        BOOST_FUSION_GPU_ENABLED
-        nil_() {}
-
-        template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
-        nil_(Iterator const& /*iter*/, mpl::true_ /*this_is_an_iterator*/)
-        {}
-
-        template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
-        void assign_from_iter(Iterator const& /*iter*/)
-        {
-        }
-    };
 
     template <typename Car, typename Cdr /*= nil_*/>
     struct cons : sequence_base<cons<Car, Cdr> >
