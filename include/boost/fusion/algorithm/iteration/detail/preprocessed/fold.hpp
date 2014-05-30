@@ -24,7 +24,7 @@ namespace boost { namespace fusion
         struct unrolled_fold
         {
             template<typename State, typename It0, typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static Result
             call(State const& state,It0 const& it0,F f)
             {
@@ -65,7 +65,7 @@ namespace boost { namespace fusion
         struct unrolled_fold<Result,3>
         {
             template<typename State, typename It0, typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static Result
             call(State const& state,It0 const& it0,F f)
             {
@@ -92,7 +92,7 @@ namespace boost { namespace fusion
         struct unrolled_fold<Result,2>
         {
             template<typename State, typename It0, typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static Result
             call(State const& state,It0 const& it0,F f)
             {
@@ -107,7 +107,7 @@ namespace boost { namespace fusion
         struct unrolled_fold<Result,1>
         {
             template<typename State, typename It0, typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static Result
             call(State const& state,It0 const& it0,F f)
             {
@@ -119,7 +119,7 @@ namespace boost { namespace fusion
         struct unrolled_fold<Result,0>
         {
             template<typename State, typename It0, typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static Result
             call(State const& state,It0 const&, F)
             {
@@ -282,7 +282,7 @@ namespace boost { namespace fusion
                   , SeqSize
                 >::type
             type;
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static type
             call(StateRef state, Seq& seq, F f)
             {
@@ -302,7 +302,7 @@ namespace boost { namespace fusion
         struct fold_impl<0,StateRef,Seq,F>
         {
             typedef StateRef type;
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static StateRef
             call(StateRef state, Seq&, F)
             {
@@ -334,7 +334,7 @@ namespace boost { namespace fusion
         {};
     }
     template<typename Seq, typename State, typename F>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename result_of::fold<
         Seq
       , State const
@@ -348,7 +348,7 @@ namespace boost { namespace fusion
             f);
     }
     template<typename Seq, typename State, typename F>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename result_of::fold<
         Seq const
       , State const
@@ -362,7 +362,7 @@ namespace boost { namespace fusion
             f);
     }
     template<typename Seq, typename State, typename F>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename result_of::fold<
         Seq
       , State const
@@ -376,7 +376,7 @@ namespace boost { namespace fusion
             f);
     }
     template<typename Seq, typename State, typename F>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename result_of::fold<
         Seq const
       , State const
