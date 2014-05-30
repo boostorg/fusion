@@ -72,7 +72,7 @@ namespace boost { namespace fusion
 
 
     template <typename N, typename Sequence>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename
         lazy_disable_if<
             is_const<Sequence>
@@ -84,7 +84,7 @@ namespace boost { namespace fusion
     }
 
     template <typename N, typename Sequence>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename result_of::at<Sequence const, N>::type
     at(Sequence const& seq)
     {
@@ -92,7 +92,7 @@ namespace boost { namespace fusion
     }
 
     template <int N, typename Sequence>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename
         lazy_disable_if<
             is_const<Sequence>
@@ -104,7 +104,7 @@ namespace boost { namespace fusion
     }
 
     template <int N, typename Sequence>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename result_of::at_c<Sequence const, N>::type
     at_c(Sequence const& seq)
     {

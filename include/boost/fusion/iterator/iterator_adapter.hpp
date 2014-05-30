@@ -24,7 +24,7 @@ namespace boost { namespace fusion
         iterator_base_type;
         iterator_base_type iterator_base;
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         iterator_adapter(iterator_base_type const& iterator_base_)
             : iterator_base(iterator_base_) {}
 
@@ -47,7 +47,7 @@ namespace boost { namespace fusion
                 >::type>::type
             type;
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static type
             call(Iterator const& it)
             {
@@ -82,7 +82,7 @@ namespace boost { namespace fusion
                 >::type
             type;
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static type
             call(Iterator const& it)
             {
@@ -100,7 +100,7 @@ namespace boost { namespace fusion
                 >::type>::type
             type;
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static type
             call(Iterator const& i)
             {
@@ -118,7 +118,7 @@ namespace boost { namespace fusion
                 >::type>::type
             type;
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static type
             call(Iterator const& i)
             {

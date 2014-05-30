@@ -40,7 +40,7 @@ namespace boost { namespace fusion
     }
 
     template <typename It>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     typename result_of::deref_data<It>::type
     deref_data(It const& it)
     {
