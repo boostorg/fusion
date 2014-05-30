@@ -6,16 +6,16 @@
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 
-//#define BOOST_PP_VARIADICS
-
 #ifndef BOOST_FUSION_ADAPTED_STRUCT_ADAPT_STRUCT_HPP
 #define BOOST_FUSION_ADAPTED_STRUCT_ADAPT_STRUCT_HPP
 
-
-
+#include <boost/preprocessor/config/config.hpp>
+#include <boost/preprocessor/variadic.hpp>
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/empty.hpp>
-#include <boost/preprocessor/variadic.hpp>
+#include <boost/preprocessor/control/if.hpp>
+#include <boost/preprocessor/facilities/is_empty.hpp>
+#include <boost/preprocessor/comparison/equal.hpp>
 #include <boost/type_traits/add_reference.hpp>
 #include <boost/type_traits/is_const.hpp>
 #include <boost/type_traits/add_const.hpp>
@@ -34,29 +34,49 @@
 #include <boost/fusion/adapted/struct/detail/value_of_impl.hpp>
 #include <boost/fusion/adapted/struct/detail/deref_impl.hpp>
 
-//TODO: Write a variadic version full : with variadic also directly to provide the fields.
 #if BOOST_PP_VARIADICS
 
+#define BOOST_FUSION_ADAPT_STRUCT_CREATE_MEMBER_TUPLE(...)                      \
+    BOOST_PP_IF(BOOST_PP_EQUAL(BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), 2),         \
+        BOOST_PP_IF(BOOST_PP_IS_EMPTY(BOOST_PP_VARIADIC_ELEM(0, __VA_ARGS__)),  \
+          ((1, (BOOST_PP_VARIADIC_ELEM(1, __VA_ARGS__)) )),                     \
+          ((2, BOOST_PP_VARIADIC_TO_TUPLE(__VA_ARGS__)))                        \
+        ),                                                                      \
+        ((1, (BOOST_PP_VARIADIC_ELEM(0, __VA_ARGS__)) ))                        \
+    )
+
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_0(...)                                 \
-    ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), (__VA_ARGS__)))                      \
+    BOOST_FUSION_ADAPT_STRUCT_CREATE_MEMBER_TUPLE(__VA_ARGS__)                  \
     BOOST_FUSION_ADAPT_STRUCT_FILLER_1
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_1(...)                                 \
-    ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), (__VA_ARGS__)))                      \
+    BOOST_FUSION_ADAPT_STRUCT_CREATE_MEMBER_TUPLE(__VA_ARGS__)                  \
     BOOST_FUSION_ADAPT_STRUCT_FILLER_0
 
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_0_END
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_1_END
 
-#else
+#else // BOOST_PP_VARIADICS
+
+#define BOOST_FUSION_ADAPT_STRUCT_CREATE_MEMBER_TUPLE(X, Y)                     \
+    BOOST_PP_IF(BOOST_PP_IS_EMPTY(X),                                           \
+      ((1, (Y))),                                                               \
+      ((2, (X,Y)))                                                              \
+    )
 
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_0(X, Y)                                \
-    ((2, (X, Y))) BOOST_FUSION_ADAPT_STRUCT_FILLER_1
+    BOOST_FUSION_ADAPT_STRUCT_CREATE_MEMBER_TUPLE(X,Y)                          \
+    BOOST_FUSION_ADAPT_STRUCT_FILLER_1
+
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_1(X, Y)                                \
-    ((2, (X, Y))) BOOST_FUSION_ADAPT_STRUCT_FILLER_0
+    BOOST_FUSION_ADAPT_STRUCT_CREATE_MEMBER_TUPLE(X,Y)                          \
+    BOOST_FUSION_ADAPT_STRUCT_FILLER_0
+
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_0_END
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_1_END
 
-#endif
+#endif // BOOST_PP_VARIADICS
+
+#define BOOST_FUSION_ADAPT_AUTO BOOST_PP_EMPTY()
 
 #define BOOST_FUSION_ADAPT_STRUCT_C(TEMPLATE_PARAMS_SEQ, NAME_SEQ, I, ATTRIBUTE)\
     BOOST_FUSION_ADAPT_STRUCT_C_BASE(                                           \
