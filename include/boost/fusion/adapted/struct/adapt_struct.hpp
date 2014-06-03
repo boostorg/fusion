@@ -11,6 +11,9 @@
 
 #include <boost/preprocessor/config/config.hpp>
 #include <boost/preprocessor/variadic.hpp>
+#include <boost/preprocessor/variadic/to_seq.hpp>
+#include <boost/preprocessor/seq/for_each.hpp>
+#include <boost/preprocessor/seq/push_front.hpp>
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/empty.hpp>
 #include <boost/preprocessor/control/if.hpp>
@@ -33,6 +36,7 @@
 #include <boost/fusion/adapted/struct/detail/end_impl.hpp>
 #include <boost/fusion/adapted/struct/detail/value_of_impl.hpp>
 #include <boost/fusion/adapted/struct/detail/deref_impl.hpp>
+#include <boost/fusion/adapted/struct/detail/preprocessor/is_seq.hpp>
 
 #if BOOST_PP_VARIADICS
 
@@ -97,6 +101,30 @@
             BOOST_FUSION_ADAPT_STRUCT_FILLER_0 ATTRIBUTES,_END),                \
         BOOST_FUSION_ADAPT_STRUCT_C)
 
+
+#if BOOST_PP_VARIADICS
+
+#define BOOST_FUSION_ADAPT_STRUCT_PROCESS_PARAM(r, data, elem)                  \
+    BOOST_PP_IF(BOOST_FUSION_PP_IS_SEQ(elem),                                   \
+      BOOST_PP_CAT( BOOST_FUSION_ADAPT_STRUCT_FILLER_0 elem ,_END),             \
+      BOOST_FUSION_ADAPT_STRUCT_CREATE_MEMBER_TUPLE(elem)                       \
+   )
+
+#define BOOST_FUSION_ADAPT_STRUCT_CREATE_MEMBER_TUPLE_FROM_VARIADICS(...)       \
+    BOOST_PP_SEQ_PUSH_FRONT(  \
+    BOOST_PP_SEQ_FOR_EACH(BOOST_FUSION_ADAPT_STRUCT_PROCESS_PARAM, unused, BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__)), (0,0))
+
+#define BOOST_FUSION_ADAPT_STRUCT(NAME, ...)                                    \
+    BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
+        (0),                                                                    \
+        (0)(NAME),                                                              \
+        struct_tag,                                                             \
+        0,                                                                      \
+        BOOST_FUSION_ADAPT_STRUCT_CREATE_MEMBER_TUPLE_FROM_VARIADICS(__VA_ARGS__), \
+        BOOST_FUSION_ADAPT_STRUCT_C)
+        
+#else // BOOST_PP_VARIADICS
+
 #define BOOST_FUSION_ADAPT_STRUCT(NAME, ATTRIBUTES)                             \
     BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
         (0),                                                                    \
@@ -105,6 +133,8 @@
         0,                                                                      \
         BOOST_PP_CAT( BOOST_FUSION_ADAPT_STRUCT_FILLER_0(0,0)ATTRIBUTES,_END),  \
         BOOST_FUSION_ADAPT_STRUCT_C)
+
+#endif // BOOST_PP_VARIADICS
 
 #define BOOST_FUSION_ADAPT_STRUCT_AS_VIEW(NAME, ATTRIBUTES)                     \
     BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
