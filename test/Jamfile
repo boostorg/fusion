@@ -150,6 +150,7 @@ project
     [ run sequence/define_tpl_struct.cpp : : : : ]
     [ run sequence/define_tpl_struct_inline.cpp : : : : ]
     [ run sequence/define_assoc_tpl_struct.cpp : : : : ]
+    [ run sequence/std_tuple.cpp : : : : ]
     [ run sequence/std_tuple_iterator.cpp : : : : ]
     [ run sequence/ref_vector.cpp : : : : ]
     [ run sequence/flatten_view.cpp : : : : ]
