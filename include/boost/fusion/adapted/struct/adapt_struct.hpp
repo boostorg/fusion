@@ -11,10 +11,6 @@
 #define BOOST_FUSION_ADAPTED_STRUCT_ADAPT_STRUCT_HPP
 
 #include <boost/preprocessor/config/config.hpp>
-#include <boost/preprocessor/variadic.hpp>
-#include <boost/preprocessor/variadic/to_seq.hpp>
-#include <boost/preprocessor/seq/for_each.hpp>
-#include <boost/preprocessor/seq/push_front.hpp>
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/empty.hpp>
 #include <boost/preprocessor/comparison/equal.hpp>
@@ -36,8 +32,6 @@
 #include <boost/fusion/adapted/struct/detail/value_of_impl.hpp>
 #include <boost/fusion/adapted/struct/detail/deref_impl.hpp>
 
-#define BOOST_FUSION_ADAPT_AUTO BOOST_PP_EMPTY()
-
 #define BOOST_FUSION_ADAPT_STRUCT_C(TEMPLATE_PARAMS_SEQ, NAME_SEQ, I, ATTRIBUTE)\
     BOOST_FUSION_ADAPT_STRUCT_C_BASE(                                           \
         TEMPLATE_PARAMS_SEQ,                                                    \
@@ -57,6 +51,8 @@
             BOOST_FUSION_ADAPT_STRUCT_FILLER_0 ATTRIBUTES,_END),                \
         BOOST_FUSION_ADAPT_STRUCT_C)
 
+
+#define BOOST_FUSION_ADAPT_AUTO BOOST_PP_EMPTY()
 
 #if BOOST_PP_VARIADICS
 
