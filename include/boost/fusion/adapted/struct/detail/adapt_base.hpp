@@ -14,7 +14,6 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/config.hpp>
 #include <boost/fusion/support/tag_of_fwd.hpp>
-#include <boost/fusion/adapted/struct/detail/adapt_base_attr_filler.hpp>
 
 #include <boost/preprocessor/empty.hpp>
 #include <boost/preprocessor/stringize.hpp>
