@@ -41,7 +41,7 @@ namespace ns
 BOOST_FUSION_ADAPT_TPL_STRUCT(
     (X)(Y),
     (ns::point)(X)(Y),
-    (X, x)
+    (BOOST_FUSION_ADAPT_AUTO, x)
     (Y, y)
 )
 
