@@ -43,29 +43,28 @@
         BOOST_PP_TUPLE_ELEM(2, 1, ATTRIBUTE),                                   \
         BOOST_PP_TUPLE_ELEM(2, 0, ATTRIBUTE))
 
-#define BOOST_FUSION_ADAPT_TPL_STRUCT(TEMPLATE_PARAMS_SEQ,NAME_SEQ, ATTRIBUTES) \
-    BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
-        (1)TEMPLATE_PARAMS_SEQ,                                                 \
-        (1)NAME_SEQ,                                                            \
-        struct_tag,                                                             \
-        0,                                                                      \
-        ((0,0)) BOOST_PP_CAT(                                                   \
-            BOOST_FUSION_ADAPT_STRUCT_FILLER_0 ATTRIBUTES,_END),                \
-        BOOST_FUSION_ADAPT_STRUCT_C)
-
 
 #define BOOST_FUSION_ADAPT_AUTO BOOST_PP_EMPTY()
 
 #if BOOST_PP_VARIADICS
 
+#   define BOOST_FUSION_ADAPT_TPL_STRUCT(TEMPLATE_PARAMS_SEQ,NAME_SEQ, ...)     \
+        BOOST_FUSION_ADAPT_STRUCT_BASE(                                         \
+            (1)TEMPLATE_PARAMS_SEQ,                                             \
+            (1)NAME_SEQ,                                                        \
+            struct_tag,                                                         \
+            0,                                                                  \
+            BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER(__VA_ARGS__),           \
+            BOOST_FUSION_ADAPT_STRUCT_C)
+
 #   define BOOST_FUSION_ADAPT_STRUCT(NAME, ...)                                 \
-      BOOST_FUSION_ADAPT_STRUCT_BASE(                                           \
-          (0),                                                                  \
-          (0)(NAME),                                                            \
-          struct_tag,                                                           \
-          0,                                                                    \
-          BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER(__VA_ARGS__),             \
-          BOOST_FUSION_ADAPT_STRUCT_C)
+        BOOST_FUSION_ADAPT_STRUCT_BASE(                                         \
+            (0),                                                                \
+            (0)(NAME),                                                          \
+            struct_tag,                                                         \
+            0,                                                                  \
+            BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER(__VA_ARGS__),           \
+            BOOST_FUSION_ADAPT_STRUCT_C)
 
 #   define BOOST_FUSION_ADAPT_STRUCT_AS_VIEW(NAME, ...)                         \
         BOOST_FUSION_ADAPT_STRUCT_BASE(                                         \
@@ -77,6 +76,17 @@
             BOOST_FUSION_ADAPT_STRUCT_C)
         
 #else // BOOST_PP_VARIADICS
+
+#   define BOOST_FUSION_ADAPT_TPL_STRUCT(                                       \
+        TEMPLATE_PARAMS_SEQ,NAME_SEQ, ATTRIBUTES)                               \
+        BOOST_FUSION_ADAPT_STRUCT_BASE(                                         \
+            (1)TEMPLATE_PARAMS_SEQ,                                             \
+            (1)NAME_SEQ,                                                        \
+            struct_tag,                                                         \
+            0,                                                                  \
+            ((0,0)) BOOST_PP_CAT(                                               \
+                BOOST_FUSION_ADAPT_STRUCT_FILLER_0 ATTRIBUTES,_END),            \
+            BOOST_FUSION_ADAPT_STRUCT_C)
 
 #   define BOOST_FUSION_ADAPT_STRUCT(NAME, ATTRIBUTES)                          \
         BOOST_FUSION_ADAPT_STRUCT_BASE(                                         \
