@@ -59,11 +59,15 @@
         BOOST_FUSION_ADAPT_STRUCT_UNPACK_TEMPLATE_PARAMS_IMPL,                  \
         BOOST_PP_TUPLE_EAT(1))(SEQ)
 
-#define BOOST_FUSION_ATTRIBUTE_TYPE_DEDUCE(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)\
-    BOOST_TYPEOF(BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)::BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE) \
-        )
+#define BOOST_FUSION_ATTRIBUTE_TYPEOF(                                          \
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                                  \
+    BOOST_TYPEOF(                                                               \
+        BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                         \
+        ::                                                                      \
+        BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE))                \
 
-#define BOOST_FUSION_GET_GIVEN_TYPE(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)      \
+#define BOOST_FUSION_ATTRIBUTE_GIVENTYPE(                                       \
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                                  \
     BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)
 
 #ifdef BOOST_NO_PARTIAL_SPECIALIZATION_IMPLICIT_DEFAULT_ARGS
@@ -130,7 +134,7 @@
     {                                                                           \
         typedef                                                                 \
             BOOST_PP_IF(BOOST_PP_LESS(ATTRIBUTE_TUPEL_SIZE,2),                  \
-                BOOST_FUSION_ATTRIBUTE_TYPE_DEDUCE, BOOST_FUSION_GET_GIVEN_TYPE \
+                BOOST_FUSION_ATTRIBUTE_TYPEOF, BOOST_FUSION_ATTRIBUTE_GIVENTYPE \
                 )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                    \
         attribute_type;                                                         \
         BOOST_FUSION_ADAPT_STRUCT_MSVC_REDEFINE_TEMPLATE_PARAMS(                \
