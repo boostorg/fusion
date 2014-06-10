@@ -177,7 +177,7 @@ __boost_tuple_library__
 
 [endsect]
 
-[section:adapt_struct BOOST_FUSION_ \[AUTO_\] ADAPT_STRUCT]
+[section:adapt_struct BOOST_FUSION_ADAPT_STRUCT]
 
 [heading Description]
 BOOST_FUSION_ADAPT_STRUCT is a macro that can be used to generate all the
@@ -187,15 +187,18 @@ __random_access_sequence__.
 [heading Synopsis]
     BOOST_FUSION_ADAPT_STRUCT(
         struct_name,
-        (member_type0, member_name0)
-        (member_type1, member_name1)
+        member_name0,
+        member_name1,
+        member_name2,
         ...
         )
 
+    // When Variadic support isn't available or you wish to manually specify the type:
     BOOST_FUSION_AUTO_ADAPT_STRUCT(
         struct_name,
-        (member_name0)
-        (member_name1)
+        (member_type0, member_name0)
+        (member_type1, member_name1)
+        (BOOST_FUSION_ADAPT_AUTO, member_name2)
         ...
         )
 
@@ -203,11 +206,13 @@ __random_access_sequence__.
 
 The above macro generates the necessary code to adapt `struct_name`
 as a model of __random_access_sequence__.
-The sequence of `(member_typeN, member_nameN)`
-pairs declares the type and names of each of the struct members that are
-part of the sequence. While the auto version of the macro only allows 
-specifying a sequence of `(member_nameN)` as fields' types are deduced with 
-[@boost:/libs/typeof/index.html Boost.TypeOf].
+
+The sequence of `member_nameN,` arguments or  `(member_typeN, member_nameN)` 
+pairs declares the type and names of each of the struct members that are part of
+the sequence. 
+
+Omitting the type or using BOOST_FUSION_ADAPT_AUTO can be used to infer the type,
+as with decltype.
 
 The macro should be used at global scope, and `struct_name` should be the fully
 namespace qualified name of the struct to be adapted.
@@ -215,7 +220,6 @@ namespace qualified name of the struct to be adapted.
 [heading Header]
 
     #include <boost/fusion/adapted/struct/adapt_struct.hpp>
-    #include <boost/fusion/adapted/struct/auto_adapt_struct.hpp>
     #include <boost/fusion/include/adapt_struct.hpp>
 
 [heading Example: BOOST_FUSION_ADAPT_STRUCT ]
@@ -231,25 +235,15 @@ namespace qualified name of the struct to be adapted.
     // demo::employee is now a Fusion sequence
     BOOST_FUSION_ADAPT_STRUCT(
         demo::employee,
-        (std::string, name)
-        (int, age))
+        name,
+        age)
 
-
-[heading Example: BOOST_FUSION_AUTO_ADAPT_STRUCT ]
-    namespace demo
-    {
-        struct employee
-        {
-            std::string name;
-            int age;
-        };
-    }
-
-    // demo::employee is now a Fusion sequence
-    BOOST_FUSION_AUTO_ADAPT_STRUCT(
+    // Or demo::employee is also a Fusion sequence
+    BOOST_FUSION_ADAPT_STRUCT(
         demo::employee,
-        (name)
-        (age))
+        (BOOST_FUSION_ADAPT_AUTO, name)
+        (BOOST_FUSION_ADAPT_AUTO, age)
+    )
 
 [endsect]
 
@@ -264,8 +258,18 @@ __random_access_sequence__.
     BOOST_FUSION_ADAPT_TPL_STRUCT(
         (template_param0)(template_param1)...,
         (struct_name) (specialization_param0)(specialization_param1)...,
+        member_name0,
+        member_name1
+        ...
+        )
+
+    // When Variadic support isn't available or you wish to manually specify the type:
+    BOOST_FUSION_ADAPT_TPL_STRUCT(
+        (template_param0)(template_param1)...,
+        (struct_name) (specialization_param0)(specialization_param1)...,
         (member_type0, member_name0)
         (member_type1, member_name1)
+        (BOOST_FUSION_ADAPT_AUTO, member_name2),
         ...
         )
 
@@ -279,9 +283,12 @@ the template type parameters used.
 The sequence `(specialization_param0)(specialization_param1)...`
 declares the template parameters of the actual specialization of `struct_name`
 that is adapted as a fusion sequence.
-The sequence of `(member_typeN, member_nameN)`
-pairs declares the type and names of each of the struct members that are
-part of the sequence.
+The sequence of `member_nameN,` arguments or  `(member_typeN, member_nameN)` 
+pairs declares the type and names of each of the struct members that are part of
+the sequence. 
+
+Omitting the type or using BOOST_FUSION_ADAPT_AUTO can be used to infer the type,
+as with decltype.
 
 The macro should be used at global scope, and `struct_name` should be the fully
 namespace qualified name of the struct to be adapted.
@@ -299,6 +306,7 @@ namespace qualified name of the struct to be adapted.
         {
             Name name;
             Age age;
+            int employment_timestamp;
         };
     }
 
@@ -307,7 +315,16 @@ namespace qualified name of the struct to be adapted.
         (Name)(Age),
         (demo::employee) (Name)(Age),
         (Name, name)
-        (Age, age))
+        (Age, age)
+        (BOOST_FUSION_ADAPT_AUTO, employment_timestamp))
+
+    // Or by infering type completely
+    BOOST_FUSION_ADAPT_TPL_STRUCT(
+        (Name)(Age),
+        (demo::employee) (Name)(Age),
+        name,
+        age,
+        employment_timestamp) 
 
 [endsect]
 
