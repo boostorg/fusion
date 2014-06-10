@@ -62,8 +62,8 @@ namespace ns
 BOOST_FUSION_ADAPT_STRUCT(
     ns::point,
     (int, x)
-    (int, y),
-    z
+    (BOOST_FUSION_ADAPT_AUTO, y)
+    (, z)
 )
 
 #if !BOOST_WORKAROUND(__GNUC__,<4)

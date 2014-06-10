@@ -193,20 +193,19 @@
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_0_END
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_1_END
 
-#if BOOST_PP_VARIADICS
+#define BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTE_FILLER(X, Y)                        \
+    BOOST_PP_IF(BOOST_PP_IS_EMPTY(X),                                           \
+      ((1, (Y))),                                                               \
+      ((2, (X,Y)))                                                              \
+    )
 
-#   define BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTE_FILLER(...)                      \
-        BOOST_PP_IF(BOOST_PP_EQUAL(BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), 2),     \
-            BOOST_PP_IF(                                                        \
-                  BOOST_PP_IS_EMPTY(BOOST_PP_VARIADIC_ELEM(0, __VA_ARGS__)),    \
-                      ((1, (BOOST_PP_VARIADIC_ELEM(1, __VA_ARGS__)) )),         \
-                      ((2, BOOST_PP_VARIADIC_TO_TUPLE(__VA_ARGS__)))),          \
-            ((1, (BOOST_PP_VARIADIC_ELEM(0, __VA_ARGS__)) )))
+#if BOOST_PP_VARIADICS
 
 #   define BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER_OP(r, data, elem)        \
         BOOST_PP_IF(BOOST_FUSION_PP_IS_SEQ(elem),                               \
             BOOST_PP_CAT( BOOST_FUSION_ADAPT_STRUCT_FILLER_0 elem ,_END),       \
-            BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTE_FILLER(elem)                    \
+            BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTE_FILLER(BOOST_FUSION_ADAPT_AUTO, \
+                elem)                                                           \
         )
 
 #   define BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER(...)                     \
@@ -216,16 +215,6 @@
                 unused, BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__)),                 \
                 (0,0)                                                           \
         )
-
-#else // BOOST_PP_VARIADICS
-
-#   define BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTE_FILLER(X, Y)                     \
-        BOOST_PP_IF(BOOST_PP_IS_EMPTY(X),                                       \
-          ((1, (Y))),                                                           \
-          ((2, (X,Y)))                                                          \
-        )
-
-
 
 #endif // BOOST_PP_VARIADICS
 
