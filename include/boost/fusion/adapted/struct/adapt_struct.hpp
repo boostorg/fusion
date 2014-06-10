@@ -21,6 +21,7 @@
 
 #include <boost/fusion/adapted/struct/detail/extension.hpp>
 #include <boost/fusion/adapted/struct/detail/adapt_base.hpp>
+#include <boost/fusion/adapted/struct/detail/adapt_base_attr_filler.hpp>
 #include <boost/fusion/adapted/struct/detail/at_impl.hpp>
 #include <boost/fusion/adapted/struct/detail/is_view_impl.hpp>
 #include <boost/fusion/adapted/struct/detail/is_sequence_impl.hpp>
@@ -64,6 +65,15 @@
           0,                                                                    \
           BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER(__VA_ARGS__),             \
           BOOST_FUSION_ADAPT_STRUCT_C)
+
+#   define BOOST_FUSION_ADAPT_STRUCT_AS_VIEW(NAME, ...)                         \
+        BOOST_FUSION_ADAPT_STRUCT_BASE(                                         \
+            (0),                                                                \
+            (0)(NAME),                                                          \
+            struct_tag,                                                         \
+            1,                                                                  \
+            BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER(__VA_ARGS__),           \
+            BOOST_FUSION_ADAPT_STRUCT_C)
         
 #else // BOOST_PP_VARIADICS
 
@@ -78,15 +88,18 @@
                 _END),                                                          \
             BOOST_FUSION_ADAPT_STRUCT_C)
 
-#endif // BOOST_PP_VARIADICS
+#   define BOOST_FUSION_ADAPT_STRUCT_AS_VIEW(NAME, ATTRIBUTES)                  \
+        BOOST_FUSION_ADAPT_STRUCT_BASE(                                         \
+            (0),                                                                \
+            (0)(NAME),                                                          \
+            struct_tag,                                                         \
+            1,                                                                  \
+            BOOST_PP_CAT(                                                       \
+                BOOST_FUSION_ADAPT_STRUCT_FILLER_0(0,0)ATTRIBUTES,              \
+                _END),                                                          \
+            BOOST_FUSION_ADAPT_STRUCT_C)
 
-#define BOOST_FUSION_ADAPT_STRUCT_AS_VIEW(NAME, ATTRIBUTES)                     \
-    BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
-        (0),                                                                    \
-        (0)(NAME),                                                              \
-        struct_tag,                                                             \
-        1,                                                                      \
-        BOOST_PP_CAT(BOOST_FUSION_ADAPT_STRUCT_FILLER_0(0,0)ATTRIBUTES,_END),   \
-        BOOST_FUSION_ADAPT_STRUCT_C)
+
+#endif // BOOST_PP_VARIADICS
 
 #endif
