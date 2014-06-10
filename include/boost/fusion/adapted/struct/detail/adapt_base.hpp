@@ -2,6 +2,7 @@
     Copyright (c) 2001-2009 Joel de Guzman
     Copyright (c) 2005-2006 Dan Marsden
     Copyright (c) 2009-2011 Christopher Schmidt
+    Copyright (c) 2013-2014 Damien Buhl
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -13,6 +14,7 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/config.hpp>
 #include <boost/fusion/support/tag_of_fwd.hpp>
+#include <boost/fusion/adapted/struct/detail/preprocessor/is_seq.hpp>
 
 #include <boost/preprocessor/empty.hpp>
 #include <boost/preprocessor/stringize.hpp>
@@ -25,14 +27,14 @@
 #include <boost/preprocessor/tuple/eat.hpp>
 #include <boost/preprocessor/tuple/elem.hpp>
 #include <boost/preprocessor/arithmetic/dec.hpp>
+#include <boost/preprocessor/facilities/is_empty.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/tag.hpp>
 #include <boost/mpl/eval_if.hpp>
 #include <boost/mpl/identity.hpp>
 #include <boost/type_traits/add_const.hpp>
 
-#include <boost/typeof/typeof.hpp> 
-
+#include <boost/typeof/typeof.hpp>
 
 #define BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME_TEMPLATE_PARAMS(SEQ)              \
     BOOST_PP_SEQ_HEAD(SEQ)<BOOST_PP_SEQ_ENUM(BOOST_PP_SEQ_TAIL(SEQ))>           \
@@ -183,24 +185,54 @@
         }                                                                       \
     };
 
-/**
- * \brief Creates a Random Access Sequence for the struct/class named NAME_SEQ
- * \param TEMPLATE_PARAMS_SEQ
- * \param NAME_SEQ Sequence of a boolean telling if the type is a template type
- *                 or not, followed by the name of the type to be adapted.
- *
- *                 That is (0)(mystruct) means adaptation of mystruct a 
- *                 non-template type. While (1)(my_tpl_struct) means adaptation
- *                 of a template based struct.
- * \param TAG The tag of the Random Access Sequence, this enables to select the
- *            implementation of the sequence.
- * \param IS_VIEW Whether if this creates a sequence of a view from a sequence
- * \param ATTRIBUTES_SEQ Sequence of struct attributes to add to the list of 
- *                       adapted elements
- * \param ATTRIBUTES_CALLBACK Macro callback used to register the attributes into 
- *                            the sequence. Usually a call to 
- *                            BOOST_FUSION_ADAPT_STRUCT_C_BASE.
- */
+#define BOOST_FUSION_ADAPT_STRUCT_FILLER_0(X, Y)                                \
+    BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTE_FILLER(X,Y)                             \
+    BOOST_FUSION_ADAPT_STRUCT_FILLER_1
+
+#define BOOST_FUSION_ADAPT_STRUCT_FILLER_1(X, Y)                                \
+    BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTE_FILLER(X,Y)                             \
+    BOOST_FUSION_ADAPT_STRUCT_FILLER_0
+
+#define BOOST_FUSION_ADAPT_STRUCT_FILLER_0_END
+#define BOOST_FUSION_ADAPT_STRUCT_FILLER_1_END
+
+#if BOOST_PP_VARIADICS
+
+#   define BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTE_FILLER(...)                      \
+        BOOST_PP_IF(BOOST_PP_EQUAL(BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), 2),     \
+            BOOST_PP_IF(                                                        \
+                  BOOST_PP_IS_EMPTY(BOOST_PP_VARIADIC_ELEM(0, __VA_ARGS__)),    \
+                      ((1, (BOOST_PP_VARIADIC_ELEM(1, __VA_ARGS__)) )),         \
+                      ((2, BOOST_PP_VARIADIC_TO_TUPLE(__VA_ARGS__)))),          \
+            ((1, (BOOST_PP_VARIADIC_ELEM(0, __VA_ARGS__)) )))
+
+#   define BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER_OP(r, data, elem)        \
+        BOOST_PP_IF(BOOST_FUSION_PP_IS_SEQ(elem),                               \
+            BOOST_PP_CAT( BOOST_FUSION_ADAPT_STRUCT_FILLER_0 elem ,_END),       \
+            BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTE_FILLER(elem)                    \
+        )
+
+#   define BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER(...)                     \
+        BOOST_PP_SEQ_PUSH_FRONT(                                                \
+            BOOST_PP_SEQ_FOR_EACH(                                              \
+                BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER_OP,                 \
+                unused, BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__)),                 \
+                (0,0)                                                           \
+        )
+
+#else // BOOST_PP_VARIADICS
+
+#   define BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTE_FILLER(X, Y)                     \
+        BOOST_PP_IF(BOOST_PP_IS_EMPTY(X),                                       \
+          ((1, (Y))),                                                           \
+          ((2, (X,Y)))                                                          \
+        )
+
+
+
+#endif // BOOST_PP_VARIADICS
+
+
 #define BOOST_FUSION_ADAPT_STRUCT_BASE(                                         \
     TEMPLATE_PARAMS_SEQ,                                                        \
     NAME_SEQ,                                                                   \
