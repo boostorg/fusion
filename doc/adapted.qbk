@@ -193,8 +193,8 @@ __random_access_sequence__.
         ...
         )
 
-    // When Variadic support isn't available or you wish to manually specify the type:
-    BOOST_FUSION_AUTO_ADAPT_STRUCT(
+    // When BOOST_PP_VARIADICS is missing :
+    BOOST_FUSION_ADAPT_STRUCT(
         struct_name,
         (member_type0, member_name0)
         (member_type1, member_name1)
@@ -238,7 +238,7 @@ namespace qualified name of the struct to be adapted.
         name,
         age)
 
-    // Or demo::employee is also a Fusion sequence
+    // When BOOST_PP_VARIADICS is missing :
     BOOST_FUSION_ADAPT_STRUCT(
         demo::employee,
         (BOOST_FUSION_ADAPT_AUTO, name)
@@ -263,7 +263,7 @@ __random_access_sequence__.
         ...
         )
 
-    // When Variadic support isn't available or you wish to manually specify the type:
+    // When BOOST_PP_VARIADICS is missing :
     BOOST_FUSION_ADAPT_TPL_STRUCT(
         (template_param0)(template_param1)...,
         (struct_name) (specialization_param0)(specialization_param1)...,
