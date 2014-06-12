@@ -7,7 +7,9 @@
 
 #include <boost/config.hpp>
 
-#if !defined(BOOST_NO_CXX11_HDR_TUPLE)
+// adapted/std_tuple.hpp only supports implementations using variadic templates
+#if !defined(BOOST_NO_CXX11_HDR_TUPLE) && \
+    !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
 
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/fusion/adapted/std_tuple.hpp>
@@ -23,15 +25,12 @@ main()
     using namespace boost::fusion;
     using namespace boost;
 
-// The convert only supports implementations using variadic templates
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
     {
         // conversion vector to std tuple
         std::tuple<int, std::string> t = convert<std_tuple_tag>(make_vector(123, "Hola!!!"));
         BOOST_TEST(std::get<0>(t) == 123);
         BOOST_TEST(std::get<1>(t) == "Hola!!!");
     }
-#endif
 
     return boost::report_errors();
 }
