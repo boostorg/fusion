@@ -26,6 +26,7 @@
 #include <boost/preprocessor/tuple/eat.hpp>
 #include <boost/preprocessor/tuple/elem.hpp>
 #include <boost/preprocessor/arithmetic/dec.hpp>
+#include <boost/preprocessor/comparison/less.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/tag.hpp>
 #include <boost/mpl/eval_if.hpp>
