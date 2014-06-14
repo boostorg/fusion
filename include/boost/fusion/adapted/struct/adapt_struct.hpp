@@ -84,8 +84,8 @@
             (1)NAME_SEQ,                                                        \
             struct_tag,                                                         \
             0,                                                                  \
-            ((0,0)) BOOST_PP_CAT(                                               \
-                BOOST_FUSION_ADAPT_STRUCT_FILLER_0 ATTRIBUTES,_END),            \
+            BOOST_PP_CAT(                                                       \
+                BOOST_FUSION_ADAPT_STRUCT_FILLER_0(0,0)ATTRIBUTES,_END),        \
             BOOST_FUSION_ADAPT_STRUCT_C)
 
 #   define BOOST_FUSION_ADAPT_STRUCT(NAME, ATTRIBUTES)                          \
