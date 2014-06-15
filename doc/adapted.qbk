@@ -187,8 +187,18 @@ __random_access_sequence__.
 [heading Synopsis]
     BOOST_FUSION_ADAPT_STRUCT(
         struct_name,
+        member_name0,
+        member_name1,
+        member_name2,
+        ...
+        )
+
+    // When BOOST_PP_VARIADICS is missing :
+    BOOST_FUSION_ADAPT_STRUCT(
+        struct_name,
         (member_type0, member_name0)
         (member_type1, member_name1)
+        (BOOST_FUSION_ADAPT_AUTO, member_name2)
         ...
         )
 
@@ -196,9 +206,13 @@ __random_access_sequence__.
 
 The above macro generates the necessary code to adapt `struct_name`
 as a model of __random_access_sequence__.
-The sequence of `(member_typeN, member_nameN)`
-pairs declares the type and names of each of the struct members that are
-part of the sequence.
+
+The sequence of `member_nameN,` arguments or  `(member_typeN, member_nameN)` 
+pairs declares the type and names of each of the struct members that are part of
+the sequence. 
+
+Omitting the type or using BOOST_FUSION_ADAPT_AUTO can be used to infer the type,
+as with decltype.
 
 The macro should be used at global scope, and `struct_name` should be the fully
 namespace qualified name of the struct to be adapted.
@@ -208,7 +222,7 @@ namespace qualified name of the struct to be adapted.
     #include <boost/fusion/adapted/struct/adapt_struct.hpp>
     #include <boost/fusion/include/adapt_struct.hpp>
 
-[heading Example]
+[heading Example: BOOST_FUSION_ADAPT_STRUCT ]
     namespace demo
     {
         struct employee
@@ -221,8 +235,15 @@ namespace qualified name of the struct to be adapted.
     // demo::employee is now a Fusion sequence
     BOOST_FUSION_ADAPT_STRUCT(
         demo::employee,
-        (std::string, name)
-        (int, age))
+        name,
+        age)
+
+    // When BOOST_PP_VARIADICS is missing :
+    BOOST_FUSION_ADAPT_STRUCT(
+        demo::employee,
+        (BOOST_FUSION_ADAPT_AUTO, name)
+        (BOOST_FUSION_ADAPT_AUTO, age)
+    )
 
 [endsect]
 
@@ -237,8 +258,18 @@ __random_access_sequence__.
     BOOST_FUSION_ADAPT_TPL_STRUCT(
         (template_param0)(template_param1)...,
         (struct_name) (specialization_param0)(specialization_param1)...,
+        member_name0,
+        member_name1
+        ...
+        )
+
+    // When BOOST_PP_VARIADICS is missing :
+    BOOST_FUSION_ADAPT_TPL_STRUCT(
+        (template_param0)(template_param1)...,
+        (struct_name) (specialization_param0)(specialization_param1)...,
         (member_type0, member_name0)
         (member_type1, member_name1)
+        (BOOST_FUSION_ADAPT_AUTO, member_name2),
         ...
         )
 
@@ -252,9 +283,12 @@ the template type parameters used.
 The sequence `(specialization_param0)(specialization_param1)...`
 declares the template parameters of the actual specialization of `struct_name`
 that is adapted as a fusion sequence.
-The sequence of `(member_typeN, member_nameN)`
-pairs declares the type and names of each of the struct members that are
-part of the sequence.
+The sequence of `member_nameN,` arguments or  `(member_typeN, member_nameN)` 
+pairs declares the type and names of each of the struct members that are part of
+the sequence. 
+
+Omitting the type or using BOOST_FUSION_ADAPT_AUTO can be used to infer the type,
+as with decltype.
 
 The macro should be used at global scope, and `struct_name` should be the fully
 namespace qualified name of the struct to be adapted.
@@ -272,6 +306,7 @@ namespace qualified name of the struct to be adapted.
         {
             Name name;
             Age age;
+            int employment_timestamp;
         };
     }
 
@@ -280,7 +315,16 @@ namespace qualified name of the struct to be adapted.
         (Name)(Age),
         (demo::employee) (Name)(Age),
         (Name, name)
-        (Age, age))
+        (Age, age)
+        (BOOST_FUSION_ADAPT_AUTO, employment_timestamp))
+
+    // Or by infering type completely
+    BOOST_FUSION_ADAPT_TPL_STRUCT(
+        (Name)(Age),
+        (demo::employee) (Name)(Age),
+        name,
+        age,
+        employment_timestamp) 
 
 [endsect]
 

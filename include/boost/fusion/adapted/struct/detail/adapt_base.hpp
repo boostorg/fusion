@@ -2,6 +2,7 @@
     Copyright (c) 2001-2009 Joel de Guzman
     Copyright (c) 2005-2006 Dan Marsden
     Copyright (c) 2009-2011 Christopher Schmidt
+    Copyright (c) 2013-2014 Damien Buhl
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -25,11 +26,14 @@
 #include <boost/preprocessor/tuple/eat.hpp>
 #include <boost/preprocessor/tuple/elem.hpp>
 #include <boost/preprocessor/arithmetic/dec.hpp>
+#include <boost/preprocessor/comparison/less.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/tag.hpp>
 #include <boost/mpl/eval_if.hpp>
 #include <boost/mpl/identity.hpp>
 #include <boost/type_traits/add_const.hpp>
+
+#include <boost/typeof/typeof.hpp>
 
 #define BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME_TEMPLATE_PARAMS(SEQ)              \
     BOOST_PP_SEQ_HEAD(SEQ)<BOOST_PP_SEQ_ENUM(BOOST_PP_SEQ_TAIL(SEQ))>           \
@@ -54,6 +58,17 @@
         BOOST_PP_SEQ_HEAD(SEQ),                                                 \
         BOOST_FUSION_ADAPT_STRUCT_UNPACK_TEMPLATE_PARAMS_IMPL,                  \
         BOOST_PP_TUPLE_EAT(1))(SEQ)
+
+#define BOOST_FUSION_ATTRIBUTE_TYPEOF(                                          \
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                                  \
+    BOOST_TYPEOF(                                                               \
+        BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                         \
+        ::                                                                      \
+        BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE))                \
+
+#define BOOST_FUSION_ATTRIBUTE_GIVENTYPE(                                       \
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                                  \
+    BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)
 
 #ifdef BOOST_NO_PARTIAL_SPECIALIZATION_IMPLICIT_DEFAULT_ARGS
 #   define BOOST_FUSION_ADAPT_STRUCT_TAG_OF_SPECIALIZATION(                     \
@@ -118,7 +133,9 @@
     >                                                                           \
     {                                                                           \
         typedef                                                                 \
-            BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)             \
+            BOOST_PP_IF(BOOST_PP_LESS(ATTRIBUTE_TUPEL_SIZE,2),                  \
+                BOOST_FUSION_ATTRIBUTE_TYPEOF, BOOST_FUSION_ATTRIBUTE_GIVENTYPE \
+                )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                    \
         attribute_type;                                                         \
         BOOST_FUSION_ADAPT_STRUCT_MSVC_REDEFINE_TEMPLATE_PARAMS(                \
             TEMPLATE_PARAMS_SEQ)                                                \
@@ -143,7 +160,9 @@
             call(Seq& seq)                                                      \
             {                                                                   \
                 return seq.PREFIX()                                             \
-                    BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 1, ATTRIBUTE);    \
+                    BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE,                   \
+                        BOOST_PP_IF(BOOST_PP_LESS(ATTRIBUTE_TUPEL_SIZE,2), 0, 1),\
+                          ATTRIBUTE);                                           \
             }                                                                   \
         };                                                                      \
     };                                                                          \
@@ -163,7 +182,9 @@
         call()                                                                  \
         {                                                                       \
             return BOOST_PP_STRINGIZE(                                          \
-                BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE,1,ATTRIBUTE));         \
+               BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE,                        \
+                        BOOST_PP_IF(BOOST_PP_LESS(ATTRIBUTE_TUPEL_SIZE,2), 0, 1),\
+                          ATTRIBUTE));                                          \
         }                                                                       \
     };
 
