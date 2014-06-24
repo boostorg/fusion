@@ -40,9 +40,10 @@
 #define BOOST_FUSION_ADAPT_ADT_FILLER_0_END
 #define BOOST_FUSION_ADAPT_ADT_FILLER_1_END
 
-#define BOOST_FUSION_ADAPT_ADT_C(TEMPLATE_PARAMS_SEQ, NAME_SEQ, I, ATTRIBUTE)   \
-    BOOST_FUSION_ADAPT_ADT_C_BASE(                                              \
-        TEMPLATE_PARAMS_SEQ, NAME_SEQ, I, ATTRIBUTE, 4)
+#define BOOST_FUSION_ADAPT_ADT_C(                                               \
+    TEMPLATE_PARAMS_SEQ, NAME_SEQ, IS_VIEW, I, ATTRIBUTE)                       \
+        BOOST_FUSION_ADAPT_ADT_C_BASE(                                          \
+            TEMPLATE_PARAMS_SEQ, NAME_SEQ, I, ATTRIBUTE, 4)
 
 #define BOOST_FUSION_ADAPT_TPL_ADT(TEMPLATE_PARAMS_SEQ, NAME_SEQ , ATTRIBUTES)  \
     BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
