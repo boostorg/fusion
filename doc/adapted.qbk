@@ -339,8 +339,29 @@ adapted using the given name.
 [heading Synopsis]
     BOOST_FUSION_ADAPT_STRUCT_NAMED(
         struct_name, adapted_name,
+        member_name0,
+        member_name1,
+        member_name2,
+        ...
+        )
+
+    BOOST_FUSION_ADAPT_STRUCT_NAMED_NS(
+        struct_name,
+        (namespace0)(namespace1)...,
+        adapted_name,
+        member_name0,
+        member_name1,
+        member_name2,
+        ...
+        )
+
+    // When BOOST_PP_VARIADICS is missing :
+
+    BOOST_FUSION_ADAPT_STRUCT_NAMED(
+        struct_name, adapted_name,
         (member_type0, member_name0)
         (member_type1, member_name1)
+        (BOOST_FUSION_ADAPT_AUTO, member_name2),
         ...
         )
 
@@ -350,8 +371,11 @@ adapted using the given name.
         adapted_name,
         (member_type0, member_name0)
         (member_type1, member_name1)
+        (BOOST_FUSION_ADAPT_AUTO, member_name2),
         ...
         )
+
+
 
 [heading Semantics]
 
@@ -365,9 +389,12 @@ If an empty namespace sequence is given (that is a macro that expands to
 nothing), the adapted view is placed in the global namespace.
 If no namespace sequence is given (i.e. `BOOST_FUSION_ADAPT_STRUCT_NAMED`), the
 adapted view is placed in the namespace `boost::fusion::adapted`.
-The sequence of `(member_typeN, member_nameN)`
-pairs declares the type and names of each of the struct members that are
-part of the sequence.
+The sequence of `member_nameN,` arguments or  `(member_typeN, member_nameN)` 
+pairs declares the type and names of each of the struct members that are part of
+the sequence. 
+
+Omitting the type or using BOOST_FUSION_ADAPT_AUTO can be used to infer the type,
+as with decltype.
 
 The macros should be used at global scope, and `struct_name` should be the fully
 namespace qualified name of the struct to be converted.
@@ -391,8 +418,14 @@ namespace qualified name of the struct to be converted.
     // referring to demo::employee
     BOOST_FUSION_ADAPT_STRUCT_NAMED(
         demo::employee, adapted_employee,
-        (std::string, name)
-        (int, age))
+        name,
+        age)
+
+    // When BOOST_PP_VARIADICS is missing :
+    BOOST_FUSION_ADAPT_STRUCT_NAMED(
+        demo::employee, adapted_employee,
+        (BOOST_FUSION_ADAPT_AUTO, name),
+        (BOOST_FUSION_ADAPT_AUTO, age))
 
 [endsect]
 
