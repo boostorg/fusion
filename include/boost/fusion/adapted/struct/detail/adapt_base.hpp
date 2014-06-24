@@ -59,16 +59,16 @@
         BOOST_FUSION_ADAPT_STRUCT_UNPACK_TEMPLATE_PARAMS_IMPL,                  \
         BOOST_PP_TUPLE_EAT(1))(SEQ)
 
+
 #define BOOST_FUSION_ATTRIBUTE_TYPEOF(                                          \
-    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                                  \
-    BOOST_TYPEOF(                                                               \
-        BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                         \
-        ::                                                                      \
-        BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE))                \
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)                          \
+        BOOST_TYPEOF(                                                           \
+            BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)::PREFIX()           \
+            BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE))            
 
 #define BOOST_FUSION_ATTRIBUTE_GIVENTYPE(                                       \
-    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                                  \
-    BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, unused)                          \
+        BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)
 
 #ifdef BOOST_NO_PARTIAL_SPECIALIZATION_IMPLICIT_DEFAULT_ARGS
 #   define BOOST_FUSION_ADAPT_STRUCT_TAG_OF_SPECIALIZATION(                     \
@@ -98,9 +98,10 @@
 #endif
 
 #define BOOST_FUSION_ADAPT_STRUCT_BASE_UNPACK_AND_CALL(R,DATA,I,ATTRIBUTE)      \
-    BOOST_PP_TUPLE_ELEM(3,0,DATA)(                                              \
-        BOOST_PP_TUPLE_ELEM(3,1,DATA),                                          \
-        BOOST_PP_TUPLE_ELEM(3,2,DATA),                                          \
+    BOOST_PP_TUPLE_ELEM(4,0,DATA)(                                              \
+        BOOST_PP_TUPLE_ELEM(4,1,DATA),                                          \
+        BOOST_PP_TUPLE_ELEM(4,2,DATA),                                          \
+        BOOST_PP_TUPLE_ELEM(4,3,DATA),                                          \
         I,                                                                      \
         ATTRIBUTE)
 
@@ -122,7 +123,8 @@
 #endif
 
 #define BOOST_FUSION_ADAPT_STRUCT_C_BASE(                                       \
-    TEMPLATE_PARAMS_SEQ,NAME_SEQ,I,PREFIX,ATTRIBUTE,ATTRIBUTE_TUPEL_SIZE)       \
+    TEMPLATE_PARAMS_SEQ,NAME_SEQ,IS_VIEW,                                       \
+    I,PREFIX,ATTRIBUTE,ATTRIBUTE_TUPEL_SIZE)                                    \
                                                                                 \
     template<                                                                   \
         BOOST_FUSION_ADAPT_STRUCT_UNPACK_TEMPLATE_PARAMS(TEMPLATE_PARAMS_SEQ)   \
@@ -135,7 +137,7 @@
         typedef                                                                 \
             BOOST_PP_IF(BOOST_PP_LESS(ATTRIBUTE_TUPEL_SIZE,2),                  \
                 BOOST_FUSION_ATTRIBUTE_TYPEOF, BOOST_FUSION_ATTRIBUTE_GIVENTYPE \
-                )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                    \
+                )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)            \
         attribute_type;                                                         \
         BOOST_FUSION_ADAPT_STRUCT_MSVC_REDEFINE_TEMPLATE_PARAMS(                \
             TEMPLATE_PARAMS_SEQ)                                                \
@@ -216,7 +218,7 @@ namespace boost                                                                 
                 BOOST_PP_TUPLE_EAT(4))(                                         \
                     1,                                                          \
                     BOOST_FUSION_ADAPT_STRUCT_BASE_UNPACK_AND_CALL,             \
-                    (ATTRIBUTES_CALLBACK,TEMPLATE_PARAMS_SEQ,NAME_SEQ),         \
+                    (ATTRIBUTES_CALLBACK,TEMPLATE_PARAMS_SEQ,NAME_SEQ, IS_VIEW),\
                     BOOST_PP_SEQ_TAIL(ATTRIBUTES_SEQ))                          \
                                                                                 \
             template<                                                           \
