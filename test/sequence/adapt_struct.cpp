@@ -159,7 +159,7 @@ main()
     {
         // conversion from point to list
         point p = {5, 3, 3};
-        list<int, long> l(p);
+        list<int, long, int> l(p);
         l = p;
     }
 

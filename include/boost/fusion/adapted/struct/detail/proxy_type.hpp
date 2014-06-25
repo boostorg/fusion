@@ -12,6 +12,8 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/fusion/adapted/struct/detail/namespace.hpp>
 
+#define BOOST_FUSION_PROXY_PREFIX() obj.
+
 #define BOOST_FUSION_ADAPT_STRUCT_DEFINE_PROXY_TYPE_IMPL(                       \
     WRAPPED_TYPE,NAMESPACE_SEQ,NAME)                                            \
                                                                                 \

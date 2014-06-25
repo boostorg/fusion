@@ -34,14 +34,16 @@
 #include <boost/fusion/adapted/struct/detail/value_of_impl.hpp>
 #include <boost/fusion/adapted/struct/detail/deref_impl.hpp>
 
-#define BOOST_FUSION_ADAPT_STRUCT_C(TEMPLATE_PARAMS_SEQ, NAME_SEQ, I, ATTRIBUTE)\
-    BOOST_FUSION_ADAPT_STRUCT_C_BASE(                                           \
-        TEMPLATE_PARAMS_SEQ,                                                    \
-        NAME_SEQ,                                                               \
-        I,                                                                      \
-        BOOST_PP_EMPTY,                                                         \
-        BOOST_PP_TUPLE_ELEM(2, 1, ATTRIBUTE),                                   \
-        BOOST_PP_TUPLE_ELEM(2, 0, ATTRIBUTE))
+#define BOOST_FUSION_ADAPT_STRUCT_C(                                            \
+    TEMPLATE_PARAMS_SEQ, NAME_SEQ, IS_VIEW, I, ATTRIBUTE)                       \
+        BOOST_FUSION_ADAPT_STRUCT_C_BASE(                                       \
+            TEMPLATE_PARAMS_SEQ,                                                \
+            NAME_SEQ,                                                           \
+            IS_VIEW,                                                            \
+            I,                                                                  \
+            BOOST_PP_IF(IS_VIEW, BOOST_FUSION_PROXY_PREFIX, BOOST_PP_EMPTY),    \
+            BOOST_PP_TUPLE_ELEM(2, 1, ATTRIBUTE),                               \
+            BOOST_PP_TUPLE_ELEM(2, 0, ATTRIBUTE))
 
 
 #define BOOST_FUSION_ADAPT_AUTO BOOST_PP_EMPTY()
