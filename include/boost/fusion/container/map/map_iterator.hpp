@@ -12,6 +12,7 @@
 #include <boost/fusion/iterator/iterator_facade.hpp>
 #include <boost/mpl/minus.hpp>
 #include <boost/mpl/equal_to.hpp>
+#include <boost/utility/declval.hpp>
 
 namespace boost { namespace fusion
 {
@@ -37,7 +38,7 @@ namespace boost { namespace fusion
             typedef typename Iterator::sequence sequence;
             typedef typename Iterator::index index;
             typedef
-                decltype(std::declval<sequence>().get_val(index()))
+                decltype(boost::declval<sequence>().get_val(index()))
             type;
         };
 
@@ -47,7 +48,7 @@ namespace boost { namespace fusion
             typedef typename Iterator::sequence sequence;
             typedef typename Iterator::index index;
             typedef
-                decltype(std::declval<sequence>().get_val(index()).second)
+                decltype(boost::declval<sequence>().get_val(index()).second)
             type;
         };
 
@@ -56,7 +57,7 @@ namespace boost { namespace fusion
         {
             typedef typename Iterator::sequence sequence;
             typedef typename Iterator::index index;
-            typedef decltype(std::declval<sequence>().get_key(index())) key_identity_type;
+            typedef decltype(boost::declval<sequence>().get_key(index())) key_identity_type;
             typedef typename key_identity_type::type type;
         };
 
@@ -66,7 +67,7 @@ namespace boost { namespace fusion
             typedef typename Iterator::sequence sequence;
             typedef typename Iterator::index index;
             typedef
-                decltype(std::declval<sequence>().get(index()))
+                decltype(boost::declval<sequence>().get(index()))
             type;
 
             BOOST_FUSION_GPU_ENABLED
@@ -83,7 +84,7 @@ namespace boost { namespace fusion
             typedef typename Iterator::sequence sequence;
             typedef typename Iterator::index index;
             typedef
-                decltype(std::declval<sequence>().get(index()).second)
+                decltype(boost::declval<sequence>().get(index()).second)
             type;
 
             BOOST_FUSION_GPU_ENABLED

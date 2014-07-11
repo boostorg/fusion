@@ -9,6 +9,7 @@
 
 #include <boost/fusion/support/config.hpp>
 #include <boost/fusion/support/detail/access.hpp>
+#include <boost/utility/declval.hpp>
 
 namespace boost { namespace fusion
 {
@@ -27,7 +28,7 @@ namespace boost { namespace fusion
             {
                 typedef mpl::int_<N::value> index;
                 typedef
-                    decltype(std::declval<Sequence>().get(index()))
+                    decltype(boost::declval<Sequence>().get(index()))
                 type;
 
                 BOOST_FUSION_GPU_ENABLED
@@ -43,7 +44,7 @@ namespace boost { namespace fusion
             {
                 typedef mpl::int_<N::value> index;
                 typedef
-                    decltype(std::declval<Sequence const>().get(index()))
+                    decltype(boost::declval<Sequence const>().get(index()))
                 type;
 
                 BOOST_FUSION_GPU_ENABLED
