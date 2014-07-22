@@ -12,6 +12,7 @@
 #include <boost/fusion/adapted/struct/detail/preprocessor/is_seq.hpp>
 
 #include <boost/preprocessor/empty.hpp>
+#include <boost/preprocessor/arithmetic/sub.hpp>
 #include <boost/preprocessor/facilities/is_empty.hpp>
 #include <boost/preprocessor/variadic/to_seq.hpp>
 #include <boost/preprocessor/seq/for_each.hpp>
@@ -33,6 +34,36 @@
       ((1, (Y))),                                                               \
       ((2, (X,Y)))                                                              \
     )
+
+#define BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR_SIZE(ATTRIBUTE)                   \
+  BOOST_PP_TUPLE_ELEM(2, 0, ATTRIBUTE)
+
+#define BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR(ATTRIBUTE)                        \
+  BOOST_PP_TUPLE_ELEM(2, 1, ATTRIBUTE)
+
+#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0(X, Y, Z)                       \
+    BOOST_FUSION_ADAPT_ASSOC_STRUCT_ATTRIBUTE_FILLER(X, Y, Z)                   \
+    BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_1
+
+#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_1(X, Y, Z)                       \
+    BOOST_FUSION_ADAPT_ASSOC_STRUCT_ATTRIBUTE_FILLER(X, Y, Z)                   \
+    BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0
+
+#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0_END
+#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_1_END
+
+#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_ATTRIBUTE_FILLER(X, Y, Z)               \
+    BOOST_PP_IF(BOOST_PP_IS_EMPTY(X),                                           \
+      ((2, (Y,Z))),                                                             \
+      ((3, (X,Y,Z)))                                                            \
+    )
+
+#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAPPEDATTR_GET_KEY(ATTRIBUTE)          \
+    BOOST_PP_TUPLE_ELEM(                                                        \
+        BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR_SIZE(ATTRIBUTE),                  \
+        BOOST_PP_SUB(BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR_SIZE(ATTRIBUTE), 1), \
+        BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR(ATTRIBUTE))
+
 
 #if BOOST_PP_VARIADICS
 

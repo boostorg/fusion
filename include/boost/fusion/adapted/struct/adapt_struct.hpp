@@ -43,10 +43,11 @@
             I,                                                                  \
             BOOST_PP_IF(IS_VIEW, BOOST_FUSION_PROXY_PREFIX, BOOST_PP_EMPTY),    \
             BOOST_PP_TUPLE_ELEM(2, 1, ATTRIBUTE),                               \
-            BOOST_PP_TUPLE_ELEM(2, 0, ATTRIBUTE))
+            BOOST_PP_TUPLE_ELEM(2, 0, ATTRIBUTE),                               \
+            BOOST_PP_IF(                                                        \
+                BOOST_PP_LESS(BOOST_PP_TUPLE_ELEM(2, 0, ATTRIBUTE),2), 1, 0))
 
 
-#define BOOST_FUSION_ADAPT_AUTO BOOST_PP_EMPTY()
 
 #if BOOST_PP_VARIADICS
 
