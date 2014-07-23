@@ -50,11 +50,21 @@ namespace ns
     };
 }
 
-BOOST_FUSION_ADAPT_ASSOC_STRUCT(
-    ns::point,
-    (int, x, ns::x_member)
-    (int, y, ns::y_member)
-)
+#if BOOST_PP_VARIADICS
+  BOOST_FUSION_ADAPT_ASSOC_STRUCT(
+      ns::point,
+      (x, ns::x_member)
+      (int, y, ns::y_member)
+  )
+
+#else // BOOST_PP_VARIADICS
+  BOOST_FUSION_ADAPT_ASSOC_STRUCT(
+      ns::point,
+      (BOOST_FUSION_ADAPT_AUTO, x, ns::x_member)
+      (int, y, ns::y_member)
+  )
+
+#endif
 
 int
 main()

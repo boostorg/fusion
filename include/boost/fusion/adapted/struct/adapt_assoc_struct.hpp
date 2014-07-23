@@ -21,7 +21,7 @@
 
 #include <boost/fusion/adapted/struct/detail/extension.hpp>
 #include <boost/fusion/adapted/struct/detail/adapt_base.hpp>
-#include <boost/fusion/adapted/struct/detail/adapt_base_attr_filler.hpp>
+#include <boost/fusion/adapted/struct/detail/adapt_base_assoc_attr_filler.hpp>
 #include <boost/fusion/adapted/struct/detail/at_impl.hpp>
 #include <boost/fusion/adapted/struct/detail/is_view_impl.hpp>
 #include <boost/fusion/adapted/struct/detail/is_sequence_impl.hpp>
@@ -64,6 +64,7 @@
                                                                                 \
     BOOST_FUSION_ADAPT_ASSOC_STRUCT_C_BASE(                                     \
         TEMPLATE_PARAMS_SEQ,NAME_SEQ,IS_VIEW,I,BOOST_PP_EMPTY,ATTRIBUTE)
+
 
 #define BOOST_FUSION_ADAPT_ASSOC_TPL_STRUCT(                                    \
     TEMPLATE_PARAMS_SEQ, NAME_SEQ, ATTRIBUTES)                                  \
