@@ -47,12 +47,22 @@ namespace ns
     };
 }
 
-BOOST_FUSION_ADAPT_ASSOC_TPL_STRUCT(
-    (X)(Y),
-    (ns::point)(X)(Y),
-    (int, x, ns::x_member)
-    (int, y, ns::y_member)
-)
+#if BOOST_PP_VARIADICS
+  BOOST_FUSION_ADAPT_ASSOC_TPL_STRUCT(
+        (X)(Y),
+        (ns::point)(X)(Y),
+        (x, ns::x_member)
+        (y, ns::y_member)
+    )
+
+#else // BOOST_PP_VARIADICS
+  BOOST_FUSION_ADAPT_ASSOC_TPL_STRUCT(
+      (X)(Y),
+      (ns::point)(X)(Y),
+      (int, x, ns::x_member)
+      (BOOST_FUSION_ADAPT_AUTO, y, ns::y_member)
+  )
+#endif
 
 int
 main()
