@@ -1,6 +1,7 @@
 [/==============================================================================
     Copyright (C) 2001-2011 Joel de Guzman
     Copyright (C) 2006 Dan Marsden
+    Copyright (C) 2014 Christoph Weiss
 
     Use, modification and distribution is subject to the Boost Software
     License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
@@ -1893,6 +1894,87 @@ compile time error.
     assert(v3 >= v2);
 
 [endsect]
+
+[endsect]
+
+[section Hashing]
+
+Automatically create a [classref boost::hash] conforming `hash_value` function.
+
+[heading Synopsis]
+
+    template <typename Seq>
+    std::size_t
+    hash_value(Seq const& seq);
+
+[heading Parameters]
+
+[table
+    [[Parameter]    [Requirement]                       [Description]]
+    [[`seq`]        [Instance of __sequence__]          [__sequence__ to compute hash value of]]
+]
+
+[*Return type]: `std::size_t`
+
+[*Requirements]:
+
+For each element `e` in sequence `seq`, `hash_value(seq)` is a valid expression
+returning a type that is convertible to `std::size_t`.
+
+[*Semantics]: Returns a combined hash value for all elements of `seq`.
+
+[heading Header]
+
+    #include <boost/fusion/sequence/hash.hpp>
+    #include <boost/fusion/include/hash.hpp>
+
+[heading Example]
+
+    #include <boost/fusion/include/equal_to.hpp>
+    #include <boost/fusion/include/hash.hpp>
+    #include <boost/fusion/include/vector.hpp>
+    #include <boost/unordered_map.hpp>
+    
+    void foo()
+    {
+        typedef boost::fusion::vector<int, std::string, char> Vec;
+        const Vec v = {42, "Hello World", 't'};
+        // Compute a hash value directly.
+        std::cout << "hash_value(v) = " << boost::fusion::hash_value(v) << '\n';
+        // Or use it to create an unordered_map.
+        boost::unordered_map<Vec, bool> map;
+        map[v] = true;
+        assert(map.size() == 1 && map.count(v) == 1);
+    }
+
+[heading Example]
+
+    #include <boost/fusion/include/define_struct.hpp>
+    #include <boost/fusion/include/equal_to.hpp>
+    #include <boost/fusion/include/hash.hpp>
+    #include <boost/unordered_set.hpp>
+    
+    // We would like to define a struct that we can form unordered_sets of.
+    BOOST_FUSION_DEFINE_STRUCT(
+        (demo), Key,
+        (bool, b)
+        (std::string, s)
+        (int, i)
+    )
+    
+    namespace demo {
+        // Make operator== and hash_value ADL accessible.
+        using boost::fusion::operator==;
+        using boost::fusion::hash_value;
+        typedef boost::unordered_set<demo::Key> Set;
+    }
+    
+    void foo()
+    {
+        demo::Set set;
+        demo::Key key;
+        assert(set.count(key) == 0);
+    }
 
 [endsect]
 
