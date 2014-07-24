@@ -13,46 +13,46 @@
 
 struct test_struct
 {
-	test_struct(bool bb, int ii, char cc, std::string const& ss) :
-		b(bb),
-		i(ii),
-		c(cc),
-		s(ss) {}
+    test_struct(bool bb, int ii, char cc, std::string const& ss) :
+        b(bb),
+        i(ii),
+        c(cc),
+        s(ss) {}
 
-	bool b;
-	int i;
-	char c;
-	std::string s;
+    bool b;
+    int i;
+    char c;
+    std::string s;
 };
 
 BOOST_FUSION_ADAPT_STRUCT(
-	test_struct,
-	(bool, b)
-	(int, i)
-	(char, c)
-	(std::string, s)
+    test_struct,
+    (bool, b)
+    (int, i)
+    (char, c)
+    (std::string, s)
 )
 
 int main()
 {
-	using boost::fusion::hash_value;
+    using boost::fusion::hash_value;
 
-	const test_struct a0(false, 1, 'c', "Hello Nurse"),
-		a1(false, 1, 'c', "Hello Nurse"),
-		b(true, 1, 'c', "Hello Nurse"),
-		c(false, 0, 'c', "Hello Nurse"),
-		d(false, 1, 'd', "Hello Nurse"),
-		e(false, 1, 'c', "Hello World");
+    const test_struct a0(false, 1, 'c', "Hello Nurse"),
+                      a1(false, 1, 'c', "Hello Nurse"),
+                      b(true, 1, 'c', "Hello Nurse"),
+                      c(false, 0, 'c', "Hello Nurse"),
+                      d(false, 1, 'd', "Hello Nurse"),
+                      e(false, 1, 'c', "Hello World");
 
-	BOOST_TEST(hash_value(a0) == hash_value(a1));
-	BOOST_TEST(hash_value(a0) != hash_value(b));
-	BOOST_TEST(hash_value(a0) != hash_value(c));
-	BOOST_TEST(hash_value(a0) != hash_value(d));
-	BOOST_TEST(hash_value(a0) != hash_value(e));
-	BOOST_TEST(hash_value(b) != hash_value(c));
-	BOOST_TEST(hash_value(b) != hash_value(d));
-	BOOST_TEST(hash_value(b) != hash_value(d));
-	BOOST_TEST(hash_value(c) != hash_value(d));
-	BOOST_TEST(hash_value(c) != hash_value(e));
-	BOOST_TEST(hash_value(d) != hash_value(e));
+    BOOST_TEST(hash_value(a0) == hash_value(a1));
+    BOOST_TEST(hash_value(a0) != hash_value(b));
+    BOOST_TEST(hash_value(a0) != hash_value(c));
+    BOOST_TEST(hash_value(a0) != hash_value(d));
+    BOOST_TEST(hash_value(a0) != hash_value(e));
+    BOOST_TEST(hash_value(b) != hash_value(c));
+    BOOST_TEST(hash_value(b) != hash_value(d));
+    BOOST_TEST(hash_value(b) != hash_value(d));
+    BOOST_TEST(hash_value(c) != hash_value(d));
+    BOOST_TEST(hash_value(c) != hash_value(e));
+    BOOST_TEST(hash_value(d) != hash_value(e));
 }

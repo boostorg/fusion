@@ -14,29 +14,29 @@
 
 namespace boost { namespace fusion
 {
-	namespace hashing
-	{
-		struct hash_combine_fold
-		{
-			typedef std::size_t result_type;
-			template<typename T>
-			inline std::size_t operator()(std::size_t seed, T const& v)
-			{
-				boost::hash_combine(seed, v);
-				return seed;
-			}
-		};
+    namespace hashing
+    {
+        struct hash_combine_fold
+        {
+            typedef std::size_t result_type;
+            template<typename T>
+            inline std::size_t operator()(std::size_t seed, T const& v)
+            {
+                boost::hash_combine(seed, v);
+                return seed;
+            }
+        };
 
-		template <typename Seq>
-		inline typename
-		boost::enable_if<traits::is_sequence<Seq>, std::size_t>::type
-		hash_value(Seq const& seq)
-		{
-			return fold(seq, 0, hash_combine_fold());
-		}
-	}
+        template <typename Seq>
+        inline typename
+        boost::enable_if<traits::is_sequence<Seq>, std::size_t>::type
+        hash_value(Seq const& seq)
+        {
+            return fold(seq, 0, hash_combine_fold());
+        }
+    }
 
-	using hashing::hash_value;
+    using hashing::hash_value;
 }}
 
 #endif
