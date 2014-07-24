@@ -1899,7 +1899,7 @@ compile time error.
 
 [section Hashing]
 
-Automatically create a [classref boost::hash] conforming `hash_value` function.
+Automatically create a `boost::hash` conforming `hash_value` function.
 
 [heading Synopsis]
 
@@ -1975,6 +1975,10 @@ returning a type that is convertible to `std::size_t`.
         demo::Key key;
         assert(set.count(key) == 0);
     }
+
+[heading See also]
+
+__boost_func_hash__
 
 [endsect]
 
