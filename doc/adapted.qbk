@@ -193,7 +193,7 @@ __random_access_sequence__.
         ...
         )
 
-    // When BOOST_PP_VARIADICS is missing :
+    // Without BOOST_PP_VARIADICS support :
     BOOST_FUSION_ADAPT_STRUCT(
         struct_name,
         (member_type0, member_name0)
@@ -211,8 +211,8 @@ The sequence of `member_nameN,` arguments or  `(member_typeN, member_nameN)`
 pairs declares the type and names of each of the struct members that are part of
 the sequence. 
 
-Omitting the type or using BOOST_FUSION_ADAPT_AUTO can be used to infer the type,
-as with decltype.
+When member_typeN is omitted or set to BOOST_FUSION_ADAPT_AUTO, the type is
+infered with Boost.TypeOf.
 
 The macro should be used at global scope, and `struct_name` should be the fully
 namespace qualified name of the struct to be adapted.
@@ -238,7 +238,7 @@ namespace qualified name of the struct to be adapted.
         name,
         age)
 
-    // When BOOST_PP_VARIADICS is missing :
+    // Without BOOST_PP_VARIADICS support :
     BOOST_FUSION_ADAPT_STRUCT(
         demo::employee,
         (BOOST_FUSION_ADAPT_AUTO, name)
@@ -263,7 +263,7 @@ __random_access_sequence__.
         ...
         )
 
-    // When BOOST_PP_VARIADICS is missing :
+    // Without BOOST_PP_VARIADICS support :
     BOOST_FUSION_ADAPT_TPL_STRUCT(
         (template_param0)(template_param1)...,
         (struct_name) (specialization_param0)(specialization_param1)...,
@@ -287,8 +287,8 @@ The sequence of `member_nameN,` arguments or  `(member_typeN, member_nameN)`
 pairs declares the type and names of each of the struct members that are part of
 the sequence. 
 
-Omitting the type or using BOOST_FUSION_ADAPT_AUTO can be used to infer the type,
-as with decltype.
+When member_typeN is omitted or set to BOOST_FUSION_ADAPT_AUTO, the type is
+infered with Boost.TypeOf.
 
 The macro should be used at global scope, and `struct_name` should be the fully
 namespace qualified name of the struct to be adapted.
@@ -355,7 +355,7 @@ adapted using the given name.
         ...
         )
 
-    // When BOOST_PP_VARIADICS is missing :
+    // Without BOOST_PP_VARIADICS support :
 
     BOOST_FUSION_ADAPT_STRUCT_NAMED(
         struct_name, adapted_name,
@@ -393,8 +393,8 @@ The sequence of `member_nameN,` arguments or  `(member_typeN, member_nameN)`
 pairs declares the type and names of each of the struct members that are part of
 the sequence. 
 
-Omitting the type or using BOOST_FUSION_ADAPT_AUTO can be used to infer the type,
-as with decltype.
+When member_typeN is omitted or set to BOOST_FUSION_ADAPT_AUTO, the type is
+infered with Boost.TypeOf.
 
 The macros should be used at global scope, and `struct_name` should be the fully
 namespace qualified name of the struct to be converted.
@@ -421,7 +421,7 @@ namespace qualified name of the struct to be converted.
         name,
         age)
 
-    // When BOOST_PP_VARIADICS is missing :
+    // Without BOOST_PP_VARIADICS support :
     BOOST_FUSION_ADAPT_STRUCT_NAMED(
         demo::employee, adapted_employee,
         (BOOST_FUSION_ADAPT_AUTO, name),
@@ -439,8 +439,8 @@ __random_access_sequence__ and __associative_sequence__.
 [heading Synopsis]
     BOOST_FUSION_ADAPT_ASSOC_STRUCT(
         struct_name,
-        (member_type0, member_name0, key_type0)
-        (member_type1, member_name1, key_type1)
+        ([member_type0,] member_name0, key_type0)
+        ([member_type1,] member_name1, key_type1)
         ...
         )
 
@@ -448,9 +448,12 @@ __random_access_sequence__ and __associative_sequence__.
 
 The above macro generates the necessary code to adapt `struct_name`
 as a model of __random_access_sequence__ and __associative_sequence__.
-The sequence of `(member_typeN, member_nameN, key_typeN)`
-triples declares the type, name and key type of each of the struct members
+The sequence of `([member_typeN,] member_nameN, key_typeN)` tuples 
+declares the type, name and key type of each of the struct members 
 that are part of the sequence.
+
+When member_typeN is omitted or set to BOOST_FUSION_ADAPT_AUTO, the type is
+infered with Boost.TypeOf.
 
 The macro should be used at global scope, and `struct_name` should be the fully
 namespace qualified name of the struct to be adapted.
@@ -481,8 +484,14 @@ namespace qualified name of the struct to be adapted.
     // keys keys::name and keys::age present.
     BOOST_FUSION_ADAPT_ASSOC_STRUCT(
         demo::employee,
-        (std::string, name, keys::name)
-        (int, age, keys::age))
+        (name, keys::name)
+        (age, keys::age))
+
+    // Without BOOST_PP_VARIADICS support :
+    BOOST_FUSION_ADAPT_ASSOC_STRUCT(
+        demo::employee,
+        (BOOST_FUSION_ADAPT_AUTO, name, keys::name),
+        (BOOST_FUSION_ADAPT_AUTO, age, keys::name))
 
 [endsect]
 
@@ -497,8 +506,8 @@ __random_access_sequence__ and __associative_sequence__.
     BOOST_FUSION_ADAPT_ASSOC_TPL_STRUCT(
         (template_param0)(template_param1)...,
         (struct_name) (specialization_param0)(specialization_param1)...,
-        (member_type0, member_name0, key_type0)
-        (member_type1, member_name1, key_type1)
+        ([member_type0,] member_name0, key_type0)
+        ([member_type1,] member_name1, key_type1)
         ...
         )
 
@@ -512,9 +521,12 @@ the template type parameters used.
 The sequence `(specialization_param0)(specialization_param1)...`
 declares the template parameters of the actual specialization of `struct_name`
 that is adapted as a fusion sequence.
-The sequence of `(member_typeN, member_nameN, key_typeN)`
-triples declares the type, name and key type of each of the struct members
+The sequence of `([member_typeN,] member_nameN, key_typeN)`
+tuples declares the type, name and key type of each of the struct members
 that are part of the sequence.
+
+When member_typeN is omitted or set to BOOST_FUSION_ADAPT_AUTO, the type is
+infered with Boost.TypeOf.
 
 The macro should be used at global scope, and `struct_name` should be the fully
 namespace qualified name of the struct to be adapted.
@@ -547,6 +559,13 @@ namespace qualified name of the struct to be adapted.
     BOOST_FUSION_ADAPT_ASSOC_TPL_STRUCT(
         (Name)(Age),
         (demo::employee) (Name)(Age),
+        (name, keys::name)
+        (age, keys::age))
+
+    // Without BOOST_PP_VARIADICS support :
+    BOOST_FUSION_ADAPT_ASSOC_TPL_STRUCT(
+        (Name)(Age),
+        (demo::employee) (Name)(Age),
         (Name, name, keys::name)
         (Age, age, keys::age))
 
@@ -563,8 +582,8 @@ __associative_sequence__. The given struct is adapted using the given name.
 [heading Synopsis]
     BOOST_FUSION_ADAPT_ASSOC_STRUCT_NAMED(
         struct_name, adapted_name,
-        (member_type0, member_name0, key_type0)
-        (member_type1, member_name1, key_type1)
+        ([member_type0,] member_name0, key_type0)
+        ([member_type1,] member_name1, key_type1)
         ...
         )
 
@@ -572,8 +591,8 @@ __associative_sequence__. The given struct is adapted using the given name.
         struct_name,
         (namespace0)(namespace1)...,
         adapted_name,
-        (member_type0, member_name0, key_type0)
-        (member_type1, member_name1, key_type1)
+        ([member_type0,] member_name0, key_type0)
+        ([member_type1,] member_name1, key_type1)
         ...
         )
 
@@ -592,6 +611,9 @@ adapted view is placed in the namespace `boost::fusion::adapted`.
 The sequence of `(member_typeN, member_nameN, key_typeN)`
 triples declares the type, name and key type of each of the struct members
 that are part of the sequence.
+
+When member_typeN is omitted or set to BOOST_FUSION_ADAPT_AUTO, the type is
+infered with Boost.TypeOf.
 
 The macros should be used at global scope, and `struct_name` should be the fully
 namespace qualified name of the struct to be converted.
@@ -621,8 +643,14 @@ namespace qualified name of the struct to be converted.
     // referring to demo::employee
     BOOST_FUSION_ADAPT_ASSOC_STRUCT_NAMED(
         demo::employee, adapted_employee,
-        (std::string, name, keys::name)
-        (int, age, keys::age))
+        (name, keys::name)
+        (age, keys::age))
+
+    // Without BOOST_PP_VARIADICS support :
+    BOOST_FUSION_ADAPT_ASSOC_STRUCT_NAMED(
+        demo::employee, adapted_employee,
+        (BOOST_FUSION_ADAPT_AUTO, name, keys::name)
+        (BOOST_FUSION_ADAPT_AUTO, age, keys::age))
 
 [endsect]
 
