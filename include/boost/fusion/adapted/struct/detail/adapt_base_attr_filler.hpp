@@ -20,17 +20,17 @@
 
 
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_0(X, Y)                                \
-    BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTE_FILLER(X,Y)                             \
+    BOOST_FUSION_ADAPT_STRUCT_WRAP_ATTR(X,Y)                                    \
     BOOST_FUSION_ADAPT_STRUCT_FILLER_1
 
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_1(X, Y)                                \
-    BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTE_FILLER(X,Y)                             \
+    BOOST_FUSION_ADAPT_STRUCT_WRAP_ATTR(X,Y)                                    \
     BOOST_FUSION_ADAPT_STRUCT_FILLER_0
 
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_0_END
 #define BOOST_FUSION_ADAPT_STRUCT_FILLER_1_END
 
-#define BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTE_FILLER(X, Y)                        \
+#define BOOST_FUSION_ADAPT_STRUCT_WRAP_ATTR(X, Y)                               \
     BOOST_PP_IF(BOOST_PP_IS_EMPTY(X),                                           \
       ((1, (Y))),                                                               \
       ((2, (X,Y)))                                                              \
@@ -48,7 +48,7 @@
 #   define BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER_OP(r, unused, elem)      \
         BOOST_PP_IF(BOOST_FUSION_PP_IS_SEQ(elem),                               \
             BOOST_PP_CAT( BOOST_FUSION_ADAPT_STRUCT_FILLER_0 elem ,_END),       \
-            BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTE_FILLER(BOOST_FUSION_ADAPT_AUTO, \
+            BOOST_FUSION_ADAPT_STRUCT_WRAP_ATTR(BOOST_FUSION_ADAPT_AUTO,        \
                 elem))
 
 #   define BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER(...)                     \

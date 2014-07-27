@@ -21,27 +21,27 @@
 #if BOOST_PP_VARIADICS
 
 #define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0(...)                           \
-    BOOST_FUSION_ADAPT_ASSOC_STRUCT_ATTRIBUTE_FILLER(__VA_ARGS__)               \
+    BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(__VA_ARGS__)                      \
     BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_1
 
 #define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_1(...)                           \
-    BOOST_FUSION_ADAPT_ASSOC_STRUCT_ATTRIBUTE_FILLER(__VA_ARGS__)               \
+    BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(__VA_ARGS__)                      \
     BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0
 
-#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_ATTRIBUTE_FILLER(...)                   \
+#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(...)                          \
       ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), (__VA_ARGS__)))
 
 #else
 
 #define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0(X, Y, Z)                       \
-    BOOST_FUSION_ADAPT_ASSOC_STRUCT_ATTRIBUTE_FILLER(X, Y, Z)                   \
+    BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(X, Y, Z)                          \
     BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_1
 
 #define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_1(X, Y, Z)                       \
-    BOOST_FUSION_ADAPT_ASSOC_STRUCT_ATTRIBUTE_FILLER(X, Y, Z)                   \
+    BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(X, Y, Z)                          \
     BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0
 
-#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_ATTRIBUTE_FILLER(X, Y, Z)               \
+#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(X, Y, Z)                      \
     BOOST_PP_IF(BOOST_PP_IS_EMPTY(X),                                           \
       ((2, (Y,Z))),                                                             \
       ((3, (X,Y,Z)))                                                            \
