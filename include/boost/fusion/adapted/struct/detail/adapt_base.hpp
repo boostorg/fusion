@@ -35,6 +35,8 @@
 
 #include <boost/typeof/typeof.hpp>
 
+#define BOOST_FUSION_ADAPT_AUTO BOOST_PP_EMPTY()
+
 #define BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME_TEMPLATE_PARAMS(SEQ)              \
     BOOST_PP_SEQ_HEAD(SEQ)<BOOST_PP_SEQ_ENUM(BOOST_PP_SEQ_TAIL(SEQ))>           \
     BOOST_PP_EMPTY()
@@ -124,7 +126,8 @@
 
 #define BOOST_FUSION_ADAPT_STRUCT_C_BASE(                                       \
     TEMPLATE_PARAMS_SEQ,NAME_SEQ,IS_VIEW,                                       \
-    I,PREFIX,ATTRIBUTE,ATTRIBUTE_TUPEL_SIZE)                                    \
+    I,PREFIX,ATTRIBUTE,ATTRIBUTE_TUPEL_SIZE,                                    \
+    DEDUCE_TYPE)                                                                \
                                                                                 \
     template<                                                                   \
         BOOST_FUSION_ADAPT_STRUCT_UNPACK_TEMPLATE_PARAMS(TEMPLATE_PARAMS_SEQ)   \
@@ -135,7 +138,7 @@
     >                                                                           \
     {                                                                           \
         typedef                                                                 \
-            BOOST_PP_IF(BOOST_PP_LESS(ATTRIBUTE_TUPEL_SIZE,2),                  \
+            BOOST_PP_IF(DEDUCE_TYPE,                                            \
                 BOOST_FUSION_ATTRIBUTE_TYPEOF, BOOST_FUSION_ATTRIBUTE_GIVENTYPE \
                 )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)            \
         attribute_type;                                                         \
@@ -163,8 +166,7 @@
             {                                                                   \
                 return seq.PREFIX()                                             \
                     BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE,                   \
-                        BOOST_PP_IF(BOOST_PP_LESS(ATTRIBUTE_TUPEL_SIZE,2), 0, 1),\
-                          ATTRIBUTE);                                           \
+                        BOOST_PP_IF(DEDUCE_TYPE, 0, 1), ATTRIBUTE);             \
             }                                                                   \
         };                                                                      \
     };                                                                          \
@@ -185,7 +187,7 @@
         {                                                                       \
             return BOOST_PP_STRINGIZE(                                          \
                BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE,                        \
-                        BOOST_PP_IF(BOOST_PP_LESS(ATTRIBUTE_TUPEL_SIZE,2), 0, 1),\
+                        BOOST_PP_IF(DEDUCE_TYPE, 0, 1),                         \
                           ATTRIBUTE));                                          \
         }                                                                       \
     };
