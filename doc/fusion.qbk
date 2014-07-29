@@ -53,6 +53,7 @@
 [def __boost_shared_ptr_call__  [@http://www.boost.org/libs/smart_ptr/shared_ptr.htm `boost::shared_ptr`]]
 [def __boost_func_forward__     [@http://www.boost.org/libs/functional/forward/doc/html/index.html Boost.Functional/Forward]]
 [def __boost_func_factory__     [@http://www.boost.org/libs/functional/factory/doc/html/index.html Boost.Functional/Factory]]
+[def __boost_func_hash__        [@http://www.boost.org/doc/html/hash.html Boost.Functional/Hash]]
 [def __std_pair_doc__           [@http://www.sgi.com/tech/stl/pair.html `std::pair`]]
 [def __std_plus_doc__           [@http://www.sgi.com/tech/stl/plus.html `std::plus`]]
 [def __std_minus_doc__          [@http://www.sgi.com/tech/stl/minus.html `std::minus`]]
