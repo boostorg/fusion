@@ -13,6 +13,7 @@
 
 #include <boost/preprocessor/empty.hpp>
 #include <boost/preprocessor/tuple/size.hpp>
+#include <boost/preprocessor/tuple/elem.hpp>
 #include <boost/preprocessor/facilities/is_empty.hpp>
 #include <boost/preprocessor/variadic/to_seq.hpp>
 #include <boost/preprocessor/seq/for_each.hpp>
