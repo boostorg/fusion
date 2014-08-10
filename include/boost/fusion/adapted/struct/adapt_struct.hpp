@@ -48,7 +48,7 @@
             BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR_SIZE(ATTRIBUTE),              \
             BOOST_PP_IF(                                                        \
                 BOOST_PP_LESS(                                                  \
-                  BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR_SIZE(ATTRIBUTE),2)      \
+                    BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR_SIZE(ATTRIBUTE), 2)   \
                 , 1, 0))
 
 

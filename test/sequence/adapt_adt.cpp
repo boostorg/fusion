@@ -93,8 +93,8 @@ namespace ns
 
 BOOST_FUSION_ADAPT_ADT(
     ns::point,
-    (int, int, obj.get_x(), obj.set_x(val))
-    (int, int, obj.get_y(), obj.set_y(val))
+    (obj.get_x(), obj.set_x(val))
+    (obj.get_y(), obj.set_y(val))
 )
 
 #if !BOOST_WORKAROUND(__GNUC__,<4)

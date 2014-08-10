@@ -14,6 +14,7 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/config.hpp>
 #include <boost/fusion/support/tag_of_fwd.hpp>
+#include <boost/fusion/adapted/struct/detail/adapt_auto.hpp>
 
 #include <boost/preprocessor/empty.hpp>
 #include <boost/preprocessor/stringize.hpp>
@@ -35,7 +36,6 @@
 
 #include <boost/typeof/typeof.hpp>
 
-#define BOOST_FUSION_ADAPT_AUTO BOOST_PP_EMPTY()
 
 #define BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME_TEMPLATE_PARAMS(SEQ)              \
     BOOST_PP_SEQ_HEAD(SEQ)<BOOST_PP_SEQ_ENUM(BOOST_PP_SEQ_TAIL(SEQ))>           \
