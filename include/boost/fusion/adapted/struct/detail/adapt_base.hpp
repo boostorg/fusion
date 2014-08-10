@@ -64,13 +64,13 @@
 
 #define BOOST_FUSION_ATTRIBUTE_TYPEOF(                                          \
     NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)                          \
-        BOOST_TYPEOF(                                                           \
-            BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)::PREFIX()           \
-            BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE))            
+    BOOST_TYPEOF(                                                               \
+        BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)::PREFIX()               \
+        BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE))            
 
 #define BOOST_FUSION_ATTRIBUTE_GIVENTYPE(                                       \
     NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, unused)                          \
-        BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)
+    BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)
 
 #ifdef BOOST_NO_PARTIAL_SPECIALIZATION_IMPLICIT_DEFAULT_ARGS
 #   define BOOST_FUSION_ADAPT_STRUCT_TAG_OF_SPECIALIZATION(                     \
