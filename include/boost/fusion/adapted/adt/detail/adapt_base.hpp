@@ -16,6 +16,8 @@
 #include <boost/preprocessor/seq/elem.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_const.hpp>
+#include <boost/type_traits/add_const.hpp>
+#include <boost/type_traits/remove_const.hpp>
 
 #define BOOST_FUSION_ADAPT_ADT_GET_IDENTITY_TEMPLATE_IMPL(TEMPLATE_PARAMS_SEQ)  \
     typename detail::get_identity<                                              \
@@ -28,8 +30,27 @@
                                                                                 \
     boost::remove_const<boost::remove_reference<lvalue>::type>::type
 
+#define BOOST_FUSION_ADT_ATTRIBUTE_TYPEOF(                                      \
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                                  \
+                                                                                \
+    struct deduced_attr_type {                                                  \
+      const BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj;               \
+      typedef BOOST_TYPEOF(                                                     \
+          BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 2, ATTRIBUTE)) type;        \
+    };                                                                          \
+                                                                                \
+    typedef remove_const<deduced_attr_type::type>::type type;                   \
+    typedef add_const<deduced_attr_type::type>::type const_type;
+
+#define BOOST_FUSION_ADT_ATTRIBUTE_GIVENTYPE(                                   \
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                                  \
+                                                                                \
+    typedef BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE) type;       \
+    typedef BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 1, ATTRIBUTE) const_type;
+
+
 #define BOOST_FUSION_ADAPT_ADT_C_BASE(                                          \
-    TEMPLATE_PARAMS_SEQ,NAME_SEQ,I,ATTRIBUTE,ATTRIBUTE_TUPEL_SIZE)              \
+    TEMPLATE_PARAMS_SEQ,NAME_SEQ,I,ATTRIBUTE,ATTRIBUTE_TUPEL_SIZE, DEDUCE_TYPE) \
                                                                                 \
     template<                                                                   \
         BOOST_FUSION_ADAPT_STRUCT_UNPACK_TEMPLATE_PARAMS(TEMPLATE_PARAMS_SEQ)   \
@@ -39,6 +60,12 @@
       , I                                                                       \
     >                                                                           \
     {                                                                           \
+                                                                                \
+        BOOST_PP_IF(DEDUCE_TYPE,                                                \
+            BOOST_FUSION_ADT_ATTRIBUTE_TYPEOF,                                  \
+            BOOST_FUSION_ADT_ATTRIBUTE_GIVENTYPE                                \
+            )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE) /* XXX: Check PREFIX */\
+                                                                                \
         template<class Val>                                                     \
         BOOST_FUSION_GPU_ENABLED                                                \
         static void                                                             \
@@ -50,7 +77,7 @@
         }                                                                       \
                                                                                 \
         BOOST_FUSION_GPU_ENABLED                                                \
-        static BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)          \
+        static type      /* TODO: Check Type here */                            \
         boost_fusion_adapt_adt_impl_get(                                        \
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj)               \
         {                                                                       \
@@ -58,7 +85,7 @@
         }                                                                       \
                                                                                 \
         BOOST_FUSION_GPU_ENABLED                                                \
-        static BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 1, ATTRIBUTE)          \
+        static const_type          /* TODO: check Const Type here */            \
         boost_fusion_adapt_adt_impl_get(                                        \
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ) const& obj)         \
         {                                                                       \
@@ -75,7 +102,10 @@
       , true                                                                    \
     >                                                                           \
     {                                                                           \
-        typedef BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 1, ATTRIBUTE) type;   \
+        typedef access::adt_attribute_access<                                   \
+                BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                 \
+              , I                                                               \
+            >::const_type type;   /* TODO: check const Type here */             \
                                                                                 \
         BOOST_FUSION_GPU_ENABLED                                                \
         explicit                                                                \
@@ -111,7 +141,10 @@
       , false                                                                   \
     >                                                                           \
     {                                                                           \
-        typedef BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE) type;   \
+        typedef access::adt_attribute_access<                                   \
+                BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                 \
+              , I                                                               \
+            >::type type;   /* TODO: check Type here */                         \
                                                                                 \
         BOOST_FUSION_GPU_ENABLED                                                \
         explicit                                                                \
@@ -158,7 +191,13 @@
       , I                                                                       \
     >                                                                           \
     {                                                                           \
-        typedef BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE) lvalue; \
+        typedef                                                                 \
+            adt_attribute_proxy<                                                \
+                          BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)       \
+                        , I                                                     \
+                        , false                                                 \
+                      > lvalue;                                                 \
+                                                                                \
         BOOST_FUSION_ADAPT_STRUCT_MSVC_REDEFINE_TEMPLATE_PARAMS(                \
             TEMPLATE_PARAMS_SEQ)                                                \
                                                                                 \

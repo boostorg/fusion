@@ -13,6 +13,7 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/empty.hpp>
+#include <boost/preprocessor/logical/bool.hpp>
 #include <boost/type_traits/add_reference.hpp>
 #include <boost/type_traits/is_const.hpp>
 #include <boost/type_traits/add_const.hpp>
@@ -43,7 +44,12 @@
 #define BOOST_FUSION_ADAPT_ADT_C(                                               \
     TEMPLATE_PARAMS_SEQ, NAME_SEQ, IS_VIEW, I, ATTRIBUTE)                       \
         BOOST_FUSION_ADAPT_ADT_C_BASE(                                          \
-            TEMPLATE_PARAMS_SEQ, NAME_SEQ, I, ATTRIBUTE, 4)
+            TEMPLATE_PARAMS_SEQ,                                                \
+            NAME_SEQ,                                                           \
+            I,                                                                  \
+            ATTRIBUTE,                                                          \
+            4,                                                                  \
+            BOOST_PP_BOOL(0))
 
 #define BOOST_FUSION_ADAPT_TPL_ADT(TEMPLATE_PARAMS_SEQ, NAME_SEQ , ATTRIBUTES)  \
     BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
