@@ -54,8 +54,13 @@
               ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, 1)) type;                        \
     };                                                                          \
                                                                                 \
-    typedef remove_const<deduced_attr_type::type>::type type;                   \
-    typedef add_const<deduced_attr_type::type>::type const_type;
+    typedef typename boost::remove_const<                                       \
+        typename deduced_attr_type::type                                        \
+    >::type type;                                                               \
+                                                                                \
+    typedef typename boost::add_const<                                          \
+        typename deduced_attr_type::type                                        \
+    >::type const_type;
 
 #define BOOST_FUSION_ADT_ATTRIBUTE_GIVENTYPE(                                   \
     NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                                  \
@@ -120,7 +125,7 @@
       , true                                                                    \
     >                                                                           \
     {                                                                           \
-        typedef access::adt_attribute_access<                                   \
+        typedef typename access::adt_attribute_access<                          \
                 BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                 \
               , I                                                               \
             >::const_type type;   /* TODO: check const Type here */             \
@@ -159,7 +164,7 @@
       , false                                                                   \
     >                                                                           \
     {                                                                           \
-        typedef access::adt_attribute_access<                                   \
+        typedef typename access::adt_attribute_access<                          \
                 BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                 \
               , I                                                               \
             >::type type;   /* TODO: check Type here */                         \
