@@ -102,9 +102,9 @@ namespace ns
 #if BOOST_PP_VARIADICS
   BOOST_FUSION_ADAPT_ADT(
       ns::point,
-      (int, int, obj.get_x(), obj.set_x(val))
+      (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.get_x(), obj.set_x(val))
       (obj.get_y(), obj.set_y(val))
-      (obj.get_z(), obj.set_z(val))
+      (int, int, obj.get_z(), obj.set_z(val))
   )
 
 #   if !BOOST_WORKAROUND(__GNUC__,<4)
