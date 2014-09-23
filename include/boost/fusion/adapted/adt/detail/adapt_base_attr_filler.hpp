@@ -11,6 +11,7 @@
 #include <boost/config.hpp>
 #include <boost/fusion/adapted/struct/detail/preprocessor/is_seq.hpp>
 
+#include <boost/preprocessor/arithmetic/sub.hpp>
 #include <boost/preprocessor/control/if.hpp>
 #include <boost/preprocessor/logical/or.hpp>
 #include <boost/preprocessor/empty.hpp>
@@ -53,12 +54,17 @@
               BOOST_PP_IS_EMPTY(BOOST_PP_VARIADIC_ELEM(1, __VA_ARGS__))),       \
           BOOST_FUSION_ADAPT_ADT_WRAP_ATTR(                                     \
               BOOST_PP_VARIADIC_ELEM(2, __VA_ARGS__),                           \
-              BOOST_PP_SEQ_HEAD(BOOST_PP_SEQ_REST_N(3,                          \
-                  BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__))) ),                    \
+              BOOST_FUSION_WORKAROUND_VARIADIC_EMPTINESS_LAST_ELEM(__VA_ARGS__) \
+          ),                                                                    \
           BOOST_FUSION_ADAPT_ADT_WRAP_ATTR(__VA_ARGS__))
 
 #  define BOOST_FUSION_ADAPT_ADT_WRAP_ATTR(...)                                 \
       ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), (__VA_ARGS__)))
+
+#  define BOOST_FUSION_WORKAROUND_VARIADIC_EMPTINESS_LAST_ELEM(...)             \
+  BOOST_PP_SEQ_HEAD(BOOST_PP_SEQ_REST_N(                                        \
+            BOOST_PP_SUB(BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), 1),               \
+        BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__)))
 
 #else // BOOST_PP_VARIADICS
 
