@@ -1,3 +1,8 @@
+#include <boost/config.hpp>
+
+#if !defined(BOOST_NO_CXX11_HDR_TUPLE) && \
+    !defined(BOOST_NO_CXX11_SMART_PTR)
+
 #include <memory>
 #include <tuple>
 #include <boost/any.hpp>
@@ -53,4 +58,13 @@ int main()
     std::tuple<int, int, int, int> test = Core::Demo();
     return 0;
 }
+
+#else
+
+int main()
+{
+    return 0;
+}
+
+#endif
 
