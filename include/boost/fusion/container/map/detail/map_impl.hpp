@@ -38,12 +38,12 @@ namespace boost { namespace fusion { namespace detail
 
         template <typename Iterator>
         BOOST_FUSION_GPU_ENABLED
-        map_impl(Iterator const& iter, map_impl_from_iterator)
+        map_impl(Iterator const&, map_impl_from_iterator)
         {}
 
         template <typename Iterator>
         BOOST_FUSION_GPU_ENABLED
-        void assign(Iterator const& iter, map_impl_from_iterator)
+        void assign(Iterator const&, map_impl_from_iterator)
         {}
 
         BOOST_FUSION_GPU_ENABLED
