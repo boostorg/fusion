@@ -257,7 +257,7 @@ namespace boost { namespace fusion
         {
             typedef typename
                 result_of_unrolled_fold<
-                    typename boost::result_of<
+                    typename boost::tr1_result_of<
                         F(
                             StateRef,
                             typename fusion::result_of::deref< It0 const>::type
