@@ -54,7 +54,8 @@ namespace boost { namespace fusion
 {
     namespace result_of
     {
-        template <typename Function, class Sequence> struct invoke;
+        template <typename Function, class Sequence, class Enable = void>
+        struct invoke;
     }
 
     //~ template <typename Function, class Sequence>
@@ -75,7 +76,8 @@ namespace boost { namespace fusion
             typename Function, class Sequence,
             int N = result_of::size<Sequence>::value,
             bool CBI = ft::is_callable_builtin<Function>::value,
-            bool RandomAccess = traits::is_random_access<Sequence>::value
+            bool RandomAccess = traits::is_random_access<Sequence>::value,
+            typename Enable = void
             >
         struct invoke_impl;
 
@@ -104,7 +106,7 @@ namespace boost { namespace fusion
                 Sequence, N, RandomAccess >
         { };
 
-        template <typename Function, class Sequence, int N, bool RandomAccess>
+        template <typename Function, class Sequence, int N, bool RandomAccess, typename Enable>
         struct invoke_impl<Function,Sequence,N,true,RandomAccess>
             : mpl::if_< ft::is_member_function_pointer<Function>,
                 invoke_mem_fn<Function,Sequence,N,RandomAccess>,
@@ -112,7 +114,7 @@ namespace boost { namespace fusion
             >::type
         { };
 
-        template <typename Function, class Sequence, bool RandomAccess>
+        template <typename Function, class Sequence, bool RandomAccess, typename Enable>
         struct invoke_impl<Function,Sequence,1,true,RandomAccess>
             : mpl::eval_if< ft::is_member_pointer<Function>,
                 mpl::if_< ft::is_member_function_pointer<Function>,
@@ -156,7 +158,14 @@ namespace boost { namespace fusion
 
     namespace result_of
     {
-        template <typename Function, class Sequence> struct invoke
+        template <typename Function, class Sequence, class Enable>
+        struct invoke;
+
+        template <typename Function, class Sequence>
+        struct invoke<Function, Sequence,
+            typename detail::invoke_impl<
+                typename boost::remove_reference<Function>::type, Sequence
+              >::result_type>
         {
             typedef typename detail::invoke_impl<
                 typename boost::remove_reference<Function>::type, Sequence
@@ -195,13 +204,15 @@ namespace boost { namespace fusion
 ///////////////////////////////////////////////////////////////////////////////
 #define N BOOST_PP_ITERATION()
 
+#define M(z,j,data) typename result_of::at_c<Sequence,j>::type
+
         template <typename Function, class Sequence>
-        struct invoke_impl<Function,Sequence,N,false,true>
+        struct invoke_impl<Function,Sequence,N,false,true,
+            typename boost::result_of<Function(BOOST_PP_ENUM(N,M,~)) >::type>
         {
         public:
 
             typedef typename boost::result_of<
-#define M(z,j,data) typename result_of::at_c<Sequence,j>::type
                     Function(BOOST_PP_ENUM(N,M,~)) >::type result_type;
 #undef M
 
