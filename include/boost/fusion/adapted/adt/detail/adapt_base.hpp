@@ -214,12 +214,12 @@
       , I                                                                       \
     >                                                                           \
     {                                                                           \
-        typedef                                                                 \
+        typedef typename                                                        \
             adt_attribute_proxy<                                                \
                           BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)       \
                         , I                                                     \
                         , false                                                 \
-                      >::type lvalue;                                                 \
+                      >::type lvalue;                                           \
                                                                                 \
         BOOST_FUSION_ADAPT_STRUCT_MSVC_REDEFINE_TEMPLATE_PARAMS(                \
             TEMPLATE_PARAMS_SEQ)                                                \
