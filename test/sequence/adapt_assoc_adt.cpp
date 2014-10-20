@@ -26,7 +26,7 @@ namespace ns
     struct y_member;
     struct z_member;
 
-    struct unavailable_member;
+    struct non_member;
 
     class point
     {
@@ -141,7 +141,7 @@ main()
         BOOST_MPL_ASSERT((boost::fusion::result_of::has_key<ns::point, ns::x_member>));
         BOOST_MPL_ASSERT((boost::fusion::result_of::has_key<ns::point, ns::y_member>));
         BOOST_MPL_ASSERT((boost::fusion::result_of::has_key<ns::point, ns::z_member>));
-        BOOST_MPL_ASSERT((boost::mpl::not_<boost::fusion::result_of::has_key<ns::point, ns::unavailable_member> >));
+        BOOST_MPL_ASSERT((boost::mpl::not_<boost::fusion::result_of::has_key<ns::point, ns::non_member> >));
 
 
         BOOST_MPL_ASSERT((boost::is_same<boost::fusion::result_of::value_at_key<ns::point, ns::x_member>::type, int>));
