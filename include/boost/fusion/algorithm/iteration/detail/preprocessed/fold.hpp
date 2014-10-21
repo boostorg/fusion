@@ -23,35 +23,11 @@ namespace boost { namespace fusion
         template<typename Result,int N>
         struct unrolled_fold
         {
-            template<typename State, typename It0, typename F>
+            template<typename State3, typename It3, typename F>
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static Result
-            call(State const& state,It0 const& it0,F f)
+            call_3(State3 const& state3,It3 const& it3,F& f)
             {
-                typedef typename
-                    result_of::next<
-                        It0 const
-                    >::type
-                It1;
-                It1 it1 = fusion::next(it0);
-                typedef typename
-                    result_of::next<
-                        It1
-                    >::type
-                It2;
-                It2 it2 = fusion::next(it1);
-                typedef typename
-                    result_of::next<
-                        It2
-                    >::type
-                It3;
-                It3 it3 = fusion::next(it2);
-                typedef typename fold_lvalue_state<State,It0,F>::type State1;
-                State1 const state1=f(state,fusion::deref(it0));
-                typedef typename fold_lvalue_state<State1,It1,F>::type State2;
-                State2 const state2=f(state1,fusion::deref(it1));
-                typedef typename fold_lvalue_state<State2,It2,F>::type State3;
-                State3 const state3=f(state2,fusion::deref(it2));
                 return unrolled_fold<
                     Result
                   , N-4
@@ -60,47 +36,87 @@ namespace boost { namespace fusion
                     fusion::next(it3),
                     f);
             }
-        };
-        template<typename Result>
-        struct unrolled_fold<Result,3>
-        {
+            template<typename State2, typename It2, typename F>
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            static Result
+            call_2(State2 const& state2,It2 const& it2,F& f)
+            {
+                return call_3(
+                    f(state2,fusion::deref(it2)),
+                    fusion::next(it2),
+                    f);
+            }
+            template<typename State1, typename It1, typename F>
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            static Result
+            call_1(State1 const& state1,It1 const& it1,F& f)
+            {
+                return call_2(
+                    f(state1,fusion::deref(it1)),
+                    fusion::next(it1),
+                    f);
+            }
             template<typename State, typename It0, typename F>
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static Result
             call(State const& state,It0 const& it0,F f)
             {
-                typedef typename
-                    result_of::next<
-                        It0 const
-                    >::type
-                It1;
-                It1 it1 = fusion::next(it0);
-                typedef typename
-                    result_of::next<
-                        It1
-                    >::type
-                It2;
-                It2 it2 = fusion::next(it1);
-                typedef typename fold_lvalue_state<State,It0,F>::type State1;
-                State1 const state1=f(state,fusion::deref(it0));
-                typedef typename fold_lvalue_state<State1,It1,F>::type State2;
-                State2 const state2=f(state1,fusion::deref(it1));
+                return call_1(
+                    f(state,fusion::deref(it0)),
+                    fusion::next(it0),
+                    f);
+            }
+        };
+        template<typename Result>
+        struct unrolled_fold<Result,3>
+        {
+            template<typename State2, typename It2, typename F>
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            static Result
+            call_2(State2 const& state2,It2 const& it2,F& f)
+            {
                 return f(state2,fusion::deref(it2));
+            }
+            template<typename State1, typename It1, typename F>
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            static Result
+            call_1(State1 const& state1,It1 const& it1,F& f)
+            {
+                return call_2(
+                    f(state1,fusion::deref(it1)),
+                    fusion::next(it1),
+                    f);
+            }
+            template<typename State, typename It0, typename F>
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            static Result
+            call(State const& state,It0 const& it0,F f)
+            {
+                return call_1(
+                    f(state,fusion::deref(it0)),
+                    fusion::next(it0),
+                    f);
             }
         };
         template<typename Result>
         struct unrolled_fold<Result,2>
         {
+            template<typename State1, typename It1, typename F>
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            static Result
+            call_1(State1 const& state1,It1 const& it1,F& f)
+            {
+                return f(state1,fusion::deref(it1));
+            }
             template<typename State, typename It0, typename F>
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static Result
             call(State const& state,It0 const& it0,F f)
             {
-                typedef typename fold_lvalue_state<State,It0,F>::type State1;
-                State1 const state1=f(state,fusion::deref(it0));
-                return f(
-                    state1,
-                    fusion::deref( fusion::next(it0)));
+                return call_1(
+                    f(state,fusion::deref(it0)),
+                    fusion::next(it0),
+                    f);
             }
         };
         template<typename Result>
