@@ -107,7 +107,7 @@ namespace boost { namespace fusion
         { };
 
         template <typename Function, class Sequence, int N, bool RandomAccess, typename Enable>
-        struct invoke_impl<Function,Sequence,N,true,RandomAccess>
+        struct invoke_impl<Function,Sequence,N,true,RandomAccess,Enable>
             : mpl::if_< ft::is_member_function_pointer<Function>,
                 invoke_mem_fn<Function,Sequence,N,RandomAccess>,
                 invoke_nonmember_builtin<Function,Sequence,N,RandomAccess>
@@ -115,7 +115,7 @@ namespace boost { namespace fusion
         { };
 
         template <typename Function, class Sequence, bool RandomAccess, typename Enable>
-        struct invoke_impl<Function,Sequence,1,true,RandomAccess>
+        struct invoke_impl<Function,Sequence,1,true,RandomAccess,Enable>
             : mpl::eval_if< ft::is_member_pointer<Function>,
                 mpl::if_< ft::is_member_function_pointer<Function>,
                     invoke_mem_fn<Function,Sequence,1,RandomAccess>,
