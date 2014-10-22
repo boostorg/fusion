@@ -84,7 +84,7 @@
         BOOST_PP_IF(DEDUCE_TYPE,                                                \
             BOOST_FUSION_ADT_ATTRIBUTE_TYPEOF,                                  \
             BOOST_FUSION_ADT_ATTRIBUTE_GIVENTYPE                                \
-            )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE) /* XXX: Check PROXY PREFIX */\
+            )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                        \
                                                                                 \
         template<class Val>                                                     \
         BOOST_FUSION_GPU_ENABLED                                                \
@@ -98,7 +98,7 @@
         }                                                                       \
                                                                                 \
         BOOST_FUSION_GPU_ENABLED                                                \
-        static type      /* TODO: Check Type here */                            \
+        static type                                                             \
         boost_fusion_adapt_adt_impl_get(                                        \
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj)               \
         {                                                                       \
@@ -107,7 +107,7 @@
         }                                                                       \
                                                                                 \
         BOOST_FUSION_GPU_ENABLED                                                \
-        static const_type          /* TODO: check Const Type here */            \
+        static const_type                                                       \
         boost_fusion_adapt_adt_impl_get(                                        \
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ) const& obj)         \
         {                                                                       \
@@ -128,7 +128,7 @@
         typedef typename access::adt_attribute_access<                          \
                 BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                 \
               , I                                                               \
-            >::const_type type;   /* TODO: check const Type here */             \
+            >::const_type type;                                                 \
                                                                                 \
         BOOST_FUSION_GPU_ENABLED                                                \
         explicit                                                                \
@@ -167,7 +167,7 @@
         typedef typename access::adt_attribute_access<                          \
                 BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                 \
               , I                                                               \
-            >::type type;   /* TODO: check Type here */                         \
+            >::type type;                                                       \
                                                                                 \
         BOOST_FUSION_GPU_ENABLED                                                \
         explicit                                                                \

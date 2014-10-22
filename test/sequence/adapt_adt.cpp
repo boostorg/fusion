@@ -102,9 +102,9 @@ namespace ns
 #if BOOST_PP_VARIADICS
   BOOST_FUSION_ADAPT_ADT(
       ns::point,
-      (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.get_x(), obj.set_x(val))
-      (obj.get_y(), obj.set_y(val))
-      (int, int, obj.get_z(), obj.set_z(val))
+      (int, int, obj.get_x(), obj.set_x(val))
+      (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.get_y(), obj.set_y(val))
+      (obj.get_z(), obj.set_z(val))
   )
 
 #   if !BOOST_WORKAROUND(__GNUC__,<4)
@@ -255,6 +255,7 @@ main()
 #endif
 
     {
+        // Check types provided in case it's provided
         BOOST_MPL_ASSERT((
             boost::is_same<
                 boost::fusion::result_of::front<ns::point>::type,
@@ -274,6 +275,28 @@ main()
             boost::is_same<
                 boost::fusion::result_of::front<ns::point const>::type::type,
                 int
+            >));
+
+        // Check types provided in case it's deduced
+        BOOST_MPL_ASSERT((
+            boost::is_same<
+                boost::fusion::result_of::back<ns::point>::type,
+                boost::fusion::extension::adt_attribute_proxy<ns::point,2,false>
+            >));
+        BOOST_MPL_ASSERT((
+            boost::is_same<
+                boost::fusion::result_of::back<ns::point>::type::type,
+                int
+            >));
+        BOOST_MPL_ASSERT((
+            boost::is_same<
+                boost::fusion::result_of::back<ns::point const>::type,
+                boost::fusion::extension::adt_attribute_proxy<ns::point,2,true>
+            >));
+        BOOST_MPL_ASSERT((
+            boost::is_same<
+                boost::fusion::result_of::back<ns::point const>::type::type,
+                const int
             >));
     }
 
