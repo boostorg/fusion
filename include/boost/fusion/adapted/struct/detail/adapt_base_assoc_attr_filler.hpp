@@ -31,7 +31,8 @@
 #define BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(...)                          \
       ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), (__VA_ARGS__)))
 
-#else
+#else // BOOST_PP_VARIADICS
+
 
 #define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0(X, Y, Z)                       \
     BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(X, Y, Z)                          \
@@ -47,7 +48,7 @@
       ((3, (X,Y,Z)))                                                            \
     )
 
-#endif
+#endif // BOOST_PP_VARIADICS
 
 #define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0_END
 #define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_1_END

@@ -14,6 +14,7 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/config.hpp>
 #include <boost/fusion/support/tag_of_fwd.hpp>
+#include <boost/fusion/adapted/struct/detail/adapt_auto.hpp>
 
 #include <boost/preprocessor/empty.hpp>
 #include <boost/preprocessor/stringize.hpp>
@@ -35,7 +36,6 @@
 
 #include <boost/typeof/typeof.hpp>
 
-#define BOOST_FUSION_ADAPT_AUTO BOOST_PP_EMPTY()
 
 #define BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME_TEMPLATE_PARAMS(SEQ)              \
     BOOST_PP_SEQ_HEAD(SEQ)<BOOST_PP_SEQ_ENUM(BOOST_PP_SEQ_TAIL(SEQ))>           \
@@ -64,13 +64,13 @@
 
 #define BOOST_FUSION_ATTRIBUTE_TYPEOF(                                          \
     NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)                          \
-        BOOST_TYPEOF(                                                           \
-            BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)::PREFIX()           \
-            BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE))            
+    BOOST_TYPEOF(                                                               \
+        BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)::PREFIX()               \
+        BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE))            
 
 #define BOOST_FUSION_ATTRIBUTE_GIVENTYPE(                                       \
     NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, unused)                          \
-        BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)
+    BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)
 
 #ifdef BOOST_NO_PARTIAL_SPECIALIZATION_IMPLICIT_DEFAULT_ARGS
 #   define BOOST_FUSION_ADAPT_STRUCT_TAG_OF_SPECIALIZATION(                     \

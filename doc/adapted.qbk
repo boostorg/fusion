@@ -664,8 +664,8 @@ __random_access_sequence__.
 
     BOOST_FUSION_ADAPT_ADT(
         type_name,
-        (attribute_type0, attribute_const_type0, get_expr0, set_expr0)
-        (attribute_type1, attribute_const_type1, get_expr1, set_expr1)
+        ([attribute_type0, attribute_const_type0,] get_expr0, set_expr0)
+        ([attribute_type1, attribute_const_type1,] get_expr1, set_expr1)
         ...
         )
 
@@ -674,7 +674,7 @@ __random_access_sequence__.
 The above macro generates the necessary code to adapt `type_name`
 as a model of __random_access_sequence__.
 The sequence of
-[^(attribute_type['N], attribute_const_type['N], get_expr['N], set_expr['N])]
+[^([attribute_type['N], attribute_const_type['N],] get_expr['N], set_expr['N])]
 quadruples declares the types, const types, get-expressions and set-expressions
 of the elements that are part of the adapted fusion sequence.
 [^get_expr['N]] is the expression that is invoked to get the ['N]th element
@@ -682,7 +682,9 @@ of an instance of `type_name`. This expression may access a variable named
 `obj` of type `type_name&` or `type_name const&` which represents the underlying
 instance of `type_name`.
 [^attribute_type['N]] and [^attribute_const_type['N]] may specify the types
-that [^get_expr['N]] denotes to.
+that [^get_expr['N]] denotes to, when omitted the type is deduced from
+[get_expr['N]] return type via BOOST_TYPEOF. On compiler missing support for 
+variadic macros BOOST_FUSION_ADAPT_AUTO can be used to avoid repeating the type.
 [^set_expr['N]] is the expression that is invoked to set the ['N]th element
 of an instance of `type_name`. This expression may access variables named
 `obj` of type `type_name&`, which represent the corresponding instance of
@@ -740,8 +742,8 @@ namespace qualified name of the class type to be adapted.
 
     BOOST_FUSION_ADAPT_ADT(
         demo::employee,
-        (std::string const&, std::string const&, obj.get_name(), obj.set_name(val))
-        (int, int, obj.get_age(), obj.set_age(val)))
+        (obj.get_name(), obj.set_name(val))
+        (obj.get_age(), obj.set_age(val)))
 
     demo::employee e;
     front(e)="Edward Norton";
@@ -766,8 +768,8 @@ __random_access_sequence__.
     BOOST_FUSION_ADAPT_TPL_ADT(
         (template_param0)(template_param1)...,
         (type_name) (specialization_param0)(specialization_param1)...,
-        (attribute_type0, attribute_const_type0, get_expr0, set_expr0)
-        (attribute_type1, attribute_const_type1, get_expr1, set_expr1)
+        ([attribute_type0, attribute_const_type0,] get_expr0, set_expr0)
+        ([attribute_type1, attribute_const_type1,] get_expr1, set_expr1)
         ...
         )
 
@@ -790,7 +792,9 @@ of an instance of `type_name`. This expression may access a variable named
 `obj` of type `type_name&` or `type_name const&` which represents the underlying
 instance of `type_name`.
 [^attribute_type['N]] and [^attribute_const_type['N]] may specify the types
-that [^get_expr['N]] denotes to.
+that [^get_expr['N]] denotes to, when omitted the type is deduced from
+[get_expr['N]] return type via BOOST_TYPEOF. On compiler missing support for 
+variadic macros BOOST_FUSION_ADAPT_AUTO can be used to avoid repeating the type.
 [^set_expr['N]] is the expression that is invoked to set the ['N]th element
 of an instance of `type_name`. This expression may access variables named
 `obj` of type `type_name&`, which represent the corresponding instance of
@@ -875,8 +879,8 @@ __random_access_sequence__  and __associative_sequence__.
 
     BOOST_FUSION_ADAPT_ASSOC_ADT(
         type_name,
-        (attribute_type0, attribute_const_type0, get_expr0, set_expr0, key_type0)
-        (attribute_type1, attribute_const_type1, get_expr1, set_expr1, key_type1)
+        ([attribute_type0, attribute_const_type0,] get_expr0, set_expr0, key_type0)
+        ([attribute_type1, attribute_const_type1,] get_expr1, set_expr1, key_type1)
         ...
         )
 
@@ -893,7 +897,9 @@ of an instance of `type_name`. This expression may access a variable named
 `obj` of type `type_name&` or `type_name const&` which represents the underlying
 instance of `type_name`.
 [^attribute_type['N]] and [^attribute_const_type['N]] may specify the types
-that [^get_expr['N]] denotes to.
+that [^get_expr['N]] denotes to, when omitted the type is deduced from
+[get_expr['N]] return type via BOOST_TYPEOF. On compiler missing support for 
+variadic macros BOOST_FUSION_ADAPT_AUTO can be used to avoid repeating the type.
 [^set_expr['N]] is the expression that is invoked to set the ['N]th element
 of an instance of `type_name`. This expression may access variables named
 `obj` of type `type_name&`, which represent the corresponding instance of
@@ -957,8 +963,8 @@ namespace qualified name of the class type to be adapted.
 
     BOOST_FUSION_ADAPT_ASSOC_ADT(
         demo::employee,
-        (std::string const&, std::string const&, obj.get_name(), obj.set_name(val), keys::name)
-        (int, int, obj.get_age(), obj.set_age(val), keys::age))
+        (obj.get_name(), obj.set_name(val), keys::name)
+        (obj.get_age(), obj.set_age(val), keys::age))
 
     demo::employee e;
     at_key<keys::name>(e)="Edward Norton";
@@ -983,8 +989,8 @@ __random_access_sequence__  and __associative_sequence__.
     BOOST_FUSION_ADAPT_ASSOC_TPL_ADT(
         (template_param0)(template_param1)...,
         (type_name) (specialization_param0)(specialization_param1)...,
-        (attribute_type0, attribute_const_type0, get_expr0, set_expr0, key_type0)
-        (attribute_type1, attribute_const_type1, get_expr1, set_expr1, key_type1)
+        ([attribute_type0, attribute_const_type0,] get_expr0, set_expr0, key_type0)
+        ([attribute_type1, attribute_const_type1,] get_expr1, set_expr1, key_type1)
         ...
         )
 
@@ -999,7 +1005,7 @@ The sequence `(specialization_param0)(specialization_param1)...`
 declares the template parameters of the actual specialization of `type_name`
 that is adapted as a fusion sequence.
 The sequence of
-[^(attribute_type['N], attribute_const_type['N], get_expr['N], set_expr['N], key_type['N])]
+[^([attribute_type['N], attribute_const_type['N],] get_expr['N], set_expr['N], key_type['N])]
 5-tuples declares the types, const types, get-expressions, set-expressions and key types
 of the elements that are part of the adapted fusion sequence.
 [^get_expr['N]] is the expression that is invoked to get the ['N]th element
@@ -1007,7 +1013,9 @@ of an instance of `type_name`. This expression may access a variable named
 `obj` of type `type_name&` or `type_name const&` which represents the underlying
 instance of `type_name`.
 [^attribute_type['N]] and [^attribute_const_type['N]] may specify the types
-that [^get_expr['N]] denotes to.
+that [^get_expr['N]] denotes to, when omitted the type is deduced from
+[get_expr['N]] return type via BOOST_TYPEOF. On compiler missing support for 
+variadic macros BOOST_FUSION_ADAPT_AUTO can be used to avoid repeating the type.
 [^set_expr['N]] is the expression that is invoked to set the ['N]th element
 of an instance of `type_name`. This expression may access variables named
 `obj` of type `type_name&`, which represent the corresponding instance of
