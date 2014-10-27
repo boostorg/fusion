@@ -47,7 +47,7 @@ namespace boost { namespace fusion
     {
         template<typename State, typename It, typename F>
         struct BOOST_PP_CAT(BOOST_FUSION_FOLD_NAME, _lvalue_state)
-          : boost::tr1_result_of<
+          : fusion::detail::result_of_with_decltype<
                 F(
                 typename add_reference<typename add_const<State>::type>::type,
                 BOOST_FUSION_FOLD_IMPL_INVOKE_IT_META_TRANSFORM(It))
@@ -327,7 +327,7 @@ namespace boost { namespace fusion
         {
             typedef typename
                 BOOST_PP_CAT(result_of_unrolled_,BOOST_FUSION_FOLD_NAME)<
-                    typename boost::tr1_result_of<
+                    typename fusion::detail::result_of_with_decltype<
                         F(
                             StateRef,
                             BOOST_FUSION_FOLD_IMPL_INVOKE_IT_META_TRANSFORM(
