@@ -52,10 +52,12 @@
 
 namespace boost { namespace fusion
 {
-    namespace result_of
-    {
-        template <typename Function, class Sequence> struct invoke;
-    }
+    //~ namespace result_of
+    //~ {
+    //~     template <typename Function, class Sequence,
+    //~               class Enable = unspecified>
+    //~     struct invoke;
+    //~ }
 
     //~ template <typename Function, class Sequence>
     //~ inline typename result_of::invoke<Function, Sequence>::type
@@ -71,11 +73,14 @@ namespace boost { namespace fusion
     {
         namespace ft = function_types;
 
+        template <typename, typename T = void> struct always_void_ { typedef T type; };
+
         template<
             typename Function, class Sequence,
             int N = result_of::size<Sequence>::value,
             bool CBI = ft::is_callable_builtin<Function>::value,
-            bool RandomAccess = traits::is_random_access<Sequence>::value
+            bool RandomAccess = traits::is_random_access<Sequence>::value,
+            typename Enable = void
             >
         struct invoke_impl;
 
@@ -104,16 +109,16 @@ namespace boost { namespace fusion
                 Sequence, N, RandomAccess >
         { };
 
-        template <typename Function, class Sequence, int N, bool RandomAccess>
-        struct invoke_impl<Function,Sequence,N,true,RandomAccess>
+        template <typename Function, class Sequence, int N, bool RandomAccess, typename Enable>
+        struct invoke_impl<Function,Sequence,N,true,RandomAccess,Enable>
             : mpl::if_< ft::is_member_function_pointer<Function>,
                 invoke_mem_fn<Function,Sequence,N,RandomAccess>,
                 invoke_nonmember_builtin<Function,Sequence,N,RandomAccess>
             >::type
         { };
 
-        template <typename Function, class Sequence, bool RandomAccess>
-        struct invoke_impl<Function,Sequence,1,true,RandomAccess>
+        template <typename Function, class Sequence, bool RandomAccess, typename Enable>
+        struct invoke_impl<Function,Sequence,1,true,RandomAccess,Enable>
             : mpl::eval_if< ft::is_member_pointer<Function>,
                 mpl::if_< ft::is_member_function_pointer<Function>,
                     invoke_mem_fn<Function,Sequence,1,RandomAccess>,
@@ -156,11 +161,14 @@ namespace boost { namespace fusion
 
     namespace result_of
     {
-        template <typename Function, class Sequence> struct invoke
+        template <typename Function, class Sequence,
+                  class Enable =
+                    typename detail::invoke_impl<
+                        typename boost::remove_reference<Function>::type, Sequence
+                      >::result_type>
+        struct invoke
         {
-            typedef typename detail::invoke_impl<
-                typename boost::remove_reference<Function>::type, Sequence
-              >::result_type type;
+            typedef Enable type;
         };
     }
 
@@ -195,13 +203,17 @@ namespace boost { namespace fusion
 ///////////////////////////////////////////////////////////////////////////////
 #define N BOOST_PP_ITERATION()
 
+#define M(z,j,data) typename result_of::at_c<Sequence,j>::type
+
         template <typename Function, class Sequence>
-        struct invoke_impl<Function,Sequence,N,false,true>
+        struct invoke_impl<Function,Sequence,N,false,true,
+            typename always_void_<
+                typename boost::result_of<Function(BOOST_PP_ENUM(N,M,~)) >::type
+              >::type>
         {
         public:
 
             typedef typename boost::result_of<
-#define M(z,j,data) typename result_of::at_c<Sequence,j>::type
                     Function(BOOST_PP_ENUM(N,M,~)) >::type result_type;
 #undef M
 
@@ -288,7 +300,12 @@ namespace boost { namespace fusion
                 fusion::next(BOOST_PP_CAT(i,BOOST_PP_DEC(j)));
 
         template <typename Function, class Sequence>
-        struct invoke_impl<Function,Sequence,N,false,false>
+        struct invoke_impl<Function,Sequence,N,false,false,
+            typename always_void_<
+#define L(z,j,data) typename invoke_param_types<Sequence,N>::BOOST_PP_CAT(T, j)
+                typename boost::result_of<Function(BOOST_PP_ENUM(N,L,~))>::type
+              >::type>
+#undef L
         {
         private:
             typedef invoke_param_types<Sequence,N> seq;

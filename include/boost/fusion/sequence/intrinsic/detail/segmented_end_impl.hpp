@@ -48,7 +48,7 @@ namespace boost { namespace fusion { namespace detail
         typedef iterator_range<end_type, end_type>  pair_type;
         typedef cons<pair_type, Stack>              type;
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type call(Sequence & seq, Stack stack)
         {
             end_type end = fusion::end(fusion::segments(seq));

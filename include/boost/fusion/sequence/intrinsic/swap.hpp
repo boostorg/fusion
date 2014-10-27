@@ -40,7 +40,7 @@ namespace boost { namespace fusion {
             };
 
             template<typename Elem>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             void operator()(Elem const& e) const
             {
                 using std::swap;
@@ -50,8 +50,8 @@ namespace boost { namespace fusion {
     }
 
     template<typename Seq1, typename Seq2>
-    BOOST_FUSION_GPU_ENABLED
-    typename enable_if<mpl::and_<traits::is_sequence<Seq1>, traits::is_sequence<Seq2> >, void>::type 
+    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+    typename enable_if<mpl::and_<traits::is_sequence<Seq1>, traits::is_sequence<Seq2> >, void>::type
     swap(Seq1& lhs, Seq2& rhs)
     {
         typedef vector<Seq1&, Seq2&> references;
