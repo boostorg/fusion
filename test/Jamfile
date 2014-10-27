@@ -97,6 +97,7 @@ project
     [ run sequence/map_move.cpp :  :  :  : ]
     [ run sequence/map_mutate.cpp :  :  :  : ]
     [ run sequence/map_tie.cpp :  :  :  : ]
+    [ run sequence/nil.cpp :  :  :  : ]
     [ run sequence/nview.cpp :  :  :  : ]
     [ run sequence/reverse_view.cpp :  :  :  : ]
     [ run sequence/segmented_iterator_range.cpp : : : : ]
