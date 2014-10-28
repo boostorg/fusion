@@ -27,7 +27,7 @@ namespace boost { namespace fusion
         template <typename ...T>
         struct make_deque
         {
-            typedef deque<T...> type;
+            typedef deque<typename detail::as_fusion_element<T>::type...> type;
         };
     }
 
