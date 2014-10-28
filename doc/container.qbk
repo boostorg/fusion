@@ -846,7 +846,7 @@ Create a __deque__ from one or more values.
 
 For C++11 compilers, the variadic function interface has no upper bound.
 
-For C++11 compilers, the variadic function accepts `0` to
+For C++03 compilers, the variadic function accepts `0` to
 `FUSION_MAX_DEQUE_SIZE` elements, where `FUSION_MAX_DEQUE_SIZE` is a
 user definable predefined maximum that defaults to `10`. You may define
 the preprocessor constant `FUSION_MAX_DEQUE_SIZE` before including any
@@ -950,7 +950,9 @@ Create a __map__ from one or more key/data pairs.
     typename __result_of_make_map__<K0, K0,... KN, T0, T1,... TN>::type
     make_map(T0 const& x0, T1 const& x1... TN const& xN);
 
-The variadic function accepts `0` to `FUSION_MAX_MAP_SIZE` elements,
+For C++11 compilers, the variadic function interface has no upper bound.
+
+For C++03 compilers, the variadic function accepts `0` to `FUSION_MAX_MAP_SIZE` elements,
 where `FUSION_MAX_MAP_SIZE` is a user definable predefined maximum that
 defaults to `10`. You may define the preprocessor constant
 `FUSION_MAX_MAP_SIZE` before including any Fusion header to change the
@@ -1475,7 +1477,9 @@ Returns the result type of __make_map__.
       , typename T0, typename T1,... typename TN>
     struct make_map;
 
-The variadic function accepts `0` to `FUSION_MAX_MAP_SIZE` elements,
+For C++11 compilers, the variadic function interface has no upper bound.
+
+For C++03 compilers, the variadic function accepts `0` to `FUSION_MAX_MAP_SIZE` elements,
 where `FUSION_MAX_MAP_SIZE` is a user definable predefined maximum that
 defaults to `10`. You may define the preprocessor constant
 `FUSION_MAX_MAP_SIZE` before including any Fusion header to change the
