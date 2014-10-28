@@ -28,7 +28,6 @@ project
     [ run algorithm/find.cpp :  :  :  : ]
     [ run algorithm/find_if.cpp :  :  :  : ]
     [ run algorithm/fold.cpp :  :  :  : ]
-    [ run algorithm/fold2.cpp :  :  :  : ]
     [ run algorithm/for_each.cpp :  :  :  : ]
     [ run algorithm/insert.cpp :  :  :  : ]
     [ run algorithm/insert_range.cpp :  :  :  : ]
