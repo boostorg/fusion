@@ -8,6 +8,7 @@
 ==============================================================================*/
 namespace boost { namespace fusion { namespace detail
 {
+BOOST_FUSION_BARRIER_BEGIN
     template <bool is_assoc>
     struct as_map<1, is_assoc>
     {
@@ -218,4 +219,5 @@ namespace boost { namespace fusion { namespace detail
             return result(gen::D0::call(i0) , gen::D1::call(i1) , gen::D2::call(i2) , gen::D3::call(i3) , gen::D4::call(i4) , gen::D5::call(i5) , gen::D6::call(i6) , gen::D7::call(i7) , gen::D8::call(i8) , gen::D9::call(i9));
         }
     };
+BOOST_FUSION_BARRIER_END
 }}}
