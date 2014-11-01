@@ -132,7 +132,7 @@ struct functor
 
 struct visitor
 {
-    using result_type = int;
+    typedef int result_type;
 
     int operator()(int sum, long&)
     {
