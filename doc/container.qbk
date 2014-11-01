@@ -1470,6 +1470,10 @@ rules for __element_conversion__.
 
 Returns the result type of __make_map__.
 
+The implementation depends on the support of variadic templates.
+
+When variadic templates are not supported, make_map is a metafunction of the form:
+
 [heading Synopsis]
 
     template <
@@ -1487,6 +1491,18 @@ default. Example:
 
     #define FUSION_MAX_MAP_SIZE 20
 
+When variadic templates are supported, make_map is a metafunction class of the form:
+
+[heading Synopsis]
+
+    template <
+        typename K0, typename K1,... typename KN>
+    struct make_map
+    {
+        struct apply<
+        typename T0, typename T1,... typename TN>
+    };
+
 [heading Parameters]
 
 [table
@@ -1497,9 +1513,16 @@ default. Example:
 
 [heading Expression Semantics]
 
+    #if !defined(BOOST_FUSION_HAS_VARIADIC_MAP)
     resulf_of::make_map<K0, K1,... KN, T0, T1,... TN>::type;
+    #else
+    resulf_of::make_map<K0, K1,... KN>::apply<T0, T1,... TN>::type;
+    #endif
 
 [*Return type]: __result_of_make_map__`<K0, K0,... KN, T0, T1,... TN>::type`
+when variadic templates are not supported, or
+__result_of_make_map__`<K0, K0,... KN>::apply<T0, T1,... TN>::type`
+when variadic templates are supported.
 
 [*Semantics]: A __map__ with __fusion_pair__ elements where the
 `second_type` is converted following the rules for __element_conversion__.
@@ -1513,7 +1536,11 @@ default. Example:
 
 [heading Example]
 
+    #if !defined(BOOST_FUSION_HAS_VARIADIC_MAP)
     result_of::make_map<int, double, char, double>::type
+    #else
+    result_of::make_map<int, double>::apply<char, double>::type
+    #endif
 
 [heading See also]
 
