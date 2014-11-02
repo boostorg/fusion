@@ -90,19 +90,21 @@ The __tr1__tuple__ type provides a default constructor, a constructor that takes
 [section Tuple creation functions]
 
 [heading Description]
-TR1 describes 2 utility functions for creating __tr1__tuple__s. `make_tuple` builds a tuple out of it's argument list, and `tie` builds a tuple of references to it's arguments. The details of these creation functions are described in this section.
+TR1 describes 2 utility functions for creating __tr1__tuple__. `make_tuple` builds a tuple out of it's argument list, and `tie` builds a tuple of references to it's arguments. The details of these creation functions are described in this section.
 
 [heading Specification]
 
     template<typename T1, typename T2, ..., typename TN>
-    tuple<V1, V2, ..., VN> make_tuple(const T1& t1, const T2& t2, ..., const TN& tn);
+    tuple<V1, V2, ..., VN>
+    make_tuple(const T1& t1, const T2& t2, ..., const TN& tn);
 
 Where `Vi` is `X&` if the cv-unqualified type `Ti` is `reference_wrapper<X>`, otherwise `Vi` is `Ti`.
 
 [*Returns]: `tuple<V1, V2, ..., VN>(t1, t2, ..., tN)`
 
     template<typename T1, typename T2, ..., typename TN>
-    tuple<T1&, T2&, ..., TN&> tie(T1& t1, T2& t2, ..., TN& tn);
+    tuple<T1&, T2&, ..., TN&>
+    tie(T1& t1, T2& t2, ..., TN& tn);
 
 [*Returns]: tuple<T1&, T2&, ..., TN&>(t1, t2, ..., tN). When argument `ti` is `ignore`, assigning any value to the corresponding tuple element has no effect.
 
