@@ -132,7 +132,7 @@ struct functor
 
 struct visitor
 {
-    using result_type = int;
+    typedef int result_type;
 
     int operator()(int sum, long&)
     {
@@ -238,7 +238,7 @@ main()
     }
 
     {
-#if !defined(BOOST_NO_CXX11_DECLTYPE)
+#if !defined(BOOST_FUSION_NO_DECLTYPE_BASED_RESULT_OF)
         {
             boost::fusion::vector<int, double, long> container{1, 2, 3};
             functor f;

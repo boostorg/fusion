@@ -8,6 +8,7 @@
 ==============================================================================*/
 namespace boost { namespace fusion { namespace detail
 {
+BOOST_FUSION_BARRIER_BEGIN
     template <>
     struct as_set<1>
     {
@@ -218,4 +219,5 @@ namespace boost { namespace fusion { namespace detail
             return result(*i0 , *i1 , *i2 , *i3 , *i4 , *i5 , *i6 , *i7 , *i8 , *i9);
         }
     };
+BOOST_FUSION_BARRIER_END
 }}}
