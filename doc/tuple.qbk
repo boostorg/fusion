@@ -23,6 +23,21 @@ As such the fusion tuple type provides a lot of functionality beyond that requir
 Currently tuple is basically a synonym for __vector__, although this may be changed
 in future releases of fusion.
 
+[heading Header]
+
+    #include <boost/fusion/tuple.hpp>
+    #include <boost/fusion/include/tuple.hpp>
+
+    #include <boost/fusion/tuple/tuple.hpp>
+    #include <boost/fusion/tuple/tuple_fwd.hpp>
+    #include <boost/fusion/include/tuple_fwd.hpp>
+
+    // for creation function
+    #include <boost/fusion/tuple/tuple_tie.hpp>
+    #include <boost/fusion/include/tuple_tie.hpp>
+    #include <boost/fusion/tuple/make_tuple.hpp>
+    #include <boost/fusion/include/make_tuple.hpp>
+
 [heading Synopsis]
     template<
         typename T1 = __unspecified__,
@@ -30,8 +45,6 @@ in future releases of fusion.
         ...
         typename TN = __unspecified__>
     class tuple;
-
-/tuple.hpp>
 
 [section Construction]
 
