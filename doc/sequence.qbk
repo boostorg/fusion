@@ -1488,7 +1488,7 @@ The code:
     __vector__<int, int> j;
 
     std::cin >> i;
-    std::cin >> set_open('[') >> set_close(']') >> set_delimiter(':');
+    std::cin >> tuple_open('[') >> tuple_close(']') >> tuple_delimiter(':');
     std::cin >> j;
 
 reads the data into the __vector__(s) `i` and `j`.
