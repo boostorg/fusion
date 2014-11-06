@@ -8,6 +8,7 @@
 #define FUSION_ITERATOR_ADAPTER_08112011_0942
 
 #include <boost/fusion/support/config.hpp>
+#include <boost/fusion/support/category_of.hpp>
 #include <boost/fusion/iterator/advance.hpp>
 #include <boost/fusion/iterator/deref.hpp>
 #include <boost/fusion/iterator/distance.hpp>
@@ -21,7 +22,7 @@
 namespace boost { namespace fusion
 {
     template <typename Derived_, typename Iterator_,
-        typename Category = typename Iterator_::category>
+        typename Category = typename traits::category_of<Iterator_>::type>
     struct iterator_adapter
         : iterator_facade<Derived_, Category>
     {
