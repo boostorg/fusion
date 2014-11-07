@@ -574,10 +574,10 @@ Linear. At most `__result_of_size__<Sequence>::value` comparisons.
 [endsect]
 
 [section find_if]
-Finds the first element within a sequence with a type for which a given __mpl_lambda_expression__ evaluates to
-`boost::mpl::true_`.
 
 [heading Description]
+Finds the first element within a sequence with a type for which a given __mpl_lambda_expression__ evaluates to
+`boost::mpl::true_`.
 
 [heading Synopsis]
     template<
