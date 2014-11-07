@@ -1329,7 +1329,7 @@ Constant. Returns a view which is lazily evaluated.
 [heading Description]
 Returns a new sequence with the elements of the original in reverse order.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename Sequence
         >
@@ -1369,7 +1369,7 @@ Constant. Returns a view which is lazily evaluated.
 [heading Description]
 __clear__ returns an empty sequence.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename Sequence
         >
@@ -1406,7 +1406,7 @@ Constant.
 Returns a new sequence, containing all the elements of the original except those at a specified iterator, or
 between two iterators.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename Sequence,
         typename First
@@ -1467,11 +1467,11 @@ Constant. Returns a view which is lazily evaluated.
 [section erase_key]
 
 [heading Description]
-For an [link fusion.sequence.concepts.associative_sequence associative]] __forward_sequence__ `seq`,
-returns a [link fusion.sequence.concepts.associative_sequence associative]] __forward_sequence__ containing
+For an [link fusion.sequence.concepts.associative_sequence associative] __forward_sequence__ `seq`,
+returns a [link fusion.sequence.concepts.associative_sequence associative] __forward_sequence__ containing
 all the elements of the original except those with a given key.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename Key,
         typename Sequence
@@ -1510,7 +1510,7 @@ Constant. Returns a view which is lazily evaluated.
 Returns a new sequence with all the elements of the original, an a new element inserted the
 position described by a given iterator.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename Sequence,
         typename Pos,
@@ -1527,7 +1527,7 @@ position described by a given iterator.
 ]
 
 [heading Expression Semantics]
-    __insert__(seq, p, t);
+    __insert__(seq, pos, t);
 
 [*Return type]:
 
@@ -1555,7 +1555,7 @@ Constant. Returns a view which is lazily evaluated.
 [heading Description]
 Returns a new sequence with another sequence inserted at a specified iterator.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename Sequence,
         typename Pos,
@@ -1580,7 +1580,7 @@ Returns a new sequence with another sequence inserted at a specified iterator.
 * A model of __associative_sequence__ if `seq` implements the __associative_sequence__ model.
 
 [*Semantics]: Returns a new sequence, containing all the elements of `seq`, and the elements of
-`range` inserted at iterator `pos`. All elements retaining their ordering from the orignal sequences.
+`range` inserted at iterator `pos`. All elements retaining their ordering from the original sequences.
 
 [heading Complexity]
 Constant. Returns a view which is lazily evaluated.
@@ -1641,7 +1641,7 @@ Constant. Returns a view which is lazily evaluated.
 [section zip]
 
 [heading Description]
-Zips sequences together to form a single sequence, whos members are tuples of the members of the component sequences.
+Zips sequences together to form a single sequence, whose members are tuples of the members of the component sequences.
 
 [heading Synopsis]
     template<
@@ -2471,7 +2471,7 @@ Returns the result of joining 2 sequences, given the sequence types.
 [*Return type]:
 
 * A model of __forward_sequence__.
-* A model of __associative_sequence__ if `LhSequence` amd `RhSequence` implement the __associative_sequence__ model.
+* A model of __associative_sequence__ if `LhSequence` and `RhSequence` implement the __associative_sequence__ model.
 
 [*Semantics]: Returns a sequence containing the elements of `LhSequence` followed by the elements of `RhSequence`. The order of the elements in the 2 sequences is preserved.
 
@@ -2488,7 +2488,7 @@ Constant.
 [section zip]
 
 [heading Description]
-Zips sequences together to form a single sequence, whos members are tuples of the members of the component sequences.
+Zips sequences together to form a single sequence, whose members are tuples of the members of the component sequences.
 
 [heading Synopsis]
     template<

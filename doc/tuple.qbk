@@ -62,7 +62,7 @@ The __tr1__tuple__ type provides a default constructor, a constructor that takes
 
     tuple();
 
-[*Requirements]: Each `Ti` is default constructable.
+[*Requirements]: Each `Ti` is default-constructible.
 
 [*Semantics]: Default initializes each element of the tuple.
 
@@ -74,7 +74,7 @@ The __tr1__tuple__ type provides a default constructor, a constructor that takes
 
     tuple(const tuple& t);
 
-[*Requirements]: Each `Ti` should be copy constructable.
+[*Requirements]: Each `Ti` should be copy-constructible.
 
 [*Semantics]: Copy constructs each element of `*this` with the corresponding element of `t`.
 

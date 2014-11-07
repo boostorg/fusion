@@ -541,7 +541,7 @@ Returns the first element in the sequence.
 
 [*Return type]: Returns a reference to the first element in the sequence
 `seq` if `seq` is mutable and `e = o`, where `e` is the first element in
-the sequence, is a valid expression. Else, returns a type convertable to
+the sequence, is a valid expression. Else, returns a type convertible to
 the first element in the sequence.
 
 [*Precondition]: `__empty__(seq) == false`
@@ -589,7 +589,7 @@ Returns the last element in the sequence.
 
 [*Return type]: Returns a reference to the last element in the sequence
 `seq` if `seq` is mutable and `e = o`, where `e` is the last element in the
-sequence, is a valid expression. Else, returns a type convertable to the
+sequence, is a valid expression. Else, returns a type convertible to the
 last element in the sequence.
 
 [*Precondition]: `__empty__(seq) == false`
@@ -680,7 +680,7 @@ Returns the M-th element from the beginning of the sequence.
 [*Return type]: Returns a reference to the M-th element from the beginning
 of the sequence `seq` if `seq` is mutable and `e = o`, where `e` is the M-th
 element from the beginning of the sequence, is a valid expression. Else,
-returns a type convertable to the M-th element from the beginning of the
+returns a type convertible to the M-th element from the beginning of the
 sequence.
 
 [*Precondition]: `0 <= M::value < __size__(s)`
@@ -733,7 +733,7 @@ Returns the N-th element from the beginning of the sequence.
 [*Return type]: Returns a reference to the N-th element from the beginning
 of the sequence `seq` if `seq` is mutable and `e = o`, where `e` is the N-th
 element from the beginning of the sequence, is a valid expression. Else,
-returns a type convertable to the N-th element from the beginning of the
+returns a type convertible to the N-th element from the beginning of the
 sequence.
 
 [*Precondition]: `0 <= N < __size__(s)`
@@ -828,7 +828,7 @@ Returns the element associated with a Key from the sequence.
 [*Return type]: Returns a reference to the element associated with Key from
 the sequence `seq` if `seq` is mutable and `e = o`, where `e` is the
 element associated with Key, is a valid expression. Else, returns a type
-convertable to the element associated with Key.
+convertible to the element associated with Key.
 
 [*Precondition]: `has_key<Key>(seq) == true`
 
@@ -860,7 +860,7 @@ Performs an element by element swap of the elements in 2 sequences.
 
 [table
     [[Parameters]    [Requirement]                           [Description]]
-    [[`seq1`, `seq2`][Models of __forward_sequence__][The sequences whos elements we wish to swap.]]
+    [[`seq1`, `seq2`][Models of __forward_sequence__][The sequences whose elements we wish to swap.]]
 ]
 
 [heading Expression Semantics]
