@@ -536,13 +536,13 @@ Finds the first element of a given type within a sequence.
         typename T,
         typename Sequence
         >
-    __unspecified__ find(Sequence const& seq);
+    typename __result_of_find__<Sequence const, T>::type find(Sequence const& seq);
 
     template<
         typename T,
         typename Sequence
         >
-    __unspecified__ find(Sequence& seq);
+    typename __result_of_find__<Sequence, T>::type find(Sequence& seq);
 
 [table Parameters
     [[Parameter][Requirement][Description]]
@@ -584,13 +584,13 @@ Finds the first element within a sequence with a type for which a given __mpl_la
         typename F,
         typename Sequence
         >
-    __unspecified__ find_if(Sequence const& seq);
+    typename __result_of_find_if__<Sequence const, F>::type find_if(Sequence const& seq);
 
     template<
         typename F,
         typename Sequence
         >
-    __unspecified__ find_if(Sequence& seq);
+    typename __result_of_find_if__<Sequence, F>::type find_if(Sequence& seq);
 
 [table Parameters
     [[Parameter][Requirement][Description]]
