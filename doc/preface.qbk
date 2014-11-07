@@ -13,7 +13,7 @@
 
 [heading Description]
 
-Fusion is a library for working with heterogenous collections of data,
+Fusion is a library for working with heterogeneous collections of data,
 commonly referred to as tuples. A set of containers (vector, list, set and map)
 is provided, along with views that provide a transformed presentation
 of their underlying data. Collectively the containers and views are referred to
@@ -31,7 +31,7 @@ Tuples are powerful beasts. After having developed two significant projects
 (__spirit__ and __phoenix__) that relied heavily metaprogramming, it
 became apparent that tuples are a powerful means to simplify otherwise tricky
 tasks; especially those that require a combination of metaprogramming and
-manipulation of heterogenous data types with values. While __mpl__ is an
+manipulation of heterogeneous data types with values. While __mpl__ is an
 extremely powerful metaprogramming tool, __mpl__ focuses on type
 manipulation only. Ultimately, you'll have to map these types to real
 values to make them useful in the runtime world where all the real action
