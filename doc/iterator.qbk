@@ -677,7 +677,7 @@ Returns the type stored at the position of an iterator.
 [heading Description]
 Returns the type that will be returned by dereferencing an iterator.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename I
         >
@@ -721,7 +721,7 @@ Returns the type that will be returned by dereferencing an iterator.
 [heading Description]
 Returns the type of the next iterator in a sequence.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename I
         >
@@ -1044,7 +1044,7 @@ Returns the type of the data property associated with the element referenced by 
 [heading Description]
 Returns the type that will be returned by dereferencing the data property referenced by an associative iterator.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename I
         >
@@ -1066,7 +1066,7 @@ Returns the type that will be returned by dereferencing the data property refere
 [*Semantics]: Returns the result of dereferencing the data property referenced by an associative iterator of type `I`.
 
 [heading Header]
-    #include <boosta/fusion/iterator/deref_data.hpp>
+    #include <boost/fusion/iterator/deref_data.hpp>
     #include <boost/fusion/include/deref_data.hpp>
 
 [heading Example]

@@ -9,7 +9,7 @@
 [section Container]
 
 Fusion provides a few predefined sequences out of the box. These
-/containers/ actually hold heterogenously typed data; unlike
+/containers/ actually hold heterogeneously typed data; unlike
 __views__. These containers are more or less counterparts of those in __stl__.
 
 [heading Header]
@@ -21,7 +21,7 @@ __views__. These containers are more or less counterparts of those in __stl__.
 
 [heading Description]
 
-`vector` is a __random_access_sequence__ of heterogenous typed data
+`vector` is a __random_access_sequence__ of heterogeneous typed data
 structured as a simple `struct` where each element is held as a member
 variable. `vector` is the simplest of the Fusion sequence container (a
 vector with N elements is just a struct with N members), and in many
@@ -209,7 +209,7 @@ constant (see __recursive_inline__).]
 
 [heading Description]
 
-`list` is a __forward_sequence__ of heterogenous typed data built on top of
+`list` is a __forward_sequence__ of heterogeneous typed data built on top of
 __cons__. It is more efficient than __vector__ when the target sequence is
 constructed piecemeal (a data at a time). The runtime cost of access to
 each element is peculiarly constant (see __recursive_inline__).
@@ -508,7 +508,7 @@ not defined in __bidirectional_sequence__.
 
 [heading Description]
 
-set is an __associative_sequence__ of heteregenous typed data elements.
+set is an __associative_sequence__ of heterogeneous typed data elements.
 Type identity is used to impose an equivalence relation on keys. The
 element's type is its key. A set may contain at most one element for each
 key. Membership testing and element key lookup has constant runtime
@@ -589,7 +589,7 @@ defined in __random_access_sequence__ and __associative_sequence__.
 
 [heading Description]
 
-map is an __associative_sequence__ of heteregenous typed data elements.
+map is an __associative_sequence__ of heterogeneous typed data elements.
 Each element is a key/data pair (see __fusion_pair__) where the key has no
 data (type only). Type identity is used to impose an equivalence relation
 on keys. A map may contain at most one element for each key. Membership

@@ -58,10 +58,10 @@ In the case:
 
 [heading Extensibility]
 
-Unlike __mpl__, there is no extensibe sequence concept in fusion. This does
+Unlike __mpl__, there is no extensible sequence concept in fusion. This does
 not mean that Fusion sequences are not extensible. In fact, all Fusion
 sequences are inherently extensible. It is just that the manner of sequence
-extension in Fusion is diferent from both __stl__ and __mpl__ on account of
+extension in Fusion is different from both __stl__ and __mpl__ on account of
 the lazy nature of fusion __algorithms__. __stl__ containers extend
 themselves in place though member functions such as __push_back__ and
 __insert__. __mpl__ sequences, on the other hand, are extended through
