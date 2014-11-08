@@ -16,7 +16,7 @@
 #include <boost/config.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/ice.hpp>
+#include <boost/mpl/and.hpp>
 
 #if defined (BOOST_MSVC)
 #  pragma warning(push)
@@ -62,15 +62,10 @@ namespace boost { namespace fusion
 
     template <typename Seq1, typename Seq2>
     BOOST_FUSION_GPU_ENABLED
-    inline
-    typename
-        enable_if_c<
-            type_traits::ice_and<
-                traits::is_sequence<Seq1>::value
-              , traits::is_sequence<Seq2>::value
-            >::value,
-            void
-        >::type
+    inline typename enable_if<mpl::and_<
+        traits::is_sequence<Seq1>,
+        traits::is_sequence<Seq2>
+    > >::type
     copy(Seq1 const& src, Seq2& dest)
     {
         BOOST_STATIC_ASSERT(

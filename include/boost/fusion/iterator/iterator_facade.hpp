@@ -14,6 +14,7 @@
 #include <boost/fusion/support/category_of.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/mpl/assert.hpp>
+#include <boost/mpl/if.hpp>
 
 namespace boost { namespace fusion
 {
