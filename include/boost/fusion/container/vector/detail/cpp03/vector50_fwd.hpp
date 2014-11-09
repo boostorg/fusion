@@ -6,8 +6,8 @@
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
-#if !defined(BOOST_FUSION_VECTOR30_FWD_HPP_INCLUDED)
-#define BOOST_FUSION_VECTOR30_FWD_HPP_INCLUDED
+#if !defined(BOOST_FUSION_VECTOR50_FWD_HPP_INCLUDED)
+#define BOOST_FUSION_VECTOR50_FWD_HPP_INCLUDED
 
 #include <boost/fusion/support/config.hpp>
 #include <boost/preprocessor/cat.hpp>
@@ -15,10 +15,10 @@
 #include <boost/preprocessor/repetition/enum_params.hpp>
 
 #if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/vector/detail/preprocessed/vector30_fwd.hpp>
+#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector50_fwd.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/vector30_fwd.hpp")
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/vector50_fwd.hpp")
 #endif
 
 /*=============================================================================
@@ -37,9 +37,9 @@
 
 namespace boost { namespace fusion
 {
-    // expand vector21 to vector30
-    #define BOOST_PP_FILENAME_1 <boost/fusion/container/vector/vector30_fwd.hpp>
-    #define BOOST_PP_ITERATION_LIMITS (21, 30)
+    // expand vector41 to vector50
+    #define BOOST_PP_FILENAME_1 <boost/fusion/container/vector/detail/cpp03/vector50_fwd.hpp>
+    #define BOOST_PP_ITERATION_LIMITS (41, 50)
     #include BOOST_PP_ITERATE()
 }}
 

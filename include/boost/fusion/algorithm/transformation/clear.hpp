@@ -8,7 +8,7 @@
 #define FUSION_CLEAR_09172005_1127
 
 #include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/vector10.hpp>
+#include <boost/fusion/container/vector/vector.hpp>
 
 namespace boost { namespace fusion
 {
@@ -17,7 +17,11 @@ namespace boost { namespace fusion
         template <typename Sequence>
         struct clear
         {
+#if !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
             typedef vector0<> type;
+#else
+            typedef vector<> type;
+#endif
         };
     }
 
@@ -26,7 +30,8 @@ namespace boost { namespace fusion
     inline typename result_of::clear<Sequence const>::type
     clear(Sequence const& /*seq*/)
     {
-        return vector0<>();
+        typedef typename result_of::clear<Sequence const>::type result;
+        return result();
     }
 }}
 

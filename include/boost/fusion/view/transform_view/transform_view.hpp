@@ -19,7 +19,7 @@
 #include <boost/fusion/view/transform_view/detail/at_impl.hpp>
 #include <boost/fusion/view/transform_view/detail/value_at_impl.hpp>
 #include <boost/fusion/view/detail/strictest_traversal.hpp>
-#include <boost/fusion/container/vector/vector10.hpp>
+#include <boost/fusion/container/vector/vector.hpp>
 #include <boost/fusion/sequence/intrinsic/size.hpp>
 #include <boost/fusion/support/sequence_base.hpp>
 #include <boost/fusion/sequence/intrinsic/begin.hpp>
@@ -46,7 +46,12 @@ namespace boost { namespace fusion
         typedef typename traits::category_of<Sequence1>::type category1;
         typedef typename traits::category_of<Sequence2>::type category2;
         typedef typename detail::strictest_traversal<
-            fusion::vector2<Sequence1, Sequence2> >::type category;
+#if !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
+            fusion::vector2<Sequence1, Sequence2>
+#else
+            fusion::vector<Sequence1, Sequence2>
+#endif
+        >::type category;
         typedef typename result_of::begin<Sequence1>::type first1_type;
         typedef typename result_of::begin<Sequence2>::type first2_type;
         typedef typename result_of::end<Sequence1>::type last1_type;
