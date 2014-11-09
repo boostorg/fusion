@@ -8,15 +8,15 @@
 ==============================================================================*/
 
 #if FUSION_MAX_LIST_SIZE <= 10
-#include <boost/fusion/container/list/detail/preprocessed/list10.hpp>
+#include <boost/fusion/container/list/detail/cpp03/preprocessed/list10_fwd.hpp>
 #elif FUSION_MAX_LIST_SIZE <= 20
-#include <boost/fusion/container/list/detail/preprocessed/list20.hpp>
+#include <boost/fusion/container/list/detail/cpp03/preprocessed/list20_fwd.hpp>
 #elif FUSION_MAX_LIST_SIZE <= 30
-#include <boost/fusion/container/list/detail/preprocessed/list30.hpp>
+#include <boost/fusion/container/list/detail/cpp03/preprocessed/list30_fwd.hpp>
 #elif FUSION_MAX_LIST_SIZE <= 40
-#include <boost/fusion/container/list/detail/preprocessed/list40.hpp>
+#include <boost/fusion/container/list/detail/cpp03/preprocessed/list40_fwd.hpp>
 #elif FUSION_MAX_LIST_SIZE <= 50
-#include <boost/fusion/container/list/detail/preprocessed/list50.hpp>
+#include <boost/fusion/container/list/detail/cpp03/preprocessed/list50_fwd.hpp>
 #else
 #error "FUSION_MAX_LIST_SIZE out of bounds for preprocessed headers"
 #endif

@@ -18,7 +18,7 @@
 #define FUSION_LIST_CL_PAREN(z, n, type) )
 
 #define BOOST_PP_FILENAME_1 \
-    <boost/fusion/container/list/detail/list_forward_ctor.hpp>
+    <boost/fusion/container/list/detail/cpp03/list_forward_ctor.hpp>
 #define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_LIST_SIZE)
 #include BOOST_PP_ITERATE()
 
