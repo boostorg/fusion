@@ -60,6 +60,15 @@ namespace boost { namespace fusion
         };
     }
 
+    namespace result_of
+    {
+        template <typename Seq1, typename Seq2>
+        struct move
+        {
+            typedef void type;
+        };
+    }
+
     template <typename Seq1, typename Seq2>
     BOOST_FUSION_GPU_ENABLED
     inline typename enable_if<mpl::and_<
