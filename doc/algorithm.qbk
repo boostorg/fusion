@@ -164,7 +164,8 @@ A metafunction returning the result type of applying __copy__, which is always `
 [heading Expression Semantics]
     result_of::copy<Seq1, Seq2>::type
 
-[*Return type]: `void`
+[*Return type]: `void` iff both of `Seq1` and `Seq2` are sequence.
+Otherwise, none.
 
 [*Semantics]: Returns the return type of __copy__ for 2 sequences of types `Seq1` and `Seq2`.
 
@@ -199,7 +200,8 @@ A metafunction returning the result type of applying __move__, which is always `
 [heading Expression Semantics]
     result_of::move<Seq1, Seq2>::type
 
-[*Return type]: `void`
+[*Return type]: `void` iff both of `Seq1` and `Seq2` are sequence.
+Otherwise, none.
 
 [*Semantics]: Returns the return type of __move__ for 2 sequences of types `Seq1` and `Seq2`.
 

@@ -178,6 +178,8 @@
 [def __result_of_value_at__     [link fusion.sequence.intrinsic.metafunctions.value_at `result_of::value_at`]]
 [def __result_of_value_at_c__   [link fusion.sequence.intrinsic.metafunctions.value_at_c `result_of::value_at_c`]]
 [def __result_of_value_at_key__ [link fusion.sequence.intrinsic.metafunctions.value_at_key `result_of::value_at_key`]]
+[def __swap__                   [link fusion.sequence.intrinsic.functions.swap `swap`]]
+[def __result_of_swap__         [link fusion.sequence.intrinsic.metafunctions.swap `result_of::swap`]]
 
 [def __conversion__             [link fusion.container.conversion.functions Conversion]]
 [def __result_of_conversion__   [link fusion.container.conversion.metafunctions Conversion Metafunctions]]
