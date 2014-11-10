@@ -1395,7 +1395,7 @@ Returns the actual element type associated with a Key from the __sequence__.
 
 [heading Example]
     typedef __map__<__pair__<int, char>, __pair__<char, char>, __pair__<double, char> > mymap;
-    BOOST_MPL_ASSERT((boost::is_same<__result_of_at_key__<mymap, int>::type, char>));
+    BOOST_MPL_ASSERT((boost::is_same<__result_of_value_at_key__<mymap, int>::type, char>));
 
 [endsect]
 
