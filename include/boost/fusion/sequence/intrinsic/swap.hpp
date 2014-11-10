@@ -51,7 +51,7 @@ namespace boost { namespace fusion {
 
     template<typename Seq1, typename Seq2>
     BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    typename enable_if<mpl::and_<traits::is_sequence<Seq1>, traits::is_sequence<Seq2> >, void>::type
+    inline typename enable_if<mpl::and_<traits::is_sequence<Seq1>, traits::is_sequence<Seq2> >, void>::type
     swap(Seq1& lhs, Seq2& rhs)
     {
         typedef vector<Seq1&, Seq2&> references;
