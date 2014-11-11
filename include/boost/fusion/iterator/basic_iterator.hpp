@@ -132,7 +132,7 @@ namespace boost { namespace fusion
         {}
 
         template<typename OtherSeq>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         basic_iterator&
         operator=(basic_iterator<Tag,Category,OtherSeq,Index> const& it)
         {
