@@ -69,7 +69,7 @@ It is also used to convert sequence into other.
 
 [heading Synopsis]
     template <typename Seq1, typename Seq2>
-    void copy(Seq1 const& src, Seq2& dest);
+    typename __result_of_copy__<Seq1, Seq2>::type copy(Seq1 const& src, Seq2& dest);
 
 [table Parameters
     [[Parameter][Requirement][Description]]
@@ -97,6 +97,121 @@ Linear, exactly `__result_of_size__<Sequence>::value`.
     __list__<int,int> ls;
     __copy__(vec, ls);
     assert(ls == __make_list__(1,2));
+
+[endsect]
+
+[section move]
+
+[heading Description]
+move a sequence `src` to a sequence `dest`.
+It is also used to convert sequence into other.
+
+[heading Synopsis]
+    template <typename Seq1, typename Seq2>
+    typename __result_of_move__<Seq1, Seq2>::type move(Seq1&& src, Seq2& dest);
+
+[table Parameters
+    [[Parameter][Requirement][Description]]
+    [[`src`][A model of __forward_sequence__, all elements contained in the `src` sequence should be convertible into the element contained in the `dest` sequence.][Operation's argument]]
+    [[`dest`][A model of __forward_sequence__, `e2 = std::move(e1)` is valid expression for each pair of elements `e1` of `src` and `e2` of `dest`.][Operation's argument]]
+]
+
+[heading Expression Semantics]
+    __move__(src, dest);
+
+[*Return type]: `void`
+
+[*Semantics]: `e2 = std::move(e1)` for each element `e1` in `src` and `e2` in `dest`.
+
+[heading Complexity]
+Linear, exactly `__result_of_size__<Sequence>::value`.
+
+[heading Header]
+
+    #include <boost/fusion/algorithm/auxiliary/move.hpp>
+    #include <boost/fusion/include/move.hpp>
+
+[heading Example]
+    __vector__<int,int> vec(1,2);
+    __list__<int,int> ls;
+    __move__(std::move(vec), ls);
+    assert(ls == __make_list__(1,2));
+
+[endsect]
+
+[endsect]
+
+[section Metafunctions]
+
+[section copy]
+
+[heading Description]
+A metafunction returning the result type of applying __copy__, which is always `void`.
+
+[heading Synopsis]
+    template <typename Seq1, typename Seq2>
+    struct copy
+    {
+        typedef void type;
+    };
+
+[table Parameters
+    [[Parameter] [Requirement] [Description]]
+    [[`Seq1`] [A model of __forward_sequence__] [Operation's argument]]
+    [[`Seq2`] [A model of __forward_sequence__] [Operation's argument]]
+]
+
+[heading Expression Semantics]
+    result_of::copy<Seq1, Seq2>::type
+
+[*Return type]: `void` iff both of `Seq1` and `Seq2` are sequence.
+Otherwise, none.
+
+[*Semantics]: Returns the return type of __copy__ for 2 sequences of types `Seq1` and `Seq2`.
+
+[heading Complexity]
+Constant.
+
+[heading Header]
+
+    #include <boost/fusion/algorithm/auxiliary/copy.hpp>
+    #include <boost/fusion/include/copy.hpp>
+
+[endsect]
+
+[section move]
+
+[heading Description]
+A metafunction returning the result type of applying __move__, which is always `void`.
+
+[heading Synopsis]
+    template <typename Seq1, typename Seq2>
+    struct move
+    {
+        typedef void type;
+    };
+
+[table Parameters
+    [[Parameter] [Requirement] [Description]]
+    [[`Seq1`] [A model of __forward_sequence__] [Operation's argument]]
+    [[`Seq2`] [A model of __forward_sequence__] [Operation's argument]]
+]
+
+[heading Expression Semantics]
+    result_of::move<Seq1, Seq2>::type
+
+[*Return type]: `void` iff both of `Seq1` and `Seq2` are sequence.
+Otherwise, none.
+
+[*Semantics]: Returns the return type of __move__ for 2 sequences of types `Seq1` and `Seq2`.
+
+[heading Complexity]
+Constant.
+
+[heading Header]
+
+    #include <boost/fusion/algorithm/auxiliary/move.hpp>
+    #include <boost/fusion/include/move.hpp>
 
 [endsect]
 
