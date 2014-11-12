@@ -83,23 +83,29 @@ namespace boost { namespace fusion
         deque()
         {}
 
-        template <typename ...Elements>
+        template <typename Head_, typename ...Tail_, typename =
+            typename enable_if<is_convertible<Head_, Head> >::type
+        >
         BOOST_FUSION_GPU_ENABLED
-        deque(deque<Elements...> const& seq)
+        deque(deque<Head_, Tail_...> const& seq)
           : base(seq)
         {}
 
-        template <typename ...Elements>
+        template <typename Head_, typename ...Tail_, typename =
+            typename enable_if<is_convertible<Head_, Head> >::type
+        >
         BOOST_FUSION_GPU_ENABLED
-        deque(deque<Elements...>& seq)
+        deque(deque<Head_, Tail_...>& seq)
           : base(seq)
         {}
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        template <typename ...Elements>
+        template <typename Head_, typename ...Tail_, typename =
+            typename enable_if<is_convertible<Head_, Head> >::type
+        >
         BOOST_FUSION_GPU_ENABLED
-        deque(deque<Elements...>&& seq)
-          : base(std::forward<deque<Elements...>>(seq))
+        deque(deque<Head_, Tail_...>&& seq)
+          : base(std::forward<deque<Head_, Tail_...>>(seq))
         {}
 #endif
 
@@ -127,7 +133,9 @@ namespace boost { namespace fusion
         {}
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        template <typename Head_, typename ...Tail_>
+        template <typename Head_, typename ...Tail_, typename =
+            typename enable_if<is_convertible<Head_, Head> >::type
+        >
         BOOST_FUSION_GPU_ENABLED
         explicit deque(Head_&& head, Tail_&&... tail)
           : base(detail::deque_keyed_values<Head, Tail...>
