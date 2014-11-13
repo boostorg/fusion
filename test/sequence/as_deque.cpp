@@ -56,5 +56,13 @@ int main() {
         BOOST_TEST(as_deque(make_deque(make_deque(1))) == make_deque(make_deque(1)));
     }
 
+    {
+        deque<> xs;
+        BOOST_TEST(
+            as_deque(push_front(xs, make_vector(1, '2', 3.3f))) ==
+            make_deque(make_vector(1, '2', 3.3f))
+        );
+    }
+
     return boost::report_errors();
 }
