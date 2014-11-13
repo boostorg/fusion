@@ -9,6 +9,9 @@
 
 #include <boost/fusion/support/config.hpp>
 #include <boost/mpl/int.hpp>
+#include <boost/mpl/if.hpp>
+#include <boost/mpl/less.hpp>
+#include <boost/mpl/empty_base.hpp>
 #include <boost/type_traits/is_const.hpp>
 #include <boost/fusion/sequence/intrinsic_fwd.hpp>
 #include <boost/fusion/support/tag_of.hpp>
@@ -56,12 +59,23 @@ namespace boost { namespace fusion
         struct at_impl<std_tuple_tag>;
     }
 
+    namespace detail
+    {
+        template <typename Sequence, typename N, typename Tag>
+        struct at_impl
+            : mpl::if_<
+                  mpl::less<N, typename extension::size_impl<Tag>::template apply<Sequence>::type>
+                , typename extension::at_impl<Tag>::template apply<Sequence, N>
+                , mpl::empty_base
+              >::type
+        {};
+    }
+
     namespace result_of
     {
         template <typename Sequence, typename N>
         struct at
-            : extension::at_impl<typename detail::tag_of<Sequence>::type>::
-                template apply<Sequence, N>
+            : detail::at_impl<Sequence, N, typename detail::tag_of<Sequence>::type>
         {};
 
         template <typename Sequence, int N>
