@@ -25,6 +25,19 @@
 #include <iostream>
 #include <string>
 
+
+struct copy_all
+{
+    copy_all() {}
+    copy_all(copy_all const&) {}
+
+    template <typename T>
+    copy_all(T const& x)
+    {
+        foo(x); // should fail!
+    }
+};
+
 int
 main()
 {
@@ -118,6 +131,13 @@ main()
         std::cout << make_map<char, int>('X', 123) << std::endl;
         BOOST_TEST(at_key<char>(make_map<char, int>('X', 123)) == 'X');
         BOOST_TEST(at_key<int>(make_map<char, int>('X', 123)) == 123);
+    }
+    
+    {
+        // test for copy construction of fusion pairs
+        // make sure that the correct constructor is called
+        pair<int, copy_all> p1;
+        pair<int, copy_all> p2 = p1;
     }
 
     return boost::report_errors();
