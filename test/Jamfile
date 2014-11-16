@@ -32,6 +32,7 @@ project
     [ run algorithm/insert.cpp :  :  :  : ]
     [ run algorithm/insert_range.cpp :  :  :  : ]
     [ run algorithm/iter_fold.cpp :  :  :  : ]
+    [ run algorithm/move.cpp :  :  :  : ]
     [ run algorithm/none.cpp :  :  :  : ]
     [ run algorithm/pop_back.cpp :  :  :  : ]
     [ run algorithm/pop_front.cpp :  :  :  : ]
