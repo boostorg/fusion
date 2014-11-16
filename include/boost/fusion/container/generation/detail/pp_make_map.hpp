@@ -70,7 +70,7 @@ namespace boost { namespace fusion
         BOOST_PP_CAT(K, n)                                                      \
       , typename detail::as_fusion_element<BOOST_PP_CAT(D, n)>::type>
 
-#define BOOST_FUSION_MAKE_PAIR(z, n, data)                                      \
+#define BOOST_FUSION_MAKE_PAIR(z, n, _)                                         \
     fusion::make_pair<BOOST_PP_CAT(K, n)>(BOOST_PP_CAT(_, n))                   \
 
 #define BOOST_PP_FILENAME_1 <boost/fusion/container/generation/detail/pp_make_map.hpp>
@@ -118,10 +118,10 @@ namespace boost { namespace fusion
     >
     BOOST_FUSION_GPU_ENABLED
     inline map<BOOST_PP_ENUM(N, BOOST_FUSION_PAIR, _)>
-    make_map(BOOST_PP_ENUM_BINARY_PARAMS(N, D, const& _))
+    make_map(BOOST_PP_ENUM_BINARY_PARAMS(N, D, const& arg))
     {
         return map<BOOST_PP_ENUM(N, BOOST_FUSION_PAIR, _)>(
-            BOOST_PP_ENUM(N, BOOST_FUSION_MAKE_PAIR, _));
+            BOOST_PP_ENUM(N, BOOST_FUSION_MAKE_PAIR, arg));
     }
 
 #undef N
