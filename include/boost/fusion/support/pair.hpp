@@ -52,7 +52,7 @@ namespace boost { namespace fusion
 
         template <typename Second2>
         BOOST_FUSION_GPU_ENABLED
-        explicit pair(Second2&& val
+        pair(Second2&& val
           , typename boost::enable_if<is_convertible<Second2, Second> >::type* /*dummy*/ = 0
         ) : second(std::forward<Second2>(val)) {}
 
