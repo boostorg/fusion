@@ -139,6 +139,15 @@ main()
         pair<int, copy_all> p1;
         pair<int, copy_all> p2 = p1;
     }
+    
+    {
+        // compile test only
+        // make sure result_of::deref_data returns a reference
+        typedef map<pair<float, int> > map_type;
+        typedef boost::fusion::result_of::begin<map_type>::type i_type;
+        typedef boost::fusion::result_of::deref_data<i_type>::type r_type;
+        BOOST_STATIC_ASSERT((boost::is_same<r_type, int&>::value));
+    }
 
     return boost::report_errors();
 }

@@ -83,8 +83,10 @@ namespace boost { namespace fusion
         {
             typedef typename Iterator::sequence sequence;
             typedef typename Iterator::index index;
-            typedef
-                decltype(boost::declval<sequence>().get(index()).second)
+            typedef typename
+                add_reference<
+                    decltype(boost::declval<sequence>().get(index()).second)
+                >::type
             type;
 
             BOOST_FUSION_GPU_ENABLED
