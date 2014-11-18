@@ -16,7 +16,7 @@
 #include <boost/config.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <boost/mpl/and_.hpp>
+#include <boost/mpl/and.hpp>
 
 #if defined (BOOST_MSVC)
 #  pragma warning(push)
