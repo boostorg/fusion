@@ -64,13 +64,21 @@
 
 #define BOOST_FUSION_ATTRIBUTE_TYPEOF(                                          \
     NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)                          \
-    BOOST_TYPEOF(                                                               \
-        BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)::PREFIX()               \
-        BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE))            
+                                                                                \
+    struct deduced_attr_type {                                                  \
+      static const BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj;        \
+      typedef BOOST_TYPEOF(                                                     \
+          PREFIX() obj.BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)) \
+      type;                                                                     \
+    };                                                                          \
+                                                                                \
+    typedef typename deduced_attr_type::type attribute_type;
 
 #define BOOST_FUSION_ATTRIBUTE_GIVENTYPE(                                       \
     NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, unused)                          \
-    BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)
+    typedef                                                                     \
+        BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE) attribute_type;
+   
 
 #ifdef BOOST_NO_PARTIAL_SPECIALIZATION_IMPLICIT_DEFAULT_ARGS
 #   define BOOST_FUSION_ADAPT_STRUCT_TAG_OF_SPECIALIZATION(                     \
@@ -137,11 +145,10 @@
       , I                                                                       \
     >                                                                           \
     {                                                                           \
-        typedef                                                                 \
-            BOOST_PP_IF(DEDUCE_TYPE,                                            \
-                BOOST_FUSION_ATTRIBUTE_TYPEOF, BOOST_FUSION_ATTRIBUTE_GIVENTYPE \
-                )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)            \
-        attribute_type;                                                         \
+        BOOST_PP_IF(DEDUCE_TYPE,                                                \
+            BOOST_FUSION_ATTRIBUTE_TYPEOF, BOOST_FUSION_ATTRIBUTE_GIVENTYPE     \
+            )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)                \
+                                                                                \
         BOOST_FUSION_ADAPT_STRUCT_MSVC_REDEFINE_TEMPLATE_PARAMS(                \
             TEMPLATE_PARAMS_SEQ)                                                \
                                                                                 \
