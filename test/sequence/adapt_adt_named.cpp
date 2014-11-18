@@ -60,9 +60,9 @@ namespace ns
 // this creates a fusion view: boost::fusion::adapted::point
 BOOST_FUSION_ADAPT_ADT_NAMED(
     ns::point, point,
-    (int, int, obj.obj.get_x(), obj.obj.set_x(val))
-    (int, int, obj.obj.get_y(), obj.obj.set_y(val))
-    (obj.obj.get_z(), obj.obj.set_z(val))
+    (int, int, obj.get_x(), obj.set_x(val))
+    (int, int, obj.get_y(), obj.set_y(val))
+    (obj.get_z(), obj.set_z(val))
 )
 
 #else // BOOST_PP_VARIADICS
@@ -70,9 +70,9 @@ BOOST_FUSION_ADAPT_ADT_NAMED(
 // this creates a fusion view: boost::fusion::adapted::point
 BOOST_FUSION_ADAPT_ADT_NAMED(
     ns::point, point,
-    (int, int, obj.obj.get_x(), obj.obj.set_x(val))
-    (int, int, obj.obj.get_y(), obj.obj.set_y(val))
-    (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.obj.get_z(), obj.obj.set_z(val))
+    (int, int, obj.get_x(), obj.set_x(val))
+    (int, int, obj.get_y(), obj.set_y(val))
+    (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.get_z(), obj.set_z(val))
 )
 
 #endif // BOOST_PP_VARIADICS

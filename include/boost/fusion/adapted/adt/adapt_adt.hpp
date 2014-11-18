@@ -26,6 +26,7 @@
 #include <boost/fusion/adapted/struct/detail/adapt_base.hpp>
 #include <boost/fusion/adapted/struct/detail/at_impl.hpp>
 #include <boost/fusion/adapted/struct/detail/is_view_impl.hpp>
+#include <boost/fusion/adapted/struct/detail/proxy_type.hpp>
 #include <boost/fusion/adapted/struct/detail/is_sequence_impl.hpp>
 #include <boost/fusion/adapted/struct/detail/value_at_impl.hpp>
 #include <boost/fusion/adapted/struct/detail/category_of_impl.hpp>
@@ -44,6 +45,7 @@
             TEMPLATE_PARAMS_SEQ,                                                \
             NAME_SEQ,                                                           \
             I,                                                                  \
+            BOOST_PP_IF(IS_VIEW, BOOST_FUSION_PROXY_PREFIX, BOOST_PP_EMPTY),    \
             BOOST_FUSION_ADAPT_ADT_WRAPPEDATTR(ATTRIBUTE),                      \
             BOOST_FUSION_ADAPT_ADT_WRAPPEDATTR_SIZE(ATTRIBUTE),                 \
             BOOST_PP_IF(                                                        \
