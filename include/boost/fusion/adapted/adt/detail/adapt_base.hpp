@@ -48,6 +48,7 @@
     NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                                  \
                                                                                 \
     struct deduced_attr_type {                                                  \
+      static const BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj;        \
       const BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj;               \
       typedef BOOST_TYPEOF(                                                     \
           BOOST_FUSION_ADAPT_ADT_ATTRIBUTE_GETEXPR(                             \
