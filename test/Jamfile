@@ -162,6 +162,8 @@ project
     [ run sequence/ref_vector.cpp : : : : ]
     [ run sequence/flatten_view.cpp : : : : ]
 
+    [ compile sequence/size.cpp : : : : ]
+
     [ run functional/fused.cpp : : : : ]
     [ run functional/fused_function_object.cpp : : : : ]
     [ run functional/fused_procedure.cpp : : : : ]
