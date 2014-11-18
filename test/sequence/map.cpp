@@ -148,6 +148,15 @@ main()
         typedef boost::fusion::result_of::deref_data<i_type>::type r_type;
         BOOST_STATIC_ASSERT((boost::is_same<r_type, int&>::value));
     }
+    
+    {
+        // compile test only
+        // make sure result_of::deref_data is const correct
+        typedef map<pair<float, int> > const map_type;
+        typedef boost::fusion::result_of::begin<map_type>::type i_type;
+        typedef boost::fusion::result_of::deref_data<i_type>::type r_type;
+        BOOST_STATIC_ASSERT((boost::is_same<r_type, int const&>::value));
+    }
 
     return boost::report_errors();
 }
