@@ -55,6 +55,7 @@ project
     [ run algorithm/zip_ignore.cpp : : : : ]
     [ run algorithm/flatten.cpp : : : : ]
 
+    [ run sequence/as_deque.cpp :  :  :  : ]
     [ run sequence/as_list.cpp :  :  :  : ]
     [ run sequence/as_map.cpp :  :  :  : ]
     [ run sequence/as_set.cpp :  :  :  : ]

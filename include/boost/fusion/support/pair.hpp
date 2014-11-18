@@ -37,24 +37,16 @@ namespace boost { namespace fusion
             : second(rhs.second) {}
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
         BOOST_FUSION_GPU_ENABLED
         pair(pair&& rhs)
             : second(std::forward<Second>(rhs.second)) {}
+
 #endif
 
         BOOST_FUSION_GPU_ENABLED
         pair(typename detail::call_param<Second>::type val)
             : second(val) {}
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-        template <typename Second2>
-        BOOST_FUSION_GPU_ENABLED
-        pair(Second2&& val
-          , typename boost::enable_if<is_convertible<Second2, Second> >::type* /*dummy*/ = 0
-        ) : second(std::forward<Second2>(val)) {}
-
-#endif
 
         template <typename Second2>
         BOOST_FUSION_GPU_ENABLED
