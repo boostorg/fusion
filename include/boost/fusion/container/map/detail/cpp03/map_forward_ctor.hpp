@@ -31,8 +31,8 @@
 #if N == 1
     explicit
 #endif
-    map(BOOST_PP_ENUM_BINARY_PARAMS(N, T, const& _))
-        : data(BOOST_PP_ENUM_PARAMS(N, _)) {}
+    map(BOOST_PP_ENUM_BINARY_PARAMS(N, T, const& arg))
+        : data(BOOST_PP_ENUM_PARAMS(N, arg)) {}
 
 #undef N
 #endif // defined(BOOST_PP_IS_ITERATING)
