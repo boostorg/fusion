@@ -16,6 +16,7 @@
 #include <boost/config.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_convertible.hpp>
+#include <boost/type_traits/is_lvalue_reference.hpp>
 
 #if defined (BOOST_MSVC)
 #  pragma warning(push)
@@ -47,6 +48,17 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         pair(typename detail::call_param<Second>::type val)
             : second(val) {}
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+        BOOST_FUSION_GPU_ENABLED
+        template <typename Second2>
+        pair(Second2&& val
+          , typename boost::disable_if<is_lvalue_reference<Second2> >::type* /* dummy */ = 0
+          , typename boost::enable_if<is_convertible<Second2, Second> >::type* /*dummy*/ = 0
+        ) : second(std::forward<Second>(val)) {}
+
+#endif
 
         template <typename Second2>
         BOOST_FUSION_GPU_ENABLED
