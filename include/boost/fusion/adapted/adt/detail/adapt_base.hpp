@@ -45,13 +45,13 @@
         BOOST_PP_IF(DEDUCE_TYPE, 1, 3), ATTRIBUTE)
 
 #define BOOST_FUSION_ADT_ATTRIBUTE_TYPEOF(                                      \
-    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                                  \
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)                          \
                                                                                 \
     struct deduced_attr_type {                                                  \
-      const BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj;               \
+      static const BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj;        \
       typedef BOOST_TYPEOF(                                                     \
-          BOOST_FUSION_ADAPT_ADT_ATTRIBUTE_GETEXPR(                             \
-              ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, 1)) type;                        \
+                  PREFIX() BOOST_FUSION_ADAPT_ADT_ATTRIBUTE_GETEXPR(            \
+                      ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, 1)) type;                \
     };                                                                          \
                                                                                 \
     typedef typename boost::remove_const<                                       \
@@ -63,14 +63,15 @@
     >::type const_type;
 
 #define BOOST_FUSION_ADT_ATTRIBUTE_GIVENTYPE(                                   \
-    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                                  \
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)                          \
                                                                                 \
     typedef BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE) type;       \
     typedef BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 1, ATTRIBUTE) const_type;
 
 
 #define BOOST_FUSION_ADAPT_ADT_C_BASE(                                          \
-    TEMPLATE_PARAMS_SEQ,NAME_SEQ,I,ATTRIBUTE,ATTRIBUTE_TUPEL_SIZE, DEDUCE_TYPE) \
+    TEMPLATE_PARAMS_SEQ,NAME_SEQ,I,PREFIX,                                      \
+    ATTRIBUTE,ATTRIBUTE_TUPEL_SIZE, DEDUCE_TYPE)                                \
                                                                                 \
     template<                                                                   \
         BOOST_FUSION_ADAPT_STRUCT_UNPACK_TEMPLATE_PARAMS(TEMPLATE_PARAMS_SEQ)   \
@@ -84,7 +85,7 @@
         BOOST_PP_IF(DEDUCE_TYPE,                                                \
             BOOST_FUSION_ADT_ATTRIBUTE_TYPEOF,                                  \
             BOOST_FUSION_ADT_ATTRIBUTE_GIVENTYPE                                \
-            )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE)                        \
+            )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)                \
                                                                                 \
         template<class Val>                                                     \
         BOOST_FUSION_GPU_ENABLED                                                \
@@ -93,7 +94,7 @@
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj,               \
             Val const& val)                                                     \
         {                                                                       \
-            BOOST_FUSION_ADAPT_ADT_ATTRIBUTE_SETEXPR(ATTRIBUTE,                 \
+           PREFIX() BOOST_FUSION_ADAPT_ADT_ATTRIBUTE_SETEXPR(ATTRIBUTE,         \
                 ATTRIBUTE_TUPEL_SIZE, DEDUCE_TYPE);                             \
         }                                                                       \
                                                                                 \
@@ -102,7 +103,7 @@
         boost_fusion_adapt_adt_impl_get(                                        \
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj)               \
         {                                                                       \
-            return BOOST_FUSION_ADAPT_ADT_ATTRIBUTE_GETEXPR(ATTRIBUTE,          \
+            return PREFIX() BOOST_FUSION_ADAPT_ADT_ATTRIBUTE_GETEXPR(ATTRIBUTE, \
                 ATTRIBUTE_TUPEL_SIZE, DEDUCE_TYPE);                             \
         }                                                                       \
                                                                                 \
@@ -111,7 +112,7 @@
         boost_fusion_adapt_adt_impl_get(                                        \
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ) const& obj)         \
         {                                                                       \
-            return BOOST_FUSION_ADAPT_ADT_ATTRIBUTE_GETEXPR(ATTRIBUTE,          \
+            return PREFIX() BOOST_FUSION_ADAPT_ADT_ATTRIBUTE_GETEXPR(ATTRIBUTE, \
                 ATTRIBUTE_TUPEL_SIZE, DEDUCE_TYPE);                             \
         }                                                                       \
     };                                                                          \
