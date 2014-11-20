@@ -122,7 +122,8 @@ namespace boost { namespace fusion
 #endif
 
         BOOST_FUSION_GPU_ENABLED
-        explicit deque(Head const& head, Tail const&... tail)
+        explicit deque(typename detail::call_param<Head>::type head
+                     , typename detail::call_param<Tail>::type... tail)
           : base(detail::deque_keyed_values<Head, Tail...>::construct(head, tail...))
         {}
 

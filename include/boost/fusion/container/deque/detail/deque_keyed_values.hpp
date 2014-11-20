@@ -9,9 +9,8 @@
 #define BOOST_FUSION_DEQUE_DETAIL_CPP11_DEQUE_KEYED_VALUES_07042012_1901
 
 #include <boost/fusion/support/config.hpp>
+#include <boost/fusion/support/detail/access.hpp>
 #include <boost/fusion/container/deque/detail/keyed_element.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/add_const.hpp>
 #include <boost/mpl/int.hpp>
 
 namespace boost { namespace fusion { namespace detail

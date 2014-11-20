@@ -18,12 +18,11 @@
 #include <boost/fusion/container/deque/detail/cpp03/deque_keyed_values.hpp>
 #include <boost/fusion/container/deque/detail/cpp03/deque_initial_size.hpp>
 #include <boost/fusion/support/sequence_base.hpp>
+#include <boost/fusion/support/detail/access.hpp>
 #include <boost/fusion/container/deque/detail/keyed_element.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
 #include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/add_const.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 
 #include <boost/fusion/container/deque/deque_fwd.hpp>
@@ -35,7 +34,6 @@
 #include <boost/fusion/sequence/intrinsic/begin.hpp>
 #include <boost/mpl/bool.hpp>
 
-#include <boost/fusion/support/sequence_base.hpp>
 #include <boost/fusion/support/void.hpp>
 #include <boost/utility/enable_if.hpp>
 
@@ -87,7 +85,7 @@ namespace boost { namespace fusion {
             {}
 
         BOOST_FUSION_GPU_ENABLED
-        explicit deque(typename add_reference<typename add_const<T0>::type>::type t0)
+        explicit deque(typename detail::call_param<T0>::type t0)
             : base(t0, detail::nil_keyed_element())
             {}
 
