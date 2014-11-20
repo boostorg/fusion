@@ -39,7 +39,7 @@ namespace boost { namespace fusion { namespace detail
               , deque_keyed_values_impl<next_index, Tail...>::construct(tail...)
             );
         }
-
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename Head_, typename ...Tail_>
         BOOST_FUSION_GPU_ENABLED
         static type forward_(Head_&& head, Tail_&&... tail)
@@ -50,6 +50,7 @@ namespace boost { namespace fusion { namespace detail
                   forward_(BOOST_FUSION_FWD_ELEM(Tail_, tail)...)
             );
         }
+#endif
     };
 
     struct nil_keyed_element;
@@ -58,10 +59,14 @@ namespace boost { namespace fusion { namespace detail
     struct deque_keyed_values_impl<N>
     {
         typedef nil_keyed_element type;
+
         BOOST_FUSION_GPU_ENABLED
         static type construct() { return type(); }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         BOOST_FUSION_GPU_ENABLED
         static type forward_() { return type(); }
+#endif
     };
 
     template <typename ...Elements>
