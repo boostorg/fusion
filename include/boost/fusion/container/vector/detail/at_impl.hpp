@@ -12,6 +12,7 @@
 #include <boost/type_traits/is_const.hpp>
 #include <boost/mpl/at.hpp>
 #include <boost/mpl/int.hpp>
+#include <boost/static_assert.hpp>
 
 namespace boost { namespace fusion
 {
