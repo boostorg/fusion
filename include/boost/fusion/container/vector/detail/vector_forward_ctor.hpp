@@ -8,7 +8,7 @@
 #if !defined(FUSION_VECTOR_FORWARD_CTOR_07122005_1123)
 #define FUSION_VECTOR_FORWARD_CTOR_07122005_1123
 
-#define FUSION_FORWARD_CTOR_FORWARD(z, n, _)    std::forward<U##n>(_##n)
+#define FUSION_FORWARD_CTOR_FORWARD(z, n, _)    BOOST_FUSION_FWD_ELEM(U##n, _##n)
 
 #define BOOST_PP_FILENAME_1 \
     <boost/fusion/container/vector/detail/vector_forward_ctor.hpp>
