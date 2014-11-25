@@ -174,7 +174,7 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         vector&
         operator=(T&& rhs)
         {
-            vec = std::forward<T>(rhs);
+            vec = BOOST_FUSION_FWD_ELEM(T, rhs);
             return *this;
         }
 #endif

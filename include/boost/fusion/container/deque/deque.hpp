@@ -139,7 +139,7 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         explicit deque(Head_&& head, Tail_&&... tail)
           : base(detail::deque_keyed_values<Head, Tail...>
-                ::forward_(std::forward<Head_>(head), std::forward<Tail_>(tail)...))
+                ::forward_(BOOST_FUSION_FWD_ELEM(Head_, head), BOOST_FUSION_FWD_ELEM(Tail_, tail)...))
         {}
 #endif
 
@@ -171,7 +171,7 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         deque& operator=(T&& rhs)
         {
-            base::operator=(std::forward<T>(rhs));
+            base::operator=(BOOST_FUSION_FWD_ELEM(T, rhs));
             return *this;
         }
 #endif

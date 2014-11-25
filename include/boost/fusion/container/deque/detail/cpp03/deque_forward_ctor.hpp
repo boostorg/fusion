@@ -13,7 +13,7 @@
 #error "C++03 only! This file should not have been included"
 #endif
 
-#define FUSION_DEQUE_FORWARD_CTOR_FORWARD(z, n, _)    std::forward<T_##n>(t##n)
+#define FUSION_DEQUE_FORWARD_CTOR_FORWARD(z, n, _)    BOOST_FUSION_FWD_ELEM(T_##n, t##n)
 
 #include <boost/preprocessor/iterate.hpp>
 #include <boost/preprocessor/repetition/enum_shifted_params.hpp>
