@@ -66,9 +66,9 @@ namespace boost { namespace fusion
         //  of type (T0), (T0, T1), (T0, T1, T2) etc. Exanple:
         //
         //  list(
-        //      typename detail::call_param<T0>::type _0
-        //    , typename detail::call_param<T1>::type _1)
-        //    : inherited_type(list_to_cons::call(_0, _1)) {}
+        //      typename detail::call_param<T0>::type arg0
+        //    , typename detail::call_param<T1>::type arg1)
+        //    : inherited_type(list_to_cons::call(arg0, arg1)) {}
         #include <boost/fusion/container/list/detail/cpp03/list_forward_ctor.hpp>
 
         template <BOOST_PP_ENUM_PARAMS(FUSION_MAX_LIST_SIZE, typename U)>

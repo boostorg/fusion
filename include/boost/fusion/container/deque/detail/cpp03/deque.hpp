@@ -136,7 +136,7 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         explicit deque(T0_&& t0
           , typename enable_if<is_convertible<T0_, T0> >::type* /*dummy*/ = 0
          )
-            : base(std::forward<T0_>(t0), detail::nil_keyed_element())
+            : base(BOOST_FUSION_FWD_ELEM(T0_, t0), detail::nil_keyed_element())
             {}
         BOOST_FUSION_GPU_ENABLED
         explicit deque(deque&& rhs)
@@ -152,7 +152,7 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         deque&
         operator=(T&& rhs)
         {
-            base::operator=(std::forward<T>(rhs));
+            base::operator=(BOOST_FUSION_FWD_ELEM(T, rhs));
             return *this;
         }
 #endif

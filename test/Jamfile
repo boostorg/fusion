@@ -32,6 +32,7 @@ project
     [ run algorithm/insert.cpp :  :  :  : ]
     [ run algorithm/insert_range.cpp :  :  :  : ]
     [ run algorithm/iter_fold.cpp :  :  :  : ]
+    [ run algorithm/move.cpp :  :  :  : ]
     [ run algorithm/none.cpp :  :  :  : ]
     [ run algorithm/pop_back.cpp :  :  :  : ]
     [ run algorithm/pop_front.cpp :  :  :  : ]
@@ -55,6 +56,7 @@ project
     [ run algorithm/zip_ignore.cpp : : : : ]
     [ run algorithm/flatten.cpp : : : : ]
 
+    [ run sequence/as_deque.cpp :  :  :  : ]
     [ run sequence/as_list.cpp :  :  :  : ]
     [ run sequence/as_map.cpp :  :  :  : ]
     [ run sequence/as_set.cpp :  :  :  : ]
@@ -160,6 +162,8 @@ project
     [ run sequence/std_tuple_iterator.cpp : : : : ]
     [ run sequence/ref_vector.cpp : : : : ]
     [ run sequence/flatten_view.cpp : : : : ]
+
+    [ compile sequence/size.cpp : : : : ]
 
     [ run functional/fused.cpp : : : : ]
     [ run functional/fused_function_object.cpp : : : : ]

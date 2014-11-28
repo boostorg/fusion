@@ -19,16 +19,16 @@
     m##n(other.m##n)
 
 #define FUSION_VECTOR_CTOR_FORWARD(z, n, _)                                     \
-   m##n(std::forward<T##n>(other.m##n))
+   m##n(BOOST_FUSION_FWD_ELEM(T##n, other.m##n))
 
 #define FUSION_VECTOR_CTOR_ARG_FWD(z, n, _)                                     \
-   m##n(std::forward<U##n>(_##n))
+   m##n(BOOST_FUSION_FWD_ELEM(U##n, _##n))
 
 #define FUSION_VECTOR_MEMBER_DECL(z, n, _)                                      \
     T##n m##n;
 
 #define FUSION_VECTOR_MEMBER_FORWARD(z, n, _)                                   \
-   std::forward<U##n>(_##n)
+   BOOST_FUSION_FWD_ELEM(U##n, _##n)
 
 #define FUSION_VECTOR_MEMBER_ASSIGN(z, n, _)                                    \
     this->BOOST_PP_CAT(m, n) = vec.BOOST_PP_CAT(m, n);
@@ -70,13 +70,13 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
         template <BOOST_PP_ENUM_PARAMS(N, typename U)>
         BOOST_FUSION_GPU_ENABLED
-        BOOST_PP_CAT(vector_data, N)(BOOST_PP_ENUM_BINARY_PARAMS(N, U, && _)
+        BOOST_PP_CAT(vector_data, N)(BOOST_PP_ENUM_BINARY_PARAMS(N, U, && arg)
           , typename boost::enable_if<is_convertible<U0, T0> >::type* /*dummy*/ = 0
         )
-            : BOOST_PP_ENUM(N, FUSION_VECTOR_CTOR_ARG_FWD, _) {}
+            : BOOST_PP_ENUM(N, FUSION_VECTOR_CTOR_ARG_FWD, arg) {}
         BOOST_PP_CAT(vector_data, N)(
             BOOST_PP_CAT(vector_data, N)&& other)
-            : BOOST_PP_ENUM(N, FUSION_VECTOR_CTOR_FORWARD, _) {}
+            : BOOST_PP_ENUM(N, FUSION_VECTOR_CTOR_FORWARD, arg) {}
 #endif
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
 FUSION_HASH endif
@@ -85,8 +85,8 @@ FUSION_HASH endif
         BOOST_FUSION_GPU_ENABLED
         BOOST_PP_CAT(vector_data, N)(
             BOOST_PP_ENUM_BINARY_PARAMS(
-                N, typename detail::call_param<T, >::type _))
-            : BOOST_PP_ENUM(N, FUSION_VECTOR_CTOR_INIT, _) {}
+                N, typename detail::call_param<T, >::type arg))
+            : BOOST_PP_ENUM(N, FUSION_VECTOR_CTOR_INIT, arg) {}
 
         BOOST_FUSION_GPU_ENABLED
         BOOST_PP_CAT(vector_data, N)(
@@ -149,8 +149,8 @@ FUSION_HASH endif
 #endif
         BOOST_PP_CAT(vector, N)(
             BOOST_PP_ENUM_BINARY_PARAMS(
-                N, typename detail::call_param<T, >::type _))
-            : base_type(BOOST_PP_ENUM_PARAMS(N, _)) {}
+                N, typename detail::call_param<T, >::type arg))
+            : base_type(BOOST_PP_ENUM_PARAMS(N, arg)) {}
 
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
 FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -164,10 +164,10 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         BOOST_PP_CAT(vector, N)(U0&& _0
           , typename boost::enable_if<is_convertible<U0, T0> >::type* /*dummy*/ = 0
           )
-         : base_type(std::forward<U0>(_0)) {}
+         : base_type(BOOST_FUSION_FWD_ELEM(U0, _0)) {}
 #else
-        BOOST_PP_CAT(vector, N)(BOOST_PP_ENUM_BINARY_PARAMS(N, U, && _))
-            : base_type(BOOST_PP_ENUM(N, FUSION_VECTOR_MEMBER_FORWARD, _)) {}
+        BOOST_PP_CAT(vector, N)(BOOST_PP_ENUM_BINARY_PARAMS(N, U, && arg))
+            : base_type(BOOST_PP_ENUM(N, FUSION_VECTOR_MEMBER_FORWARD, arg)) {}
 #endif
 
         BOOST_FUSION_GPU_ENABLED

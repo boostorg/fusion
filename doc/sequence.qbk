@@ -854,7 +854,8 @@ Performs an element by element swap of the elements in 2 sequences.
 
 [heading Synopsis]
     template<typename Seq1, typename Seq2>
-    void swap(Seq1& seq1, Seq2& seq2);
+    typename __result_of_swap__<Seq1, Seq2>::type
+    swap(Seq1& seq1, Seq2& seq2);
 
 [heading Parameters]
 
@@ -873,7 +874,10 @@ Performs an element by element swap of the elements in 2 sequences.
 
 [*Semantics]: Calls `swap(a1, b1)` for corresponding elements in `seq1` and `seq2`.
 
-/sequence/intrinsic/swap.hpp>
+[heading Header]
+
+    #include <boost/fusion/sequence/intrinsic/swap.hpp>
+    #include <boost/fusion/include/swap.hpp>
 
 [heading Example]
     __vector__<int, std::string> v1(1, "hello"), v2(2, "world");
@@ -1391,7 +1395,7 @@ Returns the actual element type associated with a Key from the __sequence__.
 
 [heading Example]
     typedef __map__<__pair__<int, char>, __pair__<char, char>, __pair__<double, char> > mymap;
-    BOOST_MPL_ASSERT((boost::is_same<__result_of_at_key__<mymap, int>::type, char>));
+    BOOST_MPL_ASSERT((boost::is_same<__result_of_value_at_key__<mymap, int>::type, char>));
 
 [endsect]
 
@@ -1415,9 +1419,10 @@ Returns the return type of swap.
 [heading Expression Semantics]
     result_of::swap<Seq1, Seq2>::type
 
-[*Return type]: `void`.
+[*Return type]: `void` iff both of `Seq1` and `Seq2` are sequence.
+Otherwise, none.
 
-[*Semantics]: Always returns `void`.
+[*Semantics]: Returns the return type of __swap__ for 2 sequences of types `Seq1` and `Seq2`.
 
 [heading Header]
 

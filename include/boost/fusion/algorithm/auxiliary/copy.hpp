@@ -60,12 +60,19 @@ namespace boost { namespace fusion
         };
     }
 
+    namespace result_of
+    {
+        template <typename Seq1, typename Seq2>
+        struct copy
+            : enable_if<mpl::and_<
+                  traits::is_sequence<Seq1>,
+                  traits::is_sequence<Seq2>
+              > > {};
+    }
+
     template <typename Seq1, typename Seq2>
     BOOST_FUSION_GPU_ENABLED
-    inline typename enable_if<mpl::and_<
-        traits::is_sequence<Seq1>,
-        traits::is_sequence<Seq2>
-    > >::type
+    inline typename result_of::copy<Seq1 const, Seq2>::type
     copy(Seq1 const& src, Seq2& dest)
     {
         BOOST_STATIC_ASSERT(

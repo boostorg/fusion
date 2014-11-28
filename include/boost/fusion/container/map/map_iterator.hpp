@@ -12,7 +12,10 @@
 #include <boost/fusion/iterator/iterator_facade.hpp>
 #include <boost/mpl/minus.hpp>
 #include <boost/mpl/equal_to.hpp>
+#include <boost/mpl/if.hpp>
 #include <boost/utility/declval.hpp>
+#include <boost/type_traits/is_const.hpp>
+#include <boost/type_traits/add_const.hpp>
 
 namespace boost { namespace fusion
 {
@@ -83,9 +86,18 @@ namespace boost { namespace fusion
         {
             typedef typename Iterator::sequence sequence;
             typedef typename Iterator::index index;
-            typedef
-                decltype(boost::declval<sequence>().get(index()).second)
-            type;
+
+            typedef decltype(boost::declval<sequence>().get(index()).second) second_type_;
+
+            typedef typename
+                mpl::if_<
+                    is_const<sequence>
+                  , typename add_const<second_type_>::type
+                  , second_type_
+                >::type
+            second_type;
+
+            typedef typename add_reference<second_type>::type type;
 
             BOOST_FUSION_GPU_ENABLED
             static type
