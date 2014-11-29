@@ -74,8 +74,7 @@ namespace boost { namespace fusion {
         typedef typename detail::deque_keyed_values<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, T)>::type base;
         typedef typename detail::deque_initial_size<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, T)>::type size;
         typedef mpl::int_<size::value> next_up;
-        typedef mpl::int_<
-            mpl::if_<mpl::equal_to<size, mpl::int_<0> >, mpl::int_<0>, mpl::int_<-1> >::type::value> next_down;
+        typedef mpl::int_<-1> next_down;
         typedef mpl::false_ is_view;
 
 #include <boost/fusion/container/deque/detail/cpp03/deque_forward_ctor.hpp>
@@ -167,7 +166,7 @@ FUSION_HASH endif
         typedef bidirectional_traversal_tag category;
         typedef mpl::int_<0> size;
         typedef mpl::int_<0> next_up;
-        typedef mpl::int_<0> next_down;
+        typedef mpl::int_<-1> next_down;
         typedef mpl::false_ is_view;
 
         template <typename Sequence>

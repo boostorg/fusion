@@ -50,7 +50,7 @@ namespace boost { namespace fusion
         typedef bidirectional_traversal_tag category;
         typedef mpl::int_<0> size;
         typedef mpl::int_<0> next_up;
-        typedef mpl::int_<0> next_down;
+        typedef mpl::int_<-1> next_down;
         typedef mpl::false_ is_view;
 
         template <typename Sequence>
@@ -76,7 +76,7 @@ namespace boost { namespace fusion
         typedef typename detail::deque_keyed_values<Head, Tail...>::type base;
         typedef mpl::int_<(sizeof ...(Tail) + 1)> size;
         typedef mpl::int_<size::value> next_up;
-        typedef mpl::int_<((size::value == 0) ? 0 : -1)> next_down;
+        typedef mpl::int_<-1> next_down;
         typedef mpl::false_ is_view;
 
         BOOST_FUSION_GPU_ENABLED
