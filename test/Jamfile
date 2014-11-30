@@ -179,6 +179,12 @@ project
     [ run functional/invoke_procedure.cpp : : : : ]
     [ run sequence/swap.cpp :  :  :  : ]
 
+    [ compile support/pair_deque.cpp : : : : ]
+    [ compile support/pair_list.cpp : : : : ]
+    [ compile support/pair_map.cpp : : : : ]
+    [ compile support/pair_set.cpp : : : : ]
+    [ compile support/pair_vector.cpp : : : : ]
+
 #   [ compile-fail xxx.cpp :  :  :  :  ]
 
     ;
