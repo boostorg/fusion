@@ -7,11 +7,13 @@
 #ifndef FUSION_SET_FORWARD_11062014_1720
 #define FUSION_SET_FORWARD_11062014_1720
 
-#include <boost/fusion/support/config.hpp>
 #include <boost/config.hpp>
+#include <boost/fusion/support/config.hpp>
+#include <boost/fusion/container/vector/detail/config.hpp>
 
-/*
-#if  defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)   \
+#if (defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)   \
+  || (!defined(BOOST_FUSION_HAS_VARIADIC_VECTOR) \
+    && defined(BOOST_NO_CXX11_FIXED_LENGTH_VARIADIC_TEMPLATE_EXPANSION_PACKS))) \
   || (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
 # if defined(BOOST_FUSION_HAS_VARIADIC_SET)
 #   undef BOOST_FUSION_HAS_VARIADIC_SET
@@ -21,7 +23,6 @@
 #   define BOOST_FUSION_HAS_VARIADIC_SET
 # endif
 #endif
-*/
 
 ///////////////////////////////////////////////////////////////////////////////
 // With no variadics, we will use the C++03 version
@@ -35,6 +36,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace fusion
 {
+    struct set_tag;
+    struct set_iterator_tag;
+
     template <typename ...T>
     struct set;
 }}
