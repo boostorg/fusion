@@ -65,7 +65,7 @@ namespace boost { namespace fusion
 #define BOOST_FUSION_AS_FUSION_ELEMENT(z, n, data)                               \
     typename detail::as_fusion_element<BOOST_PP_CAT(T, n)>::type
 
-#define BOOST_PP_FILENAME_1 <boost/fusion/container/generation/make_vector.hpp>
+#define BOOST_PP_FILENAME_1 <boost/fusion/container/generation/detail/pp_make_vector.hpp>
 #define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_VECTOR_SIZE)
 #include BOOST_PP_ITERATE()
 
