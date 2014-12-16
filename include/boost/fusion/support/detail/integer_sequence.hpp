@@ -8,6 +8,7 @@
 #define BOOST_FUSION_SUPPORT_DETAIL_INTEGER_SEQUENCE_10232014_1139
 
 #include <boost/config.hpp>
+#include <boost/fusion/support/config.hpp>
 #include <boost/mpl/eval_if.hpp>
 #include <boost/mpl/identity.hpp>
 #include <cstddef>
@@ -17,6 +18,7 @@ namespace boost { namespace fusion { namespace detail
     template <typename T, T ...Ints>
     struct integer_sequence
     {
+        BOOST_FUSION_GPU_ENABLED
         static BOOST_CONSTEXPR std::size_t size() BOOST_NOEXCEPT
         { return sizeof...(Ints); }
     };
