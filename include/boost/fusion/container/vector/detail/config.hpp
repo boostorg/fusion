@@ -10,10 +10,8 @@
 #include <boost/config.hpp>
 #include <boost/fusion/support/config.hpp>
 
-#if (defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)                                 \
-  || defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)                                   \
-  || (!defined(BOOST_MPL_HAS_VARIADIC_VECTOR)                                   \
-   &&  defined(BOOST_NO_CXX11_FIXED_LENGTH_VARIADIC_TEMPLATE_EXPANSION_PACKS))) \
+#if (defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) \
+  || defined(BOOST_NO_CXX11_TEMPLATE_ALIASES))  \
   || (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
 # if defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
 #   undef BOOST_FUSION_HAS_VARIADIC_VECTOR

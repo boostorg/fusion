@@ -54,16 +54,6 @@
 #else
 #include <boost/fusion/support/detail/access.hpp>
 #endif
-#if !defined(BOOST_MPL_HAS_VARIADIC_VECTOR)
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/arithmetic/inc.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-#include <boost/mpl/vector/vector10.hpp>
-#include <boost/mpl/vector/vector20.hpp>
-#include <boost/mpl/vector/vector30.hpp>
-#include <boost/mpl/vector/vector40.hpp>
-#include <boost/mpl/vector/vector50.hpp>
-#endif
 
 namespace boost { namespace fusion
 {
@@ -72,21 +62,6 @@ namespace boost { namespace fusion
 
     namespace vector_detail
     {
-        // XXX: We are waiting MPL11...
-#if !defined(BOOST_MPL_HAS_VARIADIC_VECTOR)
-        template <std::size_t I, typename ...T>
-        struct mpl_vector_;
-
-#define FUSION_MPL_VECTOR_SELECTOR_SPECIALIZATION(z, N, d)                  \
-        template <typename ...T>                                            \
-        struct mpl_vector_<BOOST_PP_INC(N), T...>                           \
-        {                                                                   \
-            typedef mpl::BOOST_PP_CAT(vector, BOOST_PP_INC(N))<T...> type;  \
-        };
-
-        BOOST_PP_REPEAT(50, FUSION_MPL_VECTOR_SELECTOR_SPECIALIZATION, ~)
-#endif
-
         namespace result_of
         {
             template <typename Sequence, int N>
@@ -372,7 +347,6 @@ namespace boost { namespace fusion
         typedef mpl::false_                 is_view;
         typedef random_access_traversal_tag category;
 
-        typedef mpl::vector<> types;
         typedef vector_detail::data<0> data;
 
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
@@ -411,13 +385,6 @@ namespace boost { namespace fusion
         typedef mpl::false_                 is_view;
         typedef random_access_traversal_tag category;
 
-#if !defined(BOOST_MPL_HAS_VARIADIC_VECTOR)
-        typedef typename
-            vector_detail::mpl_vector_<sizeof...(T), T...>::type
-        types;
-#else
-        typedef mpl::vector<T...> types;
-#endif
         typedef vector_detail::data<0, T...> data;
 
         BOOST_FUSION_GPU_ENABLED
@@ -591,22 +558,24 @@ namespace boost { namespace fusion
         }
 #endif
 
+        typedef extension::value_at_impl<vector_tag> value_at_impl;
+
         template <typename I>
         BOOST_FUSION_GPU_ENABLED
-        typename mpl::at<types, I>::type&
+        typename value_at_impl::template apply<vector, I>::type&
         at_impl(I)
         {
-            typedef typename mpl::at<types, I>::type U;
+            typedef typename value_at_impl::template apply<vector, I>::type U;
             typedef vector_detail::store<I::value, U> S;
             return static_cast<S*>(this)->get();
         }
 
         template <typename I>
         BOOST_FUSION_GPU_ENABLED
-        typename mpl::at<types, I>::type const&
+        typename value_at_impl::template apply<vector, I>::type const&
         at_impl(I) const
         {
-            typedef typename mpl::at<types, I>::type U;
+            typedef typename value_at_impl::template apply<vector, I>::type U;
             typedef vector_detail::store<I::value, U> S;
             return static_cast<S const*>(this)->get();
         }
