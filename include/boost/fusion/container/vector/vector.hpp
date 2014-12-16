@@ -40,14 +40,16 @@
 #include <boost/mpl/at.hpp>
 #include <boost/mpl/int.hpp>
 #include <boost/mpl/bool.hpp>
-#include <boost/type_traits/is_convertible.hpp>
 #include <boost/type_traits/is_base_of.hpp>
 #include <cstddef>
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#include <boost/fusion/support/detail/is_constructible.hpp>
 #include <boost/mpl/if.hpp>
+#include <boost/mpl/or.hpp>
 #include <boost/type_traits/remove_cv.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 #include <boost/type_traits/is_rvalue_reference.hpp>
+#include <boost/type_traits/is_convertible.hpp>
 #include <utility>
 #else
 #include <boost/fusion/support/detail/access.hpp>
@@ -184,17 +186,36 @@ namespace boost { namespace fusion
                 : elem(rhs.get())
             {}
 
+            BOOST_FUSION_GPU_ENABLED
+            store&
+            operator=(store const& rhs)
+            {
+                elem = rhs.get();
+                return *this;
+            }
+
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
             BOOST_FUSION_GPU_ENABLED
             store(store&& rhs)
                 : elem(std::forward<T>(rhs.get()))
             {}
 
+            BOOST_FUSION_GPU_ENABLED
+            store&
+            operator=(store&& rhs)
+            {
+                elem = std::forward<T>(rhs.get());
+                return *this;
+            }
+
             template <typename U>
             BOOST_FUSION_GPU_ENABLED
             store(U&& rhs
                 , typename enable_if<
-                      is_convertible<typename traits::remove_rvalue_reference<U>::type, T>
+                      mpl::or_<
+                          detail::is_constructible<T, typename traits::remove_rvalue_reference<U>::type>
+                        , is_convertible<typename traits::remove_rvalue_reference<U>::type, T>
+                      >
                   >::type* = 0)
                 : elem(std::forward<U>(rhs))
             {}
@@ -205,14 +226,6 @@ namespace boost { namespace fusion
             operator=(U&& rhs)
             {
                 elem = std::forward<U>(rhs);
-                return *this;
-            }
-
-            BOOST_FUSION_GPU_ENABLED
-            store&
-            operator=(store&& rhs)
-            {
-                elem = std::forward<T>(rhs.get());
                 return *this;
             }
 #else
@@ -229,14 +242,6 @@ namespace boost { namespace fusion
                 return *this;
             }
 #endif
-
-            BOOST_FUSION_GPU_ENABLED
-            store&
-            operator=(store const& rhs)
-            {
-                elem = rhs.get();
-                return *this;
-            }
 
             BOOST_FUSION_GPU_ENABLED T      & get()       { return elem; }
             BOOST_FUSION_GPU_ENABLED T const& get() const { return elem; }
