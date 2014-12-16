@@ -33,7 +33,7 @@ namespace boost { namespace fusion
 
     template <typename ...T>
     BOOST_FUSION_GPU_ENABLED
-    inline tuple<T...>
+    inline tuple<typename detail::as_fusion_element<T>::type...>
     make_tuple(T const&... arg)
     {
         return tuple<typename detail::as_fusion_element<T>::type...>(arg...);
