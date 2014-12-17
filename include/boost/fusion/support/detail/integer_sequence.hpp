@@ -18,21 +18,35 @@ namespace boost { namespace fusion { namespace detail
     template <typename T, T ...Ints>
     struct integer_sequence
     {
+        typedef T value_type;
+
         BOOST_FUSION_GPU_ENABLED
         static BOOST_CONSTEXPR std::size_t size() BOOST_NOEXCEPT
         { return sizeof...(Ints); }
+
+        // non standard extension
+        typedef integer_sequence type;
     };
 
     template <typename T, T, typename = integer_sequence<T> >
-    struct make_integer_sequence;
+    struct make_integer_sequence_impl;
 
     template <typename T, T Head, T ...Tail>
-    struct make_integer_sequence<T, Head, integer_sequence<T, Tail...> >
+    struct make_integer_sequence_impl<T, Head, integer_sequence<T, Tail...> >
         : boost::mpl::eval_if_c<
               (Head == 0),
               boost::mpl::identity<integer_sequence<T, Tail...> >,
-              make_integer_sequence<T, Head - 1, integer_sequence<T, Head - 1, Tail...> >
-          > {};
+              make_integer_sequence_impl<T, Head - 1, integer_sequence<T, Head - 1, Tail...> >
+          >
+    {};
+
+#if defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
+    template <typename T, T N>
+    struct make_integer_sequence : make_integer_sequence_impl<T, N> {};
+#else
+    template <typename T, T N>
+    using make_integer_sequence = typename make_integer_sequence_impl<T, N>::type;
+#endif
 }}}
 
 #endif
