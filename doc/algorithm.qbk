@@ -2258,7 +2258,7 @@ Returns the result type of __remove__, given the sequence and removal types.
 * A model of __forward_sequence__.
 * A model of __associative_sequence__ if `Sequence` implements the __associative_sequence__ model.
 
-[*Semantics]: Returns a sequence containing the elements of `Sequence` not of type `T`. Equivalent to `__result_of_replace_if__<Sequence, boost::is_same<mpl::_, T> >::type`.
+[*Semantics]: Returns a sequence containing the elements of `Sequence` not of type `T`. Equivalent to `__result_of_remove_if__<Sequence, boost::is_same<mpl::_, T> >::type`.
 
 [heading Complexity]
 Constant.
