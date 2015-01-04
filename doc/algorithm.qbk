@@ -2089,32 +2089,33 @@ Constant.
 [section transform]
 
 [heading Description]
-For a sequence `seq` and function object or function pointer `f`, `transform` returns a new sequence
-with elements created by applying `f(e)` to each element of `e` of `seq`.
+Returns the result type of __transform__, given the types of the input sequence and unary __poly_func_obj__.
 
 [heading Unary version synopsis]
     template<
         typename Sequence,
         typename F
         >
-    typename __result_of_transform__<Sequence const, F>::type transform(
-        Sequence const& seq, F f);
+    struct transform
+    {
+        typedef __unspecified__ type;
+    };
 
 [table Parameters
     [[Parameter][Requirement][Description]]
-    [[`seq`][A model of __forward_sequence__][Operation's argument]]
-    [[`f`][`f(e)` is a valid expression for each element `e` of `seq`. `__boost_result_of_call__<F(E)>::type` is the return type of `f` when called with a value of each element type `E`.][Transformation function]]
+    [[`Sequence`][A model of __forward_sequence__][Operation's argument]]
+    [[`F`][A model of unary __poly_func_obj__][Transformation metafunction]]
 ]
 
 [heading Expression Semantics]
-    __transform__(seq, f);
+    __result_of_transform__<Sequence, F>::type
 
 [*Return type]:
 
 * A model of __forward_sequence__
 * A model of __associative_sequence__ if `Sequence` implements the __associative_sequence__ model.
 
-[*Semantics]: Returns a new sequence, containing the return values of `f(e)` for each element `e` within `seq`.
+[*Semantics]: Returns a sequence that contains the types of `__result_of__<F(E)>::type` for each element `E` within `Sequence`.
 
 [heading Binary version synopsis]
     template<
@@ -2122,40 +2123,32 @@ with elements created by applying `f(e)` to each element of `e` of `seq`.
         typename Sequence2,
         typename F
         >
-    typename __result_of_transform__<Sequence1 const, Sequence2 const, F>::type transform(
-        Sequence1 const& seq1, Sequence2 const& seq2, F f);
+    struct transform
+    {
+          typedef __unspecified__ type;
+    };
 
 [table Parameters
     [[Parameter][Requirement][Description]]
-    [[`seq1`][A model of __forward_sequence__][Operation's argument]]
-    [[`seq2`][A model of __forward_sequence__][Operation's argument]]
-    [[`f`][`f(e1,e2)` is a valid expression for each pair of elements `e1` of `seq1` and `e2` of `seq2`. `__boost_result_of_call__<F(E1,E2)>::type` is the return type of `f` when called with elements of type `E1` and `E2`][Transformation function]]
+    [[`Sequence1`][A model of __forward_sequence__][Operation's argument]]
+    [[`Sequence2`][A model of __forward_sequence__][Operation's argument]]
+    [[`F`][A model of binary __poly_func_obj__][Transformation metafunction]]
 ]
+
+[heading Expression Semantics]
+    __result_of_transform__<Sequence1, Sequence2, F>::type
 
 [*Return type]: A model of __forward_sequence__.
 
-[*Semantics]: Returns a new sequence, containing the return values of `f(e1, e2)` for each pair of elements `e1` and `e2` within `seq1` and `seq2` respectively.
+[*Semantics]: Returns a sequence, that contains the types of `__result_of__<F(E1, E2)>::type` for each pair of elements `E1` and `E2` within `Sequence1` and `Sequence2` respectively.
 
 [heading Complexity]
-Constant. Returns a view which is lazily evaluated.
+Constant.
 
 [heading Header]
 
     #include <boost/fusion/algorithm/transformation/transform.hpp>
     #include <boost/fusion/include/transform.hpp>
-
-[heading Example]
-    struct triple
-    {
-        typedef int result_type;
-
-        int operator()(int t) const
-        {
-            return t * 3;
-        };
-    };
-    ...
-    assert(__transform__(__make_vector__(1,2,3), triple()) == __make_vector__(3,6,9));
 
 [endsect]
 
