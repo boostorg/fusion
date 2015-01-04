@@ -2193,7 +2193,7 @@ Constant.
 [section replace_if]
 
 [heading Description]
-Returns the result type of __replace_if__, given the types of the sequence, __poly_func_obj__ predicate and replacement object.
+Returns the result type of __replace_if__, given the types of the sequence, unary __mpl_lambda_expression__ predicate and replacement object.
 
 [heading Synopsis]
     template<
@@ -2208,7 +2208,7 @@ Returns the result type of __replace_if__, given the types of the sequence, __po
 [table Parameters
     [[Parameter][Requirement][Description]]
     [[`Sequence`][A model of __forward_sequence__][Operation's argument]]
-    [[`F`][A model of unary __poly_func_obj__][Replacement predicate]]
+    [[`F`][A model of unary __mpl_lambda_expression__][Replacement predicate]]
     [[`T`][Any type][The type of the replacement object]]
 ]
 
