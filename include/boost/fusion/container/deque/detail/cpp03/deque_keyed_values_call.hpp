@@ -35,7 +35,7 @@
 #define N BOOST_PP_ITERATION()
 
         BOOST_FUSION_GPU_ENABLED
-        static type construct(BOOST_PP_ENUM_BINARY_PARAMS(N, typename add_reference<typename add_const<T, >::type>::type t))
+        static type construct(BOOST_PP_ENUM_BINARY_PARAMS(N, typename detail::call_param<T, >::type t))
         {
             return type(t0,
                         deque_keyed_values_impl<
