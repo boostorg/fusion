@@ -37,7 +37,7 @@ template <typename T_0 , typename T_1>
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1)
     : base(detail::deque_keyed_values<T0 , T1>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -55,7 +55,7 @@ template <typename T_0 , typename T_1 , typename T_2>
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2)
     : base(detail::deque_keyed_values<T0 , T1 , T2>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -73,7 +73,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3>
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -91,7 +91,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -109,7 +109,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -127,7 +127,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5 , T6>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -145,7 +145,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -163,7 +163,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -181,7 +181,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -199,7 +199,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -217,7 +217,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -235,7 +235,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -253,7 +253,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -271,7 +271,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -289,7 +289,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -307,7 +307,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -325,7 +325,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -343,7 +343,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18)))
 {}
 # endif
 # if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -361,7 +361,7 @@ template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T
 BOOST_FUSION_GPU_ENABLED
 deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19)
     : base(detail::deque_keyed_values<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19>::
-      forward_(std::forward<T_0>(t0) , std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19)))
+      forward_(std::forward<T_0>( t0) , std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19)))
 {}
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -407,7 +407,7 @@ deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_
         explicit deque(T0_&& t0
           , typename enable_if<is_convertible<T0_, T0> >::type* = 0
          )
-            : base(std::forward<T0_>(t0), detail::nil_keyed_element())
+            : base(std::forward<T0_>( t0), detail::nil_keyed_element())
             {}
         BOOST_FUSION_GPU_ENABLED
         explicit deque(deque&& rhs)
@@ -423,7 +423,7 @@ deque(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_
         deque&
         operator=(T&& rhs)
         {
-            base::operator=(std::forward<T>(rhs));
+            base::operator=(std::forward<T>( rhs));
             return *this;
         }
 # endif

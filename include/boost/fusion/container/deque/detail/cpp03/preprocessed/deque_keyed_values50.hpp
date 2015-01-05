@@ -49,7 +49,7 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         >::forward_());
@@ -69,11 +69,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1
-                        >::forward_(std::forward<T_1>(t1)));
+                        >::forward_(std::forward<T_1>( t1)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -90,11 +90,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -111,11 +111,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -132,11 +132,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -153,11 +153,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -174,11 +174,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -195,11 +195,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -216,11 +216,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -237,11 +237,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -258,11 +258,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -279,11 +279,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -300,11 +300,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -321,11 +321,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -342,11 +342,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -363,11 +363,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -384,11 +384,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -405,11 +405,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -426,11 +426,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -447,11 +447,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -468,11 +468,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -489,11 +489,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -510,11 +510,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -531,11 +531,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -552,11 +552,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -573,11 +573,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -594,11 +594,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -615,11 +615,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -636,11 +636,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -657,11 +657,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -678,11 +678,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -699,11 +699,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -720,11 +720,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -741,11 +741,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -762,11 +762,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -783,11 +783,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -804,11 +804,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35 , T_36 && t36)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35 , T_36
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35) , std::forward<T_36>(t36)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35) , std::forward<T_36>( t36)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -825,11 +825,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35 , T_36 && t36 , T_37 && t37)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35 , T_36 , T_37
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35) , std::forward<T_36>(t36) , std::forward<T_37>(t37)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35) , std::forward<T_36>( t36) , std::forward<T_37>( t37)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -846,11 +846,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35 , T_36 && t36 , T_37 && t37 , T_38 && t38)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35 , T_36 , T_37 , T_38
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35) , std::forward<T_36>(t36) , std::forward<T_37>(t37) , std::forward<T_38>(t38)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35) , std::forward<T_36>( t36) , std::forward<T_37>( t37) , std::forward<T_38>( t38)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -867,11 +867,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35 , T_36 && t36 , T_37 && t37 , T_38 && t38 , T_39 && t39)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35 , T_36 , T_37 , T_38 , T_39
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35) , std::forward<T_36>(t36) , std::forward<T_37>(t37) , std::forward<T_38>(t38) , std::forward<T_39>(t39)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35) , std::forward<T_36>( t36) , std::forward<T_37>( t37) , std::forward<T_38>( t38) , std::forward<T_39>( t39)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -888,11 +888,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35 , T_36 && t36 , T_37 && t37 , T_38 && t38 , T_39 && t39 , T_40 && t40)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35 , T_36 , T_37 , T_38 , T_39 , T_40
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35) , std::forward<T_36>(t36) , std::forward<T_37>(t37) , std::forward<T_38>(t38) , std::forward<T_39>(t39) , std::forward<T_40>(t40)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35) , std::forward<T_36>( t36) , std::forward<T_37>( t37) , std::forward<T_38>( t38) , std::forward<T_39>( t39) , std::forward<T_40>( t40)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -909,11 +909,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35 , T_36 && t36 , T_37 && t37 , T_38 && t38 , T_39 && t39 , T_40 && t40 , T_41 && t41)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35 , T_36 , T_37 , T_38 , T_39 , T_40 , T_41
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35) , std::forward<T_36>(t36) , std::forward<T_37>(t37) , std::forward<T_38>(t38) , std::forward<T_39>(t39) , std::forward<T_40>(t40) , std::forward<T_41>(t41)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35) , std::forward<T_36>( t36) , std::forward<T_37>( t37) , std::forward<T_38>( t38) , std::forward<T_39>( t39) , std::forward<T_40>( t40) , std::forward<T_41>( t41)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -930,11 +930,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35 , T_36 && t36 , T_37 && t37 , T_38 && t38 , T_39 && t39 , T_40 && t40 , T_41 && t41 , T_42 && t42)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35 , T_36 , T_37 , T_38 , T_39 , T_40 , T_41 , T_42
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35) , std::forward<T_36>(t36) , std::forward<T_37>(t37) , std::forward<T_38>(t38) , std::forward<T_39>(t39) , std::forward<T_40>(t40) , std::forward<T_41>(t41) , std::forward<T_42>(t42)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35) , std::forward<T_36>( t36) , std::forward<T_37>( t37) , std::forward<T_38>( t38) , std::forward<T_39>( t39) , std::forward<T_40>( t40) , std::forward<T_41>( t41) , std::forward<T_42>( t42)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -951,11 +951,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35 , T_36 && t36 , T_37 && t37 , T_38 && t38 , T_39 && t39 , T_40 && t40 , T_41 && t41 , T_42 && t42 , T_43 && t43)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35 , T_36 , T_37 , T_38 , T_39 , T_40 , T_41 , T_42 , T_43
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35) , std::forward<T_36>(t36) , std::forward<T_37>(t37) , std::forward<T_38>(t38) , std::forward<T_39>(t39) , std::forward<T_40>(t40) , std::forward<T_41>(t41) , std::forward<T_42>(t42) , std::forward<T_43>(t43)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35) , std::forward<T_36>( t36) , std::forward<T_37>( t37) , std::forward<T_38>( t38) , std::forward<T_39>( t39) , std::forward<T_40>( t40) , std::forward<T_41>( t41) , std::forward<T_42>( t42) , std::forward<T_43>( t43)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -972,11 +972,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35 , T_36 && t36 , T_37 && t37 , T_38 && t38 , T_39 && t39 , T_40 && t40 , T_41 && t41 , T_42 && t42 , T_43 && t43 , T_44 && t44)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35 , T_36 , T_37 , T_38 , T_39 , T_40 , T_41 , T_42 , T_43 , T_44
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35) , std::forward<T_36>(t36) , std::forward<T_37>(t37) , std::forward<T_38>(t38) , std::forward<T_39>(t39) , std::forward<T_40>(t40) , std::forward<T_41>(t41) , std::forward<T_42>(t42) , std::forward<T_43>(t43) , std::forward<T_44>(t44)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35) , std::forward<T_36>( t36) , std::forward<T_37>( t37) , std::forward<T_38>( t38) , std::forward<T_39>( t39) , std::forward<T_40>( t40) , std::forward<T_41>( t41) , std::forward<T_42>( t42) , std::forward<T_43>( t43) , std::forward<T_44>( t44)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -993,11 +993,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35 , T_36 && t36 , T_37 && t37 , T_38 && t38 , T_39 && t39 , T_40 && t40 , T_41 && t41 , T_42 && t42 , T_43 && t43 , T_44 && t44 , T_45 && t45)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35 , T_36 , T_37 , T_38 , T_39 , T_40 , T_41 , T_42 , T_43 , T_44 , T_45
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35) , std::forward<T_36>(t36) , std::forward<T_37>(t37) , std::forward<T_38>(t38) , std::forward<T_39>(t39) , std::forward<T_40>(t40) , std::forward<T_41>(t41) , std::forward<T_42>(t42) , std::forward<T_43>(t43) , std::forward<T_44>(t44) , std::forward<T_45>(t45)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35) , std::forward<T_36>( t36) , std::forward<T_37>( t37) , std::forward<T_38>( t38) , std::forward<T_39>( t39) , std::forward<T_40>( t40) , std::forward<T_41>( t41) , std::forward<T_42>( t42) , std::forward<T_43>( t43) , std::forward<T_44>( t44) , std::forward<T_45>( t45)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -1014,11 +1014,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35 , T_36 && t36 , T_37 && t37 , T_38 && t38 , T_39 && t39 , T_40 && t40 , T_41 && t41 , T_42 && t42 , T_43 && t43 , T_44 && t44 , T_45 && t45 , T_46 && t46)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35 , T_36 , T_37 , T_38 , T_39 , T_40 , T_41 , T_42 , T_43 , T_44 , T_45 , T_46
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35) , std::forward<T_36>(t36) , std::forward<T_37>(t37) , std::forward<T_38>(t38) , std::forward<T_39>(t39) , std::forward<T_40>(t40) , std::forward<T_41>(t41) , std::forward<T_42>(t42) , std::forward<T_43>(t43) , std::forward<T_44>(t44) , std::forward<T_45>(t45) , std::forward<T_46>(t46)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35) , std::forward<T_36>( t36) , std::forward<T_37>( t37) , std::forward<T_38>( t38) , std::forward<T_39>( t39) , std::forward<T_40>( t40) , std::forward<T_41>( t41) , std::forward<T_42>( t42) , std::forward<T_43>( t43) , std::forward<T_44>( t44) , std::forward<T_45>( t45) , std::forward<T_46>( t46)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -1035,11 +1035,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35 , T_36 && t36 , T_37 && t37 , T_38 && t38 , T_39 && t39 , T_40 && t40 , T_41 && t41 , T_42 && t42 , T_43 && t43 , T_44 && t44 , T_45 && t45 , T_46 && t46 , T_47 && t47)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35 , T_36 , T_37 , T_38 , T_39 , T_40 , T_41 , T_42 , T_43 , T_44 , T_45 , T_46 , T_47
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35) , std::forward<T_36>(t36) , std::forward<T_37>(t37) , std::forward<T_38>(t38) , std::forward<T_39>(t39) , std::forward<T_40>(t40) , std::forward<T_41>(t41) , std::forward<T_42>(t42) , std::forward<T_43>(t43) , std::forward<T_44>(t44) , std::forward<T_45>(t45) , std::forward<T_46>(t46) , std::forward<T_47>(t47)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35) , std::forward<T_36>( t36) , std::forward<T_37>( t37) , std::forward<T_38>( t38) , std::forward<T_39>( t39) , std::forward<T_40>( t40) , std::forward<T_41>( t41) , std::forward<T_42>( t42) , std::forward<T_43>( t43) , std::forward<T_44>( t44) , std::forward<T_45>( t45) , std::forward<T_46>( t46) , std::forward<T_47>( t47)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -1056,11 +1056,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35 , T_36 && t36 , T_37 && t37 , T_38 && t38 , T_39 && t39 , T_40 && t40 , T_41 && t41 , T_42 && t42 , T_43 && t43 , T_44 && t44 , T_45 && t45 , T_46 && t46 , T_47 && t47 , T_48 && t48)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35 , T_36 , T_37 , T_38 , T_39 , T_40 , T_41 , T_42 , T_43 , T_44 , T_45 , T_46 , T_47 , T_48
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35) , std::forward<T_36>(t36) , std::forward<T_37>(t37) , std::forward<T_38>(t38) , std::forward<T_39>(t39) , std::forward<T_40>(t40) , std::forward<T_41>(t41) , std::forward<T_42>(t42) , std::forward<T_43>(t43) , std::forward<T_44>(t44) , std::forward<T_45>(t45) , std::forward<T_46>(t46) , std::forward<T_47>(t47) , std::forward<T_48>(t48)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35) , std::forward<T_36>( t36) , std::forward<T_37>( t37) , std::forward<T_38>( t38) , std::forward<T_39>( t39) , std::forward<T_40>( t40) , std::forward<T_41>( t41) , std::forward<T_42>( t42) , std::forward<T_43>( t43) , std::forward<T_44>( t44) , std::forward<T_45>( t45) , std::forward<T_46>( t46) , std::forward<T_47>( t47) , std::forward<T_48>( t48)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
@@ -1077,11 +1077,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9 , T_10 && t10 , T_11 && t11 , T_12 && t12 , T_13 && t13 , T_14 && t14 , T_15 && t15 , T_16 && t16 , T_17 && t17 , T_18 && t18 , T_19 && t19 , T_20 && t20 , T_21 && t21 , T_22 && t22 , T_23 && t23 , T_24 && t24 , T_25 && t25 , T_26 && t26 , T_27 && t27 , T_28 && t28 , T_29 && t29 , T_30 && t30 , T_31 && t31 , T_32 && t32 , T_33 && t33 , T_34 && t34 , T_35 && t35 , T_36 && t36 , T_37 && t37 , T_38 && t38 , T_39 && t39 , T_40 && t40 , T_41 && t41 , T_42 && t42 , T_43 && t43 , T_44 && t44 , T_45 && t45 , T_46 && t46 , T_47 && t47 , T_48 && t48 , T_49 && t49)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9 , T_10 , T_11 , T_12 , T_13 , T_14 , T_15 , T_16 , T_17 , T_18 , T_19 , T_20 , T_21 , T_22 , T_23 , T_24 , T_25 , T_26 , T_27 , T_28 , T_29 , T_30 , T_31 , T_32 , T_33 , T_34 , T_35 , T_36 , T_37 , T_38 , T_39 , T_40 , T_41 , T_42 , T_43 , T_44 , T_45 , T_46 , T_47 , T_48 , T_49
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9) , std::forward<T_10>(t10) , std::forward<T_11>(t11) , std::forward<T_12>(t12) , std::forward<T_13>(t13) , std::forward<T_14>(t14) , std::forward<T_15>(t15) , std::forward<T_16>(t16) , std::forward<T_17>(t17) , std::forward<T_18>(t18) , std::forward<T_19>(t19) , std::forward<T_20>(t20) , std::forward<T_21>(t21) , std::forward<T_22>(t22) , std::forward<T_23>(t23) , std::forward<T_24>(t24) , std::forward<T_25>(t25) , std::forward<T_26>(t26) , std::forward<T_27>(t27) , std::forward<T_28>(t28) , std::forward<T_29>(t29) , std::forward<T_30>(t30) , std::forward<T_31>(t31) , std::forward<T_32>(t32) , std::forward<T_33>(t33) , std::forward<T_34>(t34) , std::forward<T_35>(t35) , std::forward<T_36>(t36) , std::forward<T_37>(t37) , std::forward<T_38>(t38) , std::forward<T_39>(t39) , std::forward<T_40>(t40) , std::forward<T_41>(t41) , std::forward<T_42>(t42) , std::forward<T_43>(t43) , std::forward<T_44>(t44) , std::forward<T_45>(t45) , std::forward<T_46>(t46) , std::forward<T_47>(t47) , std::forward<T_48>(t48) , std::forward<T_49>(t49)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9) , std::forward<T_10>( t10) , std::forward<T_11>( t11) , std::forward<T_12>( t12) , std::forward<T_13>( t13) , std::forward<T_14>( t14) , std::forward<T_15>( t15) , std::forward<T_16>( t16) , std::forward<T_17>( t17) , std::forward<T_18>( t18) , std::forward<T_19>( t19) , std::forward<T_20>( t20) , std::forward<T_21>( t21) , std::forward<T_22>( t22) , std::forward<T_23>( t23) , std::forward<T_24>( t24) , std::forward<T_25>( t25) , std::forward<T_26>( t26) , std::forward<T_27>( t27) , std::forward<T_28>( t28) , std::forward<T_29>( t29) , std::forward<T_30>( t30) , std::forward<T_31>( t31) , std::forward<T_32>( t32) , std::forward<T_33>( t33) , std::forward<T_34>( t34) , std::forward<T_35>( t35) , std::forward<T_36>( t36) , std::forward<T_37>( t37) , std::forward<T_38>( t38) , std::forward<T_39>( t39) , std::forward<T_40>( t40) , std::forward<T_41>( t41) , std::forward<T_42>( t42) , std::forward<T_43>( t43) , std::forward<T_44>( t44) , std::forward<T_45>( t45) , std::forward<T_46>( t46) , std::forward<T_47>( t47) , std::forward<T_48>( t48) , std::forward<T_49>( t49)));
         }
 # endif
     };

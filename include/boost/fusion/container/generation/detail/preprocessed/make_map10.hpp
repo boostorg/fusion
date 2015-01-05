@@ -45,10 +45,10 @@ namespace boost { namespace fusion
     >
     BOOST_FUSION_GPU_ENABLED
     inline map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> >
-    make_map(D0 const& _0)
+    make_map(D0 const& arg0)
     {
         return map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> >(
-            fusion::make_pair<K0>(_0));
+            fusion::make_pair<K0>(arg0));
     }
     namespace result_of
     {
@@ -67,10 +67,10 @@ namespace boost { namespace fusion
     >
     BOOST_FUSION_GPU_ENABLED
     inline map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> >
-    make_map(D0 const& _0 , D1 const& _1)
+    make_map(D0 const& arg0 , D1 const& arg1)
     {
         return map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> >(
-            fusion::make_pair<K0>(_0) , fusion::make_pair<K1>(_1));
+            fusion::make_pair<K0>(arg0) , fusion::make_pair<K1>(arg1));
     }
     namespace result_of
     {
@@ -89,10 +89,10 @@ namespace boost { namespace fusion
     >
     BOOST_FUSION_GPU_ENABLED
     inline map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> >
-    make_map(D0 const& _0 , D1 const& _1 , D2 const& _2)
+    make_map(D0 const& arg0 , D1 const& arg1 , D2 const& arg2)
     {
         return map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> >(
-            fusion::make_pair<K0>(_0) , fusion::make_pair<K1>(_1) , fusion::make_pair<K2>(_2));
+            fusion::make_pair<K0>(arg0) , fusion::make_pair<K1>(arg1) , fusion::make_pair<K2>(arg2));
     }
     namespace result_of
     {
@@ -111,10 +111,10 @@ namespace boost { namespace fusion
     >
     BOOST_FUSION_GPU_ENABLED
     inline map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> , fusion::pair< K3 , typename detail::as_fusion_element<D3>::type> >
-    make_map(D0 const& _0 , D1 const& _1 , D2 const& _2 , D3 const& _3)
+    make_map(D0 const& arg0 , D1 const& arg1 , D2 const& arg2 , D3 const& arg3)
     {
         return map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> , fusion::pair< K3 , typename detail::as_fusion_element<D3>::type> >(
-            fusion::make_pair<K0>(_0) , fusion::make_pair<K1>(_1) , fusion::make_pair<K2>(_2) , fusion::make_pair<K3>(_3));
+            fusion::make_pair<K0>(arg0) , fusion::make_pair<K1>(arg1) , fusion::make_pair<K2>(arg2) , fusion::make_pair<K3>(arg3));
     }
     namespace result_of
     {
@@ -133,10 +133,10 @@ namespace boost { namespace fusion
     >
     BOOST_FUSION_GPU_ENABLED
     inline map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> , fusion::pair< K3 , typename detail::as_fusion_element<D3>::type> , fusion::pair< K4 , typename detail::as_fusion_element<D4>::type> >
-    make_map(D0 const& _0 , D1 const& _1 , D2 const& _2 , D3 const& _3 , D4 const& _4)
+    make_map(D0 const& arg0 , D1 const& arg1 , D2 const& arg2 , D3 const& arg3 , D4 const& arg4)
     {
         return map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> , fusion::pair< K3 , typename detail::as_fusion_element<D3>::type> , fusion::pair< K4 , typename detail::as_fusion_element<D4>::type> >(
-            fusion::make_pair<K0>(_0) , fusion::make_pair<K1>(_1) , fusion::make_pair<K2>(_2) , fusion::make_pair<K3>(_3) , fusion::make_pair<K4>(_4));
+            fusion::make_pair<K0>(arg0) , fusion::make_pair<K1>(arg1) , fusion::make_pair<K2>(arg2) , fusion::make_pair<K3>(arg3) , fusion::make_pair<K4>(arg4));
     }
     namespace result_of
     {
@@ -155,10 +155,10 @@ namespace boost { namespace fusion
     >
     BOOST_FUSION_GPU_ENABLED
     inline map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> , fusion::pair< K3 , typename detail::as_fusion_element<D3>::type> , fusion::pair< K4 , typename detail::as_fusion_element<D4>::type> , fusion::pair< K5 , typename detail::as_fusion_element<D5>::type> >
-    make_map(D0 const& _0 , D1 const& _1 , D2 const& _2 , D3 const& _3 , D4 const& _4 , D5 const& _5)
+    make_map(D0 const& arg0 , D1 const& arg1 , D2 const& arg2 , D3 const& arg3 , D4 const& arg4 , D5 const& arg5)
     {
         return map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> , fusion::pair< K3 , typename detail::as_fusion_element<D3>::type> , fusion::pair< K4 , typename detail::as_fusion_element<D4>::type> , fusion::pair< K5 , typename detail::as_fusion_element<D5>::type> >(
-            fusion::make_pair<K0>(_0) , fusion::make_pair<K1>(_1) , fusion::make_pair<K2>(_2) , fusion::make_pair<K3>(_3) , fusion::make_pair<K4>(_4) , fusion::make_pair<K5>(_5));
+            fusion::make_pair<K0>(arg0) , fusion::make_pair<K1>(arg1) , fusion::make_pair<K2>(arg2) , fusion::make_pair<K3>(arg3) , fusion::make_pair<K4>(arg4) , fusion::make_pair<K5>(arg5));
     }
     namespace result_of
     {
@@ -177,10 +177,10 @@ namespace boost { namespace fusion
     >
     BOOST_FUSION_GPU_ENABLED
     inline map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> , fusion::pair< K3 , typename detail::as_fusion_element<D3>::type> , fusion::pair< K4 , typename detail::as_fusion_element<D4>::type> , fusion::pair< K5 , typename detail::as_fusion_element<D5>::type> , fusion::pair< K6 , typename detail::as_fusion_element<D6>::type> >
-    make_map(D0 const& _0 , D1 const& _1 , D2 const& _2 , D3 const& _3 , D4 const& _4 , D5 const& _5 , D6 const& _6)
+    make_map(D0 const& arg0 , D1 const& arg1 , D2 const& arg2 , D3 const& arg3 , D4 const& arg4 , D5 const& arg5 , D6 const& arg6)
     {
         return map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> , fusion::pair< K3 , typename detail::as_fusion_element<D3>::type> , fusion::pair< K4 , typename detail::as_fusion_element<D4>::type> , fusion::pair< K5 , typename detail::as_fusion_element<D5>::type> , fusion::pair< K6 , typename detail::as_fusion_element<D6>::type> >(
-            fusion::make_pair<K0>(_0) , fusion::make_pair<K1>(_1) , fusion::make_pair<K2>(_2) , fusion::make_pair<K3>(_3) , fusion::make_pair<K4>(_4) , fusion::make_pair<K5>(_5) , fusion::make_pair<K6>(_6));
+            fusion::make_pair<K0>(arg0) , fusion::make_pair<K1>(arg1) , fusion::make_pair<K2>(arg2) , fusion::make_pair<K3>(arg3) , fusion::make_pair<K4>(arg4) , fusion::make_pair<K5>(arg5) , fusion::make_pair<K6>(arg6));
     }
     namespace result_of
     {
@@ -199,10 +199,10 @@ namespace boost { namespace fusion
     >
     BOOST_FUSION_GPU_ENABLED
     inline map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> , fusion::pair< K3 , typename detail::as_fusion_element<D3>::type> , fusion::pair< K4 , typename detail::as_fusion_element<D4>::type> , fusion::pair< K5 , typename detail::as_fusion_element<D5>::type> , fusion::pair< K6 , typename detail::as_fusion_element<D6>::type> , fusion::pair< K7 , typename detail::as_fusion_element<D7>::type> >
-    make_map(D0 const& _0 , D1 const& _1 , D2 const& _2 , D3 const& _3 , D4 const& _4 , D5 const& _5 , D6 const& _6 , D7 const& _7)
+    make_map(D0 const& arg0 , D1 const& arg1 , D2 const& arg2 , D3 const& arg3 , D4 const& arg4 , D5 const& arg5 , D6 const& arg6 , D7 const& arg7)
     {
         return map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> , fusion::pair< K3 , typename detail::as_fusion_element<D3>::type> , fusion::pair< K4 , typename detail::as_fusion_element<D4>::type> , fusion::pair< K5 , typename detail::as_fusion_element<D5>::type> , fusion::pair< K6 , typename detail::as_fusion_element<D6>::type> , fusion::pair< K7 , typename detail::as_fusion_element<D7>::type> >(
-            fusion::make_pair<K0>(_0) , fusion::make_pair<K1>(_1) , fusion::make_pair<K2>(_2) , fusion::make_pair<K3>(_3) , fusion::make_pair<K4>(_4) , fusion::make_pair<K5>(_5) , fusion::make_pair<K6>(_6) , fusion::make_pair<K7>(_7));
+            fusion::make_pair<K0>(arg0) , fusion::make_pair<K1>(arg1) , fusion::make_pair<K2>(arg2) , fusion::make_pair<K3>(arg3) , fusion::make_pair<K4>(arg4) , fusion::make_pair<K5>(arg5) , fusion::make_pair<K6>(arg6) , fusion::make_pair<K7>(arg7));
     }
     namespace result_of
     {
@@ -221,10 +221,10 @@ namespace boost { namespace fusion
     >
     BOOST_FUSION_GPU_ENABLED
     inline map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> , fusion::pair< K3 , typename detail::as_fusion_element<D3>::type> , fusion::pair< K4 , typename detail::as_fusion_element<D4>::type> , fusion::pair< K5 , typename detail::as_fusion_element<D5>::type> , fusion::pair< K6 , typename detail::as_fusion_element<D6>::type> , fusion::pair< K7 , typename detail::as_fusion_element<D7>::type> , fusion::pair< K8 , typename detail::as_fusion_element<D8>::type> >
-    make_map(D0 const& _0 , D1 const& _1 , D2 const& _2 , D3 const& _3 , D4 const& _4 , D5 const& _5 , D6 const& _6 , D7 const& _7 , D8 const& _8)
+    make_map(D0 const& arg0 , D1 const& arg1 , D2 const& arg2 , D3 const& arg3 , D4 const& arg4 , D5 const& arg5 , D6 const& arg6 , D7 const& arg7 , D8 const& arg8)
     {
         return map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> , fusion::pair< K3 , typename detail::as_fusion_element<D3>::type> , fusion::pair< K4 , typename detail::as_fusion_element<D4>::type> , fusion::pair< K5 , typename detail::as_fusion_element<D5>::type> , fusion::pair< K6 , typename detail::as_fusion_element<D6>::type> , fusion::pair< K7 , typename detail::as_fusion_element<D7>::type> , fusion::pair< K8 , typename detail::as_fusion_element<D8>::type> >(
-            fusion::make_pair<K0>(_0) , fusion::make_pair<K1>(_1) , fusion::make_pair<K2>(_2) , fusion::make_pair<K3>(_3) , fusion::make_pair<K4>(_4) , fusion::make_pair<K5>(_5) , fusion::make_pair<K6>(_6) , fusion::make_pair<K7>(_7) , fusion::make_pair<K8>(_8));
+            fusion::make_pair<K0>(arg0) , fusion::make_pair<K1>(arg1) , fusion::make_pair<K2>(arg2) , fusion::make_pair<K3>(arg3) , fusion::make_pair<K4>(arg4) , fusion::make_pair<K5>(arg5) , fusion::make_pair<K6>(arg6) , fusion::make_pair<K7>(arg7) , fusion::make_pair<K8>(arg8));
     }
     namespace result_of
     {
@@ -243,9 +243,9 @@ namespace boost { namespace fusion
     >
     BOOST_FUSION_GPU_ENABLED
     inline map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> , fusion::pair< K3 , typename detail::as_fusion_element<D3>::type> , fusion::pair< K4 , typename detail::as_fusion_element<D4>::type> , fusion::pair< K5 , typename detail::as_fusion_element<D5>::type> , fusion::pair< K6 , typename detail::as_fusion_element<D6>::type> , fusion::pair< K7 , typename detail::as_fusion_element<D7>::type> , fusion::pair< K8 , typename detail::as_fusion_element<D8>::type> , fusion::pair< K9 , typename detail::as_fusion_element<D9>::type> >
-    make_map(D0 const& _0 , D1 const& _1 , D2 const& _2 , D3 const& _3 , D4 const& _4 , D5 const& _5 , D6 const& _6 , D7 const& _7 , D8 const& _8 , D9 const& _9)
+    make_map(D0 const& arg0 , D1 const& arg1 , D2 const& arg2 , D3 const& arg3 , D4 const& arg4 , D5 const& arg5 , D6 const& arg6 , D7 const& arg7 , D8 const& arg8 , D9 const& arg9)
     {
         return map<fusion::pair< K0 , typename detail::as_fusion_element<D0>::type> , fusion::pair< K1 , typename detail::as_fusion_element<D1>::type> , fusion::pair< K2 , typename detail::as_fusion_element<D2>::type> , fusion::pair< K3 , typename detail::as_fusion_element<D3>::type> , fusion::pair< K4 , typename detail::as_fusion_element<D4>::type> , fusion::pair< K5 , typename detail::as_fusion_element<D5>::type> , fusion::pair< K6 , typename detail::as_fusion_element<D6>::type> , fusion::pair< K7 , typename detail::as_fusion_element<D7>::type> , fusion::pair< K8 , typename detail::as_fusion_element<D8>::type> , fusion::pair< K9 , typename detail::as_fusion_element<D9>::type> >(
-            fusion::make_pair<K0>(_0) , fusion::make_pair<K1>(_1) , fusion::make_pair<K2>(_2) , fusion::make_pair<K3>(_3) , fusion::make_pair<K4>(_4) , fusion::make_pair<K5>(_5) , fusion::make_pair<K6>(_6) , fusion::make_pair<K7>(_7) , fusion::make_pair<K8>(_8) , fusion::make_pair<K9>(_9));
+            fusion::make_pair<K0>(arg0) , fusion::make_pair<K1>(arg1) , fusion::make_pair<K2>(arg2) , fusion::make_pair<K3>(arg3) , fusion::make_pair<K4>(arg4) , fusion::make_pair<K5>(arg5) , fusion::make_pair<K6>(arg6) , fusion::make_pair<K7>(arg7) , fusion::make_pair<K8>(arg8) , fusion::make_pair<K9>(arg9));
     }
 }}
