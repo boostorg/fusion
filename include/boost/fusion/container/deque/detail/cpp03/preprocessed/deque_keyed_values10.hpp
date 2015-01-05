@@ -37,7 +37,7 @@ namespace boost { namespace fusion { namespace detail
             T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9>::type tail;
         typedef keyed_element<N, T0, tail> type;
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0)
+        static type construct(typename detail::call_param<T0 >::type t0)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -56,7 +56,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -77,7 +77,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -98,7 +98,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2 , typename add_reference<typename add_const<T3 >::type>::type t3)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -119,7 +119,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2 , typename add_reference<typename add_const<T3 >::type>::type t3 , typename add_reference<typename add_const<T4 >::type>::type t4)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -140,7 +140,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2 , typename add_reference<typename add_const<T3 >::type>::type t3 , typename add_reference<typename add_const<T4 >::type>::type t4 , typename add_reference<typename add_const<T5 >::type>::type t5)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -161,7 +161,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2 , typename add_reference<typename add_const<T3 >::type>::type t3 , typename add_reference<typename add_const<T4 >::type>::type t4 , typename add_reference<typename add_const<T5 >::type>::type t5 , typename add_reference<typename add_const<T6 >::type>::type t6)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5 , typename detail::call_param<T6 >::type t6)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -182,7 +182,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2 , typename add_reference<typename add_const<T3 >::type>::type t3 , typename add_reference<typename add_const<T4 >::type>::type t4 , typename add_reference<typename add_const<T5 >::type>::type t5 , typename add_reference<typename add_const<T6 >::type>::type t6 , typename add_reference<typename add_const<T7 >::type>::type t7)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5 , typename detail::call_param<T6 >::type t6 , typename detail::call_param<T7 >::type t7)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -203,7 +203,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2 , typename add_reference<typename add_const<T3 >::type>::type t3 , typename add_reference<typename add_const<T4 >::type>::type t4 , typename add_reference<typename add_const<T5 >::type>::type t5 , typename add_reference<typename add_const<T6 >::type>::type t6 , typename add_reference<typename add_const<T7 >::type>::type t7 , typename add_reference<typename add_const<T8 >::type>::type t8)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5 , typename detail::call_param<T6 >::type t6 , typename detail::call_param<T7 >::type t7 , typename detail::call_param<T8 >::type t8)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -224,7 +224,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2 , typename add_reference<typename add_const<T3 >::type>::type t3 , typename add_reference<typename add_const<T4 >::type>::type t4 , typename add_reference<typename add_const<T5 >::type>::type t5 , typename add_reference<typename add_const<T6 >::type>::type t6 , typename add_reference<typename add_const<T7 >::type>::type t7 , typename add_reference<typename add_const<T8 >::type>::type t8 , typename add_reference<typename add_const<T9 >::type>::type t9)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5 , typename detail::call_param<T6 >::type t6 , typename detail::call_param<T7 >::type t7 , typename detail::call_param<T8 >::type t8 , typename detail::call_param<T9 >::type t9)
         {
             return type(t0,
                         deque_keyed_values_impl<
