@@ -100,7 +100,7 @@ namespace boost { namespace fusion
 
     template <typename Sequence, typename First>
     BOOST_FUSION_GPU_ENABLED
-    typename 
+    inline typename
         lazy_enable_if<
             traits::is_sequence<Sequence>
           , typename result_of::erase<Sequence const, First> 
@@ -123,7 +123,7 @@ namespace boost { namespace fusion
 
     template <typename Sequence, typename First, typename Last>
     BOOST_FUSION_GPU_ENABLED
-    typename result_of::erase<Sequence const, First, Last>::type
+    inline typename result_of::erase<Sequence const, First, Last>::type
     erase(Sequence const& seq, First const& first, Last const& last)
     {
         typedef result_of::erase<Sequence const, First, Last> result_of;

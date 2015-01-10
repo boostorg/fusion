@@ -49,7 +49,7 @@ namespace boost { namespace fusion
 
     template <typename Sequence, typename T>
     BOOST_FUSION_GPU_ENABLED
-    typename
+    inline typename
         lazy_enable_if<
             traits::is_sequence<Sequence>
           , result_of::push_back<Sequence const, T>
@@ -58,7 +58,7 @@ namespace boost { namespace fusion
 
     template <typename Sequence, typename T>
     BOOST_FUSION_GPU_ENABLED
-    typename
+    inline typename
         lazy_enable_if<
             traits::is_sequence<Sequence>
           , result_of::push_front<Sequence const, T>

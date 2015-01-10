@@ -46,7 +46,7 @@ namespace boost { namespace fusion
 
     template <typename Sequence, typename State, typename Fun>
     BOOST_FUSION_GPU_ENABLED
-    typename 
+    inline typename
         lazy_disable_if<
             is_const<Sequence>
           , result_of::segmented_fold_until<Sequence, State, Fun>
@@ -62,7 +62,7 @@ namespace boost { namespace fusion
 
     template <typename Sequence, typename State, typename Fun>
     BOOST_FUSION_GPU_ENABLED
-    typename result_of::segmented_fold_until<Sequence const, State, Fun>::type
+    inline typename result_of::segmented_fold_until<Sequence const, State, Fun>::type
     segmented_fold_until(Sequence const& seq, State const& state, Fun const& fun)
     {
         typedef

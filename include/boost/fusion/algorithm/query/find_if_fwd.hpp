@@ -22,7 +22,7 @@ namespace boost { namespace fusion
 
     template <typename Pred, typename Sequence>
     BOOST_FUSION_GPU_ENABLED
-    typename 
+    inline typename
         lazy_disable_if<
             is_const<Sequence>
           , result_of::find_if<Sequence, Pred>
@@ -31,7 +31,7 @@ namespace boost { namespace fusion
 
     template <typename Pred, typename Sequence>
     BOOST_FUSION_GPU_ENABLED
-    typename result_of::find_if<Sequence const, Pred>::type const
+    inline typename result_of::find_if<Sequence const, Pred>::type const
     find_if(Sequence const& seq);
 }}
 
