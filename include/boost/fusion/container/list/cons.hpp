@@ -25,8 +25,11 @@
 #include <boost/type_traits/is_convertible.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/fusion/support/sequence_base.hpp>
+#include <boost/fusion/support/is_sequence.hpp>
 #include <boost/mpl/int.hpp>
 #include <boost/mpl/bool.hpp>
+#include <boost/mpl/and.hpp>
+#include <boost/mpl/not.hpp>
 
 namespace boost { namespace fusion
 {
@@ -73,8 +76,10 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         cons(
             Sequence const& seq
-          , typename boost::disable_if<
-                is_convertible<Sequence, Car> // use copy to car instead
+          , typename boost::enable_if<
+                mpl::and_<
+                    traits::is_sequence<Sequence>
+                  , mpl::not_<is_convertible<Sequence, Car> > > // use copy to car instead
             >::type* /*dummy*/ = 0
         )
             : car(*fusion::begin(seq))
@@ -105,7 +110,11 @@ namespace boost { namespace fusion
 
         template <typename Sequence>
         BOOST_FUSION_GPU_ENABLED
-        typename boost::disable_if<is_convertible<Sequence, Car>, cons&>::type
+        typename boost::enable_if<
+            mpl::and_<
+                traits::is_sequence<Sequence>
+              , mpl::not_<is_convertible<Sequence, Car> > >
+          , cons&>::type
         operator=(Sequence const& seq)
         {
             typedef typename result_of::begin<Sequence const>::type Iterator;

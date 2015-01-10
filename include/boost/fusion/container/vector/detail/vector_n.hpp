@@ -208,6 +208,7 @@ FUSION_HASH endif
         BOOST_FUSION_GPU_ENABLED
         BOOST_PP_CAT(vector, N)(
             Sequence const& seq
+          , typename boost::enable_if<traits::is_sequence<Sequence> >::type* = 0
 #if (N == 1)
           , typename boost::disable_if<is_convertible<Sequence, T0> >::type* /*dummy*/ = 0
 #endif
@@ -218,6 +219,7 @@ FUSION_HASH endif
         BOOST_FUSION_GPU_ENABLED
         BOOST_PP_CAT(vector, N)(
             Sequence& seq
+          , typename boost::enable_if<traits::is_sequence<Sequence> >::type* = 0
 #if (N == 1)
           , typename boost::disable_if<is_convertible<Sequence, T0> >::type* /*dummy*/ = 0
 #endif

@@ -10,6 +10,8 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/fusion/container/list/list_fwd.hpp>
 #include <boost/fusion/container/list/detail/list_to_cons.hpp>
+#include <boost/fusion/support/is_sequence.hpp>
+#include <boost/core/enable_if.hpp>
 
 #if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
 #include <boost/fusion/container/list/detail/preprocessed/list.hpp>
@@ -59,7 +61,8 @@ namespace boost { namespace fusion
 
         template <typename Sequence>
         BOOST_FUSION_GPU_ENABLED
-        list(Sequence const& rhs)
+        list(Sequence const& rhs
+            , typename boost::enable_if<traits::is_sequence<Sequence> >::type* = 0)
             : inherited_type(rhs) {}
 
         //  Expand a couple of forwarding constructors for arguments
@@ -80,10 +83,10 @@ namespace boost { namespace fusion
             return *this;
         }
 
-        template <typename T>
+        template <typename Sequence>
         BOOST_FUSION_GPU_ENABLED
-        list&
-        operator=(T const& rhs)
+        typename boost::enable_if<traits::is_sequence<Sequence>, list&>::type
+        operator=(Sequence const& rhs)
         {
             inherited_type::operator=(rhs);
             return *this;
