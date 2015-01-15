@@ -417,15 +417,15 @@ Moves an iterator by a specified distance.
 
 [heading Synopsis]
     template<
-        typename I,
-        typename M
+        typename M,
+        typename I
         >
     typename __result_of_advance__<I, M>::type advance(I const& i);
 
 [table Parameters
     [[Parameter]    [Requirement]   [Description]]
     [[`i`]          [Model of __forward_iterator__] [Iterator to move relative to]]
-    [[`N`]          [An __mpl_integral_constant__] [Number of positions to move]]
+    [[`M`]          [An __mpl_integral_constant__] [Number of positions to move]]
 ]
 
 [heading Expression Semantics]
@@ -454,8 +454,8 @@ Moves an iterator by a specified distance.
 
 [heading Synopsis]
     template<
-        typename I,
-        int N
+        int N,
+        typename I
         >
     typename __result_of_advance_c__<I, N>::type advance_c(I const& i);
 
@@ -536,7 +536,7 @@ Dereferences an iterator.
     template<
         typename I
         >
-    typename __result_of_deref__<I>::type operator*(__unspecified__<I> const& i);
+    typename __result_of_deref__<I>::type operator*(I const& i);
 
 [table Parameters
     [[Parameter]      [Requirement]    [Description]]
