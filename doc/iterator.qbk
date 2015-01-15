@@ -67,8 +67,7 @@ the following expressions are valid:
 ]
 
 [heading Expression Semantics]
-[
-table
+[table
     [[Expression]              [Semantics]]
     [[`__next__(i)`]               [An iterator to the element following `i`]]
     [[`i == j`]                [Iterator equality comparison]]
