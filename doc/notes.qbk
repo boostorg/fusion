@@ -121,7 +121,7 @@ creates a __list__ of type
 
     __list__<void (*)(int)>
 
-[heading boost::ref]
+[heading Reference Wrappers]
 
 Fusion's generation functions (e.g. __make_list__) by default stores the
 element types as plain non-reference types. Example:
@@ -150,6 +150,8 @@ For example:
     __make_list__(ref(ca));             // creates list<const A&>
 
 See __boost_ref__ for details.
+
+Since C++11, the standard reference wrappers (`std::ref` and `std::cref`) work as well.
 
 [heading adt_attribute_proxy]
 
