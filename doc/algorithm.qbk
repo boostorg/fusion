@@ -441,10 +441,10 @@ Linear, exactly `__result_of_size__<Sequence>::value` applications of `F`.
 [endsect]
 
 [section for_each]
-A metafunction returning the result type of applying __for_each__ to a sequence. The
-return type of __for_each__ is always `void`.
 
 [heading Description]
+A metafunction returning the result type of applying __for_each__ to a sequence. The
+return type of __for_each__ is always `void`.
 
 [heading Synopsis]
     template<
@@ -724,8 +724,10 @@ or `__end__(seq)` if there is no such element.
 [heading Complexity]
 Linear. At most `__result_of_size__<Sequence>::value` comparisons.
 
-#include <boost/fusion/algorithm/query/find_if.hpp>
-#include <boost/fusion/include/find_if.hpp>
+[heading Header]
+
+    #include <boost/fusion/algorithm/query/find_if.hpp>
+    #include <boost/fusion/include/find_if.hpp>
 
 [heading Example]
     const __vector__<double,int> vec(1.0,2);
