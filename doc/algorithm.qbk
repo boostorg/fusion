@@ -1363,7 +1363,7 @@ Returns a new sequence, with all the elements of the original sequence, except t
         typename T,
         typename Sequence
         >
-    typename __result_of_remove__<Sequence const, T>::type replace(Sequence const& seq);
+    typename __result_of_remove__<Sequence const, T>::type remove(Sequence const& seq);
 
 [table Parameters
     [[Parameter][Requirement][Description]]
@@ -1832,7 +1832,7 @@ Constant. Returns a view which is lazily evaluated.
     #include <boost/fusion/include/pop_back.hpp>
 
 [heading Example]
-    assert(___pop_back__(__make_vector__(1,2,3)) == __make_vector__(1,2));
+    assert(__pop_back__(__make_vector__(1,2,3)) == __make_vector__(1,2));
 
 [endsect]
 
