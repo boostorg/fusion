@@ -54,12 +54,12 @@
                       ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, 1)) type;                \
     };                                                                          \
                                                                                 \
-    typedef boost::remove_const<                                                \
-        deduced_attr_type::type                                                 \
+    typedef typename boost::remove_const<                                       \
+        typename deduced_attr_type::type                                        \
     >::type type;                                                               \
                                                                                 \
-    typedef boost::add_const<                                                   \
-        deduced_attr_type::type                                                 \
+    typedef typename boost::add_const<                                          \
+        typename deduced_attr_type::type                                        \
     >::type const_type;
 
 #define BOOST_FUSION_ADT_ATTRIBUTE_GIVENTYPE(                                   \
@@ -126,7 +126,7 @@
       , true                                                                    \
     >                                                                           \
     {                                                                           \
-        typedef access::adt_attribute_access<                                   \
+        typedef typename access::adt_attribute_access<                          \
                 BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                 \
               , I                                                               \
             >::const_type type;                                                 \
@@ -165,7 +165,7 @@
       , false                                                                   \
     >                                                                           \
     {                                                                           \
-        typedef access::adt_attribute_access<                                   \
+        typedef typename access::adt_attribute_access<                          \
                 BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                 \
               , I                                                               \
             >::type type;                                                       \
@@ -215,7 +215,7 @@
       , I                                                                       \
     >                                                                           \
     {                                                                           \
-        typedef \
+        typedef typename                                                        \
             adt_attribute_proxy<                                                \
                           BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)       \
                         , I                                                     \
