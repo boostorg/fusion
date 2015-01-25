@@ -63,7 +63,7 @@
 
 
 #define BOOST_FUSION_ATTRIBUTE_TYPEOF(                                          \
-    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)                          \
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX, IS_TPL)                  \
                                                                                 \
     struct deduced_attr_type {                                                  \
       static const BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj;        \
@@ -72,10 +72,11 @@
       type;                                                                     \
     };                                                                          \
                                                                                 \
-    typedef typename deduced_attr_type::type attribute_type;
+    typedef BOOST_PP_IF(IS_TPL, typename, )                                     \
+        deduced_attr_type::type attribute_type;
 
 #define BOOST_FUSION_ATTRIBUTE_GIVENTYPE(                                       \
-    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, unused)                          \
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX, IS_TPL)                  \
     typedef                                                                     \
         BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE) attribute_type;
    
@@ -146,8 +147,12 @@
     >                                                                           \
     {                                                                           \
         BOOST_PP_IF(DEDUCE_TYPE,                                                \
-            BOOST_FUSION_ATTRIBUTE_TYPEOF, BOOST_FUSION_ATTRIBUTE_GIVENTYPE     \
-            )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)                \
+            BOOST_FUSION_ATTRIBUTE_TYPEOF, BOOST_FUSION_ATTRIBUTE_GIVENTYPE)(   \
+                NAME_SEQ,                                                       \
+                ATTRIBUTE,                                                      \
+                ATTRIBUTE_TUPEL_SIZE,                                           \
+                PREFIX,                                                         \
+                BOOST_PP_SEQ_HEAD(TEMPLATE_PARAMS_SEQ))                         \
                                                                                 \
         BOOST_FUSION_ADAPT_STRUCT_MSVC_REDEFINE_TEMPLATE_PARAMS(                \
             TEMPLATE_PARAMS_SEQ)                                                \
