@@ -45,7 +45,7 @@
         BOOST_PP_IF(DEDUCE_TYPE, 1, 3), ATTRIBUTE)
 
 #define BOOST_FUSION_ADT_ATTRIBUTE_TYPEOF(                                      \
-    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)                          \
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX, IS_TPL)                  \
                                                                                 \
     struct deduced_attr_type {                                                  \
       static const BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj;        \
@@ -54,16 +54,16 @@
                       ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, 1)) type;                \
     };                                                                          \
                                                                                 \
-    typedef typename boost::remove_const<                                       \
-        typename deduced_attr_type::type                                        \
+    typedef BOOST_PP_IF(IS_TPL, typename, ) boost::remove_const<                \
+        BOOST_PP_IF(IS_TPL, typename, ) deduced_attr_type::type                 \
     >::type type;                                                               \
                                                                                 \
-    typedef typename boost::add_const<                                          \
-        typename deduced_attr_type::type                                        \
+    typedef BOOST_PP_IF(IS_TPL, typename, ) boost::add_const<                   \
+        BOOST_PP_IF(IS_TPL, typename, ) deduced_attr_type::type                 \
     >::type const_type;
 
 #define BOOST_FUSION_ADT_ATTRIBUTE_GIVENTYPE(                                   \
-    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)                          \
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX, IS_TPL)                  \
                                                                                 \
     typedef BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE) type;       \
     typedef BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 1, ATTRIBUTE) const_type;
@@ -84,8 +84,12 @@
                                                                                 \
         BOOST_PP_IF(DEDUCE_TYPE,                                                \
             BOOST_FUSION_ADT_ATTRIBUTE_TYPEOF,                                  \
-            BOOST_FUSION_ADT_ATTRIBUTE_GIVENTYPE                                \
-            )(NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX)                \
+            BOOST_FUSION_ADT_ATTRIBUTE_GIVENTYPE)(                              \
+                NAME_SEQ,                                                       \
+                ATTRIBUTE,                                                      \
+                ATTRIBUTE_TUPEL_SIZE,                                           \
+                PREFIX,                                                         \
+                BOOST_PP_SEQ_HEAD(TEMPLATE_PARAMS_SEQ))                         \
                                                                                 \
         template<class Val>                                                     \
         BOOST_FUSION_GPU_ENABLED                                                \
@@ -126,7 +130,9 @@
       , true                                                                    \
     >                                                                           \
     {                                                                           \
-        typedef typename access::adt_attribute_access<                          \
+        typedef                                                                 \
+            BOOST_PP_IF(BOOST_PP_SEQ_HEAD(TEMPLATE_PARAMS_SEQ), typename, )     \
+            access::adt_attribute_access<                                       \
                 BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                 \
               , I                                                               \
             >::const_type type;                                                 \
@@ -165,7 +171,9 @@
       , false                                                                   \
     >                                                                           \
     {                                                                           \
-        typedef typename access::adt_attribute_access<                          \
+        typedef                                                                 \
+            BOOST_PP_IF(BOOST_PP_SEQ_HEAD(TEMPLATE_PARAMS_SEQ), typename, )     \
+            access::adt_attribute_access<                                       \
                 BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                 \
               , I                                                               \
             >::type type;                                                       \
@@ -215,7 +223,7 @@
       , I                                                                       \
     >                                                                           \
     {                                                                           \
-        typedef typename                                                        \
+        typedef BOOST_PP_IF(BOOST_PP_SEQ_HEAD(TEMPLATE_PARAMS_SEQ), typename, ) \
             adt_attribute_proxy<                                                \
                           BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)       \
                         , I                                                     \
