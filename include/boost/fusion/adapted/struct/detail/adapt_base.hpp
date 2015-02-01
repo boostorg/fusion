@@ -15,6 +15,7 @@
 #include <boost/config.hpp>
 #include <boost/fusion/support/tag_of_fwd.hpp>
 #include <boost/fusion/adapted/struct/detail/adapt_auto.hpp>
+#include <boost/fusion/adapted/struct/detail/adapt_is_tpl.hpp>
 
 #include <boost/preprocessor/empty.hpp>
 #include <boost/preprocessor/stringize.hpp>
@@ -61,10 +62,6 @@
         BOOST_FUSION_ADAPT_STRUCT_UNPACK_TEMPLATE_PARAMS_IMPL,                  \
         BOOST_PP_TUPLE_EAT(1))(SEQ)
 
-#define BOOST_FUSION_IS_TPL(TEMPLATE_PARAMS_SEQ)                                \
-    BOOST_PP_SEQ_HEAD(TEMPLATE_PARAMS_SEQ)
-
-
 #ifdef BOOST_MSVC
 #   define BOOST_FUSION_ATTRIBUTE_TYPEOF(                                       \
         NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX, TEMPLATE_PARAMS_SEQ) \
@@ -74,13 +71,15 @@
                                                                                 \
     struct deduced_attr_type {                                                  \
       static const BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj;        \
-      typedef BOOST_PP_IF(BOOST_FUSION_IS_TPL(TEMPLATE_PARAMS_SEQ), typename, ) \
+      typedef                                                                   \
+      BOOST_PP_IF(BOOST_FUSION_ADAPT_IS_TPL(TEMPLATE_PARAMS_SEQ), typename, )   \
       BOOST_TYPEOF( PREFIX() obj.BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE,      \
             0, ATTRIBUTE))                                                      \
       type;                                                                     \
     };                                                                          \
                                                                                 \
-    typedef BOOST_PP_IF(BOOST_FUSION_IS_TPL(TEMPLATE_PARAMS_SEQ), typename, )   \
+    typedef                                                                     \
+        BOOST_PP_IF(BOOST_FUSION_ADAPT_IS_TPL(TEMPLATE_PARAMS_SEQ), typename, ) \
         deduced_attr_type::type attribute_type;
 
 #else 
@@ -94,13 +93,14 @@
       type;                                                                     \
     };                                                                          \
                                                                                 \
-    typedef BOOST_PP_IF(BOOST_FUSION_IS_TPL(TEMPLATE_PARAMS_SEQ), typename, )   \
+    typedef                                                                     \
+        BOOST_PP_IF(BOOST_FUSION_ADAPT_IS_TPL(TEMPLATE_PARAMS_SEQ), typename, ) \
         deduced_attr_type::type attribute_type;
 
 #endif
 
 #define BOOST_FUSION_ATTRIBUTE_GIVENTYPE(                                       \
-    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX, IS_TPL)                  \
+    NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPEL_SIZE, PREFIX, TEMPLATE_PARAMS_SEQ)     \
     typedef                                                                     \
         BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE) attribute_type;
    
