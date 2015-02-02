@@ -43,7 +43,7 @@ namespace boost { namespace fusion
         template <typename Arg>
         BOOST_FUSION_GPU_ENABLED
         back_extended_deque(Deque const& deque, Arg&& val)
-          : base(std::forward<Arg>(val), deque)
+          : base(BOOST_FUSION_FWD_ELEM(Arg, val), deque)
         {}
 #endif
     };

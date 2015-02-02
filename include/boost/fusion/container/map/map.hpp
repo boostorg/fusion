@@ -95,7 +95,7 @@ namespace boost { namespace fusion
         template <typename First, typename ...T_>
         BOOST_FUSION_GPU_ENABLED
         map(First&& first, T_&&... rest)
-          : base_type(std::forward<First>(first), std::forward<T_>(rest)...)
+          : base_type(BOOST_FUSION_FWD_ELEM(First, first), BOOST_FUSION_FWD_ELEM(T_, rest)...)
         {}
 
         BOOST_FUSION_GPU_ENABLED

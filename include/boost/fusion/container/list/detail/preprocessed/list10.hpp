@@ -40,44 +40,44 @@ namespace boost { namespace fusion
         
     BOOST_FUSION_GPU_ENABLED
     explicit
-    list(typename detail::call_param<T0 >::type _0)
-        : inherited_type(list_to_cons::call(_0))
+    list(typename detail::call_param<T0 >::type arg0)
+        : inherited_type(list_to_cons::call(arg0))
     {}
     BOOST_FUSION_GPU_ENABLED
-    list(typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1)
-        : inherited_type(list_to_cons::call(_0 , _1))
+    list(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1)
+        : inherited_type(list_to_cons::call(arg0 , arg1))
     {}
     BOOST_FUSION_GPU_ENABLED
-    list(typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2)
-        : inherited_type(list_to_cons::call(_0 , _1 , _2))
+    list(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2)
+        : inherited_type(list_to_cons::call(arg0 , arg1 , arg2))
     {}
     BOOST_FUSION_GPU_ENABLED
-    list(typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3)
-        : inherited_type(list_to_cons::call(_0 , _1 , _2 , _3))
+    list(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3)
+        : inherited_type(list_to_cons::call(arg0 , arg1 , arg2 , arg3))
     {}
     BOOST_FUSION_GPU_ENABLED
-    list(typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4)
-        : inherited_type(list_to_cons::call(_0 , _1 , _2 , _3 , _4))
+    list(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4)
+        : inherited_type(list_to_cons::call(arg0 , arg1 , arg2 , arg3 , arg4))
     {}
     BOOST_FUSION_GPU_ENABLED
-    list(typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5)
-        : inherited_type(list_to_cons::call(_0 , _1 , _2 , _3 , _4 , _5))
+    list(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5)
+        : inherited_type(list_to_cons::call(arg0 , arg1 , arg2 , arg3 , arg4 , arg5))
     {}
     BOOST_FUSION_GPU_ENABLED
-    list(typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5 , typename detail::call_param<T6 >::type _6)
-        : inherited_type(list_to_cons::call(_0 , _1 , _2 , _3 , _4 , _5 , _6))
+    list(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6)
+        : inherited_type(list_to_cons::call(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6))
     {}
     BOOST_FUSION_GPU_ENABLED
-    list(typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5 , typename detail::call_param<T6 >::type _6 , typename detail::call_param<T7 >::type _7)
-        : inherited_type(list_to_cons::call(_0 , _1 , _2 , _3 , _4 , _5 , _6 , _7))
+    list(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7)
+        : inherited_type(list_to_cons::call(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7))
     {}
     BOOST_FUSION_GPU_ENABLED
-    list(typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5 , typename detail::call_param<T6 >::type _6 , typename detail::call_param<T7 >::type _7 , typename detail::call_param<T8 >::type _8)
-        : inherited_type(list_to_cons::call(_0 , _1 , _2 , _3 , _4 , _5 , _6 , _7 , _8))
+    list(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8)
+        : inherited_type(list_to_cons::call(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8))
     {}
     BOOST_FUSION_GPU_ENABLED
-    list(typename detail::call_param<T0 >::type _0 , typename detail::call_param<T1 >::type _1 , typename detail::call_param<T2 >::type _2 , typename detail::call_param<T3 >::type _3 , typename detail::call_param<T4 >::type _4 , typename detail::call_param<T5 >::type _5 , typename detail::call_param<T6 >::type _6 , typename detail::call_param<T7 >::type _7 , typename detail::call_param<T8 >::type _8 , typename detail::call_param<T9 >::type _9)
-        : inherited_type(list_to_cons::call(_0 , _1 , _2 , _3 , _4 , _5 , _6 , _7 , _8 , _9))
+    list(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9)
+        : inherited_type(list_to_cons::call(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9))
     {}
         template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7 , typename U8 , typename U9>
         BOOST_FUSION_GPU_ENABLED

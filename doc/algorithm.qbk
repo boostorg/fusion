@@ -69,7 +69,7 @@ It is also used to convert sequence into other.
 
 [heading Synopsis]
     template <typename Seq1, typename Seq2>
-    void copy(Seq1 const& src, Seq2& dest);
+    typename __result_of_copy__<Seq1, Seq2>::type copy(Seq1 const& src, Seq2& dest);
 
 [table Parameters
     [[Parameter][Requirement][Description]]
@@ -97,6 +97,121 @@ Linear, exactly `__result_of_size__<Sequence>::value`.
     __list__<int,int> ls;
     __copy__(vec, ls);
     assert(ls == __make_list__(1,2));
+
+[endsect]
+
+[section move]
+
+[heading Description]
+move a sequence `src` to a sequence `dest`.
+It is also used to convert sequence into other.
+
+[heading Synopsis]
+    template <typename Seq1, typename Seq2>
+    typename __result_of_move__<Seq1, Seq2>::type move(Seq1&& src, Seq2& dest);
+
+[table Parameters
+    [[Parameter][Requirement][Description]]
+    [[`src`][A model of __forward_sequence__, all elements contained in the `src` sequence should be convertible into the element contained in the `dest` sequence.][Operation's argument]]
+    [[`dest`][A model of __forward_sequence__, `e2 = std::move(e1)` is valid expression for each pair of elements `e1` of `src` and `e2` of `dest`.][Operation's argument]]
+]
+
+[heading Expression Semantics]
+    __move__(src, dest);
+
+[*Return type]: `void`
+
+[*Semantics]: `e2 = std::move(e1)` for each element `e1` in `src` and `e2` in `dest`.
+
+[heading Complexity]
+Linear, exactly `__result_of_size__<Sequence>::value`.
+
+[heading Header]
+
+    #include <boost/fusion/algorithm/auxiliary/move.hpp>
+    #include <boost/fusion/include/move.hpp>
+
+[heading Example]
+    __vector__<int,int> vec(1,2);
+    __list__<int,int> ls;
+    __move__(std::move(vec), ls);
+    assert(ls == __make_list__(1,2));
+
+[endsect]
+
+[endsect]
+
+[section Metafunctions]
+
+[section copy]
+
+[heading Description]
+A metafunction returning the result type of applying __copy__, which is always `void`.
+
+[heading Synopsis]
+    template <typename Seq1, typename Seq2>
+    struct copy
+    {
+        typedef void type;
+    };
+
+[table Parameters
+    [[Parameter] [Requirement] [Description]]
+    [[`Seq1`] [A model of __forward_sequence__] [Operation's argument]]
+    [[`Seq2`] [A model of __forward_sequence__] [Operation's argument]]
+]
+
+[heading Expression Semantics]
+    result_of::copy<Seq1, Seq2>::type
+
+[*Return type]: `void` iff both of `Seq1` and `Seq2` are sequence.
+Otherwise, none.
+
+[*Semantics]: Returns the return type of __copy__ for 2 sequences of types `Seq1` and `Seq2`.
+
+[heading Complexity]
+Constant.
+
+[heading Header]
+
+    #include <boost/fusion/algorithm/auxiliary/copy.hpp>
+    #include <boost/fusion/include/copy.hpp>
+
+[endsect]
+
+[section move]
+
+[heading Description]
+A metafunction returning the result type of applying __move__, which is always `void`.
+
+[heading Synopsis]
+    template <typename Seq1, typename Seq2>
+    struct move
+    {
+        typedef void type;
+    };
+
+[table Parameters
+    [[Parameter] [Requirement] [Description]]
+    [[`Seq1`] [A model of __forward_sequence__] [Operation's argument]]
+    [[`Seq2`] [A model of __forward_sequence__] [Operation's argument]]
+]
+
+[heading Expression Semantics]
+    result_of::move<Seq1, Seq2>::type
+
+[*Return type]: `void` iff both of `Seq1` and `Seq2` are sequence.
+Otherwise, none.
+
+[*Semantics]: Returns the return type of __move__ for 2 sequences of types `Seq1` and `Seq2`.
+
+[heading Complexity]
+Constant.
+
+[heading Header]
+
+    #include <boost/fusion/algorithm/auxiliary/move.hpp>
+    #include <boost/fusion/include/move.hpp>
 
 [endsect]
 
@@ -536,13 +651,13 @@ Finds the first element of a given type within a sequence.
         typename T,
         typename Sequence
         >
-    __unspecified__ find(Sequence const& seq);
+    typename __result_of_find__<Sequence const, T>::type find(Sequence const& seq);
 
     template<
         typename T,
         typename Sequence
         >
-    __unspecified__ find(Sequence& seq);
+    typename __result_of_find__<Sequence, T>::type find(Sequence& seq);
 
 [table Parameters
     [[Parameter][Requirement][Description]]
@@ -574,23 +689,23 @@ Linear. At most `__result_of_size__<Sequence>::value` comparisons.
 [endsect]
 
 [section find_if]
-Finds the first element within a sequence with a type for which a given __mpl_lambda_expression__ evaluates to
-`boost::mpl::true_`.
 
 [heading Description]
+Finds the first element within a sequence with a type for which a given __mpl_lambda_expression__ evaluates to
+`boost::mpl::true_`.
 
 [heading Synopsis]
     template<
         typename F,
         typename Sequence
         >
-    __unspecified__ find_if(Sequence const& seq);
+    typename __result_of_find_if__<Sequence const, F>::type find_if(Sequence const& seq);
 
     template<
         typename F,
         typename Sequence
         >
-    __unspecified__ find_if(Sequence& seq);
+    typename __result_of_find_if__<Sequence, F>::type find_if(Sequence& seq);
 
 [table Parameters
     [[Parameter][Requirement][Description]]
@@ -1329,7 +1444,7 @@ Constant. Returns a view which is lazily evaluated.
 [heading Description]
 Returns a new sequence with the elements of the original in reverse order.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename Sequence
         >
@@ -1369,7 +1484,7 @@ Constant. Returns a view which is lazily evaluated.
 [heading Description]
 __clear__ returns an empty sequence.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename Sequence
         >
@@ -1406,7 +1521,7 @@ Constant.
 Returns a new sequence, containing all the elements of the original except those at a specified iterator, or
 between two iterators.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename Sequence,
         typename First
@@ -1467,11 +1582,11 @@ Constant. Returns a view which is lazily evaluated.
 [section erase_key]
 
 [heading Description]
-For an [link fusion.sequence.concepts.associative_sequence associative]] __forward_sequence__ `seq`,
-returns a [link fusion.sequence.concepts.associative_sequence associative]] __forward_sequence__ containing
+For an [link fusion.sequence.concepts.associative_sequence associative] __forward_sequence__ `seq`,
+returns a [link fusion.sequence.concepts.associative_sequence associative] __forward_sequence__ containing
 all the elements of the original except those with a given key.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename Key,
         typename Sequence
@@ -1510,7 +1625,7 @@ Constant. Returns a view which is lazily evaluated.
 Returns a new sequence with all the elements of the original, an a new element inserted the
 position described by a given iterator.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename Sequence,
         typename Pos,
@@ -1527,7 +1642,7 @@ position described by a given iterator.
 ]
 
 [heading Expression Semantics]
-    __insert__(seq, p, t);
+    __insert__(seq, pos, t);
 
 [*Return type]:
 
@@ -1555,7 +1670,7 @@ Constant. Returns a view which is lazily evaluated.
 [heading Description]
 Returns a new sequence with another sequence inserted at a specified iterator.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename Sequence,
         typename Pos,
@@ -1580,7 +1695,7 @@ Returns a new sequence with another sequence inserted at a specified iterator.
 * A model of __associative_sequence__ if `seq` implements the __associative_sequence__ model.
 
 [*Semantics]: Returns a new sequence, containing all the elements of `seq`, and the elements of
-`range` inserted at iterator `pos`. All elements retaining their ordering from the orignal sequences.
+`range` inserted at iterator `pos`. All elements retaining their ordering from the original sequences.
 
 [heading Complexity]
 Constant. Returns a view which is lazily evaluated.
@@ -1641,7 +1756,7 @@ Constant. Returns a view which is lazily evaluated.
 [section zip]
 
 [heading Description]
-Zips sequences together to form a single sequence, whos members are tuples of the members of the component sequences.
+Zips sequences together to form a single sequence, whose members are tuples of the members of the component sequences.
 
 [heading Synopsis]
     template<
@@ -2471,7 +2586,7 @@ Returns the result of joining 2 sequences, given the sequence types.
 [*Return type]:
 
 * A model of __forward_sequence__.
-* A model of __associative_sequence__ if `LhSequence` amd `RhSequence` implement the __associative_sequence__ model.
+* A model of __associative_sequence__ if `LhSequence` and `RhSequence` implement the __associative_sequence__ model.
 
 [*Semantics]: Returns a sequence containing the elements of `LhSequence` followed by the elements of `RhSequence`. The order of the elements in the 2 sequences is preserved.
 
@@ -2488,7 +2603,7 @@ Constant.
 [section zip]
 
 [heading Description]
-Zips sequences together to form a single sequence, whos members are tuples of the members of the component sequences.
+Zips sequences together to form a single sequence, whose members are tuples of the members of the component sequences.
 
 [heading Synopsis]
     template<

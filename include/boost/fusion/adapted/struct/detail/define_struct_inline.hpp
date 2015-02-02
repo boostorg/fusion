@@ -392,9 +392,9 @@
                 typename boost_fusion_detail_It1::index                         \
             >::type type;                                                       \
                                                                                 \
-             BOOST_FUSION_GPU_ENABLED                                           \
-             static type call(boost_fusion_detail_It1 const& it1,               \
-                              boost_fusion_detail_It2 const& it2)               \
+            BOOST_FUSION_GPU_ENABLED                                            \
+            static type call(boost_fusion_detail_It1 const& /* it1 */,          \
+                             boost_fusion_detail_It2 const& /* it2 */)          \
             {                                                                   \
                 return type();                                                  \
             }                                                                   \
