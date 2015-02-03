@@ -254,7 +254,8 @@ Metafunction to apply __element_conversion__ to the full argument type.
 
 It removes references to `const`, references to array types are kept, even
 if the array is `const`. Reference wrappers are removed (see
-__note_boost_ref__).
+__note_boost_ref__)[footnote Since C++11, the standard reference wrappers
+are also removed.].
 
 [heading Header]
 

@@ -178,7 +178,7 @@ main()
 
     {
         fusion::vector<int, float> v1(4, 2);
-        ns::bar v2 = {5, 3};
+        ns::bar v2 = {{5}, 3};
         BOOST_TEST(v1 < v2);
         BOOST_TEST(v1 <= v2);
         BOOST_TEST(v2 > v1);

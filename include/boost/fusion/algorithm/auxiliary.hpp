@@ -9,5 +9,6 @@
 
 #include <boost/fusion/support/config.hpp>
 #include <boost/fusion/algorithm/auxiliary/copy.hpp>
+#include <boost/fusion/algorithm/auxiliary/move.hpp>
 
 #endif

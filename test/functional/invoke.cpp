@@ -7,6 +7,7 @@
     http://www.boost.org/LICENSE_1_0.txt).
 ==============================================================================*/
 
+#include <boost/config.hpp>
 #include <boost/fusion/functional/invocation/invoke.hpp>
 #include <boost/detail/lightweight_test.hpp>
 
@@ -146,10 +147,27 @@ class members
     int binary_c(int i, object) const { return data + 6 + i; }
 };
 
+#ifdef BOOST_NO_CXX11_SMART_PTR
+typedef std::auto_ptr<members      >       members_ptr;
+typedef std::auto_ptr<members const> const_members_ptr;
+#else
+typedef std::unique_ptr<members      >       members_ptr;
+typedef std::unique_ptr<members const> const_members_ptr;
+#endif
+
 struct derived
     : members
 {
 };
+
+#ifdef BOOST_NO_CXX11_SMART_PTR
+typedef std::auto_ptr<derived      >       derived_ptr;
+typedef std::auto_ptr<derived const> const_derived_ptr;
+#else
+typedef std::unique_ptr<derived      >       derived_ptr;
+typedef std::unique_ptr<derived const> const_derived_ptr;
+#endif
+
 
 typedef int         element1_type;
 typedef object      element2_type;
@@ -161,8 +179,8 @@ object_nc   element3;
 
 members that;
 
-std::auto_ptr<members> spt_that(new members);
-std::auto_ptr<members const> spt_that_c(new members);
+members_ptr spt_that(new members);
+const_members_ptr spt_that_c(new members);
 
 fusion::single_view<members  > sv_obj_ctx(  that);
 fusion::single_view<members &> sv_ref_ctx(  that);
@@ -170,13 +188,13 @@ fusion::single_view<members *> sv_ptr_ctx(& that);
 fusion::single_view<members const  > sv_obj_c_ctx(  that);
 fusion::single_view<members const &> sv_ref_c_ctx(  that);
 fusion::single_view<members const *> sv_ptr_c_ctx(& that);
-fusion::single_view<std::auto_ptr<members> const &> sv_spt_ctx(spt_that);
-fusion::single_view< std::auto_ptr<members const> const &> sv_spt_c_ctx(spt_that_c);
+fusion::single_view<members_ptr const &> sv_spt_ctx(spt_that);
+fusion::single_view<const_members_ptr const &> sv_spt_c_ctx(spt_that_c);
 
 derived derived_that;
 
-std::auto_ptr<derived> spt_derived_that(new derived);
-std::auto_ptr<derived const> spt_derived_that_c(new derived);
+derived_ptr spt_derived_that(new derived);
+const_derived_ptr spt_derived_that_c(new derived);
 
 fusion::single_view<derived  > sv_obj_d_ctx(  derived_that);
 fusion::single_view<derived &> sv_ref_d_ctx(  derived_that);
@@ -184,8 +202,8 @@ fusion::single_view<derived *> sv_ptr_d_ctx(& derived_that);
 fusion::single_view<derived const  > sv_obj_c_d_ctx(  derived_that);
 fusion::single_view<derived const &> sv_ref_c_d_ctx(  derived_that);
 fusion::single_view<derived const *> sv_ptr_c_d_ctx(& derived_that);
-fusion::single_view<std::auto_ptr<derived> const &> sv_spt_d_ctx(spt_derived_that);
-fusion::single_view< std::auto_ptr<derived const> const &> sv_spt_c_d_ctx(spt_derived_that_c);
+fusion::single_view<derived_ptr const &> sv_spt_d_ctx(spt_derived_that);
+fusion::single_view<const_derived_ptr const &> sv_spt_c_d_ctx(spt_derived_that_c);
 
 template <class Sequence>
 void test_sequence_n(Sequence & seq, mpl::int_<0>)
