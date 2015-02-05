@@ -194,6 +194,15 @@ namespace boost { namespace fusion { namespace extension
     };
 }}}
 
+#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
+namespace std
+{
+    template <typename First, typename Base>
+    struct iterator_traits< ::boost::fusion::flatten_view_iterator<First, Base> >
+    { };
+}
+#endif
+
 
 #endif
 

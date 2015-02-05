@@ -67,6 +67,15 @@ namespace boost { namespace fusion
     };
 }}
 
+#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
+namespace std
+{
+    template <typename Category, typename First, typename Last, typename Pred>
+    struct iterator_traits< ::boost::fusion::filter_iterator<Category, First, Last, Pred> >
+    { };
+}
+#endif
+
 #endif
 
 

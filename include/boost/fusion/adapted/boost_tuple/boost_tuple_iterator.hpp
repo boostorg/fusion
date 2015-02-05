@@ -207,6 +207,15 @@ namespace boost { namespace fusion
     };
 }}
 
+#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
+namespace std
+{
+    template <typename Cons>
+    struct iterator_traits< ::boost::fusion::boost_tuple_iterator<Cons> >
+    { };
+}
+#endif
+
 #endif
 
 

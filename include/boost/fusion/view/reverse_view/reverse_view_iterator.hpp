@@ -54,5 +54,14 @@ namespace boost { namespace fusion
     };
 }}
 
+#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
+namespace std
+{
+    template <typename First>
+    struct iterator_traits< ::boost::fusion::reverse_view_iterator<First> >
+    { };
+}
+#endif
+
 #endif
 
