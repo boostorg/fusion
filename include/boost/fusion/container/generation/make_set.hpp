@@ -105,10 +105,10 @@ namespace boost { namespace fusion
     template <BOOST_PP_ENUM_PARAMS(N, typename T)>
     BOOST_FUSION_GPU_ENABLED
     inline set<BOOST_PP_ENUM(N, BOOST_FUSION_AS_FUSION_ELEMENT, _)>
-    make_set(BOOST_PP_ENUM_BINARY_PARAMS(N, T, const& _))
+    make_set(BOOST_PP_ENUM_BINARY_PARAMS(N, T, const& arg))
     {
         return set<BOOST_PP_ENUM(N, BOOST_FUSION_AS_FUSION_ELEMENT, _)>(
-            BOOST_PP_ENUM_PARAMS(N, _));
+            BOOST_PP_ENUM_PARAMS(N, arg));
     }
 
 #undef N

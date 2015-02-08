@@ -109,4 +109,13 @@ namespace boost { namespace fusion
     };
 }}
 
+#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
+namespace std
+{
+    template <typename Array, int Pos>
+    struct iterator_traits< ::boost::fusion::array_iterator<Array, Pos> >
+    { };
+}
+#endif
+
 #endif

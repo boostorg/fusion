@@ -83,8 +83,8 @@ namespace boost { namespace fusion { namespace detail
 
         BOOST_FUSION_GPU_ENABLED
         map_impl(map_impl&& rhs)
-          : rest_type(std::forward<rest_type>(*static_cast<rest_type*>(&rhs)))
-          , element(std::forward<Pair>(rhs.element))
+          : rest_type(BOOST_FUSION_FWD_ELEM(rest_type, *static_cast<rest_type*>(&rhs)))
+          , element(BOOST_FUSION_FWD_ELEM(Pair, rhs.element))
         {}
 
         template <typename ...U>
@@ -101,8 +101,8 @@ namespace boost { namespace fusion { namespace detail
 
         BOOST_FUSION_GPU_ENABLED
         map_impl(Pair&& element_, T&&... rest)
-          : rest_type(std::forward<T>(rest)...)
-          , element(std::forward<Pair>(element_))
+          : rest_type(BOOST_FUSION_FWD_ELEM(T, rest)...)
+          , element(BOOST_FUSION_FWD_ELEM(Pair, element_))
         {}
 
         template <typename Iterator>
@@ -187,7 +187,7 @@ namespace boost { namespace fusion { namespace detail
         map_impl& operator=(map_impl&& rhs)
         {
             rest_type::operator=(std::forward<map_impl>(rhs));
-            element = std::forward<Pair>(rhs.element);
+            element = BOOST_FUSION_FWD_ELEM(Pair, rhs.element);
             return *this;
         }
 

@@ -55,7 +55,7 @@ namespace boost { namespace fusion
     }
 
     template <typename Iterator>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     typename result_of::deref<Iterator>::type
     deref(Iterator const& i)
     {
@@ -64,7 +64,7 @@ namespace boost { namespace fusion
     }
 
     template <typename Iterator>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     typename result_of::deref<Iterator>::type
     operator*(iterator_base<Iterator> const& i)
     {

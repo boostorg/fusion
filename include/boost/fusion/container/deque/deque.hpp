@@ -50,7 +50,7 @@ namespace boost { namespace fusion
         typedef bidirectional_traversal_tag category;
         typedef mpl::int_<0> size;
         typedef mpl::int_<0> next_up;
-        typedef mpl::int_<0> next_down;
+        typedef mpl::int_<-1> next_down;
         typedef mpl::false_ is_view;
 
         template <typename Sequence>
@@ -76,30 +76,36 @@ namespace boost { namespace fusion
         typedef typename detail::deque_keyed_values<Head, Tail...>::type base;
         typedef mpl::int_<(sizeof ...(Tail) + 1)> size;
         typedef mpl::int_<size::value> next_up;
-        typedef mpl::int_<((size::value == 0) ? 0 : -1)> next_down;
+        typedef mpl::int_<-1> next_down;
         typedef mpl::false_ is_view;
 
         BOOST_FUSION_GPU_ENABLED
         deque()
         {}
 
-        template <typename ...Elements>
+        template <typename Head_, typename ...Tail_, typename =
+            typename enable_if<is_convertible<Head_, Head> >::type
+        >
         BOOST_FUSION_GPU_ENABLED
-        deque(deque<Elements...> const& seq)
+        deque(deque<Head_, Tail_...> const& seq)
           : base(seq)
         {}
 
-        template <typename ...Elements>
+        template <typename Head_, typename ...Tail_, typename =
+            typename enable_if<is_convertible<Head_, Head> >::type
+        >
         BOOST_FUSION_GPU_ENABLED
-        deque(deque<Elements...>& seq)
+        deque(deque<Head_, Tail_...>& seq)
           : base(seq)
         {}
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        template <typename ...Elements>
+        template <typename Head_, typename ...Tail_, typename =
+            typename enable_if<is_convertible<Head_, Head> >::type
+        >
         BOOST_FUSION_GPU_ENABLED
-        deque(deque<Elements...>&& seq)
-          : base(std::forward<deque<Elements...>>(seq))
+        deque(deque<Head_, Tail_...>&& seq)
+          : base(std::forward<deque<Head_, Tail_...>>(seq))
         {}
 #endif
 
@@ -116,22 +122,27 @@ namespace boost { namespace fusion
 #endif
 
         BOOST_FUSION_GPU_ENABLED
-        explicit deque(Head const& head, Tail const&... tail)
+        explicit deque(typename detail::call_param<Head>::type head
+                     , typename detail::call_param<Tail>::type... tail)
           : base(detail::deque_keyed_values<Head, Tail...>::construct(head, tail...))
         {}
 
-        template <typename Head_, typename ...Tail_>
-        BOOST_FUSION_GPU_ENABLED
-        explicit deque(Head_ const& head, Tail_ const&... tail)
-          : base(detail::deque_keyed_values<Head_, Tail_...>::construct(head, tail...))
-        {}
-
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        template <typename Head_, typename ...Tail_>
+        template <typename Head_, typename ...Tail_, typename =
+            typename enable_if<is_convertible<Head_, Head> >::type
+        >
         BOOST_FUSION_GPU_ENABLED
         explicit deque(Head_&& head, Tail_&&... tail)
           : base(detail::deque_keyed_values<Head, Tail...>
-                ::forward_(std::forward<Head_>(head), std::forward<Tail_>(tail)...))
+                ::forward_(BOOST_FUSION_FWD_ELEM(Head_, head), BOOST_FUSION_FWD_ELEM(Tail_, tail)...))
+        {}
+#else
+        template <typename Head_, typename ...Tail_, typename =
+            typename enable_if<is_convertible<Head_, Head> >::type
+        >
+        BOOST_FUSION_GPU_ENABLED
+        explicit deque(Head_ const& head, Tail_ const&... tail)
+          : base(detail::deque_keyed_values<Head_, Tail_...>::construct(head, tail...))
         {}
 #endif
 
@@ -163,7 +174,7 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         deque& operator=(T&& rhs)
         {
-            base::operator=(std::forward<T>(rhs));
+            base::operator=(BOOST_FUSION_FWD_ELEM(T, rhs));
             return *this;
         }
 #endif

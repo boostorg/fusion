@@ -9,7 +9,7 @@
 [section Container]
 
 Fusion provides a few predefined sequences out of the box. These
-/containers/ actually hold heterogenously typed data; unlike
+/containers/ actually hold heterogeneously typed data; unlike
 __views__. These containers are more or less counterparts of those in __stl__.
 
 [heading Header]
@@ -21,7 +21,7 @@ __views__. These containers are more or less counterparts of those in __stl__.
 
 [heading Description]
 
-`vector` is a __random_access_sequence__ of heterogenous typed data
+`vector` is a __random_access_sequence__ of heterogeneous typed data
 structured as a simple `struct` where each element is held as a member
 variable. `vector` is the simplest of the Fusion sequence container (a
 vector with N elements is just a struct with N members), and in many
@@ -209,7 +209,7 @@ constant (see __recursive_inline__).]
 
 [heading Description]
 
-`list` is a __forward_sequence__ of heterogenous typed data built on top of
+`list` is a __forward_sequence__ of heterogeneous typed data built on top of
 __cons__. It is more efficient than __vector__ when the target sequence is
 constructed piecemeal (a data at a time). The runtime cost of access to
 each element is peculiarly constant (see __recursive_inline__).
@@ -508,7 +508,7 @@ not defined in __bidirectional_sequence__.
 
 [heading Description]
 
-set is an __associative_sequence__ of heteregenous typed data elements.
+set is an __associative_sequence__ of heterogeneous typed data elements.
 Type identity is used to impose an equivalence relation on keys. The
 element's type is its key. A set may contain at most one element for each
 key. Membership testing and element key lookup has constant runtime
@@ -589,7 +589,7 @@ defined in __random_access_sequence__ and __associative_sequence__.
 
 [heading Description]
 
-map is an __associative_sequence__ of heteregenous typed data elements.
+map is an __associative_sequence__ of heterogeneous typed data elements.
 Each element is a key/data pair (see __fusion_pair__) where the key has no
 data (type only). Type identity is used to impose an equivalence relation
 on keys. A map may contain at most one element for each key. Membership
@@ -846,7 +846,7 @@ Create a __deque__ from one or more values.
 
 For C++11 compilers, the variadic function interface has no upper bound.
 
-For C++11 compilers, the variadic function accepts `0` to
+For C++03 compilers, the variadic function accepts `0` to
 `FUSION_MAX_DEQUE_SIZE` elements, where `FUSION_MAX_DEQUE_SIZE` is a
 user definable predefined maximum that defaults to `10`. You may define
 the preprocessor constant `FUSION_MAX_DEQUE_SIZE` before including any
@@ -950,7 +950,9 @@ Create a __map__ from one or more key/data pairs.
     typename __result_of_make_map__<K0, K0,... KN, T0, T1,... TN>::type
     make_map(T0 const& x0, T1 const& x1... TN const& xN);
 
-The variadic function accepts `0` to `FUSION_MAX_MAP_SIZE` elements,
+For C++11 compilers, the variadic function interface has no upper bound.
+
+For C++03 compilers, the variadic function accepts `0` to `FUSION_MAX_MAP_SIZE` elements,
 where `FUSION_MAX_MAP_SIZE` is a user definable predefined maximum that
 defaults to `10`. You may define the preprocessor constant
 `FUSION_MAX_MAP_SIZE` before including any Fusion header to change the
@@ -1478,8 +1480,10 @@ When variadic templates are not supported, make_map is a metafunction of the for
         typename K0, typename K1,... typename KN
       , typename T0, typename T1,... typename TN>
     struct make_map;
-    
-The variadic function accepts `0` to `FUSION_MAX_MAP_SIZE` elements,
+
+For C++11 compilers, the variadic function interface has no upper bound.
+
+For C++03 compilers, the variadic function accepts `0` to `FUSION_MAX_MAP_SIZE` elements,
 where `FUSION_MAX_MAP_SIZE` is a user definable predefined maximum that
 defaults to `10`. You may define the preprocessor constant
 `FUSION_MAX_MAP_SIZE` before including any Fusion header to change the
@@ -1488,12 +1492,12 @@ default. Example:
     #define FUSION_MAX_MAP_SIZE 20
 
 When variadic templates are supported, make_map is a metafunction class of the form:
-    
+
 [heading Synopsis]
 
     template <
         typename K0, typename K1,... typename KN>
-    struct make_map 
+    struct make_map
     {
         struct apply<
         typename T0, typename T1,... typename TN>
@@ -1515,7 +1519,7 @@ When variadic templates are supported, make_map is a metafunction class of the f
     resulf_of::make_map<K0, K1,... KN>::apply<T0, T1,... TN>::type;
     #endif
 
-[*Return type]: __result_of_make_map__`<K0, K0,... KN, T0, T1,... TN>::type` 
+[*Return type]: __result_of_make_map__`<K0, K0,... KN, T0, T1,... TN>::type`
 when variadic templates are not supported, or
 __result_of_make_map__`<K0, K0,... KN>::apply<T0, T1,... TN>::type`
 when variadic templates are supported.
@@ -1531,7 +1535,7 @@ when variadic templates are supported.
     #include <boost/fusion/include/make_map.hpp>
 
 [heading Example]
-    
+
     #if !defined(BOOST_FUSION_HAS_VARIADIC_MAP)
     result_of::make_map<int, double, char, double>::type
     #else

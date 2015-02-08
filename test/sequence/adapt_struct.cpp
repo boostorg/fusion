@@ -54,6 +54,17 @@ namespace ns
         {}
     };
 #endif
+
+    struct foo
+    {
+        int x;
+    };
+    
+    struct bar
+    {
+        foo foo_;
+        int y;
+    };
 }
 
 BOOST_FUSION_ADAPT_STRUCT(
@@ -72,6 +83,12 @@ BOOST_FUSION_ADAPT_STRUCT(
 
 struct s { int m; };
 BOOST_FUSION_ADAPT_STRUCT(s, (int, m))
+
+BOOST_FUSION_ADAPT_STRUCT(
+    ns::bar,
+    (int, foo_.x) // test that adapted members can actually be expressions
+    (int, y)
+)
 
 int
 main()
@@ -158,6 +175,15 @@ main()
         BOOST_TEST(p == make_vector(123, 456));
     }
 #endif
+
+    {
+        fusion::vector<int, float> v1(4, 2);
+        ns::bar v2 = {{5}, 3};
+        BOOST_TEST(v1 < v2);
+        BOOST_TEST(v1 <= v2);
+        BOOST_TEST(v2 > v1);
+        BOOST_TEST(v2 >= v1);
+    }
 
     return boost::report_errors();
 }

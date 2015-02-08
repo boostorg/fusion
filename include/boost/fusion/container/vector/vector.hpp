@@ -122,9 +122,9 @@ namespace boost { namespace fusion
         //  of type (T0), (T0, T1), (T0, T1, T2) etc. Example:
         //
         //  vector(
-        //      typename detail::call_param<T0>::type _0
-        //    , typename detail::call_param<T1>::type _1)
-        //    : vec(_0, _1) {}
+        //      typename detail::call_param<T0>::type arg0
+        //    , typename detail::call_param<T1>::type arg1)
+        //    : vec(arg0, arg1) {}
         #include <boost/fusion/container/vector/detail/vector_forward_ctor.hpp>
 
         template <BOOST_PP_ENUM_PARAMS(FUSION_MAX_VECTOR_SIZE, typename U)>
@@ -174,7 +174,7 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         vector&
         operator=(T&& rhs)
         {
-            vec = std::forward<T>(rhs);
+            vec = BOOST_FUSION_FWD_ELEM(T, rhs);
             return *this;
         }
 #endif

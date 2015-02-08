@@ -59,14 +59,15 @@ namespace boost { namespace fusion { namespace detail
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         BOOST_FUSION_GPU_ENABLED
         keyed_element(keyed_element&& rhs)
-          : Rest(std::forward<Rest>(rhs.forward_base()))
-          , value_(std::forward<Value>(rhs.value_))
+          : Rest(BOOST_FUSION_FWD_ELEM(Rest, rhs.forward_base()))
+          , value_(BOOST_FUSION_FWD_ELEM(Value, rhs.value_))
         {}
 #endif
 
         template <typename U, typename Rst>
         BOOST_FUSION_GPU_ENABLED
-        keyed_element(keyed_element<Key, U, Rst> const& rhs)
+        keyed_element(keyed_element<Key, U, Rst> const& rhs
+          , typename enable_if<is_convertible<U, Value> >::type* = 0)
           : Rest(rhs.get_base()), value_(rhs.value_)
         {}
 
@@ -89,7 +90,7 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         Rest&& forward_base()
         {
-            return std::forward<Rest>(*static_cast<Rest*>(this));
+            return BOOST_FUSION_FWD_ELEM(Rest, *static_cast<Rest*>(this));
         }
 #endif
 
@@ -115,8 +116,8 @@ namespace boost { namespace fusion { namespace detail
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         BOOST_FUSION_GPU_ENABLED
         keyed_element(Value&& value, Rest&& rest)
-            : Rest(std::forward<Rest>(rest))
-            , value_(std::forward<Value>(value))
+            : Rest(BOOST_FUSION_FWD_ELEM(Rest, rest))
+            , value_(BOOST_FUSION_FWD_ELEM(Value, value))
         {}
 #endif
 
@@ -147,7 +148,7 @@ namespace boost { namespace fusion { namespace detail
         keyed_element& operator=(keyed_element&& rhs)
         {
             base::operator=(std::forward<keyed_element>(rhs));
-            value_ = std::forward<Value>(rhs.value_);
+            value_ = BOOST_FUSION_FWD_ELEM(Value, rhs.value_);
             return *this;
         }
 #endif

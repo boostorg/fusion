@@ -5,8 +5,8 @@
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 
-#if !defined(BOOST_FUSION_REPETITIVE_VIEW_ITERATOR_HPP_INCLUDED)
-#define BOOST_FUSION_REPETITIVE_VIEW_HPP_ITERATOR_INCLUDED
+#ifndef BOOST_FUSION_REPETITIVE_VIEW_ITERATOR_HPP_INCLUDED
+#define BOOST_FUSION_REPETITIVE_VIEW_ITERATOR_HPP_INCLUDED
 
 #include <boost/fusion/support/config.hpp>
 #include <boost/fusion/support/iterator_base.hpp>
@@ -52,6 +52,15 @@ namespace boost { namespace fusion
         repetitive_view_iterator& operator= (repetitive_view_iterator const&);
     };
 }}
+
+#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
+namespace std
+{
+    template <typename Sequence, typename Pos>
+    struct iterator_traits< ::boost::fusion::repetitive_view_iterator<Sequence, Pos> >
+    { };
+}
+#endif
 
 #endif
 
