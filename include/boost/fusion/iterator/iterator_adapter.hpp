@@ -135,4 +135,13 @@ namespace boost { namespace fusion
     };
 }}
 
+#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
+namespace std
+{
+    template <typename Derived, typename Iterator, typename Category>
+    struct iterator_traits< ::boost::fusion::iterator_adapter<Derived, Iterator, Category> >
+    { };
+}
+#endif
+
 #endif
