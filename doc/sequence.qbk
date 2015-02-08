@@ -249,15 +249,18 @@ any Random Access Sequence the following must be met:
     [[Expression]                           [Compile Time Complexity]]
     [[`__result_of_begin__<S>::type`]          [Amortized constant time]]
     [[`__result_of_end__<S>::type`]            [Amortized constant time]]
-    [[`__result_of_at__<S, N>::type`]          [Amortized constant time]]
-    [[`__result_of_value_at__<S, N>::type`]    [Amortized constant time]]
+    [[`__result_of_at__<S, M>::type`]          [Amortized constant time]]
+    [[`__result_of_at_c__<S, N>::type`]        [Amortized constant time]]
+    [[`__result_of_value_at__<S, M>::type`]    [Amortized constant time]]
+    [[`__result_of_value_at_c__<S, N>::type`]  [Amortized constant time]]
 ]
 
-[blurb __note__ `__result_of_at__<S, N>` returns the actual type returned by
-`__at__<N>(s)`. In most cases, this is a reference. Hence, there is no way to
-know the exact element type using `__result_of_at__<S, N>`.The element at `N`
+[blurb __note__ `__result_of_at__<S, M>` returns the actual type returned by
+`__at__<M>(s)`. In most cases, this is a reference. Hence, there is no way to
+know the exact element type using `__result_of_at__<S, M>`.The element at `M`
 may actually be a reference to begin with. For this purpose, you can use
-`__result_of_value_at__<S, N>`.]
+`__result_of_value_at__<S, M>` (Note that, `__result_of_value_at_c__<S, N>`
+is a counterpart of `__result_of_at_c__<S, N>` as well).]
 
 [heading Expression Semantics]
 
@@ -331,7 +334,7 @@ For any Associative Sequence the following expressions must be valid:
 by `__at_key__<K>(s)`. In most cases, this is a reference. Hence, there is no
 way to know the exact element type using `__result_of_at_key__<S, K>`.The
 element at `K` may actually be a reference to begin with. For this purpose,
-you can use `__result_of_value_at_key__<S, N>`.]
+you can use `__result_of_value_at_key__<S, K>`.]
 
 [heading Expression Semantics]
 
@@ -1323,7 +1326,7 @@ Returns the result type of __has_key__.
 [heading Description]
 
 Returns the result type of __at_key__[footnote __result_of_at_key__
-reflects the actual return type of the function __at_key__. __sequence__s
+reflects the actual return type of the function __at_key__. __sequence__(s)
 typically return references to its elements via the __at_key__ function. If
 you want to get the actual element type, use __result_of_value_at_key__].
 
@@ -1445,7 +1448,7 @@ operators for free.
 
 The I/O operators: `<<` and `>>` work generically on all Fusion
 sequences. The I/O operators are overloaded in namespace `boost::fusion`
-[footnote __sequences__ and __views__ residing in different namespaces
+[footnote __sequence__(s) and __views__ residing in different namespaces
 will have to either provide their own I/O operators (possibly forwarding
 to fusion's I/O operators) or hoist fusion's I/O operators (using
 declaration), in their own namespaces for proper argument dependent
@@ -1637,7 +1640,7 @@ compile time error.
 [*Semantics]:
 
 For each element, `e1`, in  sequence `a`, and for each element, `e2`, in
-sequence `b`, `e1 == e2` returns true. For any 2 zero length __sequence__s,
+sequence `b`, `e1 == e2` returns true. For any 2 zero length __sequence__(s),
 e and f, e == f  returns true.
 
 [heading Header]
