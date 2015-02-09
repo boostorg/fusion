@@ -513,7 +513,7 @@ Deferences the data property associated with the element referenced by an associ
     #include <boost/fusion/include/deref_data.hpp>
 
 [heading Example]
-    typedef __map__<__pair__<float,int&> > map;
+    typedef __map__<__pair__<float, int&> > map;
 
     int i(0);
     map m(1.0f,i);
@@ -677,7 +677,7 @@ Returns the type stored at the position of an iterator.
 [heading Description]
 Returns the type that will be returned by dereferencing an iterator.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename I
         >
@@ -721,7 +721,7 @@ Returns the type that will be returned by dereferencing an iterator.
 [heading Description]
 Returns the type of the next iterator in a sequence.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename I
         >
@@ -1044,7 +1044,7 @@ Returns the type of the data property associated with the element referenced by 
 [heading Description]
 Returns the type that will be returned by dereferencing the data property referenced by an associative iterator.
 
-[heading Synposis]
+[heading Synopsis]
     template<
         typename I
         >
@@ -1066,18 +1066,17 @@ Returns the type that will be returned by dereferencing the data property refere
 [*Semantics]: Returns the result of dereferencing the data property referenced by an associative iterator of type `I`.
 
 [heading Header]
-    #include <boosta/fusion/iterator/deref_data.hpp>
+    #include <boost/fusion/iterator/deref_data.hpp>
     #include <boost/fusion/include/deref_data.hpp>
 
 [heading Example]
-    typedef __map__<__pair__<float,int> > map;
-    typedef __result_of_begin__<vec>::type first;
-
-    BOOST_MPL_ASSERT((boost::is_same<__result_of_deref_data__<first>::type, int&>));
-
-[endsect]
+    typedef map<pair<float, int> > map_type;
+    typedef boost::fusion::result_of::begin<map_type>::type i_type;
+    typedef boost::fusion::result_of::deref_data<i_type>::type r_type;
+    BOOST_STATIC_ASSERT((boost::is_same<r_type, int&>::value));
 
 [endsect]
 
 [endsect]
 
+[endsect]

@@ -16,6 +16,7 @@
 #include <boost/config.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_convertible.hpp>
+#include <boost/type_traits/is_lvalue_reference.hpp>
 
 #if defined (BOOST_MSVC)
 #  pragma warning(push)
@@ -37,9 +38,11 @@ namespace boost { namespace fusion
             : second(rhs.second) {}
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
         BOOST_FUSION_GPU_ENABLED
         pair(pair&& rhs)
-            : second(std::forward<Second>(rhs.second)) {}
+            : second(BOOST_FUSION_FWD_ELEM(Second, rhs.second)) {}
+
 #endif
 
         BOOST_FUSION_GPU_ENABLED
@@ -48,11 +51,12 @@ namespace boost { namespace fusion
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-        template <typename Second2>
         BOOST_FUSION_GPU_ENABLED
+        template <typename Second2>
         pair(Second2&& val
+          , typename boost::disable_if<is_lvalue_reference<Second2> >::type* /* dummy */ = 0
           , typename boost::enable_if<is_convertible<Second2, Second> >::type* /*dummy*/ = 0
-        ) : second(std::forward<Second2>(val)) {}
+        ) : second(BOOST_FUSION_FWD_ELEM(Second, val)) {}
 
 #endif
 
@@ -80,7 +84,7 @@ namespace boost { namespace fusion
         BOOST_FUSION_GPU_ENABLED
         pair& operator=(pair&& rhs)
         {
-            second = std::forward<Second>(rhs.second);
+            second = BOOST_FUSION_FWD_ELEM(Second, rhs.second);
             return *this;
         }
 #endif

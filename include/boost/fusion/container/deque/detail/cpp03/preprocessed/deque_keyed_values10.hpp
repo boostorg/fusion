@@ -37,7 +37,7 @@ namespace boost { namespace fusion { namespace detail
             T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9>::type tail;
         typedef keyed_element<N, T0, tail> type;
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0)
+        static type construct(typename detail::call_param<T0 >::type t0)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -49,14 +49,14 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         >::forward_());
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -69,15 +69,15 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1
-                        >::forward_(std::forward<T_1>(t1)));
+                        >::forward_(std::forward<T_1>( t1)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -90,15 +90,15 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2 , typename add_reference<typename add_const<T3 >::type>::type t3)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -111,15 +111,15 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2 , typename add_reference<typename add_const<T3 >::type>::type t3 , typename add_reference<typename add_const<T4 >::type>::type t4)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -132,15 +132,15 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2 , typename add_reference<typename add_const<T3 >::type>::type t3 , typename add_reference<typename add_const<T4 >::type>::type t4 , typename add_reference<typename add_const<T5 >::type>::type t5)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -153,15 +153,15 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2 , typename add_reference<typename add_const<T3 >::type>::type t3 , typename add_reference<typename add_const<T4 >::type>::type t4 , typename add_reference<typename add_const<T5 >::type>::type t5 , typename add_reference<typename add_const<T6 >::type>::type t6)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5 , typename detail::call_param<T6 >::type t6)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -174,15 +174,15 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2 , typename add_reference<typename add_const<T3 >::type>::type t3 , typename add_reference<typename add_const<T4 >::type>::type t4 , typename add_reference<typename add_const<T5 >::type>::type t5 , typename add_reference<typename add_const<T6 >::type>::type t6 , typename add_reference<typename add_const<T7 >::type>::type t7)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5 , typename detail::call_param<T6 >::type t6 , typename detail::call_param<T7 >::type t7)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -195,15 +195,15 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2 , typename add_reference<typename add_const<T3 >::type>::type t3 , typename add_reference<typename add_const<T4 >::type>::type t4 , typename add_reference<typename add_const<T5 >::type>::type t5 , typename add_reference<typename add_const<T6 >::type>::type t6 , typename add_reference<typename add_const<T7 >::type>::type t7 , typename add_reference<typename add_const<T8 >::type>::type t8)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5 , typename detail::call_param<T6 >::type t6 , typename detail::call_param<T7 >::type t7 , typename detail::call_param<T8 >::type t8)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -216,15 +216,15 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8)));
         }
 # endif
         BOOST_FUSION_GPU_ENABLED
-        static type construct(typename add_reference<typename add_const<T0 >::type>::type t0 , typename add_reference<typename add_const<T1 >::type>::type t1 , typename add_reference<typename add_const<T2 >::type>::type t2 , typename add_reference<typename add_const<T3 >::type>::type t3 , typename add_reference<typename add_const<T4 >::type>::type t4 , typename add_reference<typename add_const<T5 >::type>::type t5 , typename add_reference<typename add_const<T6 >::type>::type t6 , typename add_reference<typename add_const<T7 >::type>::type t7 , typename add_reference<typename add_const<T8 >::type>::type t8 , typename add_reference<typename add_const<T9 >::type>::type t9)
+        static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5 , typename detail::call_param<T6 >::type t6 , typename detail::call_param<T7 >::type t7 , typename detail::call_param<T8 >::type t8 , typename detail::call_param<T9 >::type t9)
         {
             return type(t0,
                         deque_keyed_values_impl<
@@ -237,11 +237,11 @@ namespace boost { namespace fusion { namespace detail
         BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9)
         {
-            return type(std::forward<T_0>(t0),
+            return type(std::forward<T_0>( t0),
                         deque_keyed_values_impl<
                         next_index
                         , T_1 , T_2 , T_3 , T_4 , T_5 , T_6 , T_7 , T_8 , T_9
-                        >::forward_(std::forward<T_1>(t1) , std::forward<T_2>(t2) , std::forward<T_3>(t3) , std::forward<T_4>(t4) , std::forward<T_5>(t5) , std::forward<T_6>(t6) , std::forward<T_7>(t7) , std::forward<T_8>(t8) , std::forward<T_9>(t9)));
+                        >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8) , std::forward<T_9>( t9)));
         }
 # endif
     };

@@ -56,6 +56,17 @@ namespace ns
         {}
     };
 #endif
+
+    struct foo
+    {
+        int x;
+    };
+    
+    struct bar
+    {
+        foo foo_;
+        int y;
+    };
 }
 
 #if BOOST_PP_VARIADICS
@@ -79,6 +90,12 @@ namespace ns
     struct s { int m; };
     BOOST_FUSION_ADAPT_STRUCT(s, m)
 
+    BOOST_FUSION_ADAPT_STRUCT(
+        ns::bar,
+        foo_.x, // test that adapted members can actually be expressions
+        y
+    )
+
 #else // BOOST_PP_VARIADICS
 
     BOOST_FUSION_ADAPT_STRUCT(
@@ -99,6 +116,12 @@ namespace ns
 
     struct s { int m; };
     BOOST_FUSION_ADAPT_STRUCT(s, (BOOST_FUSION_ADAPT_AUTO, m))
+
+    BOOST_FUSION_ADAPT_STRUCT(
+        ns::bar,
+        (BOOST_FUSION_ADAPT_AUTO, foo_.x) // test that adapted members can actually be expressions
+        (BOOST_FUSION_ADAPT_AUTO, y)
+    )
 
 #endif
 
@@ -191,6 +214,15 @@ main()
         BOOST_TEST(p == make_vector(123, 456, 789));
     }
 #endif
+
+    {
+        fusion::vector<int, float> v1(4, 2);
+        ns::bar v2 = {5, 3};
+        BOOST_TEST(v1 < v2);
+        BOOST_TEST(v1 <= v2);
+        BOOST_TEST(v2 > v1);
+        BOOST_TEST(v2 >= v1);
+    }
 
     return boost::report_errors();
 }

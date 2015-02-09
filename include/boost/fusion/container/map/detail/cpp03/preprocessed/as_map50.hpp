@@ -8,6 +8,7 @@
 ==============================================================================*/
 namespace boost { namespace fusion { namespace detail
 {
+BOOST_FUSION_BARRIER_BEGIN
     template <bool is_assoc>
     struct as_map<1, is_assoc>
     {
@@ -1058,4 +1059,5 @@ namespace boost { namespace fusion { namespace detail
             return result(gen::D0::call(i0) , gen::D1::call(i1) , gen::D2::call(i2) , gen::D3::call(i3) , gen::D4::call(i4) , gen::D5::call(i5) , gen::D6::call(i6) , gen::D7::call(i7) , gen::D8::call(i8) , gen::D9::call(i9) , gen::D10::call(i10) , gen::D11::call(i11) , gen::D12::call(i12) , gen::D13::call(i13) , gen::D14::call(i14) , gen::D15::call(i15) , gen::D16::call(i16) , gen::D17::call(i17) , gen::D18::call(i18) , gen::D19::call(i19) , gen::D20::call(i20) , gen::D21::call(i21) , gen::D22::call(i22) , gen::D23::call(i23) , gen::D24::call(i24) , gen::D25::call(i25) , gen::D26::call(i26) , gen::D27::call(i27) , gen::D28::call(i28) , gen::D29::call(i29) , gen::D30::call(i30) , gen::D31::call(i31) , gen::D32::call(i32) , gen::D33::call(i33) , gen::D34::call(i34) , gen::D35::call(i35) , gen::D36::call(i36) , gen::D37::call(i37) , gen::D38::call(i38) , gen::D39::call(i39) , gen::D40::call(i40) , gen::D41::call(i41) , gen::D42::call(i42) , gen::D43::call(i43) , gen::D44::call(i44) , gen::D45::call(i45) , gen::D46::call(i46) , gen::D47::call(i47) , gen::D48::call(i48) , gen::D49::call(i49));
         }
     };
+BOOST_FUSION_BARRIER_END
 }}}

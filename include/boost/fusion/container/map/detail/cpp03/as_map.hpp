@@ -22,6 +22,8 @@
 
 namespace boost { namespace fusion { namespace detail
 {
+BOOST_FUSION_BARRIER_BEGIN
+
     template <int size, bool is_assoc>
     struct as_map;
 
@@ -42,6 +44,8 @@ namespace boost { namespace fusion { namespace detail
             return map<>();
         }
     };
+
+BOOST_FUSION_BARRIER_END
 }}}
 
 #if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
@@ -66,6 +70,8 @@ namespace boost { namespace fusion { namespace detail
 
 namespace boost { namespace fusion { namespace detail
 {
+BOOST_FUSION_BARRIER_BEGIN
+
 #define BOOST_FUSION_NEXT_ITERATOR(z, n, data)                                  \
     typedef typename fusion::result_of::next<BOOST_PP_CAT(I, n)>::type          \
         BOOST_PP_CAT(I, BOOST_PP_INC(n));
@@ -90,6 +96,7 @@ namespace boost { namespace fusion { namespace detail
 #undef BOOST_FUSION_PAIR_FROM_ITERATOR
 #undef BOOST_FUSION_DREF_CALL_ITERATOR
 
+BOOST_FUSION_BARRIER_END
 }}}
 
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)

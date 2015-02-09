@@ -364,7 +364,7 @@ implemented).
 
 [heading Header]
 
-  #include <booost/fusion/functional/invocation/invoke_procedure.hpp>
+  #include <boost/fusion/functional/invocation/invoke_procedure.hpp>
 
 [heading Example]
     __vector__<int,int> v(1,2);
@@ -644,7 +644,7 @@ An unary __poly_func_obj__ adapter template for __callable_obj__ target
 functions. It takes a __forward_sequence__ that contains the arguments for
 the target function.
 
-The result is discared and the adapter's return type is `void`.
+The result is discarded and the adapter's return type is `void`.
 
 The type of the target function is allowed to be const qualified or a
 reference. Const qualification is preserved and propagated appropriately
@@ -922,7 +922,7 @@ An n-ary __poly_func_obj__ adapter template for an unary __poly_func_obj__
 target function. When called, its arguments are bundled to a
 __random_access_sequence__ that is passed to the target function object.
 
-The call operators of  esulting function objects are strictly typed
+The call operators of resulting function objects are strictly typed
 (in other words, non-templatized) with the types from a __sequence__.
 
 The type of the target function is allowed to be const qualified or a
