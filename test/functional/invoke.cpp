@@ -82,11 +82,10 @@ struct fobj
     int operator()(int i, object const &, object_nc &);
     int operator()(int i, object const &, object_nc &) const;
 };
-// FIXME:
-//SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj, sfinae_friendly::v0>));
-//SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj, sfinae_friendly::v1>));
-//SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj, sfinae_friendly::v2>));
-//SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj, sfinae_friendly::v3>));
+SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj, sfinae_friendly::v0>));
+SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj, sfinae_friendly::v1>));
+SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj, sfinae_friendly::v2>));
+SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj, sfinae_friendly::v3>));
 
 
 struct nullary_fobj
@@ -96,10 +95,9 @@ struct nullary_fobj
     int operator()()       { return 0; }
     int operator()() const { return 1; }
 };
-// FIXME:
-//SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<nullary_fobj, sfinae_friendly::v1>));
-//SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<nullary_fobj, sfinae_friendly::v2>));
-//SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<nullary_fobj, sfinae_friendly::v3>));
+SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<nullary_fobj, sfinae_friendly::v1>));
+SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<nullary_fobj, sfinae_friendly::v2>));
+SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<nullary_fobj, sfinae_friendly::v3>));
 
 
 struct fobj_nc
@@ -118,11 +116,10 @@ struct fobj_nc
     int operator()(int i)       { return 14 + i; }
     int operator()(int i) const { return 15 + i; }
 };
-// FIXME:
-//SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj_nc, sfinae_friendly::v0>));
-//SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj_nc, sfinae_friendly::v1>));
-//SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj_nc, sfinae_friendly::v2>));
-//SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj_nc, sfinae_friendly::v3>));
+SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj_nc, sfinae_friendly::v0>));
+SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj_nc, sfinae_friendly::v1>));
+SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj_nc, sfinae_friendly::v2>));
+SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<fobj_nc, sfinae_friendly::v3>));
 
 
 struct nullary_fobj_nc
@@ -133,10 +130,9 @@ struct nullary_fobj_nc
     int operator()()       { return 12; }
     int operator()() const { return 13; }
 };
-// FIXME:
-//SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<nullary_fobj_nc, sfinae_friendly::v1>));
-//SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<nullary_fobj_nc, sfinae_friendly::v2>));
-//SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<nullary_fobj_nc, sfinae_friendly::v3>));
+SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<nullary_fobj_nc, sfinae_friendly::v1>));
+SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<nullary_fobj_nc, sfinae_friendly::v2>));
+SFINAE_FRIENDLY_ASSERT((fusion::result_of::invoke<nullary_fobj_nc, sfinae_friendly::v3>));
 
 
 int nullary() { return 16; }
