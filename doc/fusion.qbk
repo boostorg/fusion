@@ -331,7 +331,7 @@
 [def __tag_dispatching__        [link fusion.notes.tag_dispatching /tag dispatching/]]
 [def __element_conversion__     [link fusion.notes.element_conversion /element conversion/]]
 [def __see_element_conversion__ [link fusion.notes.element_conversion /see element conversion/]]
-[def __note_boost_ref__         [link fusion.notes.boost__ref `boost::ref`]]
+[def __note_ref_wrappers__      [link fusion.notes.reference_wrappers `Reference Wrappers`]]
 
 [def __quick_start__            [link fusion.quick_start Quick Start]]
 [def __organization__           [link fusion.organization Organization]]
