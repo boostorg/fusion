@@ -20,11 +20,6 @@
     ]
 ]
 
-[def __note__                   [$images/note.png]]
-[def __alert__                  [$images/alert.png]]
-[def __tip__                    [$images/tip.png]]
-[def __caution__                [$images/caution.png]]
-
 [def __spirit__                 [@http://spirit.sourceforge.net Spirit]]
 [def __phoenix__                [@http://www.boost.org/libs/phoenix/index.html Phoenix]]
 [def __mpl__                    [@http://www.boost.org/libs/mpl/index.html MPL]]
