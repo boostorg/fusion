@@ -89,6 +89,35 @@ __std_pair_doc__, __tr1_tuple_pair__
 
 [endsect]
 
+[section std::tuple]
+
+This module provides adapters for `std::tuple`. Including the module header
+makes `std::tuple` a fully conforming __random_access_sequence__.
+
+[important To be fully conforming, compiler should support C++11 Variadic Templates.]
+
+[heading Header]
+
+    #include <boost/fusion/adapted/std_tuple.hpp>
+    #include <boost/fusion/include/std_tuple.hpp>
+
+[heading Model of]
+
+* __random_access_sequence__
+
+[heading Example]
+
+    std::tuple<int, std::string, float> p(123, "Hola!!!", 456.f);
+    std::cout << __at_c__<0>(p) << std::endl;
+    std::cout << __at_c__<1>(p) << std::endl;
+    std::cout << p << std::endl;
+
+[heading See also]
+
+__std_tuple_doc__
+
+[endsect]
+
 [section mpl sequence]
 
 This module provides adapters for __mpl__ sequences. Including the module
@@ -168,8 +197,8 @@ header makes `boost::tuple` a fully conforming __forward_sequence__.
 [heading Example]
 
     boost::tuple<int,std::string> example_tuple(101, "hello");
-    std::cout << *boost::fusion::begin(example_tuple) << '\n';
-    std::cout << *boost::fusion::next(boost::fusion::begin(example_tuple)) << '\n';
+    std::cout << *__begin__(example_tuple) << '\n';
+    std::cout << *__next__(__begin__(example_tuple)) << '\n';
 
 [heading See also]
 
