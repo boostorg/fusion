@@ -52,12 +52,12 @@ namespace boost { namespace fusion
         typedef random_access_traversal_tag category;
         typedef mpl::int_<0> size;
 
-        BOOST_FUSION_GPU_ENABLED
-        vector0() {}
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        vector0() BOOST_NOEXCEPT {}
 
         template<typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
-        vector0(Sequence const& /*seq*/)
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        vector0(Sequence const& /*seq*/) BOOST_NOEXCEPT
         {}
     };
 }}

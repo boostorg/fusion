@@ -30,7 +30,7 @@ namespace boost { namespace fusion
         typedef Seq sequence;
         typedef mpl::int_<Pos> index;
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         map_iterator(Seq& seq)
             : seq_(seq)
         {}
@@ -73,7 +73,7 @@ namespace boost { namespace fusion
                 decltype(boost::declval<sequence>().get(index()))
             type;
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static type
             call(Iterator const& it)
             {
@@ -99,7 +99,7 @@ namespace boost { namespace fusion
 
             typedef typename add_reference<second_type>::type type;
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static type
             call(Iterator const& it)
             {
@@ -114,7 +114,7 @@ namespace boost { namespace fusion
             typedef typename Iterator::sequence sequence;
             typedef map_iterator<sequence, index::value + N::value> type;
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static type
             call(Iterator const& i)
             {
@@ -141,7 +141,7 @@ namespace boost { namespace fusion
                 >::type
             type;
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static type
             call(I1 const&, I2 const&)
             {

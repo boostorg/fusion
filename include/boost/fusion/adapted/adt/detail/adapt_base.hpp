@@ -17,6 +17,12 @@
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_const.hpp>
 
+#if defined(BOOST_GCC)
+#define BOOST_FUSION_ADT_CONSTEXPR BOOST_CXX14_CONSTEXPR
+#else
+#define BOOST_FUSION_ADT_CONSTEXPR BOOST_CONSTEXPR
+#endif
+
 #define BOOST_FUSION_ADAPT_ADT_GET_IDENTITY_TEMPLATE_IMPL(TEMPLATE_PARAMS_SEQ)  \
     typename detail::get_identity<                                              \
         lvalue                                                                  \
@@ -40,7 +46,7 @@
     >                                                                           \
     {                                                                           \
         template<class Val>                                                     \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED                          \
         static void                                                             \
         boost_fusion_adapt_adt_impl_set(                                        \
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj,               \
@@ -49,7 +55,7 @@
             BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 3, ATTRIBUTE);            \
         }                                                                       \
                                                                                 \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_FUSION_ADT_CONSTEXPR BOOST_FUSION_GPU_ENABLED                     \
         static BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE)          \
         boost_fusion_adapt_adt_impl_get(                                        \
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj)               \
@@ -57,7 +63,7 @@
             return BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 2, ATTRIBUTE);     \
         }                                                                       \
                                                                                 \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_FUSION_ADT_CONSTEXPR BOOST_FUSION_GPU_ENABLED                     \
         static BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 1, ATTRIBUTE)          \
         boost_fusion_adapt_adt_impl_get(                                        \
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ) const& obj)         \
@@ -77,14 +83,14 @@
     {                                                                           \
         typedef BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 1, ATTRIBUTE) type;   \
                                                                                 \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                \
         explicit                                                                \
         adt_attribute_proxy(                                                    \
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ) const& o)           \
           : obj(&o)                                                             \
         {}                                                                      \
                                                                                 \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_FUSION_ADT_CONSTEXPR BOOST_FUSION_GPU_ENABLED                     \
         type get() const                                                        \
         {                                                                       \
             return access::adt_attribute_access<                                \
@@ -93,7 +99,7 @@
             >::boost_fusion_adapt_adt_impl_get(*obj);                           \
         }                                                                       \
                                                                                 \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_FUSION_ADT_CONSTEXPR BOOST_FUSION_GPU_ENABLED                     \
         operator type() const                                                   \
         {                                                                       \
             return get();                                                       \
@@ -113,7 +119,7 @@
     {                                                                           \
         typedef BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE, 0, ATTRIBUTE) type;   \
                                                                                 \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                \
         explicit                                                                \
         adt_attribute_proxy(                                                    \
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& o)                 \
@@ -121,7 +127,7 @@
         {}                                                                      \
                                                                                 \
         template<class Val>                                                     \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED                          \
         adt_attribute_proxy&                                                    \
         operator=(Val const& val)                                               \
         {                                                                       \
@@ -132,7 +138,7 @@
             return *this;                                                       \
         }                                                                       \
                                                                                 \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_FUSION_ADT_CONSTEXPR BOOST_FUSION_GPU_ENABLED                     \
         type get() const                                                        \
         {                                                                       \
             return access::adt_attribute_access<                                \
@@ -141,7 +147,7 @@
             >::boost_fusion_adapt_adt_impl_get(*obj);                           \
         }                                                                       \
                                                                                 \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_FUSION_ADT_CONSTEXPR BOOST_FUSION_GPU_ENABLED                     \
         operator type() const                                                   \
         {                                                                       \
             return get();                                                       \
@@ -181,7 +187,7 @@
                 >                                                               \
             type;                                                               \
                                                                                 \
-            BOOST_FUSION_GPU_ENABLED                                            \
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                            \
             static type                                                         \
             call(Seq& obj)                                                      \
             {                                                                   \

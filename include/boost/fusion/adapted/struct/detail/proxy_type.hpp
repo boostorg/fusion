@@ -19,7 +19,7 @@
                                                                                 \
     struct NAME                                                                 \
     {                                                                           \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                \
         NAME(WRAPPED_TYPE& in_obj)                                              \
           : obj(in_obj)                                                         \
         {}                                                                      \

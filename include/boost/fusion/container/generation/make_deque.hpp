@@ -32,7 +32,7 @@ namespace boost { namespace fusion
     }
 
     template <typename ...T>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline deque<typename detail::as_fusion_element<T>::type...>
     make_deque(T const&... arg)
     {

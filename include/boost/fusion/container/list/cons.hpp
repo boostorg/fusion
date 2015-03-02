@@ -49,31 +49,31 @@ namespace boost { namespace fusion
         typedef Car car_type;
         typedef Cdr cdr_type;
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         cons()
             : car(), cdr() {}
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         explicit cons(typename detail::call_param<Car>::type in_car)
             : car(in_car), cdr() {}
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         cons(
             typename detail::call_param<Car>::type in_car
           , typename detail::call_param<Cdr>::type in_cdr)
             : car(in_car), cdr(in_cdr) {}
         
         template <typename Car2, typename Cdr2>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         cons(cons<Car2, Cdr2> const& rhs)
             : car(rhs.car), cdr(rhs.cdr) {}
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         cons(cons const& rhs)
             : car(rhs.car), cdr(rhs.cdr) {}
 
         template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         cons(
             Sequence const& seq
           , typename boost::enable_if<
@@ -86,13 +86,13 @@ namespace boost { namespace fusion
             , cdr(fusion::next(fusion::begin(seq)), mpl::true_()) {}
 
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         cons(Iterator const& iter, mpl::true_ /*this_is_an_iterator*/)
             : car(*iter)
             , cdr(fusion::next(iter), mpl::true_()) {}
 
         template <typename Car2, typename Cdr2>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         cons& operator=(cons<Car2, Cdr2> const& rhs)
         {
             car = rhs.car;
@@ -100,7 +100,7 @@ namespace boost { namespace fusion
             return *this;
         }
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         cons& operator=(cons const& rhs)
         {
             car = rhs.car;
@@ -109,7 +109,7 @@ namespace boost { namespace fusion
         }
 
         template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         typename boost::enable_if<
             mpl::and_<
                 traits::is_sequence<Sequence>
@@ -124,7 +124,7 @@ namespace boost { namespace fusion
         }
 
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         void assign_from_iter(Iterator const& iter)
         {
             car = *iter;

@@ -65,35 +65,35 @@ namespace boost { namespace fusion
 
         typedef typename storage_type::size size;
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         map()
             : data() {}
 
         template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         map(Sequence const& rhs)
             : data(rhs) {}
 
         #include <boost/fusion/container/map/detail/cpp03/map_forward_ctor.hpp>
 
         template <typename T>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         map& operator=(T const& rhs)
         {
             data = rhs;
             return *this;
         }
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         map& operator=(map const& rhs)
         {
             data = rhs.data;
             return *this;
         }
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         storage_type& get_data() { return data; }
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         storage_type const& get_data() const { return data; }
 
     private:

@@ -41,7 +41,7 @@ namespace boost { namespace fusion
         typedef Category category;
         BOOST_STATIC_ASSERT((!result_of::equal_to<first_type, last_type>::value));
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         joint_view_iterator(First const& in_first, Concat const& in_concat)
             : first(first_converter::call(in_first))
             , concat(concat_converter::call(in_concat))

@@ -150,7 +150,7 @@ namespace boost { namespace fusion
             typedef typename boost::add_reference<qualified_type>::type
                 result_type;
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline result_type call(T C::* f, Sequence & s)
             {
                 typename result_of::front<Sequence>::type c = fusion::front(s);
@@ -173,7 +173,7 @@ namespace boost { namespace fusion
     }
 
     template <typename Function, class Sequence>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename result_of::invoke<Function,Sequence>::type
     invoke(Function f, Sequence & s)
     {
@@ -183,7 +183,7 @@ namespace boost { namespace fusion
     }
 
     template <typename Function, class Sequence>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename result_of::invoke<Function,Sequence const>::type
     invoke(Function f, Sequence const & s)
     {
@@ -220,7 +220,7 @@ namespace boost { namespace fusion
 #if N > 0
 
             template <typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline result_type
             call(F & f, Sequence & s)
             {
@@ -230,7 +230,7 @@ namespace boost { namespace fusion
 
 #else
             template <typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline result_type
             call(F & f, Sequence & /*s*/)
             {
@@ -251,7 +251,7 @@ namespace boost { namespace fusion
 #if N > 0
 
             template <typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline result_type
             call(F & f, Sequence & s)
             {
@@ -261,7 +261,7 @@ namespace boost { namespace fusion
 
 #else
             template <typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline result_type
             call(F & f, Sequence & /*s*/)
             {
@@ -282,7 +282,7 @@ namespace boost { namespace fusion
             typedef typename ft::result_type<Function>::type result_type;
 
             template <typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline result_type
             call(F & f, Sequence & s)
             {
@@ -318,7 +318,7 @@ namespace boost { namespace fusion
 #if N > 0
 
             template <typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline result_type
             call(F & f, Sequence & s)
             {
@@ -330,7 +330,7 @@ namespace boost { namespace fusion
 #else
 
             template <typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline result_type
             call(F & f, Sequence & /*s*/)
             {
@@ -353,7 +353,7 @@ namespace boost { namespace fusion
 #if N > 0
 
             template <typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline result_type
             call(F & f, Sequence & s)
             {
@@ -365,7 +365,7 @@ namespace boost { namespace fusion
 #else
 
             template <typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline result_type
             call(F & f, Sequence & /*s*/)
             {
@@ -387,7 +387,7 @@ namespace boost { namespace fusion
             typedef typename ft::result_type<Function>::type result_type;
 
             template <typename F>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline result_type
             call(F & f, Sequence & s)
             {

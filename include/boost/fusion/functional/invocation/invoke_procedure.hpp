@@ -47,11 +47,11 @@ namespace boost { namespace fusion
     }
 
     template <typename Function, class Sequence>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline void invoke_procedure(Function, Sequence &);
 
     template <typename Function, class Sequence>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline void invoke_procedure(Function, Sequence const &);
 
     //----- ---- --- -- - -  -   -
@@ -77,7 +77,7 @@ namespace boost { namespace fusion
     }
 
     template <typename Function, class Sequence>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline void invoke_procedure(Function f, Sequence & s)
     {
         detail::invoke_procedure_impl<
@@ -86,7 +86,7 @@ namespace boost { namespace fusion
     }
 
     template <typename Function, class Sequence>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline void invoke_procedure(Function f, Sequence const & s)
     {
         detail::invoke_procedure_impl<
@@ -113,7 +113,7 @@ namespace boost { namespace fusion
 
 #if N > 0
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline void call(Function & f, Sequence & s)
             {
                 f(BOOST_PP_ENUM(N,M,~));
@@ -121,7 +121,7 @@ namespace boost { namespace fusion
 
 #else
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline void call(Function & f, Sequence & /*s*/)
             {
                 f();
@@ -135,7 +135,7 @@ namespace boost { namespace fusion
         template <typename Function, class Sequence>
         struct invoke_procedure_impl<Function,Sequence,N,true,true>
         {
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline void call(Function & f, Sequence & s)
             {
                 (that_ptr<typename mpl::front<
@@ -158,7 +158,7 @@ namespace boost { namespace fusion
 
 #if N > 0
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline void call(Function & f, Sequence & s)
             {
                 typedef typename result_of::begin<Sequence>::type I0;
@@ -168,7 +168,7 @@ namespace boost { namespace fusion
             }
 
 #else
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline void call(Function & f, Sequence & /*s*/)
             {
                 f();
@@ -182,7 +182,7 @@ namespace boost { namespace fusion
         template <typename Function, class Sequence>
         struct invoke_procedure_impl<Function,Sequence,N,true,false>
         {
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline void call(Function & f, Sequence & s)
             {
                 typedef typename result_of::begin<Sequence>::type I0;
