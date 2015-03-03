@@ -121,7 +121,7 @@
                 TEMPLATE_PARAMS_SEQ)                                            \
                                                                                 \
         template<class Val>                                                     \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED                          \
         static void                                                             \
         boost_fusion_adapt_adt_impl_set(                                        \
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj,               \
@@ -166,7 +166,7 @@
               , I                                                               \
             >::const_type type;                                                 \
                                                                                 \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                \
         explicit                                                                \
         adt_attribute_proxy(                                                    \
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ) const& o)           \
@@ -207,7 +207,7 @@
               , I                                                               \
             >::type type;                                                       \
                                                                                 \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                \
         explicit                                                                \
         adt_attribute_proxy(                                                    \
             BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& o)                 \
@@ -215,7 +215,7 @@
         {}                                                                      \
                                                                                 \
         template<class Val>                                                     \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED                          \
         adt_attribute_proxy&                                                    \
         operator=(Val const& val)                                               \
         {                                                                       \
@@ -281,7 +281,7 @@
                 >                                                               \
             type;                                                               \
                                                                                 \
-            BOOST_FUSION_GPU_ENABLED                                            \
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                            \
             static type                                                         \
             call(Seq& obj)                                                      \
             {                                                                   \

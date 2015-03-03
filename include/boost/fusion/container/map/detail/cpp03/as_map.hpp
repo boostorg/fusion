@@ -37,7 +37,7 @@ BOOST_FUSION_BARRIER_BEGIN
         };
 
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator)
         {
@@ -127,7 +127,7 @@ BOOST_FUSION_BARRIER_END
         };
 
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {

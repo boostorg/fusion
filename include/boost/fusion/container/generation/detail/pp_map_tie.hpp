@@ -62,7 +62,8 @@ namespace boost { namespace fusion
         };
     }
 
-    BOOST_FUSION_GPU_ENABLED inline map<>
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+    inline map<>
     map_tie()
     {
         return map<>();
@@ -119,7 +120,7 @@ namespace boost { namespace fusion
         BOOST_PP_ENUM_PARAMS(N, typename K)
       , BOOST_PP_ENUM_PARAMS(N, typename D)
     >
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline map<BOOST_PP_ENUM(N, BOOST_FUSION_TIED_PAIR, _)>
     map_tie(BOOST_PP_ENUM_BINARY_PARAMS(N, D, & arg))
     {

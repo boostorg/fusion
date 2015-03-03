@@ -35,7 +35,7 @@ namespace boost { namespace fusion {
         typedef Traversal category;
 
         template<typename InitSeq>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         zip_view_iterator(
             const InitSeq& iterator_seq)
             : iterators_(iterator_seq)
