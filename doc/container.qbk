@@ -191,7 +191,7 @@ defined in __forward_sequence__.
     [[`__at__<N>(l)`]           [The Nth element from the beginning of the sequence; see __at__.]]
 ]
 
-[blurb __note__ `__at__<N>(l)` is provided for convenience and compatibility
+[note `__at__<N>(l)` is provided for convenience and compatibility
 with the original __tuple__ library, despite `cons` being a
 __forward_sequence__ only (`at` is supposed to be a
 __random_access_sequence__ requirement). The runtime complexity of __at__ is
@@ -276,7 +276,7 @@ defined in __forward_sequence__.
     [[`__at__<N>(l)`]           [The Nth element from the beginning of the sequence; see __at__.]]
 ]
 
-[blurb __note__ `__at__<n>(l)` is provided for convenience and compatibility
+[note `__at__<n>(l)` is provided for convenience and compatibility
 with the original __tuple__ library, despite `list` being a
 __forward_sequence__ only (__at__ is supposed to be a
 __random_access_sequence__ requirement). The runtime complexity of __at__ is
@@ -363,7 +363,7 @@ defined in __bidirectional_sequence__.
     [[`__at__<N>(d)`]       [The Nth element from the beginning of the sequence; see __at__.]]
 ]
 
-[blurb __note__ `__at__<N>(d)` is provided for convenience, despite
+[note `__at__<N>(d)` is provided for convenience, despite
 `deque` being a __bidirectional_sequence__ only (`at` is supposed to be
 a __random_access_sequence__ requirement). The runtime complexity of
 __at__ is constant (see __recursive_inline__). `deque` element access
@@ -406,7 +406,7 @@ the same properties as the __deque__.
     [[`T`]                  [Element type]              [ ]]
 ]
 
-[blurb __note__ `Deque` can be a __deque__, a __front_extended_deque__ or a
+[note `Deque` can be a __deque__, a __front_extended_deque__ or a
 __back_extended_deque__]
 
 [heading Model of]
@@ -430,7 +430,7 @@ not defined in __bidirectional_sequence__.
     [[`__at__<N>(d)`]       [The Nth element from the beginning of the sequence; see __at__.]]
 ]
 
-[blurb __note__ See __deque__ for further details.]
+[note See __deque__ for further details.]
 
 [heading Example]
 
@@ -467,7 +467,7 @@ the same properties as the __deque__.
     [[`T`]                  [Element type]              [ ]]
 ]
 
-[blurb __note__ `Deque` can be a __deque__, a __back_extended_deque__ or a
+[note `Deque` can be a __deque__, a __back_extended_deque__ or a
 __back_extended_deque__]
 
 [heading Model of]
@@ -491,7 +491,7 @@ not defined in __bidirectional_sequence__.
     [[`__at__<N>(d)`]       [The Nth element from the beginning of the sequence; see __at__.]]
 ]
 
-[blurb __note__ See __deque__ for further details.]
+[note See __deque__ for further details.]
 
 [heading Example]
 
@@ -730,7 +730,7 @@ before including any Fusion header to change the default. Example:
 
 [heading See also]
 
-__note_boost_ref__
+__note_ref_wrappers__
 
 [endsect]
 
@@ -778,7 +778,7 @@ __result_of_make_cons__`<Car>::type`
 
 [heading See also]
 
-__note_boost_ref__
+__note_ref_wrappers__
 
 [endsect]
 
@@ -828,7 +828,7 @@ default. Example:
 
 [heading See also]
 
-__note_boost_ref__
+__note_ref_wrappers__
 
 [endsect]
 
@@ -880,7 +880,7 @@ Fusion header to change the default. Example:
 
 [heading See also]
 
-__note_boost_ref__
+__note_ref_wrappers__
 
 [endsect]
 
@@ -932,7 +932,7 @@ default. Example:
 
 [heading See also]
 
-__note_boost_ref__
+__note_ref_wrappers__
 
 [endsect]
 
@@ -990,7 +990,7 @@ default. Example:
 
 [heading See also]
 
-__note_boost_ref__, __fusion_pair__
+__note_ref_wrappers__, __fusion_pair__
 
 [endsect]
 

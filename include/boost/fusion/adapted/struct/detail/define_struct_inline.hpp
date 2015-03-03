@@ -302,7 +302,7 @@
 #define BOOST_FUSION_DEFINE_STRUCT_INLINE_MEMBERS(NAME, ATTRIBUTES)             \
     BOOST_FUSION_DEFINE_STRUCT_MEMBERS_IMPL(                                    \
         NAME,                                                                   \
-        BOOST_PP_CAT(BOOST_FUSION_ADAPT_STRUCT_FILLER_0 ATTRIBUTES,_END))
+        BOOST_PP_CAT(BOOST_FUSION_DEFINE_STRUCT_FILLER_0 ATTRIBUTES,_END))
 
 // Note: can't compute BOOST_PP_SEQ_SIZE(ATTRIBUTES_SEQ) directly because
 //       ATTRIBUTES_SEQ may be empty and calling BOOST_PP_SEQ_SIZE on an empty
@@ -316,7 +316,7 @@
 #define BOOST_FUSION_DEFINE_STRUCT_INLINE_ITERATOR(NAME, ATTRIBUTES)            \
     BOOST_FUSION_DEFINE_STRUCT_ITERATOR_IMPL(                                   \
         NAME,                                                                   \
-        BOOST_PP_CAT(BOOST_FUSION_ADAPT_STRUCT_FILLER_0 ATTRIBUTES,_END))
+        BOOST_PP_CAT(BOOST_FUSION_DEFINE_STRUCT_FILLER_0 ATTRIBUTES,_END))
 
 #define BOOST_FUSION_DEFINE_STRUCT_ITERATOR_IMPL(NAME, ATTRIBUTES_SEQ)          \
     BOOST_FUSION_DEFINE_STRUCT_INLINE_ITERATOR_IMPL_IMPL(                       \

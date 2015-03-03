@@ -323,7 +323,7 @@ For our __random_access_sequence__ we will also need to implement `size_impl`,
 In order for `example_struct` to serve as an associative forward sequence,
 we need to adapt the traversal category of our sequence and our iterator
 accordingly and enable 3 intrinsic sequence lookup features, __at_key__,
-__value_at_key__ and __has_key__. We also need to enable 3 iterator lookup
+__result_of_value_at_key__ and __has_key__. We also need to enable 3 iterator lookup
 features, __result_of_key_of__, __result_of_value_of_data__ and __deref_data__.
 
 To implement `at_key_impl` we need to associate the `fields::name` and `fields::age`

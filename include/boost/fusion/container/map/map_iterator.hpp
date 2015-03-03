@@ -163,4 +163,13 @@ namespace boost { namespace fusion
 
 }}
 
+#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
+namespace std
+{
+    template <typename Seq, int Pos>
+    struct iterator_traits< ::boost::fusion::map_iterator<Seq, Pos> >
+    { };
+}
+#endif
+
 #endif

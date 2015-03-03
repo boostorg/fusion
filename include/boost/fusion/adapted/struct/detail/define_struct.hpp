@@ -34,6 +34,13 @@
 #include <boost/type_traits/is_convertible.hpp>
 #include <boost/utility/enable_if.hpp>
 
+#define BOOST_FUSION_DEFINE_STRUCT_FILLER_0(X, Y)                               \
+    ((X, Y)) BOOST_FUSION_DEFINE_STRUCT_FILLER_1
+#define BOOST_FUSION_DEFINE_STRUCT_FILLER_1(X, Y)                               \
+    ((X, Y)) BOOST_FUSION_DEFINE_STRUCT_FILLER_0
+#define BOOST_FUSION_DEFINE_STRUCT_FILLER_0_END
+#define BOOST_FUSION_DEFINE_STRUCT_FILLER_1_END
+
 #define BOOST_FUSION_DEFINE_STRUCT_COPY_CTOR_FILLER_I(                          \
     R, ATTRIBUTE_TUPEL_SIZE, I, ATTRIBUTE)                                      \
                                                                                 \

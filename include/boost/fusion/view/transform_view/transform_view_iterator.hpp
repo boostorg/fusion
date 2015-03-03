@@ -76,5 +76,17 @@ namespace boost { namespace fusion
     };
 }}
 
+#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
+namespace std
+{
+    template <typename First, typename F>
+    struct iterator_traits< ::boost::fusion::transform_view_iterator<First, F> >
+    { };
+    template <typename First1, typename First2, typename F>
+    struct iterator_traits< ::boost::fusion::transform_view_iterator2<First1, First2, F> >
+    { };
+}
+#endif
+
 #endif
 
