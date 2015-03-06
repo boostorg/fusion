@@ -26,6 +26,16 @@
 
 #define M BOOST_PP_ITERATION()
 
+    // XXX:
+#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
+FUSION_HASH if !defined(BOOST_CLANG)
+    BOOST_CONSTEXPR
+FUSION_HASH endif
+#else
+#if !defined(BOOST_CLANG)
+    BOOST_CONSTEXPR
+#endif
+#endif
     BOOST_FUSION_GPU_ENABLED
 #if M == 1
     explicit
@@ -40,6 +50,16 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) || \
     (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
     template <BOOST_PP_ENUM_PARAMS(M, typename U)>
+    // XXX:
+#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
+FUSION_HASH if !defined(BOOST_CLANG)
+    BOOST_CXX14_CONSTEXPR
+FUSION_HASH endif
+#else
+#if !defined(BOOST_CLANG)
+    BOOST_CXX14_CONSTEXPR
+#endif
+#endif
     BOOST_FUSION_GPU_ENABLED
 #if M == 1
     explicit

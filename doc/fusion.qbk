@@ -20,11 +20,6 @@
     ]
 ]
 
-[def __note__                   [$images/note.png]]
-[def __alert__                  [$images/alert.png]]
-[def __tip__                    [$images/tip.png]]
-[def __caution__                [$images/caution.png]]
-
 [def __spirit__                 [@http://spirit.sourceforge.net Spirit]]
 [def __phoenix__                [@http://www.boost.org/libs/phoenix/index.html Phoenix]]
 [def __mpl__                    [@http://www.boost.org/libs/mpl/index.html MPL]]
@@ -55,6 +50,7 @@
 [def __boost_func_factory__     [@http://www.boost.org/libs/functional/factory/doc/html/index.html Boost.Functional/Factory]]
 [def __boost_func_hash__        [@http://www.boost.org/doc/html/hash.html Boost.Functional/Hash]]
 [def __std_pair_doc__           [@http://www.sgi.com/tech/stl/pair.html `std::pair`]]
+[def __std_tuple_doc__          [@http://en.cppreference.com/w/cpp/utility/tuple `std::tuple`]]
 [def __std_plus_doc__           [@http://www.sgi.com/tech/stl/plus.html `std::plus`]]
 [def __std_minus_doc__          [@http://www.sgi.com/tech/stl/minus.html `std::minus`]]
 
@@ -331,7 +327,7 @@
 [def __tag_dispatching__        [link fusion.notes.tag_dispatching /tag dispatching/]]
 [def __element_conversion__     [link fusion.notes.element_conversion /element conversion/]]
 [def __see_element_conversion__ [link fusion.notes.element_conversion /see element conversion/]]
-[def __note_boost_ref__         [link fusion.notes.boost__ref `boost::ref`]]
+[def __note_ref_wrappers__      [link fusion.notes.reference_wrappers `Reference Wrappers`]]
 
 [def __quick_start__            [link fusion.quick_start Quick Start]]
 [def __organization__           [link fusion.organization Organization]]

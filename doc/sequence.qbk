@@ -255,7 +255,7 @@ any Random Access Sequence the following must be met:
     [[`__result_of_value_at_c__<S, N>::type`]  [Amortized constant time]]
 ]
 
-[blurb __note__ `__result_of_at__<S, M>` returns the actual type returned by
+[note `__result_of_at__<S, M>` returns the actual type returned by
 `__at__<M>(s)`. In most cases, this is a reference. Hence, there is no way to
 know the exact element type using `__result_of_at__<S, M>`.The element at `M`
 may actually be a reference to begin with. For this purpose, you can use
@@ -330,7 +330,7 @@ For any Associative Sequence the following expressions must be valid:
     [[`__result_of_value_at_key__<S, K>::type`]    [Amortized constant time]]
 ]
 
-[blurb __note__ `__result_of_at_key__<S, K>` returns the actual type returned
+[note `__result_of_at_key__<S, K>` returns the actual type returned
 by `__at_key__<K>(s)`. In most cases, this is a reference. Hence, there is no
 way to know the exact element type using `__result_of_at_key__<S, K>`.The
 element at `K` may actually be a reference to begin with. For this purpose,

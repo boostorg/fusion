@@ -56,7 +56,8 @@ namespace boost { namespace fusion
         };
     }
 
-    BOOST_FUSION_GPU_ENABLED inline vector0<>
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+    inline vector0<>
     make_vector()
     {
         return vector0<>();
@@ -101,7 +102,7 @@ namespace boost { namespace fusion
     }
 
     template <BOOST_PP_ENUM_PARAMS(N, typename T)>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline BOOST_PP_CAT(vector, N)<BOOST_PP_ENUM(N, BOOST_FUSION_AS_FUSION_ELEMENT, _)>
     make_vector(BOOST_PP_ENUM_BINARY_PARAMS(N, T, const& arg))
     {
