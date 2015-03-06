@@ -26,7 +26,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline deque<T0&>
     deque_tie(T0 & arg0)
     {
@@ -42,7 +42,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline deque<T0& , T1&>
     deque_tie(T0 & arg0 , T1 & arg1)
     {
@@ -58,7 +58,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline deque<T0& , T1& , T2&>
     deque_tie(T0 & arg0 , T1 & arg1 , T2 & arg2)
     {
@@ -74,7 +74,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline deque<T0& , T1& , T2& , T3&>
     deque_tie(T0 & arg0 , T1 & arg1 , T2 & arg2 , T3 & arg3)
     {
@@ -90,7 +90,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline deque<T0& , T1& , T2& , T3& , T4&>
     deque_tie(T0 & arg0 , T1 & arg1 , T2 & arg2 , T3 & arg3 , T4 & arg4)
     {
@@ -106,7 +106,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline deque<T0& , T1& , T2& , T3& , T4& , T5&>
     deque_tie(T0 & arg0 , T1 & arg1 , T2 & arg2 , T3 & arg3 , T4 & arg4 , T5 & arg5)
     {
@@ -122,7 +122,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline deque<T0& , T1& , T2& , T3& , T4& , T5& , T6&>
     deque_tie(T0 & arg0 , T1 & arg1 , T2 & arg2 , T3 & arg3 , T4 & arg4 , T5 & arg5 , T6 & arg6)
     {
@@ -138,7 +138,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline deque<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7&>
     deque_tie(T0 & arg0 , T1 & arg1 , T2 & arg2 , T3 & arg3 , T4 & arg4 , T5 & arg5 , T6 & arg6 , T7 & arg7)
     {
@@ -154,7 +154,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline deque<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8&>
     deque_tie(T0 & arg0 , T1 & arg1 , T2 & arg2 , T3 & arg3 , T4 & arg4 , T5 & arg5 , T6 & arg6 , T7 & arg7 , T8 & arg8)
     {
@@ -170,7 +170,7 @@ namespace boost { namespace fusion
         };
     }
     template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline deque<T0& , T1& , T2& , T3& , T4& , T5& , T6& , T7& , T8& , T9&>
     deque_tie(T0 & arg0 , T1 & arg1 , T2 & arg2 , T3 & arg3 , T4 & arg4 , T5 & arg5 , T6 & arg6 , T7 & arg7 , T8 & arg8 , T9 & arg9)
     {
