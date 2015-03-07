@@ -27,19 +27,24 @@ namespace boost { namespace fusion
         typedef typename vector_n::size size;
         typedef typename vector_n::category category;
         typedef typename vector_n::is_view is_view;
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector()
             : vec() {}
         template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7 , typename U8 , typename U9>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector(vector<U0 , U1 , U2 , U3 , U4 , U5 , U6 , U7 , U8 , U9> const& rhs)
             : vec(rhs.vec) {}
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector(vector const& rhs)
             : vec(rhs.vec) {}
         template <typename Sequence>
+        
+# if !defined(BOOST_CLANG)
+        BOOST_CONSTEXPR
+# endif
         BOOST_FUSION_GPU_ENABLED
-        vector(Sequence const& rhs)
+        vector(Sequence const& rhs,
+            typename boost::enable_if<traits::is_sequence<Sequence> >::type* = 0)
             : vec(BOOST_FUSION_VECTOR_COPY_INIT()) {}
         
         
@@ -48,100 +53,180 @@ namespace boost { namespace fusion
         
         
         
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CONSTEXPR
+# endif
     BOOST_FUSION_GPU_ENABLED
     explicit
     vector(typename detail::call_param<T0 >::type arg0)
         : vec(arg0) {}
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     template <typename U0>
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CXX14_CONSTEXPR
+# endif
     BOOST_FUSION_GPU_ENABLED
     explicit
     vector(U0 && arg0)
         : vec(std::forward<U0>( arg0)) {}
+# endif
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CONSTEXPR
 # endif
     BOOST_FUSION_GPU_ENABLED
     vector(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1)
         : vec(arg0 , arg1) {}
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     template <typename U0 , typename U1>
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CXX14_CONSTEXPR
+# endif
     BOOST_FUSION_GPU_ENABLED
     vector(U0 && arg0 , U1 && arg1)
         : vec(std::forward<U0>( arg0) , std::forward<U1>( arg1)) {}
+# endif
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CONSTEXPR
 # endif
     BOOST_FUSION_GPU_ENABLED
     vector(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2)
         : vec(arg0 , arg1 , arg2) {}
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     template <typename U0 , typename U1 , typename U2>
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CXX14_CONSTEXPR
+# endif
     BOOST_FUSION_GPU_ENABLED
     vector(U0 && arg0 , U1 && arg1 , U2 && arg2)
         : vec(std::forward<U0>( arg0) , std::forward<U1>( arg1) , std::forward<U2>( arg2)) {}
+# endif
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CONSTEXPR
 # endif
     BOOST_FUSION_GPU_ENABLED
     vector(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3)
         : vec(arg0 , arg1 , arg2 , arg3) {}
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     template <typename U0 , typename U1 , typename U2 , typename U3>
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CXX14_CONSTEXPR
+# endif
     BOOST_FUSION_GPU_ENABLED
     vector(U0 && arg0 , U1 && arg1 , U2 && arg2 , U3 && arg3)
         : vec(std::forward<U0>( arg0) , std::forward<U1>( arg1) , std::forward<U2>( arg2) , std::forward<U3>( arg3)) {}
+# endif
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CONSTEXPR
 # endif
     BOOST_FUSION_GPU_ENABLED
     vector(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4)
         : vec(arg0 , arg1 , arg2 , arg3 , arg4) {}
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4>
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CXX14_CONSTEXPR
+# endif
     BOOST_FUSION_GPU_ENABLED
     vector(U0 && arg0 , U1 && arg1 , U2 && arg2 , U3 && arg3 , U4 && arg4)
         : vec(std::forward<U0>( arg0) , std::forward<U1>( arg1) , std::forward<U2>( arg2) , std::forward<U3>( arg3) , std::forward<U4>( arg4)) {}
+# endif
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CONSTEXPR
 # endif
     BOOST_FUSION_GPU_ENABLED
     vector(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5)
         : vec(arg0 , arg1 , arg2 , arg3 , arg4 , arg5) {}
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5>
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CXX14_CONSTEXPR
+# endif
     BOOST_FUSION_GPU_ENABLED
     vector(U0 && arg0 , U1 && arg1 , U2 && arg2 , U3 && arg3 , U4 && arg4 , U5 && arg5)
         : vec(std::forward<U0>( arg0) , std::forward<U1>( arg1) , std::forward<U2>( arg2) , std::forward<U3>( arg3) , std::forward<U4>( arg4) , std::forward<U5>( arg5)) {}
+# endif
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CONSTEXPR
 # endif
     BOOST_FUSION_GPU_ENABLED
     vector(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6)
         : vec(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6) {}
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6>
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CXX14_CONSTEXPR
+# endif
     BOOST_FUSION_GPU_ENABLED
     vector(U0 && arg0 , U1 && arg1 , U2 && arg2 , U3 && arg3 , U4 && arg4 , U5 && arg5 , U6 && arg6)
         : vec(std::forward<U0>( arg0) , std::forward<U1>( arg1) , std::forward<U2>( arg2) , std::forward<U3>( arg3) , std::forward<U4>( arg4) , std::forward<U5>( arg5) , std::forward<U6>( arg6)) {}
+# endif
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CONSTEXPR
 # endif
     BOOST_FUSION_GPU_ENABLED
     vector(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7)
         : vec(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7) {}
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7>
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CXX14_CONSTEXPR
+# endif
     BOOST_FUSION_GPU_ENABLED
     vector(U0 && arg0 , U1 && arg1 , U2 && arg2 , U3 && arg3 , U4 && arg4 , U5 && arg5 , U6 && arg6 , U7 && arg7)
         : vec(std::forward<U0>( arg0) , std::forward<U1>( arg1) , std::forward<U2>( arg2) , std::forward<U3>( arg3) , std::forward<U4>( arg4) , std::forward<U5>( arg5) , std::forward<U6>( arg6) , std::forward<U7>( arg7)) {}
+# endif
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CONSTEXPR
 # endif
     BOOST_FUSION_GPU_ENABLED
     vector(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8)
         : vec(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8) {}
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7 , typename U8>
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CXX14_CONSTEXPR
+# endif
     BOOST_FUSION_GPU_ENABLED
     vector(U0 && arg0 , U1 && arg1 , U2 && arg2 , U3 && arg3 , U4 && arg4 , U5 && arg5 , U6 && arg6 , U7 && arg7 , U8 && arg8)
         : vec(std::forward<U0>( arg0) , std::forward<U1>( arg1) , std::forward<U2>( arg2) , std::forward<U3>( arg3) , std::forward<U4>( arg4) , std::forward<U5>( arg5) , std::forward<U6>( arg6) , std::forward<U7>( arg7) , std::forward<U8>( arg8)) {}
+# endif
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CONSTEXPR
 # endif
     BOOST_FUSION_GPU_ENABLED
     vector(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9)
         : vec(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9) {}
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7 , typename U8 , typename U9>
+    
+# if !defined(BOOST_CLANG)
+    BOOST_CXX14_CONSTEXPR
+# endif
     BOOST_FUSION_GPU_ENABLED
     vector(U0 && arg0 , U1 && arg1 , U2 && arg2 , U3 && arg3 , U4 && arg4 , U5 && arg5 , U6 && arg6 , U7 && arg7 , U8 && arg8 , U9 && arg9)
         : vec(std::forward<U0>( arg0) , std::forward<U1>( arg1) , std::forward<U2>( arg2) , std::forward<U3>( arg3) , std::forward<U4>( arg4) , std::forward<U5>( arg5) , std::forward<U6>( arg6) , std::forward<U7>( arg7) , std::forward<U8>( arg8) , std::forward<U9>( arg9)) {}
 # endif
         template <typename U0 , typename U1 , typename U2 , typename U3 , typename U4 , typename U5 , typename U6 , typename U7 , typename U8 , typename U9>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector&
         operator=(vector<U0 , U1 , U2 , U3 , U4 , U5 , U6 , U7 , U8 , U9> const& rhs)
         {
@@ -149,14 +234,14 @@ namespace boost { namespace fusion
             return *this;
         }
         template <typename T>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector&
         operator=(T const& rhs)
         {
             vec = rhs;
             return *this;
         }
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector&
         operator=(vector const& rhs)
         {
@@ -164,10 +249,10 @@ namespace boost { namespace fusion
             return *this;
         }
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector(vector&& rhs)
             : vec(std::forward<vector_n>(rhs.vec)) {}
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector&
         operator=(vector&& rhs)
         {
@@ -175,7 +260,7 @@ namespace boost { namespace fusion
             return *this;
         }
         template <typename T>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector&
         operator=(T&& rhs)
         {
@@ -184,7 +269,7 @@ namespace boost { namespace fusion
         }
 # endif
         template <int N>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         typename add_reference<
             typename mpl::at_c<types, N>::type
         >::type
@@ -193,7 +278,7 @@ namespace boost { namespace fusion
             return vec.at_impl(index);
         }
         template <int N>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         typename add_reference<
             typename add_const<
                 typename mpl::at_c<types, N>::type
@@ -204,7 +289,7 @@ namespace boost { namespace fusion
             return vec.at_impl(index);
         }
         template <typename I>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         typename add_reference<
             typename mpl::at<types, I>::type
         >::type
@@ -213,7 +298,7 @@ namespace boost { namespace fusion
             return vec.at_impl(mpl::int_<I::value>());
         }
         template<typename I>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         typename add_reference<
             typename add_const<
                 typename mpl::at<types, I>::type
