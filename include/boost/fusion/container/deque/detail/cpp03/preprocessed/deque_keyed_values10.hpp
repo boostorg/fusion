@@ -17,12 +17,12 @@ namespace boost { namespace fusion { namespace detail
     struct deque_keyed_values_impl<N, void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_>
     {
         typedef nil_keyed_element type;
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type construct()
         {
             return type();
         }
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type forward_()
         {
             return type();
@@ -36,7 +36,7 @@ namespace boost { namespace fusion { namespace detail
             next_index,
             T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9>::type tail;
         typedef keyed_element<N, T0, tail> type;
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type construct(typename detail::call_param<T0 >::type t0)
         {
             return type(t0,
@@ -46,7 +46,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename T_0>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0)
         {
             return type(std::forward<T_0>( t0),
@@ -55,7 +55,7 @@ namespace boost { namespace fusion { namespace detail
                         >::forward_());
         }
 # endif
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1)
         {
             return type(t0,
@@ -66,7 +66,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename T_0 , typename T_1>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1)
         {
             return type(std::forward<T_0>( t0),
@@ -76,7 +76,7 @@ namespace boost { namespace fusion { namespace detail
                         >::forward_(std::forward<T_1>( t1)));
         }
 # endif
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2)
         {
             return type(t0,
@@ -87,7 +87,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename T_0 , typename T_1 , typename T_2>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2)
         {
             return type(std::forward<T_0>( t0),
@@ -97,7 +97,7 @@ namespace boost { namespace fusion { namespace detail
                         >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2)));
         }
 # endif
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3)
         {
             return type(t0,
@@ -108,7 +108,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename T_0 , typename T_1 , typename T_2 , typename T_3>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3)
         {
             return type(std::forward<T_0>( t0),
@@ -118,7 +118,7 @@ namespace boost { namespace fusion { namespace detail
                         >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3)));
         }
 # endif
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4)
         {
             return type(t0,
@@ -129,7 +129,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4)
         {
             return type(std::forward<T_0>( t0),
@@ -139,7 +139,7 @@ namespace boost { namespace fusion { namespace detail
                         >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4)));
         }
 # endif
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5)
         {
             return type(t0,
@@ -150,7 +150,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5)
         {
             return type(std::forward<T_0>( t0),
@@ -160,7 +160,7 @@ namespace boost { namespace fusion { namespace detail
                         >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5)));
         }
 # endif
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5 , typename detail::call_param<T6 >::type t6)
         {
             return type(t0,
@@ -171,7 +171,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6)
         {
             return type(std::forward<T_0>( t0),
@@ -181,7 +181,7 @@ namespace boost { namespace fusion { namespace detail
                         >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6)));
         }
 # endif
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5 , typename detail::call_param<T6 >::type t6 , typename detail::call_param<T7 >::type t7)
         {
             return type(t0,
@@ -192,7 +192,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 , typename T_7>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7)
         {
             return type(std::forward<T_0>( t0),
@@ -202,7 +202,7 @@ namespace boost { namespace fusion { namespace detail
                         >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7)));
         }
 # endif
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5 , typename detail::call_param<T6 >::type t6 , typename detail::call_param<T7 >::type t7 , typename detail::call_param<T8 >::type t8)
         {
             return type(t0,
@@ -213,7 +213,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 , typename T_7 , typename T_8>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8)
         {
             return type(std::forward<T_0>( t0),
@@ -223,7 +223,7 @@ namespace boost { namespace fusion { namespace detail
                         >::forward_(std::forward<T_1>( t1) , std::forward<T_2>( t2) , std::forward<T_3>( t3) , std::forward<T_4>( t4) , std::forward<T_5>( t5) , std::forward<T_6>( t6) , std::forward<T_7>( t7) , std::forward<T_8>( t8)));
         }
 # endif
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type construct(typename detail::call_param<T0 >::type t0 , typename detail::call_param<T1 >::type t1 , typename detail::call_param<T2 >::type t2 , typename detail::call_param<T3 >::type t3 , typename detail::call_param<T4 >::type t4 , typename detail::call_param<T5 >::type t5 , typename detail::call_param<T6 >::type t6 , typename detail::call_param<T7 >::type t7 , typename detail::call_param<T8 >::type t8 , typename detail::call_param<T9 >::type t9)
         {
             return type(t0,
@@ -234,7 +234,7 @@ namespace boost { namespace fusion { namespace detail
         }
 # if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 , typename T_7 , typename T_8 , typename T_9>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type forward_(T_0 && t0 , T_1 && t1 , T_2 && t2 , T_3 && t3 , T_4 && t4 , T_5 && t5 , T_6 && t6 , T_7 && t7 , T_8 && t8 , T_9 && t9)
         {
             return type(std::forward<T_0>( t0),
