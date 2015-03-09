@@ -34,14 +34,14 @@ namespace boost { namespace fusion
             typedef typename result_of::end<Seq2>::type end2_type;
 
             template <typename I1, typename I2>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static void
             call(I1 const&, I2 const&, mpl::true_)
             {
             }
 
             template <typename I1, typename I2>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static void
             call(I1 const& src, I2 const& dest, mpl::false_)
             {
@@ -50,7 +50,7 @@ namespace boost { namespace fusion
             }
 
             template <typename I1, typename I2>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static void
             call(I1 const& src, I2 const& dest)
             {
@@ -71,7 +71,7 @@ namespace boost { namespace fusion
     }
 
     template <typename Seq1, typename Seq2>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename result_of::copy<Seq1 const, Seq2>::type
     copy(Seq1 const& src, Seq2& dest)
     {

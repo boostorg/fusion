@@ -33,7 +33,7 @@ namespace boost { namespace fusion
                     decltype(boost::declval<Sequence>().get(mpl::identity<Key>()))
                 type;
 
-                BOOST_FUSION_GPU_ENABLED
+                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
                 static type
                 call(Sequence& m)
                 {
@@ -48,7 +48,7 @@ namespace boost { namespace fusion
                     decltype(boost::declval<Sequence const>().get(mpl::identity<Key>()))
                 type;
 
-                BOOST_FUSION_GPU_ENABLED
+                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
                 static type
                 call(Sequence const& m)
                 {

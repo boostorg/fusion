@@ -40,7 +40,8 @@ namespace boost { namespace fusion
         typedef Pos position;
         typedef SingleView single_view_type;
 
-        BOOST_FUSION_GPU_ENABLED explicit single_view_iterator(single_view_type& in_view)
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        explicit single_view_iterator(single_view_type& in_view)
             : view(in_view) {}
 
         SingleView& view;

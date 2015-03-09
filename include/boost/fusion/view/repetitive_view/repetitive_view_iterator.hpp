@@ -36,16 +36,16 @@ namespace boost { namespace fusion
         typedef typename convert_iterator<typename result_of::end<Sequence>::type>::type end_type;
         typedef single_pass_traversal_tag category;
 
-        BOOST_FUSION_GPU_ENABLED explicit repetitive_view_iterator(Sequence& in_seq)
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        explicit repetitive_view_iterator(Sequence& in_seq)
             : seq(in_seq), pos(begin(in_seq)) {}
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         repetitive_view_iterator(Sequence& in_seq, pos_type const& in_pos)
             : seq(in_seq), pos(in_pos) {}
 
         Sequence& seq;
         pos_type pos;
-        
 
     private:
         // silence MSVC warning C4512: assignment operator could not be generated
