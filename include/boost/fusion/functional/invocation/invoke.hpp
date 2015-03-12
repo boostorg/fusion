@@ -41,6 +41,7 @@
 #include <boost/utility/result_of.hpp>
 
 #include <boost/fusion/support/category_of.hpp>
+#include <boost/fusion/support/detail/enabler.hpp>
 #include <boost/fusion/sequence/intrinsic/at.hpp>
 #include <boost/fusion/sequence/intrinsic/size.hpp>
 #include <boost/fusion/sequence/intrinsic/front.hpp>
@@ -52,28 +53,9 @@
 
 namespace boost { namespace fusion
 {
-    //~ namespace result_of
-    //~ {
-    //~     template <typename Function, class Sequence,
-    //~               class Enable = unspecified>
-    //~     struct invoke;
-    //~ }
-
-    //~ template <typename Function, class Sequence>
-    //~ inline typename result_of::invoke<Function, Sequence>::type
-    //~ invoke(Function, Sequence &);
-
-    //~ template <typename Function, class Sequence>
-    //~ inline typename result_of::invoke<Function, Sequence const>::type
-    //~ invoke(Function, Sequence const &);
-
-    //----- ---- --- -- - -  -   -
-
     namespace detail
     {
         namespace ft = function_types;
-
-        template <typename, typename T = void> struct always_void_ { typedef T type; };
 
         template<
             typename Function, class Sequence,
@@ -161,14 +143,20 @@ namespace boost { namespace fusion
 
     namespace result_of
     {
-        template <typename Function, class Sequence,
-                  class Enable =
-                    typename detail::invoke_impl<
-                        typename boost::remove_reference<Function>::type, Sequence
-                      >::result_type>
-        struct invoke
+        template <typename Function, class Sequence, typename = void>
+        struct invoke;
+
+        template <typename Function, class Sequence>
+        struct invoke<Function, Sequence,
+                      typename detail::enabler<
+                          typename detail::invoke_impl<
+                              typename boost::remove_reference<Function>::type, Sequence
+                          >::result_type
+                      >::type>
         {
-            typedef Enable type;
+            typedef typename detail::invoke_impl<
+                typename boost::remove_reference<Function>::type, Sequence
+            >::result_type type;
         };
     }
 
@@ -207,7 +195,7 @@ namespace boost { namespace fusion
 
         template <typename Function, class Sequence>
         struct invoke_impl<Function,Sequence,N,false,true,
-            typename always_void_<
+            typename enabler<
                 typename boost::result_of<Function(BOOST_PP_ENUM(N,M,~)) >::type
               >::type>
         {
@@ -301,7 +289,7 @@ namespace boost { namespace fusion
 
         template <typename Function, class Sequence>
         struct invoke_impl<Function,Sequence,N,false,false,
-            typename always_void_<
+            typename enabler<
 #define L(z,j,data) typename invoke_param_types<Sequence,N>::BOOST_PP_CAT(T, j)
                 typename boost::result_of<Function(BOOST_PP_ENUM(N,L,~))>::type
               >::type>

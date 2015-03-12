@@ -28,6 +28,7 @@
 #include <boost/function_types/parameter_types.hpp>
 
 #include <boost/fusion/support/category_of.hpp>
+#include <boost/fusion/support/detail/enabler.hpp>
 #include <boost/fusion/sequence/intrinsic/at.hpp>
 #include <boost/fusion/sequence/intrinsic/size.hpp>
 #include <boost/fusion/sequence/intrinsic/begin.hpp>
@@ -38,24 +39,6 @@
 
 namespace boost { namespace fusion
 {
-    namespace result_of
-    {
-        template <typename Function, class Sequence> struct invoke_procedure
-        {
-            typedef void type;
-        };
-    }
-
-    template <typename Function, class Sequence>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline void invoke_procedure(Function, Sequence &);
-
-    template <typename Function, class Sequence>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline void invoke_procedure(Function, Sequence const &);
-
-    //----- ---- --- -- - -  -   -
-
     namespace detail
     {
         namespace ft = function_types;
@@ -76,9 +59,27 @@ namespace boost { namespace fusion
 
     }
 
+    namespace result_of
+    {
+        template <typename Function, class Sequence, class Enable = void>
+        struct invoke_procedure;
+
+        template <typename Function, class Sequence>
+        struct invoke_procedure<Function, Sequence,
+            typename detail::enabler<
+                typename detail::invoke_procedure_impl<
+                    typename boost::remove_reference<Function>::type,Sequence
+                >::result_type
+            >::type>
+        {
+            typedef void type;
+        };
+    }
+
     template <typename Function, class Sequence>
     BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline void invoke_procedure(Function f, Sequence & s)
+    inline typename result_of::invoke_procedure<Function, Sequence>::type
+    invoke_procedure(Function f, Sequence & s)
     {
         detail::invoke_procedure_impl<
                 typename boost::remove_reference<Function>::type,Sequence
@@ -87,7 +88,8 @@ namespace boost { namespace fusion
 
     template <typename Function, class Sequence>
     BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline void invoke_procedure(Function f, Sequence const & s)
+    inline typename result_of::invoke_procedure<Function, Sequence const>::type
+    invoke_procedure(Function f, Sequence const & s)
     {
         detail::invoke_procedure_impl<
                 typename boost::remove_reference<Function>::type,Sequence const
@@ -110,6 +112,7 @@ namespace boost { namespace fusion
         template <typename Function, class Sequence>
         struct invoke_procedure_impl<Function,Sequence,N,false,true>
         {
+            typedef void result_type;
 
 #if N > 0
 
@@ -135,6 +138,8 @@ namespace boost { namespace fusion
         template <typename Function, class Sequence>
         struct invoke_procedure_impl<Function,Sequence,N,true,true>
         {
+            typedef void result_type;
+
             BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline void call(Function & f, Sequence & s)
             {
@@ -155,6 +160,7 @@ namespace boost { namespace fusion
         template <typename Function, class Sequence>
         struct invoke_procedure_impl<Function,Sequence,N,false,false>
         {
+            typedef void result_type;
 
 #if N > 0
 
@@ -182,6 +188,8 @@ namespace boost { namespace fusion
         template <typename Function, class Sequence>
         struct invoke_procedure_impl<Function,Sequence,N,true,false>
         {
+            typedef void result_type;
+
             BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static inline void call(Function & f, Sequence & s)
             {
