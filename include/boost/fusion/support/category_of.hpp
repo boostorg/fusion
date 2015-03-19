@@ -36,6 +36,8 @@ namespace boost { namespace fusion
 
     struct associative_tag {};
 
+    struct no_bounds_tag {};
+
     namespace extension
     {
         template<typename Tag>
@@ -105,6 +107,13 @@ namespace boost { namespace fusion
         struct is_random_access
             : is_base_of<
                 random_access_traversal_tag
+              , typename category_of<T>::type>
+        {};
+
+        template <typename T>
+        struct has_no_bounds
+            : is_base_of<
+                no_bounds_tag
               , typename category_of<T>::type>
         {};
     }
