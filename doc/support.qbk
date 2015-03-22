@@ -227,6 +227,8 @@ And optionally from:
         namespace boost { namespace fusion
         {
             struct associative_tag {};
+
+            struct no_bounds_tag {};
         }}
 
 [*Semantics]: Establishes the conceptual classification of a particular
