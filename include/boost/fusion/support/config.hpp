@@ -75,10 +75,10 @@ namespace boost { namespace fusion { namespace detail
 // - GCC 4.5 enables the feature under C++11.
 //   https://gcc.gnu.org/ml/gcc-patches/2014-11/msg01105.html
 //
-// - Only MSVC 12.0 doesn't have the feature.
+// - MSVC 10.0 implements iterator intrinsics; MSVC 13.0 implements LWG2408.
 #if (defined(BOOST_LIBSTDCXX_VERSION) && (BOOST_LIBSTDCXX_VERSION < 40500) && \
      defined(BOOST_LIBSTDCXX11)) || \
-    (defined(BOOST_MSVC) && (BOOST_MSVC == 1800))
+    (defined(BOOST_MSVC) && (1600 <= BOOST_MSVC || BOOST_MSVC < 1900))
 #   define BOOST_FUSION_WORKAROUND_FOR_LWG_2408
 namespace std
 {
