@@ -10,13 +10,14 @@
 
 #include <boost/config.hpp>
 
+#include <boost/fusion/adapted/struct/detail/adapt_auto.hpp>
 #include <boost/fusion/adapted/struct/detail/adapt_base_attr_filler.hpp>
+
+#include <boost/mpl/aux_/preprocessor/token_equal.hpp>
 
 #include <boost/preprocessor/control/if.hpp>
 #include <boost/preprocessor/arithmetic/sub.hpp>
 #include <boost/preprocessor/variadic/size.hpp>
-#include <boost/preprocessor/empty.hpp>
-#include <boost/preprocessor/facilities/is_empty.hpp>
 
 #if BOOST_PP_VARIADICS
 
@@ -43,7 +44,7 @@
     BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0
 
 #define BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(X, Y, Z)                      \
-    BOOST_PP_IF(BOOST_PP_IS_EMPTY(X),                                           \
+    BOOST_PP_IF(BOOST_MPL_PP_TOKEN_EQUAL(auto, X),                              \
       ((2, (Y,Z))),                                                             \
       ((3, (X,Y,Z)))                                                            \
     )

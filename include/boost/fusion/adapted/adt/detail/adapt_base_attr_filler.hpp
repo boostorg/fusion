@@ -9,15 +9,18 @@
 #define BOOST_FUSION_ADAPTED_ADT_DETAIL_ADAPT_BASE_ATTR_FILLER_HPP
 
 #include <boost/config.hpp>
+
+#include <boost/fusion/adapted/struct/detail/adapt_auto.hpp>
+
 #include <boost/fusion/adapted/struct/detail/preprocessor/is_seq.hpp>
+
+#include <boost/mpl/aux_/preprocessor/token_equal.hpp>
 
 #include <boost/preprocessor/arithmetic/sub.hpp>
 #include <boost/preprocessor/control/if.hpp>
 #include <boost/preprocessor/logical/or.hpp>
-#include <boost/preprocessor/empty.hpp>
 #include <boost/preprocessor/tuple/size.hpp>
 #include <boost/preprocessor/tuple/elem.hpp>
-#include <boost/preprocessor/facilities/is_empty.hpp>
 #include <boost/preprocessor/variadic/to_seq.hpp>
 #include <boost/preprocessor/variadic/to_tuple.hpp>
 #include <boost/preprocessor/variadic/elem.hpp>
@@ -50,8 +53,11 @@
 #  define BOOST_FUSION_ADAPT_ADT_FILLER(...)                                    \
       BOOST_PP_IF(                                                              \
           BOOST_PP_OR(                                                          \
-              BOOST_PP_IS_EMPTY(BOOST_PP_VARIADIC_ELEM(0, __VA_ARGS__)),        \
-              BOOST_PP_IS_EMPTY(BOOST_PP_VARIADIC_ELEM(1, __VA_ARGS__))),       \
+              BOOST_MPL_PP_TOKEN_EQUAL(auto,                                    \
+                  BOOST_PP_VARIADIC_ELEM(0, __VA_ARGS__)),                      \
+              BOOST_MPL_PP_TOKEN_EQUAL(auto,                                    \
+                  BOOST_PP_VARIADIC_ELEM(1, __VA_ARGS__))),                     \
+                                                                                \
           BOOST_FUSION_ADAPT_ADT_WRAP_ATTR(                                     \
               BOOST_PP_VARIADIC_ELEM(2, __VA_ARGS__),                           \
               BOOST_FUSION_WORKAROUND_VARIADIC_EMPTINESS_LAST_ELEM(__VA_ARGS__) \
@@ -80,7 +86,7 @@
 #  define BOOST_FUSION_ADAPT_ADT_FILLER_1_END
 
 #  define BOOST_FUSION_ADAPT_ADT_WRAP_ATTR(A, B, C, D)                          \
-      BOOST_PP_IF(BOOST_PP_IS_EMPTY(A),                                         \
+      BOOST_PP_IF(BOOST_MPL_PP_TOKEN_EQUAL(auto, A),                            \
         ((2, (C,D))),                                                           \
         ((4, (A,B,C,D)))                                                        \
       )

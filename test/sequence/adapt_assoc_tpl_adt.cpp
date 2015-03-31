@@ -66,7 +66,7 @@ BOOST_FUSION_ADAPT_ASSOC_TPL_ADT(
     (ns::point)(X)(Y)(Z),
     (X, X, obj.get_x(), obj.set_x(val), ns::x_member)
     (Y, Y, obj.get_y(), obj.set_y(val), ns::y_member)
-    (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.get_z(), obj.set_z(val), ns::z_member)
+    (auto, auto, obj.get_z(), obj.set_z(val), ns::z_member)
 )
 
 #endif

@@ -104,7 +104,7 @@ namespace ns
     BOOST_FUSION_ADAPT_STRUCT(
         ns::bar,
         foo_.x, // test that adapted members can actually be expressions
-        y
+        (auto , y)
     )
 
     BOOST_FUSION_ADAPT_STRUCT(
@@ -120,7 +120,7 @@ namespace ns
         ns::point,
         (int, x)
         (int, y)
-        (BOOST_FUSION_ADAPT_AUTO, z)
+        (auto, z)
     )
 
 #   if !BOOST_WORKAROUND(__GNUC__,<4)
@@ -128,17 +128,18 @@ namespace ns
         ns::point_with_private_attributes,
         (int, x)
         (int, y)
-        (BOOST_FUSION_ADAPT_AUTO, z)
+        (auto, z)
     )
 #   endif
 
     struct s { int m; };
-    BOOST_FUSION_ADAPT_STRUCT(s, (BOOST_FUSION_ADAPT_AUTO, m))
+    BOOST_FUSION_ADAPT_STRUCT(s, (auto, m))
 
     BOOST_FUSION_ADAPT_STRUCT(
         ns::bar,
-        (BOOST_FUSION_ADAPT_AUTO, foo_.x) // test that adapted members can actually be expressions
-        (BOOST_FUSION_ADAPT_AUTO, y)
+        (auto, foo_.x) // test that adapted members can actually be expressions
+        (BOOST_FUSION_ADAPT_AUTO, y) // Mixing auto & BOOST_FUSION_ADAPT_AUTO 
+                                     // to test backward compatibility
     )
 
     BOOST_FUSION_ADAPT_STRUCT(
