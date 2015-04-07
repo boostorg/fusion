@@ -32,13 +32,17 @@
 #include <iostream>
 #include <string>
 
+namespace namespaced_type {
+  typedef int integer;
+}
+
 namespace ns
 {
     struct point
     {
         int x;
         int y;
-        int z;
+        namespaced_type::integer z;
     };
 
 #if !BOOST_WORKAROUND(__GNUC__,<4)
@@ -119,8 +123,8 @@ namespace ns
     BOOST_FUSION_ADAPT_STRUCT(
         ns::point,
         (int, x)
-        (int, y)
-        (auto, z)
+        (auto, y)
+        (namespaced_type::integer, z)
     )
 
 #   if !BOOST_WORKAROUND(__GNUC__,<4)
