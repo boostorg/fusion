@@ -158,7 +158,6 @@ project
     [ run sequence/define_tpl_struct_inline.cpp : : : : ]
     [ run sequence/define_assoc_tpl_struct.cpp : : : : ]
     [ run sequence/std_tuple.cpp : : : : ]
-    [ run sequence/std_tuple_auto_conv.cpp :  :  :  : ]
     [ run sequence/std_tuple_iterator.cpp : : : : ]
     [ run sequence/ref_vector.cpp : : : : ]
     [ run sequence/flatten_view.cpp : : : : ]
@@ -178,6 +177,12 @@ project
     [ run functional/invoke_function_object.cpp : : : : ]
     [ run functional/invoke_procedure.cpp : : : : ]
     [ run sequence/swap.cpp :  :  :  : ]
+
+    [ compile support/pair_deque.cpp : : : : ]
+    [ compile support/pair_list.cpp : : : : ]
+    [ compile support/pair_map.cpp : : : : ]
+    [ compile support/pair_set.cpp : : : : ]
+    [ compile support/pair_vector.cpp : : : : ]
 
 #   [ compile-fail xxx.cpp :  :  :  :  ]
 

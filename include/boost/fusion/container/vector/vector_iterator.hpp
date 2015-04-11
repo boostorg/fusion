@@ -48,5 +48,14 @@ namespace boost { namespace fusion
     };
 }}
 
+#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
+namespace std
+{
+    template <typename Vector, int N>
+    struct iterator_traits< ::boost::fusion::vector_iterator<Vector, N> >
+    { };
+}
+#endif
+
 #endif
 

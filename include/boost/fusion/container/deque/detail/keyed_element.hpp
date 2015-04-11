@@ -66,7 +66,8 @@ namespace boost { namespace fusion { namespace detail
 
         template <typename U, typename Rst>
         BOOST_FUSION_GPU_ENABLED
-        keyed_element(keyed_element<Key, U, Rst> const& rhs)
+        keyed_element(keyed_element<Key, U, Rst> const& rhs
+          , typename enable_if<is_convertible<U, Value> >::type* = 0)
           : Rest(rhs.get_base()), value_(rhs.value_)
         {}
 

@@ -53,6 +53,15 @@ namespace boost { namespace fusion
 
 }}
 
+#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
+namespace std
+{
+    template <typename Sequence, typename Pos>
+    struct iterator_traits< ::boost::fusion::nview_iterator<Sequence, Pos> >
+    { };
+}
+#endif
+
 #endif
 
 

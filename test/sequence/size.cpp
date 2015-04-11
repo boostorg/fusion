@@ -19,7 +19,8 @@
 #include <boost/fusion/adapted/boost_array.hpp>
 #include <boost/tuple/tuple.hpp>
 #include <boost/fusion/adapted/boost_tuple.hpp>
-#if !defined(BOOST_NO_CXX11_HDR_TUPLE)
+#if !defined(BOOST_NO_CXX11_HDR_TUPLE) && \
+    !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
 #include <tuple>
 #include <boost/fusion/adapted/std_tuple.hpp>
 #endif
@@ -89,7 +90,8 @@ void test()
         check<boost::tuples::tuple<int, int, int> >();
     }
 
-#if !defined(BOOST_NO_CXX11_HDR_TUPLE)
+#if !defined(BOOST_NO_CXX11_HDR_TUPLE) && \
+    !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
     {
         check<std::tuple<> >();
         check<std::tuple<int> >();

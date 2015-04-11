@@ -56,6 +56,15 @@ namespace boost { namespace fusion
     };
 }}
 
+#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
+namespace std
+{
+    template <typename Category, typename First, typename Last, typename Concat>
+    struct iterator_traits< ::boost::fusion::joint_view_iterator<Category, First, Last, Concat> >
+    { };
+}
+#endif
+
 #endif
 
 

@@ -30,35 +30,35 @@ namespace boost { namespace fusion
             : data(rhs) {}
     BOOST_FUSION_GPU_ENABLED
     explicit
-    map(T0 const& _0)
-        : data(_0) {}
+    map(typename detail::call_param<T0 >::type arg0)
+        : data(arg0) {}
     BOOST_FUSION_GPU_ENABLED
-    map(T0 const& _0 , T1 const& _1)
-        : data(_0 , _1) {}
+    map(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1)
+        : data(arg0 , arg1) {}
     BOOST_FUSION_GPU_ENABLED
-    map(T0 const& _0 , T1 const& _1 , T2 const& _2)
-        : data(_0 , _1 , _2) {}
+    map(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2)
+        : data(arg0 , arg1 , arg2) {}
     BOOST_FUSION_GPU_ENABLED
-    map(T0 const& _0 , T1 const& _1 , T2 const& _2 , T3 const& _3)
-        : data(_0 , _1 , _2 , _3) {}
+    map(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3)
+        : data(arg0 , arg1 , arg2 , arg3) {}
     BOOST_FUSION_GPU_ENABLED
-    map(T0 const& _0 , T1 const& _1 , T2 const& _2 , T3 const& _3 , T4 const& _4)
-        : data(_0 , _1 , _2 , _3 , _4) {}
+    map(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4)
+        : data(arg0 , arg1 , arg2 , arg3 , arg4) {}
     BOOST_FUSION_GPU_ENABLED
-    map(T0 const& _0 , T1 const& _1 , T2 const& _2 , T3 const& _3 , T4 const& _4 , T5 const& _5)
-        : data(_0 , _1 , _2 , _3 , _4 , _5) {}
+    map(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5)
+        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5) {}
     BOOST_FUSION_GPU_ENABLED
-    map(T0 const& _0 , T1 const& _1 , T2 const& _2 , T3 const& _3 , T4 const& _4 , T5 const& _5 , T6 const& _6)
-        : data(_0 , _1 , _2 , _3 , _4 , _5 , _6) {}
+    map(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6)
+        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6) {}
     BOOST_FUSION_GPU_ENABLED
-    map(T0 const& _0 , T1 const& _1 , T2 const& _2 , T3 const& _3 , T4 const& _4 , T5 const& _5 , T6 const& _6 , T7 const& _7)
-        : data(_0 , _1 , _2 , _3 , _4 , _5 , _6 , _7) {}
+    map(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7)
+        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7) {}
     BOOST_FUSION_GPU_ENABLED
-    map(T0 const& _0 , T1 const& _1 , T2 const& _2 , T3 const& _3 , T4 const& _4 , T5 const& _5 , T6 const& _6 , T7 const& _7 , T8 const& _8)
-        : data(_0 , _1 , _2 , _3 , _4 , _5 , _6 , _7 , _8) {}
+    map(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8)
+        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8) {}
     BOOST_FUSION_GPU_ENABLED
-    map(T0 const& _0 , T1 const& _1 , T2 const& _2 , T3 const& _3 , T4 const& _4 , T5 const& _5 , T6 const& _6 , T7 const& _7 , T8 const& _8 , T9 const& _9)
-        : data(_0 , _1 , _2 , _3 , _4 , _5 , _6 , _7 , _8 , _9) {}
+    map(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9)
+        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9) {}
         template <typename T>
         BOOST_FUSION_GPU_ENABLED
         map& operator=(T const& rhs)
