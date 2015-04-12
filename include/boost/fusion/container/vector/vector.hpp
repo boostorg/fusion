@@ -25,6 +25,7 @@
 #include <boost/fusion/support/sequence_base.hpp>
 #include <boost/fusion/support/is_sequence.hpp>
 #include <boost/fusion/support/detail/integer_sequence.hpp>
+#include <boost/fusion/support/detail/is_constructible.hpp>
 #include <boost/fusion/container/vector/detail/at_impl.hpp>
 #include <boost/fusion/container/vector/detail/value_at_impl.hpp>
 #include <boost/fusion/container/vector/detail/begin_impl.hpp>
@@ -36,24 +37,17 @@
 #include <boost/fusion/iterator/deref.hpp>
 #include <boost/core/enable_if.hpp>
 #include <boost/static_assert.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/mpl/at.hpp>
 #include <boost/mpl/int.hpp>
 #include <boost/mpl/bool.hpp>
-#include <boost/type_traits/is_base_of.hpp>
-#include <cstddef>
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#include <boost/fusion/support/detail/is_constructible.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/mpl/or.hpp>
+#include <boost/type_traits/is_base_of.hpp>
 #include <boost/type_traits/remove_cv.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 #include <boost/type_traits/is_rvalue_reference.hpp>
 #include <boost/type_traits/is_convertible.hpp>
+#include <cstddef>
 #include <utility>
-#else
-#include <boost/fusion/support/detail/access.hpp>
-#endif
 
 namespace boost { namespace fusion
 {
@@ -62,6 +56,8 @@ namespace boost { namespace fusion
 
     namespace vector_detail
     {
+        // mandatory_at_c allows to access Nth element even if ForwardSequence
+        // since fusion::at_c requires RandomAccessSequence.
         namespace result_of
         {
             template <typename Sequence, int N>
@@ -83,7 +79,6 @@ namespace boost { namespace fusion
             return *advance_c<N>(begin(seq));
         }
 
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         namespace traits
         {
             template <typename T>
@@ -135,9 +130,8 @@ namespace boost { namespace fusion
         inline Base&&
         as_base(Base&& base) BOOST_NOEXCEPT
         {
-            return base;
+            return std::forward<Base>(base);
         }
-#endif
 
         template <typename Sequence>
         struct make_indices_from_seq
@@ -169,7 +163,6 @@ namespace boost { namespace fusion
                 return *this;
             }
 
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
             BOOST_FUSION_GPU_ENABLED
             store(store&& rhs)
                 : elem(std::forward<T>(rhs.get()))
@@ -203,20 +196,6 @@ namespace boost { namespace fusion
                 elem = std::forward<U>(rhs);
                 return *this;
             }
-#else
-            BOOST_FUSION_GPU_ENABLED
-            store(typename detail::call_param<T>::type rhs)
-                : elem(rhs)
-            {}
-
-            BOOST_FUSION_GPU_ENABLED
-            store&
-            operator=(typename detail::call_param<T>::type rhs)
-            {
-                elem = rhs;
-                return *this;
-            }
-#endif
 
             BOOST_FUSION_GPU_ENABLED T      & get()       { return elem; }
             BOOST_FUSION_GPU_ENABLED T const& get() const { return elem; }
@@ -255,7 +234,6 @@ namespace boost { namespace fusion
                 , base(static_cast<base const&>(rhs))
             {}
 
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
             BOOST_FUSION_GPU_ENABLED
             data(data&& rhs)
                 : elem(std::forward<elem>(rhs))
@@ -275,27 +253,6 @@ namespace boost { namespace fusion
                 : elem(std::forward<Head_>(head))
                 , base(std::forward<Tail_>(tail)...)
             {}
-#else
-            template <typename Sequence, std::size_t ...N>
-            BOOST_FUSION_GPU_ENABLED
-            data(Sequence const& seq, detail::integer_sequence<std::size_t, 0, N...>)
-                : elem(vector_detail::mandatory_at_c<0>(seq))
-                , base(vector_detail::mandatory_at_c<N>(seq)...)
-            {}
-
-            template <typename Sequence, std::size_t ...N>
-            BOOST_FUSION_GPU_ENABLED
-            data(Sequence& seq, detail::integer_sequence<std::size_t, 0, N...>)
-                : elem(vector_detail::mandatory_at_c<0>(seq))
-                , base(vector_detail::mandatory_at_c<N>(seq)...)
-            {}
-
-            BOOST_FUSION_GPU_ENABLED
-            data(typename detail::call_param<T>::type head
-               , typename detail::call_param<Tail>::type... tail)
-                : elem(head), base(tail...)
-            {}
-#endif
 
             BOOST_FUSION_GPU_ENABLED
             data&
@@ -306,7 +263,6 @@ namespace boost { namespace fusion
                 return *this;
             }
 
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
             BOOST_FUSION_GPU_ENABLED
             data&
             operator=(data&& rhs)
@@ -324,334 +280,295 @@ namespace boost { namespace fusion
                 static_cast<elem&>(*this) = std::forward<Head_>(head);
                 base::assign(std::forward<Tail_>(tail)...);
             }
-#else
+        };
+
+        template <typename ...T>
+        struct vector_data;
+
+        template <>
+        struct vector_data<>
+            : data<0>, sequence_base<vector_data<> >
+        {
+            typedef vector_tag                  fusion_tag;
+            typedef fusion_sequence_tag         tag; // this gets picked up by MPL
+            typedef mpl::false_                 is_view;
+            typedef random_access_traversal_tag category;
+
+            typedef data<0> data;
+
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            vector_data() BOOST_NOEXCEPT
+            {}
+
+            // To accept nil (and any other type which like a nil).
+            template <typename Sequence>
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            vector_data(Sequence const&) BOOST_NOEXCEPT
+            {}
+
+            // Due to no data, move assign ctor/op are unnecessary.
+
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            vector_data(vector_data const& rhs) BOOST_NOEXCEPT
+                : data(static_cast<data const&>(rhs))
+            {}
+
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            vector_data&
+            operator=(vector_data const& rhs) BOOST_NOEXCEPT
+            {
+                data::operator=(static_cast<data const&>(rhs));
+                return *this;
+            }
+        };
+
+        template <typename ...T>
+        struct vector_data
+            : data<0, T...>, sequence_base<vector_data<T...> >
+        {
+            typedef vector_tag                  fusion_tag;
+            typedef fusion_sequence_tag         tag; // this gets picked up by MPL
+            typedef mpl::false_                 is_view;
+            typedef random_access_traversal_tag category;
+
+            typedef vector_detail::data<0, T...> data;
+
+            BOOST_FUSION_GPU_ENABLED
+            vector_data()
+            {}
+
+            BOOST_FUSION_GPU_ENABLED
+            vector_data(vector_data const& rhs)
+                : data(static_cast<data const&>(rhs))
+            {}
+
+            BOOST_FUSION_GPU_ENABLED
+            vector_data(vector_data&& rhs)
+                : data(std::forward<data>(rhs))
+            {}
+
+            template <typename Sequence>
+            BOOST_FUSION_GPU_ENABLED
+            vector_data(Sequence&& rhs
+                 , typename enable_if<
+                       is_base_of<vector_data, typename traits::pure<Sequence>::type>
+                   >::type* = 0)
+                : data(as_base<data>(std::forward<Sequence>(rhs)))
+            {}
+
+            template <typename Sequence>
+            BOOST_FUSION_GPU_ENABLED
+            vector_data(Sequence&& rhs
+                 , typename disable_if<
+                       is_base_of<vector_data, typename traits::pure<Sequence>::type>
+                   >::type* = 0
+                 , typename enable_if<
+                       fusion::traits::is_sequence<typename remove_reference<Sequence>::type>
+                   >::type* = 0)
+                : data(std::forward<Sequence>(rhs)
+                     , typename make_indices_from_seq<Sequence>::type())
+            {}
+
+            template <typename ...U>
+            BOOST_FUSION_GPU_ENABLED
+            explicit
+            vector_data(U&&... var)
+                : data(std::forward<U>(var)...)
+            {}
+
+            BOOST_FUSION_GPU_ENABLED
+            vector_data&
+            operator=(vector_data const& rhs)
+            {
+                data::operator=(static_cast<data const&>(rhs));
+                return *this;
+            }
+
+            BOOST_FUSION_GPU_ENABLED
+            vector_data&
+            operator=(vector_data&& rhs)
+            {
+                data::operator=(std::forward<data>(rhs));
+                return *this;
+            }
+
+            template <typename Sequence, std::size_t ...N>
             BOOST_FUSION_GPU_ENABLED
             void
-            assign(typename detail::call_param<T>::type head
-                 , typename detail::call_param<Tail>::type... tail)
+            assign(Sequence&& rhs, detail::integer_sequence<std::size_t, N...>)
             {
-                static_cast<elem&>(*this) = head;
-                base::assign(tail...);
+                data::assign(forward_at_c<N>(rhs)...);
             }
-#endif
+
+            template <typename Sequence>
+            BOOST_FUSION_GPU_ENABLED
+            typename enable_if<
+                is_base_of<vector_data, typename traits::pure<Sequence>::type>
+              , vector_data&
+            >::type
+            operator=(Sequence&& rhs)
+            {
+                data::operator=(as_base<data>(std::forward<Sequence>(rhs)));
+                return *this;
+            }
+
+            template <typename Sequence>
+            BOOST_FUSION_GPU_ENABLED
+            typename lazy_disable_if<
+                is_base_of<vector_data, typename traits::pure<Sequence>::type>
+              , enable_if<
+                    fusion::traits::is_sequence<typename remove_reference<Sequence>::type>
+                  , vector_data&
+                >
+            >::type
+            operator=(Sequence&& rhs)
+            {
+                typedef typename
+                    make_indices_from_seq<Sequence>::type
+                indices;
+
+                assign(std::forward<Sequence>(rhs), indices());
+                return *this;
+            }
+
+            typedef extension::value_at_impl<vector_tag> value_at_impl;
+
+            template <typename I>
+            BOOST_FUSION_GPU_ENABLED
+            typename value_at_impl::template apply<vector_data, I>::type&
+            at_impl(I)
+            {
+                typedef typename value_at_impl::template apply<vector_data, I>::type U;
+                typedef store<I::value, U> S;
+                return static_cast<S*>(this)->get();
+            }
+
+            template <typename I>
+            BOOST_FUSION_GPU_ENABLED
+            typename value_at_impl::template apply<vector_data, I>::type const&
+            at_impl(I) const
+            {
+                typedef typename value_at_impl::template apply<vector_data, I>::type U;
+                typedef store<I::value, U> S;
+                return static_cast<S const*>(this)->get();
+            }
         };
+
+        // Internal use only specialization for implementing vectorN.
+        // Simple aliasing (like a using vectorN = vector<T...>) will cause specialization confliction
+        // like following.
+        //
+        //  template <typename> struct SomeClass;
+        //  template <typename T> struct SomeClass<vector<T>> { ... };
+        //  template <typename T>
+        //  struct SomeClass<vector1<T>> // Error, since vector<T> and vector1<T> are exact same type.
+        //  { ... };
+        //
+        // Introducing `numbered_vector_tag` will resolve such specialization error.
+        //
+        //  template <typename T>
+        //  struct SomeClass<vector<T>> { ... };
+        //  template <typename T>
+        //  struct SomeClass<vector1<T>> // OK
+        //  { ... };
+        //
+        //  // Same meaning as above specialization.
+        //  template <typename T>
+        //  struct SomeClass<vector<numbered_vector_tag<1>, T>>
+        //  { ... };
+        template <std::size_t N, typename ...T>
+        struct vector_data<numbered_vector_tag<N>, T...>
+            : vector_data<T...>
+        {
+            typedef vector_data<T...> base;
+
+            BOOST_STATIC_ASSERT((base::size::value == N));
+
+            BOOST_FUSION_GPU_ENABLED
+            vector_data()
+            {}
+
+            BOOST_FUSION_GPU_ENABLED
+            vector_data(vector_data const& rhs)
+                : base(static_cast<base const &>(rhs))
+            {}
+
+            BOOST_FUSION_GPU_ENABLED
+            vector_data(vector_data&& rhs)
+                : base(std::forward<base>(rhs))
+            {}
+
+            template <typename ...U>
+            BOOST_FUSION_GPU_ENABLED
+            vector_data(U&&... var)
+                : base(std::forward<U>(var)...)
+            {}
+
+            BOOST_FUSION_GPU_ENABLED
+            vector_data &
+            operator=(vector_data const& rhs)
+            {
+                base::operator=(static_cast<base const&>(rhs));
+                return *this;
+            }
+
+            BOOST_FUSION_GPU_ENABLED
+            vector_data &
+            operator=(vector_data&& rhs)
+            {
+                base::operator=(std::forward<base>(rhs));
+                return *this;
+            }
+
+            using base::operator=;
+        };
+
+        template <typename D, typename... T>
+        struct construct_vector_;
+
+        template <typename D>
+        struct construct_vector_<D> { typedef D type; };
+
+        template <typename... U, typename... Tail>
+        struct construct_vector_<vector_data<U...>, void_, Tail...>
+            : construct_vector_<vector_data<U...> > {};
+
+        template <typename... U, typename Head, typename... Tail>
+        struct construct_vector_<vector_data<U...>, Head, Tail...>
+            : construct_vector_<vector_data<U..., Head>, Tail...> {};
+
+        template <typename... T>
+        struct construct_vector : construct_vector_<vector_detail::vector_data<>, T...> {};
     }
 
-    template <>
-    struct vector<>
-        : vector_detail::data<0>
-        , sequence_base<vector<> >
-    {
-        typedef vector_tag                  fusion_tag;
-        typedef fusion_sequence_tag         tag; // this gets picked up by MPL
-        typedef mpl::false_                 is_view;
-        typedef random_access_traversal_tag category;
-
-        typedef vector_detail::data<0> data;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        vector() BOOST_NOEXCEPT
-        {}
-
-        // To accept nil (and any other type which like a nil).
-        template <typename Sequence>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        vector(Sequence const&) BOOST_NOEXCEPT
-        {}
-
-        // Due to no data, move assign ctor/op are unnecessary.
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        vector(vector const& rhs) BOOST_NOEXCEPT
-            : data(static_cast<data const&>(rhs))
-        {}
-
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        vector&
-        operator=(vector const& rhs) BOOST_NOEXCEPT
-        {
-            data::operator=(static_cast<data const&>(rhs));
-            return *this;
-        }
-    };
-
-    template <typename ...T>
+    // This class provides backward compatibility: vector<T, ..., void_, void_, ...>.
+    template <typename... T>
     struct vector
-        : vector_detail::data<0, T...>
-        , sequence_base<vector<T...> >
+        : vector_detail::construct_vector<T...>::type
     {
-        typedef vector_tag                  fusion_tag;
-        typedef fusion_sequence_tag         tag; // this gets picked up by MPL
-        typedef mpl::false_                 is_view;
-        typedef random_access_traversal_tag category;
-
-        typedef vector_detail::data<0, T...> data;
+        typedef typename vector_detail::construct_vector<T...>::type base;
 
         BOOST_FUSION_GPU_ENABLED
         vector()
         {}
-
-        BOOST_FUSION_GPU_ENABLED
-        vector(vector const& rhs)
-            : data(static_cast<data const&>(rhs))
-        {}
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        BOOST_FUSION_GPU_ENABLED
-        vector(vector&& rhs)
-            : data(std::forward<data>(rhs))
-        {}
-
-        template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
-        vector(Sequence&& rhs
-             , typename enable_if<
-                   is_base_of<vector, typename vector_detail::traits::pure<Sequence>::type>
-               >::type* = 0)
-            : data(vector_detail::as_base<data>(std::forward<Sequence>(rhs)))
-        {}
-
-        template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
-        vector(Sequence&& rhs
-             , typename disable_if<
-                   is_base_of<vector, typename vector_detail::traits::pure<Sequence>::type>
-               >::type* = 0
-             , typename enable_if<
-                   traits::is_sequence<typename remove_reference<Sequence>::type>
-               >::type* = 0)
-            : data(std::forward<Sequence>(rhs)
-                 , typename vector_detail::make_indices_from_seq<Sequence>::type())
-        {}
-
-        template <typename ...U>
-        BOOST_FUSION_GPU_ENABLED
-        explicit
-        vector(U&&... var)
-            : data(std::forward<U>(var)...)
-        {}
-#else
-        template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
-        vector(Sequence const& rhs
-             , typename enable_if<is_base_of<vector, Sequence> >::type* = 0)
-            : data(static_cast<data const&>(rhs))
-        {}
-
-        template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
-        vector(Sequence& rhs
-             , typename enable_if<is_base_of<vector, Sequence> >::type* = 0)
-            : data(static_cast<data const&>(rhs))
-        {}
-
-        template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
-        vector(Sequence const& rhs
-             , typename disable_if<is_base_of<vector, Sequence> >::type* = 0
-             , typename enable_if<traits::is_sequence<Sequence> >::type* = 0)
-            : data(rhs, typename vector_detail::make_indices_from_seq<Sequence>::type())
-        {}
-
-        template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
-        vector(Sequence& rhs
-             , typename disable_if<is_base_of<vector, Sequence> >::type* = 0
-             , typename enable_if<traits::is_sequence<Sequence> >::type* = 0)
-            : data(rhs, typename vector_detail::make_indices_from_seq<Sequence>::type())
-        {}
-
-        BOOST_FUSION_GPU_ENABLED
-        explicit
-        vector(typename detail::call_param<T>::type... var)
-            : data(var...)
-        {}
-#endif
-
-        BOOST_FUSION_GPU_ENABLED
-        vector&
-        operator=(vector const& rhs)
-        {
-            data::operator=(static_cast<data const&>(rhs));
-            return *this;
-        }
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        BOOST_FUSION_GPU_ENABLED
-        vector&
-        operator=(vector&& rhs)
-        {
-            data::operator=(std::forward<data>(rhs));
-            return *this;
-        }
-
-        template <typename Sequence, std::size_t ...N>
-        BOOST_FUSION_GPU_ENABLED
-        void
-        assign(Sequence&& rhs, detail::integer_sequence<std::size_t, N...>)
-        {
-            data::assign(vector_detail::forward_at_c<N>(rhs)...);
-        }
-
-        template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
-        typename enable_if<
-            is_base_of<vector, typename vector_detail::traits::pure<Sequence>::type>
-          , vector&
-        >::type
-        operator=(Sequence&& rhs)
-        {
-            data::operator=(vector_detail::as_base<data>(std::forward<Sequence>(rhs)));
-            return *this;
-        }
-
-        template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
-        typename lazy_disable_if<
-            is_base_of<vector, typename vector_detail::traits::pure<Sequence>::type>
-          , enable_if<
-                traits::is_sequence<typename remove_reference<Sequence>::type>
-              , vector&
-            >
-        >::type
-        operator=(Sequence&& rhs)
-        {
-            typedef typename
-                vector_detail::make_indices_from_seq<Sequence>::type
-            indices;
-
-            assign(std::forward<Sequence>(rhs), indices());
-            return *this;
-        }
-#else
-        template <typename Sequence, std::size_t ...N>
-        BOOST_FUSION_GPU_ENABLED
-        void
-        assign(Sequence const& rhs, detail::integer_sequence<std::size_t, N...>)
-        {
-            data::assign(vector_detail::mandatory_at_c<N>(rhs)...);
-        }
-
-        template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
-        typename enable_if<is_base_of<vector, Sequence>, vector&>::type
-        operator=(Sequence const& rhs)
-        {
-            data::operator=(static_cast<data const&>(rhs));
-            return *this;
-        }
-
-        template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
-        typename lazy_disable_if<
-            is_base_of<vector, Sequence>
-          , enable_if<traits::is_sequence<Sequence>, vector&>
-        >::type
-        operator=(Sequence const& rhs)
-        {
-            typedef typename
-                vector_detail::make_indices_from_seq<Sequence>::type
-            indices;
-
-            assign(rhs, indices());
-            return *this;
-        }
-#endif
-
-        typedef extension::value_at_impl<vector_tag> value_at_impl;
-
-        template <typename I>
-        BOOST_FUSION_GPU_ENABLED
-        typename value_at_impl::template apply<vector, I>::type&
-        at_impl(I)
-        {
-            typedef typename value_at_impl::template apply<vector, I>::type U;
-            typedef vector_detail::store<I::value, U> S;
-            return static_cast<S*>(this)->get();
-        }
-
-        template <typename I>
-        BOOST_FUSION_GPU_ENABLED
-        typename value_at_impl::template apply<vector, I>::type const&
-        at_impl(I) const
-        {
-            typedef typename value_at_impl::template apply<vector, I>::type U;
-            typedef vector_detail::store<I::value, U> S;
-            return static_cast<S const*>(this)->get();
-        }
-    };
-
-    // Internal use only specialization for implementing vectorN.
-    // Simple aliasing (like a using vectorN = vector<T...>) will cause specialization confliction
-    // like following.
-    //
-    //  template <typename> struct SomeClass;
-    //  template <typename T> struct SomeClass<vector<T>> { ... };
-    //  template <typename T>
-    //  struct SomeClass<vector1<T>> // Error, since vector<T> and vector1<T> are exact same type.
-    //  { ... };
-    //
-    // Introducing `numbered_vector_tag` will resolve such specialization error.
-    //
-    //  template <typename T>
-    //  struct SomeClass<vector<T>> { ... };
-    //  template <typename T>
-    //  struct SomeClass<vector1<T>> // OK
-    //  { ... };
-    //
-    //  // Same meaning as above specialization.
-    //  template <typename T>
-    //  struct SomeClass<vector<numbered_vector_tag<1>, T>>
-    //  { ... };
-    template <std::size_t N, typename ...T>
-    struct vector<numbered_vector_tag<N>, T...>
-        : vector<T...>
-    {
-        typedef vector<T...> base;
-
-        BOOST_STATIC_ASSERT((sizeof...(T) == N));
-
-/*
- * Boost.Config exports no macros for inheriting ctor availiability
-#if !defined(BOOST_NO_CXX11_INHERITING_CTOR)
-        BOOST_FUSION_GPU_ENABLED
-        vector()
-        {}
-
-        using base::base;
-#elif !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-*/
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        BOOST_FUSION_GPU_ENABLED
-        vector()
-        {}
-
-        template <typename ...U>
-        BOOST_FUSION_GPU_ENABLED
-        vector(U&&... var)
-            : base(std::forward<U>(var)...)
-        {}
-#else
-        BOOST_FUSION_GPU_ENABLED
-        explicit
-        vector(typename detail::call_param<T>::type... var)
-            : base(var...)
-        {}
-
-        template <typename Sequence>
-        vector(Sequence const& seq)
-            : base(seq)
-        {}
-
-        template <typename Sequence>
-        vector(Sequence& seq)
-            : base(seq)
-        {}
-#endif
 
         BOOST_FUSION_GPU_ENABLED
         vector(vector const& rhs)
             : base(static_cast<base const&>(rhs))
+        {}
+
+        BOOST_FUSION_GPU_ENABLED
+        vector(vector&& rhs)
+            : base(std::forward<base>(rhs))
+        {}
+
+        // rvalue-references is required here in order to forward any arguments to
+        // base: vector(T const&...) doesn't work with trailing void_ and
+        // vector(U const&...) cannot forward any arguments to base.
+        template <typename... U>
+        BOOST_FUSION_GPU_ENABLED
+        vector(U&&... u)
+            : base(std::forward<U>(u)...)
         {}
 
         BOOST_FUSION_GPU_ENABLED
@@ -662,12 +579,6 @@ namespace boost { namespace fusion
             return *this;
         }
 
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        BOOST_FUSION_GPU_ENABLED
-        vector(vector&& rhs)
-            : base(std::forward<base>(rhs))
-        {}
-
         BOOST_FUSION_GPU_ENABLED
         vector&
         operator=(vector&& rhs)
@@ -675,7 +586,6 @@ namespace boost { namespace fusion
             base::operator=(std::forward<base>(rhs));
             return *this;
         }
-#endif
 
         using base::operator=;
     };
