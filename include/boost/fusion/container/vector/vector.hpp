@@ -94,6 +94,16 @@ namespace boost { namespace fusion
             struct pure
                 : remove_cv<typename remove_reference<T>::type>
             {};
+
+            template <typename, typename...>
+            struct is_convertible_head
+                : mpl::false_
+            {};
+
+            template <typename T, typename Head, typename... Tail>
+            struct is_convertible_head<T, Head, Tail...>
+                : is_convertible<T, Head>
+            {};
         }
 
         namespace result_of
@@ -350,21 +360,24 @@ namespace boost { namespace fusion
             template <typename Sequence>
             BOOST_FUSION_GPU_ENABLED
             vector_data(Sequence&& rhs
-                 , typename enable_if<
-                       is_base_of<vector_data, typename traits::pure<Sequence>::type>
-                   >::type* = 0)
+                , typename enable_if<
+                      is_base_of<vector_data, typename traits::pure<Sequence>::type>
+                  >::type* = 0)
                 : data(as_base<data>(std::forward<Sequence>(rhs)))
             {}
 
             template <typename Sequence>
             BOOST_FUSION_GPU_ENABLED
             vector_data(Sequence&& rhs
-                 , typename disable_if<
-                       is_base_of<vector_data, typename traits::pure<Sequence>::type>
-                   >::type* = 0
-                 , typename enable_if<
-                       fusion::traits::is_sequence<typename remove_reference<Sequence>::type>
-                   >::type* = 0)
+                , typename disable_if<
+                      mpl::or_<
+                          is_base_of<vector_data, typename traits::pure<Sequence>::type>
+                        , traits::is_convertible_head<Sequence, T...>
+                      >
+                  >::type* = 0
+                , typename enable_if<
+                      fusion::traits::is_sequence<typename remove_reference<Sequence>::type>
+                  >::type* = 0)
                 : data(std::forward<Sequence>(rhs)
                      , typename make_indices_from_seq<Sequence>::type())
             {}
