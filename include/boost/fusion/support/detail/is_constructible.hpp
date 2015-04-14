@@ -27,10 +27,20 @@ namespace boost { namespace fusion { namespace detail
             wrap(int);
         };
 
+// BOOST_WORKAROUND doesn't work with BOOST_CLANG.
+// Also __clang_*__ don't work properly since Apple Clang says 5(6).x.y even
+// based on LLVM 3.x.
+#if !defined(BOOST_CLANG)
         template <typename T_, typename ...A_>
         BOOST_FUSION_GPU_ENABLED
         static yes_type
         check(wrap<sizeof(T_(boost::declval<A_>()...))>);
+#else
+        template <typename T_, typename ...A_>
+        BOOST_FUSION_GPU_ENABLED
+        static yes_type
+        check(T_ const& = T_(boost::declval<A_>()...));
+#endif
 
         template <typename, typename ...>
         BOOST_FUSION_GPU_ENABLED
