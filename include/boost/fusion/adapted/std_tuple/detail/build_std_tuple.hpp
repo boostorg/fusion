@@ -27,7 +27,7 @@ namespace boost { namespace fusion { namespace detail
     {
         typedef std::tuple<> type;
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type
         call(First const&, Last const&)
         {
@@ -44,14 +44,14 @@ namespace boost { namespace fusion { namespace detail
         typedef std::tuple<T, Rest...> type;
 
         template <std::size_t ...I>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type
         indexed_call(T const& first, std::tuple<Rest...> const& rest, integer_sequence<std::size_t, I...>)
         {
             return type(first, std::get<I>(rest)...);
         }
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type
         call(T const& first, std::tuple<Rest...> const& rest)
         {
@@ -74,7 +74,7 @@ namespace boost { namespace fusion { namespace detail
 
         typedef typename push_front::type type;
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type
         call(First const& f, Last const& l)
         {

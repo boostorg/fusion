@@ -59,7 +59,8 @@ namespace boost { namespace fusion
         };
     }
 
-    BOOST_FUSION_GPU_ENABLED inline map<>
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+    inline map<>
     make_map()
     {
         return map<>();
@@ -116,7 +117,7 @@ namespace boost { namespace fusion
         BOOST_PP_ENUM_PARAMS(N, typename K)
       , BOOST_PP_ENUM_PARAMS(N, typename D)
     >
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline map<BOOST_PP_ENUM(N, BOOST_FUSION_PAIR, _)>
     make_map(BOOST_PP_ENUM_BINARY_PARAMS(N, D, const& arg))
     {

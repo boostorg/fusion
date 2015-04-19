@@ -59,6 +59,7 @@ project
     [ run sequence/as_deque.cpp :  :  :  : ]
     [ run sequence/as_list.cpp :  :  :  : ]
     [ run sequence/as_map.cpp :  :  :  : ]
+    [ run sequence/as_map_assoc.cpp :  :  :  : ]
     [ run sequence/as_set.cpp :  :  :  : ]
     [ run sequence/as_vector.cpp :  :  :  : ]
     [ run sequence/boost_tuple.cpp :  :  :  : ]

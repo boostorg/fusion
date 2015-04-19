@@ -20,7 +20,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector1<T0> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -41,7 +41,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector2<T0 , T1> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -62,7 +62,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector3<T0 , T1 , T2> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -83,7 +83,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector4<T0 , T1 , T2 , T3> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -104,7 +104,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector5<T0 , T1 , T2 , T3 , T4> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -125,7 +125,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector6<T0 , T1 , T2 , T3 , T4 , T5> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -146,7 +146,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector7<T0 , T1 , T2 , T3 , T4 , T5 , T6> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -167,7 +167,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector8<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -188,7 +188,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector9<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -209,7 +209,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector10<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -230,7 +230,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector11<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -251,7 +251,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector12<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -272,7 +272,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector13<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -293,7 +293,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector14<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -314,7 +314,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector15<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -335,7 +335,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector16<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -356,7 +356,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector17<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -377,7 +377,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector18<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -398,7 +398,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector19<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -419,7 +419,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector20<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -440,7 +440,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector21<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -461,7 +461,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector22<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -482,7 +482,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector23<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -503,7 +503,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector24<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -524,7 +524,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector25<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -545,7 +545,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector26<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -566,7 +566,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector27<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -587,7 +587,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector28<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -608,7 +608,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector29<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -629,7 +629,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector30<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -650,7 +650,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector31<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -671,7 +671,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector32<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -692,7 +692,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector33<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -713,7 +713,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector34<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -734,7 +734,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector35<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33 , T34> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -755,7 +755,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector36<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33 , T34 , T35> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -776,7 +776,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector37<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33 , T34 , T35 , T36> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -797,7 +797,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector38<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33 , T34 , T35 , T36 , T37> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -818,7 +818,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector39<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33 , T34 , T35 , T36 , T37 , T38> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {
@@ -839,7 +839,7 @@ BOOST_FUSION_BARRIER_BEGIN
             typedef vector40<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33 , T34 , T35 , T36 , T37 , T38 , T39> type;
         };
         template <typename Iterator>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static typename apply<Iterator>::type
         call(Iterator const& i0)
         {

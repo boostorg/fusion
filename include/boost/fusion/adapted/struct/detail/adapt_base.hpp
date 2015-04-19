@@ -196,7 +196,7 @@
                 >::type                                                         \
             type;                                                               \
                                                                                 \
-            BOOST_FUSION_GPU_ENABLED                                            \
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                            \
             static type                                                         \
             call(Seq& seq)                                                      \
             {                                                                   \
@@ -217,7 +217,7 @@
     {                                                                           \
         typedef char const* type;                                               \
                                                                                 \
-        BOOST_FUSION_GPU_ENABLED                                                \
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                \
         static type                                                             \
         call()                                                                  \
         {                                                                       \

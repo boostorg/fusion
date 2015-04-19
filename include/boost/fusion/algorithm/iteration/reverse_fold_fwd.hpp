@@ -18,7 +18,7 @@ namespace boost { namespace fusion
 
     template<typename Seq, typename State, typename F>
     BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    typename result_of::reverse_fold<
+    inline typename result_of::reverse_fold<
         Seq
       , State const
       , F
@@ -27,7 +27,7 @@ namespace boost { namespace fusion
 
     template<typename Seq, typename State, typename F>
     BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    typename result_of::reverse_fold<
+    inline typename result_of::reverse_fold<
         Seq const
       , State const
       , F
@@ -36,7 +36,7 @@ namespace boost { namespace fusion
 
     template<typename Seq, typename State, typename F>
     BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    typename result_of::reverse_fold<
+    inline typename result_of::reverse_fold<
         Seq
       , State const
       , F
@@ -45,7 +45,7 @@ namespace boost { namespace fusion
 
     template<typename Seq, typename State, typename F>
     BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    typename result_of::reverse_fold<
+    inline typename result_of::reverse_fold<
         Seq const
       , State const
       , F

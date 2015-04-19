@@ -30,7 +30,7 @@ namespace boost { namespace fusion
                 typedef typename value_at_impl<vector_tag>::template apply<Sequence, N>::type element;
                 typedef typename detail::ref_result<element>::type type;
 
-                BOOST_FUSION_GPU_ENABLED
+                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
                 static type
                 call(Sequence& v)
                 {
@@ -45,7 +45,7 @@ namespace boost { namespace fusion
                 typedef typename value_at_impl<vector_tag>::template apply<Sequence, N>::type element;
                 typedef typename detail::cref_result<element>::type type;
 
-                BOOST_FUSION_GPU_ENABLED
+                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
                 static type
                 call(Sequence const& v)
                 {

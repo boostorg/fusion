@@ -12,7 +12,7 @@
 #include <boost/fusion/sequence/intrinsic/at.hpp>
 #include <boost/fusion/sequence/intrinsic/value_at.hpp>
 
-namespace boost { namespace fusion 
+namespace boost { namespace fusion
 {
     struct nview_tag;
 
@@ -33,8 +33,8 @@ namespace boost { namespace fusion
                 typedef typename result_of::value_at<index_type, N>::type index;
                 typedef typename result_of::at<sequence_type, index>::type type;
 
-                BOOST_FUSION_GPU_ENABLED
-                static type 
+                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+                static type
                 call(Sequence& seq)
                 {
                     return fusion::at<index>(seq.seq);

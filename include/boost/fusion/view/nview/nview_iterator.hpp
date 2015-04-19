@@ -41,7 +41,8 @@ namespace boost { namespace fusion
         typedef Sequence sequence_type;
         typedef Pos first_type;
 
-        BOOST_FUSION_GPU_ENABLED explicit nview_iterator(Sequence& in_seq)
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        explicit nview_iterator(Sequence& in_seq)
           : seq(in_seq) {}
 
         Sequence& seq;

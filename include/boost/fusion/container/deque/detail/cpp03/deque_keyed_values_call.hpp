@@ -34,7 +34,7 @@
 
 #define N BOOST_PP_ITERATION()
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type construct(BOOST_PP_ENUM_BINARY_PARAMS(N, typename detail::call_param<T, >::type t))
         {
             return type(t0,
@@ -52,7 +52,7 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) || \
     (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
         template <BOOST_PP_ENUM_PARAMS(N, typename T_)>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type forward_(BOOST_PP_ENUM_BINARY_PARAMS(N, T_, && t))
         {
             return type(BOOST_FUSION_FWD_ELEM(T_0, t0),
