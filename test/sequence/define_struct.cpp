@@ -24,6 +24,13 @@ BOOST_FUSION_DEFINE_STRUCT(
     (int, y)
 )
 
+// Tutorial (compile test only)
+BOOST_FUSION_DEFINE_STRUCT(
+    (demo), employee,
+    (std::string, name)
+    (int, age)
+)
+
 BOOST_FUSION_DEFINE_STRUCT(BOOST_PP_EMPTY(), s, (int, m))
 
 int
@@ -102,4 +109,3 @@ main()
 
     return boost::report_errors();
 }
-
