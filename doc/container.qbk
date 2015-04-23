@@ -309,7 +309,7 @@ __front_extended_deque__ and __back_extended_deque__.
 
     #include <boost/fusion/container/deque.hpp>
     #include <boost/fusion/include/deque.hpp>
-    #include <boost/fusion/container/list/deque_fwd.hpp>
+    #include <boost/fusion/container/deque/deque_fwd.hpp>
     #include <boost/fusion/include/deque_fwd.hpp>
 
 [heading Synopsis]

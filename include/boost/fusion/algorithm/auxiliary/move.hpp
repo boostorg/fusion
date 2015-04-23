@@ -18,6 +18,8 @@
 #include <boost/utility/enable_if.hpp>
 #include <boost/mpl/and.hpp>
 
+#include <utility> // for std::move
+
 #if defined (BOOST_MSVC)
 #  pragma warning(push)
 #  pragma warning (disable: 4100) // unreferenced formal parameter
