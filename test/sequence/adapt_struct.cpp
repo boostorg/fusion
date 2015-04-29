@@ -143,7 +143,7 @@ namespace ns
 
     BOOST_FUSION_ADAPT_STRUCT(
         ns::employee,
-        (std::string, name),
+        (std::string, name)
         (BOOST_FUSION_ADAPT_AUTO, nickname)
     )
 
