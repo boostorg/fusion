@@ -67,6 +67,17 @@ namespace ns
         foo foo_;
         int y;
     };
+
+
+    // Testing non-constexpr compatible types
+    struct employee {
+      std::string name;
+      std::string nickname;
+
+      employee(std::string name, std::string nickname)
+        : name(name), nickname(nickname) 
+      {}
+    };
 }
 
 #if BOOST_PP_VARIADICS
@@ -96,6 +107,13 @@ namespace ns
         y
     )
 
+    BOOST_FUSION_ADAPT_STRUCT(
+        ns::employee,
+        name,
+        nickname
+    )
+        
+
 #else // BOOST_PP_VARIADICS
 
     BOOST_FUSION_ADAPT_STRUCT(
@@ -121,6 +139,12 @@ namespace ns
         ns::bar,
         (BOOST_FUSION_ADAPT_AUTO, foo_.x) // test that adapted members can actually be expressions
         (BOOST_FUSION_ADAPT_AUTO, y)
+    )
+
+    BOOST_FUSION_ADAPT_STRUCT(
+        ns::employee,
+        (std::string, name)
+        (BOOST_FUSION_ADAPT_AUTO, nickname)
     )
 
 #endif
@@ -223,6 +247,15 @@ main()
         BOOST_TEST(v2 > v1);
         BOOST_TEST(v2 >= v1);
     }
+
+    {
+        ns::employee emp("John Doe", "jdoe"); 
+        std::cout << at_c<0>(emp) << std::endl;
+        std::cout << at_c<1>(emp) << std::endl;
+
+        fusion::vector<std::string, std::string> v1("John Doe", "jdoe");
+        BOOST_TEST(emp == v1);
+    } 
 
     return boost::report_errors();
 }
