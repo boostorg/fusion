@@ -150,7 +150,7 @@ namespace ns
 #endif
 
 struct empty_struct {};
-BOOST_FUSION_ADAPT_STRUCT(empty_struct,); 
+BOOST_FUSION_ADAPT_STRUCT(empty_struct,)
 
 int
 main()
