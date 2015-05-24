@@ -32,11 +32,20 @@ namespace boost { namespace fusion { namespace detail
 BOOST_FUSION_BARRIER_BEGIN
 
     template <int size
-            , typename = typename detail::make_integer_sequence<std::size_t, size>::type>
+#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1800))
+            , typename = typename make_integer_sequence<int, size>::type>
+#else
+            , typename = typename make_integer_sequence<std::size_t, size>::type>
+#endif
     struct as_set;
 
+#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1800))
+    template <int size, int ...Indices>
+    struct as_set<size, integer_sequence<int, Indices...> >
+#else
     template <int size, std::size_t ...Indices>
-    struct as_set<size, detail::integer_sequence<std::size_t, Indices...> >
+    struct as_set<size, integer_sequence<std::size_t, Indices...> >
+#endif
     {
         template <typename I>
         struct apply

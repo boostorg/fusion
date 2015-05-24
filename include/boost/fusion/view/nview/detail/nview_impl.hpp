@@ -13,7 +13,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Without variadics, we will use the PP version
 ///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
+#if !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR) \
+  || BOOST_WORKAROUND(BOOST_MSVC, == 1800)
+// MSVC 12.0 shows QUITE CRAZY compile error with variadics and no way to avoiding...
 # include <boost/fusion/view/nview/detail/cpp03/nview_impl.hpp>
 #else
 

@@ -600,7 +600,14 @@ namespace boost { namespace fusion
             return *this;
         }
 
-        using base::operator=;
+        template <typename Sequence>
+        BOOST_FUSION_GPU_ENABLED
+        vector&
+        operator=(Sequence&& rhs)
+        {
+            base::operator=(std::forward<Sequence>(rhs));
+            return *this;
+        }
     };
 }}
 

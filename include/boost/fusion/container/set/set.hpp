@@ -49,7 +49,7 @@ namespace boost { namespace fusion
 
         typedef vector<> storage_type;
 
-        typedef typename storage_type::size size;
+        typedef storage_type::size size;
 
         BOOST_FUSION_GPU_ENABLED
         set()

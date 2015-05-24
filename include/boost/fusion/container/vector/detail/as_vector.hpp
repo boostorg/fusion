@@ -34,8 +34,13 @@ BOOST_FUSION_BARRIER_BEGIN
     template <typename Indices>
     struct as_vector_impl;
 
+#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1800))
+    template <int ...Indices>
+    struct as_vector_impl<integer_sequence<int, Indices...> >
+#else
     template <std::size_t ...Indices>
     struct as_vector_impl<integer_sequence<std::size_t, Indices...> >
+#endif
     {
         template <typename Iterator>
         struct apply
@@ -60,7 +65,11 @@ BOOST_FUSION_BARRIER_BEGIN
 
     template <int size>
     struct as_vector
+#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1800))
+        : as_vector_impl<typename make_integer_sequence<int, size>::type> {};
+#else
         : as_vector_impl<typename make_integer_sequence<std::size_t, size>::type> {};
+#endif
 
 BOOST_FUSION_BARRIER_END
 }}}

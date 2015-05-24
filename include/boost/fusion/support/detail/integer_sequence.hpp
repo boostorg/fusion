@@ -40,13 +40,8 @@ namespace boost { namespace fusion { namespace detail
           >
     {};
 
-#if defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
     template <typename T, T N>
     struct make_integer_sequence : make_integer_sequence_impl<T, N> {};
-#else
-    template <typename T, T N>
-    using make_integer_sequence = typename make_integer_sequence_impl<T, N>::type;
-#endif
 }}}
 
 #endif

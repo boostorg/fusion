@@ -25,6 +25,7 @@
 #include <boost/mpl/identity.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/preprocessor/iterate.hpp>
+#include <boost/preprocessor/repetition/enum.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && \
