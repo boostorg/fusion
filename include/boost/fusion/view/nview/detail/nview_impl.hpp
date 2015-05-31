@@ -38,7 +38,7 @@ namespace boost { namespace fusion
     }
 
     template <int ...I, typename Sequence>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline nview<Sequence, vector<mpl::int_<I>...> >
     as_nview(Sequence& s)
     {

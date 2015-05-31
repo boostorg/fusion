@@ -54,7 +54,7 @@ namespace boost { namespace fusion
     }
 
     template <typename ...T>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename result_of::make_vector<T...>::type
     make_vector(T const&... arg)
     {

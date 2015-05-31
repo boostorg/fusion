@@ -21,12 +21,12 @@ namespace boost { namespace fusion { namespace detail
         struct no_type { char xx[2]; };
 
         template <typename T_, typename ...A_>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static yes_type
         check(T_ const& = T_(boost::declval<A_>()...));
 
         template <typename, typename ...>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static no_type
         check(...);
 

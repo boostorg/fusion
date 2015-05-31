@@ -51,17 +51,17 @@ namespace boost { namespace fusion
 
         typedef storage_type::size size;
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         set()
             : data() {}
 
         template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         set(Sequence const& rhs)
             : data(rhs) {}
 
         template <typename T>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         set&
         operator=(T const& rhs)
         {
@@ -69,9 +69,9 @@ namespace boost { namespace fusion
             return *this;
         }
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         storage_type& get_data() { return data; }
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         storage_type const& get_data() const { return data; }
 
     private:
@@ -91,22 +91,22 @@ namespace boost { namespace fusion
 
         typedef typename storage_type::size size;
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         set()
             : data() {}
 
         template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         set(Sequence const& rhs)
             : data(rhs) {}
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         explicit
         set(typename detail::call_param<T>::type ...args)
             : data(args...) {}
 
         template <typename U>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         set&
         operator=(U const& rhs)
         {
@@ -114,9 +114,9 @@ namespace boost { namespace fusion
             return *this;
         }
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         storage_type& get_data() { return data; }
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         storage_type const& get_data() const { return data; }
 
     private:

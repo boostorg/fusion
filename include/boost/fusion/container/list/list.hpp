@@ -37,17 +37,17 @@ namespace boost { namespace fusion
     public:
         typedef list_to_cons::type inherited_type;
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         list()
             : inherited_type() {}
 
         template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         list(Sequence const& rhs)
             : inherited_type(rhs) {}
 
         template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         list&
         operator=(Sequence const& rhs)
         {
@@ -66,27 +66,27 @@ namespace boost { namespace fusion
     public:
         typedef typename list_to_cons::type inherited_type;
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         list()
             : inherited_type() {}
 
         template <typename ...U>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         list(list<U...> const& rhs)
             : inherited_type(rhs) {}
 
         template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         list(Sequence const& rhs)
             : inherited_type(rhs) {}
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         explicit
         list(typename detail::call_param<T>::type ...args)
             : inherited_type(list_to_cons::call(args...)) {}
 
         template <typename ...U>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         list&
         operator=(list<U...> const& rhs)
         {
@@ -95,7 +95,7 @@ namespace boost { namespace fusion
         }
 
         template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         list&
         operator=(Sequence const& rhs)
         {

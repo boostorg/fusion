@@ -72,7 +72,7 @@ namespace boost { namespace fusion
         }
 
         template <int N, typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         inline typename result_of::mandatory_at_c<Sequence, N>::type
         mandatory_at_c(Sequence& seq)
         {
@@ -117,7 +117,7 @@ namespace boost { namespace fusion
         }
 
         template <int N, typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         inline typename result_of::forward_at_c<Sequence, N>::type
         forward_at_c(Sequence&& seq)
         {
@@ -128,7 +128,7 @@ namespace boost { namespace fusion
         }
 
         template <typename Base>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         inline Base const&
         as_base(Base const& base) BOOST_NOEXCEPT
         {
@@ -136,7 +136,7 @@ namespace boost { namespace fusion
         }
 
         template <typename Base>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         inline Base&&
         as_base(Base&& base) BOOST_NOEXCEPT
         {
@@ -155,17 +155,17 @@ namespace boost { namespace fusion
         template <std::size_t, typename T>
         struct store
         {
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             store()
                 : elem()
             {}
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             store(store const& rhs)
                 : elem(rhs.get())
             {}
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             store&
             operator=(store const& rhs)
             {
@@ -173,12 +173,12 @@ namespace boost { namespace fusion
                 return *this;
             }
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             store(store&& rhs)
                 : elem(std::forward<T>(rhs.get()))
             {}
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             store&
             operator=(store&& rhs)
             {
@@ -187,19 +187,19 @@ namespace boost { namespace fusion
             }
 
             template <typename U>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             store(U&& rhs
                 , typename enable_if<
                       mpl::or_<
-                          detail::is_constructible<T, typename traits::remove_rvalue_reference<U>::type>
-                        , is_convertible<typename traits::remove_rvalue_reference<U>::type, T>
+                          is_convertible<typename traits::remove_rvalue_reference<U>::type, T>
+                        , detail::is_constructible<T, typename traits::remove_rvalue_reference<U>::type>
                       >
                   >::type* = 0)
                 : elem(std::forward<U>(rhs))
             {}
 
             template <typename U>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             store&
             operator=(U&& rhs)
             {
@@ -207,8 +207,10 @@ namespace boost { namespace fusion
                 return *this;
             }
 
-            BOOST_FUSION_GPU_ENABLED T      & get()       { return elem; }
-            BOOST_FUSION_GPU_ENABLED T const& get() const { return elem; }
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            T      & get()       { return elem; }
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            T const& get() const { return elem; }
 
             T elem;
         };
@@ -234,37 +236,37 @@ namespace boost { namespace fusion
             typedef store<I, T>             elem;
             typedef data<I + 1, Tail...>    base;
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             data()
             {}
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             data(data const& rhs)
                 : elem(static_cast<elem const&>(rhs))
                 , base(static_cast<base const&>(rhs))
             {}
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             data(data&& rhs)
                 : elem(std::forward<elem>(rhs))
                 , base(std::forward<base>(rhs))
             {}
 
             template <typename Sequence, std::size_t ...N>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             data(Sequence&& seq, detail::integer_sequence<std::size_t, 0, N...>)
                 : elem(forward_at_c<0>(seq))
                 , base(forward_at_c<N>(seq)...)
             {}
 
             template <typename Head_, typename ...Tail_>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             data(Head_&& head, Tail_&&... tail)
                 : elem(std::forward<Head_>(head))
                 , base(std::forward<Tail_>(tail)...)
             {}
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             data&
             operator=(data const& rhs)
             {
@@ -273,7 +275,7 @@ namespace boost { namespace fusion
                 return *this;
             }
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             data&
             operator=(data&& rhs)
             {
@@ -283,7 +285,7 @@ namespace boost { namespace fusion
             }
 
             template <typename Head_, typename ...Tail_>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             void
             assign(Head_&& head, Tail_&&... tail)
             {
@@ -343,22 +345,22 @@ namespace boost { namespace fusion
 
             typedef vector_detail::data<0, T...> data;
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             vector_data()
             {}
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             vector_data(vector_data const& rhs)
                 : data(static_cast<data const&>(rhs))
             {}
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             vector_data(vector_data&& rhs)
                 : data(std::forward<data>(rhs))
             {}
 
             template <typename Sequence>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             vector_data(Sequence&& rhs
                 , typename enable_if<
                       is_base_of<vector_data, typename traits::pure<Sequence>::type>
@@ -367,7 +369,7 @@ namespace boost { namespace fusion
             {}
 
             template <typename Sequence>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             vector_data(Sequence&& rhs
                 , typename disable_if<
                       mpl::or_<
@@ -383,13 +385,13 @@ namespace boost { namespace fusion
             {}
 
             template <typename ...U>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             explicit
             vector_data(U&&... var)
                 : data(std::forward<U>(var)...)
             {}
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             vector_data&
             operator=(vector_data const& rhs)
             {
@@ -397,7 +399,7 @@ namespace boost { namespace fusion
                 return *this;
             }
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             vector_data&
             operator=(vector_data&& rhs)
             {
@@ -406,7 +408,7 @@ namespace boost { namespace fusion
             }
 
             template <typename Sequence, std::size_t ...N>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             void
             assign(Sequence&& rhs, detail::integer_sequence<std::size_t, N...>)
             {
@@ -414,7 +416,7 @@ namespace boost { namespace fusion
             }
 
             template <typename Sequence>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             typename enable_if<
                 is_base_of<vector_data, typename traits::pure<Sequence>::type>
               , vector_data&
@@ -426,7 +428,7 @@ namespace boost { namespace fusion
             }
 
             template <typename Sequence>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             typename lazy_disable_if<
                 is_base_of<vector_data, typename traits::pure<Sequence>::type>
               , enable_if<
@@ -447,7 +449,7 @@ namespace boost { namespace fusion
             typedef extension::value_at_impl<vector_tag> value_at_impl;
 
             template <typename I>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             typename value_at_impl::template apply<vector_data, I>::type&
             at_impl(I)
             {
@@ -457,7 +459,7 @@ namespace boost { namespace fusion
             }
 
             template <typename I>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             typename value_at_impl::template apply<vector_data, I>::type const&
             at_impl(I) const
             {
@@ -497,27 +499,27 @@ namespace boost { namespace fusion
 
             BOOST_STATIC_ASSERT((base::size::value == N));
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             vector_data()
             {}
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             vector_data(vector_data const& rhs)
                 : base(static_cast<base const &>(rhs))
             {}
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             vector_data(vector_data&& rhs)
                 : base(std::forward<base>(rhs))
             {}
 
             template <typename ...U>
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             vector_data(U&&... var)
                 : base(std::forward<U>(var)...)
             {}
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             vector_data &
             operator=(vector_data const& rhs)
             {
@@ -525,7 +527,7 @@ namespace boost { namespace fusion
                 return *this;
             }
 
-            BOOST_FUSION_GPU_ENABLED
+            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             vector_data &
             operator=(vector_data&& rhs)
             {
@@ -561,16 +563,16 @@ namespace boost { namespace fusion
     {
         typedef typename vector_detail::construct_vector<T...>::type base;
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector()
         {}
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector(vector const& rhs)
             : base(static_cast<base const&>(rhs))
         {}
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector(vector&& rhs)
             : base(std::forward<base>(rhs))
         {}
@@ -579,12 +581,12 @@ namespace boost { namespace fusion
         // base: vector(T const&...) doesn't work with trailing void_ and
         // vector(U const&...) cannot forward any arguments to base.
         template <typename... U>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector(U&&... u)
             : base(std::forward<U>(u)...)
         {}
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector&
         operator=(vector const& rhs)
         {
@@ -592,7 +594,7 @@ namespace boost { namespace fusion
             return *this;
         }
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector&
         operator=(vector&& rhs)
         {
@@ -601,7 +603,7 @@ namespace boost { namespace fusion
         }
 
         template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector&
         operator=(Sequence&& rhs)
         {

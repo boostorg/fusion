@@ -20,8 +20,8 @@ namespace boost { namespace fusion { namespace detail
     {
         typedef T value_type;
 
-        BOOST_FUSION_GPU_ENABLED
-        static BOOST_CONSTEXPR std::size_t size() BOOST_NOEXCEPT
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        static std::size_t size() BOOST_NOEXCEPT
         { return sizeof...(Ints); }
 
         // non standard extension
