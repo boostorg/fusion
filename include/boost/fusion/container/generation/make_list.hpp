@@ -32,7 +32,7 @@ namespace boost { namespace fusion
     }
 
     template <typename ...T>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline list<typename detail::as_fusion_element<T>::type...>
     make_list(T const&... arg)
     {
