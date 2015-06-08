@@ -116,16 +116,6 @@ namespace boost { namespace fusion
             : vec(rhs.vec) {}
 
         template <typename Sequence>
-        // XXX:
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-FUSION_HASH if !defined(BOOST_CLANG)
-        BOOST_CONSTEXPR
-FUSION_HASH endif
-#else
-#if !defined(BOOST_CLANG)
-        BOOST_CONSTEXPR
-#endif
-#endif
         BOOST_FUSION_GPU_ENABLED
         vector(Sequence const& rhs,
             typename boost::enable_if<traits::is_sequence<Sequence> >::type* = 0)
