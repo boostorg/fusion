@@ -60,7 +60,7 @@ namespace boost { namespace fusion
             : inherited_type(rhs) {}
 
         template <typename Sequence>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        BOOST_FUSION_GPU_ENABLED
         list(Sequence const& rhs
             , typename boost::enable_if<traits::is_sequence<Sequence> >::type* = 0)
             : inherited_type(rhs) {}
