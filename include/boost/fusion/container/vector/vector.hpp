@@ -165,6 +165,11 @@ namespace boost { namespace fusion
                 : elem(rhs.get())
             {}
 
+            //BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            //store(T const& val)
+            //    : elem(val)
+            //{}
+
             BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             store&
             operator=(store const& rhs)
@@ -176,6 +181,11 @@ namespace boost { namespace fusion
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             store(store&& rhs)
                 : elem(std::forward<T>(rhs.get()))
+            {}
+
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            store(typename remove_reference<T>::type&& val)
+                : elem(std::forward<T>(val))
             {}
 
             BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
@@ -260,7 +270,7 @@ namespace boost { namespace fusion
             {}
 
             template <typename Head_, typename ...Tail_>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            BOOST_FUSION_GPU_ENABLED
             data(Head_&& head, Tail_&&... tail)
                 : elem(std::forward<Head_>(head))
                 , base(std::forward<Tail_>(tail)...)
@@ -581,7 +591,7 @@ namespace boost { namespace fusion
         // base: vector(T const&...) doesn't work with trailing void_ and
         // vector(U const&...) cannot forward any arguments to base.
         template <typename... U>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        BOOST_FUSION_GPU_ENABLED
         vector(U&&... u)
             : base(std::forward<U>(u)...)
         {}

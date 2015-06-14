@@ -87,7 +87,7 @@ namespace boost { namespace fusion
         {}
 
         template <typename First, typename ...T_>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        BOOST_FUSION_GPU_ENABLED
         map(First const& first, T_ const&... rest)
           : base_type(first, rest...)
         {}

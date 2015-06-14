@@ -42,7 +42,7 @@ namespace boost { namespace fusion
             : inherited_type() {}
 
         template <typename Sequence>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        BOOST_FUSION_GPU_ENABLED
         list(Sequence const& rhs)
             : inherited_type(rhs) {}
 
@@ -76,7 +76,7 @@ namespace boost { namespace fusion
             : inherited_type(rhs) {}
 
         template <typename Sequence>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        BOOST_FUSION_GPU_ENABLED
         list(Sequence const& rhs)
             : inherited_type(rhs) {}
 

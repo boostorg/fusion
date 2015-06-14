@@ -56,7 +56,7 @@ namespace boost { namespace fusion
             : data() {}
 
         template <typename Sequence>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        BOOST_FUSION_GPU_ENABLED
         set(Sequence const& rhs)
             : data(rhs) {}
 
@@ -96,7 +96,7 @@ namespace boost { namespace fusion
             : data() {}
 
         template <typename Sequence>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        BOOST_FUSION_GPU_ENABLED
         set(Sequence const& rhs)
             : data(rhs) {}
 
