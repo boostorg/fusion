@@ -24,7 +24,11 @@ namespace boost { namespace fusion { namespace detail
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundefined-inline"
 #endif
-#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1800))
+// BOOST_WORKAROUND doesn't work with BOOST_CLANG.
+// Also __clang_*__ don't work properly since Apple Clang says 5(6).x.y even
+// based on LLVM 3.x.
+#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1800)) || \
+    defined(BOOST_CLANG)
         template <typename T_, typename ...A_>
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static yes_type
