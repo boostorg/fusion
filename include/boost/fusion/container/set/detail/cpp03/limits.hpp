@@ -8,7 +8,7 @@
 #define FUSION_SET_LIMITS_09162005_1103
 
 #include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/limits.hpp>
+#include <boost/fusion/container/vector/detail/cpp03/limits.hpp>
 
 #if !defined(FUSION_MAX_SET_SIZE)
 # define FUSION_MAX_SET_SIZE FUSION_MAX_VECTOR_SIZE

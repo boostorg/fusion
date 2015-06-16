@@ -49,7 +49,7 @@ BOOST_FUSION_BARRIER_END
 }}}
 
 #if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/set/detail/preprocessed/as_set.hpp>
+#include <boost/fusion/container/set/detail/cpp03/preprocessed/as_set.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/as_set" FUSION_MAX_SET_SIZE_STR ".hpp")
@@ -84,7 +84,7 @@ BOOST_FUSION_BARRIER_BEGIN
     typedef typename fusion::result_of::value_of<BOOST_PP_CAT(I, n)>::type      \
         BOOST_PP_CAT(T, n);
 
-#define BOOST_PP_FILENAME_1 <boost/fusion/container/set/detail/as_set.hpp>
+#define BOOST_PP_FILENAME_1 <boost/fusion/container/set/detail/cpp03/as_set.hpp>
 #define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_SET_SIZE)
 #include BOOST_PP_ITERATE()
 

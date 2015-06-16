@@ -15,10 +15,10 @@
 #include <boost/preprocessor/repetition/enum_params.hpp>
 
 #if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/vector/detail/preprocessed/vector30_fwd.hpp>
+#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector30_fwd.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/vector30_fwd.hpp")
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/vector30_fwd.hpp")
 #endif
 
 /*=============================================================================
@@ -38,7 +38,7 @@
 namespace boost { namespace fusion
 {
     // expand vector21 to vector30
-    #define BOOST_PP_FILENAME_1 <boost/fusion/container/vector/vector30_fwd.hpp>
+    #define BOOST_PP_FILENAME_1 <boost/fusion/container/vector/detail/cpp03/vector30_fwd.hpp>
     #define BOOST_PP_ITERATION_LIMITS (21, 30)
     #include BOOST_PP_ITERATE()
 }}

@@ -13,7 +13,7 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/fusion/support/is_sequence.hpp>
 #include <boost/fusion/container/vector/vector_fwd.hpp>
-#include <boost/fusion/container/vector/detail/vector_n_chooser.hpp>
+#include <boost/fusion/container/vector/detail/cpp03/vector_n_chooser.hpp>
 #include <boost/fusion/sequence/intrinsic/begin.hpp>
 #include <boost/mpl/at.hpp>
 #include <boost/mpl/bool.hpp>
@@ -56,10 +56,10 @@
 #endif
 
 #if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/vector/detail/preprocessed/vector.hpp>
+#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/vvector" FUSION_MAX_VECTOR_SIZE_STR ".hpp")
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/vvector" FUSION_MAX_VECTOR_SIZE_STR ".hpp")
 #endif
 
 /*=============================================================================
@@ -128,7 +128,7 @@ namespace boost { namespace fusion
         //      typename detail::call_param<T0>::type arg0
         //    , typename detail::call_param<T1>::type arg1)
         //    : vec(arg0, arg1) {}
-        #include <boost/fusion/container/vector/detail/vector_forward_ctor.hpp>
+        #include <boost/fusion/container/vector/detail/cpp03/vector_forward_ctor.hpp>
 
         template <BOOST_PP_ENUM_PARAMS(FUSION_MAX_VECTOR_SIZE, typename U)>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED

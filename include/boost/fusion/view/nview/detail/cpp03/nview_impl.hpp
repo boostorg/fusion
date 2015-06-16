@@ -20,7 +20,7 @@
 
 #define BOOST_PP_ITERATION_PARAMS_1                                           \
     (3, (1, FUSION_MAX_VECTOR_SIZE,                                           \
-    "boost/fusion/view/nview/detail/nview_impl.hpp"))                         \
+    "boost/fusion/view/nview/detail/cpp03/nview_impl.hpp"))                         \
     /**/
 
 ///////////////////////////////////////////////////////////////////////////////

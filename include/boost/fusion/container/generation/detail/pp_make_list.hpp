@@ -5,8 +5,8 @@
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #ifndef BOOST_PP_IS_ITERATING
-#if !defined(FUSION_MAKE_LIST_07192005_1239)
-#define FUSION_MAKE_LIST_07192005_1239
+#if !defined(FUSION_PP_MAKE_LIST_07192005_1239)
+#define FUSION_PP_MAKE_LIST_07192005_1239
 
 #include <boost/preprocessor/iterate.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
@@ -20,7 +20,7 @@
 #include <boost/fusion/container/generation/detail/preprocessed/make_list.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/make_list" FUSION_MAX_LIST_SIZE_STR".hpp")
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/make_list" FUSION_MAX_LIST_SIZE_STR".hpp")
 #endif
 
 /*=============================================================================
@@ -66,7 +66,7 @@ namespace boost { namespace fusion
 #define BOOST_FUSION_AS_FUSION_ELEMENT(z, n, data)                               \
     typename detail::as_fusion_element<BOOST_PP_CAT(T, n)>::type
 
-#define BOOST_PP_FILENAME_1 <boost/fusion/container/generation/make_list.hpp>
+#define BOOST_PP_FILENAME_1 <boost/fusion/container/generation/detail/pp_make_list.hpp>
 #define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_LIST_SIZE)
 #include BOOST_PP_ITERATE()
 
