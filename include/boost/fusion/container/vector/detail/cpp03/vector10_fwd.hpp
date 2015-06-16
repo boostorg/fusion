@@ -21,10 +21,10 @@ namespace boost { namespace fusion
 }}
 
 #if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/vector/detail/preprocessed/vector10_fwd.hpp>
+#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector10_fwd.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/vector10_fwd.hpp")
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/vector10_fwd.hpp")
 #endif
 
 /*=============================================================================
@@ -43,7 +43,7 @@ namespace boost { namespace fusion
 namespace boost { namespace fusion
 {
     // expand vector1 to vector10
-    #define BOOST_PP_FILENAME_1 <boost/fusion/container/vector/vector10_fwd.hpp>
+    #define BOOST_PP_FILENAME_1 <boost/fusion/container/vector/detail/cpp03/vector10_fwd.hpp>
     #define BOOST_PP_ITERATION_LIMITS (1, 10)
     #include BOOST_PP_ITERATE()
 }}

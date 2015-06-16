@@ -8,7 +8,7 @@
 #define FUSION_VECTOR50_05052005_0207
 
 #include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/vector50_fwd.hpp>
+#include <boost/fusion/container/vector/detail/cpp03/vector50_fwd.hpp>
 #include <boost/fusion/support/sequence_base.hpp>
 #include <boost/fusion/support/is_sequence.hpp>
 #include <boost/fusion/support/detail/access.hpp>
@@ -37,10 +37,10 @@
 #include <boost/preprocessor/repetition/repeat_from_to.hpp>
 
 #if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/vector/detail/preprocessed/vector50.hpp>
+#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector50.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/vector50.hpp")
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/vector50.hpp")
 #endif
 
 /*=============================================================================
@@ -64,7 +64,7 @@ namespace boost { namespace fusion
 
 #define FUSION_HASH #
 // expand vector41 to vector50
-#define BOOST_PP_FILENAME_1 <boost/fusion/container/vector/detail/vector_n.hpp>
+#define BOOST_PP_FILENAME_1 <boost/fusion/container/vector/detail/cpp03/vector_n.hpp>
 #define BOOST_PP_ITERATION_LIMITS (41, 50)
 #include BOOST_PP_ITERATE()
 #undef FUSION_HASH

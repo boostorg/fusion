@@ -8,16 +8,16 @@
 #define FUSION_LIST_07172005_1153
 
 #include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/list/list_fwd.hpp>
-#include <boost/fusion/container/list/detail/list_to_cons.hpp>
+#include <boost/fusion/container/list/detail/cpp03/list_fwd.hpp>
+#include <boost/fusion/container/list/detail/cpp03/list_to_cons.hpp>
 #include <boost/fusion/support/is_sequence.hpp>
 #include <boost/core/enable_if.hpp>
 
 #if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/list/detail/preprocessed/list.hpp>
+#include <boost/fusion/container/list/detail/cpp03/preprocessed/list.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/list" FUSION_MAX_LIST_SIZE_STR ".hpp")
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/list" FUSION_MAX_LIST_SIZE_STR ".hpp")
 #endif
 
 /*=============================================================================
@@ -72,7 +72,7 @@ namespace boost { namespace fusion
         //      typename detail::call_param<T0>::type arg0
         //    , typename detail::call_param<T1>::type arg1)
         //    : inherited_type(list_to_cons::call(arg0, arg1)) {}
-        #include <boost/fusion/container/list/detail/list_forward_ctor.hpp>
+        #include <boost/fusion/container/list/detail/cpp03/list_forward_ctor.hpp>
 
         template <BOOST_PP_ENUM_PARAMS(FUSION_MAX_LIST_SIZE, typename U)>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED

@@ -26,10 +26,10 @@
 #include <boost/core/enable_if.hpp>
 
 #if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/set/detail/preprocessed/set.hpp>
+#include <boost/fusion/container/set/detail/cpp03/preprocessed/set.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/set" FUSION_MAX_SET_SIZE_STR ".hpp")
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/set" FUSION_MAX_SET_SIZE_STR ".hpp")
 #endif
 
 /*=============================================================================
@@ -75,7 +75,7 @@ namespace boost { namespace fusion
             , typename boost::enable_if<traits::is_sequence<Sequence> >::type* = 0)
             : data(rhs) {}
 
-        #include <boost/fusion/container/set/detail/set_forward_ctor.hpp>
+        #include <boost/fusion/container/set/detail/cpp03/set_forward_ctor.hpp>
 
         template <typename T>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED

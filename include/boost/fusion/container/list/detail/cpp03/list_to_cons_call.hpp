@@ -13,7 +13,7 @@
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
 
 #define BOOST_PP_FILENAME_1 \
-    <boost/fusion/container/list/detail/list_to_cons_call.hpp>
+    <boost/fusion/container/list/detail/cpp03/list_to_cons_call.hpp>
 #define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_LIST_SIZE)
 #include BOOST_PP_ITERATE()
 

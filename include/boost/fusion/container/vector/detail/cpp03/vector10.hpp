@@ -8,7 +8,7 @@
 #define FUSION_VECTOR10_05042005_0257
 
 #include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/vector10_fwd.hpp>
+#include <boost/fusion/container/vector/detail/cpp03/vector10_fwd.hpp>
 #include <boost/fusion/support/sequence_base.hpp>
 #include <boost/fusion/support/is_sequence.hpp>
 #include <boost/fusion/support/detail/access.hpp>
@@ -63,10 +63,10 @@ namespace boost { namespace fusion
 }}
 
 #if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/vector/detail/preprocessed/vector10.hpp>
+#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector10.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/vector10.hpp")
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/vector10.hpp")
 #endif
 
 /*=============================================================================
@@ -90,7 +90,7 @@ namespace boost { namespace fusion
 
 #define FUSION_HASH #
 // expand vector1 to vector10
-#define BOOST_PP_FILENAME_1 <boost/fusion/container/vector/detail/vector_n.hpp>
+#define BOOST_PP_FILENAME_1 <boost/fusion/container/vector/detail/cpp03/vector_n.hpp>
 #define BOOST_PP_ITERATION_LIMITS (1, 10)
 #include BOOST_PP_ITERATE()
 #undef FUSION_HASH

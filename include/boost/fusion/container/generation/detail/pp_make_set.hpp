@@ -22,7 +22,7 @@
 #include <boost/fusion/container/generation/detail/preprocessed/make_set.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/make_set" FUSION_MAX_SET_SIZE_STR".hpp")
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/make_set" FUSION_MAX_SET_SIZE_STR".hpp")
 #endif
 
 /*=============================================================================
@@ -83,7 +83,7 @@ FUSION_HASH endif
 #define BOOST_FUSION_AS_FUSION_ELEMENT(z, n, data)                               \
     typename detail::as_fusion_element<BOOST_PP_CAT(T, n)>::type
 
-#define BOOST_PP_FILENAME_1 <boost/fusion/container/generation/make_set.hpp>
+#define BOOST_PP_FILENAME_1 <boost/fusion/container/generation/detail/pp_make_set.hpp>
 #define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_VECTOR_SIZE)
 #include BOOST_PP_ITERATE()
 
