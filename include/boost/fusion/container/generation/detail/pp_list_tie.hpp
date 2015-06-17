@@ -5,8 +5,8 @@
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #ifndef BOOST_PP_IS_ITERATING
-#if !defined(FUSION_LIST_TIE_07192005_0109)
-#define FUSION_LIST_TIE_07192005_0109
+#if !defined(FUSION_PP_LIST_TIE_07192005_0109)
+#define FUSION_PP_LIST_TIE_07192005_0109
 
 #include <boost/preprocessor/iterate.hpp>
 #include <boost/preprocessor/cat.hpp>
@@ -20,7 +20,7 @@
 #include <boost/fusion/container/generation/detail/preprocessed/list_tie.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/list_tie" FUSION_MAX_LIST_SIZE_STR".hpp")
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/list_tie" FUSION_MAX_LIST_SIZE_STR".hpp")
 #endif
 
 /*=============================================================================
@@ -53,7 +53,7 @@ namespace boost { namespace fusion
 // $$$ shouldn't we remove_reference first to allow references? $$$
 #define BOOST_FUSION_REF(z, n, data) BOOST_PP_CAT(T, n)&
 
-#define BOOST_PP_FILENAME_1 <boost/fusion/container/generation/list_tie.hpp>
+#define BOOST_PP_FILENAME_1 <boost/fusion/container/generation/detail/list_tie.hpp>
 #define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_LIST_SIZE)
 #include BOOST_PP_ITERATE()
 
