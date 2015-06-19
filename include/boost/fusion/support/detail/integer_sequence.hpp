@@ -42,6 +42,9 @@ namespace boost { namespace fusion { namespace detail
 
     template <typename T, T N>
     struct make_integer_sequence : make_integer_sequence_impl<T, N> {};
+
+    template <std::size_t N>
+    struct make_index_sequence : make_integer_sequence<std::size_t, N> {};
 }}}
 
 #endif

@@ -22,6 +22,7 @@
 // C++11 interface
 ///////////////////////////////////////////////////////////////////////////////
 #include <cstddef>
+#include <boost/fusion/container/vector/vector_fwd.hpp>
 
 namespace boost { namespace fusion
 {
@@ -29,8 +30,8 @@ namespace boost { namespace fusion
 
     namespace vector_detail
     {
-        template <std::size_t I, typename... T>
-        struct data;
+        template <typename I, typename ...T>
+        struct vector_data;
     }
 
     namespace extension
@@ -41,18 +42,22 @@ namespace boost { namespace fusion
         template <>
         struct value_at_impl<vector_tag>
         {
-            template <typename Data, std::size_t N>
-            struct apply_impl : apply_impl<typename Data::base, N>
-            {};
+            template <typename V, std::size_t N>
+            struct apply_impl;
 
-            template <typename T, typename ...Tail, std::size_t N>
-            struct apply_impl<vector_detail::data<N, T, Tail...>, N>
+            template <typename H, typename ...T>
+            struct apply_impl<vector<H, T...>, 0>
             {
-                typedef T type;
+                typedef H type;
             };
 
+            template <typename H, typename ...T, std::size_t N>
+            struct apply_impl<vector<H, T...>, N>
+                : apply_impl<vector<T...>, N - 1>
+            {};
+
             template <typename Sequence, typename N>
-            struct apply : apply_impl<typename Sequence::data, N::value>
+            struct apply : apply_impl<typename Sequence::type_sequence, N::value>
             {};
         };
     }
