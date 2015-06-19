@@ -9,7 +9,7 @@
 
 #include <boost/config.hpp>
 #include <boost/fusion/support/config.hpp>
-#include <boost/mpl/eval_if.hpp>
+#include <boost/mpl/if.hpp>
 #include <boost/mpl/identity.hpp>
 #include <cstddef>
 
@@ -33,11 +33,11 @@ namespace boost { namespace fusion { namespace detail
 
     template <typename T, T Head, T ...Tail>
     struct make_integer_sequence_impl<T, Head, integer_sequence<T, Tail...> >
-        : boost::mpl::eval_if_c<
+        : boost::mpl::if_c<
               (Head == 0),
               boost::mpl::identity<integer_sequence<T, Tail...> >,
               make_integer_sequence_impl<T, Head - 1, integer_sequence<T, Head - 1, Tail...> >
-          >
+          >::type
     {};
 
     template <typename T, T N>
