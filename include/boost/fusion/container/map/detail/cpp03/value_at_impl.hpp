@@ -9,7 +9,7 @@
 #define BOOST_FUSION_MAP_DETAIL_VALUE_AT_IMPL_HPP
 
 #include <boost/fusion/support/config.hpp>
-#include <boost/mpl/at.hpp>
+#include <boost/fusion/support/tag_of.hpp>
 
 namespace boost { namespace fusion
 {
@@ -26,7 +26,14 @@ namespace boost { namespace fusion
             template <typename Sequence, typename N>
             struct apply
             {
-                typedef typename mpl::at<typename Sequence::storage_type::types, N>::type type;
+                typedef typename
+                    traits::tag_of<typename Sequence::storage_type>::type
+                tag;
+
+                typedef typename
+                    value_at_impl<tag>
+                      ::template apply<typename Sequence::storage_type, N>::type
+                type;
             };
         };
     }

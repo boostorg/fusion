@@ -8,11 +8,13 @@
 #define FUSION_MAP_FORWARD_MAIN_07212005_1105
 
 #include <boost/fusion/support/config.hpp>
+#include <boost/fusion/container/vector/detail/config.hpp>
 #include <boost/config.hpp>
 
 #if (defined(BOOST_NO_CXX11_DECLTYPE)             \
   || defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)   \
   || defined(BOOST_NO_CXX11_RVALUE_REFERENCES))   \
+  || !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)   \
   || (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
 # if defined(BOOST_FUSION_HAS_VARIADIC_MAP)
 #   undef BOOST_FUSION_HAS_VARIADIC_MAP

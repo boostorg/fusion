@@ -13,7 +13,33 @@
 ///////////////////////////////////////////////////////////////////////////////
 // With no variadics, we will use the C++03 version
 ///////////////////////////////////////////////////////////////////////////////
+#if !defined(BOOST_FUSION_HAS_VARIADIC_TUPLE)
 # include <boost/fusion/tuple/detail/make_tuple.hpp>
+#else
 
+///////////////////////////////////////////////////////////////////////////////
+// C++11 interface
+///////////////////////////////////////////////////////////////////////////////
+#include <boost/fusion/support/detail/as_fusion_element.hpp>
+#include <boost/fusion/tuple/tuple.hpp>
+
+namespace boost { namespace fusion
+{
+    BOOST_FUSION_GPU_ENABLED inline tuple<>
+    make_tuple()
+    {
+        return tuple<>();
+    }
+
+    template <typename ...T>
+    BOOST_FUSION_GPU_ENABLED
+    inline tuple<typename detail::as_fusion_element<T>::type...>
+    make_tuple(T const&... arg)
+    {
+        return tuple<typename detail::as_fusion_element<T>::type...>(arg...);
+    }
+}}
+
+#endif
 #endif
 

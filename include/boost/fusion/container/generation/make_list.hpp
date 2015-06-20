@@ -10,7 +10,37 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/fusion/container/list/list.hpp>
 
+#if !defined(BOOST_FUSION_HAS_VARIADIC_LIST)
 # include <boost/fusion/container/generation/detail/pp_make_list.hpp>
+#else
 
+///////////////////////////////////////////////////////////////////////////////
+// C++11 variadic interface
+///////////////////////////////////////////////////////////////////////////////
+
+#include <boost/fusion/support/detail/as_fusion_element.hpp>
+
+namespace boost { namespace fusion
+{
+    namespace result_of
+    {
+        template <typename ...T>
+        struct make_list
+        {
+            typedef list<T...> type;
+        };
+    }
+
+    template <typename ...T>
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+    inline list<typename detail::as_fusion_element<T>::type...>
+    make_list(T const&... arg)
+    {
+        return list<typename detail::as_fusion_element<T>::type...>(arg...);
+    }
+ }}
+
+
+#endif
 #endif
 

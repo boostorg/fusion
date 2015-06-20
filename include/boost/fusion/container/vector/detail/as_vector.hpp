@@ -8,12 +8,73 @@
 #define FUSION_AS_VECTOR_11052014_1801
 
 #include <boost/fusion/support/config.hpp>
+#include <boost/fusion/container/vector/detail/config.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 // Without variadics, we will use the PP version
 ///////////////////////////////////////////////////////////////////////////////
+#if !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
 # include <boost/fusion/container/vector/detail/cpp03/as_vector.hpp>
+#else
 
+///////////////////////////////////////////////////////////////////////////////
+// C++11 interface
+///////////////////////////////////////////////////////////////////////////////
+#include <boost/fusion/support/detail/integer_sequence.hpp>
+#include <boost/fusion/container/vector/vector.hpp>
+#include <boost/fusion/iterator/value_of.hpp>
+#include <boost/fusion/iterator/deref.hpp>
+#include <boost/fusion/iterator/advance.hpp>
+#include <cstddef>
+
+namespace boost { namespace fusion { namespace detail
+{
+BOOST_FUSION_BARRIER_BEGIN
+
+    template <typename Indices>
+    struct as_vector_impl;
+
+#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1800))
+    template <int ...Indices>
+    struct as_vector_impl<integer_sequence<int, Indices...> >
+#else
+    template <std::size_t ...Indices>
+    struct as_vector_impl<integer_sequence<std::size_t, Indices...> >
+#endif
+    {
+        template <typename Iterator>
+        struct apply
+        {
+            typedef vector<
+                numbered_vector_tag<sizeof...(Indices)>
+              , typename result_of::value_of<
+                    typename result_of::advance_c<Iterator, Indices>::type
+                >::type...
+            > type;
+        };
+
+        template <typename Iterator>
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        static typename apply<Iterator>::type
+        call(Iterator i)
+        {
+            typedef typename apply<Iterator>::type result;
+            return result(*advance_c<Indices>(i)...);
+        }
+    };
+
+    template <int size>
+    struct as_vector
+#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1800))
+        : as_vector_impl<typename make_integer_sequence<int, size>::type> {};
+#else
+        : as_vector_impl<typename make_integer_sequence<std::size_t, size>::type> {};
+#endif
+
+BOOST_FUSION_BARRIER_END
+}}}
+
+#endif
 #endif
 
 
