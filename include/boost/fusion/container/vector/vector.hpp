@@ -57,7 +57,7 @@ namespace boost { namespace fusion
         template <typename Sequence>
         struct make_indices_from_seq
             : detail::make_index_sequence<
-                  result_of::size<typename remove_reference<Sequence>::type>::value
+                  fusion::result_of::size<typename remove_reference<Sequence>::type>::value
               >
         {};
 
