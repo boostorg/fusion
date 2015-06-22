@@ -188,6 +188,7 @@ project
     [ compile support/pair_set.cpp : : : : ]
     [ compile support/pair_vector.cpp : : : : ]
     [ compile support/pair_nest.cpp : : : : ]
+    [ compile support/index_sequence.cpp : : : : ]
 
 #   [ compile-fail xxx.cpp :  :  :  :  ]
 
