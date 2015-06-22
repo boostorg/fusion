@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2014 Kohei Takahashi
+    Copyright (c) 2014-2015 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -33,10 +33,9 @@ namespace boost { namespace fusion
     {
     private:
         typedef detail::list_to_cons<> list_to_cons;
-
-    public:
         typedef list_to_cons::type inherited_type;
 
+    public:
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         list()
             : inherited_type() {}
@@ -62,10 +61,9 @@ namespace boost { namespace fusion
     {
     private:
         typedef detail::list_to_cons<T...> list_to_cons;
-
-    public:
         typedef typename list_to_cons::type inherited_type;
 
+    public:
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         list()
             : inherited_type() {}

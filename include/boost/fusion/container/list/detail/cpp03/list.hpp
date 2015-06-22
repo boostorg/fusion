@@ -46,10 +46,9 @@ namespace boost { namespace fusion
         typedef
             detail::list_to_cons<BOOST_PP_ENUM_PARAMS(FUSION_MAX_LIST_SIZE, T)>
         list_to_cons;
-
-    public:
         typedef typename list_to_cons::type inherited_type;
 
+    public:
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         list()
             : inherited_type() {}
