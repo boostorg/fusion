@@ -27,16 +27,16 @@ namespace boost { namespace fusion
         template <typename ...T>
         struct make_list
         {
-            typedef list<T...> type;
+            typedef list<typename detail::as_fusion_element<T>::type...> type;
         };
     }
 
     template <typename ...T>
     BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline list<typename detail::as_fusion_element<T>::type...>
+    inline typename result_of::make_list<T...>::type
     make_list(T const&... arg)
     {
-        return list<typename detail::as_fusion_element<T>::type...>(arg...);
+        return typename result_of::make_list<T...>::type(arg...);
     }
  }}
 
