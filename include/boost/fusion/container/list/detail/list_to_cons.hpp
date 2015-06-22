@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2014 Kohei Takahashi
+    Copyright (c) 2014-2015 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -7,6 +7,7 @@
 #ifndef FUSION_LIST_MAIN_10262014_0447
 #define FUSION_LIST_MAIN_10262014_0447
 
+#include <boost/config.hpp>
 #include <boost/fusion/support/config.hpp>
 #include <boost/fusion/container/list/list_fwd.hpp>
 
@@ -21,6 +22,7 @@
 // C++11 interface
 ///////////////////////////////////////////////////////////////////////////////
 #include <boost/fusion/container/list/cons.hpp>
+#include <boost/fusion/support/detail/access.hpp>
 
 namespace boost { namespace fusion { namespace detail
 {
@@ -31,23 +33,9 @@ namespace boost { namespace fusion { namespace detail
     struct list_to_cons<>
     {
         typedef nil_ type;
-    };
 
-    template <typename Head>
-    struct list_to_cons<Head>
-    {
-        typedef Head head_type;
-        typedef list_to_cons<> tail_list_to_cons;
-        typedef typename tail_list_to_cons::type tail_type;
-
-        typedef cons<head_type, tail_type> type;
-
-        BOOST_FUSION_GPU_ENABLED
-        static type
-        call(typename detail::call_param<Head>::type _h)
-        {
-            return type(_h);
-        }
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        static type call() { return type(); }
     };
 
     template <typename Head, typename ...Tail>
@@ -59,7 +47,7 @@ namespace boost { namespace fusion { namespace detail
 
         typedef cons<head_type, tail_type> type;
 
-        BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static type
         call(typename detail::call_param<Head>::type _h,
              typename detail::call_param<Tail>::type ..._t)
