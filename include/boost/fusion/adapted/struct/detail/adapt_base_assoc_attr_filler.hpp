@@ -18,6 +18,7 @@
 #include <boost/preprocessor/control/if.hpp>
 #include <boost/preprocessor/arithmetic/sub.hpp>
 #include <boost/preprocessor/variadic/size.hpp>
+#include <boost/preprocessor/variadic/elem.hpp>
 
 #if BOOST_PP_VARIADICS
 
@@ -30,7 +31,14 @@
     BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0
 
 #define BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(...)                          \
-      ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), (__VA_ARGS__)))
+  BOOST_PP_IF(                                                                  \
+      BOOST_MPL_PP_TOKEN_EQUAL(auto, BOOST_PP_VARIADIC_ELEM(0, __VA_ARGS__)),   \
+      ((2,                                                                      \
+          (BOOST_PP_VARIADIC_ELEM(1, __VA_ARGS__),                              \
+           BOOST_PP_VARIADIC_ELEM(2, __VA_ARGS__)))),                           \
+      ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__),                                    \
+          (__VA_ARGS__)))                                                       \
+    )
 
 #else // BOOST_PP_VARIADICS
 
