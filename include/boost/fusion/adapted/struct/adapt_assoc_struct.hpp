@@ -44,7 +44,7 @@
         NAME_SEQ,                                                               \
         IS_VIEW,                                                                \
         I,                                                                      \
-        PREFIX,                                                                 \
+        BOOST_PP_IF(IS_VIEW, BOOST_FUSION_PROXY_PREFIX, BOOST_PP_EMPTY),        \
         BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR(ATTRIBUTE),                       \
         BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR_SIZE(ATTRIBUTE),                  \
         BOOST_PP_IF(BOOST_PP_LESS(                                              \
