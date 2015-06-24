@@ -20,12 +20,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 // C++11 interface
 ///////////////////////////////////////////////////////////////////////////////
+#include <utility>
 #include <boost/fusion/container/list/detail/list_to_cons.hpp>
 
 namespace boost { namespace fusion
 {
     struct nil_;
-    struct void_;
 
     template <>
     struct list<>
@@ -40,6 +40,7 @@ namespace boost { namespace fusion
         list()
             : inherited_type() {}
 
+#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename Sequence>
         BOOST_FUSION_GPU_ENABLED
         list(Sequence const& rhs)
@@ -53,6 +54,21 @@ namespace boost { namespace fusion
             inherited_type::operator=(rhs);
             return *this;
         }
+#else
+        template <typename Sequence>
+        BOOST_FUSION_GPU_ENABLED
+        list(Sequence&& rhs)
+            : inherited_type(std::forward<Sequence>(rhs)) {}
+
+        template <typename Sequence>
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        list&
+        operator=(Sequence&& rhs)
+        {
+            inherited_type::operator=(std::forward<Sequence>(rhs));
+            return *this;
+        }
+#endif
     };
 
     template <typename ...T>
@@ -68,30 +84,24 @@ namespace boost { namespace fusion
         list()
             : inherited_type() {}
 
-        template <typename ...U>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        list(list<U...> const& rhs)
-            : inherited_type(rhs) {}
-
+#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename Sequence>
         BOOST_FUSION_GPU_ENABLED
         list(Sequence const& rhs)
             : inherited_type(rhs) {}
+#else
+        template <typename Sequence>
+        BOOST_FUSION_GPU_ENABLED
+        list(Sequence&& rhs)
+            : inherited_type(std::forward<Sequence>(rhs)) {}
+#endif
 
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         explicit
         list(typename detail::call_param<T>::type ...args)
             : inherited_type(list_to_cons::call(args...)) {}
 
-        template <typename ...U>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        list&
-        operator=(list<U...> const& rhs)
-        {
-            inherited_type::operator=(rhs);
-            return *this;
-        }
-
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename Sequence>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         list&
@@ -100,6 +110,16 @@ namespace boost { namespace fusion
             inherited_type::operator=(rhs);
             return *this;
         }
+#else
+        template <typename Sequence>
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        list&
+        operator=(Sequence&& rhs)
+        {
+            inherited_type::operator=(std::forward<Sequence>(rhs));
+            return *this;
+        }
+#endif
     };
 }}
 
