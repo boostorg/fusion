@@ -36,7 +36,7 @@ namespace boost { namespace fusion
 
     struct associative_tag {};
 
-    struct no_bounds_tag {};
+    struct unbounded_tag {};
 
     namespace extension
     {
@@ -111,9 +111,9 @@ namespace boost { namespace fusion
         {};
 
         template <typename T>
-        struct has_no_bounds
+        struct is_unbounded
             : is_base_of<
-                no_bounds_tag
+                unbounded_tag
               , typename category_of<T>::type>
         {};
     }

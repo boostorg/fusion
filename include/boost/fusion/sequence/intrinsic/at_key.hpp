@@ -76,7 +76,7 @@ namespace boost { namespace fusion
             : mpl::if_<
                   mpl::or_<
                       typename extension::has_key_impl<Tag>::template apply<Sequence, Key>
-                    , traits::has_no_bounds<Sequence>
+                    , traits::is_unbounded<Sequence>
                   >
                 , typename extension::at_key_impl<Tag>::template apply<Sequence, Key>
                 , mpl::empty_base

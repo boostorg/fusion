@@ -67,7 +67,7 @@ namespace boost { namespace fusion
             : mpl::if_<
                   mpl::or_<
                       mpl::less<N, typename extension::size_impl<Tag>::template apply<Sequence>::type>
-                    , traits::has_no_bounds<Sequence>
+                    , traits::is_unbounded<Sequence>
                   >
                 , typename extension::at_impl<Tag>::template apply<Sequence, N>
                 , mpl::empty_base

@@ -41,8 +41,8 @@ Sequence allows efficient retrieval of elements based on keys.
 
 [heading Boundary]
 
-The __no_bounds_sequence__ concept is also orthogonal to traversal and associativity.
-A No-bounds Sequence allows out-of-bounds access.
+The __unbounded_sequence__ concept is also orthogonal to traversal and associativity.
+A Unbounded Sequence allows out-of-bounds access.
 
 [section Forward Sequence]
 
@@ -364,11 +364,11 @@ you can use `__result_of_value_at_key__<S, K>`.]
 
 [endsect]
 
-[section No-bounds Sequence]
+[section Unbounded Sequence]
 
 [heading Description]
 
-A No-bounds Sequence allows Out-of-Bounds access: it will achieve something like a __window_function__.
+A Unbounded Sequence allows Out-of-Bounds access: it will achieve something like a __window_function__.
 Most of the sequences do not meet this concept, but some special usecases do.
 
 [important User extending sequences should handle any parameters or be SFINAE-friendly.]
@@ -740,7 +740,7 @@ element from the beginning of the sequence, is a valid expression. Else,
 returns a type convertible to the M-th element from the beginning of the
 sequence.
 
-[*Precondition]: `0 <= M::value < __size__(seq)` (where `seq` is not __no_bounds_sequence__)
+[*Precondition]: `0 <= M::value < __size__(seq)` (where `seq` is not __unbounded_sequence__)
 
 [*Semantics]: Equivalent to
 
@@ -793,7 +793,7 @@ element from the beginning of the sequence, is a valid expression. Else,
 returns a type convertible to the N-th element from the beginning of the
 sequence.
 
-[*Precondition]: `0 <= N < __size__(seq)` (where `seq` is not __no_bounds_sequence__)
+[*Precondition]: `0 <= N < __size__(seq)` (where `seq` is not __unbounded_sequence__)
 
 [*Semantics]: Equivalent to
 
@@ -887,7 +887,7 @@ the sequence `seq` if `seq` is mutable and `e = o`, where `e` is the
 element associated with Key, is a valid expression. Else, returns a type
 convertible to the element associated with Key.
 
-[*Precondition]: `has_key<Key>(seq) == true` (where `seq` is not __no_bounds_sequence__)
+[*Precondition]: `has_key<Key>(seq) == true` (where `seq` is not __unbounded_sequence__)
 
 [*Semantics]: Returns the element associated with Key.
 
@@ -1203,7 +1203,7 @@ the actual element type, use __result_of_value_at__].
 
 [*Return type]: Any type.
 
-[*Precondition]: `0 <= M::value < __result_of_size__<Seq>::value` (where `Seq` is not __no_bounds_sequence__)
+[*Precondition]: `0 <= M::value < __result_of_size__<Seq>::value` (where `Seq` is not __unbounded_sequence__)
 
 [*Semantics]: Returns the result type of using __at__ to access the `M`th element of `Seq`.
 
@@ -1247,7 +1247,7 @@ get the actual element type, use __result_of_value_at_c__].
 
 [*Return type]: Any type
 
-[*Precondition]: `0 <= N < __result_of_size__<Seq>::value` (where `Seq` is not __no_bounds_sequence__)
+[*Precondition]: `0 <= N < __result_of_size__<Seq>::value` (where `Seq` is not __unbounded_sequence__)
 
 [*Semantics]: Returns the result type of using __at_c__ to access the `N`th element of `Seq`.
 
@@ -1408,7 +1408,7 @@ you want to get the actual element type, use __result_of_value_at_key__].
 
 [*Return type]: Any type.
 
-[*Precondition]: `has_key<Seq, Key>::type::value == true` (where `Seq` is not __no_bounds_sequence__)
+[*Precondition]: `has_key<Seq, Key>::type::value == true` (where `Seq` is not __unbounded_sequence__)
 
 [*Semantics]: Returns the result of using __at_key__ to access the element with key type `Key` in `Seq`.
 
@@ -1448,7 +1448,7 @@ Returns the actual element type associated with a Key from the __sequence__.
 
 [*Return type]: Any type.
 
-[*Precondition]: `has_key<Seq, Key>::type::value == true` (where `Seq` is not __no_bounds_sequence__)
+[*Precondition]: `has_key<Seq, Key>::type::value == true` (where `Seq` is not __unbounded_sequence__)
 
 [*Semantics]: Returns the actual element type associated with key type
 `Key` in `Seq`.

@@ -79,7 +79,7 @@
 [def __bidirectional_iterator__ [link fusion.iterator.concepts.bidirectional_iterator Bidirectional Iterator]]
 [def __random_access_iterator__ [link fusion.iterator.concepts.random_access_iterator Random Access Iterator]]
 [def __associative_iterator__   [link fusion.iterator.concepts.associative_iterator Associative Iterator]]
-[def __no_bounds_iterator__     [link fusion.iterator.concepts.no_bounds_iterator No-bounds Iterator]]
+[def __unbounded_iterator__     [link fusion.iterator.concepts.unbounded_iterator Unbounded Iterator]]
 
 [def __next__                   [link fusion.iterator.functions.next `next`]]
 [def __prior__                  [link fusion.iterator.functions.prior `prior`]]
@@ -109,7 +109,7 @@
 [def __bidirectional_sequence__ [link fusion.sequence.concepts.bidirectional_sequence Bidirectional Sequence]]
 [def __random_access_sequence__ [link fusion.sequence.concepts.random_access_sequence Random Access Sequence]]
 [def __associative_sequence__   [link fusion.sequence.concepts.associative_sequence Associative Sequence]]
-[def __no_bounds_sequence__     [link fusion.sequence.concepts.no_bounds_sequence No-bounds Sequence]]
+[def __unbounded_sequence__     [link fusion.sequence.concepts.unbounded_sequence Unbounded Sequence]]
 
 [def __containers__             [link fusion.container Container]]
 [def __vector__                 [link fusion.container.vector `vector`]]

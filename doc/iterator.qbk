@@ -257,9 +257,9 @@ expressions must be valid:
 
 [endsect]
 
-[section No-bounds Iterator]
+[section Unbounded Iterator]
 
-[warning In this release, __no_bounds_iterator__ concept has no effect. It's reserved for future release.]
+[warning In this release, __unbounded_iterator__ concept has no effect. It's reserved for future release.]
 
 [endsect]
 

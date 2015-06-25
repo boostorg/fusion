@@ -228,7 +228,7 @@ And optionally from:
         {
             struct associative_tag {};
 
-            struct no_bounds_tag {};
+            struct unbounded_tag {};
         }}
 
 [*Semantics]: Establishes the conceptual classification of a particular
