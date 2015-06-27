@@ -30,7 +30,7 @@ namespace boost { namespace fusion
     }
 
     template <typename ...T>
-    BOOST_FUSION_GPU_ENABLED
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline vector<T&...>
     vector_tie(T&... arg)
     {

@@ -27,16 +27,38 @@ namespace boost { namespace fusion
         template <typename ...T>
         struct make_vector
         {
-            typedef vector<typename detail::as_fusion_element<T>::type...> type;
+            // make `make_vector<T..., void_...>' into `make_vector<T...>'
+            template <typename, typename...> struct trim_void;
+
+            template <typename... U>
+            struct trim_void<vector<U...> >
+            {
+                typedef vector<numbered_vector_tag<sizeof...(U)>, U...> type;
+            };
+
+            template <typename... U, typename... Tail>
+            struct trim_void<vector<U...>, void_, Tail...>
+                : trim_void<vector<U...> > { };
+
+            template <typename... U, typename Head, typename... Tail>
+            struct trim_void<vector<U...>, Head, Tail...>
+                : trim_void<vector<U..., Head>, Tail...> { };
+
+            typedef
+                typename trim_void<
+                    vector<>
+                  , typename detail::as_fusion_element<T>::type...
+                >::type
+            type;
         };
     }
 
     template <typename ...T>
-    BOOST_FUSION_GPU_ENABLED
-    inline vector<typename detail::as_fusion_element<T>::type...>
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+    inline typename result_of::make_vector<T...>::type
     make_vector(T const&... arg)
     {
-        return vector<typename detail::as_fusion_element<T>::type...>(arg...);
+        return typename result_of::make_vector<T...>::type(arg...);
     }
  }}
 

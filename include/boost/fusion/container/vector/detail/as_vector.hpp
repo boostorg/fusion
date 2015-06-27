@@ -20,6 +20,50 @@
 ///////////////////////////////////////////////////////////////////////////////
 // C++11 interface
 ///////////////////////////////////////////////////////////////////////////////
+#include <boost/fusion/support/detail/index_sequence.hpp>
+#include <boost/fusion/container/vector/vector.hpp>
+#include <boost/fusion/iterator/value_of.hpp>
+#include <boost/fusion/iterator/deref.hpp>
+#include <boost/fusion/iterator/advance.hpp>
+#include <cstddef>
+
+namespace boost { namespace fusion { namespace detail
+{
+BOOST_FUSION_BARRIER_BEGIN
+
+    template <typename Indices>
+    struct as_vector_impl;
+
+    template <std::size_t ...Indices>
+    struct as_vector_impl<index_sequence<Indices...> >
+    {
+        template <typename Iterator>
+        struct apply
+        {
+            typedef vector<
+                numbered_vector_tag<sizeof...(Indices)>
+              , typename result_of::value_of<
+                    typename result_of::advance_c<Iterator, Indices>::type
+                >::type...
+            > type;
+        };
+
+        template <typename Iterator>
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        static typename apply<Iterator>::type
+        call(Iterator i)
+        {
+            typedef typename apply<Iterator>::type result;
+            return result(*advance_c<Indices>(i)...);
+        }
+    };
+
+    template <int size>
+    struct as_vector
+        : as_vector_impl<typename make_index_sequence<size>::type> {};
+
+BOOST_FUSION_BARRIER_END
+}}}
 
 #endif
 #endif
