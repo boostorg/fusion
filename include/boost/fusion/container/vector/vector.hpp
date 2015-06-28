@@ -276,21 +276,6 @@ namespace boost { namespace fusion
         //  template <typename T>
         //  struct SomeClass<vector<numbered_vector_tag<1>, T>>
         //  { ... };
-        template <std::size_t ...I, std::size_t N, typename ...T>
-        struct vector_data<detail::index_sequence<I...>, numbered_vector_tag<N>, T...>
-            : vector_data<typename detail::make_index_sequence<sizeof...(T)>::type, T...>
-        {
-            typedef vector_data<typename detail::make_index_sequence<sizeof...(T)>::type, T...> base;
-
-            BOOST_STATIC_ASSERT((base::size::value == N));
-
-            template <typename ...U>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            vector_data(U&&... var)
-                : base(std::forward<U>(var)...)
-            {}
-        };
-
         template <typename V, typename... T>
         struct construct_vector_;
 
@@ -301,6 +286,17 @@ namespace boost { namespace fusion
                 typename detail::make_index_sequence<sizeof...(T)>::type
               , T...
             > type;
+        };
+
+        template <std::size_t N, typename... T>
+        struct construct_vector_<vector<numbered_vector_tag<N>, T...> >
+        {
+            typedef vector_data<
+                typename detail::make_index_sequence<sizeof...(T)>::type
+              , T...
+            > type;
+
+            BOOST_STATIC_ASSERT((type::size::value == N));
         };
 
         template <typename... U, typename... Tail>
