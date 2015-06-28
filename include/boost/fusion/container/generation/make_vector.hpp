@@ -19,6 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <boost/fusion/support/detail/as_fusion_element.hpp>
+#include <boost/type_traits/remove_reference.hpp>
+#include <utility>
 
 namespace boost { namespace fusion
 {
@@ -47,7 +49,9 @@ namespace boost { namespace fusion
             typedef
                 typename trim_void<
                     vector<>
-                  , typename detail::as_fusion_element<T>::type...
+                  , typename detail::as_fusion_element<
+                        typename remove_reference<T>::type
+                    >::type...
                 >::type
             type;
         };
@@ -56,9 +60,9 @@ namespace boost { namespace fusion
     template <typename ...T>
     BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename result_of::make_vector<T...>::type
-    make_vector(T const&... arg)
+    make_vector(T&&... arg)
     {
-        return typename result_of::make_vector<T...>::type(arg...);
+        return typename result_of::make_vector<T...>::type(std::forward<T>(arg)...);
     }
  }}
 
