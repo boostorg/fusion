@@ -34,7 +34,6 @@
 #include <boost/fusion/iterator/advance.hpp>
 #include <boost/fusion/iterator/deref.hpp>
 #include <boost/core/enable_if.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/mpl/int.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/type_traits/is_same.hpp>
@@ -254,33 +253,11 @@ namespace boost { namespace fusion
             }
         };
 
-        // Internal use only specialization for implementing vectorN.
-        // Simple aliasing (like a using vectorN = vector<T...>) will cause specialization confliction
-        // like following.
-        //
-        //  template <typename> struct SomeClass;
-        //  template <typename T> struct SomeClass<vector<T>> { ... };
-        //  template <typename T>
-        //  struct SomeClass<vector1<T>> // Error, since vector<T> and vector1<T> are exact same type.
-        //  { ... };
-        //
-        // Introducing `numbered_vector_tag` will resolve such specialization error.
-        //
-        //  template <typename T>
-        //  struct SomeClass<vector<T>> { ... };
-        //  template <typename T>
-        //  struct SomeClass<vector1<T>> // OK
-        //  { ... };
-        //
-        //  // Same meaning as above specialization.
-        //  template <typename T>
-        //  struct SomeClass<vector<numbered_vector_tag<1>, T>>
-        //  { ... };
         template <typename V, typename... T>
-        struct construct_vector_;
+        struct trim_void_;
 
         template <typename... T>
-        struct construct_vector_<vector<T...> >
+        struct trim_void_<vector<T...> >
         {
             typedef vector_data<
                 typename detail::make_index_sequence<sizeof...(T)>::type
@@ -288,35 +265,24 @@ namespace boost { namespace fusion
             > type;
         };
 
-        template <std::size_t N, typename... T>
-        struct construct_vector_<vector<numbered_vector_tag<N>, T...> >
-        {
-            typedef vector_data<
-                typename detail::make_index_sequence<sizeof...(T)>::type
-              , T...
-            > type;
+        template <typename... T, typename... Tail>
+        struct trim_void_<vector<T...>, void_, Tail...>
+            : trim_void_<vector<T...> > {};
 
-            BOOST_STATIC_ASSERT((type::size::value == N));
-        };
-
-        template <typename... U, typename... Tail>
-        struct construct_vector_<vector<U...>, void_, Tail...>
-            : construct_vector_<vector<U...> > {};
-
-        template <typename... U, typename Head, typename... Tail>
-        struct construct_vector_<vector<U...>, Head, Tail...>
-            : construct_vector_<vector<U..., Head>, Tail...> {};
+        template <typename... T, typename Head, typename... Tail>
+        struct trim_void_<vector<T...>, Head, Tail...>
+            : trim_void_<vector<T..., Head>, Tail...> {};
 
         template <typename... T>
-        struct construct_vector : construct_vector_<vector<>, T...> {};
+        struct trim_void : trim_void_<vector<>, T...> {};
     } // namespace boost::fusion::vector_detail
 
     // This class provides backward compatibility: vector<T, ..., void_, void_, ...>.
     template <typename... T>
     struct vector
-        : vector_detail::construct_vector<T...>::type
+        : vector_detail::trim_void<T...>::type
     {
-        typedef typename vector_detail::construct_vector<T...>::type base;
+        typedef typename vector_detail::trim_void<T...>::type base;
 
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector()

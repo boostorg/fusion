@@ -36,7 +36,7 @@ namespace boost { namespace fusion
             template <typename... U>
             struct trim_void<vector<U...> >
             {
-                typedef vector<numbered_vector_tag<sizeof...(U)>, U...> type;
+                typedef vector<U...> type;
             };
 
             template <typename... U, typename... Tail>

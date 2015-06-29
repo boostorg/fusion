@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2014 Kohei Takahashi
+    Copyright (c) 2014-2015 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -41,8 +41,7 @@ BOOST_FUSION_BARRIER_BEGIN
         struct apply
         {
             typedef vector<
-                numbered_vector_tag<sizeof...(Indices)>
-              , typename result_of::value_of<
+                typename result_of::value_of<
                     typename result_of::advance_c<Iterator, Indices>::type
                 >::type...
             > type;

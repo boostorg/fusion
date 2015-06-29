@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2014 Kohei Takahashi
+    Copyright (c) 2014-2015 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -23,19 +23,15 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
-#include <cstddef>
 
 namespace boost { namespace fusion
 {
     template <typename ...T>
     struct vector;
 
-    template <std::size_t N>
-    struct numbered_vector_tag;
-
 #define FUSION_VECTOR_N_ALIASES(z, N, d)                                    \
     template <typename ...T>                                                \
-    using BOOST_PP_CAT(vector, N) = vector<numbered_vector_tag<N>, T...>;
+    using BOOST_PP_CAT(vector, N) = vector<T...>;
 
     BOOST_PP_REPEAT(51, FUSION_VECTOR_N_ALIASES, ~)
 
