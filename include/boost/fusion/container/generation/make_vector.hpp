@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2014 Kohei Takahashi
+    Copyright (c) 2014-2015 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -20,6 +20,7 @@
 
 #include <boost/fusion/support/detail/as_fusion_element.hpp>
 #include <boost/type_traits/remove_reference.hpp>
+#include <boost/type_traits/remove_const.hpp>
 #include <utility>
 
 namespace boost { namespace fusion
@@ -50,7 +51,9 @@ namespace boost { namespace fusion
                 typename trim_void<
                     vector<>
                   , typename detail::as_fusion_element<
-                        typename remove_reference<T>::type
+                        typename remove_const<
+                            typename remove_reference<T>::type
+                        >::type
                     >::type...
                 >::type
             type;
