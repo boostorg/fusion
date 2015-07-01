@@ -18,8 +18,8 @@ namespace boost { namespace fusion
         typedef
             detail::list_to_cons<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9>
         list_to_cons;
-    public:
         typedef typename list_to_cons::type inherited_type;
+    public:
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         list()
             : inherited_type() {}

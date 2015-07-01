@@ -53,7 +53,7 @@ namespace boost { namespace fusion
 // $$$ shouldn't we remove_reference first to allow references? $$$
 #define BOOST_FUSION_REF(z, n, data) BOOST_PP_CAT(T, n)&
 
-#define BOOST_PP_FILENAME_1 <boost/fusion/container/generation/detail/list_tie.hpp>
+#define BOOST_PP_FILENAME_1 <boost/fusion/container/generation/detail/pp_list_tie.hpp>
 #define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_LIST_SIZE)
 #include BOOST_PP_ITERATE()
 
