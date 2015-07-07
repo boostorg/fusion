@@ -78,6 +78,7 @@ project
     [ run sequence/list_make.cpp :  :  :  : ]
     [ run sequence/list_misc.cpp :  :  :  : ]
     [ run sequence/list_mutate.cpp :  :  :  : ]
+    [ run sequence/list_nest.cpp :  :  :  : ]
     [ run sequence/list_tie.cpp :  :  :  : ]
     [ run sequence/list_value_at.cpp :  :  :  : ]
     [ run sequence/deque_comparison.cpp :  :  :  : ]
@@ -89,6 +90,7 @@ project
     [ run sequence/deque_misc.cpp :  :  :  : ]
     [ run sequence/deque_move.cpp :  :  :  : ]
     [ run sequence/deque_mutate.cpp :  :  :  : ]
+    [ run sequence/deque_nest.cpp :  :  :  : ]
     [ run sequence/deque_tie.cpp :  :  :  : ]
     [ run sequence/deque_value_at.cpp :  :  :  : ]
     [ run sequence/front_extended_deque.cpp :  :  :  : ]
@@ -131,6 +133,7 @@ project
     [ run sequence/vector_move.cpp :  :  :  : ]
     [ run sequence/vector_mutate.cpp :  :  :  : ]
     [ run sequence/vector_n.cpp :  :  :  : ]
+    [ run sequence/vector_nest.cpp :  :  :  : ]
     [ run sequence/vector_hash.cpp :  :  :  : ]
     [ run sequence/vector_tie.cpp :  :  :  : ]
     [ run sequence/vector_value_at.cpp :  :  :  : ]
@@ -184,6 +187,8 @@ project
     [ compile support/pair_map.cpp : : : : ]
     [ compile support/pair_set.cpp : : : : ]
     [ compile support/pair_vector.cpp : : : : ]
+    [ compile support/pair_nest.cpp : : : : ]
+    [ compile support/index_sequence.cpp : : : : ]
 
 #   [ compile-fail xxx.cpp :  :  :  :  ]
 
