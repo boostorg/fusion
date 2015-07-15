@@ -65,8 +65,8 @@ main()
         std::cout << pop_back(sv) << std::endl;
 
         // Compile check only
-        begin(pop_back(sv)) == end(sv);
-        end(pop_back(sv)) == begin(sv);
+        (void)(begin(pop_back(sv)) == end(sv));
+        (void)(end(pop_back(sv)) == begin(sv));
     }
 
     // $$$ JDG: TODO add compile fail facility $$$
