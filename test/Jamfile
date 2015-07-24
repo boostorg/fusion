@@ -86,6 +86,7 @@ project
     [ run sequence/deque_copy.cpp :  :  :  : ]
     [ run sequence/deque_iterator.cpp :  :  :  : ]
     [ run sequence/deque_hash.cpp :  :  :  : ]
+    [ run sequence/deque_is_constructible.cpp :  :  :  : ]
     [ run sequence/deque_make.cpp :  :  :  : ]
     [ run sequence/deque_misc.cpp :  :  :  : ]
     [ run sequence/deque_move.cpp :  :  :  : ]
