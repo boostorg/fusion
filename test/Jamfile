@@ -121,6 +121,7 @@ project
     [ run sequence/tuple_make.cpp :  :  :  : ]
     [ run sequence/tuple_misc.cpp :  :  :  : ]
     [ run sequence/tuple_mutate.cpp :  :  :  : ]
+    [ run sequence/tuple_nest.cpp :  :  :  : ]
     [ run sequence/tuple_hash.cpp :  :  :  : ]
     [ run sequence/tuple_tie.cpp :  :  :  : ]
     [ run sequence/transform_view.cpp :  :  :  : ]
