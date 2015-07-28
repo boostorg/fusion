@@ -27,7 +27,7 @@ namespace boost { namespace fusion
 #include <boost/fusion/tuple/detail/preprocessed/make_tuple.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/make_tuple" FUSION_MAX_VECTOR_SIZE_STR ".hpp")
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/make_tuple" FUSION_MAX_VECTOR_SIZE_STR ".hpp")
 #endif
 
 /*=============================================================================

@@ -38,10 +38,6 @@ namespace boost { namespace fusion
         vector(vector const& rhs)
             : vec(rhs.vec) {}
         template <typename Sequence>
-        
-# if !defined(BOOST_CLANG)
-        BOOST_CONSTEXPR
-# endif
         BOOST_FUSION_GPU_ENABLED
         vector(Sequence const& rhs,
             typename boost::enable_if<traits::is_sequence<Sequence> >::type* = 0)

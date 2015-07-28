@@ -28,7 +28,7 @@ namespace boost { namespace fusion
         list(list<U0 , U1 , U2 , U3 , U4 , U5 , U6 , U7 , U8 , U9> const& rhs)
             : inherited_type(rhs) {}
         template <typename Sequence>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        BOOST_FUSION_GPU_ENABLED
         list(Sequence const& rhs
             , typename boost::enable_if<traits::is_sequence<Sequence> >::type* = 0)
             : inherited_type(rhs) {}
