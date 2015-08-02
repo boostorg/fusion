@@ -27,7 +27,7 @@ namespace boost { namespace fusion
     }
 
     //  "ignore" allows tuple positions to be ignored when using "tie".
-    BOOST_CONSTEXPR detail::swallow_assign const ignore = detail::swallow_assign();
+    BOOST_CONSTEXPR_OR_CONST detail::swallow_assign ignore = detail::swallow_assign();
 }}
 
 #endif

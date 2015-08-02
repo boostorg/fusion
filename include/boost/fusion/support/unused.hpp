@@ -64,7 +64,7 @@ namespace boost { namespace fusion
         }
     };
 
-    BOOST_CONSTEXPR unused_type const unused = unused_type();
+    BOOST_CONSTEXPR_OR_CONST unused_type unused = unused_type();
 
     namespace detail
     {
