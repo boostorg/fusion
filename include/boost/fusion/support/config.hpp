@@ -88,4 +88,12 @@ namespace std
 }
 #endif
 
+
+// Workaround for older GCC that doesn't accept `this` in constexpr.
+#if BOOST_WORKAROUND(BOOST_GCC, < 40700)
+#define BOOST_FUSION_CONSTEXPR_THIS
+#else
+#define BOOST_FUSION_CONSTEXPR_THIS BOOST_CONSTEXPR
+#endif
+
 #endif
