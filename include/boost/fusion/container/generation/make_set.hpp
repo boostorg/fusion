@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2014 Kohei Takahashi
+    Copyright (c) 2014-2015 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -27,16 +27,16 @@ namespace boost { namespace fusion
         template <typename ...T>
         struct make_set
         {
-            typedef set<T...> type;
+            typedef set<typename detail::as_fusion_element<T>::type...> type;
         };
     }
 
     template <typename ...T>
     BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline set<typename detail::as_fusion_element<T>::type...>
+    inline typename result_of::make_set<T...>::type
     make_set(T const&... arg)
     {
-        return set<typename detail::as_fusion_element<T>::type...>(arg...);
+        return typename result_of::make_set<T...>::type(arg...);
     }
  }}
 
