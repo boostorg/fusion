@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2014 Kohei Takahashi
+    Copyright (c) 2014-2015 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -100,10 +100,25 @@ namespace boost { namespace fusion
         set(Sequence const& rhs)
             : data(rhs) {}
 
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename Sequence>
+        BOOST_FUSION_GPU_ENABLED
+        set(Sequence&& rhs)
+            : data(std::forward<Sequence>(rhs)) {}
+#endif
+
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         explicit
         set(typename detail::call_param<T>::type ...args)
             : data(args...) {}
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename ...U>
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        explicit
+        set(U&& ...args)
+            : data(std::forward<U>(args)...) {}
+#endif
 
         template <typename U>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
@@ -113,6 +128,17 @@ namespace boost { namespace fusion
             data = rhs;
             return *this;
         }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename U>
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        set&
+        operator=(U&& rhs)
+        {
+            data = std::forward<U>(rhs);
+            return *this;
+        }
+#endif
 
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         storage_type& get_data() { return data; }
