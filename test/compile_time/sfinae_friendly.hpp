@@ -12,9 +12,9 @@
 #include <boost/config.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/assert.hpp>
-#include <boost/fusion/support/detail/result_of.hpp>
+#include <boost/utility/result_of.hpp>
 
-#if !defined(BOOST_NO_SFINAE) && !defined(BOOST_FUSION_NO_DECLTYPE_BASED_RESULT_OF)
+#if !defined(BOOST_NO_SFINAE) && defined(BOOST_RESULT_OF_USE_DECLTYPE)
 
 #include <boost/fusion/container/vector.hpp>
 
