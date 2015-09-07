@@ -59,13 +59,18 @@ namespace boost { namespace fusion
 
         template<int SeqSize, typename It, typename State, typename F>
         struct BOOST_PP_CAT(result_of_it_,BOOST_FUSION_FOLD_NAME)<SeqSize,It,State,F
-          , typename boost::enable_if_has_type<typename State::type>::type>
+            // MSVC9 issues a compile error as a partial specialization is ambiguous.
+          , typename boost::enable_if_has_type<
+                typename boost::disable_if_c<SeqSize == 0, State>::type::type
+            >::type>
           : BOOST_PP_CAT(result_of_it_,BOOST_FUSION_FOLD_NAME)<
                 SeqSize-1
               , typename result_of::BOOST_FUSION_FOLD_IMPL_NEXT_IT_FUNCTION<It>::type
               , boost::result_of<
                     F(
-                        typename State::type const&,
+                        typename add_reference<typename add_const<
+                            typename State::type
+                        >::type>::type,
                         BOOST_FUSION_FOLD_IMPL_INVOKE_IT_META_TRANSFORM(It const)
                     )
                 >
@@ -103,7 +108,9 @@ namespace boost { namespace fusion
                 typename result_of::BOOST_FUSION_FOLD_IMPL_NEXT_IT_FUNCTION<It>::type
               , boost::result_of<
                     F(
-                        typename State::type const&,
+                        typename add_reference<typename add_const<
+                            typename State::type
+                        >::type>::type,
                         BOOST_FUSION_FOLD_IMPL_INVOKE_IT_META_TRANSFORM(It const)
                     )
                 >
