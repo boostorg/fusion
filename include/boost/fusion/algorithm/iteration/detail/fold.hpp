@@ -194,30 +194,6 @@ namespace boost { namespace fusion
     {
         return detail::BOOST_FUSION_FOLD_NAME<Seq const, State const, F>(seq, state, f);
     }
-
-    template<typename Seq, typename State, typename F>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::BOOST_FUSION_FOLD_NAME<
-        Seq
-      , State const
-      , F
-    >::type
-    BOOST_FUSION_FOLD_NAME(Seq& seq, State& state, F f)
-    {
-        return detail::BOOST_FUSION_FOLD_NAME<Seq, State, F>(seq, state, f);
-    }
-
-    template<typename Seq, typename State, typename F>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::BOOST_FUSION_FOLD_NAME<
-        Seq const
-      , State const
-      , F
-    >::type
-    BOOST_FUSION_FOLD_NAME(Seq const& seq, State& state, F f)
-    {
-        return detail::BOOST_FUSION_FOLD_NAME<Seq const, State, F>(seq, state, f);
-    }
 }}
 
 #undef BOOST_FUSION_FOLD_NAME
