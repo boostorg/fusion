@@ -258,6 +258,22 @@ the first call) and [arg_desc] of `seq`.
     typename result_of_name_macro<Sequence const, State const, F>::type name_macro(
         Sequence const& seq, State const& initial_state, F f);
 
+    template<
+        typename Sequence,
+        typename State,
+        typename F
+        >
+    typename result_of_name_macro<Sequence, State, F>::type name_macro(
+        Sequence& seq, State& initial_state, F f);
+
+    template<
+        typename Sequence,
+        typename State,
+        typename F
+        >
+    typename result_of_name_macro<Sequence const, State, F>::type name_macro(
+        Sequence const& seq, State& initial_state, F f);
+
 [def seq_concept_macro [seq_concept]]
 [def arg_type_id_macro [arg_type_id]]
 [def arg_id_macro [arg_id]]

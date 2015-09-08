@@ -68,9 +68,7 @@ namespace boost { namespace fusion
               , typename result_of::BOOST_FUSION_FOLD_IMPL_NEXT_IT_FUNCTION<It>::type
               , boost::result_of<
                     F(
-                        typename add_reference<typename add_const<
-                            typename State::type
-                        >::type>::type,
+                        typename add_reference<typename State::type>::type,
                         BOOST_FUSION_FOLD_IMPL_INVOKE_IT_META_TRANSFORM(It const)
                     )
                 >
@@ -108,9 +106,7 @@ namespace boost { namespace fusion
                 typename result_of::BOOST_FUSION_FOLD_IMPL_NEXT_IT_FUNCTION<It>::type
               , boost::result_of<
                     F(
-                        typename add_reference<typename add_const<
-                            typename State::type
-                        >::type>::type,
+                        typename add_reference<typename State::type>::type,
                         BOOST_FUSION_FOLD_IMPL_INVOKE_IT_META_TRANSFORM(It const)
                     )
                 >
@@ -136,7 +132,7 @@ namespace boost { namespace fusion
               , BOOST_FUSION_FOLD_IMPL_FIRST_IT_META_TRANSFORM(
                     typename result_of::BOOST_FUSION_FOLD_IMPL_FIRST_IT_FUNCTION<Seq>::type
                 )
-              , add_reference<typename add_const<State>::type>
+              , add_reference<State>
               , F
             >
         {};
@@ -150,7 +146,7 @@ namespace boost { namespace fusion
                 BOOST_FUSION_FOLD_IMPL_FIRST_IT_META_TRANSFORM(
                     typename result_of::BOOST_FUSION_FOLD_IMPL_FIRST_IT_FUNCTION<Seq>::type
                 )
-              , add_reference<typename add_const<State>::type>
+              , add_reference<State>
               , F
             >(
                 typename result_of::size<Seq>::type()
@@ -199,7 +195,7 @@ namespace boost { namespace fusion
     BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename result_of::BOOST_FUSION_FOLD_NAME<
         Seq
-      , State const
+      , State
       , F
     >::type
     BOOST_FUSION_FOLD_NAME(Seq& seq, State& state, F f)
@@ -211,7 +207,7 @@ namespace boost { namespace fusion
     BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename result_of::BOOST_FUSION_FOLD_NAME<
         Seq const
-      , State const
+      , State
       , F
     >::type
     BOOST_FUSION_FOLD_NAME(Seq const& seq, State& state, F f)

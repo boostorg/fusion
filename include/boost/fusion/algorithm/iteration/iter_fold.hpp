@@ -22,7 +22,6 @@
 #include <boost/fusion/iterator/next.hpp>
 #include <boost/utility/result_of.hpp>
 #include <boost/core/enable_if.hpp>
-#include <boost/type_traits/add_const.hpp>
 #include <boost/type_traits/add_reference.hpp>
 
 #define BOOST_FUSION_ITER_FOLD
