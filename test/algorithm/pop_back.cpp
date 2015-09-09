@@ -88,6 +88,7 @@ main()
         auto i1 = find<int>(popv);
         auto i2 = find<double>(pop);
 
+        (void)push;
         BOOST_TEST(i1 != end(pop));
         BOOST_TEST(i2 != end(pop));
         BOOST_TEST(i1 != i2);
