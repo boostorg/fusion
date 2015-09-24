@@ -37,6 +37,7 @@
 #include <boost/mpl/int.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <boost/type_traits/is_convertible.hpp>
 #include <boost/type_traits/remove_cv.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 #include <cstddef>
@@ -63,6 +64,16 @@ namespace boost { namespace fusion
         template <typename T>
         struct pure : remove_cv<typename remove_reference<T>::type> {};
 
+        template <typename Sequence, typename This, int = result_of::size<This>::value>
+        struct is_convertible_to_first
+            : boost::is_convertible<Sequence, typename result_of::value_at_c<This, 0>::type>
+        {};
+
+        template <typename Sequence, typename This>
+        struct is_convertible_to_first<Sequence, This, 0>
+            : mpl::false_
+        {};
+
         template <typename This, typename ...T>
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         inline each_elem
@@ -77,12 +88,13 @@ namespace boost { namespace fusion
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         inline from_sequence<
             typename lazy_enable_if_c<
-                (traits::is_sequence<Sequence>::value &&
-                 !is_same<This, Sequence>::value)
+                (traits::is_sequence<typename remove_reference<Sequence>::type>::value &&
+                 !is_same<This, typename pure<Sequence>::type>::value &&
+                 !is_convertible_to_first<Sequence, This>::value)
               , make_indices_from_seq<Sequence>
             >::type
         >
-        dispatch(Sequence const&) BOOST_NOEXCEPT
+        dispatch(Sequence&&) BOOST_NOEXCEPT
         { return from_sequence<typename make_indices_from_seq<Sequence>::type>(); }
 
 
@@ -306,7 +318,7 @@ namespace boost { namespace fusion
         //      In the (near) future release, should be fixed.
         /* BOOST_CONSTEXPR */ BOOST_FUSION_GPU_ENABLED
         vector(U&&... u)
-            : base(vector_detail::dispatch<vector>(u...), std::forward<U>(u)...)
+            : base(vector_detail::dispatch<vector>(std::forward<U>(u)...), std::forward<U>(u)...)
         {}
 
         template <typename Sequence>
