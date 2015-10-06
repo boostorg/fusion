@@ -97,39 +97,20 @@ namespace boost { namespace fusion
 
         template <typename Sequence>
         BOOST_FUSION_GPU_ENABLED
-        set(Sequence const& rhs)
-            : data(rhs) {}
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        template <typename Sequence>
-        BOOST_FUSION_GPU_ENABLED
         set(Sequence&& rhs)
             : data(std::forward<Sequence>(rhs)) {}
-#endif
 
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         explicit
         set(typename detail::call_param<T>::type ...args)
             : data(args...) {}
 
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename ...U>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         explicit
         set(U&& ...args)
             : data(std::forward<U>(args)...) {}
-#endif
 
-        template <typename U>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        set&
-        operator=(U const& rhs)
-        {
-            data = rhs;
-            return *this;
-        }
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename U>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         set&
@@ -138,7 +119,6 @@ namespace boost { namespace fusion
             data = std::forward<U>(rhs);
             return *this;
         }
-#endif
 
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         storage_type& get_data() { return data; }

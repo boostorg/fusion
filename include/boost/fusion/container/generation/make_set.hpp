@@ -19,6 +19,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <boost/fusion/support/detail/as_fusion_element.hpp>
+#include <boost/type_traits/remove_reference.hpp>
+#include <boost/type_traits/remove_const.hpp>
+#include <utility>
 
 namespace boost { namespace fusion
 {
@@ -27,16 +30,22 @@ namespace boost { namespace fusion
         template <typename ...T>
         struct make_set
         {
-            typedef set<typename detail::as_fusion_element<T>::type...> type;
+            typedef set<
+                typename detail::as_fusion_element<
+                    typename remove_const<
+                        typename remove_reference<T>::type
+                    >::type
+                >::type...
+            > type;
         };
     }
 
     template <typename ...T>
     BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline typename result_of::make_set<T...>::type
-    make_set(T const&... arg)
+    make_set(T&&... arg)
     {
-        return typename result_of::make_set<T...>::type(arg...);
+        return typename result_of::make_set<T...>::type(std::forward<T>(arg)...);
     }
  }}
 
