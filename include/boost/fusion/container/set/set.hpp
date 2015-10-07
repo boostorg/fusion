@@ -100,13 +100,8 @@ namespace boost { namespace fusion
         set(Sequence&& rhs)
             : data(std::forward<Sequence>(rhs)) {}
 
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit
-        set(typename detail::call_param<T>::type ...args)
-            : data(args...) {}
-
         template <typename ...U>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         explicit
         set(U&& ...args)
             : data(std::forward<U>(args)...) {}
