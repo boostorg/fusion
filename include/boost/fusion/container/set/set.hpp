@@ -23,6 +23,8 @@
 #include <boost/fusion/support/detail/access.hpp>
 #include <boost/fusion/support/sequence_base.hpp>
 #include <boost/fusion/support/category_of.hpp>
+#include <boost/fusion/support/is_sequence.hpp>
+#include <boost/fusion/support/detail/is_same_size.hpp>
 #include <boost/fusion/container/vector/vector.hpp>
 #include <boost/fusion/container/set/detail/begin_impl.hpp>
 #include <boost/fusion/container/set/detail/end_impl.hpp>
@@ -31,8 +33,8 @@
 #include <boost/fusion/container/set/detail/deref_impl.hpp>
 #include <boost/fusion/container/set/detail/key_of_impl.hpp>
 #include <boost/fusion/container/set/detail/value_of_data_impl.hpp>
-#include <boost/mpl/identity.hpp>
 #include <boost/mpl/bool.hpp>
+#include <boost/core/enable_if.hpp>
 
 namespace boost { namespace fusion
 {
@@ -57,7 +59,9 @@ namespace boost { namespace fusion
 
         template <typename Sequence>
         BOOST_FUSION_GPU_ENABLED
-        set(Sequence const& rhs)
+        set(Sequence const& rhs,
+            typename enable_if<traits::is_sequence<Sequence> >::type* = 0,
+            typename enable_if<detail::is_same_size<Sequence, storage_type> >::type* = 0)
             : data(rhs) {}
 
         template <typename T>
@@ -97,7 +101,9 @@ namespace boost { namespace fusion
 
         template <typename Sequence>
         BOOST_FUSION_GPU_ENABLED
-        set(Sequence&& rhs)
+        set(Sequence&& rhs,
+            typename enable_if<traits::is_sequence<Sequence> >::type* = 0,
+            typename enable_if<detail::is_same_size<Sequence, storage_type> >::type* = 0)
             : data(std::forward<Sequence>(rhs)) {}
 
         template <typename ...U>
