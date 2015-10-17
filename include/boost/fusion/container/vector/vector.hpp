@@ -66,12 +66,12 @@ namespace boost { namespace fusion
         template <typename This, typename ...T>
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         inline each_elem
-        dispatch( T const&... ) BOOST_NOEXCEPT { return each_elem(); }
+        dispatch(T const&...) BOOST_NOEXCEPT { return each_elem(); }
 
         template <typename This>
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         inline copy_or_move
-        dispatch( This const& ) BOOST_NOEXCEPT { return copy_or_move(); }
+        dispatch(This const&) BOOST_NOEXCEPT { return copy_or_move(); }
 
         template <typename This, typename Sequence>
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
@@ -82,7 +82,7 @@ namespace boost { namespace fusion
               , make_indices_from_seq<Sequence>
             >::type
         >
-        dispatch( Sequence const& ) BOOST_NOEXCEPT
+        dispatch(Sequence const&) BOOST_NOEXCEPT
         { return from_sequence<typename make_indices_from_seq<Sequence>::type>(); }
 
 
