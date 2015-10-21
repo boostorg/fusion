@@ -21,8 +21,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 // C++11 interface
 ///////////////////////////////////////////////////////////////////////////////
-#include <cstddef>
 #include <boost/fusion/container/vector/vector_fwd.hpp>
+#include <boost/type_traits/declval.hpp>
+#include <boost/type_traits/remove_cv.hpp>
 
 namespace boost { namespace fusion
 {
@@ -42,23 +43,12 @@ namespace boost { namespace fusion
         template <>
         struct value_at_impl<vector_tag>
         {
-            template <typename V, std::size_t N>
-            struct apply_impl;
-
-            template <typename H, typename ...T>
-            struct apply_impl<vector<H, T...>, 0>
-            {
-                typedef H type;
-            };
-
-            template <typename H, typename ...T, std::size_t N>
-            struct apply_impl<vector<H, T...>, N>
-                : apply_impl<vector<T...>, N - 1>
-            {};
-
             template <typename Sequence, typename N>
-            struct apply : apply_impl<typename Sequence::type_sequence, N::value>
-            {};
+            struct apply
+            {
+                typedef typename boost::remove_cv<Sequence>::type seq;
+                typedef decltype(seq::template value_at_impl<N::value>(boost::declval<seq*>())) type;
+            };
         };
     }
 }}

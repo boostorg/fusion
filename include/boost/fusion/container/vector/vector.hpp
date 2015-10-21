@@ -230,27 +230,37 @@ namespace boost { namespace fusion
                 assign(std::forward<Sequence>(seq), detail::index_sequence<M...>());
             }
 
-            typedef extension::value_at_impl<vector_tag> value_at_impl;
+            template <std::size_t N, typename U>
+            static BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            auto at_detail(store<N, U>* this_) -> decltype(this_->get())
+            {
+                return this_->get();
+            }
+
+            template <std::size_t N, typename U>
+            static BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            auto at_detail(store<N, U> const* this_) -> decltype(this_->get())
+            {
+                return this_->get();
+            }
 
             template <typename J>
             BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            typename value_at_impl::template apply<vector_data, J>::type&
-            at_impl(J)
+            auto at_impl(J) -> decltype(at_detail<J::value>(this))
             {
-                typedef typename value_at_impl::template apply<vector_data, J>::type U;
-                typedef store<J::value, U> S;
-                return static_cast<S*>(this)->get();
+                return at_detail<J::value>(this);
             }
 
             template <typename J>
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            typename value_at_impl::template apply<vector_data, J>::type const&
-            at_impl(J) const
+            auto at_impl(J) const -> decltype(at_detail<J::value>(this))
             {
-                typedef typename value_at_impl::template apply<vector_data, J>::type U;
-                typedef store<J::value, U> S;
-                return static_cast<S const*>(this)->get();
+                return at_detail<J::value>(this);
             }
+
+            template <std::size_t N, typename U>
+            static BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            U value_at_impl(store<N, U>*);
         };
 
         template <typename V, typename... T>
