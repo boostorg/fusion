@@ -272,7 +272,7 @@ namespace boost { namespace fusion
 
             template <std::size_t N, typename U>
             static BOOST_FUSION_GPU_ENABLED
-            U value_at_impl(store<N, U>*);
+            mpl::identity<U> value_at_impl(store<N, U>*);
         };
 
         template <typename V, typename... T>
