@@ -46,23 +46,42 @@ namespace boost { namespace fusion
 {
     namespace detail
     {
-        template<int SeqSize, typename It, typename State, typename F, typename = void>
+        template<int SeqSize, typename It, typename State, typename F, typename = void
+#if BOOST_WORKAROUND(BOOST_MSVC, < 1500)
+          // Dirty hack: those compilers cannot choose exactly one partial specialization.
+          , bool = SeqSize == 0
+#endif
+        >
         struct BOOST_PP_CAT(result_of_it_,BOOST_FUSION_FOLD_NAME)
         {};
 
         template<typename It, typename State, typename F>
         struct BOOST_PP_CAT(result_of_it_,BOOST_FUSION_FOLD_NAME)<0,It,State,F
-          , typename boost::enable_if_has_type<typename State::type>::type>
+          , typename boost::enable_if_has_type<typename State::type>::type
+#if BOOST_WORKAROUND(BOOST_MSVC, < 1500)
+          , true
+#endif
+          >
         {
             typedef typename State::type type;
         };
 
         template<int SeqSize, typename It, typename State, typename F>
         struct BOOST_PP_CAT(result_of_it_,BOOST_FUSION_FOLD_NAME)<SeqSize,It,State,F
-            // MSVC9 issues a compile error as a partial specialization is ambiguous.
           , typename boost::enable_if_has_type<
+#if BOOST_WORKAROUND(BOOST_MSVC, == 1500)
+                // Following SFINAE enables to avoid MSVC 9's partial specialization
+                // ambiguous bug but MSVC 8 don't compile, and moreover MSVC 8 style
+                // workaround won't work with MSVC 9.
                 typename boost::disable_if_c<SeqSize == 0, State>::type::type
-            >::type>
+#else
+                typename State::type
+#endif
+            >::type
+#if BOOST_WORKAROUND(BOOST_MSVC, < 1500)
+          , false
+#endif
+          >
           : BOOST_PP_CAT(result_of_it_,BOOST_FUSION_FOLD_NAME)<
                 SeqSize-1
               , typename result_of::BOOST_FUSION_FOLD_IMPL_NEXT_IT_FUNCTION<It>::type
