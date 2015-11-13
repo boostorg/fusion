@@ -42,6 +42,12 @@
 #   define BOOST_FUSION_FOLD_IMPL_INVOKE_IT_TRANSFORM(IT) fusion::deref(IT)
 #endif
 
+#if BOOST_WORKAROUND(BOOST_MSVC, < 1500)
+#   define BOOST_FUSION_FOLD_IMPL_ENABLER(T) void
+#else
+#   define BOOST_FUSION_FOLD_IMPL_ENABLER(T) typename T::type
+#endif
+
 namespace boost { namespace fusion
 {
     namespace detail
@@ -57,7 +63,7 @@ namespace boost { namespace fusion
 
         template<typename It, typename State, typename F>
         struct BOOST_PP_CAT(result_of_it_,BOOST_FUSION_FOLD_NAME)<0,It,State,F
-          , typename boost::enable_if_has_type<typename State::type>::type
+          , typename boost::enable_if_has_type<BOOST_FUSION_FOLD_IMPL_ENABLER(State)>::type
 #if BOOST_WORKAROUND(BOOST_MSVC, < 1500)
           , true
 #endif
@@ -75,7 +81,7 @@ namespace boost { namespace fusion
                 // workaround won't work with MSVC 9.
                 typename boost::disable_if_c<SeqSize == 0, State>::type::type
 #else
-                typename State::type
+                BOOST_FUSION_FOLD_IMPL_ENABLER(State)
 #endif
             >::type
 #if BOOST_WORKAROUND(BOOST_MSVC, < 1500)
@@ -236,6 +242,7 @@ namespace boost { namespace fusion
 }}
 
 #undef BOOST_FUSION_FOLD_NAME
+#undef BOOST_FUSION_FOLD_IMPL_ENABLER
 #undef BOOST_FUSION_FOLD_IMPL_FIRST_IT_FUNCTION
 #undef BOOST_FUSION_FOLD_IMPL_NEXT_IT_FUNCTION
 #undef BOOST_FUSION_FOLD_IMPL_FIRST_IT_META_TRANSFORM
