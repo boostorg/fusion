@@ -7,25 +7,49 @@
 
     This is an auto-generated file. Do not edit!
 ==============================================================================*/
+# if BOOST_WORKAROUND (BOOST_MSVC, < 1500)
+# define BOOST_FUSION_FOLD_IMPL_ENABLER(T) void
+# else
+# define BOOST_FUSION_FOLD_IMPL_ENABLER(T) typename T::type
+# endif
 namespace boost { namespace fusion
 {
     namespace detail
     {
-        template<int SeqSize, typename It, typename State, typename F, typename = void>
+        template<int SeqSize, typename It, typename State, typename F, typename = void
+# if BOOST_WORKAROUND (BOOST_MSVC, < 1500)
+          
+          , bool = SeqSize == 0
+# endif
+        >
         struct result_of_it_reverse_fold
         {};
         template<typename It, typename State, typename F>
         struct result_of_it_reverse_fold<0,It,State,F
-          , typename boost::enable_if_has_type<typename State::type>::type>
+          , typename boost::enable_if_has_type<BOOST_FUSION_FOLD_IMPL_ENABLER(State)>::type
+# if BOOST_WORKAROUND (BOOST_MSVC, < 1500)
+          , true
+# endif
+          >
         {
             typedef typename State::type type;
         };
         template<int SeqSize, typename It, typename State, typename F>
         struct result_of_it_reverse_fold<SeqSize,It,State,F
-            
           , typename boost::enable_if_has_type<
+# if BOOST_WORKAROUND (BOOST_MSVC, >= 1500)
+                
+                
+                
                 typename boost::disable_if_c<SeqSize == 0, State>::type::type
-            >::type>
+# else
+                BOOST_FUSION_FOLD_IMPL_ENABLER(State)
+# endif
+            >::type
+# if BOOST_WORKAROUND (BOOST_MSVC, < 1500)
+          , false
+# endif
+          >
           : result_of_it_reverse_fold<
                 SeqSize-1
               , typename result_of::prior<It>::type
