@@ -38,7 +38,7 @@ namespace boost { namespace fusion
         template<int SeqSize, typename It, typename State, typename F>
         struct result_of_it_fold<SeqSize,It,State,F
           , typename boost::enable_if_has_type<
-# if BOOST_WORKAROUND (BOOST_MSVC, == 1500)
+# if BOOST_WORKAROUND (BOOST_MSVC, >= 1500)
                 
                 
                 

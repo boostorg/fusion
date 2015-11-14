@@ -100,9 +100,9 @@ FUSION_HASH endif
         struct BOOST_PP_CAT(result_of_it_,BOOST_FUSION_FOLD_NAME)<SeqSize,It,State,F
           , typename boost::enable_if_has_type<
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-FUSION_HASH if BOOST_WORKAROUND BOOST_PREVENT_MACRO_SUBSTITUTION (BOOST_MSVC, == 1500)
+FUSION_HASH if BOOST_WORKAROUND BOOST_PREVENT_MACRO_SUBSTITUTION (BOOST_MSVC, >= 1500)
 #endif
-#if BOOST_WORKAROUND(BOOST_MSVC, == 1500) || \
+#if BOOST_WORKAROUND(BOOST_MSVC, >= 1500) || \
     (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
                 // Following SFINAE enables to avoid MSVC 9's partial specialization
                 // ambiguous bug but MSVC 8 don't compile, and moreover MSVC 8 style
