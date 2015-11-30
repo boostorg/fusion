@@ -8,6 +8,7 @@
 #define FUSION_LIST_07172005_1153
 
 #include <boost/fusion/support/config.hpp>
+#include <boost/fusion/support/void.hpp>
 #include <boost/fusion/container/list/detail/cpp03/list_fwd.hpp>
 #include <boost/fusion/container/list/detail/cpp03/list_to_cons.hpp>
 #include <boost/fusion/support/is_sequence.hpp>
@@ -61,7 +62,7 @@ namespace boost { namespace fusion
         template <typename Sequence>
         BOOST_FUSION_GPU_ENABLED
         list(Sequence const& rhs
-            , typename boost::enable_if<traits::is_sequence<Sequence> >::type* = 0)
+            , typename boost::enable_if<traits::is_sequence<Sequence>, void_>::type = void_())
             : inherited_type(rhs) {}
 
         //  Expand a couple of forwarding constructors for arguments

@@ -21,6 +21,7 @@
 // C++11 interface
 ///////////////////////////////////////////////////////////////////////////////
 #include <boost/fusion/support/sequence_base.hpp>
+#include <boost/fusion/support/void.hpp>
 #include <boost/fusion/support/detail/access.hpp>
 #include <boost/fusion/support/is_sequence.hpp>
 #include <boost/fusion/container/deque/detail/keyed_element.hpp>
@@ -59,7 +60,7 @@ namespace boost { namespace fusion
             typename enable_if<
                 mpl::and_<
                     traits::is_sequence<Sequence>
-                  , result_of::empty<Sequence>>>::type* /*dummy*/ = 0) BOOST_NOEXCEPT
+                  , result_of::empty<Sequence>>, void_>::type = void_()) BOOST_NOEXCEPT
         {}
 
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
@@ -149,8 +150,8 @@ namespace boost { namespace fusion
         template <typename Sequence>
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         explicit deque(Sequence const& seq
-          , typename disable_if<is_convertible<Sequence, Head> >::type* /*dummy*/ = 0
-          , typename enable_if<traits::is_sequence<Sequence> >::type* /*dummy*/ = 0)
+          , typename disable_if<is_convertible<Sequence, Head>, void_>::type = void_()
+          , typename enable_if<traits::is_sequence<Sequence>, void_>::type = void_())
           : base(base::from_iterator(fusion::begin(seq)))
         {}
 

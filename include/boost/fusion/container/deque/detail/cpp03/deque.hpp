@@ -102,8 +102,8 @@ namespace boost { namespace fusion {
         template<typename Sequence>
         BOOST_FUSION_GPU_ENABLED
         deque(Sequence const& seq
-            , typename disable_if<is_convertible<Sequence, T0> >::type* /*dummy*/ = 0
-            , typename enable_if<traits::is_sequence<Sequence> >::type* /*dummy*/ = 0)
+            , typename disable_if<is_convertible<Sequence, T0>, void_>::type = void_()
+            , typename enable_if<traits::is_sequence<Sequence>, void_>::type = void_())
             : base(base::from_iterator(fusion::begin(seq)))
             {}
 
@@ -133,7 +133,7 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename T0_>
         BOOST_FUSION_GPU_ENABLED
         explicit deque(T0_&& t0
-          , typename enable_if<is_convertible<T0_, T0> >::type* /*dummy*/ = 0
+          , typename enable_if<is_convertible<T0_, T0>, void_>::type = void_()
          )
             : base(BOOST_FUSION_FWD_ELEM(T0_, t0), detail::nil_keyed_element())
             {}
@@ -146,7 +146,8 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         deque(deque<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, U)>&& seq
             , typename disable_if<
                   is_convertible<deque<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, U)>, T0>
-              >::type* /*dummy*/ = 0)
+                , void_
+              >::type = void_())
             : base(std::forward<deque<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, U)>>(seq))
             {}
         template <typename T>
@@ -180,7 +181,7 @@ FUSION_HASH endif
             typename enable_if<
                 mpl::and_<
                     traits::is_sequence<Sequence>
-                  , result_of::empty<Sequence> > >::type* /*dummy*/ = 0) BOOST_NOEXCEPT
+                  , result_of::empty<Sequence> >, void_>::type = void_()) BOOST_NOEXCEPT
         {}
 
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED

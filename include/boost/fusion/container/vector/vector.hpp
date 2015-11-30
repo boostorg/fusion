@@ -24,6 +24,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include <boost/fusion/support/sequence_base.hpp>
 #include <boost/fusion/support/is_sequence.hpp>
+#include <boost/fusion/support/void.hpp>
 #include <boost/fusion/support/detail/index_sequence.hpp>
 #include <boost/fusion/container/vector/detail/at_impl.hpp>
 #include <boost/fusion/container/vector/detail/value_at_impl.hpp>
@@ -164,7 +165,7 @@ namespace boost { namespace fusion
             template <typename U>
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             store(U&& rhs
-                , typename disable_if<is_same<typename pure<U>::type, store> >::type* = 0)
+                , typename disable_if<is_same<typename pure<U>::type, store>, void_>::type = void_())
                 : elem(std::forward<U>(rhs))
             {}
 
