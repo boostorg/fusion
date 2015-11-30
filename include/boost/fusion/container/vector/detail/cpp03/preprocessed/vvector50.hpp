@@ -40,7 +40,7 @@ namespace boost { namespace fusion
         template <typename Sequence>
         BOOST_FUSION_GPU_ENABLED
         vector(Sequence const& rhs,
-            typename boost::enable_if<traits::is_sequence<Sequence> >::type* = 0)
+            typename boost::enable_if<traits::is_sequence<Sequence>, void_>::type = void_())
             : vec(BOOST_FUSION_VECTOR_COPY_INIT()) {}
         
         
