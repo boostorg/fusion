@@ -22,6 +22,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include <boost/fusion/support/detail/access.hpp>
 #include <boost/fusion/support/void.hpp>
+#include <boost/fusion/support/detail/enabler.hpp>
 #include <boost/fusion/support/sequence_base.hpp>
 #include <boost/fusion/support/category_of.hpp>
 #include <boost/fusion/support/is_sequence.hpp>
@@ -61,8 +62,8 @@ namespace boost { namespace fusion
         template <typename Sequence>
         BOOST_FUSION_GPU_ENABLED
         set(Sequence const& rhs,
-            typename enable_if<traits::is_sequence<Sequence>, void_>::type = void_(),
-            typename enable_if<detail::is_same_size<Sequence, storage_type>, void_>::type = void_())
+            typename enable_if<traits::is_sequence<Sequence>, detail::enabler_>::type = detail::enabler,
+            typename enable_if<detail::is_same_size<Sequence, storage_type>, detail::enabler_>::type = detail::enabler)
             : data(rhs) {}
 
         template <typename T>
@@ -103,8 +104,8 @@ namespace boost { namespace fusion
         template <typename Sequence>
         BOOST_FUSION_GPU_ENABLED
         set(Sequence&& rhs,
-            typename enable_if<traits::is_sequence<Sequence>, void_>::type = void_(),
-            typename enable_if<detail::is_same_size<Sequence, storage_type>, void_>::type = void_())
+            typename enable_if<traits::is_sequence<Sequence>, detail::enabler_>::type = detail::enabler,
+            typename enable_if<detail::is_same_size<Sequence, storage_type>, detail::enabler_>::type = detail::enabler)
             : data(std::forward<Sequence>(rhs)) {}
 
         template <typename ...U>
