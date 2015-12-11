@@ -36,7 +36,6 @@
 #include <boost/core/enable_if.hpp>
 #include <boost/mpl/int.hpp>
 #include <boost/mpl/bool.hpp>
-#include <boost/type_traits/declval.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 #include <boost/type_traits/remove_cv.hpp>
@@ -272,8 +271,8 @@ namespace boost { namespace fusion
             }
 
             template <std::size_t N, typename U>
-            static BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            U value_at_impl(store<N, U>*) { return boost::declval<U>(); }
+            static BOOST_FUSION_GPU_ENABLED
+            mpl::identity<U> value_at_impl(store<N, U>*);
         };
 
         template <typename V, typename... T>

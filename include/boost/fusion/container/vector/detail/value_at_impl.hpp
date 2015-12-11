@@ -47,7 +47,7 @@ namespace boost { namespace fusion
             struct apply
             {
                 typedef typename boost::remove_cv<Sequence>::type seq;
-                typedef decltype(seq::template value_at_impl<N::value>(boost::declval<seq*>())) type;
+                typedef typename mpl::identity<decltype(seq::template value_at_impl<N::value>(boost::declval<seq*>()))>::type::type type;
             };
         };
     }

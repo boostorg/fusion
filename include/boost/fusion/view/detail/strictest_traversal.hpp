@@ -17,9 +17,6 @@
 #include <boost/fusion/algorithm/iteration/fold.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 #include <boost/type_traits/is_convertible.hpp>
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-#include <boost/type_traits/declval.hpp>
-#endif
 
 namespace boost { namespace fusion
 {
@@ -62,12 +59,9 @@ namespace boost { namespace fusion
             // never called, but needed for decltype-based result_of (C++0x)
 #ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
             template<typename StrictestSoFar, typename Next>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            BOOST_FUSION_GPU_ENABLED
             typename result<strictest_traversal_impl(StrictestSoFar, Next)>::type
-            operator()(StrictestSoFar&&, Next&&) const
-            {
-                return boost::declval<typename result<strictest_traversal_impl(StrictestSoFar, Next)>::type>();
-            }
+            operator()(StrictestSoFar&&, Next&&) const;
 #endif
         };
 
