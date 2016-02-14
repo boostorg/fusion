@@ -14,7 +14,7 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/empty.hpp>
-#include <boost/preprocessor/tuple/elem.hpp>
+#include <boost/preprocessor/control/if.hpp>
 #include <boost/type_traits/add_reference.hpp>
 #include <boost/type_traits/is_const.hpp>
 #include <boost/type_traits/remove_const.hpp>

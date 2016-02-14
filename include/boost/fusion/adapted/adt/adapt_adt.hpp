@@ -15,7 +15,6 @@
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/empty.hpp>
 #include <boost/preprocessor/control/if.hpp>
-#include <boost/preprocessor/comparison/equal.hpp>
 #include <boost/preprocessor/comparison/less.hpp>
 #include <boost/type_traits/add_reference.hpp>
 #include <boost/type_traits/is_const.hpp>

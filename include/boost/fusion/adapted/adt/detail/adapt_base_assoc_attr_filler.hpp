@@ -15,8 +15,10 @@
 
 #include <boost/mpl/aux_/preprocessor/token_equal.hpp>
 
+#include <boost/preprocessor/config/config.hpp>
 #include <boost/preprocessor/control/if.hpp>
 #include <boost/preprocessor/variadic/size.hpp>
+#include <boost/preprocessor/arithmetic/sub.hpp>
 
 #if BOOST_PP_VARIADICS
 

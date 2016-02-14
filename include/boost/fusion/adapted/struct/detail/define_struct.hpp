@@ -16,13 +16,11 @@
 #include <boost/fusion/iterator/advance.hpp>
 #include <boost/fusion/adapted/struct/detail/adapt_base.hpp>
 #include <boost/fusion/adapted/struct/detail/namespace.hpp>
-#include <boost/preprocessor/inc.hpp>
 #include <boost/preprocessor/if.hpp>
 #include <boost/preprocessor/expr_if.hpp>
 #include <boost/preprocessor/dec.hpp>
 #include <boost/preprocessor/logical/not.hpp>
 #include <boost/preprocessor/punctuation/comma_if.hpp>
-#include <boost/preprocessor/comparison/equal.hpp>
 #include <boost/preprocessor/seq/seq.hpp>
 #include <boost/preprocessor/seq/for_each.hpp>
 #include <boost/preprocessor/seq/for_each_i.hpp>

@@ -17,6 +17,7 @@
 #include <boost/preprocessor/control/if.hpp>
 #include <boost/preprocessor/seq/seq.hpp>
 #include <boost/preprocessor/seq/elem.hpp>
+#include <boost/preprocessor/tuple/elem.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_const.hpp>
 #include <boost/type_traits/add_const.hpp>

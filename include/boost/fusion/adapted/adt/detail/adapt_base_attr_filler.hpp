@@ -11,7 +11,6 @@
 #include <boost/config.hpp>
 
 #include <boost/fusion/adapted/struct/detail/adapt_auto.hpp>
-
 #include <boost/fusion/adapted/struct/detail/preprocessor/is_seq.hpp>
 
 #include <boost/mpl/aux_/preprocessor/token_equal.hpp>
@@ -19,16 +18,12 @@
 #include <boost/preprocessor/arithmetic/sub.hpp>
 #include <boost/preprocessor/control/if.hpp>
 #include <boost/preprocessor/logical/or.hpp>
-#include <boost/preprocessor/tuple/size.hpp>
 #include <boost/preprocessor/tuple/elem.hpp>
 #include <boost/preprocessor/variadic/to_seq.hpp>
-#include <boost/preprocessor/variadic/to_tuple.hpp>
+#include <boost/preprocessor/variadic/size.hpp>
 #include <boost/preprocessor/variadic/elem.hpp>
-#include <boost/preprocessor/seq/for_each.hpp>
-#include <boost/preprocessor/seq/push_front.hpp>
+#include <boost/preprocessor/seq/seq.hpp>
 #include <boost/preprocessor/seq/rest_n.hpp>
-
-#include <boost/preprocessor/tuple/reverse.hpp>
 
 
 #define BOOST_FUSION_ADAPT_ADT_WRAPPEDATTR_SIZE(ATTRIBUTE)                      \

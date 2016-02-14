@@ -16,7 +16,6 @@
 #include <boost/preprocessor/empty.hpp>
 #include <boost/preprocessor/control/if.hpp>
 #include <boost/preprocessor/comparison/less.hpp>
-#include <boost/preprocessor/comparison/equal.hpp>
 #include <boost/preprocessor/seq/seq.hpp>
 #include <boost/preprocessor/variadic/to_seq.hpp>
 #include <boost/type_traits/add_reference.hpp>
@@ -86,7 +85,7 @@
             BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER(                        \
               BOOST_PP_SEQ_TAIL(BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__))),        \
             BOOST_FUSION_ADAPT_STRUCT_C)
-        
+
 #else // BOOST_PP_VARIADICS
 
 #   define BOOST_FUSION_ADAPT_TPL_STRUCT(                                       \
