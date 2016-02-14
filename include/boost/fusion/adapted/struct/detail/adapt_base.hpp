@@ -29,6 +29,7 @@
 #include <boost/preprocessor/tuple/elem.hpp>
 #include <boost/preprocessor/arithmetic/dec.hpp>
 #include <boost/preprocessor/comparison/less.hpp>
+#include <boost/preprocessor/logical/not.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/tag.hpp>
 #include <boost/mpl/eval_if.hpp>
@@ -202,7 +203,7 @@
             {                                                                   \
                 return seq.PREFIX()                                             \
                     BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE,                   \
-                        BOOST_PP_IF(DEDUCE_TYPE, 0, 1), ATTRIBUTE);             \
+                        BOOST_PP_NOT(DEDUCE_TYPE), ATTRIBUTE);                  \
             }                                                                   \
         };                                                                      \
     };                                                                          \
@@ -223,8 +224,7 @@
         {                                                                       \
             return BOOST_PP_STRINGIZE(                                          \
                BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPEL_SIZE,                        \
-                        BOOST_PP_IF(DEDUCE_TYPE, 0, 1),                         \
-                          ATTRIBUTE));                                          \
+                   BOOST_PP_NOT(DEDUCE_TYPE), ATTRIBUTE));                      \
         }                                                                       \
     };
 
