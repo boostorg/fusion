@@ -115,11 +115,11 @@ main()
     }
 
     {
-        fusion::vector<int, float, int> v1(4, 2, 2);
+        fusion::vector<int, float, int> v1(4, 2.f, 2);
         ns::point basep(5, 3, 3);
         adapted::point v2(basep);
 
-        fusion::vector<long, double, int> v3(5, 4, 4);
+        fusion::vector<long, double, int> v3(5, 4., 4);
         BOOST_TEST(v1 < v2);
         BOOST_TEST(v1 <= v2);
         BOOST_TEST(v2 > v1);
