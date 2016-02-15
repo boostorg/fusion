@@ -44,7 +44,7 @@
     BOOST_FUSION_ADAPT_ASSOC_ADT_FILLER_0
 
 #define BOOST_FUSION_ADAPT_ASSOC_ADT_WRAP_ATTR(A, B, C, D, E)                   \
-    BOOST_PP_IF(BOOST_MPL_PP_TOKEN_EQUAL(auto, A),                              \
+    BOOST_PP_IIF(BOOST_MPL_PP_TOKEN_EQUAL(auto, A),                             \
         ((3, (C,D,E))),                                                         \
         ((5, (A,B,C,D,E)))                                                      \
     )

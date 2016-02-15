@@ -13,7 +13,7 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/empty.hpp>
-#include <boost/preprocessor/control/if.hpp>
+#include <boost/preprocessor/control/iif.hpp>
 #include <boost/preprocessor/comparison/less.hpp>
 #include <boost/type_traits/add_reference.hpp>
 #include <boost/type_traits/is_const.hpp>
@@ -45,7 +45,7 @@
         NAME_SEQ,                                                               \
         IS_VIEW,                                                                \
         I,                                                                      \
-        BOOST_PP_IF(IS_VIEW, BOOST_FUSION_PROXY_PREFIX, BOOST_PP_EMPTY),        \
+        BOOST_PP_IIF(IS_VIEW, BOOST_FUSION_PROXY_PREFIX, BOOST_PP_EMPTY),       \
         BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR(ATTRIBUTE),                       \
         BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR_SIZE(ATTRIBUTE),                  \
         BOOST_PP_IIF(BOOST_PP_LESS(                                             \

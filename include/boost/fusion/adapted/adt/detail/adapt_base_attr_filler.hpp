@@ -16,7 +16,7 @@
 #include <boost/mpl/aux_/preprocessor/token_equal.hpp>
 
 #include <boost/preprocessor/arithmetic/sub.hpp>
-#include <boost/preprocessor/control/if.hpp>
+#include <boost/preprocessor/control/iif.hpp>
 #include <boost/preprocessor/logical/or.hpp>
 #include <boost/preprocessor/tuple/elem.hpp>
 #include <boost/preprocessor/variadic/to_seq.hpp>
@@ -46,7 +46,7 @@
 #  define BOOST_FUSION_ADAPT_ADT_FILLER_1_END
 
 #  define BOOST_FUSION_ADAPT_ADT_FILLER(...)                                    \
-      BOOST_PP_IF(                                                              \
+      BOOST_PP_IIF(                                                             \
           BOOST_PP_OR(                                                          \
               BOOST_MPL_PP_TOKEN_EQUAL(auto,                                    \
                   BOOST_PP_VARIADIC_ELEM(0, __VA_ARGS__)),                      \
@@ -81,7 +81,7 @@
 #  define BOOST_FUSION_ADAPT_ADT_FILLER_1_END
 
 #  define BOOST_FUSION_ADAPT_ADT_WRAP_ATTR(A, B, C, D)                          \
-      BOOST_PP_IF(BOOST_MPL_PP_TOKEN_EQUAL(auto, A),                            \
+      BOOST_PP_IIF(BOOST_MPL_PP_TOKEN_EQUAL(auto, A),                           \
         ((2, (C,D))),                                                           \
         ((4, (A,B,C,D)))                                                        \
       )

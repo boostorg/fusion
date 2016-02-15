@@ -274,7 +274,7 @@ namespace boost                                                                 
             struct struct_is_view<                                              \
                 BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                 \
             >                                                                   \
-              : mpl::BOOST_PP_IF(IS_VIEW,true_,false_)                          \
+              : mpl::BOOST_PP_IIF(IS_VIEW,true_,false_)                         \
             {};                                                                 \
         }                                                                       \
     }                                                                           \
