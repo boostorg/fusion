@@ -119,9 +119,9 @@ main()
     }
 
     {
-        boost::fusion::vector<int, float, long> v1(4, 2, 2);
+        boost::fusion::vector<int, float, long> v1(4, 2.f, 2);
         point v2(5, 3, 3);
-        boost::fusion::vector<long, double, long> v3(5, 4, 4);
+        boost::fusion::vector<long, double, long> v3(5, 4., 4);
         BOOST_TEST(v1 < v2);
         BOOST_TEST(v1 <= v2);
         BOOST_TEST(v2 > v1);

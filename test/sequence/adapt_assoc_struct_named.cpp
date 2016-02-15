@@ -72,11 +72,11 @@ main()
     }
 
     {
-        vector<int, float> v1(4, 2);
+        vector<int, float> v1(4, 2.f);
         ns::point basev2 = {5, 3};
         adapted::point v2(basev2);
 
-        vector<long, double> v3(5, 4);
+        vector<long, double> v3(5, 4.);
         BOOST_TEST(v1 < v2);
         BOOST_TEST(v1 <= v2);
         BOOST_TEST(v2 > v1);
