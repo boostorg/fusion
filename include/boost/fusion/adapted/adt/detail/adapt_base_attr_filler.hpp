@@ -15,7 +15,7 @@
 
 #include <boost/mpl/aux_/preprocessor/token_equal.hpp>
 
-#include <boost/preprocessor/arithmetic/sub.hpp>
+#include <boost/preprocessor/arithmetic/dec.hpp>
 #include <boost/preprocessor/control/iif.hpp>
 #include <boost/preprocessor/logical/or.hpp>
 #include <boost/preprocessor/tuple/elem.hpp>
@@ -45,6 +45,7 @@
 #  define BOOST_FUSION_ADAPT_ADT_FILLER_0_END
 #  define BOOST_FUSION_ADAPT_ADT_FILLER_1_END
 
+// MSVC don't compile when using BOOST_PP_BITOR instead of BOOST_PP_OR.
 #  define BOOST_FUSION_ADAPT_ADT_FILLER(...)                                    \
       BOOST_PP_IIF(                                                             \
           BOOST_PP_OR(                                                          \
@@ -64,7 +65,7 @@
 
 #  define BOOST_FUSION_WORKAROUND_VARIADIC_EMPTINESS_LAST_ELEM(...)             \
   BOOST_PP_SEQ_HEAD(BOOST_PP_SEQ_REST_N(                                        \
-            BOOST_PP_SUB(BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), 1),               \
+            BOOST_PP_DEC(BOOST_PP_VARIADIC_SIZE(__VA_ARGS__)),                  \
         BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__)))
 
 #else // BOOST_PP_VARIADICS

@@ -17,7 +17,7 @@
 
 #include <boost/preprocessor/config/config.hpp>
 #include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/arithmetic/sub.hpp>
+#include <boost/preprocessor/arithmetic/dec.hpp>
 #include <boost/preprocessor/variadic/size.hpp>
 #include <boost/preprocessor/variadic/elem.hpp>
 
@@ -67,7 +67,7 @@
 #define BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAPPEDATTR_GET_KEY(ATTRIBUTE)          \
     BOOST_PP_TUPLE_ELEM(                                                        \
         BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR_SIZE(ATTRIBUTE),                  \
-        BOOST_PP_SUB(BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR_SIZE(ATTRIBUTE), 1), \
+        BOOST_PP_DEC(BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR_SIZE(ATTRIBUTE)),    \
         BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR(ATTRIBUTE))
 
 #endif

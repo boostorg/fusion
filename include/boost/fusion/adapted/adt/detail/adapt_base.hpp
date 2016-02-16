@@ -15,6 +15,7 @@
 #include <boost/fusion/adapted/struct/detail/adapt_is_tpl.hpp>
 
 #include <boost/preprocessor/control/if.hpp>
+#include <boost/preprocessor/control/expr_if.hpp>
 #include <boost/preprocessor/seq/seq.hpp>
 #include <boost/preprocessor/seq/elem.hpp>
 #include <boost/preprocessor/tuple/elem.hpp>
@@ -56,7 +57,8 @@
     struct deduced_attr_type {                                                  \
       static const BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)& obj;        \
       typedef                                                                   \
-          BOOST_PP_IF(BOOST_FUSION_ADAPT_IS_TPL(TEMPLATE_PARAMS_SEQ),typename,) \
+          BOOST_PP_EXPR_IF(BOOST_FUSION_ADAPT_IS_TPL(TEMPLATE_PARAMS_SEQ),      \
+                           typename)                                            \
           BOOST_TYPEOF( PREFIX() BOOST_FUSION_ADAPT_ADT_ATTRIBUTE_GETEXPR(      \
               ATTRIBUTE, ATTRIBUTE_TUPLE_SIZE, 1)) type;                        \
     };
@@ -79,16 +81,20 @@
         NAME_SEQ, ATTRIBUTE, ATTRIBUTE_TUPLE_SIZE, PREFIX, TEMPLATE_PARAMS_SEQ) \
                                                                                 \
     typedef                                                                     \
-        BOOST_PP_IF(BOOST_FUSION_ADAPT_IS_TPL(TEMPLATE_PARAMS_SEQ),typename,)   \
+        BOOST_PP_EXPR_IF(BOOST_FUSION_ADAPT_IS_TPL(TEMPLATE_PARAMS_SEQ),        \
+                         typename)                                              \
         boost::remove_const<                                                    \
-          BOOST_PP_IF(BOOST_FUSION_ADAPT_IS_TPL(TEMPLATE_PARAMS_SEQ),typename,) \
+          BOOST_PP_EXPR_IF(BOOST_FUSION_ADAPT_IS_TPL(TEMPLATE_PARAMS_SEQ),      \
+                           typename) \
           deduced_attr_type::type                                               \
         >::type type;                                                           \
                                                                                 \
     typedef                                                                     \
-        BOOST_PP_IF(BOOST_FUSION_ADAPT_IS_TPL(TEMPLATE_PARAMS_SEQ),typename,)   \
+        BOOST_PP_EXPR_IF(BOOST_FUSION_ADAPT_IS_TPL(TEMPLATE_PARAMS_SEQ),        \
+                         typename)   \
         boost::add_const<                                                       \
-          BOOST_PP_IF(BOOST_FUSION_ADAPT_IS_TPL(TEMPLATE_PARAMS_SEQ),typename,) \
+          BOOST_PP_EXPR_IF(BOOST_FUSION_ADAPT_IS_TPL(TEMPLATE_PARAMS_SEQ),      \
+                           typename) \
           deduced_attr_type::type                                               \
     >::type const_type;
 
@@ -161,7 +167,7 @@
     >                                                                           \
     {                                                                           \
         typedef                                                                 \
-            BOOST_PP_IF(BOOST_PP_SEQ_HEAD(TEMPLATE_PARAMS_SEQ), typename, )     \
+            BOOST_PP_EXPR_IF(BOOST_PP_SEQ_HEAD(TEMPLATE_PARAMS_SEQ), typename)  \
             access::adt_attribute_access<                                       \
                 BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                 \
               , I                                                               \
@@ -202,7 +208,7 @@
     >                                                                           \
     {                                                                           \
         typedef                                                                 \
-            BOOST_PP_IF(BOOST_PP_SEQ_HEAD(TEMPLATE_PARAMS_SEQ), typename, )     \
+            BOOST_PP_EXPR_IF(BOOST_PP_SEQ_HEAD(TEMPLATE_PARAMS_SEQ), typename)  \
             access::adt_attribute_access<                                       \
                 BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)                 \
               , I                                                               \
@@ -253,7 +259,8 @@
       , I                                                                       \
     >                                                                           \
     {                                                                           \
-        typedef BOOST_PP_IF(BOOST_PP_SEQ_HEAD(TEMPLATE_PARAMS_SEQ), typename, ) \
+        typedef BOOST_PP_EXPR_IF(BOOST_PP_SEQ_HEAD(TEMPLATE_PARAMS_SEQ),        \
+                                 typename)                                      \
             adt_attribute_proxy<                                                \
                           BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)       \
                         , I                                                     \
