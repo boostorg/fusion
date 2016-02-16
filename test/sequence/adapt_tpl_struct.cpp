@@ -45,7 +45,7 @@ namespace ns
         (X)(Y),
         (ns::point)(X)(Y),
         x,
-        (BOOST_FUSION_ADAPT_AUTO, y)
+        (auto, y)
         (int, z)
     )
 
@@ -60,12 +60,12 @@ namespace ns
         (ns::point)(X)(Y),
         (X, x)
         (Y, y)
-        (BOOST_FUSION_ADAPT_AUTO, z)
+        (auto, z)
     )
 
     template<typename M>
     struct s { M m; };
-    BOOST_FUSION_ADAPT_TPL_STRUCT((M), (s)(M), (BOOST_FUSION_ADAPT_AUTO, m))
+    BOOST_FUSION_ADAPT_TPL_STRUCT((M), (s)(M), (auto, m))
 
 #endif
 

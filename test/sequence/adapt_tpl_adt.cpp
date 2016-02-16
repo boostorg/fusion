@@ -75,7 +75,7 @@ namespace ns
       (ns::point)(X)(Y),
       (X, X, obj.get_x(), obj.set_x(val))
       (Y, Y, obj.get_y(), obj.set_y(val))
-      (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.get_z(), obj.set_z(val))
+      (auto, auto, obj.get_z(), obj.set_z(val))
   )
 #endif
 

@@ -72,7 +72,7 @@ BOOST_FUSION_ADAPT_ADT_NAMED(
     ns::point, point,
     (int, int, obj.get_x(), obj.set_x(val))
     (int, int, obj.get_y(), obj.set_y(val))
-    (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.get_z(), obj.set_z(val))
+    (auto, auto, obj.get_z(), obj.set_z(val))
 )
 
 #endif // BOOST_PP_VARIADICS

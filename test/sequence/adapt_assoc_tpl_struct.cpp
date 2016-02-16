@@ -55,7 +55,7 @@ namespace ns
         (X)(Y)(Z),
         (ns::point)(X)(Y)(Z),
         (int, x, ns::x_member)
-        (Y, y, ns::y_member)
+        (auto, y, ns::y_member)
         (z, ns::z_member)
     )
 
@@ -65,7 +65,7 @@ namespace ns
       (ns::point)(X)(Y)(Z),
       (int, x, ns::x_member)
       (Y, y, ns::y_member)
-      (BOOST_FUSION_ADAPT_AUTO, z, ns::z_member)
+      (auto, z, ns::z_member)
   )
 #endif
 

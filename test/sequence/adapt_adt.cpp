@@ -103,7 +103,8 @@ namespace ns
   BOOST_FUSION_ADAPT_ADT(
       ns::point,
       (int, int, obj.get_x(), obj.set_x(val))
-      (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.get_y(), obj.set_y(val))
+      // Mixing auto & BOOST_FUSION_ADAPT_AUTO to test backward compatibility
+      (auto, BOOST_FUSION_ADAPT_AUTO, obj.get_y(), obj.set_y(val))
       (obj.get_z(), obj.set_z(val))
   )
 
@@ -128,23 +129,23 @@ namespace ns
   BOOST_FUSION_ADAPT_ADT(
       ns::point,
       (int, int, obj.get_x(), obj.set_x(val))
-      (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.get_y(), obj.set_y(val))
-      (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.get_z(), obj.set_z(val))
+      (auto, auto, obj.get_y(), obj.set_y(val))
+      (auto, auto, obj.get_z(), obj.set_z(val))
   )
 
 #   if !BOOST_WORKAROUND(__GNUC__,<4)
     BOOST_FUSION_ADAPT_ADT(
         ns::point_with_private_members,
-        (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.get_x(), obj.set_x(val))
-        (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.get_y(), obj.set_y(val))
-        (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.get_z(), obj.set_z(val))
+        (auto, auto, obj.get_x(), obj.set_x(val))
+        (auto, auto, obj.get_y(), obj.set_y(val))
+        (auto, auto, obj.get_z(), obj.set_z(val))
     )
 #   endif
 
   BOOST_FUSION_ADAPT_ADT(
       ns::name,
       (const std::string&, const std::string&, obj.get_last(), obj.set_last(val))
-      (BOOST_FUSION_ADAPT_AUTO, BOOST_FUSION_ADAPT_AUTO, obj.get_first(), obj.set_first(val))
+      (BOOST_FUSION_ADAPT_AUTO, auto, obj.get_first(), obj.set_first(val))
   )
 
 #endif

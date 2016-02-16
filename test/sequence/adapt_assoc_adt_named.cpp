@@ -45,12 +45,26 @@ namespace ns
     };
 }
 
-BOOST_FUSION_ADAPT_ASSOC_ADT_NAMED(
-    ns::point,
-    point,
-    (int, int, obj.get_x(), obj.set_x(val), ns::x_member)
-    (int, int, obj.get_y(), obj.set_y(val), ns::y_member)
-)
+#if BOOST_PP_VARIADICS
+
+    BOOST_FUSION_ADAPT_ASSOC_ADT_NAMED(
+        ns::point,
+        point,
+        (obj.get_x(), obj.set_x(val), ns::x_member)
+        (int, int, obj.get_y(), obj.set_y(val), ns::y_member)
+    )
+
+#else // BOOST_PP_VARIADICS
+
+    BOOST_FUSION_ADAPT_ASSOC_ADT_NAMED(
+        ns::point,
+        point,
+        (auto, auto, obj.get_x(), obj.set_x(val), ns::x_member)
+        (int, int, obj.get_y(), obj.set_y(val), ns::y_member)
+    )
+
+#endif
+
 
 class empty_adt{};
 BOOST_FUSION_ADAPT_ASSOC_ADT_NAMED(empty_adt, renamed_empty_adt,)
