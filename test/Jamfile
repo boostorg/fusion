@@ -79,6 +79,7 @@ project
     [ run sequence/hash.cpp ]
     [ run sequence/io.cpp ]
     [ run sequence/iterator_range.cpp ]
+    [ compile sequence/issue11932.cpp ]
     [ run sequence/joint_view.cpp ]
     [ run sequence/list_comparison.cpp ]
     [ run sequence/list_construction.cpp ]
