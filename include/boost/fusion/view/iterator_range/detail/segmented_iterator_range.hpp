@@ -411,7 +411,7 @@ namespace boost { namespace fusion { namespace detail
         typename StackBegin
       , typename StackEnd
       , bool SameSegment
-#if BOOST_WORKAROUND(BOOST_GCC, < 40000) || BOOST_WORKAROUND(BOOST_GCC, >= 40200)
+#if !(BOOST_WORKAROUND(BOOST_GCC, >= 40000) && BOOST_WORKAROUND(BOOST_GCC, < 40200))
           = result_of::equal_to<
                 typename StackBegin::car_type::begin_type
               , typename StackEnd::car_type::begin_type
@@ -485,7 +485,7 @@ namespace boost { namespace fusion { namespace detail
     template <typename StackBegin, typename StackEnd, int StackBeginSize, int StackEndSize>
     struct make_segmented_range_reduce
       : make_segmented_range_reduce2<StackBegin, StackEnd
-#if BOOST_WORKAROUND(BOOST_GCC, >= 40000) || BOOST_WORKAROUND(BOOST_GCC, < 40200)
+#if BOOST_WORKAROUND(BOOST_GCC, >= 40000) && BOOST_WORKAROUND(BOOST_GCC, < 40200)
           , result_of::equal_to<
                 typename StackBegin::car_type::begin_type
               , typename StackEnd::car_type::begin_type
