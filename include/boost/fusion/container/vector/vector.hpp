@@ -278,7 +278,6 @@ namespace boost { namespace fusion
         };
     } // namespace boost::fusion::vector_detail
 
-    // This class provides backward compatibility: vector<T, ..., void_, void_, ...>.
     template <typename... T>
     struct vector
         : vector_detail::vector_data<
