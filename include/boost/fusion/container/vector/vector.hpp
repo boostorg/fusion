@@ -33,13 +33,14 @@
 #include <boost/fusion/container/vector/detail/end_impl.hpp>
 #include <boost/fusion/sequence/intrinsic/size.hpp>
 #include <boost/fusion/sequence/intrinsic/begin.hpp>
+#include <boost/fusion/sequence/intrinsic/size.hpp>
 #include <boost/fusion/iterator/advance.hpp>
 #include <boost/fusion/iterator/deref.hpp>
 #include <boost/core/enable_if.hpp>
-#include <boost/mpl/int.hpp>
 #include <boost/mpl/bool.hpp>
+#include <boost/mpl/equal_to.hpp>
+#include <boost/mpl/int.hpp>
 #include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/is_convertible.hpp>
 #include <boost/type_traits/remove_cv.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 #include <cstddef>
@@ -66,15 +67,20 @@ namespace boost { namespace fusion
         template <typename T>
         struct pure : remove_cv<typename remove_reference<T>::type> {};
 
-        template <typename Sequence, typename This, int = result_of::size<This>::value>
-        struct is_convertible_to_first
-            : boost::is_convertible<Sequence, typename result_of::value_at_c<This, 0>::type>
-        {};
+        template<typename Sequence, typename This, typename Enable = void>
+        struct can_convert : mpl::false_ {};
 
-        template <typename Sequence, typename This>
-        struct is_convertible_to_first<Sequence, This, 0>
-            : mpl::false_
-        {};
+        template<typename Sequence, typename This>
+        struct can_convert<
+            Sequence
+          , This
+          , typename enable_if<traits::is_sequence<Sequence>>::type
+        >   : mpl::equal_to<
+                  fusion::result_of::size<Sequence>
+                , fusion::result_of::size<This>
+              >
+        {
+        };
 
         template <typename This, typename ...T>
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
@@ -90,9 +96,8 @@ namespace boost { namespace fusion
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         inline from_sequence<
             typename lazy_enable_if_c<
-                (traits::is_sequence<typename remove_reference<Sequence>::type>::value &&
-                 !is_same<This, typename pure<Sequence>::type>::value &&
-                 !is_convertible_to_first<Sequence, This>::value)
+                (!is_same<This, typename pure<Sequence>::type>::value &&
+                 can_convert<typename pure<Sequence>::type, This>::value)
               , make_indices_from_seq<Sequence>
             >::type
         >
