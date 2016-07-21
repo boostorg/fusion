@@ -75,10 +75,13 @@ namespace boost { namespace fusion
             Sequence
           , This
           , typename enable_if<traits::is_sequence<Sequence>>::type
-        >   : mpl::equal_to<
-                  fusion::result_of::size<Sequence>
-                , fusion::result_of::size<This>
-              >
+          >  : mpl::and_<
+                   mpl::equal_to<fusion::result_of::size<Sequence>, fusion::result_of::size<This> >
+                 , mpl::or_<
+                       mpl::not_<mpl::equal_to<fusion::result_of::size<This>, mpl::int_<1> >  >,
+                       mpl::not_<boost::is_convertible<Sequence, typename result_of::value_at_c<This, 0>::type> >
+                   >
+               >
         {
         };
 
@@ -326,4 +329,3 @@ namespace boost { namespace fusion
 
 #endif
 #endif
-
