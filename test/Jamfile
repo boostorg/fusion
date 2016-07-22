@@ -131,6 +131,20 @@ project
     [ run sequence/tuple_nest.cpp :  :  :  : ]
     [ run sequence/tuple_hash.cpp :  :  :  : ]
     [ run sequence/tuple_tie.cpp :  :  :  : ]
+    [
+        run sequence/tuple_traits.cpp
+      :
+      :
+      :
+      : sequence/tuple_traits/maybe_variadic_vector
+    ]
+    [
+        run sequence/tuple_traits.cpp
+      :
+      :
+      : <define>BOOST_FUSION_DISABLE_VARIADIC_VECTOR
+      : sequence/tuple_traits/no_variadic_vector
+    ]
     [ run sequence/transform_view.cpp :  :  :  : ]
     [ run sequence/vector_comparison.cpp :  :  :  : ]
     [ run sequence/vector_construction.cpp :  :  :  : ]
@@ -197,6 +211,7 @@ project
     [ compile support/pair_vector.cpp : : : : ]
     [ compile support/pair_nest.cpp : : : : ]
     [ compile support/index_sequence.cpp : : : : ]
+    [ compile support/and.cpp : : : : ]
 
 #   [ compile-fail xxx.cpp :  :  :  :  ]
 
