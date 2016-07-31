@@ -12,6 +12,7 @@
 #include <boost/fusion/container/vector/detail/config.hpp>
 
 #if  !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR) \
+  || defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS) \
   || (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
 # if defined(BOOST_FUSION_HAS_VARIADIC_TUPLE)
 #   undef BOOST_FUSION_HAS_VARIADIC_TUPLE
