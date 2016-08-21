@@ -42,12 +42,22 @@ namespace boost { namespace fusion
         tuple()
             : base_type() {}
 
-        template <typename ...U>
+        template <
+            typename ...U
+          , typename = typename boost::enable_if_c<
+                sizeof...(U) >= sizeof...(T)
+            >::type
+        >
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         tuple(tuple<U...> const& other)
             : base_type(other) {}
 
-        template <typename ...U>
+        template <
+            typename ...U
+          , typename = typename boost::enable_if_c<
+                sizeof...(U) >= sizeof...(T)
+            >::type
+        >
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         tuple(tuple<U...>&& other)
             : base_type(std::move(other)) {}
@@ -55,7 +65,7 @@ namespace boost { namespace fusion
         template <
             typename ...U
           , typename = typename boost::enable_if_c<(
-                fusion::detail::and_<is_convertible<U, T>...>::value && 
+                fusion::detail::and_<is_convertible<U, T>...>::value &&
                 sizeof...(U) >= 1
             )>::type
         >
