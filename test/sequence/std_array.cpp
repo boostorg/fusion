@@ -5,6 +5,11 @@
 // (See accompanying file LICENSE_1_0.txt or copy 
 // at http://www.boost.org/LICENSE_1_0.txt)
 //
+#include <boost/config.hpp>
+#ifdef BOOST_NO_CXX11_HDR_ARRAY
+int main() {}
+#else
+
 #ifdef BOOST_MSVC
 #pragma warning(disable:4180)
 #endif
@@ -22,13 +27,8 @@
 
 int main()
 {
-    // See README.md for explanation on qualified names below
-    // C++0x/11 range access interferes with Boost.Fusion interface:
-    //      error: call to 'begin' is ambiguous
-
     using namespace boost::fusion;
     typedef std::array<int,3> array_type;
-
 
     BOOST_MPL_ASSERT((traits::is_sequence<array_type>));
     BOOST_MPL_ASSERT_NOT((traits::is_view<array_type>));
@@ -41,8 +41,9 @@ int main()
     BOOST_TEST(prior(boost::fusion::next(boost::fusion::begin(arr))) == boost::fusion::begin(arr));
     BOOST_TEST(*prior(boost::fusion::end(arr)) == 3);
     BOOST_TEST(at_c<2>(arr) == 3);
-    BOOST_TEST(size(arr) == 3);
+    BOOST_TEST(boost::fusion::size(arr) == 3);
     BOOST_TEST(distance(boost::fusion::begin(arr), boost::fusion::end(arr)) == 3);
 
     return boost::report_errors();
 }
+#endif
