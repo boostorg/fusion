@@ -29,6 +29,8 @@ BOOST_FUSION_DEFINE_ASSOC_STRUCT(
     (int, y, ns::y_member)
 )
 
+BOOST_FUSION_DEFINE_ASSOC_STRUCT(BOOST_PP_EMPTY(), empty_struct, )
+
 int
 main()
 {
