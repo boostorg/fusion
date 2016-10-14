@@ -11,15 +11,11 @@
 #include <boost/type_traits/is_constructible.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 
-struct test_conversion
-{
-    test_conversion(int) {}
-};
+#define FUSION_SEQUENCE boost::fusion::tuple
+#define FUSION_ALT_SEQUENCE boost::fusion::vector
+#include "traits.hpp"
 
-struct test_no_conversion
-{
-    explicit test_no_conversion(int) {}
-};
+struct not_convertible {};
 
 /*  Some construction differences in fusion::tuple from std::tuple:
       - Construction from elements cannot call an explicit constructor.
@@ -35,89 +31,56 @@ struct test_no_conversion
     These differences are historical. Matching the behavior of std::tuple
     could break existing code, however, switching to fusion::vector would
     restore the historical behavior. */
-int 
-main() {
-    {
-        using namespace boost;
-        using namespace boost::fusion;
+int
+main()
+{
+    using namespace boost::fusion;
 
-        BOOST_TEST(!(is_convertible<int, tuple<> >::value));
-        BOOST_TEST(!(is_convertible<int&, tuple<> >::value));
+    test_convertible(false /* no conversion construction */ );
 
-        BOOST_TEST(!(is_convertible< int, tuple<int> >::value));
-        BOOST_TEST(!(is_convertible< int&, tuple<int> >::value));
-        BOOST_TEST(!(is_convertible< vector<int>, tuple<int> >::value));
-        BOOST_TEST(!(is_convertible< vector<int>&, tuple<int> >::value));
+    BOOST_TEST((is_convertible<std::pair<int, int>, tuple<int, int> >(true)));
+    BOOST_TEST((
+        is_convertible<std::pair<int, int>, tuple<convertible, int> >(true)
+    ));
+    BOOST_TEST((
+        is_convertible<std::pair<int, int>, tuple<int, convertible> >(true)
+    ));
+    BOOST_TEST((
+        is_convertible<
+            std::pair<int, int>, tuple<convertible, convertible>
+        >(true)
+    ));
 
-        BOOST_TEST(!(is_convertible<int, tuple<int, int> >::value));
-        BOOST_TEST(!(is_convertible<int&, tuple<int, int> >::value));
-    }
+#if defined(FUSION_TEST_HAS_CONSTRUCTIBLE)
+    test_constructible();
 
-// is_constructible has some restrictions ...
-#if !(defined(BOOST_NO_CXX11_DECLTYPE) || defined(BOOST_NO_CXX11_TEMPLATES) || \
-     defined(BOOST_NO_SFINAE_EXPR))
-    {
-        using namespace boost;
-        using namespace boost::fusion;
+    BOOST_TEST((is_constructible< tuple<> >(true)));
+    BOOST_TEST((is_constructible<tuple<>, int>(false)));
 
-        BOOST_TEST((is_constructible< tuple<> >::value));
-        BOOST_TEST(!(is_constructible<tuple<>, int>::value));
-        BOOST_TEST(!(is_constructible<tuple<>, int&>::value));
+    BOOST_TEST((is_constructible< tuple<int> >(true)));
+    BOOST_TEST((is_constructible<tuple<int>, int>(true)));
+    BOOST_TEST((is_constructible<tuple<convertible>, int>(true)));
+    BOOST_TEST((is_constructible<tuple<not_convertible>, int>(false)));
+    BOOST_TEST((is_constructible< tuple<int>, vector<int> >(false)));
+    BOOST_TEST((is_constructible<tuple<int>, int, int>(false)));
 
-        BOOST_TEST((is_constructible< tuple<int> >::value));
-        BOOST_TEST((is_constructible<tuple<int>, int>::value));
-        BOOST_TEST((is_constructible<tuple<int>, int&>::value));
-        BOOST_TEST((is_constructible<tuple<test_conversion>, int>::value));
-        BOOST_TEST((is_constructible<tuple<test_conversion>, int&>::value));
-        BOOST_TEST(!(is_constructible<tuple<test_no_conversion>, int>::value));
-        BOOST_TEST(!(is_constructible<tuple<test_no_conversion>, int&>::value));
-        BOOST_TEST(!(is_constructible< tuple<int>, vector<int> >::value));
-        BOOST_TEST(!(is_constructible<tuple<int>, vector<int>&>::value));
-        BOOST_TEST(!(is_constructible<tuple<int>, int, int>::value));
-        BOOST_TEST(!(is_constructible<tuple<int>, int&, int&>::value));
-
-        BOOST_TEST((is_constructible< tuple<int, int> >::value));
-        BOOST_TEST((is_constructible<tuple<int, int>, int, int>::value));
-        BOOST_TEST((is_constructible<tuple<int, int>, int&, int&>::value));
-        BOOST_TEST((
-            is_constructible<
-                tuple<test_conversion, test_conversion>
-              , int
-              , int
-            >::value
-        ));
-        BOOST_TEST((
-            is_constructible<
-                tuple<test_conversion, test_conversion>
-              , int&
-              , int&
-            >::value
-        ));
-        BOOST_TEST(!(
-            is_constructible<
-                tuple<test_no_conversion, test_no_conversion>
-              , int
-              , int
-            >::value
-        ));
-        BOOST_TEST(!(
-            is_constructible<
-                tuple<test_no_conversion, test_no_conversion>
-              , int&
-              , int&
-            >::value
-        ));
+    BOOST_TEST((is_constructible< tuple<int, int> >(true)));
+    BOOST_TEST((is_constructible<tuple<int, int>, int, int>(true)));
+    BOOST_TEST((
+        is_constructible<tuple<convertible, convertible>, int, int>(true)
+    ));
+    BOOST_TEST((is_constructible<tuple<int, not_convertible>, int, int>(false)));
+    BOOST_TEST((is_constructible<tuple<not_convertible, int>, int, int>(false)));
+    BOOST_TEST((
+        is_constructible<tuple<not_convertible, not_convertible>, int, int>(false)
+    ));
 #if defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
-        // C++03 fusion::tuple has constructors that can never be used
-        BOOST_TEST(!(is_constructible<tuple<int, int>, int>::value));
-        BOOST_TEST(!(is_constructible<tuple<int, int>, int&>::value));
+    // C++03 fusion::tuple has constructors that can never be used
+    BOOST_TEST((is_constructible<tuple<int, int>, int>(false)));
 #endif
-        BOOST_TEST(!(is_constructible<tuple<int, int>, int, int, int>::value));
-        BOOST_TEST(!(
-            is_constructible<tuple<int, int>, int&, int&, int&>::value
-        ));
-    }
-#endif
+    BOOST_TEST((is_constructible<tuple<int, int>, int, int, int>(false)));
+
+#endif // FUSION_TEST_HAS_CONSTRUCTIBLE
 
     return boost::report_errors();
 }

@@ -123,6 +123,7 @@ project
     [ run sequence/array.cpp :  :  :  : ]
     [ run sequence/tuple_comparison.cpp :  :  :  : ]
     [ run sequence/tuple_construction.cpp :  :  :  : ]
+    [ run sequence/tuple_conversion.cpp :  :  :  : ]
     [ run sequence/tuple_copy.cpp :  :  :  : ]
     [ run sequence/tuple_element.cpp :  :  :  : ]
     [ run sequence/tuple_make.cpp :  :  :  : ]
@@ -136,18 +137,19 @@ project
       :
       :
       :
-      : sequence/tuple_traits/maybe_variadic_vector
+      : sequence/tuple_traits/maybe_variadic_tuple
     ]
     [
         run sequence/tuple_traits.cpp
       :
       :
       : <define>BOOST_FUSION_DISABLE_VARIADIC_VECTOR
-      : sequence/tuple_traits/no_variadic_vector
+      : sequence/tuple_traits/no_variadic_tuple
     ]
     [ run sequence/transform_view.cpp :  :  :  : ]
     [ run sequence/vector_comparison.cpp :  :  :  : ]
     [ run sequence/vector_construction.cpp :  :  :  : ]
+    [ run sequence/vector_conversion.cpp : : : : ]
     [ run sequence/vector_copy.cpp :  :  :  : ]
     [ run sequence/vector_iterator.cpp :  :  :  : ]
     [ run sequence/vector_make.cpp :  :  :  : ]
@@ -158,6 +160,20 @@ project
     [ run sequence/vector_nest.cpp :  :  :  : ]
     [ run sequence/vector_hash.cpp :  :  :  : ]
     [ run sequence/vector_tie.cpp :  :  :  : ]
+    [
+        run sequence/vector_traits.cpp
+      :
+      :
+      :
+      : sequence/vector_traits/maybe_variadic_vector
+    ]
+    [
+        run sequence/vector_traits.cpp
+      :
+      :
+      : <define>BOOST_FUSION_DISABLE_VARIADIC_VECTOR
+      : sequence/vector_traits/no_variadic_vector
+    ]
     [ run sequence/vector_value_at.cpp :  :  :  : ]
     [ run sequence/zip_view.cpp : : : : ]
     [ run sequence/zip_view2.cpp : : : : ]
