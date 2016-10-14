@@ -33,6 +33,8 @@ BOOST_FUSION_DEFINE_STRUCT(
 
 BOOST_FUSION_DEFINE_STRUCT(BOOST_PP_EMPTY(), s, (int, m))
 
+BOOST_FUSION_DEFINE_STRUCT(BOOST_PP_EMPTY(), empty_struct, )
+
 // Testing non-constexpr compatible types
 BOOST_FUSION_DEFINE_STRUCT(
     (ns),

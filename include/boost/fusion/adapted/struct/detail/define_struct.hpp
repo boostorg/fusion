@@ -282,20 +282,7 @@
             NAME, BOOST_PP_SEQ_TAIL(ATTRIBUTES_SEQ), ATTRIBUTE_TUPLE_SIZE)
 
 #define BOOST_FUSION_DEFINE_EMPTY_STRUCT_IMPL(                                  \
-    NAME, ATTRIBUTES_SEQ, ATTRIBUTE_TUPLE_SIZE)                                 \
-                                                                                \
-        template<typename Seq>                                                  \
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                \
-        NAME(Seq const&)                                                        \
-        {}                                                                      \
-                                                                                \
-        template<typename Seq>                                                  \
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED                          \
-        self_type&                                                              \
-        operator=(Seq const& seq)                                               \
-        {                                                                       \
-            return *this;                                                       \
-        }
+    NAME, ATTRIBUTES_SEQ, ATTRIBUTE_TUPLE_SIZE)
 
 #define BOOST_FUSION_DEFINE_STRUCT_IMPL(                                        \
     NAMESPACE_SEQ, NAME, ATTRIBUTES_SEQ, ATTRIBUTE_TUPLE_SIZE)                  \
@@ -327,10 +314,7 @@
             ATTRIBUTE_TUPLE_SIZE)
 
 #define BOOST_FUSION_DEFINE_EMPTY_TPL_STRUCT_IMPL(                              \
-    TEMPLATE_PARAMS_SEQ, NAME, ATTRIBUTES_SEQ, ATTRIBUTE_TUPLE_SIZE)            \
-                                                                                \
-        BOOST_FUSION_DEFINE_EMPTY_STRUCT_IMPL(                                  \
-            NAME, ATTRIBUTES_SEQ, ATTRIBUTE_TUPLE_SIZE)
+    TEMPLATE_PARAMS_SEQ, NAME, ATTRIBUTES_SEQ, ATTRIBUTE_TUPLE_SIZE)
 
 #define BOOST_FUSION_DEFINE_TPL_STRUCT_IMPL(                                    \
     TEMPLATE_PARAMS_SEQ,                                                        \
