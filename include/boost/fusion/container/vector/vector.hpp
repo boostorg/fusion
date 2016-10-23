@@ -68,7 +68,7 @@ namespace boost { namespace fusion
 
         template <typename Sequence, typename This, int = result_of::size<This>::value>
         struct is_convertible_to_first
-            : boost::is_convertible<Sequence, typename result_of::value_at_c<This, 0>::type>
+            : boost::is_convertible<Sequence, typename fusion::result_of::value_at_c<This, 0>::type>
         {};
 
         template <typename Sequence, typename This>
