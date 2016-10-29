@@ -10,6 +10,7 @@
 
 #include <boost/fusion/support/config.hpp>
 #include <boost/config.hpp>
+#include <boost/detail/workaround.hpp>
 #include <boost/fusion/sequence/intrinsic/begin.hpp>
 #include <boost/fusion/iterator/deref.hpp>
 #include <boost/fusion/iterator/next.hpp>
@@ -142,7 +143,8 @@
 
 #else // BOOST_NO_CXX11_RVALUE_REFERENCES
 
-#ifdef BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
+#if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) \
+ || BOOST_WORKAROUND(BOOST_GCC, < 40500)
 
 #define BOOST_FUSION_DEFINE_STRUCT_MOVE_CTOR_FILLER_I(                          \
     R, ATTRIBUTE_TUPLE_SIZE, I, ATTRIBUTE)                                      \
@@ -162,6 +164,18 @@
             ATTRIBUTE_TUPLE_SIZE,                                               \
             ATTRIBUTES_SEQ)                                                     \
     {}
+
+#else // BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
+
+#define BOOST_FUSION_DEFINE_STRUCT_MOVE_CTOR(                                   \
+    NAME, ATTRIBUTES_SEQ, ATTRIBUTE_TUPLE_SIZE)                                 \
+                                                                                \
+    BOOST_FUSION_GPU_ENABLED NAME(self_type&&) = default;
+
+#endif // BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
+
+#if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) \
+ || BOOST_WORKAROUND(BOOST_GCC, < 40600)
 
 #define BOOST_FUSION_DEFINE_STRUCT_MOVE_ASSIGN_FILLER_I(                        \
     R, ATTRIBUTE_TUPLE_SIZE, I_, ATTRIBUTE)                                     \
@@ -185,11 +199,6 @@
     }
 
 #else // BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
-
-#define BOOST_FUSION_DEFINE_STRUCT_MOVE_CTOR(                                   \
-    NAME, ATTRIBUTES_SEQ, ATTRIBUTE_TUPLE_SIZE)                                 \
-                                                                                \
-    BOOST_FUSION_GPU_ENABLED NAME(self_type&&) = default;
 
 #define BOOST_FUSION_DEFINE_STRUCT_MOVE_ASSIGN_OP(                              \
     ATTRIBUTES_SEQ, ATTRIBUTE_TUPLE_SIZE)                                       \
