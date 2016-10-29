@@ -61,8 +61,26 @@
     {}
 
 // Use templated version instead.
+#define BOOST_FUSION_DEFINE_STRUCT_COPY_ASSIGN_FILLER_I(                        \
+    R, ATTRIBUTE_TUPLE_SIZE, I_, ATTRIBUTE)                                     \
+                                                                                \
+    BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPLE_SIZE,1,ATTRIBUTE)=                      \
+        other.BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPLE_SIZE,1,ATTRIBUTE);
+
 #define BOOST_FUSION_DEFINE_STRUCT_COPY_ASSIGN_OP(                              \
-    ATTRIBUTES_SEQ, ATTRIBUTE_TUPLE_SIZE)
+    ATTRIBUTES_SEQ, ATTRIBUTE_TUPLE_SIZE)                                       \
+                                                                                \
+    BOOST_FUSION_GPU_ENABLED                                                    \
+    self_type& operator=(self_type const& other)                                \
+    {                                                                           \
+        BOOST_PP_SEQ_FOR_EACH_I_R(                                              \
+            1,                                                                  \
+            BOOST_FUSION_DEFINE_STRUCT_COPY_ASSIGN_FILLER_I,                    \
+            ATTRIBUTE_TUPLE_SIZE,                                               \
+            ATTRIBUTES_SEQ)                                                     \
+                                                                                \
+        return *this;                                                           \
+    }
 
 #else // BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
 
@@ -148,34 +166,18 @@
 #define BOOST_FUSION_DEFINE_STRUCT_MOVE_ASSIGN_FILLER_I(                        \
     R, ATTRIBUTE_TUPLE_SIZE, I_, ATTRIBUTE)                                     \
                                                                                 \
-    BOOST_PP_EXPR_IF(                                                           \
-        I_,                                                                     \
-        typedef typename                                                        \
-            boost::fusion::result_of::next<                                     \
-                BOOST_PP_CAT(I,BOOST_PP_DEC(I_))                                \
-            >::type                                                             \
-        BOOST_PP_CAT(I,I_);                                                     \
-        BOOST_PP_CAT(I,I_) BOOST_PP_CAT(i,I_)=                                  \
-                boost::fusion::next(BOOST_PP_CAT(i,BOOST_PP_DEC(I_)));          \
-    )                                                                           \
-                                                                                \
     BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPLE_SIZE,1,ATTRIBUTE)=std::move(            \
-        boost::fusion::deref(BOOST_PP_CAT(i,I_)));
+        other.BOOST_PP_TUPLE_ELEM(ATTRIBUTE_TUPLE_SIZE,1,ATTRIBUTE));
 
 #define BOOST_FUSION_DEFINE_STRUCT_MOVE_ASSIGN_OP(                              \
     ATTRIBUTES_SEQ, ATTRIBUTE_TUPLE_SIZE)                                       \
                                                                                 \
     BOOST_FUSION_GPU_ENABLED                                                    \
-    self_type& operator=(self_type&& seq)                                             \
+    self_type& operator=(self_type&& other)                                     \
     {                                                                           \
-        typedef                                                                 \
-            boost::fusion::result_of::begin<Seq>::type                          \
-        I0;                                                                     \
-        I0 i0=boost::fusion::begin(seq);                                        \
-                                                                                \
         BOOST_PP_SEQ_FOR_EACH_I_R(                                              \
             1,                                                                  \
-            BOOST_FUSION_DEFINE_STRUCT_ASSIGN_FILLER_I,                         \
+            BOOST_FUSION_DEFINE_STRUCT_MOVE_ASSIGN_FILLER_I,                    \
             ATTRIBUTE_TUPLE_SIZE,                                               \
             ATTRIBUTES_SEQ)                                                     \
                                                                                 \
