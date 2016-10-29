@@ -20,7 +20,11 @@ namespace boost { namespace fusion { namespace detail {
 
     template<typename ...T>
     struct and_impl<integral_constant<T, true>...> : true_type {};
-   
+
+    // This specialization is necessary to avoid MSVC-12 variadics bug.
+    template<bool ...Cond>
+    struct and_impl1 : and_impl<integral_constant<bool, Cond>...> {};
+
     /* fusion::detail::and_ differs from mpl::and_ in the following ways:
        - The empty set is valid and returns true
        - A single element set is valid and returns the identity
@@ -29,7 +33,7 @@ namespace boost { namespace fusion { namespace detail {
          reduces instantations when returning true; the implementation is not
          recursive. */
     template<typename ...Cond>
-    struct and_ : and_impl<integral_constant<bool, Cond::value>...> {};
+    struct and_ : and_impl1<Cond::value...> {};
 }}}
 
 #endif // FUSION_AND_07152016_1625
