@@ -9,16 +9,10 @@
 #define BOOST_FUSION_STD_ARRAY_TAG_OF_01062013_1700
 
 #include <boost/fusion/support/tag_of_fwd.hpp>
-
+#include <array>
 #include <cstddef>
 
-namespace std 
-{ 
-    template<typename T, std::size_t N>
-    struct array;
-}
-
-namespace boost { namespace fusion 
+namespace boost { namespace fusion
 {
     struct std_array_tag;
     struct fusion_sequence_tag;
