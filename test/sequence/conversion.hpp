@@ -10,7 +10,8 @@
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/fusion/adapted/boost_tuple.hpp>
 #include <boost/fusion/adapted/std_pair.hpp>
-#if !defined(BOOST_NO_CXX11_HDR_TUPLE)
+#if !defined(BOOST_NO_CXX11_HDR_TUPLE) \
+ && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
 # include <boost/fusion/adapted/std_tuple.hpp>
 #endif
 #include <boost/fusion/container/deque.hpp>
@@ -257,8 +258,9 @@ void test()
           , boost::tuple<convertible, int>(500, 400)
         )
     ));
-    
-#if !defined(BOOST_NO_CXX11_HDR_TUPLE)
+
+#if !defined(BOOST_NO_CXX11_HDR_TUPLE) \
+ && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
     BOOST_TEST((run< Scenario< FUSION_SEQUENCE<> > >(std::tuple<>())));
     BOOST_TEST((
         run<Scenario<FUSION_SEQUENCE<> > >(std::tuple<int>(100), std::tuple<>())
