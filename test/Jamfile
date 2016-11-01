@@ -1,5 +1,6 @@
 ##==============================================================================
 #    Copyright (c) 2003-2006 Joel de Guzman
+#    Copyright (c) 2013 Mateusz Loskot
 #
 #   Use, modification and distribution is subject to the Boost Software
 #   License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
@@ -121,8 +122,10 @@ project
     [ run sequence/std_pair.cpp :  :  :  : ]
     [ run sequence/boost_array.cpp :  :  :  : ]
     [ run sequence/array.cpp :  :  :  : ]
+    [ run sequence/std_array.cpp :  :  :  : ]
     [ run sequence/tuple_comparison.cpp :  :  :  : ]
     [ run sequence/tuple_construction.cpp :  :  :  : ]
+    [ run sequence/tuple_conversion.cpp :  :  :  : ]
     [ run sequence/tuple_copy.cpp :  :  :  : ]
     [ run sequence/tuple_element.cpp :  :  :  : ]
     [ run sequence/tuple_make.cpp :  :  :  : ]
@@ -131,9 +134,24 @@ project
     [ run sequence/tuple_nest.cpp :  :  :  : ]
     [ run sequence/tuple_hash.cpp :  :  :  : ]
     [ run sequence/tuple_tie.cpp :  :  :  : ]
+    [
+        run sequence/tuple_traits.cpp
+      :
+      :
+      :
+      : sequence/tuple_traits/maybe_variadic_tuple
+    ]
+    [
+        run sequence/tuple_traits.cpp
+      :
+      :
+      : <define>BOOST_FUSION_DISABLE_VARIADIC_VECTOR
+      : sequence/tuple_traits/no_variadic_tuple
+    ]
     [ run sequence/transform_view.cpp :  :  :  : ]
     [ run sequence/vector_comparison.cpp :  :  :  : ]
     [ run sequence/vector_construction.cpp :  :  :  : ]
+    [ run sequence/vector_conversion.cpp : : : : ]
     [ run sequence/vector_copy.cpp :  :  :  : ]
     [ run sequence/vector_iterator.cpp :  :  :  : ]
     [ run sequence/vector_make.cpp :  :  :  : ]
@@ -144,6 +162,20 @@ project
     [ run sequence/vector_nest.cpp :  :  :  : ]
     [ run sequence/vector_hash.cpp :  :  :  : ]
     [ run sequence/vector_tie.cpp :  :  :  : ]
+    [
+        run sequence/vector_traits.cpp
+      :
+      :
+      :
+      : sequence/vector_traits/maybe_variadic_vector
+    ]
+    [
+        run sequence/vector_traits.cpp
+      :
+      :
+      : <define>BOOST_FUSION_DISABLE_VARIADIC_VECTOR
+      : sequence/vector_traits/no_variadic_vector
+    ]
     [ run sequence/vector_value_at.cpp :  :  :  : ]
     [ run sequence/zip_view.cpp : : : : ]
     [ run sequence/zip_view2.cpp : : : : ]
@@ -151,24 +183,48 @@ project
     [ run sequence/repetitive_view.cpp : : : : ]
     [ run sequence/deduce_sequence.cpp : : : : ]
     [ run sequence/adapt_adt_named.cpp : : : : ]
+    [ run sequence/adapt_adt_named_empty.cpp : : : : ]
     [ run sequence/adapt_adt.cpp : : : : ]
+    [ run sequence/adapt_adt_empty.cpp : : : : ]
     [ run sequence/adapt_assoc_adt_named.cpp : : : : ]
+    [ run sequence/adapt_assoc_adt_named_empty.cpp : : : : ]
     [ run sequence/adapt_assoc_adt.cpp : : : : ]
+    [ run sequence/adapt_assoc_adt_empty.cpp : : : : ]
     [ run sequence/adapt_assoc_struct_named.cpp : : : : ]
+    [ run sequence/adapt_assoc_struct_named_empty.cpp : : : : ]
     [ run sequence/adapt_assoc_struct.cpp : : : : ]
+    [ run sequence/adapt_assoc_struct_empty.cpp : : : : ]
     [ run sequence/adapt_assoc_tpl_adt.cpp : : : : ]
+    [ run sequence/adapt_assoc_tpl_adt_empty.cpp : : : : ]
     [ run sequence/adapt_assoc_tpl_struct.cpp : : : : ]
+    [ run sequence/adapt_assoc_tpl_struct_empty.cpp : : : : ]
     [ run sequence/adapt_struct_named.cpp : : : : ]
+    [ run sequence/adapt_struct_named_empty.cpp : : : : ]
     [ run sequence/adapt_struct.cpp : : : : ]
+    [ run sequence/adapt_struct_empty.cpp : : : : ]
     [ run sequence/adapt_tpl_adt.cpp : : : : ]
+    [ run sequence/adapt_tpl_adt_empty.cpp : : : : ]
     [ run sequence/adapt_tpl_struct.cpp : : : : ]
+    [ run sequence/adapt_tpl_struct_empty.cpp : : : : ]
     [ run sequence/adt_attribute_proxy.cpp : : : : ]
     [ run sequence/define_struct.cpp : : : : ]
+    [ run sequence/define_struct_empty.cpp : : : : ]
+    [ run sequence/define_struct_move.cpp : : : : ]
     [ run sequence/define_struct_inline.cpp : : : : ]
+    [ run sequence/define_struct_inline_empty.cpp : : : : ]
+    [ run sequence/define_struct_inline_move.cpp : : : : ]
     [ run sequence/define_assoc_struct.cpp : : : : ]
+    [ run sequence/define_assoc_struct_empty.cpp : : : : ]
+    [ run sequence/define_assoc_struct_move.cpp : : : : ]
     [ run sequence/define_tpl_struct.cpp : : : : ]
+    [ run sequence/define_tpl_struct_empty.cpp : : : : ]
+    [ run sequence/define_tpl_struct_move.cpp : : : : ]
     [ run sequence/define_tpl_struct_inline.cpp : : : : ]
+    [ run sequence/define_tpl_struct_inline_empty.cpp : : : : ]
+    [ run sequence/define_tpl_struct_inline_move.cpp : : : : ]
     [ run sequence/define_assoc_tpl_struct.cpp : : : : ]
+    [ run sequence/define_assoc_tpl_struct_empty.cpp : : : : ]
+    [ run sequence/define_assoc_tpl_struct_move.cpp : : : : ]
     [ run sequence/std_tuple.cpp : : : : ]
     [ run sequence/std_tuple_iterator.cpp : : : : ]
     [ run sequence/ref_vector.cpp : : : : ]
@@ -197,6 +253,7 @@ project
     [ compile support/pair_vector.cpp : : : : ]
     [ compile support/pair_nest.cpp : : : : ]
     [ compile support/index_sequence.cpp : : : : ]
+    [ compile support/and.cpp : : : : ]
 
 #   [ compile-fail xxx.cpp :  :  :  :  ]
 

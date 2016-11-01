@@ -31,6 +31,8 @@ BOOST_FUSION_DEFINE_ASSOC_TPL_STRUCT(
     (int, y, ns::y_member)
 )
 
+BOOST_FUSION_DEFINE_ASSOC_TPL_STRUCT((M), BOOST_PP_EMPTY(), empty_struct, )
+
 int
 main()
 {
