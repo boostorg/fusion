@@ -6,9 +6,10 @@
 // at http://www.boost.org/LICENSE_1_0.txt)
 //
 #include <boost/config.hpp>
+
 #ifdef BOOST_NO_CXX11_HDR_ARRAY
-int main() {}
-#else
+#   error "does not meet requirements"
+#endif
 
 #ifdef BOOST_MSVC
 #pragma warning(disable:4180)
@@ -46,4 +47,3 @@ int main()
 
     return boost::report_errors();
 }
-#endif

@@ -9,6 +9,7 @@
 #==============================================================================
 # bring in rules for testing
 import testing ;
+import ../../config/checks/config : requires ;
 
 project
     : requirements
@@ -71,7 +72,8 @@ project
     [ run sequence/convert_deque.cpp ]
     [ run sequence/convert_list.cpp ]
     [ run sequence/convert_std_pair.cpp ]
-    [ run sequence/convert_std_tuple.cpp ]
+    [ run sequence/convert_std_tuple.cpp : :
+        : [ requires cxx11_variadic_templates cxx11_hdr_tuple ] ]
     [ run sequence/convert_vector.cpp ]
     [ run sequence/filter_view.cpp ]
     [ run sequence/hash.cpp ]
@@ -123,7 +125,8 @@ project
     [ run sequence/std_pair.cpp ]
     [ run sequence/boost_array.cpp ]
     [ run sequence/array.cpp ]
-    [ run sequence/std_array.cpp ]
+    [ run sequence/std_array.cpp : :
+        : [ requires cxx11_hdr_array ] ]
     [ run sequence/tuple_comparison.cpp ]
     [ run sequence/tuple_construction.cpp ]
     [ run sequence/tuple_conversion.cpp ]
@@ -210,8 +213,10 @@ project
     [ run sequence/define_assoc_tpl_struct.cpp ]
     [ run sequence/define_assoc_tpl_struct_empty.cpp ]
     [ run sequence/define_assoc_tpl_struct_move.cpp ]
-    [ run sequence/std_tuple.cpp ]
-    [ run sequence/std_tuple_iterator.cpp ]
+    [ run sequence/std_tuple.cpp : :
+        : [ requires cxx11_variadic_templates cxx11_hdr_tuple ] ]
+    [ run sequence/std_tuple_iterator.cpp : :
+        : [ requires cxx11_variadic_templates cxx11_hdr_tuple ] ]
     [ run sequence/ref_vector.cpp ]
     [ run sequence/flatten_view.cpp ]
 
