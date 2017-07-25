@@ -116,7 +116,7 @@ namespace test_detail
         bool operator()(Source const& source, Expected const& expected)
         {
             return
-                run< can_copy<T> >(source, expected);
+                run< can_copy<T> >(source, expected) &&
                 run< can_convert_using<can_copy>::to<T> >(source, expected) &&
                 run< can_construct_from_elements<T> >(source, expected);
         }
