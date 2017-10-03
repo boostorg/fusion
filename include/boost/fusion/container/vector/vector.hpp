@@ -306,13 +306,11 @@ namespace boost { namespace fusion
 
         template <
             typename Sequence
-          , typename Sequence_ = typename remove_reference<Sequence>::type
-          , typename = typename boost::enable_if_c<(
-                !is_base_of<vector, Sequence_>::value &&
+          , typename = typename boost::enable_if_c<
                 vector_detail::is_longer_sequence<
-                    Sequence_, sizeof...(T)
+                    typename remove_reference<Sequence>::type, sizeof...(T)
                 >::value
-            )>::type
+            >::type
         >
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector(Sequence&& seq)
