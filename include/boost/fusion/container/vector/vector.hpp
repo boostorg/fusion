@@ -133,27 +133,27 @@ namespace boost { namespace fusion
 
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             store(store const& rhs)
-                : elem(rhs.get())
+                : elem(rhs.elem)
             {}
 
             BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             store&
             operator=(store const& rhs)
             {
-                elem = rhs.get();
+                elem = rhs.elem;
                 return *this;
             }
 
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             store(store&& rhs)
-                : elem(static_cast<T&&>(rhs.get()))
+                : elem(static_cast<T&&>(rhs.elem))
             {}
 
             BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             store&
             operator=(store&& rhs)
             {
-                elem = static_cast<T&&>(rhs.get());
+                elem = static_cast<T&&>(rhs.elem);
                 return *this;
             }
 
@@ -167,11 +167,6 @@ namespace boost { namespace fusion
             store(U&& rhs)
                 : elem(std::forward<U>(rhs))
             {}
-
-            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            T      & get()       { return elem; }
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            T const& get() const { return elem; }
 
             T elem;
         };
@@ -238,16 +233,16 @@ namespace boost { namespace fusion
 
             template <std::size_t N, typename U>
             static BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            auto at_detail(store<N, U>* this_) -> decltype(this_->get())
+            U& at_detail(store<N, U>* this_)
             {
-                return this_->get();
+                return this_->elem;
             }
 
             template <std::size_t N, typename U>
             static BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            auto at_detail(store<N, U> const* this_) -> decltype(this_->get())
+            U const& at_detail(store<N, U> const* this_)
             {
-                return this_->get();
+                return this_->elem;
             }
 
             template <typename J>
