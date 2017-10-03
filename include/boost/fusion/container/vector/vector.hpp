@@ -192,8 +192,7 @@ namespace boost { namespace fusion
             typedef vector<T...>                type_sequence;
 
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            vector_data()
-            {}
+            BOOST_DEFAULTED_FUNCTION(vector_data(), {})
 
             template <
                 typename Sequence
@@ -284,8 +283,7 @@ namespace boost { namespace fusion
         > base;
 
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        vector()
-        {}
+        BOOST_DEFAULTED_FUNCTION(vector(), {})
 
         template <
             typename... U
