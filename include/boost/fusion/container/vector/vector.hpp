@@ -258,10 +258,6 @@ namespace boost { namespace fusion
             {
                 return at_detail<J::value>(this);
             }
-
-            template <std::size_t N, typename U>
-            static BOOST_FUSION_GPU_ENABLED
-            mpl::identity<U> value_at_impl(store<N, U>*);
         };
     } // namespace boost::fusion::vector_detail
 
