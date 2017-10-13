@@ -547,7 +547,7 @@ install:
 
   - rm -rf libs/fusion
   - mv $TRAVIS_BUILD_DIR libs/fusion
-  - ln -sfT $(pwd)/libs/fusion $TRAVIS_BUILD_DIR
+  - ln -s $(pwd)/libs/fusion $TRAVIS_BUILD_DIR
 
   - ./bootstrap.sh
   - ./b2 headers
