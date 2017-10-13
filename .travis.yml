@@ -546,7 +546,8 @@ install:
   - git submodule update --depth 1
 
   - rm -rf libs/fusion
-  - ln -sfT $TRAVIS_BUILD_DIR libs/fusion
+  - mv $TRAVIS_BUILD_DIR libs/fusion
+  - ln -sfT $(pwd)/libs/fusion $TRAVIS_BUILD_DIR
 
   - ./bootstrap.sh
   - ./b2 headers
