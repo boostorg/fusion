@@ -514,6 +514,7 @@ install:
   - git clone --depth 1 -b $BOOST_BRANCH https://github.com/boostorg/boost.git boost-root
   - cd boost-root
 
+  - git submodule init libs/array
   - git submodule init libs/assert
   - git submodule init libs/bind
   - git submodule init libs/concept_check
@@ -526,6 +527,7 @@ install:
   - git submodule init libs/functional
   - git submodule init libs/integer
   - git submodule init libs/iterator
+  - git submodule init libs/lambda
   - git submodule init libs/move
   - git submodule init libs/mpl
   - git submodule init libs/optional
