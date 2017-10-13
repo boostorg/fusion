@@ -110,15 +110,6 @@ namespace boost { namespace fusion {
             : base(base::from_iterator(fusion::begin(seq)))
             {}
 
-        template <BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, typename U)>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        deque&
-        operator=(deque<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, U)> const& rhs)
-        {
-            base::operator=(rhs);
-            return *this;
-        }
-
         template <typename T>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         deque&
