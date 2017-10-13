@@ -159,6 +159,14 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
             base::operator=(BOOST_FUSION_FWD_ELEM(T, rhs));
             return *this;
         }
+        // This copy op= is required because move ctor deletes copy op=.
+        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        deque&
+        operator=(deque const& rhs)
+        {
+            base::operator=(static_cast<base const&>(rhs));
+            return *this;
+        }
 #endif
 #if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
 FUSION_HASH endif
