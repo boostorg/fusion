@@ -548,7 +548,3 @@ script:
   - |-
     echo "using $TOOLSET : : $COMPILER : <cxxflags>-std=$CXXSTD ;" > ~/user-config.jam
   - ./b2 libs/fusion/test toolset=$TOOLSET
-
-notifications:
-  email:
-    on_success: always
