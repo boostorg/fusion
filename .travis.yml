@@ -547,4 +547,4 @@ install:
 script:
   - |-
     echo "using $TOOLSET : : $COMPILER : <cxxflags>-std=$CXXSTD ;" > ~/user-config.jam
-  - ./b2 libs/fusion/test toolset=$TOOLSET
+  - ./b2 libs/fusion/test toolset=$TOOLSET define=RUNNING_ON_TRAVIS=1
