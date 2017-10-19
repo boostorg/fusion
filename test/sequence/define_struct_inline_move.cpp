@@ -51,6 +51,8 @@ int main()
         BOOST_TEST(y.w.value == 42);
     }
 
+    // Older MSVCs don't generate move ctor by default.
+#if !(defined(RUNNING_ON_APPVEYOR) && BOOST_WORKAROUND(BOOST_MSVC, < 1900))
     {
         ns::value x;
         ns::value y(std::move(x)); // move
@@ -68,6 +70,7 @@ int main()
         BOOST_TEST(x.w.value == 0);
         BOOST_TEST(y.w.value == 0);
     }
+#endif // !(appveyor && msvc < 14.0)
 
     return boost::report_errors();
 }
