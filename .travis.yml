@@ -543,7 +543,7 @@ install:
   - git submodule init libs/utility
 
   - git submodule init tools/build
-  - git submodule update --depth 1
+  - git submodule update --depth 10
 
   - rm -rf libs/fusion
   - mv $TRAVIS_BUILD_DIR libs/fusion
