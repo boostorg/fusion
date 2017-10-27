@@ -36,8 +36,6 @@ matrix:
         apt:
           packages:
             - g++-4.7
-          sources:
-            - ubuntu-toolchain-r-test
 
     - os: linux
       env: TOOLSET=gcc COMPILER=g++-4.8 CXXSTD=03,11,1y
@@ -96,7 +94,6 @@ matrix:
             - clang-3.5
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.5
 
     - os: linux
       env: TOOLSET=clang COMPILER=clang++-3.6 CXXSTD=03,11,14,1z
@@ -126,7 +123,6 @@ matrix:
             - clang-3.8
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.8
 
     - os: linux
       env: TOOLSET=clang COMPILER=clang++-3.9 CXXSTD=03,11,14,1z
@@ -136,7 +132,6 @@ matrix:
             - clang-3.9
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.9
 
     - os: linux
       env: TOOLSET=clang COMPILER=clang++-4.0 CXXSTD=03,11,14,1z
