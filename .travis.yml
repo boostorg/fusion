@@ -82,7 +82,6 @@ matrix:
             - ubuntu-toolchain-r-test
 
     - os: linux
-      dist: trusty
       compiler: g++-7
       env: TOOLSET=gcc COMPILER=g++-7 CXXSTD=03,11,14,1z
       addons:
