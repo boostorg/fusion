@@ -191,7 +191,7 @@ install:
   - git submodule init libs/utility
 
   - git submodule init tools/build
-  - git submodule update --depth 10
+  - git submodule update
 
   - rm -rf libs/fusion
   - mv $TRAVIS_BUILD_DIR libs/fusion
