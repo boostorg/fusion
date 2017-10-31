@@ -177,7 +177,10 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
         template <typename T>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        vector&
+        typename boost::disable_if_c<
+            boost::is_same<vector const, typename boost::remove_reference<T>::type const>::value
+          , vector&
+        >::type
         operator=(T&& rhs)
         {
             vec = BOOST_FUSION_FWD_ELEM(T, rhs);
