@@ -219,6 +219,7 @@ project
         : [ requires cxx11_variadic_templates cxx11_hdr_tuple ] ]
     [ run sequence/ref_vector.cpp ]
     [ run sequence/flatten_view.cpp ]
+    [ compile sequence/github-159.cpp ]
 
     [ compile sequence/size.cpp ]
 
