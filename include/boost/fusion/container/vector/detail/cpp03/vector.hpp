@@ -1,5 +1,6 @@
 /*=============================================================================
     Copyright (c) 2001-2011 Joel de Guzman
+    Copyright (c) 2017 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -22,6 +23,7 @@
 #include <boost/type_traits/add_reference.hpp>
 #include <boost/type_traits/add_const.hpp>
 #include <boost/type_traits/is_base_of.hpp>
+#include <boost/type_traits/remove_cv_ref.hpp>
 #include <boost/detail/workaround.hpp>
 #include <boost/core/enable_if.hpp>
 
@@ -178,7 +180,7 @@ FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
         template <typename T>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         typename boost::disable_if_c<
-            boost::is_same<vector const, typename boost::remove_reference<T>::type const>::value
+            boost::is_same<vector, typename boost::remove_cv_ref<T>::type>::value
           , vector&
         >::type
         operator=(T&& rhs)
