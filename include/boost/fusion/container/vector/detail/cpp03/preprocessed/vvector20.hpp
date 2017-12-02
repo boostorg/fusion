@@ -66,7 +66,7 @@ namespace boost { namespace fusion
     BOOST_FUSION_GPU_ENABLED
     explicit
     vector(U0 && arg0
-        , typename boost::disable_if_c<boost::is_same<vector const, typename boost::remove_reference<U0>::type const>::value, detail::enabler_>::type = detail::enabler
+        , typename boost::disable_if_c<boost::is_same<vector, typename boost::remove_cv_ref<U0>::type>::value, detail::enabler_>::type = detail::enabler
         )
         : vec(std::forward<U0>( arg0)) {}
 # endif
@@ -449,7 +449,7 @@ namespace boost { namespace fusion
         template <typename T>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         typename boost::disable_if_c<
-            boost::is_same<vector const, typename boost::remove_reference<T>::type const>::value
+            boost::is_same<vector, typename boost::remove_cv_ref<T>::type>::value
           , vector&
         >::type
         operator=(T&& rhs)
