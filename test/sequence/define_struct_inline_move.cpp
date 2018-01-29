@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2016 Kohei Takahashi
+    Copyright (c) 2016-2018 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -52,7 +52,7 @@ int main()
     }
 
     // Older MSVCs don't generate move ctor by default.
-#if !(defined(RUNNING_ON_APPVEYOR) && BOOST_WORKAROUND(BOOST_MSVC, < 1900))
+#if !(defined(CI_SKIP_KNOWN_FAILURE) && BOOST_WORKAROUND(BOOST_MSVC, < 1900))
     {
         ns::value x;
         ns::value y(std::move(x)); // move
@@ -70,7 +70,7 @@ int main()
         BOOST_TEST(x.w.value == 0);
         BOOST_TEST(y.w.value == 0);
     }
-#endif // !(appveyor && msvc < 14.0)
+#endif // !(ci && msvc < 14.0)
 
     return boost::report_errors();
 }
