@@ -71,4 +71,4 @@ install:
 build: off
 
 test_script:
-  - b2 -j%NUMBER_OF_PROCESSORS% libs/fusion/test toolset=%TOOLSET%
+  - b2 -j%NUMBER_OF_PROCESSORS% --hash libs/fusion/test toolset=%TOOLSET%
