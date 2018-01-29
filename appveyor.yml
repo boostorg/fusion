@@ -71,4 +71,4 @@ install:
 build: off
 
 test_script:
-  - b2 libs/fusion/test toolset=%TOOLSET% define=RUNNING_ON_APPVEYOR=1
+  - b2 -j%NUMBER_OF_PROCESSORS% libs/fusion/test toolset=%TOOLSET% define=RUNNING_ON_APPVEYOR=1

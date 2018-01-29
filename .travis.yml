@@ -201,4 +201,4 @@ install:
   - ./b2 headers
 
 script:
-  - ./b2 libs/fusion/test toolset=$TOOLSET cxxstd=$CXXSTD define=RUNNING_ON_TRAVIS=1
+  - ./b2 -j`(nproc || sysctl -n hw.ncpu) 2> /dev/null` libs/fusion/test toolset=$TOOLSET cxxstd=$CXXSTD define=RUNNING_ON_TRAVIS=1
