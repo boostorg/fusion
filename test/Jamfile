@@ -42,7 +42,8 @@ project
     [ run algorithm/insert.cpp ]
     [ run algorithm/insert_range.cpp ]
     [ run algorithm/iter_fold.cpp ]
-    [ run algorithm/move.cpp ]
+    [ run algorithm/move.cpp : :
+        : [ requires cxx11_rvalue_references ] ]
     [ run algorithm/none.cpp ]
     [ run algorithm/pop_back.cpp ]
     [ run algorithm/pop_front.cpp ]
@@ -106,7 +107,8 @@ project
     [ compile sequence/deque_is_constructible.cpp ]
     [ run sequence/deque_make.cpp ]
     [ run sequence/deque_misc.cpp ]
-    [ run sequence/deque_move.cpp ]
+    [ run sequence/deque_move.cpp : :
+        : [ requires cxx11_rvalue_references ] ]
     [ run sequence/deque_mutate.cpp ]
     [ run sequence/deque_nest.cpp ]
     [ run sequence/deque_tie.cpp ]
@@ -120,7 +122,8 @@ project
     [ run sequence/map_construction.cpp ]
     [ run sequence/map_copy.cpp ]
     [ run sequence/map_misc.cpp ]
-    [ run sequence/map_move.cpp ]
+    [ run sequence/map_move.cpp : :
+        : [ requires cxx11_rvalue_references ] ]
     [ run sequence/map_mutate.cpp ]
     [ run sequence/map_tie.cpp ]
     [ run sequence/nil.cpp ]
@@ -159,7 +162,8 @@ project
     [ run sequence/vector_iterator.cpp ]
     [ run sequence/vector_make.cpp ]
     [ run sequence/vector_misc.cpp ]
-    [ run sequence/vector_move.cpp ]
+    [ run sequence/vector_move.cpp : :
+        : [ requires cxx11_rvalue_references ] ]
     [ run sequence/vector_mutate.cpp ]
     [ run sequence/vector_n.cpp ]
     [ run sequence/vector_nest.cpp ]
@@ -204,22 +208,28 @@ project
     [ run sequence/adt_attribute_proxy.cpp ]
     [ run sequence/define_struct.cpp ]
     [ run sequence/define_struct_empty.cpp ]
-    [ run sequence/define_struct_move.cpp ]
+    [ run sequence/define_struct_move.cpp : :
+        : [ requires cxx11_rvalue_references ] ]
     [ run sequence/define_struct_inline.cpp ]
     [ run sequence/define_struct_inline_empty.cpp ]
-    [ run sequence/define_struct_inline_move.cpp ]
+    [ run sequence/define_struct_inline_move.cpp : :
+        : [ requires cxx11_rvalue_references ] ]
     [ run sequence/define_assoc_struct.cpp ]
     [ run sequence/define_assoc_struct_empty.cpp ]
-    [ run sequence/define_assoc_struct_move.cpp ]
+    [ run sequence/define_assoc_struct_move.cpp : :
+        : [ requires cxx11_rvalue_references ] ]
     [ run sequence/define_tpl_struct.cpp ]
     [ run sequence/define_tpl_struct_empty.cpp ]
-    [ run sequence/define_tpl_struct_move.cpp ]
+    [ run sequence/define_tpl_struct_move.cpp : :
+        : [ requires cxx11_rvalue_references ] ]
     [ run sequence/define_tpl_struct_inline.cpp ]
     [ run sequence/define_tpl_struct_inline_empty.cpp ]
-    [ run sequence/define_tpl_struct_inline_move.cpp ]
+    [ run sequence/define_tpl_struct_inline_move.cpp : :
+        : [ requires cxx11_rvalue_references ] ]
     [ run sequence/define_assoc_tpl_struct.cpp ]
     [ run sequence/define_assoc_tpl_struct_empty.cpp ]
-    [ run sequence/define_assoc_tpl_struct_move.cpp ]
+    [ run sequence/define_assoc_tpl_struct_move.cpp : :
+        : [ requires cxx11_rvalue_references ] ]
     [ run sequence/std_tuple.cpp : :
         : [ requires cxx11_variadic_templates cxx11_hdr_tuple ] ]
     [ run sequence/std_tuple_iterator.cpp : :
@@ -250,8 +260,10 @@ project
     [ compile support/pair_set.cpp ]
     [ compile support/pair_vector.cpp ]
     [ compile support/pair_nest.cpp ]
-    [ compile support/index_sequence.cpp ]
-    [ compile support/and.cpp ]
+    [ compile support/index_sequence.cpp
+        : [ requires cxx11_variadic_templates ] ]
+    [ compile support/and.cpp
+        : [ requires cxx11_variadic_templates ] ]
 
 #   [ compile-fail xxx.cpp  ]
 
