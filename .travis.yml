@@ -1,5 +1,5 @@
 # Copyright 2016, 2017 Peter Dimov
-# Copyright 2017 Kohei Takahashi
+# Copyright 2017-2018 Kohei Takahashi
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE_1_0.txt or copy at http://boost.org/LICENSE_1_0.txt)
 
@@ -167,6 +167,7 @@ install:
   - git submodule init libs/bind
   - git submodule init libs/concept_check
   - git submodule init libs/config
+  - git submodule init libs/container_hash
   - git submodule init libs/conversion
   - git submodule init libs/core
   - git submodule init libs/detail
@@ -201,4 +202,4 @@ install:
   - ./b2 headers
 
 script:
-  - ./b2 libs/fusion/test toolset=$TOOLSET cxxstd=$CXXSTD define=RUNNING_ON_TRAVIS=1
+  - ./b2 -j`(nproc || sysctl -n hw.ncpu) 2> /dev/null` libs/fusion/test toolset=$TOOLSET cxxstd=$CXXSTD
