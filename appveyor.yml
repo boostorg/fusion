@@ -11,16 +11,31 @@ environment:
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
       TOOLSET: msvc-9.0
+      CXXSTD: latest # fake
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
       TOOLSET: msvc-10.0
+      CXXSTD: latest # fake
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
       TOOLSET: msvc-11.0
+      CXXSTD: latest # fake
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
       TOOLSET: msvc-12.0
+      CXXSTD: latest # fake
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       TOOLSET: msvc-14.0
+      CXXSTD: 14
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLSET: msvc-14.0
+      CXXSTD: latest
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       TOOLSET: msvc-14.1
+      CXXSTD: 14
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLSET: msvc-14.1
+      CXXSTD: 17
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLSET: msvc-14.1
+      CXXSTD: latest
 
 install:
   - set BOOST_BRANCH=develop
@@ -67,4 +82,4 @@ install:
 build: off
 
 test_script:
-  - b2 -j%NUMBER_OF_PROCESSORS% --hash libs/fusion/test toolset=%TOOLSET%
+  - b2 -j%NUMBER_OF_PROCESSORS% --hash libs/fusion/test toolset=%TOOLSET% cxxstd=%CXXSTD%
