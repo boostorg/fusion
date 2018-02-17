@@ -7,11 +7,6 @@ version: 1.0.{build}-{branch}
 
 shallow_clone: true
 
-branches:
-  only:
-    - master
-    - develop
-
 environment:
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
