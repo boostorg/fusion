@@ -26,18 +26,11 @@ matrix:
       env: TOOLSET=gcc CXXSTD=03,11,1y
 
     - os: linux
-      env: TOOLSET=gcc-4.4 CXXSTD=03,0x
+      env: TOOLSET=gcc-4.4 CXXSTD=98,0x
       addons:
         apt:
           packages:
             - g++-4.4
-
-    - os: linux
-      env: TOOLSET=gcc-4.5 CXXSTD=03,0x
-      addons:
-        apt:
-          packages:
-            - g++-4.5
 
     - os: linux
       env: TOOLSET=gcc-4.6 CXXSTD=03,0x
