@@ -1,5 +1,5 @@
 # Copyright 2016, 2017 Peter Dimov
-# Copyright 2017 Kohei Takahashi
+# Copyright 2017-2018 Kohei Takahashi
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE_1_0.txt or copy at http://boost.org/LICENSE_1_0.txt)
 
@@ -39,6 +39,7 @@ install:
   - git submodule init libs/bind
   - git submodule init libs/concept_check
   - git submodule init libs/config
+  - git submodule init libs/container_hash
   - git submodule init libs/conversion
   - git submodule init libs/core
   - git submodule init libs/detail
@@ -71,4 +72,4 @@ install:
 build: off
 
 test_script:
-  - b2 libs/fusion/test toolset=%TOOLSET% define=RUNNING_ON_APPVEYOR=1
+  - b2 -j%NUMBER_OF_PROCESSORS% --hash libs/fusion/test toolset=%TOOLSET%
