@@ -254,6 +254,7 @@ project
     [ run functional/invoke_procedure.cpp ]
     [ run sequence/swap.cpp ]
 
+    [ compile support/is_sequence.cpp ]
     [ compile support/pair_deque.cpp ]
     [ compile support/pair_list.cpp ]
     [ compile support/pair_map.cpp ]
@@ -264,6 +265,7 @@ project
         : [ requires cxx11_variadic_templates ] ]
     [ compile support/and.cpp
         : [ requires cxx11_variadic_templates ] ]
+    [ compile support/tag_of.cpp ]
 
 #   [ compile-fail xxx.cpp  ]
 
