@@ -131,32 +131,6 @@ namespace boost { namespace fusion
                 : elem() // value-initialized explicitly
             {}
 
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            store(store const& rhs)
-                : elem(rhs.elem)
-            {}
-
-            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            store&
-            operator=(store const& rhs)
-            {
-                elem = rhs.elem;
-                return *this;
-            }
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            store(store&& rhs)
-                : elem(static_cast<T&&>(rhs.elem))
-            {}
-
-            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            store&
-            operator=(store&& rhs)
-            {
-                elem = static_cast<T&&>(rhs.elem);
-                return *this;
-            }
-
             template <
                 typename U
               , typename = typename boost::disable_if<
