@@ -15,6 +15,7 @@
 #endif
 
 namespace boost { namespace fusion { namespace detail {
+#if defined(BOOST_NO_CXX17_FOLD_EXPRESSIONS)
     template<typename ...Cond>
     struct and_impl : false_type {};
 
@@ -34,6 +35,10 @@ namespace boost { namespace fusion { namespace detail {
          recursive. */
     template<typename ...Cond>
     struct and_ : and_impl1<Cond::value...> {};
+#else
+    template <typename ...Cond>
+    struct and_ : integral_constant<bool, ((bool)Cond::value && ...)> {};
+#endif
 }}}
 
 #endif // FUSION_AND_07152016_1625
