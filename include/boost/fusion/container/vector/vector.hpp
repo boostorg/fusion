@@ -50,8 +50,6 @@ namespace boost { namespace fusion
 
     namespace vector_detail
     {
-        struct each_elem {};
-
         template <
             typename This, typename T, typename T_, std::size_t Size, bool IsSeq
         >
@@ -172,14 +170,14 @@ namespace boost { namespace fusion
             >
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             explicit
-            vector_data(each_elem, Sequence&& rhs)
+            vector_data(Sequence&& rhs)
                 : store<I, T>(forward_at_c<I>(std::forward<Sequence>(rhs)))...
             {}
 
             template <typename ...U>
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             explicit
-            vector_data(each_elem, U&&... var)
+            vector_data(U&&... var)
                 : store<I, T>(std::forward<U>(var))...
             {}
 
@@ -264,7 +262,7 @@ namespace boost { namespace fusion
         //      In the (near) future release, should be fixed.
         /* BOOST_CONSTEXPR */ BOOST_FUSION_GPU_ENABLED
         explicit vector(U&&... u)
-            : base(vector_detail::each_elem(), std::forward<U>(u)...)
+            : base(std::forward<U>(u)...)
         {}
 
         template <
@@ -277,7 +275,7 @@ namespace boost { namespace fusion
         >
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         vector(Sequence&& seq)
-            : base(vector_detail::each_elem(), std::forward<Sequence>(seq))
+            : base(std::forward<Sequence>(seq))
         {}
 
         template <typename Sequence>
