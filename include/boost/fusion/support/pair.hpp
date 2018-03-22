@@ -8,15 +8,16 @@
 #if !defined(FUSION_PAIR_07222005_1203)
 #define FUSION_PAIR_07222005_1203
 
-#include <boost/fusion/support/config.hpp>
 #include <iosfwd>
-
+#include <utility>
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/support/detail/access.hpp>
 #include <boost/fusion/support/detail/as_fusion_element.hpp>
-#include <boost/config.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <boost/fusion/support/detail/enabler.hpp>
+#include <boost/core/enable_if.hpp>
+#include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/is_convertible.hpp>
-#include <boost/type_traits/is_lvalue_reference.hpp>
+#include <boost/type_traits/remove_cv_ref.hpp>
 
 #if defined (BOOST_MSVC)
 #  pragma warning(push)
@@ -34,53 +35,45 @@ namespace boost { namespace fusion
             : second() {}
 
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        pair(pair const& rhs)
-            : second(rhs.second) {}
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        pair(pair&& rhs)
-            : second(BOOST_FUSION_FWD_ELEM(Second, rhs.second)) {}
-#endif
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         pair(typename detail::call_param<Second>::type val)
             : second(val) {}
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        template <typename Second2>
         BOOST_FUSION_GPU_ENABLED
-        pair(Second2&& val
-          , typename boost::disable_if<is_lvalue_reference<Second2> >::type* /* dummy */ = 0
-          , typename boost::enable_if<is_convertible<Second2, Second> >::type* /*dummy*/ = 0
-        ) : second(BOOST_FUSION_FWD_ELEM(Second, val)) {}
+        pair(typename remove_cv_ref<Second>::type&& val)
+            : second(BOOST_FUSION_FWD_ELEM(Second, val)) {}
 #endif
 
         template <typename Second2>
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        pair(pair<First, Second2> const& rhs)
+        pair(pair<First, Second2> const& rhs,
+             typename disable_if<is_same<Second, Second2>, detail::enabler_>::type = detail::enabler,
+             typename enable_if<is_convertible<Second2, Second>, detail::enabler_>::type = detail::enabler)
             : second(rhs.second) {}
 
         template <typename Second2>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        pair& operator=(pair<First, Second2> const& rhs)
-        {
-            second = rhs.second;
-            return *this;
-        }
-
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        pair& operator=(pair const& rhs)
+        typename disable_if<is_same<Second, Second2>, pair&>::type
+        operator=(pair<First, Second2> const& rhs)
         {
             second = rhs.second;
             return *this;
         }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        template <typename Second2>
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        pair(pair<First, Second2>&& rhs,
+             typename disable_if<is_same<Second, Second2>, detail::enabler_>::type = detail::enabler,
+             typename enable_if<is_convertible<Second2, Second>, detail::enabler_>::type = detail::enabler)
+            : second(std::move(rhs.second)) {}
+
+        template <typename Second2>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        pair& operator=(pair&& rhs)
+        typename disable_if<is_same<Second, Second2>, pair&>::type
+        operator=(pair<First, Second2>&& rhs)
         {
-            second = BOOST_FUSION_FWD_ELEM(Second, rhs.second);
+            second = std::move(rhs.second);
             return *this;
         }
 #endif
