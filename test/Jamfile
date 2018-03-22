@@ -255,6 +255,7 @@ project
     [ run sequence/swap.cpp ]
 
     [ compile support/is_sequence.cpp ]
+    [ compile support/pair_conversion.cpp ]
     [ compile support/pair_deque.cpp ]
     [ compile support/pair_list.cpp ]
     [ compile support/pair_map.cpp ]
@@ -266,6 +267,8 @@ project
     [ compile support/and.cpp
         : [ requires cxx11_variadic_templates ] ]
     [ compile support/tag_of.cpp ]
+    [ compile support/pair_trivially_copyable.cpp
+        : [ requires cxx11_hdr_type_traits ] ]
 
 #   [ compile-fail xxx.cpp  ]
 

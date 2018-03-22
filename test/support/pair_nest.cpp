@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2015 Kohei Takahashi
+    Copyright (c) 2015,2018 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -10,15 +10,20 @@
 using namespace boost::fusion;
 
 template <typename C>
-void copy()
+void copy(C value)
 {
-    pair<int, C> src;
+    pair<int, C> src(value);
     pair<int, C> dest = src;
     boost::ignore_unused(dest);
 }
 
 int main()
 {
-    copy<pair<void, float> >();
+    copy<pair<void, float> >(42.195f);
+    copy<pair<int, float> >(42.195f);
+
+    float f;
+    pair<void, float&> r(f);
+    copy<pair<void, float&> >(r);
 }
 
