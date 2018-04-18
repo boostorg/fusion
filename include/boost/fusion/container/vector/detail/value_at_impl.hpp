@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2014 Kohei Takahashi
+    Copyright (c) 2014,2018 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -7,7 +7,6 @@
 #ifndef FUSION_VALUE_AT_IMPL_16122014_1641
 #define FUSION_VALUE_AT_IMPL_16122014_1641
 
-#include <boost/config.hpp>
 #include <boost/fusion/support/config.hpp>
 #include <boost/fusion/container/vector/detail/config.hpp>
 
@@ -50,9 +49,9 @@ namespace boost { namespace fusion
             template <typename Sequence, typename N>
             struct apply
             {
-                typedef typename
-                    decltype(vector_detail::value_at_impl<N::value>(boost::declval<Sequence*>()))::type
-                type;
+                typedef typename BOOST_FUSION_IDENTIFIED_TYPE((
+                    vector_detail::value_at_impl<N::value>(boost::declval<Sequence*>())
+                )) type;
             };
         };
     }
