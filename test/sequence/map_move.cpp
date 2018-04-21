@@ -5,7 +5,7 @@
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
-#define BOOST_FUSION_DONT_USE_PREPROCESSED_FILES // $$$ JDG temp $$$
+#define BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
 #include <boost/fusion/container/map/map.hpp>
 
 struct k1 {};
