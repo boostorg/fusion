@@ -87,7 +87,9 @@ void test_constructible()
     BOOST_TEST((
         is_constructible<FUSION_SEQUENCE<convertible>, convertible>(true)
     ));
-        
+
+    // boost::is_constructible always fail to test ctor which takes 2 or more arguments on GCC 4.7.
+#if !BOOST_WORKAROUND(BOOST_GCC, < 40700)
     BOOST_TEST((
         is_constructible<FUSION_SEQUENCE<int, int>, int, int>(true)
     ));
@@ -130,6 +132,7 @@ void test_constructible()
             FUSION_SEQUENCE<convertible, convertible>, convertible, convertible
         >(true)
     ));
+#endif // !(gcc < 4.7)
 }
 
 #endif // is_constructible is available
