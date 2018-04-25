@@ -81,6 +81,9 @@ int main()
     test_at<list<int[3]> >();
     test_at<tuple<int[3]> >();
 
+#if !BOOST_WORKAROUND(BOOST_GCC, / 100 == 406) || defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
+    // FIXME: gcc 4.6 w/ c++0x doesn't like set with array...
     test_at_key<set<int[3]> >();
+#endif
     test_at_key<map<pair<int[3], int[3]> > >();
 }
