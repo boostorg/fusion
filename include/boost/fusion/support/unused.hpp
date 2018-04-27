@@ -24,13 +24,13 @@ namespace boost { namespace fusion
     {
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         BOOST_DEFAULTED_FUNCTION(
-        unused_type() BOOST_NOEXCEPT,
+        unused_type() BOOST_FUSION_NOEXCEPT_ON_DEFAULTED,
         {
         })
 
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         BOOST_DEFAULTED_FUNCTION(
-        unused_type(unused_type const&) BOOST_NOEXCEPT,
+        unused_type(unused_type const&) BOOST_FUSION_NOEXCEPT_ON_DEFAULTED,
         {
         })
 
