@@ -65,10 +65,13 @@ main()
     BOOST_TEST((is_constructible<tuple<int>, int, int>(false)));
 
     BOOST_TEST((is_constructible< tuple<int, int> >(true)));
+    // boost::is_constructible always fail to test ctor which takes 2 or more arguments on GCC 4.7.
+#if !BOOST_WORKAROUND(BOOST_GCC, < 40700)
     BOOST_TEST((is_constructible<tuple<int, int>, int, int>(true)));
     BOOST_TEST((
         is_constructible<tuple<convertible, convertible>, int, int>(true)
     ));
+#endif // !(gcc < 4.7)
     BOOST_TEST((is_constructible<tuple<int, not_convertible>, int, int>(false)));
     BOOST_TEST((is_constructible<tuple<not_convertible, int>, int, int>(false)));
     BOOST_TEST((
