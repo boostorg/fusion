@@ -267,6 +267,7 @@ project
     [ compile support/and.cpp
         : [ requires cxx11_variadic_templates ] ]
     [ compile support/tag_of.cpp ]
+    [ compile support/unused.cpp ]
 
 #   [ compile-fail xxx.cpp  ]
 
