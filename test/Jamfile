@@ -269,6 +269,8 @@ project
     [ compile support/tag_of.cpp ]
     [ compile support/unused.cpp ]
     [ compile support/is_trivially_copyable.cpp ]
+    [ compile support/propagate_trivialness.cpp
+        : [ requires cxx11_variadic_templates ] ]
 
 #   [ compile-fail xxx.cpp  ]
 

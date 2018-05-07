@@ -8,18 +8,7 @@
 
 #include <boost/fusion/support/detail/is_trivially_copyable.hpp>
 #include <boost/mpl/assert.hpp>
-
-#ifndef BOOST_FUSION_DETAIL_VOLATILE_SCALAR_IS_NON_TRIVIALLY_COPYABLE
-#   define BOOST_FUSION_ASSERT_WA BOOST_MPL_ASSERT
-#else
-#   define BOOST_FUSION_ASSERT_WA BOOST_MPL_ASSERT_NOT
-#endif
-
-#ifdef BOOST_FUSION_DETAIL_IS_TRIVIALLY_COPYABLE_CONFORMING
-#   define BOOST_FUSION_ASSERT_FALLBACK BOOST_MPL_ASSERT
-#else
-#   define BOOST_FUSION_ASSERT_FALLBACK(cond) BOOST_MPL_ASSERT((mpl::true_))
-#endif
+#include "trivial.hpp"
 
 using namespace boost;
 using namespace boost::fusion::detail;
@@ -81,9 +70,6 @@ BOOST_MPL_ASSERT_NOT((is_trivially_copyable<function_type volatile&&>));
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<function_type const volatile&&>));
 #endif
 
-struct S;
-typedef int (S::*member_type);
-typedef int (S::*member_function_type)();
 
 BOOST_MPL_ASSERT((is_trivially_copyable<member_type>));
 BOOST_MPL_ASSERT((is_trivially_copyable<member_type const>));
@@ -95,8 +81,6 @@ BOOST_MPL_ASSERT((is_trivially_copyable<member_function_type const>));
 BOOST_FUSION_ASSERT_WA((is_trivially_copyable<member_function_type volatile>));
 BOOST_FUSION_ASSERT_WA((is_trivially_copyable<member_function_type const volatile>));
 
-
-struct trivial { };
 
 BOOST_FUSION_ASSERT_FALLBACK((is_trivially_copyable<trivial>));
 BOOST_FUSION_ASSERT_FALLBACK((is_trivially_copyable<trivial const>));
@@ -123,12 +107,6 @@ BOOST_MPL_ASSERT_NOT((is_trivially_copyable<trivial volatile&&>));
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<trivial const volatile&&>));
 #endif
 
-
-struct user_provided_copy
-{
-    user_provided_copy(user_provided_copy const&);
-    user_provided_copy& operator=(user_provided_copy const&);
-};
 
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<user_provided_copy>));
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<user_provided_copy const>));
@@ -157,12 +135,6 @@ BOOST_MPL_ASSERT_NOT((is_trivially_copyable<user_provided_copy const volatile&&>
 
 
 #ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-struct user_provided_move
-{
-    user_provided_move(user_provided_move const&);
-    user_provided_move& operator=(user_provided_move const&);
-};
-
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<user_provided_move>));
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<user_provided_move const>));
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<user_provided_move volatile>));
@@ -187,11 +159,6 @@ BOOST_MPL_ASSERT_NOT((is_trivially_copyable<user_provided_move volatile&&>));
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<user_provided_move const volatile&&>));
 #endif
 
-
-struct user_provided_dtor
-{
-    ~user_provided_dtor();
-};
 
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<user_provided_dtor>));
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<user_provided_dtor const>));
