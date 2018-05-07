@@ -11,11 +11,15 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 #include <boost/type_traits/is_base_of.hpp>
+#include <boost/type_traits/is_default_constructible.hpp>
 #include "trivial.hpp"
 
 using namespace boost;
 using namespace boost::fusion::detail;
 
+
+BOOST_MPL_ASSERT((is_default_constructible<trivial_base>));
+BOOST_MPL_ASSERT((is_default_constructible<non_trivial_base>));
 
 BOOST_FUSION_ASSERT_FALLBACK((is_trivially_copyable<trivial_base>));
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<non_trivial_base>));

@@ -20,6 +20,9 @@ struct trivial_base { };
 struct non_trivial_base
 {
     BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+    BOOST_DEFAULTED_FUNCTION(non_trivial_base() BOOST_NOEXCEPT, {})
+
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     non_trivial_base(non_trivial_base const&) BOOST_NOEXCEPT { }
 };
 
