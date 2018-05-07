@@ -154,6 +154,8 @@ project
     [ run sequence/tuple_traits.cpp : :
         : <define>BOOST_FUSION_DISABLE_VARIADIC_VECTOR
         : tuple_traits__no_variadic ]
+    [ run sequence/tuple_trivially_copyable.cpp : :
+        : [ requires cxx11_variadic_templates ] ]
     [ run sequence/transform_view.cpp ]
     [ run sequence/vector_comparison.cpp ]
     [ run sequence/vector_construction.cpp ]
@@ -175,6 +177,8 @@ project
     [ run sequence/vector_traits.cpp : :
         : <define>BOOST_FUSION_DISABLE_VARIADIC_VECTOR
         : vector_traits__no_variadic ]
+    [ run sequence/vector_trivially_copyable.cpp : :
+        : [ requires cxx11_variadic_templates ] ]
     [ run sequence/vector_value_at.cpp ]
     [ run sequence/zip_view.cpp ]
     [ run sequence/zip_view2.cpp ]
