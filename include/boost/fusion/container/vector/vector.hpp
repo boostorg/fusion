@@ -26,6 +26,7 @@
 #include <boost/fusion/support/is_sequence.hpp>
 #include <boost/fusion/support/detail/and.hpp>
 #include <boost/fusion/support/detail/index_sequence.hpp>
+#include <boost/fusion/support/detail/propagate_trivialness.hpp>
 #include <boost/fusion/container/vector/detail/at_impl.hpp>
 #include <boost/fusion/container/vector/detail/value_at_impl.hpp>
 #include <boost/fusion/container/vector/detail/begin_impl.hpp>
@@ -150,6 +151,7 @@ namespace boost { namespace fusion
         struct vector_data<detail::index_sequence<I...>, T...>
             : store<I, T>...
             , sequence_base<vector_data<detail::index_sequence<I...>, T...> >
+            , private detail::propagate_trivialness<T...>
         {
             typedef vector_tag                  fusion_tag;
             typedef fusion_sequence_tag         tag; // this gets picked up by MPL
