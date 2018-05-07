@@ -1,5 +1,6 @@
 /*=============================================================================
     Copyright (C) 2016 Lee Clagett
+    Copyright (C) 2018 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -38,9 +39,7 @@ bool is_convertible(bool has_conversion)
 }
 
 // is_constructible has a few requirements
-#if !defined(BOOST_NO_CXX11_DECLTYPE) &&   \
-    !defined(BOOST_NO_CXX11_TEMPLATES) &&  \
-    !defined(BOOST_NO_SFINAE_EXPR)
+#ifdef BOOST_TT_IS_CONSTRUCTIBLE_CONFORMING
 
 #define FUSION_TEST_HAS_CONSTRUCTIBLE
 
@@ -88,7 +87,9 @@ void test_constructible()
     BOOST_TEST((
         is_constructible<FUSION_SEQUENCE<convertible>, convertible>(true)
     ));
-        
+
+    // boost::is_constructible always fail to test ctor which takes 2 or more arguments on GCC 4.7.
+#if !BOOST_WORKAROUND(BOOST_GCC, < 40700)
     BOOST_TEST((
         is_constructible<FUSION_SEQUENCE<int, int>, int, int>(true)
     ));
@@ -131,6 +132,7 @@ void test_constructible()
             FUSION_SEQUENCE<convertible, convertible>, convertible, convertible
         >(true)
     ));
+#endif // !(gcc < 4.7)
 }
 
 #endif // is_constructible is available

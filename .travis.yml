@@ -11,11 +11,6 @@ os:
   - linux
   - osx
 
-branches:
-  only:
-    - master
-    - develop
-
 env:
   matrix:
     - BOGUS_JOB=true
@@ -29,6 +24,20 @@ matrix:
       # trusty default (gcc 4.8.4)
     - os: linux
       env: TOOLSET=gcc CXXSTD=03,11,1y
+
+    - os: linux
+      env: TOOLSET=gcc-4.4 CXXSTD=98,0x
+      addons:
+        apt:
+          packages:
+            - g++-4.4
+
+    - os: linux
+      env: TOOLSET=gcc-4.6 CXXSTD=03,0x
+      addons:
+        apt:
+          packages:
+            - g++-4.6
 
     - os: linux
       env: TOOLSET=gcc-4.7 CXXSTD=03,11
@@ -152,6 +161,17 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
             - llvm-toolchain-trusty-4.0
+
+    - os: linux
+      env: TOOLSET=clang-5.0 CXXSTD=03,11,14,1z,2a
+      addons:
+        apt:
+          packages:
+            - clang-5.0
+            - libstdc++-4.9-dev
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-trusty-5.0
 
     - os: osx
       env: TOOLSET=clang COMPILER=clang++ CXXSTD=03,11,14,1z
