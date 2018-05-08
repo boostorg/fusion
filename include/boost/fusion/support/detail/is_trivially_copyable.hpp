@@ -35,10 +35,8 @@
 #   include <boost/type_traits/has_trivial_assign.hpp>
 #   include <boost/type_traits/has_trivial_copy.hpp>
 #   include <boost/type_traits/has_trivial_destructor.hpp>
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
 #   include <boost/type_traits/has_trivial_move_assign.hpp>
 #   include <boost/type_traits/has_trivial_move_constructor.hpp>
-#endif
 #ifdef BOOST_FUSION_DETAIL_VOLATILE_SCALAR_IS_NON_TRIVIALLY_COPYABLE
 #   include <boost/mpl/not.hpp>
 #   include <boost/type_traits/is_volatile.hpp>
@@ -64,11 +62,10 @@ struct is_trivially_copyable_class
   : mpl::bool_<
         (has_trivial_copy<T>::value   || !is_copy_constructible<T>::value) &&
         (has_trivial_assign<T>::value || !is_copy_assignable<T>::value) &&
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-        (has_trivial_move_constructor<T>::value || !is_constructible<T, T&&>::value) &&
-        (has_trivial_move_assign<T>::value      || !is_assignable<T, T&&>::value) &&
-#endif // rv-ref
-        (is_constructible<T, T>::value || is_assignable<T, T>::value) &&
+        (has_trivial_move_constructor<T>::value || !is_constructible<T, T>::value) &&
+        (has_trivial_move_assign<T>::value      || !is_assignable<T, T>::value) &&
+        (is_copy_constructible<T>::value || is_copy_assignable<T>::value ||
+         is_constructible<T, T>::value   || is_assignable<T, T>::value) &&
         has_trivial_destructor<T>::value
     > { };
 
