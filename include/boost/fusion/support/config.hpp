@@ -116,4 +116,11 @@ namespace std
 #   define BOOST_FUSION_NOEXCEPT_ON_DEFAULTED BOOST_NOEXCEPT
 #endif
 
+
+#ifdef __has_extension
+#   define BOOST_FUSION_HAS_EXTENSION __has_extension
+#else
+#   define BOOST_FUSION_HAS_EXTENSION(_) 0
+#endif
+
 #endif

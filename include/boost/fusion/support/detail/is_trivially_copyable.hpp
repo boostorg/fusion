@@ -17,7 +17,16 @@
 #   define BOOST_FUSION_DETAIL_VOLATILE_SCALAR_IS_NON_TRIVIALLY_COPYABLE
 #endif
 
-#ifndef BOOST_NO_CXX11_HDR_TYPE_TRAITS
+#if BOOST_FUSION_HAS_EXTENSION(is_trivially_copyable) || \
+    (50000 <= BOOST_GCC) || (1700 <= BOOST_MSVC)
+#   define BOOST_FUSION_IS_TRIVIALLY_COPYABLE __is_trivially_copyable
+#endif
+
+#if defined(BOOST_FUSION_IS_TRIVIALLY_COPYABLE)
+#   define BOOST_FUSION_DETAIL_IS_TRIVIALLY_COPYABLE_CONFORMING 2
+#   include <boost/mpl/bool.hpp>
+#elif !defined(BOOST_NO_CXX11_HDR_TYPE_TRAITS)
+#   define BOOST_FUSION_DETAIL_IS_TRIVIALLY_COPYABLE_CONFORMING 2
 #   include <type_traits>
 #else
 #   include <boost/config/workaround.hpp>
@@ -43,20 +52,18 @@
 #endif
 #endif // <type_traits>
 
-#ifndef BOOST_NO_CXX11_HDR_TYPE_TRAITS
-#   define BOOST_FUSION_DETAIL_IS_TRIVIALLY_COPYABLE_CONFORMING 2
-#elif defined(BOOST_SFINAE_EXPR) && !defined(BOOST_NO_CXX11_DECLTYPE) && \
-      defined(BOOST_IS_UNION) && defined(BOOST_TT_HAS_CONFORMING_IS_CLASS_IMPLEMENTATION) && \
-      defined(BOOST_HAS_TRIVIAL_ASSIGN) && defined(BOOST_HAS_TRIVIAL_COPY) && \
-      defined(BOOST_HAS_TRIVIAL_MOVE_ASSIGN) && defined(BOOST_HAS_TRIVIAL_MOVE_CONSTRUCTOR) && \
-      defined(BOOST_HAS_TRIVIAL_DESTRUCTOR) && defined(BOOST_TT_IS_CONSTRUCTIBLE_CONFORMING)
-#   define BOOST_FUSION_DETAIL_IS_TRIVIALLY_COPYABLE_CONFORMING 1
-#endif
-
 namespace boost { namespace fusion { namespace detail
 {
 
-#ifdef BOOST_NO_CXX11_HDR_TYPE_TRAITS
+#ifndef BOOST_FUSION_DETAIL_IS_TRIVIALLY_COPYABLE_CONFORMING
+#if defined(BOOST_SFINAE_EXPR) && !defined(BOOST_NO_CXX11_DECLTYPE) && \
+    defined(BOOST_IS_UNION) && defined(BOOST_TT_HAS_CONFORMING_IS_CLASS_IMPLEMENTATION) && \
+    defined(BOOST_HAS_TRIVIAL_ASSIGN) && defined(BOOST_HAS_TRIVIAL_COPY) && \
+    defined(BOOST_HAS_TRIVIAL_MOVE_ASSIGN) && defined(BOOST_HAS_TRIVIAL_MOVE_CONSTRUCTOR) && \
+    defined(BOOST_HAS_TRIVIAL_DESTRUCTOR) && defined(BOOST_TT_IS_CONSTRUCTIBLE_CONFORMING)
+#   define BOOST_FUSION_DETAIL_IS_TRIVIALLY_COPYABLE_CONFORMING 1
+#endif
+
 template <typename T>
 struct is_trivially_copyable_class
   : mpl::bool_<
@@ -86,7 +93,9 @@ struct is_trivially_copyable_impl
 
 template <typename T>
 struct is_trivially_copyable
-#ifndef BOOST_NO_CXX11_HDR_TYPE_TRAITS
+#if defined(BOOST_FUSION_IS_TRIVIALLY_COPYABLE)
+  : mpl::bool_<BOOST_FUSION_IS_TRIVIALLY_COPYABLE(T)>
+#elif !defined(BOOST_NO_CXX11_HDR_TYPE_TRAITS)
   : std::is_trivially_copyable<T>
 #else
   : is_trivially_copyable_impl<typename remove_all_extents<T>::type>
