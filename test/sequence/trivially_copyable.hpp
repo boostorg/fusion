@@ -41,8 +41,6 @@ BOOST_MPL_ASSERT_NOT((detail::is_trivially_copyable<FUSION_SEQUENCE<int, user_pr
 #ifdef BOOST_FUSION_DETAIL_IS_TRIVIALLY_COPYABLE_CONFORMING
 #include <boost/core/lightweight_test.hpp>
 #include <boost/core/addressof.hpp>
-#include <boost/type_traits/aligned_storage.hpp>
-#include <boost/type_traits/alignment_of.hpp>
 #include <boost/fusion/sequence/intrinsic/at_c.hpp>
 #include <boost/fusion/sequence/comparison/equal_to.hpp>
 #include <cstring>
@@ -52,9 +50,7 @@ int main()
     typedef FUSION_SEQUENCE<char, double, const int*> seq_t;
     BOOST_MPL_ASSERT((detail::is_trivially_copyable<seq_t>));
 
-    typedef boost::aligned_storage<sizeof(seq_t), boost::alignment_of<seq_t>::value>::type storage_t;
-
-    storage_t* storage = new storage_t;
+    char* storage = new char[sizeof(seq_t)];
 
     int i = 42;
 
@@ -76,7 +72,7 @@ int main()
 
     delete dst;
     delete src;
-    delete storage;
+    delete [] storage;
 
     return boost::report_errors();
 }
