@@ -26,6 +26,8 @@
 #   include <boost/type_traits/remove_cv.hpp>
 #   include <boost/type_traits/remove_all_extents.hpp>
 #   include <boost/type_traits/is_scalar.hpp>
+#   include <boost/type_traits/is_class.hpp>
+#   include <boost/type_traits/is_union.hpp>
 #   include <boost/type_traits/is_constructible.hpp>
 #   include <boost/type_traits/is_assignable.hpp>
 #   include <boost/type_traits/is_copy_constructible.hpp>
@@ -46,6 +48,7 @@
 #ifndef BOOST_NO_CXX11_HDR_TYPE_TRAITS
 #   define BOOST_FUSION_DETAIL_IS_TRIVIALLY_COPYABLE_CONFORMING 2
 #elif defined(BOOST_SFINAE_EXPR) && !defined(BOOST_NO_CXX11_DECLTYPE) && \
+      defined(BOOST_IS_UNION) && defined(BOOST_TT_HAS_CONFORMING_IS_CLASS_IMPLEMENTATION) && \
       defined(BOOST_HAS_TRIVIAL_ASSIGN) && defined(BOOST_HAS_TRIVIAL_COPY) && \
       defined(BOOST_HAS_TRIVIAL_MOVE_ASSIGN) && defined(BOOST_HAS_TRIVIAL_MOVE_CONSTRUCTOR) && \
       defined(BOOST_HAS_TRIVIAL_DESTRUCTOR) && defined(BOOST_TT_IS_CONSTRUCTIBLE_CONFORMING)
@@ -77,7 +80,11 @@ struct is_trivially_copyable_impl
 #else
     , mpl::true_
 #endif
-    , is_trivially_copyable_class<typename remove_cv<T>::type> >::type { };
+    , typename mpl::if_c<is_class<T>::value || is_union<T>::value
+      , is_trivially_copyable_class<typename remove_cv<T>::type>
+      , mpl::false_
+      >::type
+    >::type { };
 #endif // <type_traits>
 
 template <typename T>
