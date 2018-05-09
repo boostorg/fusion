@@ -13,9 +13,11 @@
 using namespace boost;
 using namespace boost::fusion::detail;
 
-#if defined(__clang__)
 // disable cv-qialifer on function type warning
+#if defined(BOOST_CLANG)
 #   pragma clang diagnostic ignored "-Wignored-qualifiers"
+#elif defined(BOOST_MSVC)
+#   pragma warning(disable: 4180)
 #endif
 
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<void>));
