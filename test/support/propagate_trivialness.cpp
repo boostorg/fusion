@@ -21,23 +21,23 @@ using namespace boost::fusion::detail;
 BOOST_MPL_ASSERT((is_default_constructible<trivial_base>));
 BOOST_MPL_ASSERT((is_default_constructible<non_trivial_base>));
 
-BOOST_FUSION_ASSERT_FALLBACK((is_trivially_copyable<trivial_base>));
+BOOST_FUSION_ASSERT_CWG496((is_trivially_copyable<trivial_base>));
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<non_trivial_base>));
 
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<> >));
 
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<int> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<int const> >));
-BOOST_FUSION_ASSERT_WA((is_base_of<trivial_base, propagate_trivialness<int volatile> >));
-BOOST_FUSION_ASSERT_WA((is_base_of<trivial_base, propagate_trivialness<int const volatile> >));
+BOOST_FUSION_ASSERT_CWG496_SCALAR((is_base_of<trivial_base, propagate_trivialness<int volatile> >));
+BOOST_FUSION_ASSERT_CWG496_SCALAR((is_base_of<trivial_base, propagate_trivialness<int const volatile> >));
 
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<int*> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<int const*> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<int volatile*> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<int const volatile*> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<int* const> >));
-BOOST_FUSION_ASSERT_WA((is_base_of<trivial_base, propagate_trivialness<int* volatile> >));
-BOOST_FUSION_ASSERT_WA((is_base_of<trivial_base, propagate_trivialness<int* const volatile> >));
+BOOST_FUSION_ASSERT_CWG496_SCALAR((is_base_of<trivial_base, propagate_trivialness<int* volatile> >));
+BOOST_FUSION_ASSERT_CWG496_SCALAR((is_base_of<trivial_base, propagate_trivialness<int* const volatile> >));
 
 BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<int&> >));
 BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<int const&> >));
@@ -52,18 +52,18 @@ BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<int const v
 #endif
 
 
-BOOST_FUSION_ASSERT_FALLBACK((is_base_of<trivial_base, propagate_trivialness<trivial> >));
-BOOST_FUSION_ASSERT_FALLBACK((is_base_of<trivial_base, propagate_trivialness<trivial const> >));
-BOOST_FUSION_ASSERT_FALLBACK((is_base_of<trivial_base, propagate_trivialness<trivial volatile> >));
-BOOST_FUSION_ASSERT_FALLBACK((is_base_of<trivial_base, propagate_trivialness<trivial const volatile> >));
+BOOST_FUSION_ASSERT_CWG496((is_base_of<trivial_base, propagate_trivialness<trivial> >));
+BOOST_FUSION_ASSERT_CWG496((is_base_of<trivial_base, propagate_trivialness<trivial const> >));
+BOOST_FUSION_ASSERT_CWG2094((is_base_of<trivial_base, propagate_trivialness<trivial volatile> >));
+BOOST_FUSION_ASSERT_CWG2094((is_base_of<trivial_base, propagate_trivialness<trivial const volatile> >));
 
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<trivial*> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<trivial const*> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<trivial volatile*> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<trivial const volatile*> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<trivial* const> >));
-BOOST_FUSION_ASSERT_WA((is_base_of<trivial_base, propagate_trivialness<trivial* volatile> >));
-BOOST_FUSION_ASSERT_WA((is_base_of<trivial_base, propagate_trivialness<trivial* const volatile> >));
+BOOST_FUSION_ASSERT_CWG496_SCALAR((is_base_of<trivial_base, propagate_trivialness<trivial* volatile> >));
+BOOST_FUSION_ASSERT_CWG496_SCALAR((is_base_of<trivial_base, propagate_trivialness<trivial* const volatile> >));
 
 BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<trivial&> >));
 BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<trivial const&> >));
@@ -88,8 +88,8 @@ BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<user_provided_c
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<user_provided_copy volatile*> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<user_provided_copy const volatile*> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<user_provided_copy* const> >));
-BOOST_FUSION_ASSERT_WA((is_base_of<trivial_base, propagate_trivialness<user_provided_copy* volatile> >));
-BOOST_FUSION_ASSERT_WA((is_base_of<trivial_base, propagate_trivialness<user_provided_copy* const volatile> >));
+BOOST_FUSION_ASSERT_CWG496_SCALAR((is_base_of<trivial_base, propagate_trivialness<user_provided_copy* volatile> >));
+BOOST_FUSION_ASSERT_CWG496_SCALAR((is_base_of<trivial_base, propagate_trivialness<user_provided_copy* const volatile> >));
 
 BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<user_provided_copy&> >));
 BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<user_provided_copy const&> >));
@@ -115,8 +115,8 @@ BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<user_provided_m
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<user_provided_move volatile*> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<user_provided_move const volatile*> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<user_provided_move* const> >));
-BOOST_FUSION_ASSERT_WA((is_base_of<trivial_base, propagate_trivialness<user_provided_move* volatile> >));
-BOOST_FUSION_ASSERT_WA((is_base_of<trivial_base, propagate_trivialness<user_provided_move* const volatile> >));
+BOOST_FUSION_ASSERT_CWG496_SCALAR((is_base_of<trivial_base, propagate_trivialness<user_provided_move* volatile> >));
+BOOST_FUSION_ASSERT_CWG496_SCALAR((is_base_of<trivial_base, propagate_trivialness<user_provided_move* const volatile> >));
 
 BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<user_provided_move&> >));
 BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<user_provided_move const&> >));
@@ -140,8 +140,8 @@ BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<user_provided_d
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<user_provided_dtor volatile*> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<user_provided_dtor const volatile*> >));
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<user_provided_dtor* const> >));
-BOOST_FUSION_ASSERT_WA((is_base_of<trivial_base, propagate_trivialness<user_provided_dtor* volatile> >));
-BOOST_FUSION_ASSERT_WA((is_base_of<trivial_base, propagate_trivialness<user_provided_dtor* const volatile> >));
+BOOST_FUSION_ASSERT_CWG496_SCALAR((is_base_of<trivial_base, propagate_trivialness<user_provided_dtor* volatile> >));
+BOOST_FUSION_ASSERT_CWG496_SCALAR((is_base_of<trivial_base, propagate_trivialness<user_provided_dtor* const volatile> >));
 
 BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<user_provided_dtor&> >));
 BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<user_provided_dtor const&> >));
@@ -158,7 +158,7 @@ BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<user_provid
 
 BOOST_MPL_ASSERT((is_base_of<trivial_base, propagate_trivialness<int, float, void*> >));
 BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<int, float&, void*> >));
-BOOST_FUSION_ASSERT_FALLBACK((is_base_of<trivial_base, propagate_trivialness<int, float, trivial> >));
+BOOST_FUSION_ASSERT_CWG496((is_base_of<trivial_base, propagate_trivialness<int, float, trivial> >));
 BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<int, float, user_provided_copy> >));
 BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<int, float, user_provided_move> >));
 BOOST_MPL_ASSERT((is_base_of<non_trivial_base, propagate_trivialness<int, float, user_provided_dtor> >));
@@ -171,7 +171,7 @@ struct S2 : private propagate_trivialness<int, float&, void*> { };
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<S2>));
 
 struct S3 : private propagate_trivialness<int, float, trivial> { };
-BOOST_FUSION_ASSERT_FALLBACK((is_trivially_copyable<S3>));
+BOOST_FUSION_ASSERT_CWG496((is_trivially_copyable<S3>));
 
 struct S4 : private propagate_trivialness<int, float, user_provided_copy> { };
 BOOST_MPL_ASSERT_NOT((is_trivially_copyable<S4>));

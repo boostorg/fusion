@@ -14,20 +14,20 @@
 
 using namespace boost::fusion;
 
-BOOST_FUSION_ASSERT_FALLBACK((detail::is_trivially_copyable<FUSION_SEQUENCE<> >));
-BOOST_FUSION_ASSERT_FALLBACK((detail::is_trivially_copyable<FUSION_SEQUENCE<int> >));
-BOOST_FUSION_ASSERT_FALLBACK((detail::is_trivially_copyable<FUSION_SEQUENCE<int, int> >));
-BOOST_FUSION_ASSERT_FALLBACK((detail::is_trivially_copyable<FUSION_SEQUENCE<int, int, int> >));
+BOOST_FUSION_ASSERT_CWG496((detail::is_trivially_copyable<FUSION_SEQUENCE<> >));
+BOOST_FUSION_ASSERT_CWG496((detail::is_trivially_copyable<FUSION_SEQUENCE<int> >));
+BOOST_FUSION_ASSERT_CWG496((detail::is_trivially_copyable<FUSION_SEQUENCE<int, int> >));
+BOOST_FUSION_ASSERT_CWG496((detail::is_trivially_copyable<FUSION_SEQUENCE<int, int, int> >));
 BOOST_MPL_ASSERT_NOT((detail::is_trivially_copyable<FUSION_SEQUENCE<int&> >));
 BOOST_MPL_ASSERT_NOT((detail::is_trivially_copyable<FUSION_SEQUENCE<int, int&> >));
 BOOST_MPL_ASSERT_NOT((detail::is_trivially_copyable<FUSION_SEQUENCE<int, int, int&> >));
 
-BOOST_FUSION_ASSERT_FALLBACK((detail::is_trivially_copyable<FUSION_SEQUENCE<FUSION_SEQUENCE<> > >));
-BOOST_FUSION_ASSERT_FALLBACK((detail::is_trivially_copyable<FUSION_SEQUENCE<FUSION_SEQUENCE<int> > >));
-BOOST_FUSION_ASSERT_FALLBACK((detail::is_trivially_copyable<FUSION_SEQUENCE<FUSION_SEQUENCE<int>, FUSION_SEQUENCE<int, int> > >));
-BOOST_FUSION_ASSERT_FALLBACK((detail::is_trivially_copyable<FUSION_SEQUENCE<FUSION_SEQUENCE<int>, FUSION_SEQUENCE<int, int>, FUSION_SEQUENCE<int, int, int> > >));
+BOOST_FUSION_ASSERT_CWG496((detail::is_trivially_copyable<FUSION_SEQUENCE<FUSION_SEQUENCE<> > >));
+BOOST_FUSION_ASSERT_CWG496((detail::is_trivially_copyable<FUSION_SEQUENCE<FUSION_SEQUENCE<int> > >));
+BOOST_FUSION_ASSERT_CWG496((detail::is_trivially_copyable<FUSION_SEQUENCE<FUSION_SEQUENCE<int>, FUSION_SEQUENCE<int, int> > >));
+BOOST_FUSION_ASSERT_CWG496((detail::is_trivially_copyable<FUSION_SEQUENCE<FUSION_SEQUENCE<int>, FUSION_SEQUENCE<int, int>, FUSION_SEQUENCE<int, int, int> > >));
 
-BOOST_FUSION_ASSERT_FALLBACK((detail::is_trivially_copyable<FUSION_SEQUENCE<int, trivial> >));
+BOOST_FUSION_ASSERT_CWG496((detail::is_trivially_copyable<FUSION_SEQUENCE<int, trivial> >));
 BOOST_MPL_ASSERT_NOT((detail::is_trivially_copyable<FUSION_SEQUENCE<int, user_provided_copy> >));
 BOOST_MPL_ASSERT_NOT((detail::is_trivially_copyable<FUSION_SEQUENCE<int, user_provided_move> >));
 BOOST_MPL_ASSERT_NOT((detail::is_trivially_copyable<FUSION_SEQUENCE<int, user_provided_dtor> >));

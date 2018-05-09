@@ -14,6 +14,11 @@
     // so to be fail safe, we also treat it as non trivially copyable type.
     // http://wg21.link/cwg2094
     // https://gcc.gnu.org/PR85679
+    //
+    // Some version of clang also tweats volatile qualified scalar type as
+    // non trivially copyable type, but all of known the versions what
+    // behaves as CWG 496 but not CWG 2094 implement builtin.
+    // So we don't have to emulate CWG 496 on clang.
 #   define BOOST_FUSION_DETAIL_VOLATILE_SCALAR_IS_NON_TRIVIALLY_COPYABLE
 #endif
 
