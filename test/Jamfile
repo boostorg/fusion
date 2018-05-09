@@ -237,6 +237,7 @@ project
     [ run sequence/ref_vector.cpp ]
     [ run sequence/flatten_view.cpp ]
     [ compile sequence/github-159.cpp ]
+    [ run sequence/github-176.cpp ]
 
     [ compile sequence/size.cpp ]
 
@@ -266,6 +267,7 @@ project
     [ compile support/and.cpp
         : [ requires cxx11_variadic_templates ] ]
     [ compile support/tag_of.cpp ]
+    [ compile support/unused.cpp ]
 
 #   [ compile-fail xxx.cpp  ]
 

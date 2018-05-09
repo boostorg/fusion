@@ -47,8 +47,8 @@ int main()
         BOOST_TEST(y.w.value == 42);
     }
 
-    // Older MSVCs don't generate move ctor by default.
-#if !(defined(CI_SKIP_KNOWN_FAILURE) && BOOST_WORKAROUND(BOOST_MSVC, < 1900))
+    // Older MSVCs and gcc 4.4 don't generate move ctor by default.
+#if !(defined(CI_SKIP_KNOWN_FAILURE) && (BOOST_WORKAROUND(BOOST_MSVC, < 1900) || BOOST_WORKAROUND(BOOST_GCC, / 100 == 404)))
     {
         ns::value<wrapper> x;
         ns::value<wrapper> y(std::move(x)); // move
@@ -66,7 +66,7 @@ int main()
         BOOST_TEST(x.w.value == 0);
         BOOST_TEST(y.w.value == 0);
     }
-#endif // !(ci && msvc < 14.0)
+#endif // !(ci && (msvc < 14.0 || gcc 4.4.x))
 
     return boost::report_errors();
 }
