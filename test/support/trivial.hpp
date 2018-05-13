@@ -51,8 +51,8 @@ struct user_provided_copy
 #ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
 struct user_provided_move
 {
-    user_provided_move(user_provided_move const&);
-    user_provided_move& operator=(user_provided_move const&);
+    user_provided_move(user_provided_move&&);
+    user_provided_move& operator=(user_provided_move&&);
 };
 #endif
 
