@@ -19,7 +19,7 @@ void unused_construction()
 {
     boost::fusion::unused_type dephault;
 
-    boost::fusion::unused_type BOOST_ATTRIBUTE_UNUSED parenthesis();
+    boost::fusion::unused_type BOOST_ATTRIBUTE_UNUSED parenthesis = boost::fusion::unused_type();
 #ifndef BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX
     boost::fusion::unused_type BOOST_ATTRIBUTE_UNUSED brace{};
     boost::fusion::unused_type BOOST_ATTRIBUTE_UNUSED list_copy = {};
