@@ -2,11 +2,12 @@
     Copyright (c) 2001-2011 Joel de Guzman
     Copyright (c) 2005 Eric Niebler
     Copyright (c) Dan Marsden
+    Copyright (c) 2018 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying 
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
-#include <boost/detail/lightweight_test.hpp>
+#include <boost/core/lightweight_test.hpp>
 #include <boost/fusion/container/vector/vector.hpp>
 #include <boost/fusion/adapted/mpl.hpp>
 #include <boost/fusion/algorithm/query/any.hpp>
@@ -29,6 +30,19 @@ namespace
 
         int search;
     };
+
+    struct mutable_search_for : search_for
+    {
+        explicit mutable_search_for(int in_search)
+            : search_for(in_search)
+        {}
+
+        template <typename T>
+        bool operator()(T const& v)
+        {
+            return search_for::operator()(v);
+        }
+    };
 }
 
 int
@@ -45,11 +59,20 @@ main()
     }
 
     {
+        boost::fusion::vector<int, short, double> t(1, 2, 3.3);
+        BOOST_TEST(boost::fusion::any(t, search_for(1)));
+        BOOST_TEST(boost::fusion::any(t, mutable_search_for(1)));
+    }
+
+    {
         typedef boost::mpl::vector_c<int, 1, 2, 3> mpl_vec;
         // We cannot use lambda here as mpl vec iterators return
         // rvalues, and lambda needs lvalues.
         BOOST_TEST(boost::fusion::any(mpl_vec(), search_for(2)));
         BOOST_TEST(!boost::fusion::any(mpl_vec(), search_for(4)));
+
+        BOOST_TEST(boost::fusion::any(mpl_vec(), mutable_search_for(2)));
+        BOOST_TEST(!boost::fusion::any(mpl_vec(), mutable_search_for(4)));
     }
 
     return boost::report_errors();

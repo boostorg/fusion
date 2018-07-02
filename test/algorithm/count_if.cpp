@@ -1,11 +1,12 @@
 /*=============================================================================
     Copyright (c) 2001-2011 Joel de Guzman
     Copyright (c) 2005 Eric Niebler
+    Copyright (c) 2018 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying 
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
-#include <boost/detail/lightweight_test.hpp>
+#include <boost/core/lightweight_test.hpp>
 #include <boost/fusion/container/vector/vector.hpp>
 #include <boost/fusion/adapted/mpl.hpp>
 #include <boost/fusion/algorithm/query/count_if.hpp>
@@ -18,7 +19,14 @@ struct bind1st<F<T> > : public F<T>
 {
     T n;
     bind1st(T n) : n(n) { }
+    bool operator()(T v) { return F<T>::operator()(n, v); }
     bool operator()(T v) const { return F<T>::operator()(n, v); }
+};
+
+template <typename T>
+struct mutable_equal_to : std::equal_to<T>
+{
+    bool operator()(T l, T r) { return std::equal_to<T>::operator()(l, r); }
 };
 
 int
@@ -27,11 +35,13 @@ main()
     {
         boost::fusion::vector<int, short, double> t(1, 2, 3.3);
         BOOST_TEST(boost::fusion::count_if(t, bind1st<std::equal_to<double> >(2)) == 1);
+        BOOST_TEST(boost::fusion::count_if(t, bind1st<mutable_equal_to<double> >(2)) == 1);
     }
 
     {
         boost::fusion::vector<int, short, double> t(1, 2, 3.3);
         BOOST_TEST(boost::fusion::count_if(t, bind1st<std::equal_to<double> >(3)) == 0);
+        BOOST_TEST(boost::fusion::count_if(t, bind1st<mutable_equal_to<double> >(3)) == 0);
     }
 
     {
@@ -39,6 +49,7 @@ main()
         // Cannot use lambda here as mpl iterators return rvalues and lambda needs lvalues
         BOOST_TEST(boost::fusion::count_if(mpl_vec(), bind1st<std::greater_equal<int> >(2)) == 2);
         BOOST_TEST(boost::fusion::count_if(mpl_vec(), bind1st<std::less<int> >(2)) == 1);
+        BOOST_TEST(boost::fusion::count_if(mpl_vec(), bind1st<mutable_equal_to<int> >(2)) == 1);
     }
 
     return boost::report_errors();

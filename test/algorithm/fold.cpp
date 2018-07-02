@@ -1,27 +1,25 @@
 /*=============================================================================
     Copyright (c) 2001-2011 Joel de Guzman
     Copyright (c) 2007 Dan Marsden
+    Copyright (c) 2018 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
-#include <boost/detail/lightweight_test.hpp>
-#include <boost/fusion/container/vector/vector.hpp>
+#include <boost/core/lightweight_test.hpp>
 #include <boost/fusion/adapted/mpl.hpp>
-#include <boost/fusion/sequence/io/out.hpp>
-#include <boost/fusion/sequence/intrinsic/at.hpp>
-#include <boost/fusion/container/generation/make_vector.hpp>
-#include <boost/fusion/algorithm/iteration/fold.hpp>
 #include <boost/fusion/algorithm/iteration/accumulate.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <boost/fusion/algorithm/iteration/fold.hpp>
+#include <boost/fusion/container/generation/make_vector.hpp>
+#include <boost/fusion/container/vector/vector.hpp>
+#include <boost/fusion/sequence/io/out.hpp>
 #include <boost/mpl/if.hpp>
-#include <boost/mpl/next.hpp>
 #include <boost/mpl/int.hpp>
+#include <boost/mpl/next.hpp>
 #include <boost/mpl/vector.hpp>
-
+#include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/remove_const.hpp>
 #include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/is_reference.hpp>
 
 #include <string>
 
@@ -130,7 +128,7 @@ struct functor
     }
 };
 
-struct visitor
+struct mutable_visitor
 {
     typedef int result_type;
 
@@ -248,7 +246,7 @@ main()
 
         {
             boost::fusion::vector<long> vec;
-            visitor v;
+            mutable_visitor v;
             boost::fusion::fold(vec, 0, v);
         }
     }
