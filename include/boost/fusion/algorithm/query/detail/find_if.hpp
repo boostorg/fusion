@@ -2,6 +2,7 @@
     Copyright (c) 2001-2011 Joel de Guzman
     Copyright (c) 2007 Dan Marsden
     Copyright (c) 2009 Christopher Schmidt
+    Copyright (c) 2018 Kohei Takahashi
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying 
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -13,7 +14,6 @@
 #include <boost/mpl/apply.hpp>
 #include <boost/mpl/eval_if.hpp>
 #include <boost/mpl/identity.hpp>
-#include <boost/mpl/lambda.hpp>
 #include <boost/mpl/or.hpp>
 #include <boost/fusion/iterator/advance.hpp>
 #include <boost/fusion/iterator/distance.hpp>
@@ -178,7 +178,7 @@ namespace detail
             choose_find_if<
                 First
               , Last
-              , typename mpl::lambda<Pred>::type
+              , Pred
               , is_base_of<random_access_traversal_tag, typename traits::category_of<First>::type>::value
             >::type
         type;
