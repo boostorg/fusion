@@ -66,6 +66,7 @@ project
     [ run algorithm/zip2.cpp ]
     [ run algorithm/zip_ignore.cpp ]
     [ run algorithm/flatten.cpp ]
+    [ compile algorithm/ticket-5490.cpp ]
 
     [ run sequence/as_deque.cpp ]
     [ run sequence/as_list.cpp ]
