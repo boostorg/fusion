@@ -22,10 +22,9 @@
 #include <boost/fusion/sequence/intrinsic/begin.hpp>
 #include <boost/fusion/sequence/intrinsic/end.hpp>
 #include <boost/fusion/support/category_of.hpp>
+#include <boost/core/enable_if.hpp>
 
-namespace boost { namespace fusion { 
-    struct random_access_traversal_tag;
-namespace detail
+namespace boost { namespace fusion { namespace detail
 {
     template <typename Iterator, typename Pred>
     struct apply_filter
@@ -179,7 +178,7 @@ namespace detail
                 First
               , Last
               , Pred
-              , is_base_of<random_access_traversal_tag, typename traits::category_of<First>::type>::value
+              , traits::is_random_access<First>::value
             >::type
         type;
 
@@ -208,29 +207,21 @@ namespace detail
             return recursive_call(iter, found());
         }
 
-        template <typename Iterator, typename Tag>
+        template <typename Iterator>
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        choose_call(Iterator const& iter, Tag)
+        static typename boost::disable_if<traits::is_random_access<Iterator>, type>::type
+        iter_call(Iterator const& iter)
         {
             return recursive_call(iter);
         }
 
         template <typename Iterator>
         BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        choose_call(Iterator const& iter, random_access_traversal_tag)
+        static typename boost::enable_if<traits::is_random_access<Iterator>, type>::type
+        iter_call(Iterator const& iter)
         {
             typedef typename result_of::distance<Iterator, type>::type N;
             return fusion::advance<N>(iter);
-        }
-
-        template <typename Iterator>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        iter_call(Iterator const& iter)
-        {
-            return choose_call(iter, typename traits::category_of<Iterator>::type());
         }
 
         template <typename Sequence>
