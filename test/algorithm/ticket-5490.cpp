@@ -8,6 +8,7 @@
 #include <boost/fusion/include/transform.hpp>
 #include <boost/mpl/quote.hpp>
 #include <boost/mpl/placeholders.hpp>
+#include <boost/core/ignore_unused.hpp>
 
 using namespace boost::fusion;
 
@@ -35,4 +36,6 @@ int main()
     vector<unique> l = transform(v, meta_func<lambda_t>());
 
     vector<unique> q = transform(v, meta_func<quote_t>());
+
+    boost::ignore_unused(l, q);
 }
