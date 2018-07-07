@@ -93,10 +93,9 @@ presents only those elements for which its predicate evaluates to
 [heading Template parameters]
 
 [table
-    [[Parameter]            [Description]               [Default]]
-    [[`Sequence`]           [A __forward_sequence__]    []]
-    [[`Pred`]               [Unary Metafunction
-                             returning an `mpl::bool_`] []]
+    [[Parameter]            [Description]                       [Default]]
+    [[`Sequence`]           [A __forward_sequence__]            []]
+    [[`Pred`]               [A unary __mpl_lambda_expression__] []]
 ]
 
 [heading Model of]
