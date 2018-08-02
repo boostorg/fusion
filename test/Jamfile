@@ -257,6 +257,7 @@ project
     [ run sequence/swap.cpp ]
 
     [ compile support/is_sequence.cpp ]
+    [ compile support/is_view.cpp ]
     [ compile support/pair_deque.cpp ]
     [ compile support/pair_list.cpp ]
     [ compile support/pair_map.cpp ]

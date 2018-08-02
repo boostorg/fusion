@@ -43,6 +43,7 @@ main()
     empty_struct empty;
     {
         BOOST_MPL_ASSERT((traits::is_view<adapted::empty_struct>));
+        BOOST_STATIC_ASSERT(traits::is_view<adapted::empty_struct>::value);
         adapted::empty_struct e(empty);
 
         std::cout << e << std::endl;
