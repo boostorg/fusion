@@ -91,5 +91,6 @@ void only_unused()
     BOOST_STATIC_ASSERT((sizeof(test_unused(0)) == sizeof(boost::type_traits::no_type)));
 
     boost::fusion::unused_type my_unused;
+    (void)my_unused;
     BOOST_STATIC_ASSERT((sizeof(test_unused(my_unused)) == sizeof(boost::type_traits::yes_type)));
 }
