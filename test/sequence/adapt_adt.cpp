@@ -302,7 +302,7 @@ main()
         BOOST_MPL_ASSERT((
             boost::is_same<
                 boost::fusion::result_of::back<ns::point const>::type::type,
-                const int
+                int
             >));
     }
 
