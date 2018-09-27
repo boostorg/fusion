@@ -99,7 +99,9 @@ namespace std
 
 // Workaround for compiler which doesn't compile decltype(expr)::type.
 // It expects decltype(expr) deduced as mpl::identity<T>.
-#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1913)) || BOOST_WORKAROUND(BOOST_GCC, < 40700)
+#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1913)) || \
+    BOOST_WORKAROUND(BOOST_GCC, < 40700) || \
+    defined(BOOST_CLANG) && (__clang_major__ == 3 && __clang_minor__ == 0)
 #   include <boost/mpl/identity.hpp>
 #   define BOOST_FUSION_IDENTIFIED_TYPE(parenthesized_expr) \
         boost::mpl::identity<decltype parenthesized_expr>::type::type
