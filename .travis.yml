@@ -184,9 +184,11 @@ install:
 
   - git submodule init libs/array
   - git submodule init libs/assert
+  - git submodule init libs/bimap
   - git submodule init libs/bind
   - git submodule init libs/concept_check
   - git submodule init libs/config
+  - git submodule init libs/container
   - git submodule init libs/container_hash
   - git submodule init libs/conversion
   - git submodule init libs/core
@@ -195,6 +197,7 @@ install:
   - git submodule init libs/function_types
   - git submodule init libs/functional
   - git submodule init libs/integer
+  - git submodule init libs/intrusive
   - git submodule init libs/iterator
   - git submodule init libs/lambda
   - git submodule init libs/move

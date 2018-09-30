@@ -134,6 +134,9 @@ project
     [ run sequence/set.cpp ]
     [ run sequence/single_view.cpp ]
     [ run sequence/std_pair.cpp ]
+    [ run sequence/boost_bimap_pair.cpp ]
+    [ run sequence/boost_compressed_pair.cpp ]
+    [ run sequence/boost_container_pair.cpp ]
     [ run sequence/boost_array.cpp ]
     [ run sequence/array.cpp ]
     [ run sequence/std_array.cpp : :
