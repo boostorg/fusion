@@ -42,6 +42,7 @@ main()
 
     {
         BOOST_MPL_ASSERT_NOT((traits::is_view<empty_struct>));
+        BOOST_STATIC_ASSERT(!traits::is_view<empty_struct>::value);
         empty_struct e;
 
         std::cout << e << std::endl;

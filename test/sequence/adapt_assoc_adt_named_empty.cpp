@@ -43,6 +43,7 @@ main()
     empty_adt empty;
     {
         BOOST_MPL_ASSERT((traits::is_view<adapted::empty_adt>));
+        BOOST_STATIC_ASSERT(traits::is_view<adapted::empty_adt>::value);
         adapted::empty_adt e(empty);
 
         std::cout << e << std::endl;
