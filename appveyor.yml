@@ -73,7 +73,7 @@ install:
   - git submodule init libs/typeof
   - git submodule init libs/utility
 
-  - git submodule init tools/build
+  - git submodule init libs/headers tools/boost_install tools/build
   - git submodule update
   - xcopy /s /e /q %APPVEYOR_BUILD_FOLDER% libs\fusion
   - cmd /c bootstrap

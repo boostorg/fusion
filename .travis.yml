@@ -211,7 +211,7 @@ install:
   - git submodule init libs/typeof
   - git submodule init libs/utility
 
-  - git submodule init tools/build
+  - git submodule init libs/headers tools/boost_install tools/build
   - git submodule update
 
   - rm -rf libs/fusion
