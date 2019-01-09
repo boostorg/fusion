@@ -21,32 +21,48 @@ matrix:
     - env: BOGUS_JOB=true
 
   include:
-      # trusty default (gcc 4.8.4)
     - os: linux
-      env: TOOLSET=gcc CXXSTD=03,11,1y
-
-    - os: linux
+      dist: xenial
       env: TOOLSET=gcc-4.4 CXXSTD=98,0x
       addons:
         apt:
           packages:
             - g++-4.4
+          sources:
+            - ubuntu-toolchain-r-test
+
+    #- os: linux
+    #  dist: xenial
+    #  env: TOOLSET=gcc-4.5 CXXSTD=03,0x
+    #  addons:
+    #    apt:
+    #      packages:
+    #        - g++-4.5
+    #      sources:
+    #        - ubuntu-toolchain-r-test
 
     - os: linux
+      dist: xenial
       env: TOOLSET=gcc-4.6 CXXSTD=03,0x
       addons:
         apt:
           packages:
             - g++-4.6
+          sources:
+            - ubuntu-toolchain-r-test
 
     - os: linux
+      dist: xenial
       env: TOOLSET=gcc-4.7 CXXSTD=03,11
       addons:
         apt:
           packages:
             - g++-4.7
+          sources:
+            - ubuntu-toolchain-r-test
 
     - os: linux
+      dist: xenial
       env: TOOLSET=gcc-4.8 CXXSTD=03,11,1y
       addons:
         apt:
@@ -56,7 +72,8 @@ matrix:
             - ubuntu-toolchain-r-test
 
     - os: linux
-      env: TOOLSET=gcc-4.9 CXXSTD=03,11,1y
+      dist: xenial
+      env: TOOLSET=gcc-4.9 CXXSTD=03,11,14
       addons:
         apt:
           packages:
@@ -65,7 +82,8 @@ matrix:
             - ubuntu-toolchain-r-test
 
     - os: linux
-      env: TOOLSET=gcc-5 CXXSTD=03,11,14,1z
+      dist: xenial
+      env: TOOLSET=gcc-5 CXXSTD=03,11,14,17
       addons:
         apt:
           packages:
@@ -74,7 +92,8 @@ matrix:
             - ubuntu-toolchain-r-test
 
     - os: linux
-      env: TOOLSET=gcc-6 CXXSTD=03,11,14,1z
+      dist: xenial
+      env: TOOLSET=gcc-6 CXXSTD=03,11,14,17
       addons:
         apt:
           packages:
@@ -83,7 +102,8 @@ matrix:
             - ubuntu-toolchain-r-test
 
     - os: linux
-      env: TOOLSET=gcc-7 CXXSTD=03,11,14,1z
+      dist: xenial
+      env: TOOLSET=gcc-7 CXXSTD=03,11,14,17
       addons:
         apt:
           packages:
@@ -91,87 +111,93 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
 
-      # trusty default (clang 3.9.0)
     - os: linux
-      env: TOOLSET=clang CXXSTD=03,11,14,1z
+      dist: xenial
+      env: TOOLSET=gcc-8 CXXSTD=03,11,14,17,2a
       addons:
         apt:
           packages:
-            - libstdc++-4.9-dev
+            - g++-8
           sources:
             - ubuntu-toolchain-r-test
 
     - os: linux
+      dist: xenial
       env: TOOLSET=clang-3.5 CXXSTD=03,11,14,1z
       addons:
         apt:
           packages:
             - clang-3.5
-            - libstdc++-4.9-dev
-          sources:
-            - ubuntu-toolchain-r-test
 
     - os: linux
+      dist: xenial
       env: TOOLSET=clang-3.6 CXXSTD=03,11,14,1z
       addons:
         apt:
           packages:
             - clang-3.6
-          sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.6
 
     - os: linux
+      dist: xenial
       env: TOOLSET=clang-3.7 CXXSTD=03,11,14,1z
       addons:
         apt:
           packages:
             - clang-3.7
-          sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.7
 
     - os: linux
+      dist: xenial
       env: TOOLSET=clang-3.8 CXXSTD=03,11,14,1z
       addons:
         apt:
           packages:
             - clang-3.8
-            - libstdc++-4.9-dev
-          sources:
-            - ubuntu-toolchain-r-test
 
     - os: linux
+      dist: xenial
       env: TOOLSET=clang-3.9 CXXSTD=03,11,14,1z
       addons:
         apt:
           packages:
             - clang-3.9
-            - libstdc++-4.9-dev
-          sources:
-            - ubuntu-toolchain-r-test
 
     - os: linux
+      dist: xenial
       env: TOOLSET=clang-4.0 CXXSTD=03,11,14,1z
       addons:
         apt:
           packages:
             - clang-4.0
-            - libstdc++-4.9-dev
-          sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-trusty-4.0
 
     - os: linux
-      env: TOOLSET=clang-5.0 CXXSTD=03,11,14,1z,2a
+      dist: xenial
+      env: TOOLSET=clang-5.0 CXXSTD=03,11,14,17,2a
       addons:
         apt:
           packages:
             - clang-5.0
-            - libstdc++-4.9-dev
           sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-trusty-5.0
+            - llvm-toolchain-xenial-5.0
+
+    - os: linux
+      dist: xenial
+      env: TOOLSET=clang-6.0 CXXSTD=03,11,14,17,2a
+      addons:
+        apt:
+          packages:
+            - clang-6.0
+          sources:
+            - llvm-toolchain-xenial-6.0
+
+    - os: linux
+      dist: xenial
+      env: TOOLSET=clang-7.0 CXXSTD=03,11,14,17,2a
+      addons:
+        apt:
+          packages:
+            - clang-7
+          sources:
+            - llvm-toolchain-xenial-7
 
     - os: osx
       env: TOOLSET=clang COMPILER=clang++ CXXSTD=03,11,14,1z
