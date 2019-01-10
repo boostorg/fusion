@@ -36,6 +36,12 @@ environment:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       TOOLSET: msvc-14.1
       CXXSTD: latest
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLSET: clang-win
+      CXXSTD: 14
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLSET: clang-win
+      CXXSTD: 17
 
 install:
   - set BOOST_BRANCH=develop
@@ -73,7 +79,7 @@ install:
   - git submodule init libs/typeof
   - git submodule init libs/utility
 
-  - git submodule init tools/build
+  - git submodule init libs/headers tools/boost_install tools/build
   - git submodule update
   - xcopy /s /e /q %APPVEYOR_BUILD_FOLDER% libs\fusion
   - cmd /c bootstrap
