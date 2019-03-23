@@ -40,6 +40,11 @@ namespace boost { namespace fusion
         explicit cons_iterator(cons_type& in_cons) BOOST_NOEXCEPT
             : cons(in_cons) {}
 
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        cons_iterator(const cons_iterator& other) BOOST_NOEXCEPT
+            : iterator_base<cons_iterator<Cons> >(other),
+            cons(other.cons) {}
+
         cons_type& cons;
 
     private:
