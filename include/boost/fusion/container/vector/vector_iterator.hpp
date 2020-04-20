@@ -41,6 +41,10 @@ namespace boost { namespace fusion
         vector_iterator(Vector& in_vec)
             : vec(in_vec) {}
 
+        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+        vector_iterator(vector_iterator const& rhs)
+            : vec(rhs.vec) {}
+
         Vector& vec;
 
     private:
