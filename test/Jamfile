@@ -42,6 +42,7 @@ project
     [ run algorithm/insert.cpp ]
     [ run algorithm/insert_range.cpp ]
     [ run algorithm/iter_fold.cpp ]
+    [ run algorithm/indexed_for_each.cpp ] #TODO
     [ run algorithm/move.cpp : :
         : [ requires cxx11_rvalue_references ] ]
     [ run algorithm/none.cpp ]

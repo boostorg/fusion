@@ -15,26 +15,45 @@
 #include <boost/fusion/iterator/deref.hpp>
 #include <boost/fusion/iterator/distance.hpp>
 #include <boost/fusion/support/category_of.hpp>
+#include <boost/type_traits/integral_constant.hpp>
+#include <boost/utility/declval.hpp>
 #include <boost/mpl/bool.hpp>
 
 namespace boost { namespace fusion {
 namespace detail
 {
-    template <typename First, typename Last, typename F>
+    template<typename T, typename F, typename I, typename = decltype(boost::declval<F>()(boost::declval<T>(), I{}))>
     BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline void
-    for_each_linear(First const&, Last const&, F const&, mpl::true_)
+    for_each_apply(T&& value, F&& f, I i, long)
+    {
+        std::forward<F>(f)(std::forward<T>(value), i); // TODO: disable rvalue && forward
+    }
+
+    template<typename T, typename F, typename I>
+    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+    inline void
+    for_each_apply(T&& value, F&& f, I /*i*/, int)
+    {
+        std::forward<F>(f)(std::forward<T>(value));
+    }
+
+    template <typename First, typename Last, typename F, typename I>
+    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+    inline void
+    for_each_linear(First const&, Last const&, F const&, mpl::true_, I /*i*/)
     {
     }
 
-    template <typename First, typename Last, typename F>
+    template <typename First, typename Last, typename F, typename I = boost::integral_constant<int, 0>>
     BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline void
-    for_each_linear(First const& first, Last const& last, F& f, mpl::false_)
+    for_each_linear(First const& first, Last const& last, F& f, mpl::false_, I i)
     {
-        f(*first);
+        for_each_apply(*first, f, i, 1L);
         detail::for_each_linear(fusion::next(first), last, f, 
-                                result_of::equal_to<typename result_of::next<First>::type, Last>());
+                                result_of::equal_to<typename result_of::next<First>::type, Last>(),
+                                boost::integral_constant<int, I::value + 1>{});
     }
 
 
@@ -49,74 +68,75 @@ namespace detail
                                 , f
                                 , result_of::equal_to<
                                 typename result_of::begin<Sequence>::type
-                                , typename result_of::end<Sequence>::type>());
+                                , typename result_of::end<Sequence>::type>()
+                                , boost::integral_constant<int, 0>{});
     }
 
-    template<int N>
+    template<int N, int S=0>
     struct for_each_unrolled
     {
         template<typename I0, typename F>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static void call(I0 const& i0, F& f)
         {
-            f(*i0);
+            for_each_apply(*i0, f, boost::integral_constant<int, S + 0>{}, 1L);
             typedef typename result_of::next<I0>::type I1;
             I1 i1(fusion::next(i0));
-            f(*i1);
+            for_each_apply(*i1, f, boost::integral_constant<int, S + 1>{}, 1L);
             typedef typename result_of::next<I1>::type I2;
             I2 i2(fusion::next(i1));
-            f(*i2);
+            for_each_apply(*i2, f, boost::integral_constant<int, S + 2>{}, 1L);
             typedef typename result_of::next<I2>::type I3;
             I3 i3(fusion::next(i2));
-            f(*i3);
-            for_each_unrolled<N-4>::call(fusion::next(i3), f);
+            for_each_apply(*i3, f, boost::integral_constant<int, S + 3>{}, 1L);
+            for_each_unrolled<N-4, S+4>::call(fusion::next(i3), f);
         }
     };
 
-    template<>
-    struct for_each_unrolled<3>
+    template<int S>
+    struct for_each_unrolled<3, S>
     {
         template<typename I0, typename F>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static void call(I0 const& i0, F& f)
         {
-            f(*i0);
+            for_each_apply(*i0, f, boost::integral_constant<int, S + 0>{}, 1L);
             typedef typename result_of::next<I0>::type I1;
             I1 i1(fusion::next(i0));
-            f(*i1);
+            for_each_apply(*i1, f, boost::integral_constant<int, S + 1>{}, 1L);
             typedef typename result_of::next<I1>::type I2;
             I2 i2(fusion::next(i1));
-            f(*i2);
+            for_each_apply(*i2, f, boost::integral_constant<int, S + 2>{}, 1L);
         }
     };
 
-    template<>
-    struct for_each_unrolled<2>
+    template<int S>
+    struct for_each_unrolled<2, S>
     {
         template<typename I0, typename F>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static void call(I0 const& i0, F& f)
         {
-            f(*i0);
+            for_each_apply(*i0, f, boost::integral_constant<int, S + 0>{}, 1L);
             typedef typename result_of::next<I0>::type I1;
             I1 i1(fusion::next(i0));
-            f(*i1);
+            for_each_apply(*i1, f, boost::integral_constant<int, S + 1>{}, 1L);
         }
     };
 
-    template<>
-    struct for_each_unrolled<1>
+    template<int S>
+    struct for_each_unrolled<1, S>
     {
         template<typename I0, typename F>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
         static void call(I0 const& i0, F& f)
         {
-            f(*i0);
+            for_each_apply(*i0, f, boost::integral_constant<int, S + 0>{}, 1L);
         }
     };
 
-    template<>
-    struct for_each_unrolled<0>
+    template<int S>
+    struct for_each_unrolled<0, S>
     {
         template<typename It, typename F>
         BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
