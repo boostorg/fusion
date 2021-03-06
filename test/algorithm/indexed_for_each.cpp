@@ -12,20 +12,25 @@
 #include <boost/fusion/sequence/comparison/equal_to.hpp>
 #include <boost/fusion/algorithm/iteration/for_each.hpp>
 #include <boost/mpl/vector_c.hpp>
+#include <boost/static_assert.hpp>
 
 struct print
 {
     template <typename T, typename I>
     void operator()(T const& v, I) const
     {
-        static_assert((I::value >= 0), "");
+        BOOST_STATIC_ASSERT(I::value >= 0);
         std::cout << "[ " << I::value << " : " << v << " ] ";
     }
 };
 
 struct increment_control
 {
-  int& control;
+    int& control;
+
+    increment_control(int& control)
+        : control(control)
+    {}
 
     template<typename T>
     void operator()(T const& val, int i)
@@ -71,24 +76,28 @@ main()
     }
 
     {
-        vector<> unrolled = {};
-        for_each(unrolled, increment_control{control});
+        typedef vector<> vector_type;
+        vector_type unrolled;
+        for_each(unrolled, increment_control(control));
         BOOST_TEST_EQ(control, 0);
 
-        list<> linear = {};
-        for_each(linear, increment_control{control});
+        typedef list<> list_type;
+        list_type linear;
+        for_each(linear, increment_control(control));
         BOOST_TEST_EQ(control, 0);
     }
 
     {
         control = 0;
-        vector<int> unrolled = {};
-        for_each(unrolled, increment_control{control});
+        typedef vector<int> vector_type;
+        vector_type unrolled ;
+        for_each(unrolled, increment_control(control));
         BOOST_TEST_EQ(control, 1);
 
         control = 0;
-        list<int> linear = {};
-        for_each(linear, increment_control{control});
+        typedef list<int> list_type;
+        list_type linear ;
+        for_each(linear, increment_control(control));
         BOOST_TEST_EQ(control, 1);
     }
 
@@ -96,13 +105,13 @@ main()
         control = 0;
         typedef vector<int, char, double, char const*> vector_type;
         vector_type unrolled(1, 'x', 3.3, "Ruby");
-        for_each(unrolled, increment_control{control});
+        for_each(unrolled, increment_control(control));
         BOOST_TEST_EQ(control, 4);
 
         control = 0;
         typedef list<int, char, double, char const*> list_type;
         list_type linear(1, 'x', 3.3, "Ruby");
-        for_each(linear, increment_control{control});
+        for_each(linear, increment_control(control));
         BOOST_TEST_EQ(control, 4);
     }
 
@@ -110,7 +119,7 @@ main()
         char const ruby_long[] = "RubyLong";
         typedef vector<int, char, double, char const*> vector_type;
         vector_type v(1, 'x', 3.3, ruby_long);
-        for_each(v, apply_index_addition{});
+        for_each(v, apply_index_addition());
         BOOST_TEST_EQ(v, vector_type(1, 'y', 5.3, ruby_long + 3));
         std::cout << v << std::endl;
     }
