@@ -8,6 +8,7 @@
 #include <boost/fusion/container/vector/vector.hpp>
 #include <boost/fusion/container/list/list.hpp>
 #include <boost/fusion/adapted/mpl.hpp>
+#include <boost/fusion/adapted/array.hpp>
 #include <boost/fusion/sequence/io/out.hpp>
 #include <boost/fusion/sequence/comparison/equal_to.hpp>
 #include <boost/fusion/algorithm/iteration/for_each.hpp>
@@ -56,6 +57,18 @@ struct mutable_apply_index_addition : apply_index_addition
     void operator()(T& v, int i)
     {
         return apply_index_addition::operator()(v, i);
+    }
+};
+
+template<typename V>
+struct apply_compile_time_index
+{
+    template <typename T, typename I>
+    void operator()(T, I) const
+    {
+        using boost::mpl::at;
+        typedef typename at<V,I>::type element_type;
+        BOOST_STATIC_ASSERT(T::value == element_type::value);
     }
 };
 
@@ -116,6 +129,13 @@ main()
     }
 
     {
+        control = 0;
+        int array[100] = {};
+        for_each(array, increment_control(control));
+        BOOST_TEST_EQ(control, 100);
+    }
+
+    {
         char const ruby_long[] = "RubyLong";
         typedef vector<int, char, double, char const*> vector_type;
         vector_type v(1, 'x', 3.3, ruby_long);
@@ -136,6 +156,12 @@ main()
     {
         typedef vector_c<int, 2, 3, 4, 5, 6> mpl_vec;
         fusion::for_each(mpl_vec(), print());
+        std::cout << std::endl;
+    }
+
+    {
+        typedef vector_c<int, 45, 1, 34, 8, 95> mpl_vec;
+        fusion::for_each(mpl_vec(), apply_compile_time_index<mpl_vec>());
         std::cout << std::endl;
     }
 
