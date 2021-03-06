@@ -9,6 +9,18 @@
 #define BOOST_FUSION_FOR_EACH_FWD_HPP_INCLUDED
 
 #include <boost/fusion/support/config.hpp>
+#include <boost/config.hpp>
+
+#if defined(BOOST_NO_CXX11_DECLTYPE)
+# if defined(BOOST_FUSION_HAS_INDEXED_FOREACH)
+#   undef BOOST_FUSION_HAS_INDEXED_FOREACH
+# endif
+#else
+# if !defined(BOOST_FUSION_HAS_INDEXED_FOREACH)
+#   define BOOST_FUSION_HAS_INDEXED_FOREACH
+# endif
+#endif
+
 #include <boost/fusion/support/is_sequence.hpp>
 #include <boost/core/enable_if.hpp>
 
