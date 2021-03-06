@@ -23,6 +23,7 @@ namespace boost { namespace fusion {
 namespace detail
 {
 #if defined(BOOST_FUSION_HAS_INDEXED_FOREACH)
+#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     template<typename T, typename F, typename I, typename = decltype(boost::declval<F>()(boost::declval<T>(), I{}))>
     BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline void
@@ -30,8 +31,26 @@ namespace detail
     {
         f(value, i);
     }
+
+    template<typename T, typename F, typename I, typename = decltype(boost::declval<F>()(boost::declval<T>(), I{}))>
+    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+    inline void
+    for_each_apply(T const& value, F& f, I i, long)
+    {
+        f(value, i);
+    }
+#else
+    template<typename T, typename F, typename I, typename = decltype(boost::declval<F>()(boost::declval<T>(), I{}))>
+    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+    inline void
+    for_each_apply(T&& value, F& f, I i, long)
+    {
+        f(std::forward<T>(value), i);
+    }
+#endif
 #endif
 
+#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     template<typename T, typename F, typename I>
     BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
     inline void
@@ -47,6 +66,15 @@ namespace detail
     {
         f(value);
     }
+#else
+    template<typename T, typename F, typename I>
+    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+    inline void
+    for_each_apply(T&& value, F& f, I /*i*/, int)
+    {
+        f(std::forward<T>(value));
+    }
+#endif
 
     template <typename First, typename Last, typename F, typename I>
     BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
