@@ -240,6 +240,11 @@ project
     [ compile sequence/github-159.cpp ]
     [ run sequence/github-176.cpp ]
 
+    [ run sequence/pfr.cpp ]
+    [ run sequence/pfr_empty.cpp ]
+    [ run sequence/tpl_pfr.cpp ]
+    [ run sequence/tpl_pfr_empty.cpp ]
+
     [ compile sequence/size.cpp ]
 
     [ run functional/fused.cpp ]

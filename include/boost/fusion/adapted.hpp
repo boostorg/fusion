@@ -23,4 +23,10 @@
 #include <boost/fusion/adapted/std_tuple.hpp>
 #endif
 
+// The boost pfr library only supports implementations
+// using C++14 standard at least
+#if !defined(BOOST_FUSION_NO_PFR)
+#include <boost/fusion/adapted/pfr.hpp>
+#endif
+
 #endif
