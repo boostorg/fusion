@@ -240,10 +240,14 @@ project
     [ compile sequence/github-159.cpp ]
     [ run sequence/github-176.cpp ]
 
-    [ run sequence/pfr.cpp ]
-    [ run sequence/pfr_empty.cpp ]
-    [ run sequence/tpl_pfr.cpp ]
-    [ run sequence/tpl_pfr_empty.cpp ]
+    [ run sequence/pfr.cpp : :
+        : [ requires cxx14_constexpr ] ]
+    [ run sequence/pfr_empty.cpp : :
+        : [ requires cxx14_constexpr ] ]
+    [ run sequence/tpl_pfr.cpp : :
+        : [ requires cxx14_constexpr ] ]
+    [ run sequence/tpl_pfr_empty.cpp : :
+        : [ requires cxx14_constexpr ] ]
 
     [ compile sequence/size.cpp ]
 
