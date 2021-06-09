@@ -1,12 +1,9 @@
 # Copyright 2018 Mike Dev
 # Distributed under the Boost Software License, Version 1.0.
 # See accompanying file LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt
-#
-# Partial (add_subdirectory only) and experimental CMake support
-# Subject to change; please do not rely on the contents of this file yet
 
-cmake_minimum_required(VERSION 3.5)
-project(BoostFusion LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.5...3.20)
+project(boost_fusion VERSION "${BOOST_SUPERPROJECT_VERSION}" LANGUAGES CXX)
 
 add_library(boost_fusion INTERFACE)
 add_library(Boost::fusion ALIAS boost_fusion)
