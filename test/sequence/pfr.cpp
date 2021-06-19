@@ -41,19 +41,8 @@ namespace ns {
         namespaced_type::integer z;
     };
 
-    struct foo
-    {
-        int x;
-    };
-
-    struct bar
-    {
-        foo foo_;
-        int y;
-    };
-
     // Testing non-constexpr compatible types
-#ifdef BOOST_PFR_USE_CPP17
+#ifdef BOOST_PFR_USE_CPP17 != 0
     struct employee {
         std::string name;
         std::string nickname;
@@ -62,9 +51,7 @@ namespace ns {
 }
 
 BOOST_FUSION_ADAPT_PFR(ns::point);
-BOOST_FUSION_ADAPT_PFR(ns::foo); // TODO check in C++14
-BOOST_FUSION_ADAPT_PFR(ns::bar);
-#ifdef BOOST_PFR_USE_CPP17
+#ifdef BOOST_PFR_USE_CPP17 != 0
 BOOST_FUSION_ADAPT_PFR(ns::employee);
 #endif // BOOST_PFR_USE_CPP17
 
@@ -153,18 +140,7 @@ main()
                 , mpl::front<ns::point>::type>));
     }
 
-#if 0
-    { // TODO: resolve it
-        fusion::vector<int, float> v1(4, 2.f);
-        ns::bar v2 = {{5}, 3};
-        BOOST_TEST(v1 < v2);
-        BOOST_TEST(v1 <= v2);
-        BOOST_TEST(v2 > v1);
-        BOOST_TEST(v2 >= v1);
-    }
-#endif
-
-#ifdef BOOST_PFR_USE_CPP17
+#ifdef BOOST_PFR_USE_CPP17 != 0
     {
         ns::employee emp{"John Doe", "jdoe"};
         std::cout << at_c<0>(emp) << std::endl;
