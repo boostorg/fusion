@@ -42,7 +42,7 @@ namespace ns {
     };
 
     // Testing non-constexpr compatible types
-#ifdef BOOST_PFR_USE_CPP17 != 0
+#if BOOST_PFR_USE_CPP17 != 0
     struct employee {
         std::string name;
         std::string nickname;
@@ -51,7 +51,7 @@ namespace ns {
 }
 
 BOOST_FUSION_ADAPT_PFR(ns::point);
-#ifdef BOOST_PFR_USE_CPP17 != 0
+#if BOOST_PFR_USE_CPP17 != 0
 BOOST_FUSION_ADAPT_PFR(ns::employee);
 #endif // BOOST_PFR_USE_CPP17
 
@@ -140,7 +140,7 @@ main()
                 , mpl::front<ns::point>::type>));
     }
 
-#ifdef BOOST_PFR_USE_CPP17 != 0
+#if BOOST_PFR_USE_CPP17 != 0
     {
         ns::employee emp{"John Doe", "jdoe"};
         std::cout << at_c<0>(emp) << std::endl;
