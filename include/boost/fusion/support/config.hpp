@@ -127,18 +127,4 @@ namespace boost { namespace fusion { namespace detail
 #   define BOOST_FUSION_NOEXCEPT_ON_DEFAULTED BOOST_NOEXCEPT
 #endif
 
-// Reminder:
-//  * MSVC++ 14.2 _MSC_VER == 1927 <- Loophole is known to work (Visual Studio ????)
-//  * MSVC++ 14.1 _MSC_VER == 1916 <- Loophole is known to NOT work (Visual Studio 2017)
-//  * MSVC++ 14.0 _MSC_VER == 1900 (Visual Studio 2015)
-//  * MSVC++ 12.0 _MSC_VER == 1800 (Visual Studio 2013)
-
-#if defined(_MSC_VER)
-#   if !defined(_MSVC_LANG) || _MSC_VER <= 1900
-#       define BOOST_FUSION_NO_PFR
-#   endif
-#elif __cplusplus < 201402L
-#   define BOOST_FUSION_NO_PFR
-#endif
-
 #endif
