@@ -9,7 +9,7 @@
 #define BOOST_FUSION_ADAPTED_PFR_DETAIL_AT_IMPL_HPP
 
 #include <boost/fusion/support/config.hpp>
-#include <boost/pfr.hpp>
+#include <boost/pfr/core.hpp>
 #include <utility>
 #include <boost/mpl/if.hpp>
 #include <boost/fusion/support/detail/access.hpp>

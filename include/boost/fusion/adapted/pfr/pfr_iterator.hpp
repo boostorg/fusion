@@ -15,7 +15,7 @@
 #include <boost/fusion/support/detail/access.hpp>
 #include <boost/mpl/int.hpp>
 #include <boost/mpl/if.hpp>
-#include <boost/pfr.hpp>
+#include <boost/pfr/core.hpp>
 #include <utility>
 
 namespace boost { namespace fusion

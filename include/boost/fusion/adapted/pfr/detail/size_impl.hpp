@@ -9,7 +9,7 @@
 #define BOOST_FUSION_ADAPTED_PFR_DETAIL_VIEW_IMPL_HPP
 
 #include <boost/fusion/support/config.hpp>
-#include <boost/pfr.hpp>
+#include <boost/pfr/core.hpp>
 #include <boost/mpl/int.hpp>
 #include <boost/type_traits/remove_const.hpp>
 

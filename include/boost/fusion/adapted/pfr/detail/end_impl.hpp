@@ -11,7 +11,7 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/fusion/adapted/pfr/pfr_iterator.hpp>
 #include <boost/type_traits/remove_const.hpp>
-#include <boost/pfr.hpp>
+#include <boost/pfr/core.hpp>
 
 namespace boost { namespace fusion
 {

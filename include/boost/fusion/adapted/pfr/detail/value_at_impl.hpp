@@ -9,7 +9,7 @@
 #define BOOST_FUSION_ADAPTED_PFR_DETAIL_VALUE_AT_IMPL_HPP
 
 #include <boost/fusion/support/config.hpp>
-#include <boost/pfr.hpp>
+#include <boost/pfr/core.hpp>
 
 namespace boost { namespace fusion
 {

@@ -68,6 +68,8 @@ project
     [ run algorithm/flatten.cpp ]
     [ compile algorithm/ticket-5490.cpp ]
 
+    [ compile include/adapted.cpp ]
+
     [ run sequence/as_deque.cpp ]
     [ run sequence/as_list.cpp ]
     [ run sequence/as_map.cpp ]
