@@ -68,6 +68,8 @@ project
     [ run algorithm/flatten.cpp ]
     [ compile algorithm/ticket-5490.cpp ]
 
+    [ compile include/adapted.cpp ]
+
     [ run sequence/as_deque.cpp ]
     [ run sequence/as_list.cpp ]
     [ run sequence/as_map.cpp ]
@@ -239,6 +241,15 @@ project
     [ run sequence/flatten_view.cpp ]
     [ compile sequence/github-159.cpp ]
     [ run sequence/github-176.cpp ]
+
+    [ run sequence/pfr.cpp : :
+        : <define>BOOST_PFR_USE_LOOPHOLE=0 [ requires cxx14_constexpr ] ]
+    [ run sequence/pfr_empty.cpp : :
+        : <define>BOOST_PFR_USE_LOOPHOLE=0 [ requires cxx14_constexpr ] ]
+    [ run sequence/tpl_pfr.cpp : :
+        : <define>BOOST_PFR_USE_LOOPHOLE=0 [ requires cxx14_constexpr ] ]
+    [ run sequence/tpl_pfr_empty.cpp : :
+        : <define>BOOST_PFR_USE_LOOPHOLE=0 [ requires cxx14_constexpr ] ]
 
     [ compile sequence/size.cpp ]
 
