@@ -18,7 +18,6 @@
 #include <boost/fusion/adapted/pfr/detail/size_impl.hpp>
 #include <boost/fusion/adapted/pfr/detail/value_at_impl.hpp>
 #include <boost/fusion/adapted/pfr/pfr_iterator.hpp>
-#include <boost/fusion/adapted/pfr/tag_of.hpp>
 #include <boost/fusion/adapted/pfr/adapt_pfr.hpp>
 
 #endif //BOOST_FUSION_ADAPTED_PFR_HPP
