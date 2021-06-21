@@ -19,11 +19,6 @@
 #include <boost/fusion/adapted/pfr/detail/size_impl.hpp>
 #include <boost/fusion/adapted/pfr/detail/value_at_impl.hpp>
 
-namespace boost { namespace fusion
-{
-  struct pfr_tag;
-}}
-
 #define BOOST_FUSION_ADAPT_TPL_PFR(TEMPLATE_PARAMS_SEQ,NAME_SEQ)             \
      BOOST_FUSION_ADAPT_PFR_BASE(                                            \
          (1)TEMPLATE_PARAMS_SEQ,                                             \
