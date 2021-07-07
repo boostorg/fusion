@@ -120,6 +120,9 @@ For any Forward Sequence s the following invariants always hold:
 [heading Models]
 
 * __std_pair__
+* __structured_pair__
+* __container_pair__
+* __compressed_pair__
 * __boost_array__
 * __vector__
 * __cons__
@@ -193,6 +196,9 @@ are not defined in __forward_sequence__.
 [heading Models]
 
 * __std_pair__
+* __structured_pair__
+* __container_pair__
+* __compressed_pair__
 * __boost_array__
 * __vector__
 * __map__
@@ -281,6 +287,9 @@ are not defined in __bidirectional_sequence__.
 [heading Models]
 
 * __std_pair__
+* __structured_pair__
+* __container_pair__
+* __compressed_pair__
 * __boost_array__
 * __vector__
 * __map__
