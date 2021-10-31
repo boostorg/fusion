@@ -713,11 +713,11 @@ Returns the M-th element from the beginning of the sequence.
 [heading Synopsis]
 
     template <typename M, typename Sequence>
-    typename __result_of_at__<Sequence, N>::type
+    typename __result_of_at__<Sequence, M>::type
     at(Sequence& seq);
 
     template <typename M, typename Sequence>
-    typename __result_of_at__<Sequence const, N>::type
+    typename __result_of_at__<Sequence const, M>::type
     at(Sequence const& seq);
 
 [heading Parameters]
