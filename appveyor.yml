@@ -10,21 +10,8 @@ shallow_clone: true
 environment:
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLSET: msvc-9.0
+      TOOLSET: msvc-9.0,msvc-10.0,msvc-11.0,msvc-12.0
       ADDRMD: 32
-      CXXSTD: latest # fake
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLSET: msvc-10.0
-      ADDRMD: 32
-      CXXSTD: latest # fake
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLSET: msvc-11.0
-      ADDRMD: 32
-      CXXSTD: latest # fake
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLSET: msvc-12.0
-      ADDRMD: 32
-      CXXSTD: latest # fake
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       TOOLSET: msvc-14.0
       CXXSTD: 14
@@ -92,5 +79,4 @@ install:
 build: off
 
 test_script:
-  - if not "%ADDRMD%" == "" set ADDRMD=address-model=%ADDRMD%
-  - b2 -j%NUMBER_OF_PROCESSORS% --hash libs/fusion/test toolset=%TOOLSET% cxxstd=%CXXSTD% %ADDRMD%
+  - b2 -j%NUMBER_OF_PROCESSORS% --hash libs/fusion/test toolset=%TOOLSET% cxxstd=%CXXSTD%
