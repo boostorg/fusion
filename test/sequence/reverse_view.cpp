@@ -1,6 +1,5 @@
 /*=============================================================================
     Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2021-2022 Denis Mikhailov
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying 
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -16,9 +15,6 @@
 #include <boost/fusion/sequence/intrinsic/begin.hpp>
 #include <boost/fusion/sequence/intrinsic/at.hpp>
 #include <boost/fusion/sequence/intrinsic/value_at.hpp>
-#include <boost/fusion/sequence/intrinsic/has_key.hpp>
-#include <boost/fusion/sequence/intrinsic/at_key.hpp>
-#include <boost/fusion/sequence/intrinsic/value_at_key.hpp>
 #include <boost/fusion/iterator/next.hpp>
 #include <boost/fusion/iterator/prior.hpp>
 #include <boost/fusion/iterator/deref.hpp>
@@ -119,7 +115,7 @@ main()
                    && at_key< boost::mpl::int_<0> >(rev) == "new_zero" ));
         BOOST_MPL_ASSERT((boost::mpl::and_<result_of::has_key<view_type, boost::mpl::int_<0> >
                         , boost::mpl::not_<result_of::has_key<view_type, boost::mpl::int_<-1> > > >));
-        BOOST_MPL_ASSERT((boost::is_same<result_of::at_key<view_type, boost::mpl::int_<0> >::type, std::string&>));
+        BOOST_MPL_ASSERT((boost::is_same<result_of::at_key<view_type, boost::mpl::int_<0>>::type, std::string&>));
         BOOST_MPL_ASSERT((boost::is_same<result_of::value_at_key<view_type, boost::mpl::int_<0> >::type, std::string>));
     }
 
