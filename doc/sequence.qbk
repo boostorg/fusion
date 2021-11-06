@@ -133,7 +133,6 @@ For any Forward Sequence s the following invariants always hold:
 * __transform_view__
 * __reverse_view__
 * __zip_view__
-* __identity_view__
 
 [endsect]
 
@@ -202,7 +201,6 @@ are not defined in __forward_sequence__.
 * __iterator_range__ (where adapted sequence is a Bidirectional Sequence)
 * __transform_view__ (where adapted sequence is a Bidirectional Sequence)
 * __zip_view__       (where adapted sequences are models of Bidirectional Sequence)
-* __identity_view__  (where adapted sequence is a Bidirectional Sequence)
 
 [endsect]
 
@@ -291,7 +289,6 @@ are not defined in __bidirectional_sequence__.
 * __iterator_range__ (where adapted sequence is a Random Access Sequence)
 * __transform_view__ (where adapted sequence is a Random Access Sequence)
 * __zip_view__       (where adapted sequences are models of Random Access Sequence)
-* __identity_view__  (where adapted sequence is a Random Access Sequence)
 
 [endsect]
 
@@ -364,7 +361,6 @@ you can use `__result_of_value_at_key__<S, K>`.]
 * __joint_view__     (where adapted sequences are __associative_sequence__\ s and __forward_sequence__\ s)
 * __reverse_view__   (where adapted sequence is an __associative_sequence__ and a __bidirectional_sequence__)
 * __transform_view__ (where adapted sequence is an __associative_sequence__ and a __forward_sequence__)
-* __identity_view__  (where adapted sequence is an __associative_sequence__ and a __forward_sequence__)
 
 [endsect]
 
