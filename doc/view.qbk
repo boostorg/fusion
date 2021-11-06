@@ -328,9 +328,7 @@ defined in __forward_sequence__.
 The unary version of `transform_view` presents a view of its underlying
 sequence given a unary function object or function pointer. The binary
 version of `transform_view` presents a view of 2 underlying sequences,
-given a binary function object or function pointer. The `transform_view`
-inherits the traversal characteristics (see __traversal_concept__)  of
-its underlying sequence or sequences.
+given a binary function object or function pointer.
 
 [heading Header]
 
@@ -362,9 +360,10 @@ its underlying sequence or sequences.
 
 [heading Model of]
 
-* __forward_sequence__, __bidirectional_sequence__ or
-__random_access_sequence__ depending on the traversal characteristics (see
-__traversal_concept__) of its underlying sequence.
+* A model of __forward_sequence__ if `Sequence` is a __forward_sequence__
+else, __bidirectional_sequence__ if `Sequence` is a __bidirectional_sequence__
+else, __random_access_sequence__ if `Sequence` is a __random_access_sequence__.
+* __associative_sequence__ if `Sequence` implements the __associative_sequence__ model.
 
 [variablelist Notation
     [[`TV`]             [A `transform_view` type]]
@@ -381,9 +380,7 @@ __traversal_concept__) of its underlying sequence.
 [heading Expression Semantics]
 
 Semantics of an expression is defined only where it differs from, or is not
-defined in __forward_sequence__, __bidirectional_sequence__ or
-__random_access_sequence__ depending on the traversal characteristics (see
-__traversal_concept__) of its underlying sequence or sequences.
+defined in the implemented models.
 
 [table
     [[Expression]           [Semantics]]
