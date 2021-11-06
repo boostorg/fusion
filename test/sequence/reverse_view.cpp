@@ -102,6 +102,21 @@ main()
         BOOST_TEST((at_c<2>(rev) == pair2("two")));
         BOOST_TEST((at_c<3>(rev) == pair1("one")));
         BOOST_TEST((at_c<4>(rev) == pair0("zero")));
+        BOOST_TEST(( has_key< boost::mpl::int_<0> >(rev) 
+                  && has_key< boost::mpl::int_<4> >(rev) 
+                 && !has_key< boost::mpl::int_<-1> >(rev) 
+                 && !has_key< boost::mpl::int_<5> >(rev) ));
+        BOOST_TEST((at_key< boost::mpl::int_<0> >(rev) == "zero"));
+        BOOST_TEST((at_key< boost::mpl::int_<1> >(rev) == "one"));
+        BOOST_TEST((at_key< boost::mpl::int_<2> >(rev) == "two"));
+        BOOST_TEST((at_key< boost::mpl::int_<3> >(rev) == "three"));
+        BOOST_TEST((at_key< boost::mpl::int_<4> >(rev) == "four"));
+        BOOST_TEST(( (at_key< boost::mpl::int_<0> >(rev) = "new_zero") == "new_zero"
+                   && at_key< boost::mpl::int_<0> >(rev) == "new_zero" ));
+        BOOST_MPL_ASSERT((boost::mpl::and_<result_of::has_key<view_type, boost::mpl::int_<0> >
+                        , boost::mpl::not_<result_of::has_key<view_type, boost::mpl::int_<-1> > > >));
+        BOOST_MPL_ASSERT((boost::is_same<result_of::at_key<view_type, boost::mpl::int_<0>>::type, std::string&>));
+        BOOST_MPL_ASSERT((boost::is_same<result_of::value_at_key<view_type, boost::mpl::int_<0> >::type, std::string>));
     }
 
     return boost::report_errors();
