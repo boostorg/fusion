@@ -11,7 +11,7 @@
 
 #include <boost/fusion/support/config.hpp>
 #include <boost/fusion/iterator/value_of_data.hpp>
-#include <boost/fusion/view/reverse_view/detail/value_of_impl.hpp>
+#include <boost/fusion/iterator/prior.hpp>
 
 namespace boost { namespace fusion { namespace extension
 {
@@ -21,10 +21,17 @@ namespace boost { namespace fusion { namespace extension
     template <>
     struct value_of_data_impl<reverse_view_iterator_tag>
     {
-        template <typename It>
+        template <typename Iterator>
         struct apply
-          : value_of_impl<reverse_view_iterator_tag>
-        {};
+        {
+            typedef typename
+                result_of::value_of_data<
+                    typename result_of::prior<
+                        typename Iterator::first_type
+                    >::type
+                >::type
+            type;
+        };
     };
 }}}
 

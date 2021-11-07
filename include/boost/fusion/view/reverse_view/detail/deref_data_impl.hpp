@@ -10,7 +10,8 @@
 #define BOOST_FUSION_VIEW_REVERSE_VIEW_DETAIL_DEREF_DATA_IMPL_HPP
 
 #include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/reverse_view/detail/deref_impl.hpp>
+#include <boost/fusion/iterator/deref_data.hpp>
+#include <boost/fusion/iterator/prior.hpp>
 
 namespace boost { namespace fusion { namespace extension
 {
@@ -19,8 +20,26 @@ namespace boost { namespace fusion { namespace extension
 
     template <>
     struct deref_data_impl<reverse_view_iterator_tag>
-    : deref_impl<reverse_view_iterator_tag>
-        {};
+    {
+        template <typename Iterator>
+        struct apply
+        {
+            typedef typename
+                result_of::deref_data<
+                    typename result_of::prior<
+                        typename Iterator::first_type
+                    >::type
+                >::type
+            type;
+
+            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+            static type
+            call(Iterator const& i)
+            {
+                return fusion::deref_data(fusion::prior(i.first));
+            }
+        };
+    };
 }}}
 
 #endif
