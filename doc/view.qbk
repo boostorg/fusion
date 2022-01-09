@@ -363,6 +363,7 @@ given a binary function object or function pointer.
 * __forward_sequence__, __bidirectional_sequence__ or
 __random_access_sequence__ depending on the traversal characteristics (see
 __traversal_concept__) of its underlying sequence or sequences.
+* __associative_sequence__ if underlying sequence implements the __associative_sequence__ model(available only with unary version of `transform_view`).
 
 [variablelist Notation
     [[`TV`]             [A `transform_view` type]]

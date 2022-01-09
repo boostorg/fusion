@@ -23,11 +23,6 @@
 #include <boost/fusion/view/transform_view/detail/value_of_data_impl.hpp>
 #include <boost/fusion/view/transform_view/detail/deref_data_impl.hpp>
 
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
 namespace boost { namespace fusion
 {
     // Unary Version
@@ -49,6 +44,9 @@ namespace boost { namespace fusion
 
         first_type first;
         transform_type f;
+
+        // silence MSVC warning C4512: assignment operator could not be generated
+        BOOST_DELETED_FUNCTION(transform_view_iterator& operator= (transform_view_iterator const&))
     };
 
     // Binary Version
@@ -73,12 +71,11 @@ namespace boost { namespace fusion
         first1_type first1;
         first2_type first2;
         transform_type f;
+
+        // silence MSVC warning C4512: assignment operator could not be generated
+        BOOST_DELETED_FUNCTION(transform_view_iterator2& operator= (transform_view_iterator2 const&))
     };
 }}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
 
 #ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
 namespace std
