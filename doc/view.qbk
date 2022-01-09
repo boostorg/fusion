@@ -360,10 +360,9 @@ given a binary function object or function pointer.
 
 [heading Model of]
 
-* A model of __forward_sequence__ if `Sequence` is a __forward_sequence__
-else, __bidirectional_sequence__ if `Sequence` is a __bidirectional_sequence__
-else, __random_access_sequence__ if `Sequence` is a __random_access_sequence__.
-* __associative_sequence__ if `Sequence` implements the __associative_sequence__ model.
+* __forward_sequence__, __bidirectional_sequence__ or
+__random_access_sequence__ depending on the traversal characteristics (see
+__traversal_concept__) of its underlying sequence or sequences.
 
 [variablelist Notation
     [[`TV`]             [A `transform_view` type]]
