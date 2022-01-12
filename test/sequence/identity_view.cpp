@@ -79,6 +79,15 @@ main()
         BOOST_MPL_ASSERT((boost::is_same<boost::fusion::result_of::value_at_c<xform_type, 0>::type,  boost::mpl::integral_c<int, 5>&& >));
     }
     
+    {
+        typedef vector<int, int, int, int, int> sequence_type;
+        sequence_type seq;
+        identity_view<sequence_type> ident(seq);
+        copy(make_vector(1, 2, 3, 4, 5), ident);
+        std::cout << seq << std::endl;
+        BOOST_TEST((seq == make_vector(1, 2, 3, 4, 5)));
+    }
+    
     /// Associative
     {
         typedef map<
