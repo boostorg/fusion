@@ -8,6 +8,7 @@
 #include <boost/fusion/container/vector/vector.hpp>
 #include <boost/fusion/container/map/map.hpp>
 #include <boost/fusion/container/generation/make_map.hpp>
+#include <boost/fusion/algorithm/auxiliary/copy.hpp>
 #include <boost/fusion/adapted/mpl.hpp>
 #include <boost/fusion/sequence/io/out.hpp>
 #include <boost/fusion/container/generation/make_vector.hpp>
