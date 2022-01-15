@@ -77,7 +77,7 @@ main()
 
         BOOST_TEST((*boost::fusion::advance_c<3>(boost::fusion::begin(xform)) == 8));
         BOOST_TEST((boost::fusion::at_c<2>(xform) == 7));
-        BOOST_MPL_ASSERT((boost::is_same<boost::fusion::result_of::value_at_c<xform_type, 0>::type,  boost::mpl::integral_c<int, 5>&& >));
+        BOOST_MPL_ASSERT((boost::is_same<boost::fusion::result_of::value_at_c<xform_type, 0>::type,  boost::mpl::integral_c<int, 5> >));
     }
     
     {
@@ -153,10 +153,9 @@ main()
         typedef boost::fusion::result_of::next<first>::type second;
         typedef boost::fusion::result_of::next<second>::type third;
 
-        // TODO: why is a boost::fusion::pair<int, char>&& ??
-        BOOST_MPL_ASSERT((boost::is_same<boost::fusion::result_of::value_of<first>::type, boost::fusion::pair<int, char>&& >));
-        BOOST_MPL_ASSERT((boost::is_same<boost::fusion::result_of::value_of<second>::type, boost::fusion::pair<double, std::string>&& >));
-        BOOST_MPL_ASSERT((boost::is_same<boost::fusion::result_of::value_of<third>::type, boost::fusion::pair<abstract, int>&& >));
+        BOOST_MPL_ASSERT((boost::is_same<boost::fusion::result_of::value_of<first>::type, boost::fusion::pair<int, char> >));
+        BOOST_MPL_ASSERT((boost::is_same<boost::fusion::result_of::value_of<second>::type, boost::fusion::pair<double, std::string> >));
+        BOOST_MPL_ASSERT((boost::is_same<boost::fusion::result_of::value_of<third>::type, boost::fusion::pair<abstract, int> >));
     }
 
     {
