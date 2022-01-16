@@ -119,7 +119,7 @@ main()
                    && at_key< boost::mpl::int_<0> >(rev) == "new_zero" ));
         BOOST_MPL_ASSERT((boost::mpl::and_<result_of::has_key<view_type, boost::mpl::int_<0> >
                         , boost::mpl::not_<result_of::has_key<view_type, boost::mpl::int_<-1> > > >));
-        BOOST_MPL_ASSERT((boost::is_same<result_of::at_key<view_type, boost::mpl::int_<0> >::type, std::string&>));
+        BOOST_MPL_ASSERT((boost::is_same<result_of::at_key<view_type, boost::mpl::int_<0>>::type, std::string&>));
         BOOST_MPL_ASSERT((boost::is_same<result_of::value_at_key<view_type, boost::mpl::int_<0> >::type, std::string>));
     }
 
