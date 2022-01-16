@@ -2,6 +2,7 @@
     Copyright (C) 2001-2011 Joel de Guzman
     Copyright (C) 2006 Dan Marsden
     Copyright (C) 2010 Christopher Schmidt
+    Copyright (c) 2022 Denis Mikhailov
 
     Use, modification and distribution is subject to the Boost Software
     License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
@@ -139,6 +140,89 @@ Linear, exactly `__result_of_size__<Sequence>::value`.
 
 [endsect]
 
+[section pfr_fields]
+
+[important Please read __boost_pfr_lims__ before using this `pfr_fields`. Pay special attention to the SimpleAggregate concept.]
+
+[heading Description]
+For a SimpleAggregate `agg`, `pfr_fields` returns a new sequence
+with elements extracted by using __boost_pfr__.
+
+[heading Synopsis]
+    template<
+        typename SimpleAggregate
+        >
+    typename __result_of_pfr_fields__<SimpleAggregate>::type pfr_fields(
+        SimpleAggregate& agg);
+
+    template<
+        typename SimpleAggregate
+        >
+    typename __result_of_pfr_fields__<SimpleAggregate const>::type pfr_fields(
+        SimpleAggregate const& agg);
+
+[table Parameters
+    [[Parameter][Requirement][Description]]
+    [[`agg`][A model of SimpleAggregate][Operation's argument]]
+]
+
+[heading Expression Semantics]
+    __pfr_fields__(agg);
+
+[*Return type]: A model of __random_access_sequence__
+
+[*Semantics]: Returns a sequence with all elements of `SimpleAggregate`.
+
+[heading Complexity]
+Constant.
+
+[heading Header]
+
+    #include <boost/fusion/algorithm/auxiliary/pfr_fields.hpp>
+    #include <boost/fusion/include/pfr_fields.hpp>
+
+[note This algorithm won't defined by inclusion of 'boost/fusion/algorithm/auxiliary.hpp' or 'boost/fusion/algorithm.hpp'. ]
+
+[heading Example]
+
+    struct some_person {       // SimpleAggregate
+        std::string name;
+        unsigned birth_year;
+    };
+
+    some_person val{"Edgar Allan Poe", 1809};
+    std::cout << __pfr_fields__(val) << std::endl; // (Edgar Allan Poe 1809)
+
+[heading Example]
+
+    struct empty {             // SimpleAggregate
+    };
+
+    struct aggregate : empty { // not a SimpleAggregate
+        std::string name;
+        int age;
+        boost::uuids::uuid uuid;
+    };
+
+    aggregate val{"Edgar Allan Poe", 1809, {}};
+    __pfr_fields__(val); // non-portable behavior
+
+[heading Example]
+
+    using some_person = __vector__< // not a SimpleAggregate
+        std::string
+      , unsigned
+    >;
+
+    some_person val("Edgar Allan Poe", 1809);
+    __pfr_fields__(val); // won't compile
+
+[heading See also]
+
+__boost_pfr__
+
+[endsect]
+
 [endsect]
 
 [section Metafunctions]
@@ -212,6 +296,42 @@ Constant.
 
     #include <boost/fusion/algorithm/auxiliary/move.hpp>
     #include <boost/fusion/include/move.hpp>
+
+[endsect]
+
+[section pfr_fields]
+
+[heading Description]
+A metafunction returning the result type of applying __pfr_fields__.
+
+[heading Synopsis]
+    template <typename SimpleAggregate>
+    struct pfr_fields
+    {
+        typedef __unspecified__ type;
+    };
+
+[table Parameters
+    [[Parameter] [Requirement] [Description]]
+    [[`SimpleAggregate`] [A model of SimpleAggregate from __boost_pfr__] [Operation's argument]]
+]
+
+[heading Expression Semantics]
+    result_of::pfr_fields<SimpleAggregate>::type
+
+[*Return type]: A model of __random_access_sequence__
+
+[*Semantics]: Returns a sequence with all elements of `SimpleAggregate`.
+
+[heading Complexity]
+Constant.
+
+[heading Header]
+
+    #include <boost/fusion/algorithm/auxiliary/pfr_fields.hpp>
+    #include <boost/fusion/include/pfr_fields.hpp>
+
+[note This algorithm won't defined by inclusion of 'boost/fusion/algorithm/auxiliary.hpp' or 'boost/fusion/algorithm.hpp'. ]
 
 [endsect]
 
@@ -2838,8 +2958,6 @@ Constant.
 
     #include <boost/fusion/algorithm/transformation/flatten.hpp>
     #include <boost/fusion/include/flatten.hpp>
-
-[endsect]
 
 [endsect]
 

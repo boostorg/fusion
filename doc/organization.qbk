@@ -61,6 +61,7 @@ link against.
     * transform_view
     * zip_view
     * identity_view
+    * pfr_fields_view
 * container
     * deque
     * list

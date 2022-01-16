@@ -721,4 +721,94 @@ defined in the implemented models.
 
 [endsect]
 
+[section pfr_fields_view]
+
+[important Please read __boost_pfr_lims__ before using this `pfr_fields_view`. Pay special attention to the SimpleAggregate concept.]
+
+[heading Description]
+
+`pfr_fields_view` is a view into a SimpleAggregate as a random access sequence.
+
+[heading Header]
+
+    #include <boost/fusion/view/pfr_fields_view.hpp>
+    #include <boost/fusion/include/pfr_fields_view.hpp>
+
+[note This view won't defined by inclusion of 'boost/fusion/view.hpp'. ]
+
+[heading Synopsis]
+
+    template <typename SimpleAggregate>
+    struct pfr_fields_view;
+
+[heading Template parameters]
+
+[table
+    [[Parameter]            [Description]                                                    [Default]]
+    [[`SimpleAggregate`]    [An user defined structure, satisfied 'SimpleAggregate' concept] []]
+]
+
+[heading Model of]
+
+* __random_access_sequence__
+
+[variablelist Notation
+    [[`P`]              [A `pfr_fields_view` type]]
+    [[`p`, `p2`]        [Instances of `pfr_fields_view`]]
+    [[`a`]              [An instance of `SimpleAggregate`]]
+]
+
+[heading Expression Semantics]
+
+Semantics of an expression is defined only where it differs from, or is not
+defined in __random_access_sequence__.
+
+[table
+    [[Expression]           [Semantics]]
+    [[`P(a)`]               [Creates a `pfr_fields_view` from `a`.]]
+    [[`P(p)`]               [Copy constructs a `pfr_fields_view` from another `pfr_fields_view`, `p`.]]
+    [[`p = p2`]             [Assigns to a `pfr_fields_view`, `p`, from another `pfr_fields_view`, `p2`.]]
+]
+
+[heading Example]
+
+    struct some_person {       // SimpleAggregate
+        std::string name;
+        unsigned birth_year;
+    };
+
+    some_person val{"Edgar Allan Poe", 1809};
+    __pfr_fields_view__<some_person> view(val);
+    std::cout << view << std::endl; // (Edgar Allan Poe 1809)
+
+[heading Example]
+
+    struct empty {             // SimpleAggregate
+    };
+
+    struct aggregate : empty { // not a SimpleAggregate
+        std::string name;
+        int age;
+        boost::uuids::uuid uuid;
+    };
+
+    aggregate val{"Edgar Allan Poe", 1809, {}};
+    __pfr_fields_view__<aggregate> view(val); // non-portable behavior
+
+[heading Example]
+
+    using some_person = __vector__< // not a SimpleAggregate
+        std::string
+      , unsigned
+    >;
+
+    some_person val("Edgar Allan Poe", 1809);
+    __pfr_fields_view__<some_person> view(val); // won't compile
+
+[heading See also]
+
+__boost_pfr__
+
+[endsect]
+
 [endsect]

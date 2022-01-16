@@ -48,6 +48,8 @@
 [def __boost_func_forward__     [@http://www.boost.org/libs/functional/forward Boost.Functional/Forward Library]]
 [def __boost_func_factory__     [@http://www.boost.org/libs/functional/factory Boost.Functional/Factory Library]]
 [def __boost_func_hash__        [@http://www.boost.org/doc/html/hash.html Boost.ContainerHash Library]]
+[def __boost_pfr__              [@http://www.boost.org/doc/html/boost_pfr.html Boost.PFR Library]]
+[def __boost_pfr_lims__         [@http://www.boost.org/doc/html/boost_pfr/limitations_and_configuration.html Boost.PFR Limitations and Configuration]]
 [def __std_pair_doc__           [@http://en.cppreference.com/w/cpp/utility/pair `std::pair`]]
 [def __std_tuple_doc__          [@http://en.cppreference.com/w/cpp/utility/tuple `std::tuple`]]
 [def __std_plus_doc__           [@http://en.cppreference.com/w/cpp/utility/functional/plus `std::plus`]]
@@ -131,6 +133,7 @@
 [def __zip_view__               [link fusion.view.zip_view `zip_view`]]
 [def __flatten_view__           [link fusion.view.flatten_view `flatten_view`]]
 [def __identity_view__          [link fusion.view.identity_view `identity_view`]]
+[def __pfr_fields_view__        [link fusion.view.pfr_fields_view `pfr_fields_view`]]
 
 [def __array__                  [link fusion.adapted.array array]]
 [def __std_pair__               [link fusion.adapted.std__pair `std::pair`]]
