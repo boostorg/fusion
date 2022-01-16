@@ -1,6 +1,6 @@
 /*=============================================================================
     Copyright (c) 2009 Christopher Schmidt
-    Copyright (c) 2021 Denis Mikhailov
+    Copyright (c) 2021-2022 Denis Mikhailov
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -21,22 +21,22 @@ namespace boost { namespace fusion { namespace extension
     template <>
     struct deref_data_impl<reverse_view_iterator_tag>
     {
-        template <typename Iterator>
+        template <typename It>
         struct apply
         {
             typedef typename
                 result_of::deref_data<
                     typename result_of::prior<
-                        typename Iterator::first_type
+                        typename It::first_type
                     >::type
                 >::type
             type;
 
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
             static type
-            call(Iterator const& i)
+            call(It const& it)
             {
-                return fusion::deref_data(fusion::prior(i.first));
+                return fusion::deref_data(fusion::prior(it.first));
             }
         };
     };
