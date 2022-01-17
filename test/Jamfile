@@ -66,7 +66,14 @@ project
     [ run algorithm/zip2.cpp ]
     [ run algorithm/zip_ignore.cpp ]
     [ run algorithm/flatten.cpp ]
+    [ run algorithm/pfr_fields.cpp : :
+        : [ requires cxx14_constexpr ] ]
     [ compile algorithm/ticket-5490.cpp ]
+
+    [ compile include/_pfr_fields.cpp
+        : [ requires cxx14_constexpr ] ]
+    [ compile include/_pfr_fields_view.cpp
+        : [ requires cxx14_constexpr ] ]
 
     [ run sequence/as_deque.cpp ]
     [ run sequence/as_list.cpp ]
@@ -157,6 +164,10 @@ project
         : tuple_traits__no_variadic ]
     [ run sequence/transform_view.cpp ]
     [ run sequence/identity_view.cpp ]
+    [ run sequence/pfr_fields_view.cpp : :
+        : [ requires cxx14_constexpr ] ]
+    [ run sequence/pfr_fields_view_empty.cpp : :
+        : [ requires cxx14_constexpr ] ]
     [ run sequence/vector_comparison.cpp ]
     [ run sequence/vector_construction.cpp ]
     [ run sequence/vector_conversion.cpp ]

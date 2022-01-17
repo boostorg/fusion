@@ -19,4 +19,12 @@
 #include <boost/fusion/view/flatten_view.hpp>
 #include <boost/fusion/view/identity_view.hpp>
 
+// Unfortunately, there is no way to determine the compatibility of the pfr library with the current compiler.
+// The "boost/fusion/view/pfr_fields_view.hpp" include has been commented out to ensure backward compatibility
+// Please include it manually in your project
+
+// #if !defined(BOOST_FUSION_NO_PFR)
+// #include <boost/fusion/view/pfr_fields_view.hpp>
+// #endif
+
 #endif

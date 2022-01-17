@@ -13,4 +13,12 @@
 #include <boost/fusion/algorithm/auxiliary/move.hpp>
 #endif
 
+// Unfortunately, there is no way to determine the compatibility of the pfr library with the current compiler.
+// The "boost/fusion/algorithm/auxiliary/pfr_fields.hpp" include has been commented out to ensure backward compatibility
+// Please include it manually in your project
+
+// #if !defined(BOOST_FUSION_NO_PFR)
+// #include <boost/fusion/algorithm/auxiliary/pfr_fields.hpp>
+// #endif
+
 #endif
