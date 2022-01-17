@@ -301,6 +301,8 @@ Constant.
 
 [section pfr_fields]
 
+[important Please read __boost_pfr_lims__ before using this `pfr_fields`. Pay special attention to the SimpleAggregate concept.]
+
 [heading Description]
 A metafunction returning the result type of applying __pfr_fields__.
 
@@ -332,6 +334,10 @@ Constant.
     #include <boost/fusion/include/pfr_fields.hpp>
 
 [note This algorithm won't defined by inclusion of 'boost/fusion/algorithm/auxiliary.hpp' or 'boost/fusion/algorithm.hpp'. ]
+
+[heading See also]
+
+__boost_pfr__
 
 [endsect]
 
@@ -2958,6 +2964,8 @@ Constant.
 
     #include <boost/fusion/algorithm/transformation/flatten.hpp>
     #include <boost/fusion/include/flatten.hpp>
+
+[endsect]
 
 [endsect]
 

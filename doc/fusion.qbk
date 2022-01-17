@@ -232,6 +232,8 @@
 [def __result_of_copy__         [link fusion.algorithm.auxiliary.metafunctions.copy `result_of::copy`]]
 [def __move__                   [link fusion.algorithm.auxiliary.functions.move `move`]]
 [def __result_of_move__         [link fusion.algorithm.auxiliary.metafunctions.move `result_of::move`]]
+[def __pfr_fields__             [link fusion.algorithm.auxiliary.functions.pfr_fields `pfr_fields`]]
+[def __result_of_pfr_fields__   [link fusion.algorithm.auxiliary.metafunctions.pfr_fields `result_of::pfr_fields`]]
 [def __fold__                   [link fusion.algorithm.iteration.functions.fold `fold`]]
 [def __result_of_fold__         [link fusion.algorithm.iteration.metafunctions.fold `result_of::fold`]]
 [def __reverse_fold__           [link fusion.algorithm.iteration.functions.reverse_fold `reverse_fold`]]
