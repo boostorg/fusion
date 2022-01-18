@@ -10,6 +10,7 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/pfr/core.hpp>
 #include <utility> // for std::declval
+#include <type_traits> // for std::is_const, std::remove_const
 
 namespace boost { namespace fusion {
     struct pfr_fields_view_tag;
@@ -25,10 +26,19 @@ namespace boost { namespace fusion {
             template <typename Sequence, typename N>
             struct apply
             {
-                using type = decltype(boost::pfr::get<N::value>(std::declval<Sequence>().agg));
+                typedef typename std::remove_const<typename Sequence::aggregate_type>::type aggregate_type;
+                typedef typename boost::pfr::tuple_element<N::value, aggregate_type>::type element;
+
+                typedef typename
+                mpl::if_<
+                        std::is_const<typename Sequence::aggregate_type>
+                      , typename fusion::detail::cref_result<element>::type
+                      , typename fusion::detail::ref_result<element>::type
+                      >::type
+                type;
 
                 constexpr BOOST_FUSION_GPU_ENABLED
-                static decltype(auto)
+                static type
                 call(Sequence& v)
                 {
                     return boost::pfr::get<N::value>(v.agg);

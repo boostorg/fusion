@@ -108,7 +108,7 @@ main()
         BOOST_MPL_ASSERT((is_same_thernary<
             boost::fusion::result_of::prior< boost::fusion::result_of::end<decltype(view)>::type >::type
             , std::remove_const_t<decltype(prior(end(view)))>
-            , pfr_fields_view_iterator<A, mpl_::int_<2> >
+            , pfr_fields_view_iterator<A, boost::mpl::int_<2> >
             >));
 
         BOOST_TEST(*prior(end(view)) == 300);

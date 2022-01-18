@@ -10,6 +10,7 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/pfr/core.hpp>
 #include <utility> // for std::declval
+#include <type_traits> // for std::is_const, std::remove_const
 
 namespace boost { namespace fusion {
     struct pfr_fields_view_iterator_tag;
@@ -25,14 +26,19 @@ namespace boost { namespace fusion {
             template <typename Iterator>
             struct apply
             {
-                using type = decltype(
-                    boost::pfr::get<Iterator::index::value>(
-                        std::declval<Iterator>().agg
-                    )
-                );
+                typedef typename std::remove_const<typename Iterator::aggregate_type>::type aggregate_type;
+                typedef typename Iterator::index index;
+                typedef typename boost::pfr::tuple_element<index::value, aggregate_type>::type element;
+                typedef typename
+                    mpl::if_<
+                            std::is_const<typename Iterator::aggregate_type>
+                    , typename fusion::detail::cref_result<element>::type
+                    , typename fusion::detail::ref_result<element>::type
+                    >::type
+                type;
 
                 constexpr BOOST_FUSION_GPU_ENABLED
-                static decltype(auto)
+                static type
                 call(Iterator const& iter)
                 {
                     return boost::pfr::get<Iterator::index::value>(iter.agg);
