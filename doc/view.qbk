@@ -723,7 +723,8 @@ defined in the implemented models.
 
 [section pfr_fields_view]
 
-[important Please read __boost_pfr_lims__ before using this `pfr_fields_view`. Pay special attention to the SimpleAggregate concept.]
+[caution This view requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
+[important Also, please read __boost_pfr_lims__ before using this view. Pay special attention to the SimpleAggregate concept.]
 
 [heading Description]
 

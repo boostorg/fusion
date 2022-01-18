@@ -142,7 +142,8 @@ Linear, exactly `__result_of_size__<Sequence>::value`.
 
 [section pfr_fields]
 
-[important Please read __boost_pfr_lims__ before using this `pfr_fields`. Pay special attention to the SimpleAggregate concept.]
+[caution This function requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
+[important Also, please read __boost_pfr_lims__ before using this function. Pay special attention to the SimpleAggregate concept.]
 
 [heading Description]
 For a SimpleAggregate `agg`, `pfr_fields` returns a new sequence
@@ -301,7 +302,8 @@ Constant.
 
 [section pfr_fields]
 
-[important Please read __boost_pfr_lims__ before using this `pfr_fields`. Pay special attention to the SimpleAggregate concept.]
+[caution This metafunction requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
+[important Also, please read __boost_pfr_lims__ before using this metafunction. Pay special attention to the SimpleAggregate concept.]
 
 [heading Description]
 A metafunction returning the result type of applying __pfr_fields__.
