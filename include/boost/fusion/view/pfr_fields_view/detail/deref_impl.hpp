@@ -9,8 +9,9 @@
 
 #include <boost/fusion/support/config.hpp>
 #include <boost/pfr/core.hpp>
-#include <utility> // for std::declval
 #include <type_traits> // for std::is_const, std::remove_const
+#include <boost/mpl/if.hpp>
+#include <boost/fusion/support/detail/access.hpp>
 
 namespace boost { namespace fusion {
     struct pfr_fields_view_iterator_tag;
@@ -26,16 +27,16 @@ namespace boost { namespace fusion {
             template <typename Iterator>
             struct apply
             {
-                typedef typename std::remove_const<typename Iterator::aggregate_type>::type aggregate_type;
-                typedef typename Iterator::index index;
-                typedef typename boost::pfr::tuple_element<index::value, aggregate_type>::type element;
-                typedef typename
+                using aggregate_type = typename std::remove_const<typename Iterator::aggregate_type>::type;
+                using index = typename Iterator::index;
+                using element = typename boost::pfr::tuple_element<index::value, aggregate_type>::type;
+                using type = typename
                     mpl::if_<
-                            std::is_const<typename Iterator::aggregate_type>
-                    , typename fusion::detail::cref_result<element>::type
-                    , typename fusion::detail::ref_result<element>::type
+                        std::is_const<typename Iterator::aggregate_type>
+                      , typename fusion::detail::cref_result<element>::type
+                      , typename fusion::detail::ref_result<element>::type
                     >::type
-                type;
+                ;
 
                 constexpr BOOST_FUSION_GPU_ENABLED
                 static type
