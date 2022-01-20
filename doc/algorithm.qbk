@@ -2,6 +2,7 @@
     Copyright (C) 2001-2011 Joel de Guzman
     Copyright (C) 2006 Dan Marsden
     Copyright (C) 2010 Christopher Schmidt
+    Copyright (c) 2022 Denis Mikhailov
 
     Use, modification and distribution is subject to the Boost Software
     License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
@@ -139,6 +140,96 @@ Linear, exactly `__result_of_size__<Sequence>::value`.
 
 [endsect]
 
+[section pfr]
+
+[caution This function requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
+[important Also, please read __boost_pfr_lims__ before using this function. Pay special attention to the SimpleAggregate concept.]
+
+[heading Description]
+
+`pfr` is a generic version of __pfr_fields__. For a `val` conforming Fusion __sequence__, `pfr` returns it sequence unchanged. 
+Otherwise, for a `val` like SimpleAggregate, `pfr` returns a new sequence with elements extracted by using __boost_pfr__.
+
+[heading Synopsis]
+    template<
+        typename SequenceOrSimpleAggregate
+        >
+    typename __result_of_pfr__<SequenceOrSimpleAggregate>::type pfr(
+        SequenceOrSimpleAggregate& val);
+
+    template<
+        typename SequenceOrSimpleAggregate
+        >
+    typename __result_of_pfr__<SequenceOrSimpleAggregate const>::type pfr(
+        SequenceOrSimpleAggregate const& val);
+
+[table Parameters
+    [[Parameter][Requirement][Description]]
+    [[`val`][A model of Sequence, or a model of SimpleAggregate][Operation's argument]]
+]
+
+[heading Expression Semantics]
+    __pfr__(val);
+
+[*Return type]:
+
+* A model of __forward_sequence__ if `val` is a __forward_sequence__
+else, __bidirectional_sequence__ if `val` is a __bidirectional_sequence__
+else, __random_access_sequence__ if `val` is a __random_access_sequence__ or SimpleAggregate.
+* A model of __associative_sequence__ if `val` implements the __associative_sequence__ model.
+
+[*Semantics]: Returns a sequence with all elements of `SequenceOrSimpleAggregate`.
+
+[heading Complexity]
+Constant.
+
+[heading Header]
+
+    #include <boost/fusion/algorithm/auxiliary/pfr.hpp>
+    #include <boost/fusion/include/pfr.hpp>
+
+[note This algorithm won't defined by inclusion of 'boost/fusion/algorithm/auxiliary.hpp' or 'boost/fusion/algorithm.hpp'. ]
+
+[heading Example]
+
+    struct some_person {       // SimpleAggregate
+        std::string name;
+        unsigned birth_year;
+    };
+
+    some_person val{"Edgar Allan Poe", 1809};
+    std::cout << __pfr__(val) << std::endl; // (Edgar Allan Poe 1809)
+
+[heading Example]
+
+    struct empty {             // SimpleAggregate
+    };
+
+    struct aggregate : empty { // not a SimpleAggregate, not a Sequence
+        std::string name;
+        int age;
+        boost::uuids::uuid uuid;
+    };
+
+    aggregate val{"Edgar Allan Poe", 1809, {}};
+    __pfr__(val); // non-portable behavior
+
+[heading Example]
+
+    using some_person = __vector__< // not a SimpleAggregate, but Sequence
+        std::string
+      , unsigned
+    >;
+
+    some_person val("Edgar Allan Poe", 1809);
+    std::cout << __pfr__(val) << std::endl; // (Edgar Allan Poe 1809)
+
+[heading See also]
+
+__boost_pfr__
+
+[endsect]
+
 [endsect]
 
 [section Metafunctions]
@@ -212,6 +303,54 @@ Constant.
 
     #include <boost/fusion/algorithm/auxiliary/move.hpp>
     #include <boost/fusion/include/move.hpp>
+
+[endsect]
+
+[section pfr]
+
+[caution This metafunction requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
+[important Also, please read __boost_pfr_lims__ before using this metafunction. Pay special attention to the SimpleAggregate concept.]
+
+[heading Description]
+A metafunction returning the result type of applying __pfr__.
+
+[heading Synopsis]
+    template <typename SequenceOrSimpleAggregate>
+    struct pfr
+    {
+        typedef __unspecified__ type;
+    };
+
+[table Parameters
+    [[Parameter] [Requirement] [Description]]
+    [[`SequenceOrSimpleAggregate`] [Model of Fusion __sequence__ or model of SimpleAggregate from __boost_pfr__] [Operation's argument]]
+]
+
+[heading Expression Semantics]
+    result_of::pfr<SequenceOrSimpleAggregate>::type
+
+[*Return type]:
+
+* A model of __forward_sequence__ if `val` is a __forward_sequence__
+else, __bidirectional_sequence__ if `val` is a __bidirectional_sequence__
+else, __random_access_sequence__ if `val` is a __random_access_sequence__ or SimpleAggregate.
+* A model of __associative_sequence__ if `val` implements the __associative_sequence__ model.
+
+[*Semantics]: Returns a sequence with all elements of `SequenceOrSimpleAggregate`.
+
+[heading Complexity]
+Constant.
+
+[heading Header]
+
+    #include <boost/fusion/algorithm/auxiliary/pfr.hpp>
+    #include <boost/fusion/include/pfr.hpp>
+
+[note This algorithm won't defined by inclusion of 'boost/fusion/algorithm/auxiliary.hpp' or 'boost/fusion/algorithm.hpp'. ]
+
+[heading See also]
+
+__boost_pfr__
 
 [endsect]
 

@@ -721,4 +721,103 @@ defined in the implemented models.
 
 [endsect]
 
+[section pfr_view]
+
+[caution This view requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
+[important Also, please read __boost_pfr_lims__ before using this view. Pay special attention to the SimpleAggregate concept.]
+
+[heading Description]
+
+`pfr_view` is a generic version of __pfr_fields_view__. If underlying type is a conforming Fusion __sequence__, then it type will be 
+presented unchanged. Otherwise, the underlying type must satisfy SimpleAggregate concept, because it type will be presented as a random 
+access sequence by using __boost_pfr__.
+
+[heading Header]
+
+    #include <boost/fusion/view/pfr_view.hpp>
+    #include <boost/fusion/include/pfr_view.hpp>
+
+[note This view won't defined by inclusion of 'boost/fusion/view.hpp'. ]
+
+[heading Synopsis]
+
+    template <typename SequenceOrSimpleAggregate>
+    struct pfr_view;
+
+[heading Template parameters]
+
+[table
+    [[Parameter]                   [Description]                                                                             [Default]]
+    [[`SequenceOrSimpleAggregate`] [A fusion __sequence__ or an user defined structure, satisfied 'SimpleAggregate' concept] []]
+]
+
+[heading Model of]
+
+* A model of __forward_sequence__ if underlying type is a __forward_sequence__
+else, __bidirectional_sequence__ if underlying type is a __bidirectional_sequence__
+else, __random_access_sequence__ if underlying type is a __random_access_sequence__ or SimpleAggregate.
+* __associative_sequence__ if underlying type implements the __associative_sequence__ model.
+
+[variablelist Notation
+    [[`P`]              [A `pfr_view` type]]
+    [[`p`, `p2`]        [Instances of `pfr_view`]]
+    [[`a`]              [An instance of `SimpleAggregate`]]
+    [[`s`]              [An instance of `Sequence`]]
+]
+
+[heading Expression Semantics]
+
+Semantics of an expression is defined only where it differs from, or is not
+defined in __random_access_sequence__.
+
+[table
+    [[Expression]           [Semantics]]
+    [[`P(a)`]               [Creates a `pfr_view` from simple aggregate `a`.]]
+    [[`P(s)`]               [Creates a `pfr_view` from sequence `s`.]]
+    [[`P(p)`]               [Copy constructs a `pfr_view` from another `pfr_view`, `p`.]]
+    [[`p = p2`]             [Assigns to a `pfr_view`, `p`, from another `pfr_view`, `p2`.]]
+]
+
+[heading Example]
+
+    struct some_person {       // SimpleAggregate
+        std::string name;
+        unsigned birth_year;
+    };
+
+    some_person val{"Edgar Allan Poe", 1809};
+    __pfr_view__<some_person> view(val);
+    std::cout << view << std::endl; // (Edgar Allan Poe 1809)
+
+[heading Example]
+
+    struct empty {             // SimpleAggregate
+    };
+
+    struct aggregate : empty { // not a SimpleAggregate
+        std::string name;
+        int age;
+        boost::uuids::uuid uuid;
+    };
+
+    aggregate val{"Edgar Allan Poe", 1809, {}};
+    __pfr_view__<aggregate> view(val); // non-portable behavior
+
+[heading Example]
+
+    using some_person = __vector__< // not a SimpleAggregate, but Sequence
+        std::string
+      , unsigned
+    >;
+
+    some_person val("Edgar Allan Poe", 1809);
+    __pfr_view__<some_person> view(val);
+    std::cout << view << std::endl; // (Edgar Allan Poe 1809)
+
+[heading See also]
+
+__boost_pfr__
+
+[endsect]
+
 [endsect]
