@@ -2,6 +2,7 @@
     Copyright (C) 2001-2011 Joel de Guzman
     Copyright (C) 2006 Dan Marsden
     Copyright (C) 2010 Christopher Schmidt
+    Copyright (C) 2022 Denis Mikhailov
 
     Use, modification and distribution is subject to the Boost Software
     License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
@@ -1124,6 +1125,116 @@ namespace qualified name of the template class type to be adapted.
 [heading See also]
 
 __adt_attribute_proxy__
+
+[endsect]
+
+[section:adapt_pfr BOOST_FUSION_ADAPT_PFR]
+
+[caution This macro requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
+[important Also, please read __boost_pfr_lims__ before using this macro. Pay special attention to the SimpleAggregate concept.]
+
+[heading Description]
+BOOST_FUSION_ADAPT_PFR is a macro that can be used to generate all the
+necessary boilerplate to make an arbitrary struct a model of
+__random_access_sequence__.
+This macro only works with structures that satisfy the concept of SimpleAggregate.
+
+[heading Synopsis]
+    BOOST_FUSION_ADAPT_PFR(aggregate_name)
+
+[heading Semantics]
+
+The above macro generates the necessary code to adapt `aggregate_name`
+as a model of __random_access_sequence__.
+
+__boost_pfr__ takes responsibility for extracting each of the struct members that
+are part of the sequence.
+
+The macro should be used at global scope, and `aggregate_name` should be the fully
+namespace qualified name of the struct to be adapted.
+
+[heading Header]
+
+    #include <boost/fusion/adapted/pfr/adapt_pfr.hpp>
+    #include <boost/fusion/include/adapt_pfr.hpp>
+
+[note This macro won't defined by inclusion of 'boost/fusion/adapted.hpp'. ]
+
+[heading Example: BOOST_FUSION_ADAPT_PFR ]
+    namespace demo
+    {
+        struct employee
+        {
+            std::string name;
+            int age;
+        };
+    }
+
+    // demo::employee is now a Fusion sequence
+    BOOST_FUSION_ADAPT_PFR(demo::employee)
+
+[heading See also]
+
+__boost_pfr__
+
+[endsect]
+
+[section:adapt_tpl_pfr BOOST_FUSION_ADAPT_TPL_PFR]
+
+[caution This macro requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
+[important Also, please read __boost_pfr_lims__ before using this macro. Pay special attention to the SimpleAggregate concept.]
+
+[heading Description]
+BOOST_FUSION_ADAPT_TPL_PFR is a macro that can be used to generate all the
+necessary boilerplate to make an arbitrary template struct a model of
+__random_access_sequence__.
+This macro only works with structures that satisfy the concept of SimpleAggregate.
+
+[heading Synopsis]
+    BOOST_FUSION_ADAPT_TPL_PFR(aggregate_name)
+
+[heading Semantics]
+
+The above macro generates the necessary code to adapt `aggregate_name` or an
+arbitrary specialization of `aggregate_name` as a model of
+__random_access_sequence__.
+
+None of the specializations of `aggregate_name` should have non-type template parameter.
+The sequence `(specialization_param0)(specialization_param1)...`
+declares the template parameters of the actual specialization of `struct_name`
+that is adapted as a fusion sequence.
+__boost_pfr__ takes responsibility for extracting each of the struct members that
+are part of the sequence.
+
+
+The macro should be used at global scope, and `aggregate_name` should be the fully
+namespace qualified name of the template struct to be adapted.
+
+[heading Header]
+
+    #include <boost/fusion/adapted/pfr/adapt_pfr.hpp>
+    #include <boost/fusion/include/adapt_pfr.hpp>
+
+[note This macro won't defined by inclusion of 'boost/fusion/adapted.hpp'. ]
+
+[heading Example]
+    namespace demo
+    {
+        template<typename Name, typename Age>
+        struct employee
+        {
+            Name name;
+            Age age;
+            int employment_timestamp;
+        };
+    }
+
+    // Any instantiated demo::employee is now a Fusion sequence
+    BOOST_FUSION_ADAPT_TPL_PFR(demo::employee)
+
+[heading See also]
+
+__boost_pfr__
 
 [endsect]
 
