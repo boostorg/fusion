@@ -23,4 +23,6 @@ target_link_libraries(boost_fusion
         Boost::type_traits
         Boost::typeof
         Boost::utility
+        Boost::pfr
+        Boost::mp11
 )
