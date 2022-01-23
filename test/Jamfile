@@ -68,6 +68,9 @@ project
     [ run algorithm/flatten.cpp ]
     [ compile algorithm/ticket-5490.cpp ]
 
+    [ compile include/_adapt_pfr.cpp
+        : [ requires cxx14_constexpr ] ]
+
     [ run sequence/as_deque.cpp ]
     [ run sequence/as_list.cpp ]
     [ run sequence/as_map.cpp ]
@@ -207,6 +210,14 @@ project
     [ run sequence/adapt_tpl_adt_empty.cpp ]
     [ run sequence/adapt_tpl_struct.cpp ]
     [ run sequence/adapt_tpl_struct_empty.cpp ]
+    [ run sequence/adapt_pfr.cpp : :
+        : [ requires cxx14_constexpr ] ]
+    [ run sequence/adapt_pfr_empty.cpp : :
+        : [ requires cxx14_constexpr ] ]
+    [ run sequence/adapt_tpl_pfr.cpp : :
+        : [ requires cxx14_constexpr ] ]
+    [ run sequence/adapt_tpl_pfr_empty.cpp : :
+        : [ requires cxx14_constexpr ] ]
     [ run sequence/adt_attribute_proxy.cpp ]
     [ run sequence/define_struct.cpp ]
     [ run sequence/define_struct_empty.cpp ]
