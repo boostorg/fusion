@@ -344,6 +344,7 @@ jobs:
           git submodule init libs/type_traits
           git submodule init libs/typeof
           git submodule init libs/utility
+          git submodule init libs/pfr
           git submodule init libs/headers tools/boost_install tools/build
           git submodule update
           rm -rf libs/fusion
@@ -452,6 +453,7 @@ jobs:
           git submodule init libs/type_traits
           git submodule init libs/typeof
           git submodule init libs/utility
+          git submodule init libs/pfr
           git submodule init libs/headers tools/boost_install tools/build
           git submodule update
           rm -rf libs/fusion
