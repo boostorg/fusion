@@ -9,8 +9,8 @@
 
 #include <boost/fusion/support/config.hpp>
 #include <boost/pfr/core.hpp>
-#include <type_traits> // for std::is_const, std::remove_const
-#include <boost/mpl/if.hpp>
+#include <type_traits> // for std::is_const, std::remove_const_t
+#include <boost/mp11/utility.hpp>
 #include <boost/fusion/support/detail/access.hpp>
 
 namespace boost { namespace fusion {
@@ -27,16 +27,14 @@ namespace boost { namespace fusion {
             template <typename Sequence, typename N>
             struct apply
             {
-                using aggregate_type = typename std::remove_const<typename Sequence::aggregate_type>::type;
-                using element = typename boost::pfr::tuple_element<N::value, aggregate_type>::type;
+                using aggregate_type = std::remove_const_t<typename Sequence::aggregate_type>;
+                using element = boost::pfr::tuple_element_t<N::value, aggregate_type>;
 
-                using type = typename
-                    mpl::if_<
-                        std::is_const<typename Sequence::aggregate_type>
-                      , typename fusion::detail::cref_result<element>::type
-                      , typename fusion::detail::ref_result<element>::type
-                    >::type
-                ;
+                using type = mp11::mp_if<
+                    std::is_const<typename Sequence::aggregate_type>
+                  , typename fusion::detail::cref_result<element>::type
+                  , typename fusion::detail::ref_result<element>::type
+                >;
 
                 constexpr BOOST_FUSION_GPU_ENABLED
                 static type

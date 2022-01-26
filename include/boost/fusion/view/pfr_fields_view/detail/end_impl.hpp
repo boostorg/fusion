@@ -10,6 +10,7 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/mpl/int.hpp>
 #include <boost/pfr/tuple_size.hpp>
+#include <type_traits> // for std::remove_const_t
 
 namespace boost { namespace fusion {
     struct pfr_fields_view_tag;
@@ -28,11 +29,11 @@ namespace boost { namespace fusion {
             template <typename Sequence>
             struct apply
             {
+                using aggregate_type = std::remove_const_t<typename Sequence::aggregate_type>;
+
                 using type = pfr_fields_view_iterator<
                     typename Sequence::aggregate_type
-                  , mpl::int_<boost::pfr::tuple_size<
-                        typename Sequence::aggregate_type
-                    >::value>
+                  , mpl::int_<boost::pfr::tuple_size< aggregate_type >::value>
                 >;
 
                 constexpr BOOST_FUSION_GPU_ENABLED

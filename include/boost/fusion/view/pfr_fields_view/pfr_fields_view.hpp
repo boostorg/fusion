@@ -17,6 +17,7 @@
 #include <boost/pfr/tuple_size.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/int.hpp>
+#include <type_traits> // for std::remove_const_t
 
 namespace boost { namespace fusion
 {
@@ -33,7 +34,11 @@ namespace boost { namespace fusion
         using is_view = mpl::true_;
 
         using aggregate_type = Aggregate;
-        using size = mpl::int_<boost::pfr::tuple_size<Aggregate>::value>;
+        using size = mpl::int_<
+            boost::pfr::tuple_size<
+                std::remove_const_t<Aggregate>
+            >::value
+        >;
 
         constexpr BOOST_FUSION_GPU_ENABLED
         explicit pfr_fields_view(Aggregate& in_agg)

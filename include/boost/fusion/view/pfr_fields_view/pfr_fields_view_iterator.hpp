@@ -18,6 +18,7 @@
 #include <boost/fusion/view/pfr_fields_view/detail/value_of_impl.hpp>
 #include <boost/fusion/view/pfr_fields_view/detail/value_of_data_impl.hpp>
 #include <boost/pfr/tuple_size.hpp>
+#include <type_traits> // for std::remove_const_t
 
 namespace boost { namespace fusion
 {
@@ -28,7 +29,7 @@ namespace boost { namespace fusion
     struct pfr_fields_view_iterator
         : iterator_base< pfr_fields_view_iterator<Aggregate, Pos> >
     {
-        static_assert(Pos::value >=0 && Pos::value <= boost::pfr::tuple_size<Aggregate>::value, "out of range");
+        static_assert(Pos::value >=0 && Pos::value <= boost::pfr::tuple_size<std::remove_const_t<Aggregate>>::value, "out of range");
         using fusion_tag = pfr_fields_view_iterator_tag;
         using category = random_access_traversal_tag;
 
