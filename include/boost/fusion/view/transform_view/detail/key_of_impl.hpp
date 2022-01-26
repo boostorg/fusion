@@ -9,6 +9,8 @@
 
 #include <boost/fusion/support/config.hpp>
 #include <boost/fusion/iterator/deref.hpp>
+#include <boost/type_traits/remove_reference.hpp>
+#include <boost/type_traits/remove_const.hpp>
 #include <boost/utility/result_of.hpp>
 
 namespace boost { namespace fusion
