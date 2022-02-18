@@ -274,7 +274,7 @@
                     BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)             \
                   , I                                                           \
                   , is_const<Seq>::value                                        \
-                >                                                               \
+                >::type                                                         \
             type;                                                               \
                                                                                 \
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                            \
