@@ -278,7 +278,7 @@
             adt_attribute_proxy_type;                                           \
                                                                                 \
             typedef                                                             \
-                adt_attribute_proxy_type::type                                  \
+                typename adt_attribute_proxy_type::type                         \
             type;                                                               \
                                                                                 \
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                            \
