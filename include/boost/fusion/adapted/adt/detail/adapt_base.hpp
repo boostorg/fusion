@@ -274,14 +274,18 @@
                     BOOST_FUSION_ADAPT_STRUCT_UNPACK_NAME(NAME_SEQ)             \
                   , I                                                           \
                   , is_const<Seq>::value                                        \
-                >::type                                                         \
+                >                                                               \
+            adt_attribute_proxy_type;                                           \
+                                                                                \
+            typedef                                                             \
+                adt_attribute_proxy_type::type                                  \
             type;                                                               \
                                                                                 \
             BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                            \
             static type                                                         \
             call(Seq& obj)                                                      \
             {                                                                   \
-                return type(obj);                                               \
+                return adt_attribute_proxy_type(obj);                           \
             }                                                                   \
         };                                                                      \
     };
