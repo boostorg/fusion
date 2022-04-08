@@ -19,11 +19,11 @@
 
 #include <boost/utility/result_of.hpp>
 #include <boost/core/enable_if.hpp>
+#include <boost/core/ref.hpp>
 
 #include <boost/fusion/sequence/intrinsic/empty.hpp>
 #include <boost/fusion/algorithm/iteration/fold.hpp>
 
-#include <boost/ref.hpp>
 
 namespace fusion = boost::fusion;
 namespace mpl = boost::mpl;
