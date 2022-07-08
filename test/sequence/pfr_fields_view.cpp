@@ -41,11 +41,14 @@ namespace ns {
 
     struct guaranteed_nonconstexpr_string {
         std::string value;
-        template<typename T>
-        /*explicit*/ guaranteed_nonconstexpr_string(T value) : value(std::move(value)) {
+        explicit guaranteed_nonconstexpr_string(std::string value) : value(std::move(value)) {
             std::cout << "mark to ensure nonconstexpr" << std::endl;
         }
     };
+
+    inline bool operator== (const guaranteed_nonconstexpr_string& rhs, const guaranteed_nonconstexpr_string& lhs) {
+        return (rhs.value == lhs.value);
+    }
 
     // Testing non-constexpr compatible types
 #if BOOST_PFR_USE_CPP17 != 0
@@ -145,12 +148,14 @@ main()
 
 #if BOOST_PFR_USE_CPP17 != 0
     {
-        ns::employee emp{"John Doe", "jdoe"};
+        ns::employee emp{ns::guaranteed_nonconstexpr_string("John Doe"),
+		                 ns::guaranteed_nonconstexpr_string("jdoe")};
         pfr_fields_view<ns::employee> view(emp);
         std::cout << at_c<0>(view).value << std::endl;
         std::cout << at_c<1>(view).value << std::endl;
 
-        fusion::vector<ns::guaranteed_nonconstexpr_string, ns::guaranteed_nonconstexpr_string> v1("John Doe", "jdoe");
+        fusion::vector<ns::guaranteed_nonconstexpr_string, ns::guaranteed_nonconstexpr_string> v1(
+            ns::guaranteed_nonconstexpr_string("John Doe"), ns::guaranteed_nonconstexpr_string("jdoe"));
         BOOST_TEST(view == v1);
     }
 #endif // BOOST_PFR_USE_CPP17
