@@ -39,11 +39,19 @@ namespace ns {
         namespaced_type::integer z;
     };
 
+    struct guaranteed_nonconstexpr_string {
+        std::string value;
+        template<typename T>
+        /*explicit*/ guaranteed_nonconstexpr_string(T value) : value(std::move(value)) {
+            std::cout << "mark to ensure nonconstexpr" << std::endl;
+        }
+    };
+
     // Testing non-constexpr compatible types
 #if BOOST_PFR_USE_CPP17 != 0
     struct employee {
-        std::string name;
-        std::string nickname;
+        guaranteed_nonconstexpr_string name;
+        guaranteed_nonconstexpr_string nickname;
     };
 #endif // BOOST_PFR_USE_CPP17
 }
@@ -139,10 +147,10 @@ main()
     {
         ns::employee emp{"John Doe", "jdoe"};
         pfr_fields_view<ns::employee> view(emp);
-        std::cout << at_c<0>(view) << std::endl;
-        std::cout << at_c<1>(view) << std::endl;
+        std::cout << at_c<0>(view).value << std::endl;
+        std::cout << at_c<1>(view).value << std::endl;
 
-        fusion::vector<std::string, std::string> v1("John Doe", "jdoe");
+        fusion::vector<ns::guaranteed_nonconstexpr_string, ns::guaranteed_nonconstexpr_string> v1("John Doe", "jdoe");
         BOOST_TEST(view == v1);
     }
 #endif // BOOST_PFR_USE_CPP17

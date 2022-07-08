@@ -724,29 +724,30 @@ defined in the implemented models.
 [section pfr_fields_view]
 
 [caution This view requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
-[important Also, please read __boost_pfr_lims__ before using this view. Pay special attention to the SimpleAggregate concept.]
 
 [heading Description]
 
-`pfr_fields_view` is a view into a SimpleAggregate as a random access sequence.
+`pfr_fields_view` is a view into an user defined structure as a random access sequence.
+This view does not require macro or boilerplate code from an user defined structure
+, unlike __adapt_struct__, and can be used as a replacement for __adapt_struct__.
 
 [heading Header]
 
     #include <boost/fusion/view/pfr_fields_view.hpp>
     #include <boost/fusion/include/pfr_fields_view.hpp>
 
-[note This view won't defined by inclusion of 'boost/fusion/view.hpp'. ]
+[note This view won't be defined by inclusion of 'boost/fusion/view.hpp'. ]
 
 [heading Synopsis]
 
-    template <typename SimpleAggregate>
+    template <typename Aggregate>
     struct pfr_fields_view;
 
 [heading Template parameters]
 
 [table
-    [[Parameter]            [Description]                                                    [Default]]
-    [[`SimpleAggregate`]    [An user defined structure, satisfied 'SimpleAggregate' concept] []]
+    [[Parameter]            [Description]                                                        [Default]]
+    [[`Aggregate`]          [An user defined structure, satisfying __simple_aggregate__ concept] []]
 ]
 
 [heading Model of]
@@ -756,7 +757,7 @@ defined in the implemented models.
 [variablelist Notation
     [[`P`]              [A `pfr_fields_view` type]]
     [[`p`, `p2`]        [Instances of `pfr_fields_view`]]
-    [[`a`]              [An instance of `SimpleAggregate`]]
+    [[`a`]              [An instance of __simple_aggregate__]]
 ]
 
 [heading Expression Semantics]
@@ -775,7 +776,7 @@ defined in __random_access_sequence__.
 
     struct some_person {       // SimpleAggregate
         std::string name;
-        unsigned birth_year;
+        unsigned birth_year = 0;
     };
 
     some_person val{"Edgar Allan Poe", 1809};
@@ -787,9 +788,9 @@ defined in __random_access_sequence__.
     struct empty {             // SimpleAggregate
     };
 
-    struct aggregate : empty { // not a SimpleAggregate
+    struct aggregate : empty { // not a SimpleAggregate because of inheritance
         std::string name;
-        int age;
+        int age = 0;
         boost::uuids::uuid uuid;
     };
 
