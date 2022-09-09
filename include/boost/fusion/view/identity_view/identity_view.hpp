@@ -28,6 +28,10 @@ namespace boost {
     };
 }
 
+#ifdef _MSC_VER
+#  pragma warning(push)
+#  pragma warning(disable: 4512) // assignment operator could not be generated.
+#endif
 namespace boost { namespace fusion {
     template<typename Sequence> struct identity_view 
         : transform_view<Sequence, detail::identity>
@@ -39,5 +43,8 @@ namespace boost { namespace fusion {
             : base_type(in_seq, detail::identity()) {}
     };
 }}
+#ifdef _MSC_VER
+#  pragma warning(pop)
+#endif
 
 #endif 
