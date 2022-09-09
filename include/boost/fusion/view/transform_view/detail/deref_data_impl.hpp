@@ -10,6 +10,11 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/fusion/iterator/deref.hpp>
 #include <boost/mpl/if.hpp>
+#include <boost/type_traits/add_const.hpp>
+#include <boost/type_traits/add_reference.hpp>
+#include <boost/type_traits/is_const.hpp>
+#include <boost/type_traits/is_reference.hpp>
+#include <boost/utility/result_of.hpp>
 
 namespace boost { namespace fusion
 {
