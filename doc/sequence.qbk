@@ -133,6 +133,7 @@ For any Forward Sequence s the following invariants always hold:
 * __transform_view__
 * __reverse_view__
 * __zip_view__
+* __identity_view__
 
 [endsect]
 
@@ -166,7 +167,7 @@ Bidirectional Sequence the following must be met:
     [[`__back__(s)`]        [Any type]                      []                      [Constant]]
     [[`__back__(s) = o`]    [Any type]                      [`s` is mutable and
                                                         `e = o`, where `e`
-                                                        is the first element
+                                                        is the last element
                                                         in the sequence, is
                                                         a valid expression.]    [Constant]]
 ]
@@ -201,6 +202,7 @@ are not defined in __forward_sequence__.
 * __iterator_range__ (where adapted sequence is a Bidirectional Sequence)
 * __transform_view__ (where adapted sequence is a Bidirectional Sequence)
 * __zip_view__       (where adapted sequences are models of Bidirectional Sequence)
+* __identity_view__  (where adapted sequence is a Bidirectional Sequence)
 
 [endsect]
 
@@ -237,14 +239,14 @@ any Random Access Sequence the following must be met:
     [[`__at_c__<N>(s)`]     [Any type]                      []                      [Constant]]
     [[`__at_c__<N>(s) = o`] [Any type]                      [`s` is mutable and
                                                         `e = o`, where `e`
-                                                        is the first element
-                                                        in the sequence, is
+                                                        is the N-th element from the beginning
+                                                        of the sequence, is
                                                         a valid expression.]        [Constant]]
     [[`__at__<M>(s)`]       [Any type]                      []                      [Constant]]
     [[`__at__<M>(s) = o`]   [Any type]                      [`s` is mutable and
                                                         `e = o`, where `e`
-                                                        is the first element
-                                                        in the sequence, is
+                                                        is the M-th element from the beginning
+                                                        of the sequence, is
                                                         a valid expression.]        [Constant]]
 ]
 
@@ -289,6 +291,7 @@ are not defined in __bidirectional_sequence__.
 * __iterator_range__ (where adapted sequence is a Random Access Sequence)
 * __transform_view__ (where adapted sequence is a Random Access Sequence)
 * __zip_view__       (where adapted sequences are models of Random Access Sequence)
+* __identity_view__  (where adapted sequence is a Random Access Sequence)
 
 [endsect]
 
@@ -321,8 +324,7 @@ For any Associative Sequence the following expressions must be valid:
     [[`__at_key__<K>(s)`]       [Any type]                  []                      [Constant]]
     [[`__at_key__<K>(s) = o`]   [Any type]                  [`s` is mutable and
                                                         `e = o`, where `e`
-                                                        is the first element
-                                                        in the sequence, is
+                                                        is the element associated with K, is
                                                         a valid expression.]    [Constant]]
 ]
 
@@ -361,6 +363,8 @@ you can use `__result_of_value_at_key__<S, K>`.]
 * __iterator_range__ (where adapted iterators are __associative_iterator__\ s)
 * __joint_view__     (where adapted sequences are __associative_sequence__\ s and __forward_sequence__\ s)
 * __reverse_view__   (where adapted sequence is an __associative_sequence__ and a __bidirectional_sequence__)
+* __transform_view__ (where adapted sequence is an __associative_sequence__ and a __forward_sequence__)
+* __identity_view__  (where adapted sequence is an __associative_sequence__ and a __forward_sequence__)
 
 [endsect]
 
@@ -714,11 +718,11 @@ Returns the M-th element from the beginning of the sequence.
 [heading Synopsis]
 
     template <typename M, typename Sequence>
-    typename __result_of_at__<Sequence, N>::type
+    typename __result_of_at__<Sequence, M>::type
     at(Sequence& seq);
 
     template <typename M, typename Sequence>
-    typename __result_of_at__<Sequence const, N>::type
+    typename __result_of_at__<Sequence const, M>::type
     at(Sequence const& seq);
 
 [heading Parameters]
