@@ -121,6 +121,15 @@ namespace boost { namespace fusion
     }
 
     template <typename First, typename Second>
+    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
+    inline typename result_of::make_pair<First,Second>::type
+    make_pair(Second&& val)
+    {
+        return pair<First, typename detail::as_fusion_element<Second>::type>(
+            BOOST_FUSION_FWD_ELEM(Second, val));
+    }
+
+    template <typename First, typename Second>
     inline std::ostream&
     operator<<(std::ostream& os, pair<First, Second> const& p)
     {
