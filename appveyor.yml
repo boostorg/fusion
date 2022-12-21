@@ -82,6 +82,8 @@ install:
   - git submodule init libs/type_traits
   - git submodule init libs/typeof
   - git submodule init libs/utility
+  - git submodule init libs/describe
+  - git submodule init libs/mp11
 
   - git submodule init libs/headers tools/boost_install tools/build
   - git submodule update
