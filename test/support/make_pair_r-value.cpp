@@ -9,7 +9,9 @@
 struct noncopyable_type {
     noncopyable_type(const noncopyable_type &) = delete;
     noncopyable_type& operator=(const noncopyable_type &) = delete;
-
+    
+    noncopyable_type(noncopyable_type &&) = default;
+    noncopyable_type& operaotr=(noncopyable_type &&) = default;
 };
 
 int main() {
