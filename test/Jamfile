@@ -272,7 +272,7 @@ project
     [ compile support/tag_of.cpp ]
     [ compile support/unused.cpp ]
 
-    [ compile support/make_pair_r-value.cpp : :
+    [ compile support/make_pair_r-value.cpp
         : [ requires cxx11_rvalue_references ] ]
 
 #   [ compile-fail xxx.cpp  ]
