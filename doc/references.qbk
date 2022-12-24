@@ -23,6 +23,8 @@
   Jaakko Jarvi, Peter Dimov, Douglas Gregor, Dave Abrahams, 1999-2002.
 # [@http://www.boost.org/libs/hana The Boost Hana Library],
   Louis Dionne, 2017.
+# [@http://www.boost.org/libs/pfr The Boost PFR Library],
+  Antony Polukhin, 2016-2022.
 
 [endsect]
 
