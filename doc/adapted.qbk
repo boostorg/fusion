@@ -28,7 +28,14 @@ various data structures, non-intrusively, as full fledged Fusion sequences.
 You may get compiler errors when your environment doesn't support __boost_pfr_library__ and this
 lack of support doesn't detect automatically. If this happens, define macro
 `BOOST_FUSION_PFR_ENABLED` as 0 to suppress the inclusion
-of __boost_pfr_implicit__ in this module.
+of __boost_pfr_implicit_adapter__ and __boost_pfr_explicit_adapter__ in this module.
+]
+
+[caution
+You may get compiler errors when your program utilizes __tag_of__, __is_sequence__ or 
+__is_view__ with an incomplete type. If this happens, define macro
+`BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION` as 0 to suppress the inclusion
+of __boost_pfr_implicit_adapter__ in this module.
 ]
 
 [section:array Array]
@@ -246,7 +253,7 @@ Note that the module expects a passed type satisfies __simple_aggregate__.
     std::cout << *__next__(__begin__(val)) << '\n';
 
 [note See __force_pfr_nonreflectable__ or __force_pfr_nonreflectable_tpl__ if your type falsely determines as "reflectable via PFR" and you need to workaround it.]
-[note Define macro `BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION` as 0 if you hit by lots of non-effective choices made by implicit reflection and you need to change for explicit reflection. See __boost_pfr_explicit__ for more details.]
+[note Define macro `BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION` as 0 if you hit by lots of non-effective choices made by implicit reflection(or if you even hit by compiler errors, when your program utilizes __tag_of__, __is_sequence__ or __is_view__ with an incomplete type) and you need to change for explicit reflection. See __boost_pfr_explicit__ for more details.]
 [note Define macro `BOOST_FUSION_PFR_ENABLED` as 0 if you get compiler errors when your program includes __adapted__ and you need to suppress the inclusion of __boost_pfr_implicit__ in __adapted__ module.]
 [note This module can't adapt a passed type as fully conforming __mpl__ sequences.]
 
