@@ -10,6 +10,7 @@
 
 #include <boost/config.hpp>
 #include <boost/detail/workaround.hpp>
+#include <boost/pfr/config.hpp>
 #include <utility>
 
 #ifndef BOOST_FUSION_GPU_ENABLED
@@ -135,6 +136,15 @@ namespace boost { namespace fusion { namespace detail
 #   define BOOST_FUSION_PUSH_WARNINGS
 #   define BOOST_FUSION_POP_WARNINGS
 #   define BOOST_FUSION_DISABLE_MSVC_WARNING(num)
+#endif
+
+
+#ifndef BOOST_FUSION_PFR_ENABLED
+#   define BOOST_FUSION_PFR_ENABLED BOOST_PFR_ENABLE_IMPLICIT_REFLECTION
+#endif
+
+#ifndef BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION
+#   define BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION BOOST_PFR_ENABLED
 #endif
 
 #endif

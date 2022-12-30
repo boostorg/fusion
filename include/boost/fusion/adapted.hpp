@@ -23,4 +23,12 @@
 #include <boost/fusion/adapted/std_tuple.hpp>
 #endif
 
+#if BOOST_FUSION_PFR_ENABLED
+#if BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION
+#include <boost/fusion/adapted/boost_pfr.hpp>
 #endif
+#include <boost/fusion/adapted/boost_pfr_explicit.hpp>
+#endif
+
+#endif
+
