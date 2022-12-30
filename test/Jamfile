@@ -74,6 +74,10 @@ project
     [ run sequence/as_map_assoc.cpp ]
     [ run sequence/as_set.cpp ]
     [ run sequence/as_vector.cpp ]
+    [ run sequence/boost_pfr.cpp : :
+        : [ requires cxx17_structured_bindings ] ]
+    [ run sequence/boost_pfr_empty.cpp : :
+        : [ requires cxx17_structured_bindings ] ]
     [ run sequence/boost_tuple.cpp ]
     [ run sequence/boost_tuple_iterator.cpp ]
     [ run sequence/cons.cpp ]
