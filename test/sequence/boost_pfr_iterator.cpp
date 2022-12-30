@@ -55,7 +55,7 @@ main()
             boost::fusion::result_of::prior< boost::fusion::result_of::end<decltype(a)>::type >::type
             , std::remove_const_t<decltype(prior(end(a)))>
             , boost_pfr_iterator<A, 2>
-            >::value);
+            >::value, "");
 
         BOOST_TEST(*prior(end(a)) == 300);
         BOOST_TEST(*next(begin(a)) == 200);
@@ -73,23 +73,23 @@ main()
             boost::fusion::result_of::deref<decltype(begin(a))>::type
             , decltype(deref(begin(a)))
             , int&
-        >::value);
+        >::value, "");
         static_assert(is_same_thernary<
             boost::fusion::result_of::deref<decltype(begin(ca))>::type
             , decltype(deref(begin(ca)))
             , const int&
-        >::value);
+        >::value, "");
 
         static_assert(is_same_thernary<
             boost::fusion::result_of::deref<decltype( advance<boost::mpl::int_<-1>>(end(a)) )>::type
             , decltype(deref(advance<boost::mpl::int_<-1>>(end(a))))
             , int&
-        >::value);
+        >::value, "");
         static_assert(is_same_thernary<
             boost::fusion::result_of::deref<decltype( advance<boost::mpl::int_<-1>>(end(ca)) )>::type
             , decltype(deref(advance<boost::mpl::int_<-1>>(end(ca))))
             , const int&
-        >::value);
+        >::value, "");
     }
 
     {
@@ -102,12 +102,12 @@ main()
             boost::fusion::result_of::at_c<decltype(a), 0>::type
             , decltype(at_c<0>(a))
             , int&
-        >::value);
+        >::value, "");
         static_assert(is_same_thernary<
             boost::fusion::result_of::at_c<decltype(ca), 0>::type
             , decltype(at_c<0>(ca))
             , const int&
-        >::value);
+        >::value, "");
     }
 
     {
@@ -120,13 +120,13 @@ main()
             boost::fusion::result_of::value_of< boost::fusion::result_of::begin<decltype(a)>::type >::type
             , boost::fusion::result_of::value_at< decltype(a), boost::mpl::int_<0> >::type
             , int
-        >::value);
+        >::value, "");
 
         static_assert(is_same_thernary<
             boost::fusion::result_of::value_of< boost::fusion::result_of::begin<decltype(ca)>::type >::type
             , boost::fusion::result_of::value_at< decltype(ca), boost::mpl::int_<0> >::type
             , int
-        >::value);
+        >::value, "");
     }
 
     return boost::report_errors();

@@ -86,7 +86,7 @@ main()
             boost::fusion::traits::tag_of<point>::type
           , boost::fusion::boost_pfr_tag>::value, "");
         static_assert(!boost::fusion::result_of::equal_to<boost::fusion::result_of::begin<point>::type,
-                                                          boost::fusion::result_of::end<point>::type>::value);
+                                                          boost::fusion::result_of::end<point>::type>::value, "");
 
         BOOST_TEST(front(p) == 6);
         BOOST_TEST(back(p) == 12);

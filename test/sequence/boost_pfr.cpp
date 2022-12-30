@@ -93,7 +93,7 @@ main()
             boost::fusion::traits::tag_of<point>::type
           , boost::fusion::boost_pfr_tag>::value, "");
         static_assert(!boost::fusion::result_of::equal_to<boost::fusion::result_of::begin<point>::type,
-                                                          boost::fusion::result_of::end<point>::type>::value);
+                                                          boost::fusion::result_of::end<point>::type>::value, "");
 
         BOOST_TEST(front(p) == 6);
         BOOST_TEST(back(p) == 12);
@@ -134,16 +134,16 @@ main()
         using b = boost::fusion::result_of::begin<s>::type;
         using e = boost::fusion::result_of::end<s>::type;
         // this fails
-        static_assert(is_same<boost::fusion::result_of::next<b>::type, e>::value);
+        static_assert(is_same<boost::fusion::result_of::next<b>::type, e>::value, "");
     }
 
     {
         // FIXME
         // mpl binding, it's possible after resolving https://github.com/boostorg/mpl/issues/71
-        //static_assert(boost::mpl::is_sequence<ns::point>::value);
+        //static_assert(boost::mpl::is_sequence<ns::point>::value, "");
         //static_assert(boost::is_same<
         //                  boost::fusion::result_of::value_at_c<ns::point,0>::type
-        //        , boost::mpl::front<ns::point>::type>::value);
+        //        , boost::mpl::front<ns::point>::type>::value, "");
     }
 
     {
@@ -170,8 +170,8 @@ main()
         using first = boost::fusion::result_of::begin<seq>::type;
         using c_first = boost::fusion::result_of::begin<c_vec>::type;
 
-        static_assert(boost::is_same<boost::fusion::result_of::value_of<first>::type, int>::value);
-        static_assert(boost::is_same<boost::fusion::result_of::value_of<c_first>::type, int>::value);
+        static_assert(boost::is_same<boost::fusion::result_of::value_of<first>::type, int>::value, "");
+        static_assert(boost::is_same<boost::fusion::result_of::value_of<c_first>::type, int>::value, "");
     }
 
     {
