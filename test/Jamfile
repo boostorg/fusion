@@ -68,6 +68,12 @@ project
     [ run algorithm/flatten.cpp ]
     [ compile algorithm/ticket-5490.cpp ]
 
+    [ compile include/adapted.cpp ]
+    [ compile include/_boost_pfr.cpp
+        : [ requires cxx17_structured_bindings ] ]
+    [ compile include/_boost_pfr_explicit.cpp
+        : [ requires cxx14_constexpr ] ]
+
     [ run sequence/as_deque.cpp ]
     [ run sequence/as_list.cpp ]
     [ run sequence/as_map.cpp ]
@@ -78,6 +84,12 @@ project
         : [ requires cxx17_structured_bindings ] ]
     [ run sequence/boost_pfr_empty.cpp : :
         : [ requires cxx17_structured_bindings ] ]
+    [ run sequence/boost_pfr_convert.cpp : :
+        : [ requires cxx17_structured_bindings ] ]
+    [ run sequence/boost_pfr_iterator.cpp : :
+        : [ requires cxx14_constexpr ] ]
+    [ run sequence/boost_pfr_force_macro.cpp : :
+        : [ requires cxx14_constexpr ] ]
     [ run sequence/boost_pfr_explicit.cpp : :
         : [ requires cxx14_constexpr ] ]
     [ run sequence/boost_tuple.cpp ]
@@ -263,6 +275,7 @@ project
     [ run functional/invoke_procedure.cpp ]
     [ run sequence/swap.cpp ]
 
+    [ run support/config.cpp ]
     [ compile support/is_sequence.cpp ]
     [ compile support/is_view.cpp ]
     [ compile support/pair_deque.cpp ]
