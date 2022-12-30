@@ -1619,7 +1619,7 @@ The macro intended to be used with __boost_pfr_explicit_adapter__, when you don'
 The above macro specializes `boost::pfr::is_reflectable` for `aggregate_name` with `boost::pfr::boost_fusion_tag` as positive.
 
 The macro should be used at global scope, and `aggregate_name` should be the fully
-namespace qualified name of the struct satisfied __simple_aggregate__ to be specifyed.
+namespace qualified name of the struct satisfying __simple_aggregate__ to be specifyed.
 
 [heading Header]
 
@@ -1716,7 +1716,7 @@ The macro intended to be used with __boost_pfr_explicit_adapter__, when you don'
 The above macro specializes `boost::pfr::is_reflectable` for `aggregate_name` with `boost::pfr::boost_fusion_tag` as positive.
 
 The macro should be used at global scope, and `aggregate_name` should be the fully
-namespace qualified name of the template struct satisfied __simple_aggregate__ to be specifyed.
+namespace qualified name of the template struct satisfying __simple_aggregate__ to be specifyed.
 
 [heading Header]
 

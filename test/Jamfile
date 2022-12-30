@@ -78,6 +78,8 @@ project
         : [ requires cxx17_structured_bindings ] ]
     [ run sequence/boost_pfr_empty.cpp : :
         : [ requires cxx17_structured_bindings ] ]
+    [ run sequence/boost_pfr_explicit.cpp : :
+        : [ requires cxx14_constexpr ] ]
     [ run sequence/boost_tuple.cpp ]
     [ run sequence/boost_tuple_iterator.cpp ]
     [ run sequence/cons.cpp ]
