@@ -33,19 +33,26 @@ struct empty_struct {};
 int
 main()
 {
-    using namespace boost::fusion;
-    using namespace boost;
+    using boost::fusion::tuple_open;
+    using boost::fusion::tuple_close;
+    using boost::fusion::tuple_delimiter;
+    using boost::fusion::make_vector;
+    using boost::fusion::vector;
+    using boost::fusion::list;
+    namespace traits = boost::fusion::traits;
+    namespace fusion = boost::fusion;
 
-    std::cout << tuple_open('[');
-    std::cout << tuple_close(']');
-    std::cout << tuple_delimiter(", ");
+    // FIXME make this workable even with forced implicit reflection
+    // std::cout << tuple_open('[');
+    // std::cout << tuple_close(']');
+    // std::cout << tuple_delimiter(", ");
 
     {
         BOOST_MPL_ASSERT_NOT((traits::is_view<empty_struct>));
         BOOST_STATIC_ASSERT(!traits::is_view<empty_struct>::value);
         empty_struct e;
 
-        std::cout << e << std::endl;
+        boost::fusion::out(std::cout, e) << std::endl;
         BOOST_TEST(e == make_vector());
 
         BOOST_STATIC_ASSERT(fusion::result_of::size<empty_struct>::value == 0);

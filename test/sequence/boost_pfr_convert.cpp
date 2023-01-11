@@ -29,6 +29,7 @@
 #include <boost/mpl/assert.hpp>
 #include <iostream>
 #include <string>
+#include <cstring>
 
 #include <boost/fusion/include/vector.hpp>
 #include <boost/fusion/include/deque.hpp>
@@ -38,7 +39,7 @@
 
 struct SimpleAggregate {
     int first;
-    std::string second;
+    const char* second;
 };
 
 template <typename Tag, typename Seq>
@@ -46,7 +47,7 @@ void test(Seq const& seq)
 {
     const auto v = boost::fusion::convert<Tag>(seq);
     BOOST_TEST((boost::fusion::at_c<0>(v) == 123));
-    BOOST_TEST((boost::fusion::at_c<1>(v) == "Hola!!!"));
+    BOOST_TEST((std::strcmp(boost::fusion::at_c<1>(v), "Hola!!!") == 0));
 }
 
 int

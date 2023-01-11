@@ -70,7 +70,7 @@ project
 
     [ compile include/adapted.cpp ]
     [ compile include/_boost_pfr.cpp
-        : [ requires cxx17_structured_bindings ] ]
+        : <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 [ requires cxx14_constexpr ] ]
     [ compile include/_boost_pfr_explicit.cpp
         : [ requires cxx14_constexpr ] ]
 
@@ -81,11 +81,11 @@ project
     [ run sequence/as_set.cpp ]
     [ run sequence/as_vector.cpp ]
     [ run sequence/boost_pfr.cpp : :
-        : [ requires cxx17_structured_bindings ] ]
+        : <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 [ requires cxx14_constexpr ] ]
     [ run sequence/boost_pfr_empty.cpp : :
-        : [ requires cxx17_structured_bindings ] ]
+        : <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 [ requires cxx14_constexpr ] ]
     [ run sequence/boost_pfr_convert.cpp : :
-        : [ requires cxx17_structured_bindings ] ]
+        : <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 [ requires cxx14_constexpr ] ]
     [ run sequence/boost_pfr_iterator.cpp : :
         : [ requires cxx14_constexpr ] ]
     [ run sequence/boost_pfr_force_macro.cpp : :

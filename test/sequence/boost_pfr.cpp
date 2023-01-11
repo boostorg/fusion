@@ -52,10 +52,12 @@ namespace ns {
     }
 
     // Testing non-constexpr compatible types
+#if BOOST_PFR_USE_CPP17 != 0
     struct employee {
         guaranteed_nonconstexpr_string name;
         guaranteed_nonconstexpr_string nickname;
     };
+#endif // BOOST_PFR_USE_CPP17
 }
 
 struct s { int m; };
@@ -63,13 +65,23 @@ struct s { int m; };
 int
 main()
 {
-    using namespace boost::fusion;
-    using namespace boost;
+    using boost::fusion::tuple_open;
+    using boost::fusion::tuple_close;
+    using boost::fusion::tuple_delimiter;
+    using boost::fusion::at_c;
+    using boost::fusion::make_vector;
+    using boost::fusion::front;
+    using boost::fusion::back;
+    using boost::fusion::vector;
+    using boost::fusion::list;
+    namespace traits = boost::fusion::traits;
+    namespace fusion = boost::fusion;
     using ns::point;
 
-    std::cout << tuple_open('[');
-    std::cout << tuple_close(']');
-    std::cout << tuple_delimiter(", ");
+    // FIXME make this workable even with forced implicit reflection
+    // std::cout << tuple_open('[');
+    // std::cout << tuple_close(']');
+    // std::cout << tuple_delimiter(", ");
 
     {
         static_assert(!traits::is_view< point >::value, "");
@@ -78,7 +90,7 @@ main()
         std::cout << at_c<0>(p) << std::endl;
         std::cout << at_c<1>(p) << std::endl;
         std::cout << at_c<2>(p) << std::endl;
-        std::cout << p << std::endl;
+        boost::fusion::out(std::cout, p) << std::endl;
         BOOST_TEST(p == make_vector(123, 456, 789));
 
         at_c<0>(p) = 6;
@@ -146,9 +158,10 @@ main()
         //        , boost::mpl::front<ns::point>::type>::value, "");
     }
 
+#if BOOST_PFR_USE_CPP17 != 0
     {
         ns::employee emp{ns::guaranteed_nonconstexpr_string("John Doe"),
-		                 ns::guaranteed_nonconstexpr_string("jdoe")};
+		                     ns::guaranteed_nonconstexpr_string("jdoe")};
         std::cout << at_c<0>(emp).value << std::endl;
         std::cout << at_c<1>(emp).value << std::endl;
 
@@ -156,6 +169,7 @@ main()
             ns::guaranteed_nonconstexpr_string("John Doe"), ns::guaranteed_nonconstexpr_string("jdoe"));
         BOOST_TEST(emp == v1);
     }
+#endif // BOOST_PFR_USE_CPP17
 
     {
         int a[3] = {100, 200, 300};
