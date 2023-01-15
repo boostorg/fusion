@@ -276,6 +276,8 @@ project
     [ run sequence/swap.cpp ]
 
     [ run support/config.cpp ]
+    [ compile support/config_pfr_0.cpp ]
+    [ compile support/config_pfr_1.cpp ]
     [ compile support/is_sequence.cpp ]
     [ compile support/is_view.cpp ]
     [ compile support/pair_deque.cpp ]

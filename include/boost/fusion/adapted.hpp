@@ -23,6 +23,11 @@
 #include <boost/fusion/adapted/std_tuple.hpp>
 #endif
 
+// The Boost PFR Library is a C++14 library, but this library also
+// may be not supported in some C++14 compilers.
+// Even if the library is supported in user's environment, that
+// still doesn't mean the environment supports implicit reflection
+// and that also doesn't mean the user wants implicit reflection.
 #if BOOST_FUSION_PFR_ENABLED
 #if BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION
 #include <boost/fusion/adapted/boost_pfr.hpp>
