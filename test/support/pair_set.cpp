@@ -6,6 +6,8 @@
 ==============================================================================*/
 #include <boost/fusion/container/set/set.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE set
 #define TEST_TYPE int
 #include "./pair_container.hpp"

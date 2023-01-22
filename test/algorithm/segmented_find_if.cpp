@@ -11,6 +11,9 @@
 #include <boost/fusion/container/generation/make_vector.hpp>
 #include <boost/mpl/placeholders.hpp>
 #include <boost/type_traits/is_same.hpp>
+
+#include "with_or_without_fallback.hpp"
+
 #include "../sequence/tree.hpp"
 
 struct not_there {};

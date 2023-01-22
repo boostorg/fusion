@@ -18,6 +18,8 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/mpl/empty_base.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 namespace fusion = boost::fusion;
 using boost::noncopyable;
 

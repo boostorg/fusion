@@ -11,6 +11,8 @@
 #include <boost/fusion/algorithm/auxiliary/move.hpp>
 #include <utility>
 
+#include "with_or_without_fallback.hpp"
+
 int main()
 {
     {

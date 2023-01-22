@@ -12,6 +12,9 @@
 #include <boost/fusion/algorithm/iteration/for_each.hpp>
 #include <boost/fusion/sequence/comparison/equal_to.hpp>
 #include <boost/fusion/sequence/io/out.hpp>
+
+#include "with_or_without_fallback.hpp"
+
 #include "../sequence/tree.hpp"
 
 struct print

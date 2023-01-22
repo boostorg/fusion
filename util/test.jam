@@ -66,5 +66,25 @@ rule test-bfl-compile_with_and_without_fallback ( sources : requirements * : tar
     return $(tests) ;
 }
 
-
-# TODO: test-bfl-compile_strictly_without_fallback
+rule test-bfl-compile_strictly_without_fallback ( sources : requirements * : target-name ? ) {
+    local tests ;
+    if ! $(target-name)
+    {
+        target-name = $(sources[1]:B) ;
+    }
+    tests += [
+        compile
+            $(sources)
+        :   <define>BOOST_FUSION_DO_NOT_USE_TAG_OF_FALLBACK=1
+            $(requirements)
+        :   $(target-name)__normal
+    ] ;
+    tests += [
+        compile-fail
+            $(sources)
+        :   <define>BOOST_FUSION_USE_TAG_OF_FALLBACK=1
+            $(requirements)
+        :   $(target-name)__fallback
+    ] ;
+    return $(tests) ;
+}

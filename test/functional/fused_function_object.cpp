@@ -15,6 +15,8 @@
 #include <boost/fusion/container/generation/make_vector.hpp>
 #include <boost/fusion/container/vector.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 namespace fusion = boost::fusion;
 using boost::noncopyable;
 

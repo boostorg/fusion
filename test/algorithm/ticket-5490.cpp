@@ -10,6 +10,8 @@
 #include <boost/mpl/placeholders.hpp>
 #include <boost/core/ignore_unused.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 using namespace boost::fusion;
 
 template <typename>
