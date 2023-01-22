@@ -19,6 +19,8 @@
 
 #include <boost/mpl/assert.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 int main()
 {
     using namespace boost::fusion;

@@ -28,6 +28,8 @@
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/assert.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 struct X
 {
     operator char const*() const

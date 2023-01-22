@@ -32,6 +32,8 @@
 #include <iostream>
 #include <string>
 
+#include "with_or_without_fallback.hpp"
+
 namespace namespaced_type {
   typedef int integer;
 }

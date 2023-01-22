@@ -8,6 +8,8 @@
 #include <boost/fusion/container/list/list.hpp>
 #include <boost/fusion/container/list/convert.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE list
 #define FUSION_FORWARD_ONLY
 #include "misc.hpp"

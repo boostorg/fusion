@@ -7,6 +7,8 @@
 ==============================================================================*/
 #include <boost/fusion/tuple.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE tuple
 #define FUSION_AT get
 #define FUSION_MAKE make_tuple

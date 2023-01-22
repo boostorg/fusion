@@ -19,7 +19,11 @@
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/next.hpp>
 #include <boost/static_assert.hpp>
+
+#include "with_or_without_fallback.hpp"
+
 #include "tree.hpp"
+
 
 #ifdef _MSC_VER
 #  pragma warning(push)

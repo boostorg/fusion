@@ -21,6 +21,8 @@
 
 #include <boost/fusion/functional/generation/make_fused_procedure.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 struct check_equal
 {
     template<typename LHS, typename RHS>

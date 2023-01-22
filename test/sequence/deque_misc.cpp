@@ -10,6 +10,8 @@
 #include <boost/fusion/container/deque/convert.hpp>
 #include <boost/fusion/adapted/mpl.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 #define BOOST_FUSION_SEQUENCE_CONVERSION_IS_NOT_SEQUENCE__TYPE_PRESERVING
 
 #define FUSION_SEQUENCE deque

@@ -27,6 +27,8 @@
 #include <boost/mpl/assert.hpp>
 #include <iostream>
 
+#include "with_or_without_fallback.hpp"
+
 class empty_struct{};
 BOOST_FUSION_ADAPT_ASSOC_STRUCT_NAMED(::empty_struct,empty_struct,)
 

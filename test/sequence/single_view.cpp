@@ -25,6 +25,8 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/type_traits/is_same.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 struct X {};
 
 template <typename OS>

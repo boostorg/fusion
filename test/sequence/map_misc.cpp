@@ -20,6 +20,8 @@
 #include <boost/type_traits/is_same.hpp>
 #include <string>
 
+#include "with_or_without_fallback.hpp"
+
 struct k1 {};
 struct k2 {};
 struct k3 {};

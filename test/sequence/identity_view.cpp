@@ -41,6 +41,8 @@
 #include <boost/typeof/typeof.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 struct abstract
 {
     virtual void foo() = 0;

@@ -15,6 +15,7 @@ import ../../config/checks/config : requires ;
 # import rules from the boost fusion test
 import ../util/test :
     test-bfl-run_with_and_without_fallback
+    test-bfl-compile_with_and_without_fallback
 ;
 
 if [ os.environ CI ]
@@ -128,7 +129,7 @@ project
     [ test-bfl-run_with_and_without_fallback sequence/deque_copy.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/deque_iterator.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/deque_hash.cpp ]
-    [ compile sequence/deque_is_constructible.cpp ]
+    [ test-bfl-compile_with_and_without_fallback sequence/deque_is_constructible.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/deque_make.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/deque_misc.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/deque_move.cpp : :
@@ -261,10 +262,10 @@ project
         : [ requires cxx11_variadic_templates cxx11_hdr_tuple ] ]
     [ test-bfl-run_with_and_without_fallback sequence/ref_vector.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/flatten_view.cpp ]
-    [ compile sequence/github-159.cpp ]
+    [ test-bfl-compile_with_and_without_fallback sequence/github-159.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/github-176.cpp ]
 
-    [ compile sequence/size.cpp ]
+    [ test-bfl-compile_with_and_without_fallback sequence/size.cpp ]
 
     [ run functional/fused.cpp ]
     [ run functional/fused_function_object.cpp ]

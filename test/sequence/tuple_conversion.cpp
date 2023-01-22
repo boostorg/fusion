@@ -8,6 +8,8 @@
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/fusion/tuple.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE boost::fusion::tuple
 #include "conversion.hpp"
 

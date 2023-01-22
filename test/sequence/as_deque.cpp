@@ -16,6 +16,7 @@
 
 #include <string>
 
+#include "with_or_without_fallback.hpp"
 
 int main() {
     using namespace boost::fusion;

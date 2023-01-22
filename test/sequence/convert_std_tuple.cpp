@@ -16,5 +16,8 @@
 #include <tuple>
 #include <boost/fusion/include/std_tuple.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE std::tuple
 #include "convert.hpp"
+

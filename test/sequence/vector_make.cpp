@@ -8,6 +8,8 @@
 #include <boost/fusion/container/vector/vector.hpp>
 #include <boost/fusion/container/generation/make_vector.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE vector
 #include "make.hpp"
 

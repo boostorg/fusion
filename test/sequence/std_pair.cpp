@@ -31,6 +31,8 @@
 #include <string>
 #include <utility>
 
+#include "with_or_without_fallback.hpp"
+
 int
 main()
 {

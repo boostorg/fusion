@@ -18,6 +18,8 @@
 #include <functional>
 #endif
 
+#include "with_or_without_fallback.hpp"
+
 using boost::is_same;
 using boost::reference_wrapper;
 using boost::fusion::traits::deduce;

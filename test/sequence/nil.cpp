@@ -10,6 +10,7 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/mpl/bool.hpp>
 
+#include "with_or_without_fallback.hpp"
 
 int main() {
     using namespace boost::fusion;

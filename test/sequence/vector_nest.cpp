@@ -7,6 +7,8 @@
 #include <boost/fusion/container/vector/vector.hpp>
 #include <boost/core/lightweight_test.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE boost::fusion::vector
 #include "nest.hpp"
 

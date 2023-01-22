@@ -17,6 +17,8 @@
 #include <boost/fusion/sequence/io/out.hpp>
 #include <boost/fusion/support/pair.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 namespace ns
 {
     struct x_member;

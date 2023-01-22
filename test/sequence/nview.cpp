@@ -15,6 +15,8 @@
 #include <string>
 #include <iostream>
 
+#include "with_or_without_fallback.hpp"
+
 struct test {
     int int_;
     std::string string_;

@@ -16,6 +16,8 @@
 #include <boost/static_assert.hpp>
 #include <iostream>
 
+#include "with_or_without_fallback.hpp"
+
 BOOST_FUSION_DEFINE_STRUCT_INLINE(empty_struct, )
 
 int

@@ -22,6 +22,8 @@
 #include <boost/type_traits/is_same.hpp>
 #include <boost/mpl/lambda.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 int
 main()
 {

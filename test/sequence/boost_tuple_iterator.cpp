@@ -7,6 +7,8 @@
 
 #include <boost/fusion/adapted/boost_tuple.hpp>
 
+#include "with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE boost::tuple
 #define FUSION_TRAVERSAL_TAG forward_traversal_tag
 #define FUSION_NO_PRIOR
