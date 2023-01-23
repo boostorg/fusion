@@ -8,6 +8,8 @@
 #define BOOST_FUSION_ADAPTED_BOOST_PFR_FORCE_HPP
 
 #include <boost/fusion/support/config.hpp>
+
+#if BOOST_FUSION_PFR_ENABLED
 #include <boost/fusion/adapted/boost_pfr/detail/at_impl.hpp>
 #include <boost/fusion/adapted/boost_pfr/detail/begin_impl.hpp>
 #include <boost/fusion/adapted/boost_pfr/detail/category_of_impl.hpp>
@@ -56,4 +58,14 @@ namespace boost { namespace pfr {
         };                                                                                     \
     }}
 
+#else
+
+#define BOOST_FUSION_FORCE_PFR_REFLECTABLE(NAME)
+#define BOOST_FUSION_FORCE_PFR_NONREFLECTABLE(NAME)
+#define BOOST_FUSION_FORCE_PFR_REFLECTABLE_TPL(NAME)
+#define BOOST_FUSION_FORCE_PFR_NONREFLECTABLE_TPL(NAME)
+
+#endif
+
 #endif //BOOST_FUSION_ADAPTED_BOOST_PFR_FORCE_HPP
+
