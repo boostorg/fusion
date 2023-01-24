@@ -10,7 +10,7 @@
 #include <boost/type_traits/enable_if.hpp>
 
 template<typename T>
-struct my_is_implicitly_reflectable : boost::mpl::integral_c<bool, (sizeof(T) > 0)> {
+struct my_is_implicitly_reflectable : boost::mpl::integral_c<bool, (sizeof(T) && false)> {
 };
 
 namespace boost { namespace fusion

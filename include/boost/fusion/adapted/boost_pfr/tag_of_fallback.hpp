@@ -60,6 +60,8 @@ namespace boost { namespace fusion
             const auto possible_pfr = boost::pfr::is_implicitly_reflectable<
                 T, boost::pfr::boost_fusion_tag>::value;
             const auto value = !std::is_array<T>::value
+                          // FIXME do we need this?
+                          // && !std::is_reference<T>::value
                           && !detail::in_namespace<T>("boost::fusion")
                           && !detail::in_namespace<T>("boost::mpl")
                           && !detail::in_namespace<T>("mpl_")
