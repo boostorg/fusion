@@ -55,10 +55,23 @@ namespace boost { namespace fusion
         }
 
         template<typename T>
+        struct constexpr_in_namespace_check_possible {
+            template <bool = detail::in_namespace<T>("") >
+            static std::true_type test(long) noexcept;
+
+            static std::false_type test(...) noexcept;
+
+            static constexpr bool value = decltype(test(0)){};
+        };
+
+        template<typename T>
         constexpr bool is_implicitly_reflectable_via_pfr() noexcept {
             // TODO: check that T is complete
             const auto possible_pfr = boost::pfr::is_implicitly_reflectable<
                 T, boost::pfr::boost_fusion_tag>::value;
+            static_assert(detail::constexpr_in_namespace_check_possible<T>::value
+                        , "Unfortunately, Boost PFR with implicit reflection won't work in your compiler due to constexpr limitations. "
+                          "Please, try to use another compiler or disable implicit reflection by '-DBOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION=0'");
             const auto value = !std::is_array<T>::value
                           // FIXME do we need this?
                           // && !std::is_reference<T>::value

@@ -2,6 +2,7 @@
 #    Copyright (c) 2003-2006 Joel de Guzman
 #    Copyright (c) 2013 Mateusz Loskot
 #    Copyright (c) 2014-2018 Kohei Takahashi
+#    Copyright (c) 2023 Denis Mikhailov
 #
 #   Use, modification and distribution is subject to the Boost Software
 #   License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
@@ -22,6 +23,54 @@ import ../util/test :
 if [ os.environ CI ]
 {
     CI_DEFINES = <define>CI_SKIP_KNOWN_FAILURE=1 ;
+}
+
+########## BEGIN of helpers to detect constexpr ctti_type_index trick support
+
+actions mp_simple_run_action
+{
+      $(>) > $(<)
+}
+
+rule mp-run-simple ( sources + : args * : input-files * : requirements * : target-name )
+{
+   exe $(target-name)_exe : $(sources) : $(requirements) ;
+   explicit $(target-name)_exe ;
+   make $(target-name).output : $(target-name)_exe : @mp_simple_run_action ;
+   explicit $(target-name).output ;
+   alias $(target-name) : $(target-name).output ;
+}
+
+mp-run-simple constexpr_ctti_type_index_detection.cpp : : : : compiler_supports_constexpr_ctti_type_index ;
+explicit compiler_supports_constexpr_ctti_type_index ;
+
+########## END of helpers to detect constexpr ctti_type_index trick support
+
+local REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX =
+    [ check-target-builds ../test//compiler_supports_constexpr_ctti_type_index : : <build>no ]
+  ;
+
+local REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX_FAIL =
+    [ check-target-builds ../test//compiler_supports_constexpr_ctti_type_index : <build>no : ]
+  ;
+
+
+rule test-bfl-run_pfr_implicit ( sources + ) {
+    local tests ;
+    local target-name = $(sources[1]:B) ;
+    tests += [
+        run
+            $(sources) : :
+        :   <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 $(REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX) [ requires cxx14_constexpr ]
+        :   $(target-name)
+    ] ;
+    tests += [
+        compile-fail
+            $(sources)
+        :   <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 $(REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX_FAIL) [ requires cxx14_constexpr ]
+        :   $(target-name)_fail
+    ] ;
+    return $(tests) ;
 }
 
 project
@@ -87,12 +136,9 @@ project
     [ test-bfl-run_with_and_without_fallback sequence/as_map_assoc.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/as_set.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/as_vector.cpp ]
-    [ run sequence/boost_pfr.cpp : :
-        : <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 [ requires cxx14_constexpr ] ]
-    [ run sequence/boost_pfr_empty.cpp : :
-        : <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 [ requires cxx14_constexpr ] ]
-    [ run sequence/boost_pfr_convert.cpp : :
-        : <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 [ requires cxx14_constexpr ] ]
+    [ test-bfl-run_pfr_implicit sequence/boost_pfr.cpp ]
+    [ test-bfl-run_pfr_implicit sequence/boost_pfr_empty.cpp ]
+    [ test-bfl-run_pfr_implicit sequence/boost_pfr_convert.cpp ]
     [ run sequence/boost_pfr_iterator.cpp : :
         : [ requires cxx14_constexpr ] ]
     [ run sequence/boost_pfr_force_macro.cpp : :
