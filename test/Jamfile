@@ -143,6 +143,7 @@ project
         : [ requires cxx14_constexpr ] ]
     [ run sequence/boost_pfr_force_macro.cpp : :
         : [ requires cxx14_constexpr ] ]
+    [ run sequence/boost_pfr_force_macro_only.cpp ]
     [ run sequence/boost_pfr_explicit.cpp : :
         : [ requires cxx14_constexpr ] ]
     [ test-bfl-run_with_and_without_fallback sequence/boost_tuple.cpp ]

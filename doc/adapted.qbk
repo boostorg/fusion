@@ -1603,8 +1603,6 @@ defined in __random_access_sequence__ and __associative_sequence__.
 
 [section:force_pfr_reflectable BOOST_FUSION_FORCE_PFR_REFLECTABLE]
 
-[caution This macro requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
-
 [heading Description]
 BOOST_FUSION_FORCE_PFR_REFLECTABLE is a macro that can be used to specify an 
 arbitrary struct as a pfr-reflectable type for Fusion, and thus to make the struct
@@ -1623,10 +1621,8 @@ namespace qualified name of the struct satisfying __simple_aggregate__ to be spe
 
 [heading Header]
 
-    #include <boost/fusion/adapted/boost_pfr.hpp>
-    #include <boost/fusion/include/boost_pfr.hpp>
-    #include <boost/fusion/adapted/boost_pfr_explicit.hpp>
-    #include <boost/fusion/include/boost_pfr_explicit.hpp>
+    #include <boost/fusion/adapted/boost_pfr/force.hpp>
+    #include <boost/fusion/include/boost_pfr_force.hpp>
 
 [heading Example: BOOST_FUSION_FORCE_PFR_REFLECTABLE ]
     namespace demo
@@ -1651,8 +1647,6 @@ __boost_pfr_library__
 
 [section:force_pfr_nonreflectable BOOST_FUSION_FORCE_PFR_NONREFLECTABLE]
 
-[caution This macro requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
-
 [heading Description]
 BOOST_FUSION_FORCE_PFR_NONREFLECTABLE is a macro that can be used to declare a Fusion-side prohibition
 for an arbitrary struct to be pfr-reflectable, and thus to make the struct
@@ -1672,10 +1666,8 @@ namespace qualified name of any type that you wish to be specifyed.
 
 [heading Header]
 
-    #include <boost/fusion/adapted/boost_pfr.hpp>
-    #include <boost/fusion/include/boost_pfr.hpp>
-    #include <boost/fusion/adapted/boost_pfr_explicit.hpp>
-    #include <boost/fusion/include/boost_pfr_explicit.hpp>
+    #include <boost/fusion/adapted/boost_pfr/force.hpp>
+    #include <boost/fusion/include/boost_pfr_force.hpp>
 
 [heading Example: BOOST_FUSION_FORCE_PFR_NONREFLECTABLE ]
     namespace demo
@@ -1700,8 +1692,6 @@ __boost_pfr_library__
 
 [section:force_pfr_reflectable_tpl BOOST_FUSION_FORCE_PFR_REFLECTABLE_TPL]
 
-[caution This macro requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
-
 [heading Description]
 BOOST_FUSION_FORCE_PFR_REFLECTABLE_TPL is a macro that can be used to specify an 
 arbitrary template struct as a pfr-reflectable type for Fusion, and thus to make the struct
@@ -1720,10 +1710,8 @@ namespace qualified name of the template struct satisfying __simple_aggregate__ 
 
 [heading Header]
 
-    #include <boost/fusion/adapted/boost_pfr.hpp>
-    #include <boost/fusion/include/boost_pfr.hpp>
-    #include <boost/fusion/adapted/boost_pfr_explicit.hpp>
-    #include <boost/fusion/include/boost_pfr_explicit.hpp>
+    #include <boost/fusion/adapted/boost_pfr/force.hpp>
+    #include <boost/fusion/include/boost_pfr_force.hpp>
 
 [heading Example: BOOST_FUSION_FORCE_PFR_REFLECTABLE_TPL ]
     namespace demo
@@ -1750,8 +1738,6 @@ __boost_pfr_library__
 
 [section:force_pfr_nonreflectable_tpl BOOST_FUSION_FORCE_PFR_NONREFLECTABLE_TPL]
 
-[caution This macro requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
-
 [heading Description]
 BOOST_FUSION_FORCE_PFR_NONREFLECTABLE_TPL is a macro that can be used to declare a Fusion-side prohibition
 for an arbitrary template struct to be pfr-reflectable, and thus to make the struct
@@ -1771,10 +1757,8 @@ namespace qualified name of any type that you wish to be specifyed.
 
 [heading Header]
 
-    #include <boost/fusion/adapted/boost_pfr.hpp>
-    #include <boost/fusion/include/boost_pfr.hpp>
-    #include <boost/fusion/adapted/boost_pfr_explicit.hpp>
-    #include <boost/fusion/include/boost_pfr_explicit.hpp>
+    #include <boost/fusion/adapted/boost_pfr/force.hpp>
+    #include <boost/fusion/include/boost_pfr_force.hpp>
 
 [heading Example: BOOST_FUSION_FORCE_PFR_NONREFLECTABLE_TPL ]
     namespace demo

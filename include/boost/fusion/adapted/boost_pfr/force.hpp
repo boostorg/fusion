@@ -26,18 +26,20 @@ namespace boost { namespace pfr {
 
 #define BOOST_FUSION_FORCE_PFR_REFLECTABLE(NAME)                                               \
     namespace boost { namespace pfr {                                                          \
-        template<> struct is_reflectable<NAME, boost::pfr::boost_fusion_tag>                   \
-                       : std::true_type                                                        \
-                   {                                                                           \
-                   };                                                                          \
+        template<>                                                                             \
+        struct is_reflectable<NAME, boost::pfr::boost_fusion_tag>                              \
+            : std::true_type                                                                   \
+        {                                                                                      \
+        };                                                                                     \
     }}
 
 #define BOOST_FUSION_FORCE_PFR_NONREFLECTABLE(NAME)                                            \
     namespace boost { namespace pfr {                                                          \
-        template<> struct is_reflectable<NAME, boost::pfr::boost_fusion_tag>                   \
-                       : std::false_type                                                       \
-                   {                                                                           \
-                   };                                                                          \
+        template<>                                                                             \
+        struct is_reflectable<NAME, boost::pfr::boost_fusion_tag>                              \
+            : std::false_type                                                                  \
+        {                                                                                      \
+        };                                                                                     \
     }}
 
 #define BOOST_FUSION_FORCE_PFR_REFLECTABLE_TPL(NAME)                                           \

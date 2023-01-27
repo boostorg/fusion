@@ -10,7 +10,7 @@
 #ifndef BOOST_NO_CXX11_HDR_TYPE_TRAITS
 #include <type_traits>
 #include <boost/fusion/include/deque.hpp>
-#include <boost/fusion/adapted/boost_pfr/force.hpp>
+#include <boost/fusion/include/boost_pfr_force.hpp>
 
 #include "../with_or_without_fallback.hpp"
 
