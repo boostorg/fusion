@@ -8,7 +8,7 @@
 #include <boost/static_assert.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-#include "with_or_without_fallback.hpp"
+#include "../with_or_without_fallback.hpp"
 
 // Make sure tag_of can be used with an incomplete type.
 struct incomplete;

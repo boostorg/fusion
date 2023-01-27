@@ -16,7 +16,7 @@
 #include <boost/static_assert.hpp>
 #include <iostream>
 
-#include "with_or_without_fallback.hpp"
+#include "../with_or_without_fallback.hpp"
 
 BOOST_FUSION_DEFINE_ASSOC_STRUCT(BOOST_PP_EMPTY(), empty_struct, )
 

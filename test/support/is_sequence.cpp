@@ -7,7 +7,7 @@
 #include <boost/fusion/support/is_sequence.hpp>
 #include <boost/static_assert.hpp>
 
-#include "with_or_without_fallback.hpp"
+#include "../with_or_without_fallback.hpp"
 
 // Make sure fusion::is_sequence and fusion::is_native_fusion_sequence can be
 // used with an incomplete type.

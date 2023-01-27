@@ -5,7 +5,7 @@
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 
-#include "with_or_without_fallback.hpp"
+#include "../with_or_without_fallback.hpp"
 
 #define BOOST_FUSION_TEST_REVERSE_FOLD
 #include "fold.hpp"

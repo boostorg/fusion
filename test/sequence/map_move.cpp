@@ -8,7 +8,7 @@
 #define BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
 #include <boost/fusion/container/map/map.hpp>
 
-#include "with_or_without_fallback.hpp"
+#include "../with_or_without_fallback.hpp"
 
 struct k1 {};
 struct k2 {};

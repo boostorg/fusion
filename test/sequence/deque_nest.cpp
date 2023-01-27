@@ -7,7 +7,7 @@
 #include <boost/fusion/container/deque/deque.hpp>
 #include <boost/core/lightweight_test.hpp>
 
-#include "with_or_without_fallback.hpp"
+#include "../with_or_without_fallback.hpp"
 
 #define FUSION_SEQUENCE boost::fusion::deque
 #include "nest.hpp"

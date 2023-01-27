@@ -13,7 +13,7 @@
 #include <boost/type_traits/add_reference.hpp>
 #include <boost/fusion/include/adapt_struct.hpp>
 
-#include "with_or_without_fallback.hpp"
+#include "../with_or_without_fallback.hpp"
 
 struct foo
 {

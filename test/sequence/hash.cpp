@@ -11,7 +11,7 @@
 #include <boost/fusion/include/adapt_struct.hpp>
 #include <boost/fusion/sequence/hash.hpp>
 
-#include "with_or_without_fallback.hpp"
+#include "../with_or_without_fallback.hpp"
 
 struct test_struct
 {
