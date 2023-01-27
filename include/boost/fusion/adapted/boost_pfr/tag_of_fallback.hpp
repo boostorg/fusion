@@ -10,6 +10,7 @@
 #include <boost/fusion/support/config.hpp>
 #include <boost/fusion/support/tag_of_fwd.hpp>
 #include <boost/type_index/ctti_type_index.hpp>
+#include <boost/type_traits/is_complete.hpp>
 #include <boost/pfr/traits.hpp>
 #include <type_traits>
 
@@ -66,12 +67,14 @@ namespace boost { namespace fusion
 
         template<typename T>
         constexpr bool is_implicitly_reflectable_via_pfr() noexcept {
-            // TODO: check that T is complete
-            const auto possible_pfr = boost::pfr::is_implicitly_reflectable<
-                T, boost::pfr::boost_fusion_tag>::value;
             static_assert(detail::constexpr_in_namespace_check_possible<T>::value
                         , "Unfortunately, Boost PFR with implicit reflection won't work in your compiler due to constexpr limitations. "
                           "Please, try to use another compiler or disable implicit reflection by '-DBOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION=0'");
+            static_assert(boost::is_complete<T>::value
+                        , "Boost Fusion doesn't work with incomplete types if Boost PFR is used as implicit fallback. "
+                          "Please, don't pass incomplete types into Boost Fusion or just disable implicit reflection by '-DBOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION=0'");
+            const auto possible_pfr = boost::pfr::is_implicitly_reflectable<
+                T, boost::pfr::boost_fusion_tag>::value;
             const auto value = !std::is_array<T>::value
                           // FIXME do we need this?
                           // && !std::is_reference<T>::value

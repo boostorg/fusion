@@ -139,12 +139,26 @@ namespace boost { namespace fusion { namespace detail
 #endif
 
 
+// Configure possible integration with PFR
 #ifndef BOOST_FUSION_PFR_ENABLED
 #   define BOOST_FUSION_PFR_ENABLED BOOST_PFR_ENABLED
 #endif
 
 #ifndef BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION
 #   define BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION BOOST_PFR_ENABLE_IMPLICIT_REFLECTION
+#endif
+
+// Verify configuration of possible integration with PFR
+#if BOOST_FUSION_PFR_ENABLED && !BOOST_PFR_ENABLED
+#error Can not force to integrate Boost PFR with Boost Fusion because Boost PFR unavailable in this environment.
+#endif
+
+#if BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION && !BOOST_PFR_ENABLE_IMPLICIT_REFLECTION
+#error Can not force to integrate Boost PFR as implicit fallback for Boost Fusion because Boost PFR does not provide implicit reflection in this environment.
+#endif
+
+#if BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION && !BOOST_FUSION_PFR_ENABLED
+#error Can not force to integrate Boost PFR as implicit fallback for Boost Fusion because Boost Fusion configured to not use whole Boost PFR.
 #endif
 
 #endif

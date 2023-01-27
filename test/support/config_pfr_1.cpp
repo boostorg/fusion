@@ -5,9 +5,9 @@
 ==============================================================================*/
 
 #define BOOST_FUSION_PFR_ENABLED                       0
-#define BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION    1
+#define BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION    0
 #define BOOST_PFR_ENABLED                              1
-#define BOOST_PFR_ENABLE_IMPLICIT_REFLECTION           0
+#define BOOST_PFR_ENABLE_IMPLICIT_REFLECTION           1
 
 #include <boost/fusion/support/config.hpp>
 #include <boost/static_assert.hpp>
