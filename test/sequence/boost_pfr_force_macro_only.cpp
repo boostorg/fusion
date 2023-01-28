@@ -14,20 +14,20 @@ int
 main()
 {
     {
-        typedef typename boost::fusion::traits::tag_of<not_a_sequence>::type Tag;
-        typedef typename boost::fusion::traits::tag_of<reflectable>::type Tag2;
-        typedef typename boost::fusion::traits::tag_of<not_a_sequence_tpl<int> >::type Tag3;
-        typedef typename boost::fusion::traits::tag_of<reflectable_tpl<int> >::type Tag4;
+        typedef boost::fusion::traits::tag_of<not_a_sequence>::type Tag;
+        typedef boost::fusion::traits::tag_of<reflectable>::type Tag2;
+        typedef boost::fusion::traits::tag_of<not_a_sequence_tpl<int> >::type Tag3;
+        typedef boost::fusion::traits::tag_of<reflectable_tpl<int> >::type Tag4;
         BOOST_STATIC_ASSERT((boost::is_same<Tag, boost::fusion::non_fusion_tag>::value));
         BOOST_STATIC_ASSERT((boost::is_same<Tag2, boost::fusion::non_fusion_tag>::value));
         BOOST_STATIC_ASSERT((boost::is_same<Tag3, boost::fusion::non_fusion_tag>::value));
         BOOST_STATIC_ASSERT((boost::is_same<Tag4, boost::fusion::non_fusion_tag>::value));
     }
     {
-        typedef typename boost::fusion::traits::tag_of<const not_a_sequence>::type Tag;
-        typedef typename boost::fusion::traits::tag_of<const reflectable>::type Tag2;
-        typedef typename boost::fusion::traits::tag_of<const not_a_sequence_tpl<int> >::type Tag3;
-        typedef typename boost::fusion::traits::tag_of<const reflectable_tpl<int> >::type Tag4;
+        typedef boost::fusion::traits::tag_of<const not_a_sequence>::type Tag;
+        typedef boost::fusion::traits::tag_of<const reflectable>::type Tag2;
+        typedef boost::fusion::traits::tag_of<const not_a_sequence_tpl<int> >::type Tag3;
+        typedef boost::fusion::traits::tag_of<const reflectable_tpl<int> >::type Tag4;
         BOOST_STATIC_ASSERT((boost::is_same<Tag, boost::fusion::non_fusion_tag>::value));
         BOOST_STATIC_ASSERT((boost::is_same<Tag2, boost::fusion::non_fusion_tag>::value));
         BOOST_STATIC_ASSERT((boost::is_same<Tag3, boost::fusion::non_fusion_tag>::value));
