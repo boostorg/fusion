@@ -79,9 +79,10 @@ main()
     namespace fusion = boost::fusion;
     using ns::point;
 
-    std::cout << tuple_open('[');
-    std::cout << tuple_close(']');
-    std::cout << tuple_delimiter(", ");
+    // FIXME make this workable even with forced implicit reflection
+    // std::cout << tuple_open('[');
+    // std::cout << tuple_close(']');
+    // std::cout << tuple_delimiter(", ");
 
     {
         static_assert(!traits::is_view< point >::value, "");

@@ -43,9 +43,10 @@ main()
     namespace traits = boost::fusion::traits;
     namespace fusion = boost::fusion;
 
-    std::cout << tuple_open('[');
-    std::cout << tuple_close(']');
-    std::cout << tuple_delimiter(", ");
+    // FIXME make this workable even with forced implicit reflection
+    // std::cout << tuple_open('[');
+    // std::cout << tuple_close(']');
+    // std::cout << tuple_delimiter(", ");
 
     {
         BOOST_MPL_ASSERT_NOT((traits::is_view<empty_struct>));

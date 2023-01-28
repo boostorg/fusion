@@ -33,9 +33,11 @@ void test_starts_with() {
 }
 
 void test_in_namespace() {
+#if BOOST_FUSION_EXPECT_CTTI_TYPE_INDEX_CONSTEXPR_WHEN_UTILS_TEST
     static_assert(boost::fusion::detail::in_namespace< boost::is_same<int,int> >("boost"), "");
     static_assert(boost::fusion::detail::in_namespace< std::is_same<int,int> >("std"), "");
     static_assert(!boost::fusion::detail::in_namespace< int >("std"), "");
+#endif
 }
 
 void test_constexpr_in_namespace_check_possible() {

@@ -193,9 +193,8 @@ project
     [ test-bfl-run_pfr_explicit sequence/boost_pfr_force_macro.cpp ]
     [ test-bfl-run_pfr_explicit sequence/boost_pfr_explicit.cpp ]
     [ test-bfl-run_pfr_only_force sequence/boost_pfr_force_macro_only.cpp ]
-    # FIXME it should be passed into test-bfl-run_pfr_implicit, but it's impossible due to issue on PFR side
-    [ run sequence/boost_pfr_reference.cpp : :
-        : [ requires cxx17_structured_bindings ] ]
+    # FIXME it doesn't work properly due to issue on PFR side
+    # [ test-bfl-run_pfr_implicit sequence/boost_pfr_reference.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/boost_tuple.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/boost_tuple_iterator.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/cons.cpp ]
