@@ -58,18 +58,65 @@ local REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX_FAIL =
 rule test-bfl-run_pfr_implicit ( sources + ) {
     local tests ;
     local target-name = $(sources[1]:B) ;
-    tests += [
-        run
-            $(sources) : :
-        :   <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 $(REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX) [ requires cxx14_constexpr ]
-        :   $(target-name)
-    ] ;
-    tests += [
-        compile-fail
-            $(sources)
-        :   <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 $(REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX_FAIL) [ requires cxx14_constexpr ]
-        :   $(target-name)_fail
-    ] ;
+    local VARIANTS = 
+        IMPLICIT_0
+        IMPLICIT_1
+        IMPLICIT_2
+      ;
+    for local variant in $(VARIANTS)
+    {
+        tests += [
+            run
+                $(sources) : :
+            :   <define>BOOST_FUSION_USE_PFR_$(variant)=1 <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 $(REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX) [ requires cxx14_constexpr ]
+            :   $(target-name)__$(variant:L)
+        ] ;
+        tests += [
+            compile-fail
+                $(sources)
+            :   <define>BOOST_FUSION_USE_PFR_$(variant)=1 <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 $(REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX_FAIL) [ requires cxx14_constexpr ]
+            :   $(target-name)__$(variant:L)_fail
+        ] ;
+    }
+    return $(tests) ;
+}
+
+rule test-bfl-run_pfr_explicit ( sources + ) {
+    local tests ;
+    local target-name = $(sources[1]:B) ;
+    local VARIANTS = 
+        EXPLICIT_0
+        EXPLICIT_1
+        EXPLICIT_2
+      ;
+    for local variant in $(VARIANTS)
+    {
+        tests += [
+            run
+                $(sources) : :
+            :   <define>BOOST_FUSION_USE_PFR_$(variant)=1 [ requires cxx14_constexpr ]
+            :   $(target-name)__$(variant:L)
+        ] ;
+    }
+    return $(tests) ;
+}
+
+rule test-bfl-run_pfr_only_force ( sources + ) {
+    local tests ;
+    local target-name = $(sources[1]:B) ;
+    local VARIANTS = 
+        ONLY_FORCE_0
+        ONLY_FORCE_1
+      ;
+    for local variant in $(VARIANTS)
+    {
+        tests += [
+            run
+                $(sources) : :
+            :   <define>BOOST_FUSION_USE_PFR_$(variant)=1
+            :   $(target-name)__$(variant:L)
+        ] ;
+    }
     return $(tests) ;
 }
 
@@ -124,11 +171,14 @@ project
     [ test-bfl-run_with_and_without_fallback algorithm/flatten.cpp ]
     [ test-bfl-compile_with_and_without_fallback algorithm/ticket-5490.cpp ]
 
-    [ compile include/adapted.cpp ]
-    [ compile include/_boost_pfr.cpp
-        : <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 [ requires cxx14_constexpr ] ]
-    [ compile include/_boost_pfr_explicit.cpp
-        : [ requires cxx14_constexpr ] ]
+    [ run sequence/detail/boost_pfr_utils.cpp : :
+        : <define>BOOST_FUSION_EXPECT_CTTI_TYPE_INDEX_CONSTEXPR_WHEN_UTILS_TEST=1 <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 $(REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX) [ requires cxx14_constexpr ]
+        : detail_boost_pfr_utils_expect_constexpr_ctti_type_index
+    ]
+    [ run sequence/detail/boost_pfr_utils.cpp : :
+        : <define>BOOST_FUSION_EXPECT_CTTI_TYPE_INDEX_NONCONSTEXPR_WHEN_UTILS_TEST=1 <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 $(REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX_FAIL) [ requires cxx14_constexpr ]
+        : detail_boost_pfr_utils_expect_nonconstexpr_ctti_type_index
+    ]
 
     [ test-bfl-run_with_and_without_fallback sequence/as_deque.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/as_list.cpp ]
@@ -139,13 +189,13 @@ project
     [ test-bfl-run_pfr_implicit sequence/boost_pfr.cpp ]
     [ test-bfl-run_pfr_implicit sequence/boost_pfr_empty.cpp ]
     [ test-bfl-run_pfr_implicit sequence/boost_pfr_convert.cpp ]
-    [ run sequence/boost_pfr_iterator.cpp : :
-        : [ requires cxx14_constexpr ] ]
-    [ run sequence/boost_pfr_force_macro.cpp : :
-        : [ requires cxx14_constexpr ] ]
-    [ run sequence/boost_pfr_force_macro_only.cpp ]
-    [ run sequence/boost_pfr_explicit.cpp : :
-        : [ requires cxx14_constexpr ] ]
+    [ test-bfl-run_pfr_explicit sequence/boost_pfr_iterator.cpp ]
+    [ test-bfl-run_pfr_explicit sequence/boost_pfr_force_macro.cpp ]
+    [ test-bfl-run_pfr_explicit sequence/boost_pfr_explicit.cpp ]
+    [ test-bfl-run_pfr_only_force sequence/boost_pfr_force_macro_only.cpp ]
+    # FIXME it should be passed into test-bfl-run_pfr_implicit, but it's impossible due to issue on PFR side
+    [ run sequence/boost_pfr_reference.cpp : :
+        : [ requires cxx17_structured_bindings ] ]
     [ test-bfl-run_with_and_without_fallback sequence/boost_tuple.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/boost_tuple_iterator.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/cons.cpp ]
@@ -329,7 +379,7 @@ project
     [ test-bfl-run_with_and_without_fallback functional/invoke_procedure.cpp ]
     [ test-bfl-run_with_and_without_fallback sequence/swap.cpp ]
 
-    [ run support/config.cpp ]
+    [ run support/config.cpp : : : <test-info>always_show_run_output ]
     [ compile support/config_pfr_0.cpp ]
     [ compile support/config_pfr_1.cpp ]
     [ compile-fail support/config_pfr_fail_0.cpp ]

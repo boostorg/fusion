@@ -40,7 +40,6 @@ namespace boost { namespace fusion
 
         // Function that returns true if `T` declared in namespace `ns`
         // got from here: https://www.boost.org/doc/libs/1_81_0/doc/html/boost_typeindex/examples.html#boost_typeindex.examples.c_14_checking_namespace_at_compi
-        // TODO: test for it
         template <class T, std::size_t N>
         constexpr bool in_namespace(const char (&ns)[N]) noexcept {
             const char* name = boost::typeindex::ctti_type_index::type_id<T>().raw_name();
@@ -76,8 +75,6 @@ namespace boost { namespace fusion
             const auto possible_pfr = boost::pfr::is_implicitly_reflectable<
                 T, boost::pfr::boost_fusion_tag>::value;
             const auto value = !std::is_array<T>::value
-                          // FIXME do we need this?
-                          // && !std::is_reference<T>::value
                           && !detail::in_namespace<T>("boost::fusion")
                           && !detail::in_namespace<T>("boost::mpl")
                           && !detail::in_namespace<T>("mpl_")

@@ -6,9 +6,6 @@
 
 // This header provides ability for regression test of Boost PFR adapter.
 
-#include <boost/mpl/integral_c.hpp>
-#include <boost/type_traits/enable_if.hpp>
-
 #if BOOST_FUSION_USE_TAG_OF_FALLBACK
 
 #include <boost/fusion/adapted.hpp>

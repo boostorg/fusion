@@ -10,6 +10,12 @@
 
 namespace boost { namespace fusion
 {
+    namespace detail
+    {
+        // This metafunction mustn't have more than one specialization in the whole Fusion
+        template<typename T, typename Active = void>
+        struct tag_of_fallback;
+    }
     namespace traits
     {
         template<typename T, typename Active = void>

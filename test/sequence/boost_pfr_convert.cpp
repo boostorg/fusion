@@ -4,8 +4,9 @@
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 
+#include "boost_pfr.hpp"
+
 #include <boost/detail/lightweight_test.hpp>
-#include <boost/fusion/adapted/boost_pfr.hpp>
 #include <boost/fusion/sequence/intrinsic/at.hpp>
 #include <boost/fusion/sequence/intrinsic/size.hpp>
 #include <boost/fusion/sequence/intrinsic/empty.hpp>

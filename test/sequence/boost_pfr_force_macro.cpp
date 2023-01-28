@@ -4,11 +4,13 @@
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 
+#include "boost_pfr.hpp"
+
 #include <boost/detail/lightweight_test.hpp>
-#include <boost/fusion/adapted/boost_pfr_explicit.hpp>
 #include <boost/fusion/support/tag_of.hpp>
 #include <boost/type_traits/is_same.hpp>
 
+#define BOOST_FUSION_USE_PFR_ONLY_FORCE_0 1
 #include "boost_pfr_force_macro.hpp"
 
 int
