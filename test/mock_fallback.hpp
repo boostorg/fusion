@@ -8,9 +8,15 @@
 
 #include <boost/mpl/integral_c.hpp>
 #include <boost/type_traits/enable_if.hpp>
+#include <boost/type_traits/is_function.hpp>
+
+template<typename T, typename S = void>
+struct my_is_implicitly_reflectable : boost::mpl::integral_c<bool, (sizeof(T) && false)> {
+};
 
 template<typename T>
-struct my_is_implicitly_reflectable : boost::mpl::integral_c<bool, (sizeof(T) && false)> {
+struct my_is_implicitly_reflectable<T, typename boost::enable_if<boost::is_function<T> >::type>
+    : boost::mpl::integral_c<bool, false> {
 };
 
 namespace boost { namespace fusion
