@@ -273,6 +273,10 @@ project
     [ compile support/unused.cpp ]
     [ compile support/detail/tag_of_fallback.cpp ]
 
+    [ compile-fail support/make_pair_r-value.cpp ]
+    [ compile support/make_pair_r-value.cpp
+        : [ requires cxx11_rvalue_references ] ]
+
 #   [ compile-fail xxx.cpp  ]
 
     ;
