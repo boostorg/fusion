@@ -183,6 +183,110 @@ __boost_array_library__
 
 [endsect]
 
+[section:structured_pair boost::bimaps::relation::structured_pair]
+
+This module provides adapters for
+`boost::bimaps::relation::structured_pair`.  Including the module header
+makes `boost::bimaps::relation::structured_pair` a fully conforming
+__random_access_sequence__.
+
+[heading Header]
+
+    #include <boost/fusion/adapted/boost_bimap_pair.hpp>
+    #include <boost/fusion/include/boost_bimap_pair.hpp>
+
+[heading Model of]
+
+* __random_access_sequence__
+
+[heading Example]
+
+    boost::bimaps::relation::structured_pair<
+        int
+      , std::string
+    > p(123, "Hola!!!");
+    std::cout << __at_c__<0>(p) << std::endl;
+    std::cout << __at_c__<1>(p) << std::endl;
+    std::cout << p << std::endl;
+
+[endsect]
+
+[section:compressed_pair boost::compressed_pair]
+
+This module provides adapters for __boost_compressed_pair__.  Including the
+module header makes __boost_compressed_pair__ a fully conforming
+__random_access_sequence__.
+
+[heading Header]
+
+    #include <boost/fusion/adapted/boost_compressed_pair.hpp>
+    #include <boost/fusion/include/boost_compressed_pair.hpp>
+
+[heading Model of]
+
+* __random_access_sequence__
+
+[heading Example]
+
+    boost::compressed_pair<int, std::string> p(123, "Hola!!!");
+    std::cout << __at_c__<0>(p) << std::endl;
+    std::cout << __at_c__<1>(p) << std::endl;
+    std::cout << p << std::endl;
+
+[endsect]
+
+[section:container_pair boost::container::map/multimap<>::movable_value_type]
+
+This module provides adapters for the `mutable_value_type` definition nested
+within __boost_container_map__ and __boost_container_multimap__.  Including
+the module header makes `mutable_value_type` a fully conforming
+__random_access_sequence__.
+
+[heading Header]
+
+    #include <boost/fusion/adapted/boost_container_pair.hpp>
+    #include <boost/fusion/include/boost_container_pair.hpp>
+
+[heading Model of]
+
+* __random_access_sequence__
+
+[heading Example]
+
+    boost::container::map<
+        int
+      , std::string
+    >::movable_value_type p(123, "Hola!!!");
+    std::cout << __at_c__<0>(p) << std::endl;
+    std::cout << __at_c__<1>(p) << std::endl;
+    std::cout << p << std::endl;
+
+[endsect]
+
+[section:compressed_pair boost::compressed_pair]
+
+This module provides adapters for __boost_compressed_pair__.  Including the
+module header makes __boost_compressed_pair__ a fully conforming
+__random_access_sequence__.
+
+[heading Header]
+
+    #include <boost/fusion/adapted/boost_compressed_pair.hpp>
+    #include <boost/fusion/include/boost_compressed_pair.hpp>
+
+[heading Model of]
+
+* __random_access_sequence__
+
+[heading Example]
+
+    boost::compressed_pair<int, std::string> p(123, "Hola!!!");
+    std::cout << __at_c__<0>(p) << std::endl;
+    std::cout << __at_c__<1>(p) << std::endl;
+    std::cout << p << std::endl;
+
+[endsect]
+
 [section boost::tuple]
 This module provides adapters for `boost::tuple`. Including the module
 header makes `boost::tuple` a fully conforming __forward_sequence__.
