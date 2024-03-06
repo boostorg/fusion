@@ -22,6 +22,8 @@
 # include <sstream>
 #endif
 
+#include "../with_or_without_fallback.hpp"
+
 using boost::fusion::vector;
 using boost::fusion::make_vector;
 using boost::fusion::tuple_close;

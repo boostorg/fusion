@@ -2,6 +2,7 @@
 #    Copyright (c) 2003-2006 Joel de Guzman
 #    Copyright (c) 2013 Mateusz Loskot
 #    Copyright (c) 2014-2018 Kohei Takahashi
+#    Copyright (c) 2023 Denis Mikhailov
 #
 #   Use, modification and distribution is subject to the Boost Software
 #   License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
@@ -12,9 +13,111 @@ import testing ;
 import os ;
 import ../../config/checks/config : requires ;
 
+# import rules from the boost fusion test
+import ../util/test :
+    test-bfl-run_with_and_without_fallback
+    test-bfl-compile_with_and_without_fallback
+    test-bfl-compile_strictly_without_fallback
+;
+
 if [ os.environ CI ]
 {
     CI_DEFINES = <define>CI_SKIP_KNOWN_FAILURE=1 ;
+}
+
+########## BEGIN of helpers to detect constexpr ctti_type_index trick support
+
+actions mp_simple_run_action
+{
+      $(>) > $(<)
+}
+
+rule mp-run-simple ( sources + : args * : input-files * : requirements * : target-name )
+{
+   exe $(target-name)_exe : $(sources) : $(requirements) ;
+   explicit $(target-name)_exe ;
+   make $(target-name).output : $(target-name)_exe : @mp_simple_run_action ;
+   explicit $(target-name).output ;
+   alias $(target-name) : $(target-name).output ;
+}
+
+mp-run-simple constexpr_ctti_type_index_detection.cpp : : : : compiler_supports_constexpr_ctti_type_index ;
+explicit compiler_supports_constexpr_ctti_type_index ;
+
+########## END of helpers to detect constexpr ctti_type_index trick support
+
+local REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX =
+    [ check-target-builds ../test//compiler_supports_constexpr_ctti_type_index : : <build>no ]
+  ;
+
+local REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX_FAIL =
+    [ check-target-builds ../test//compiler_supports_constexpr_ctti_type_index : <build>no : ]
+  ;
+
+
+rule test-bfl-run_pfr_implicit ( sources + ) {
+    local tests ;
+    local target-name = $(sources[1]:B) ;
+    local VARIANTS = 
+        IMPLICIT_0
+        IMPLICIT_1
+        IMPLICIT_2
+      ;
+    for local variant in $(VARIANTS)
+    {
+        tests += [
+            run
+                $(sources) : :
+            :   <define>BOOST_FUSION_USE_PFR_$(variant)=1 <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 $(REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX) [ requires cxx14_constexpr ]
+            :   $(target-name)__$(variant:L)
+        ] ;
+        tests += [
+            compile-fail
+                $(sources)
+            :   <define>BOOST_FUSION_USE_PFR_$(variant)=1 <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 $(REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX_FAIL) [ requires cxx14_constexpr ]
+            :   $(target-name)__$(variant:L)_fail
+        ] ;
+    }
+    return $(tests) ;
+}
+
+rule test-bfl-run_pfr_explicit ( sources + ) {
+    local tests ;
+    local target-name = $(sources[1]:B) ;
+    local VARIANTS = 
+        EXPLICIT_0
+        EXPLICIT_1
+        EXPLICIT_2
+      ;
+    for local variant in $(VARIANTS)
+    {
+        tests += [
+            run
+                $(sources) : :
+            :   <define>BOOST_FUSION_USE_PFR_$(variant)=1 [ requires cxx14_constexpr ]
+            :   $(target-name)__$(variant:L)
+        ] ;
+    }
+    return $(tests) ;
+}
+
+rule test-bfl-run_pfr_only_force ( sources + ) {
+    local tests ;
+    local target-name = $(sources[1]:B) ;
+    local VARIANTS = 
+        ONLY_FORCE_0
+        ONLY_FORCE_1
+      ;
+    for local variant in $(VARIANTS)
+    {
+        tests += [
+            run
+                $(sources) : :
+            :   <define>BOOST_FUSION_USE_PFR_$(variant)=1
+            :   $(target-name)__$(variant:L)
+        ] ;
+    }
+    return $(tests) ;
 }
 
 project
@@ -25,252 +128,276 @@ project
 {
     test-suite fusion :
 
-    [ run algorithm/all.cpp ]
-    [ run algorithm/any.cpp ]
-    [ run algorithm/clear.cpp ]
-    [ run algorithm/copy.cpp ]
-    [ run algorithm/count.cpp ]
-    [ run algorithm/count_if.cpp ]
-    [ run algorithm/erase.cpp ]
-    [ run algorithm/erase_key.cpp ]
-    [ run algorithm/filter.cpp ]
-    [ run algorithm/filter_if.cpp ]
-    [ run algorithm/find.cpp ]
-    [ run algorithm/find_if.cpp ]
-    [ run algorithm/fold.cpp ]
-    [ run algorithm/for_each.cpp ]
-    [ run algorithm/insert.cpp ]
-    [ run algorithm/insert_range.cpp ]
-    [ run algorithm/iter_fold.cpp ]
-    [ run algorithm/move.cpp : :
+    [ test-bfl-run_with_and_without_fallback algorithm/all.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/any.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/clear.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/copy.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/count.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/count_if.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/erase.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/erase_key.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/filter.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/filter_if.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/find.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/find_if.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/fold.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/for_each.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/insert.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/insert_range.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/iter_fold.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/move.cpp : :
         : [ requires cxx11_rvalue_references ] ]
-    [ run algorithm/none.cpp ]
-    [ run algorithm/pop_back.cpp ]
-    [ run algorithm/pop_front.cpp ]
-    [ run algorithm/push_back.cpp ]
-    [ run algorithm/push_front.cpp ]
-    [ run algorithm/remove.cpp ]
-    [ run algorithm/remove_if.cpp ]
-    [ run algorithm/replace.cpp ]
-    [ run algorithm/replace_if.cpp ]
-    [ run algorithm/reverse_fold.cpp ]
-    [ run algorithm/reverse_iter_fold.cpp ]
-    [ run algorithm/reverse.cpp ]
-    [ run algorithm/segmented_for_each.cpp ]
-    [ run algorithm/segmented_find.cpp ]
-    [ run algorithm/segmented_find_if.cpp ]
-    [ run algorithm/segmented_fold.cpp ]
-    [ run algorithm/transform.cpp ]
-    [ run algorithm/join.cpp ]
-    [ run algorithm/zip.cpp ]
-    [ run algorithm/zip2.cpp ]
-    [ run algorithm/zip_ignore.cpp ]
-    [ run algorithm/flatten.cpp ]
-    [ compile algorithm/ticket-5490.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/none.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/pop_back.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/pop_front.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/push_back.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/push_front.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/remove.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/remove_if.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/replace.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/replace_if.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/reverse_fold.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/reverse_iter_fold.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/reverse.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/segmented_for_each.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/segmented_find.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/segmented_find_if.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/segmented_fold.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/transform.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/join.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/zip.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/zip2.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/zip_ignore.cpp ]
+    [ test-bfl-run_with_and_without_fallback algorithm/flatten.cpp ]
+    [ test-bfl-compile_with_and_without_fallback algorithm/ticket-5490.cpp ]
 
-    [ run sequence/as_deque.cpp ]
-    [ run sequence/as_list.cpp ]
-    [ run sequence/as_map.cpp ]
-    [ run sequence/as_map_assoc.cpp ]
-    [ run sequence/as_set.cpp ]
-    [ run sequence/as_vector.cpp ]
-    [ run sequence/boost_tuple.cpp ]
-    [ run sequence/boost_tuple_iterator.cpp ]
-    [ run sequence/cons.cpp ]
-    [ run sequence/convert_boost_tuple.cpp ]
-    [ run sequence/convert_deque.cpp ]
-    [ run sequence/convert_list.cpp ]
-    [ run sequence/convert_std_pair.cpp ]
-    [ run sequence/convert_std_tuple.cpp : :
+    [ run sequence/detail/boost_pfr_utils.cpp : :
+        : <define>BOOST_FUSION_EXPECT_CTTI_TYPE_INDEX_CONSTEXPR_WHEN_UTILS_TEST=1 <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 $(REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX) [ requires cxx14_constexpr ]
+        : detail_boost_pfr_utils_expect_constexpr_ctti_type_index
+    ]
+    [ run sequence/detail/boost_pfr_utils.cpp : :
+        : <define>BOOST_FUSION_EXPECT_CTTI_TYPE_INDEX_NONCONSTEXPR_WHEN_UTILS_TEST=1 <define>BOOST_PFR_ENABLE_IMPLICIT_REFLECTION=1 $(REQUIRE_CONSTEXPR_CTTI_TYPE_INDEX_FAIL) [ requires cxx14_constexpr ]
+        : detail_boost_pfr_utils_expect_nonconstexpr_ctti_type_index
+    ]
+
+    [ test-bfl-run_with_and_without_fallback sequence/as_deque.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/as_list.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/as_map.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/as_map_assoc.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/as_set.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/as_vector.cpp ]
+    [ test-bfl-run_pfr_implicit sequence/boost_pfr.cpp ]
+    [ test-bfl-run_pfr_implicit sequence/boost_pfr_empty.cpp ]
+    [ test-bfl-run_pfr_implicit sequence/boost_pfr_convert.cpp ]
+    [ test-bfl-run_pfr_explicit sequence/boost_pfr_iterator.cpp ]
+    [ test-bfl-run_pfr_explicit sequence/boost_pfr_force_macro.cpp ]
+    [ test-bfl-run_pfr_explicit sequence/boost_pfr_explicit.cpp ]
+    [ test-bfl-run_pfr_only_force sequence/boost_pfr_force_macro_only.cpp ]
+    # FIXME it doesn't work properly due to issue on PFR side
+    # [ test-bfl-run_pfr_implicit sequence/boost_pfr_reference.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/boost_tuple.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/boost_tuple_iterator.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/cons.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/convert_boost_tuple.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/convert_deque.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/convert_list.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/convert_std_pair.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/convert_std_tuple.cpp : :
         : [ requires cxx11_variadic_templates cxx11_hdr_tuple ] ]
-    [ run sequence/convert_vector.cpp ]
-    [ run sequence/filter_view.cpp ]
-    [ run sequence/hash.cpp ]
-    [ run sequence/io.cpp ]
-    [ run sequence/iterator_range.cpp ]
-    [ run sequence/joint_view.cpp ]
-    [ run sequence/list_comparison.cpp ]
-    [ run sequence/list_construction.cpp ]
-    [ run sequence/list_copy.cpp ]
-    [ run sequence/list_iterator.cpp ]
-    [ run sequence/list_hash.cpp ]
-    [ run sequence/list_make.cpp ]
-    [ run sequence/list_misc.cpp ]
-    [ run sequence/list_mutate.cpp ]
-    [ run sequence/list_nest.cpp ]
-    [ run sequence/list_tie.cpp ]
-    [ run sequence/list_value_at.cpp ]
-    [ run sequence/deque_comparison.cpp ]
-    [ run sequence/deque_construction.cpp ]
-    [ run sequence/deque_copy.cpp ]
-    [ run sequence/deque_iterator.cpp ]
-    [ run sequence/deque_hash.cpp ]
-    [ compile sequence/deque_is_constructible.cpp ]
-    [ run sequence/deque_make.cpp ]
-    [ run sequence/deque_misc.cpp ]
-    [ run sequence/deque_move.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/convert_vector.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/filter_view.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/hash.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/io.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/iterator_range.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/joint_view.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/list_comparison.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/list_construction.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/list_copy.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/list_iterator.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/list_hash.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/list_make.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/list_misc.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/list_mutate.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/list_nest.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/list_tie.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/list_value_at.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/deque_comparison.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/deque_construction.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/deque_copy.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/deque_iterator.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/deque_hash.cpp ]
+    [ test-bfl-compile_with_and_without_fallback sequence/deque_is_constructible.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/deque_make.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/deque_misc.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/deque_move.cpp : :
         : [ requires cxx11_rvalue_references ] ]
-    [ run sequence/deque_mutate.cpp ]
-    [ run sequence/deque_nest.cpp ]
-    [ run sequence/deque_tie.cpp ]
-    [ run sequence/deque_value_at.cpp ]
-    [ run sequence/front_extended_deque.cpp ]
-    [ run sequence/back_extended_deque.cpp ]
-    [ run sequence/make_list.cpp ]
-    [ run sequence/make_vector.cpp ]
-    [ run sequence/map.cpp ]
-    [ run sequence/map_comparison.cpp ]
-    [ run sequence/map_construction.cpp ]
-    [ run sequence/map_copy.cpp ]
-    [ run sequence/map_misc.cpp ]
-    [ run sequence/map_move.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/deque_mutate.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/deque_nest.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/deque_tie.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/deque_value_at.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/front_extended_deque.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/back_extended_deque.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/make_list.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/make_vector.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/map.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/map_comparison.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/map_construction.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/map_copy.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/map_misc.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/map_move.cpp : :
         : [ requires cxx11_rvalue_references ] ]
-    [ run sequence/map_mutate.cpp ]
-    [ run sequence/map_tie.cpp ]
-    [ run sequence/nil.cpp ]
-    [ run sequence/nview.cpp ]
-    [ run sequence/reverse_view.cpp ]
-    [ run sequence/segmented_iterator_range.cpp ]
-    [ run sequence/set.cpp ]
-    [ run sequence/single_view.cpp ]
-    [ run sequence/std_pair.cpp ]
-    [ run sequence/boost_array.cpp ]
-    [ run sequence/array.cpp ]
-    [ run sequence/std_array.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/map_mutate.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/map_tie.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/nil.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/nview.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/reverse_view.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/segmented_iterator_range.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/set.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/single_view.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/std_pair.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/boost_array.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/array.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/std_array.cpp : :
         : [ requires cxx11_hdr_array ] ]
-    [ run sequence/tuple_comparison.cpp ]
-    [ run sequence/tuple_construction.cpp ]
-    [ run sequence/tuple_conversion.cpp ]
-    [ run sequence/tuple_copy.cpp ]
-    [ run sequence/tuple_element.cpp ]
-    [ run sequence/tuple_make.cpp ]
-    [ run sequence/tuple_misc.cpp ]
-    [ run sequence/tuple_mutate.cpp ]
-    [ run sequence/tuple_nest.cpp ]
-    [ run sequence/tuple_hash.cpp ]
-    [ run sequence/tuple_tie.cpp ]
-    [ run sequence/tuple_traits.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/tuple_comparison.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/tuple_construction.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/tuple_conversion.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/tuple_copy.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/tuple_element.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/tuple_make.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/tuple_misc.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/tuple_mutate.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/tuple_nest.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/tuple_hash.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/tuple_tie.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/tuple_traits.cpp : :
         :
         : tuple_traits__maybe_variadic ]
-    [ run sequence/tuple_traits.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/tuple_traits.cpp : :
         : <define>BOOST_FUSION_DISABLE_VARIADIC_VECTOR
         : tuple_traits__no_variadic ]
-    [ run sequence/transform_view.cpp ]
-    [ run sequence/identity_view.cpp ]
-    [ run sequence/vector_comparison.cpp ]
-    [ run sequence/vector_construction.cpp ]
-    [ run sequence/vector_conversion.cpp ]
-    [ run sequence/vector_copy.cpp ]
-    [ run sequence/vector_iterator.cpp ]
-    [ run sequence/vector_make.cpp ]
-    [ run sequence/vector_misc.cpp ]
-    [ run sequence/vector_move.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/transform_view.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/identity_view.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/vector_comparison.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/vector_construction.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/vector_conversion.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/vector_copy.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/vector_iterator.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/vector_make.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/vector_misc.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/vector_move.cpp : :
         : [ requires cxx11_rvalue_references ] ]
-    [ run sequence/vector_mutate.cpp ]
-    [ run sequence/vector_n.cpp ]
-    [ run sequence/vector_nest.cpp ]
-    [ run sequence/vector_hash.cpp ]
-    [ run sequence/vector_tie.cpp ]
-    [ run sequence/vector_traits.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/vector_mutate.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/vector_n.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/vector_nest.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/vector_hash.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/vector_tie.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/vector_traits.cpp : :
         :
         : vector_traits__maybe_variadic ]
-    [ run sequence/vector_traits.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/vector_traits.cpp : :
         : <define>BOOST_FUSION_DISABLE_VARIADIC_VECTOR
         : vector_traits__no_variadic ]
-    [ run sequence/vector_value_at.cpp ]
-    [ run sequence/zip_view.cpp ]
-    [ run sequence/zip_view2.cpp ]
-    [ run sequence/zip_view_ignore.cpp ]
-    [ run sequence/repetitive_view.cpp ]
-    [ run sequence/deduce_sequence.cpp ]
-    [ run sequence/adapt_adt_named.cpp ]
-    [ run sequence/adapt_adt_named_empty.cpp ]
-    [ run sequence/adapt_adt.cpp ]
-    [ run sequence/adapt_adt_empty.cpp ]
-    [ run sequence/adapt_assoc_adt_named.cpp ]
-    [ run sequence/adapt_assoc_adt_named_empty.cpp ]
-    [ run sequence/adapt_assoc_adt.cpp ]
-    [ run sequence/adapt_assoc_adt_empty.cpp ]
-    [ run sequence/adapt_assoc_struct_named.cpp ]
-    [ run sequence/adapt_assoc_struct_named_empty.cpp ]
-    [ run sequence/adapt_assoc_struct.cpp ]
-    [ run sequence/adapt_assoc_struct_empty.cpp ]
-    [ run sequence/adapt_assoc_tpl_adt.cpp ]
-    [ run sequence/adapt_assoc_tpl_adt_empty.cpp ]
-    [ run sequence/adapt_assoc_tpl_struct.cpp ]
-    [ run sequence/adapt_assoc_tpl_struct_empty.cpp ]
-    [ run sequence/adapt_struct_named.cpp ]
-    [ run sequence/adapt_struct_named_empty.cpp ]
-    [ run sequence/adapt_struct.cpp ]
-    [ run sequence/adapt_struct_empty.cpp ]
-    [ run sequence/adapt_tpl_adt.cpp ]
-    [ run sequence/adapt_tpl_adt_empty.cpp ]
-    [ run sequence/adapt_tpl_struct.cpp ]
-    [ run sequence/adapt_tpl_struct_empty.cpp ]
-    [ run sequence/adt_attribute_proxy.cpp ]
-    [ run sequence/define_struct.cpp ]
-    [ run sequence/define_struct_empty.cpp ]
-    [ run sequence/define_struct_move.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/vector_value_at.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/zip_view.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/zip_view2.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/zip_view_ignore.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/repetitive_view.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/deduce_sequence.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_adt_named.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_adt_named_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_adt.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_adt_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_assoc_adt_named.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_assoc_adt_named_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_assoc_adt.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_assoc_adt_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_assoc_struct_named.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_assoc_struct_named_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_assoc_struct.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_assoc_struct_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_assoc_tpl_adt.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_assoc_tpl_adt_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_assoc_tpl_struct.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_assoc_tpl_struct_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_struct_named.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_struct_named_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_struct.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_struct_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_tpl_adt.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_tpl_adt_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_tpl_struct.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adapt_tpl_struct_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/adt_attribute_proxy.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/define_struct.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/define_struct_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/define_struct_move.cpp : :
         : [ requires cxx11_rvalue_references ] ]
-    [ run sequence/define_struct_inline.cpp ]
-    [ run sequence/define_struct_inline_empty.cpp ]
-    [ run sequence/define_struct_inline_move.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/define_struct_inline.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/define_struct_inline_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/define_struct_inline_move.cpp : :
         : [ requires cxx11_rvalue_references ] ]
-    [ run sequence/define_assoc_struct.cpp ]
-    [ run sequence/define_assoc_struct_empty.cpp ]
-    [ run sequence/define_assoc_struct_move.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/define_assoc_struct.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/define_assoc_struct_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/define_assoc_struct_move.cpp : :
         : [ requires cxx11_rvalue_references ] ]
-    [ run sequence/define_tpl_struct.cpp ]
-    [ run sequence/define_tpl_struct_empty.cpp ]
-    [ run sequence/define_tpl_struct_move.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/define_tpl_struct.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/define_tpl_struct_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/define_tpl_struct_move.cpp : :
         : [ requires cxx11_rvalue_references ] ]
-    [ run sequence/define_tpl_struct_inline.cpp ]
-    [ run sequence/define_tpl_struct_inline_empty.cpp ]
-    [ run sequence/define_tpl_struct_inline_move.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/define_tpl_struct_inline.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/define_tpl_struct_inline_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/define_tpl_struct_inline_move.cpp : :
         : [ requires cxx11_rvalue_references ] ]
-    [ run sequence/define_assoc_tpl_struct.cpp ]
-    [ run sequence/define_assoc_tpl_struct_empty.cpp ]
-    [ run sequence/define_assoc_tpl_struct_move.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/define_assoc_tpl_struct.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/define_assoc_tpl_struct_empty.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/define_assoc_tpl_struct_move.cpp : :
         : [ requires cxx11_rvalue_references ] ]
-    [ run sequence/std_tuple.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/std_tuple.cpp : :
         : [ requires cxx11_variadic_templates cxx11_hdr_tuple ] ]
-    [ run sequence/std_tuple_iterator.cpp : :
+    [ test-bfl-run_with_and_without_fallback sequence/std_tuple_iterator.cpp : :
         : [ requires cxx11_variadic_templates cxx11_hdr_tuple ] ]
-    [ run sequence/ref_vector.cpp ]
-    [ run sequence/flatten_view.cpp ]
-    [ compile sequence/github-159.cpp ]
-    [ run sequence/github-176.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/ref_vector.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/flatten_view.cpp ]
+    [ test-bfl-compile_with_and_without_fallback sequence/github-159.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/github-176.cpp ]
 
-    [ compile sequence/size.cpp ]
+    [ test-bfl-compile_with_and_without_fallback sequence/size.cpp ]
 
-    [ run functional/fused.cpp ]
-    [ run functional/fused_function_object.cpp ]
-    [ run functional/fused_procedure.cpp ]
-    [ run functional/unfused.cpp ]
-    [ run functional/unfused_typed.cpp ]
-    [ run functional/make_fused.cpp ]
-    [ run functional/make_fused_function_object.cpp ]
-    [ run functional/make_fused_procedure.cpp ]
-    [ run functional/make_unfused.cpp ]
-    [ run functional/invoke.cpp ]
-    [ run functional/invoke_function_object.cpp ]
-    [ run functional/invoke_procedure.cpp ]
-    [ run sequence/swap.cpp ]
+    [ test-bfl-run_with_and_without_fallback functional/fused.cpp ]
+    [ test-bfl-run_with_and_without_fallback functional/fused_function_object.cpp ]
+    [ test-bfl-run_with_and_without_fallback functional/fused_procedure.cpp ]
+    [ test-bfl-run_with_and_without_fallback functional/unfused.cpp ]
+    [ test-bfl-run_with_and_without_fallback functional/unfused_typed.cpp ]
+    [ test-bfl-run_with_and_without_fallback functional/make_fused.cpp ]
+    [ test-bfl-run_with_and_without_fallback functional/make_fused_function_object.cpp ]
+    [ test-bfl-run_with_and_without_fallback functional/make_fused_procedure.cpp ]
+    [ test-bfl-run_with_and_without_fallback functional/make_unfused.cpp ]
+    [ test-bfl-run_with_and_without_fallback functional/invoke.cpp ]
+    [ test-bfl-run_with_and_without_fallback functional/invoke_function_object.cpp ]
+    [ test-bfl-run_with_and_without_fallback functional/invoke_procedure.cpp ]
+    [ test-bfl-run_with_and_without_fallback sequence/swap.cpp ]
 
-    [ compile support/is_sequence.cpp ]
-    [ compile support/is_view.cpp ]
-    [ compile support/pair_deque.cpp ]
-    [ compile support/pair_list.cpp ]
-    [ compile support/pair_map.cpp ]
-    [ compile support/pair_set.cpp ]
-    [ compile support/pair_vector.cpp ]
-    [ compile support/pair_nest.cpp ]
-    [ compile support/index_sequence.cpp
+    [ run support/config.cpp : : : <test-info>always_show_run_output ]
+    [ compile support/config_pfr_0.cpp ]
+    [ compile support/config_pfr_1.cpp ]
+    [ compile-fail support/config_pfr_fail_0.cpp ]
+    [ compile-fail support/config_pfr_fail_1.cpp ]
+    [ compile-fail support/config_pfr_fail_2.cpp ]
+    [ test-bfl-compile_strictly_without_fallback support/is_sequence.cpp ]
+    [ test-bfl-compile_strictly_without_fallback support/is_view.cpp ]
+    [ test-bfl-compile_with_and_without_fallback support/pair_deque.cpp ]
+    [ test-bfl-compile_with_and_without_fallback support/pair_list.cpp ]
+    [ test-bfl-compile_with_and_without_fallback support/pair_map.cpp ]
+    [ test-bfl-compile_with_and_without_fallback support/pair_set.cpp ]
+    [ test-bfl-compile_with_and_without_fallback support/pair_vector.cpp ]
+    [ test-bfl-compile_with_and_without_fallback support/pair_nest.cpp ]
+    [ test-bfl-compile_with_and_without_fallback support/index_sequence.cpp
         : [ requires cxx11_variadic_templates ] ]
-    [ compile support/and.cpp
+    [ test-bfl-compile_with_and_without_fallback support/and.cpp
         : [ requires cxx11_variadic_templates ] ]
-    [ compile support/tag_of.cpp ]
-    [ compile support/unused.cpp ]
+    [ test-bfl-compile_strictly_without_fallback support/tag_of.cpp ]
+    [ test-bfl-compile_with_and_without_fallback support/unused.cpp ]
     [ compile support/detail/tag_of_fallback.cpp ]
 
     [ compile-fail support/make_pair_r-value.cpp ]

@@ -8,6 +8,8 @@
 #define BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
 #include <boost/fusion/container/deque/deque.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE boost::fusion::deque<std::vector<x>>
 #define FUSION_SEQUENCE2 boost::fusion::deque<std::vector<x>, x>
 

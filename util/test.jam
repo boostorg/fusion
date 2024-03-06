@@ -1,0 +1,90 @@
+# Boost Fusion Library utility test Jamfile
+
+#  (C) Copyright Denis Mikhailov 2023.
+#  Use, modification, and distribution are subject to the 
+#  Boost Software License, Version 1.0. (See accompanying file 
+#  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+#
+
+# the file contains Jam rules which are used in both the normal
+# boost test, as well as the fallback test and so other
+# tests.
+
+# import rules for testing conditional on config file variables
+import ../../config/checks/config : requires ;
+
+rule test-bfl-run_with_and_without_fallback ( sources + : args * : input-files * : requirements * : target-name ?
+    : default-build * ) {
+    local tests ;
+    if ! $(target-name)
+    {
+        target-name = $(sources[1]:B) ;
+    }
+    tests += [
+        run
+            $(sources)
+        :   $(args)
+        :   $(input-files)
+        :   <define>BOOST_FUSION_DO_NOT_USE_TAG_OF_FALLBACK=1
+            $(requirements)
+        :   $(target-name)__normal
+        :   $(default-build)
+    ] ;
+    tests += [
+        run
+            $(sources)
+        :   $(args)
+        :   $(input-files)
+        :   <define>BOOST_FUSION_USE_TAG_OF_FALLBACK=1
+            $(requirements)
+        :   $(target-name)__fallback
+        :   $(default-build)
+    ] ;
+    return $(tests) ;
+}
+
+rule test-bfl-compile_with_and_without_fallback ( sources : requirements * : target-name ? ) {
+    local tests ;
+    if ! $(target-name)
+    {
+        target-name = $(sources[1]:B) ;
+    }
+    tests += [
+        compile
+            $(sources)
+        :   <define>BOOST_FUSION_DO_NOT_USE_TAG_OF_FALLBACK=1
+            $(requirements)
+        :   $(target-name)__normal
+    ] ;
+    tests += [
+        compile
+            $(sources)
+        :   <define>BOOST_FUSION_USE_TAG_OF_FALLBACK=1
+            $(requirements)
+        :   $(target-name)__fallback
+    ] ;
+    return $(tests) ;
+}
+
+rule test-bfl-compile_strictly_without_fallback ( sources : requirements * : target-name ? ) {
+    local tests ;
+    if ! $(target-name)
+    {
+        target-name = $(sources[1]:B) ;
+    }
+    tests += [
+        compile
+            $(sources)
+        :   <define>BOOST_FUSION_DO_NOT_USE_TAG_OF_FALLBACK=1
+            $(requirements)
+        :   $(target-name)__normal
+    ] ;
+    tests += [
+        compile-fail
+            $(sources)
+        :   <define>BOOST_FUSION_USE_TAG_OF_FALLBACK=1
+            $(requirements)
+        :   $(target-name)__fallback
+    ] ;
+    return $(tests) ;
+}

@@ -6,6 +6,8 @@
 ==============================================================================*/
 #include <boost/fusion/container/list/list.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE list
 #define FUSION_NO_PRIOR
 #define FUSION_TRAVERSAL_TAG forward_traversal_tag

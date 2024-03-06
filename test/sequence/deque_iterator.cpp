@@ -7,6 +7,8 @@
 ==============================================================================*/
 #include <boost/fusion/container/deque/deque.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE deque
 #define FUSION_TRAVERSAL_TAG bidirectional_traversal_tag
 #include "./iterator.hpp"

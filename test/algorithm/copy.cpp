@@ -10,6 +10,8 @@
 #include <boost/fusion/sequence/comparison.hpp>
 #include <boost/fusion/algorithm/auxiliary/copy.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 int
 main()
 {

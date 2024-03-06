@@ -8,6 +8,8 @@
 #include <boost/fusion/tuple/tuple.hpp>
 #include <boost/fusion/adapted/mpl.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE tuple
 #include "comparison.hpp"
 

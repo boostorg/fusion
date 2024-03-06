@@ -9,6 +9,8 @@
 #include <boost/fusion/container/vector/convert.hpp>
 #include <boost/fusion/adapted/mpl.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE vector
 #include "misc.hpp"
 

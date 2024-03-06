@@ -14,6 +14,8 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/type_traits/is_same.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 using namespace boost::fusion;
 
 BOOST_MPL_ASSERT((boost::is_same<detail::make_index_sequence<0>::type, detail::index_sequence<> >));

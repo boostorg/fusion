@@ -17,6 +17,8 @@
 #include <boost/fusion/sequence/io/out.hpp>
 #include <boost/fusion/support/pair.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 int
 main()
 {
@@ -29,7 +31,8 @@ main()
 
     {
         vector0<> empty;
-        std::cout << as_map(make_list(make_pair<int>('X'), make_pair<double>("Men"))) << std::endl;
+        // Conversion for std::string need to prevent 'error: ambiguous overload for ‘operator<<’ (operand types are ‘std::ostream’ {aka ‘std::basic_ostream<char>’} and ‘const char [4]’)'
+        std::cout << as_map(make_list(make_pair<int>('X'), make_pair<double>(std::string("Men")))) << std::endl;
         std::cout << as_map(push_back(empty, make_pair<int>(999))) << std::endl;
     }
 

@@ -10,6 +10,8 @@
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/fusion/sequence/intrinsic/at.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 struct k1 {};
 struct k2 {};
 struct k3 {};

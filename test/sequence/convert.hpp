@@ -9,6 +9,8 @@
 #include <string>
 #include <boost/config.hpp>
 #include <boost/core/lightweight_test.hpp>
+
+#include <boost/fusion/support/config.hpp>
 #include <boost/fusion/include/convert.hpp>
 #include <boost/fusion/include/at.hpp>
 
@@ -18,6 +20,13 @@
 #include <boost/fusion/include/boost_tuple.hpp>
 #if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
 #include <boost/fusion/include/std_tuple.hpp>
+#endif
+
+#if BOOST_FUSION_PFR_ENABLED
+#if BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION
+#include <boost/fusion/adapted/boost_pfr.hpp>
+#endif
+#include <boost/fusion/adapted/boost_pfr_explicit.hpp>
 #endif
 
 template <typename Tag>
@@ -45,7 +54,10 @@ int main()
 #if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
     test<boost::fusion::std_tuple_tag>(seq);
 #endif
-
+#if BOOST_FUSION_PFR_ENABLED
+    // There is no 'convert' for Boost PFR, and it's impossible to implement
+    //test<boost::fusion::boost_pfr_tag>(seq);
+#endif
     return boost::report_errors();
 }
 

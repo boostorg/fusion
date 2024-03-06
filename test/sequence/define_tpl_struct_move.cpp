@@ -8,6 +8,8 @@
 #include <boost/fusion/adapted/struct/define_struct.hpp>
 #include <utility>
 
+#include "../with_or_without_fallback.hpp"
+
 struct wrapper
 {
     int value;

@@ -12,6 +12,8 @@
 #include <boost/fusion/adapted/struct/define_assoc_struct.hpp>
 #include <utility>
 
+#include "../with_or_without_fallback.hpp"
+
 struct key_type;
 struct wrapper
 {

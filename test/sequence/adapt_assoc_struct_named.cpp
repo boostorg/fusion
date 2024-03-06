@@ -18,6 +18,8 @@
 #include <iostream>
 #include <string>
 
+#include "../with_or_without_fallback.hpp"
+
 namespace ns
 {
     struct x_member;

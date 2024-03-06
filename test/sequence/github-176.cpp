@@ -15,6 +15,8 @@
 #include <boost/fusion/tuple/tuple.hpp>
 #include <boost/core/lightweight_test.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 template <typename Sequence>
 void test_at()
 {

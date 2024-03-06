@@ -17,6 +17,8 @@
 #include <boost/mpl/advance.hpp>
 #include <boost/mpl/int.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 int
 main()
 {

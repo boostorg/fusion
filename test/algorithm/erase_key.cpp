@@ -24,6 +24,8 @@
 #include <iostream>
 #include <string>
 
+#include "../with_or_without_fallback.hpp"
+
 template <typename Set>
 void test_set(Set const& set)
 {
@@ -50,7 +52,7 @@ void test_map(Map const& map)
     BOOST_STATIC_ASSERT(boost::fusion::result_of::size<Map>::value == 3);
     BOOST_TEST(((*find<_1>(map)).second == 1));
     BOOST_TEST(((*find<_3>(map)).second == 1.5));
-    BOOST_TEST(((*find<_4>(map)).second == std::string("hello")));
+    BOOST_TEST(((*find<_4>(map)).second == "hello"));
 }
 
 int
@@ -67,7 +69,7 @@ main()
     std::cout << tuple_delimiter(", ");
 
     test_set(erase_key<char>(make_set(1, 'x', 1.5, std::string("hello"))));
-    test_map(erase_key<_2>(make_map<_1, _2, _3, _4>(1, 'x', 1.5, "hello")));
+    test_map(erase_key<_2>(make_map<_1, _2, _3, _4>(1, 'x', 1.5, std::string("hello"))));
 
     return boost::report_errors();
 }

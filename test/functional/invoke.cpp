@@ -31,6 +31,8 @@
 #include <boost/fusion/iterator/advance.hpp>
 #include <boost/fusion/algorithm/transformation/join.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 #include "../compile_time/sfinae_friendly.hpp"
 
 namespace mpl = boost::mpl;

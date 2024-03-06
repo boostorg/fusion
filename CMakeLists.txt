@@ -26,4 +26,5 @@ target_link_libraries(boost_fusion
         Boost::functional
         Boost::describe
         Boost::mp11
+        Boost::pfr
 )

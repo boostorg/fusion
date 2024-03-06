@@ -6,6 +6,8 @@
 ==============================================================================*/
 #include <boost/fusion/container/map/map.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE map
 #define TEST_TYPE pair<int,int>
 #include "./pair_container.hpp"

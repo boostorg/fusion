@@ -10,6 +10,7 @@
 
 #include <boost/config.hpp>
 #include <boost/detail/workaround.hpp>
+#include <boost/pfr/config.hpp>
 #include <utility>
 
 #ifndef BOOST_FUSION_GPU_ENABLED
@@ -135,6 +136,29 @@ namespace boost { namespace fusion { namespace detail
 #   define BOOST_FUSION_PUSH_WARNINGS
 #   define BOOST_FUSION_POP_WARNINGS
 #   define BOOST_FUSION_DISABLE_MSVC_WARNING(num)
+#endif
+
+
+// Configure possible integration with PFR
+#ifndef BOOST_FUSION_PFR_ENABLED
+#   define BOOST_FUSION_PFR_ENABLED BOOST_PFR_ENABLED
+#endif
+
+#ifndef BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION
+#   define BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION BOOST_PFR_ENABLE_IMPLICIT_REFLECTION
+#endif
+
+// Verify configuration of possible integration with PFR
+#if BOOST_FUSION_PFR_ENABLED && !BOOST_PFR_ENABLED
+#error Can not force to integrate Boost PFR with Boost Fusion because Boost PFR unavailable in this environment.
+#endif
+
+#if BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION && !BOOST_PFR_ENABLE_IMPLICIT_REFLECTION
+#error Can not force to integrate Boost PFR as implicit fallback for Boost Fusion because Boost PFR does not provide implicit reflection in this environment.
+#endif
+
+#if BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION && !BOOST_FUSION_PFR_ENABLED
+#error Can not force to integrate Boost PFR as implicit fallback for Boost Fusion because Boost Fusion configured to not use whole Boost PFR.
 #endif
 
 #endif

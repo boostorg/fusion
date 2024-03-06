@@ -14,6 +14,8 @@
 #include <boost/mpl/less.hpp>
 #include <boost/type_traits/is_same.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 struct X
 {
     operator int() const

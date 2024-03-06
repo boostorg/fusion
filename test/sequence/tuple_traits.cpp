@@ -11,6 +11,8 @@
 #include <boost/type_traits/is_constructible.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE boost::fusion::tuple
 #define FUSION_ALT_SEQUENCE boost::fusion::vector
 #include "traits.hpp"

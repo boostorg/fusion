@@ -19,6 +19,8 @@
 #include <boost/fusion/sequence/intrinsic/empty.hpp>
 #include <boost/fusion/algorithm/iteration/fold.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 namespace fusion = boost::fusion;
 namespace mpl = boost::mpl;
 
