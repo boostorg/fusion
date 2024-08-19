@@ -17,6 +17,8 @@
 #include <iostream>
 #include <string>
 
+#include "../with_or_without_fallback.hpp"
+
 struct cls
 {
     BOOST_FUSION_DEFINE_STRUCT_INLINE(

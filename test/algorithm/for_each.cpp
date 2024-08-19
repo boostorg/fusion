@@ -13,6 +13,8 @@
 #include <boost/fusion/algorithm/iteration/for_each.hpp>
 #include <boost/mpl/vector_c.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 struct print
 {
     template <typename T>

@@ -13,6 +13,8 @@
 #include <utility>
 #endif
 
+#include "../with_or_without_fallback.hpp"
+
 struct T { };
 
 void unused_construction()

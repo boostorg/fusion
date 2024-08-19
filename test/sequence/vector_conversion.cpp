@@ -9,6 +9,8 @@
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/fusion/container/vector.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE boost::fusion::vector
 #include "conversion.hpp"
 

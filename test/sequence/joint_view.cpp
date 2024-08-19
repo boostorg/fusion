@@ -22,6 +22,8 @@
 #include <boost/mpl/assert.hpp>
 #include <string>
 
+#include "../with_or_without_fallback.hpp"
+
 struct X
 {
     operator char const*() const

@@ -20,6 +20,8 @@
 #include <boost/static_assert.hpp>
 #include <string>
 
+#include "../with_or_without_fallback.hpp"
+
 struct k1 {};
 struct k2 {};
 struct k3 {};

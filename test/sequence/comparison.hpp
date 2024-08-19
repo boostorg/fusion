@@ -7,8 +7,11 @@
 ==============================================================================*/
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/fusion/sequence/comparison.hpp>
+#include <boost/fusion/include/boost_pfr_force.hpp>
 
 struct not_a_fusion_container {};
+BOOST_FUSION_FORCE_PFR_NONREFLECTABLE(not_a_fusion_container)
+
 template <typename T>
 inline bool operator==(not_a_fusion_container, T const&) { return true; }
 template <typename T>

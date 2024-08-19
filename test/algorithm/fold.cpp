@@ -25,6 +25,8 @@
 
 #include <string>
 
+#include "../with_or_without_fallback.hpp"
+
 using boost::mpl::if_;
 using boost::mpl::int_;
 using boost::is_same;

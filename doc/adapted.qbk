@@ -2,6 +2,7 @@
     Copyright (C) 2001-2011 Joel de Guzman
     Copyright (C) 2006 Dan Marsden
     Copyright (C) 2010 Christopher Schmidt
+    Copyright (c) 2023 Denis Mikhailov
 
     Use, modification and distribution is subject to the Boost Software
     License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
@@ -22,6 +23,20 @@ various data structures, non-intrusively, as full fledged Fusion sequences.
 
     #include <boost/fusion/adapted.hpp>
     #include <boost/fusion/include/adapted.hpp>
+
+[caution
+You may get compiler errors when your environment doesn't support __boost_pfr_library__ and this
+lack of support doesn't detect automatically. If this happens, define macro
+`BOOST_FUSION_PFR_ENABLED` as 0 to suppress the inclusion
+of __boost_pfr_implicit_adapter__ and __boost_pfr_explicit_adapter__ in this module.
+]
+
+[caution
+You may get compiler errors when your program utilizes __tag_of__, __is_sequence__ or 
+__is_view__ with an incomplete type. If this happens, define macro
+`BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION` as 0 to suppress the inclusion
+of __boost_pfr_implicit_adapter__ in this module.
+]
 
 [section:array Array]
 
@@ -208,6 +223,84 @@ __boost_tuple_library__
 
 [endsect]
 
+[section:boost_pfr_implicit boost::pfr]
+
+[caution This module requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
+
+This module provides reflection from `boost::pfr` as fallback when another reflection not found for a passed type, 
+the module can be used when you want to pass an user defined structure into Fusion, the module more preferable to use than 
+__adapt_struct__ macro, because the module does not require boilerplate code from an user defined structure.
+Note that the module expects a passed type satisfies __simple_aggregate__.
+
+[heading Header]
+
+    #include <boost/fusion/adapted/boost_pfr.hpp>
+    #include <boost/fusion/include/boost_pfr.hpp>
+
+[heading Model of]
+
+* __random_access_sequence__
+
+[heading Example]
+
+    struct some_person {       // SimpleAggregate
+        std::string name;
+        unsigned birth_year = 0;
+    };
+
+    some_person val{"Edgar Allan Poe", 1809};
+    std::cout << *__begin__(val) << '\n';
+    std::cout << *__next__(__begin__(val)) << '\n';
+
+[note See __force_pfr_nonreflectable__ or __force_pfr_nonreflectable_tpl__ if your type falsely determines as "reflectable via PFR" and you need to workaround it.]
+[note Define macro `BOOST_FUSION_PFR_ENABLE_IMPLICIT_REFLECTION` as 0 if you hit by lots of non-effective choices made by implicit reflection(or if you even hit by compiler errors, when your program utilizes __tag_of__, __is_sequence__ or __is_view__ with an incomplete type) and you need to change for explicit reflection. See __boost_pfr_explicit__ for more details.]
+[note Define macro `BOOST_FUSION_PFR_ENABLED` as 0 if you get compiler errors when your program includes __adapted__ and you need to suppress the inclusion of __boost_pfr_implicit__ in __adapted__ module.]
+[note This module can't adapt a passed type as fully conforming __mpl__ sequences.]
+
+[heading See also]
+
+__boost_pfr_library__
+
+[endsect]
+
+[section:boost_pfr_explicit boost::pfr (explicit)]
+
+[caution This module requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported.]
+
+This module provides reflection from `boost::pfr`. If you want to use the module, you should specify 
+all reflectable types manually using one of the macro below. The module can't decide to use PFR for a passed type 
+automatically, unlike __boost_pfr_implicit__.
+
+[heading Header]
+
+    #include <boost/fusion/adapted/boost_pfr_explicit.hpp>
+    #include <boost/fusion/include/boost_pfr_explicit.hpp>
+
+[heading Model of]
+
+* __random_access_sequence__
+
+[heading Example]
+
+    struct some_person {       // SimpleAggregate
+        std::string name;
+        unsigned birth_year = 0;
+    };
+    __force_pfr_reflectable__(some_person)
+
+    some_person val{"Edgar Allan Poe", 1809};
+    std::cout << *__begin__(val) << '\n';
+    std::cout << *__next__(__begin__(val)) << '\n';
+
+[note Define macro `BOOST_FUSION_PFR_ENABLED` as 0 if you get compiler errors when your program includes __adapted__ and you need to suppress the inclusion of __boost_pfr_explicit__ in __adapted__ module.]
+[note This module can't adapt a passed type as fully conforming __mpl__ sequences.]
+
+[heading See also]
+
+__boost_pfr_library__, __force_pfr_reflectable__, __force_pfr_nonreflectable__, __force_pfr_reflectable_tpl__, __force_pfr_nonreflectable_tpl__
+
+[endsect]
+
 [section:adapt_struct BOOST_FUSION_ADAPT_STRUCT]
 
 [heading Description]
@@ -275,6 +368,10 @@ namespace qualified name of the struct to be adapted.
         (auto, name)
         (auto, age)
     )
+
+[heading See also]
+
+__boost_pfr_implicit__ (might be a better alternative to using this macro)
 
 [endsect]
 
@@ -356,6 +453,10 @@ namespace qualified name of the struct to be adapted.
         name,
         age,
         employment_timestamp) 
+
+[heading See also]
+
+__boost_pfr_implicit__ (might be a better alternative to using this macro)
 
 [endsect]
 
@@ -1497,6 +1598,188 @@ defined in __random_access_sequence__ and __associative_sequence__.
         (Name)(Age), (demo), employee,
         (Name, name, keys::name)
         (Age, age, keys::age))
+
+[endsect]
+
+[section:force_pfr_reflectable BOOST_FUSION_FORCE_PFR_REFLECTABLE]
+
+[heading Description]
+BOOST_FUSION_FORCE_PFR_REFLECTABLE is a macro that can be used to specify an 
+arbitrary struct as a pfr-reflectable type for Fusion, and thus to make the struct
+possible to be a model of __random_access_sequence__.
+The macro intended to be used with __boost_pfr_explicit_adapter__, when you don't need __boost_pfr_implicit_adapter__.
+
+[heading Synopsis]
+    BOOST_FUSION_FORCE_PFR_REFLECTABLE(aggregate_name)
+
+[heading Semantics]
+
+The above macro specializes `boost::pfr::is_reflectable` for `aggregate_name` with `boost::pfr::boost_fusion_tag` as positive.
+
+The macro should be used at global scope, and `aggregate_name` should be the fully
+namespace qualified name of the struct satisfying __simple_aggregate__ to be specifyed.
+
+[heading Header]
+
+    #include <boost/fusion/adapted/boost_pfr/force.hpp>
+    #include <boost/fusion/include/boost_pfr_force.hpp>
+
+[heading Example: BOOST_FUSION_FORCE_PFR_REFLECTABLE ]
+    namespace demo
+    {
+        struct employee
+        {
+            std::string name;
+            int age;
+        };
+    }
+
+    // demo::employee is now a pfr-reflectable type for Fusion
+    BOOST_FUSION_FORCE_PFR_REFLECTABLE(demo::employee)
+
+[note This macro affects only Fusion, see PFR docs if you want to know how to specify type as pfr-reflectable everywhere.]
+
+[heading See also]
+
+__boost_pfr_library__
+
+[endsect]
+
+[section:force_pfr_nonreflectable BOOST_FUSION_FORCE_PFR_NONREFLECTABLE]
+
+[heading Description]
+BOOST_FUSION_FORCE_PFR_NONREFLECTABLE is a macro that can be used to declare a Fusion-side prohibition
+for an arbitrary struct to be pfr-reflectable, and thus to make the struct
+impossible to be a model of fusion sequence.
+The macro intended to be used with __boost_pfr_implicit_adapter__, when you need to workaround erroneous 
+decision that defines a type as pfr-reflectable.
+
+[heading Synopsis]
+    BOOST_FUSION_FORCE_PFR_NONREFLECTABLE(type_name)
+
+[heading Semantics]
+
+The above macro specializes `boost::pfr::is_reflectable` for `type_name` with `boost::pfr::boost_fusion_tag` as negative.
+
+The macro should be used at global scope, and `type_name` should be the fully
+namespace qualified name of any type that you wish to be specifyed.
+
+[heading Header]
+
+    #include <boost/fusion/adapted/boost_pfr/force.hpp>
+    #include <boost/fusion/include/boost_pfr_force.hpp>
+
+[heading Example: BOOST_FUSION_FORCE_PFR_NONREFLECTABLE ]
+    namespace demo
+    {
+        struct employee
+        {
+            std::string name;
+            int age;
+        };
+    }
+
+    // demo::employee is now forbidden to be a pfr-reflectable type for Fusion
+    BOOST_FUSION_FORCE_PFR_NONREFLECTABLE(demo::employee)
+
+[note This macro affects only Fusion, see PFR docs if you want to know how to forbid pfr-reflection for a type everywhere.]
+
+[heading See also]
+
+__boost_pfr_library__
+
+[endsect]
+
+[section:force_pfr_reflectable_tpl BOOST_FUSION_FORCE_PFR_REFLECTABLE_TPL]
+
+[heading Description]
+BOOST_FUSION_FORCE_PFR_REFLECTABLE_TPL is a macro that can be used to specify an 
+arbitrary template struct as a pfr-reflectable type for Fusion, and thus to make the struct
+possible to be a model of __random_access_sequence__.
+The macro intended to be used with __boost_pfr_explicit_adapter__, when you don't need __boost_pfr_implicit_adapter__.
+
+[heading Synopsis]
+    BOOST_FUSION_FORCE_PFR_REFLECTABLE_TPL(aggregate_name)
+
+[heading Semantics]
+
+The above macro specializes `boost::pfr::is_reflectable` for `aggregate_name` with `boost::pfr::boost_fusion_tag` as positive.
+
+The macro should be used at global scope, and `aggregate_name` should be the fully
+namespace qualified name of the template struct satisfying __simple_aggregate__ to be specifyed.
+
+[heading Header]
+
+    #include <boost/fusion/adapted/boost_pfr/force.hpp>
+    #include <boost/fusion/include/boost_pfr_force.hpp>
+
+[heading Example: BOOST_FUSION_FORCE_PFR_REFLECTABLE_TPL ]
+    namespace demo
+    {
+        template<typename Name, typename Age>
+        struct employee
+        {
+            Name name;
+            Age age;
+            int employment_timestamp;
+        };
+    }
+
+    // Any instantiated demo::employee is now a pfr-reflectable type for Fusion
+    BOOST_FUSION_FORCE_PFR_REFLECTABLE_TPL(demo::employee)
+
+[note This macro affects only Fusion, see PFR docs if you want to know how to specify type as pfr-reflectable everywhere.]
+
+[heading See also]
+
+__boost_pfr_library__
+
+[endsect]
+
+[section:force_pfr_nonreflectable_tpl BOOST_FUSION_FORCE_PFR_NONREFLECTABLE_TPL]
+
+[heading Description]
+BOOST_FUSION_FORCE_PFR_NONREFLECTABLE_TPL is a macro that can be used to declare a Fusion-side prohibition
+for an arbitrary template struct to be pfr-reflectable, and thus to make the struct
+impossible to be a model of fusion sequence.
+The macro intended to be used with __boost_pfr_implicit_adapter__, when you need to workaround erroneous 
+decision that defines a type as pfr-reflectable.
+
+[heading Synopsis]
+    BOOST_FUSION_FORCE_PFR_NONREFLECTABLE_TPL(type_name)
+
+[heading Semantics]
+
+The above macro specializes `boost::pfr::is_reflectable` for `type_name` with `boost::pfr::boost_fusion_tag` as negative.
+
+The macro should be used at global scope, and `type_name` should be the fully
+namespace qualified name of any type that you wish to be specifyed.
+
+[heading Header]
+
+    #include <boost/fusion/adapted/boost_pfr/force.hpp>
+    #include <boost/fusion/include/boost_pfr_force.hpp>
+
+[heading Example: BOOST_FUSION_FORCE_PFR_NONREFLECTABLE_TPL ]
+    namespace demo
+    {
+        template<typename Name, typename Age>
+        struct employee
+        {
+            Name name;
+            Age age;
+            int employment_timestamp;
+        };
+    }
+
+    // Any instantiated demo::employee is now forbidden to be a pfr-reflectable type for Fusion
+    BOOST_FUSION_FORCE_PFR_NONREFLECTABLE_TPL(demo::employee)
+
+[note This macro affects only Fusion, see PFR docs if you want to know how to forbid pfr-reflection for a type everywhere.]
+
+[heading See also]
+
+__boost_pfr_library__
 
 [endsect]
 

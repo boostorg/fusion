@@ -48,7 +48,7 @@ namespace boost { namespace fusion
     {
         BOOST_MPL_HAS_XXX_TRAIT_DEF(fusion_tag)
 
-        template<typename Sequence, typename Active=void>
+        template<typename Sequence, typename Active>
         struct tag_of_fallback
         {
             typedef non_fusion_tag type;

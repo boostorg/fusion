@@ -45,6 +45,7 @@ link against.
     * array
     * boost::array
     * boost::tuple
+    * boost::pfr
     * mpl
     * std_pair
     * std_tuple

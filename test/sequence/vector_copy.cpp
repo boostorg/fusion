@@ -9,6 +9,8 @@
 #include <boost/fusion/container/generation/make_vector.hpp>
 #include <boost/fusion/container/generation/vector_tie.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE vector
 #include "copy.hpp"
 

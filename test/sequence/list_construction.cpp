@@ -7,6 +7,8 @@
 ==============================================================================*/
 #include <boost/fusion/container/list/list.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 #define FUSION_SEQUENCE list
 #include "construction.hpp"
 

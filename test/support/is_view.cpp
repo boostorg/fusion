@@ -7,6 +7,7 @@
 #include <boost/fusion/support/is_view.hpp>
 #include <boost/static_assert.hpp>
 
+#include "../with_or_without_fallback.hpp"
 
 // Make sure fusion::is_view can be used with non fusion types.
 struct incomplete;

@@ -10,6 +10,8 @@
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/fusion/sequence/comparison.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 struct key1 {};
 struct key2 {};
 struct key3 {};

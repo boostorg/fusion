@@ -12,6 +12,9 @@
 #include <boost/fusion/container/vector/vector.hpp>
 #include <boost/fusion/algorithm/iteration/fold.hpp>
 #include <boost/fusion/container/generation/make_vector.hpp>
+
+#include "../with_or_without_fallback.hpp"
+
 #include "../sequence/tree.hpp"
 
 struct write_string

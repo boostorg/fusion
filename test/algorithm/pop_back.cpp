@@ -20,6 +20,8 @@
 #include <boost/array.hpp>
 #include <boost/mpl/vector_c.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 int
 main()
 {

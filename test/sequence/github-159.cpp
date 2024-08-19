@@ -8,6 +8,8 @@
 #include <boost/fusion/container/vector/vector.hpp>
 #include <boost/type.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 int main()
 {
     boost::fusion::vector<int, float> v1;

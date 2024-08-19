@@ -27,6 +27,8 @@
 #include <boost/mpl/assert.hpp>
 #include <iostream>
 
+#include "../with_or_without_fallback.hpp"
+
 class empty_adt{};
 BOOST_FUSION_ADAPT_ASSOC_ADT(empty_adt,)
 

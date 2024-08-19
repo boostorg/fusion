@@ -12,6 +12,8 @@
 #include <boost/fusion/adapted/mpl.hpp>
 #include <boost/mpl/vector.hpp>
 
+#include "../with_or_without_fallback.hpp"
+
 int main()
 {
     using namespace boost::fusion;

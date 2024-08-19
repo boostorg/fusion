@@ -15,6 +15,8 @@
 #include <boost/static_assert.hpp>
 #include <iostream>
 
+#include "../with_or_without_fallback.hpp"
+
 namespace ns
 {
     struct x_member;
