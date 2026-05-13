@@ -18,7 +18,6 @@ target_link_libraries(boost_fusion
     Boost::container_hash
     Boost::core
     Boost::function_types
-    Boost::functional
     Boost::mpl
     Boost::preprocessor
     Boost::tuple
