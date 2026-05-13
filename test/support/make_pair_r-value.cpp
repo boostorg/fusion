@@ -11,7 +11,7 @@ struct noncopyable_type {
     noncopyable_type& operator=(const noncopyable_type &) = delete;
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     noncopyable_type(noncopyable_type &&) = default;
-    noncopyable_type& operaotr=(noncopyable_type &&) = default;
+    noncopyable_type& operator=(noncopyable_type &&) = default;
 #endif
 };
 
