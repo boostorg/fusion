@@ -283,3 +283,5 @@ project
 
     ;
 }
+
+run quick.cpp ;
