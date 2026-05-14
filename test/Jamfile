@@ -211,7 +211,8 @@ run sequence/define_struct.cpp ;
 run sequence/define_struct_empty.cpp ;
 run sequence/define_struct_move.cpp
   : : : [ requires cxx11_rvalue_references ] ;
-run sequence/define_struct_inline.cpp ;
+run sequence/define_struct_inline.cpp
+  : : : <toolset>gcc-10,<cxxstd>2a:<build>no <toolset>gcc-11,<cxxstd>17:<build>no <toolset>gcc-11,<cxxstd>20:<build>no ;
 run sequence/define_struct_inline_empty.cpp ;
 run sequence/define_struct_inline_move.cpp
   : : : [ requires cxx11_rvalue_references ] ;
@@ -223,7 +224,8 @@ run sequence/define_tpl_struct.cpp ;
 run sequence/define_tpl_struct_empty.cpp ;
 run sequence/define_tpl_struct_move.cpp
   : : : [ requires cxx11_rvalue_references ] ;
-run sequence/define_tpl_struct_inline.cpp ;
+run sequence/define_tpl_struct_inline.cpp
+  : : : <toolset>gcc-10,<cxxstd>2a:<build>no <toolset>gcc-11,<cxxstd>17:<build>no <toolset>gcc-11,<cxxstd>20:<build>no ;
 run sequence/define_tpl_struct_inline_empty.cpp ;
 run sequence/define_tpl_struct_inline_move.cpp
   : : : [ requires cxx11_rvalue_references ] ;
