@@ -34,7 +34,7 @@ namespace boost { namespace fusion
         struct store;
 
         template <std::size_t N, typename U>
-        static inline BOOST_FUSION_GPU_ENABLED
+        inline BOOST_FUSION_GPU_ENABLED
         mpl::identity<U> value_at_impl(store<N, U> const volatile*);
     }
 
