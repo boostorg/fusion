@@ -14,7 +14,7 @@ namespace boost { namespace fusion { namespace detail
 {
 
 struct enabler_ {};
-BOOST_STATIC_CONSTEXPR enabler_ enabler = {};
+inline BOOST_CONSTEXPR_OR_CONST enabler_ enabler = {};
 
 }}}
 
